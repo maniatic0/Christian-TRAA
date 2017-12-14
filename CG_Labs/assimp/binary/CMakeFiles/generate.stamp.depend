@@ -1,0 +1,35 @@
+# CMake generation dependency list for this directory.
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindOpenMP.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeParseImplicitLinkInfo.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/FindOpenMP/OpenMPTryFlag.c
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/FindOpenMP/OpenMPTryFlag.cpp
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/revision.h.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/include/assimp/config.h.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/FindPkgMacros.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/PrecompiledHeader.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/cmake_uninstall.cmake.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/assimp-config.cmake.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/assimp-config-version.cmake.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/FindDirectX.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/FindPkgMacros.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/FindZLIB.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/cmake-modules/FindPkgMacros.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/assimp.pc.in

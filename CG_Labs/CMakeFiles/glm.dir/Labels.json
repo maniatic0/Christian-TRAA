@@ -1,0 +1,55 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/glm"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeLists.txt"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/e57354dd3eb1edc8e3cda1256f39980d/glm.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/abe3c8c9265a0a4279a7643424d7693b/glm-complete.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-install.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-mkdir.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-download.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-update.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-patch.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-configure.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Christian/Documents/Lund/Project/CG_Labs/CMakeFiles/d08ff188469b0a96ddf013aa6768838b/glm-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "glm" ],
+		"name" : "glm"
+	}
+}

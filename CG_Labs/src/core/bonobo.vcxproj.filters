@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\Bonobo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\GLStateInspection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\GLStateInspectionView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\LogView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\Misc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\opengl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\Types.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\various.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\helpers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\src\core\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EFA7224D-FA08-3FEB-81DC-CC57125B2959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{67460E01-8ED0-39D9-A97B-B23A165B783C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

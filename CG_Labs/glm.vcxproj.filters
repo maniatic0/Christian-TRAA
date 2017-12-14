@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\d08ff188469b0a96ddf013aa6768838b\glm-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\abe3c8c9265a0a4279a7643424d7693b\glm-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\e57354dd3eb1edc8e3cda1256f39980d\glm.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\CMakeFiles\glm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A83EC059-B090-36B6-ADE4-806E195F1F6F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

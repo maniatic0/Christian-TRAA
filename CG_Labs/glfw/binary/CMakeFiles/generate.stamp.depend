@@ -1,0 +1,18 @@
+# CMake generation dependency list for this directory.
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/glfw/code/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CheckIncludeFile.c.in
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/glfw/code/CMake/modules/FindVulkan.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/glfw/code/src/glfw3Config.cmake.in
+C:/Program Files/CMake/share/cmake-3.9/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/glfw/code/src/glfw_config.h.in
+C:/Users/Christian/Documents/Lund/Project/CG_Labs/glfw/code/src/glfw3.pc.in

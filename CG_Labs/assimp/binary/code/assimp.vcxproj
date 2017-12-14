@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A40FBB62-20E5-3614-852F-16975461117A}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>assimp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">assimp.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">assimp-vc140-mt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp-vc140-mt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">assimp.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">assimp-vc140-mt</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR="Debug";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"Debug\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\Debug\zlibstaticd.lib;..\..\..\lib\Debug\IrrXML.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Christian/Documents/Lund/Project/CG_Labs/lib/Debug/assimp-vc140-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Christian/Documents/Lund/Project/CG_Labs/bin/Debug/assimp-vc140-mt.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR="Release";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"Release\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\Release\zlibstatic.lib;..\..\..\lib\Release\IrrXML.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Christian/Documents/Lund/Project/CG_Labs/lib/Release/assimp-vc140-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Christian/Documents/Lund/Project/CG_Labs/bin/Release/assimp-vc140-mt.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR="RelWithDebInfo";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_NO_EXPORT;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"RelWithDebInfo\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\.;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\rapidjson\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\unzip;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\irrXML;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..\contrib\openddlparser\include;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\lib\RelWithDebInfo\zlibstatic.lib;..\..\..\lib\RelWithDebInfo\IrrXML.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Christian/Documents/Lund/Project/CG_Labs/lib/RelWithDebInfo/assimp-vc140-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Christian/Documents/Lund/Project/CG_Labs/bin/RelWithDebInfo/assimp-vc140-mt.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Christian/Documents/Lund/Project/CG_Labs -BC:/Users/Christian/Documents/Lund/Project/CG_Labs --check-stamp-file C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/binary/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\cmake-modules\FindRT.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Christian/Documents/Lund/Project/CG_Labs -BC:/Users/Christian/Documents/Lund/Project/CG_Labs --check-stamp-file C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/binary/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\cmake-modules\FindRT.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/Christian/Documents/Lund/Project/CG_Labs -BC:/Users/Christian/Documents/Lund/Project/CG_Labs --check-stamp-file C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/binary/code/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/Christian/Documents/Lund/Project/CG_Labs/assimp/code/code/CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\cmake-modules\FindRT.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\code\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Assimp.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\fast_atof.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\qnan.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BaseImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BaseImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BaseProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BaseProcess.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Importer.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ScenePrivate.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PostStepRegistry.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ImporterRegistry.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ByteSwapper.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DefaultProgressHandler.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DefaultIOStream.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DefaultIOSystem.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CInterfaceIOWrapper.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CInterfaceIOWrapper.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Hash.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Importer.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFF.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MemoryIOWrapper.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ParsingUtils.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StreamReader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StreamWriter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StringComparison.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StringUtils.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SGSpatialSort.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SGSpatialSort.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\VertexTriangleAdjacency.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\VertexTriangleAdjacency.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\GenericProperty.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SpatialSort.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SpatialSort.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SceneCombiner.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ScenePreprocessor.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ScenePreprocessor.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SkeletonMeshBuilder.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SkeletonMeshBuilder.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SplitByBoneCountProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SplitByBoneCountProcess.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SmoothingGroups.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StandardShapes.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StandardShapes.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TargetAnimation.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TargetAnimation.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveComments.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveComments.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Subdivision.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Subdivision.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\scene.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Vertex.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LineSplitter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TinyFormatter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Profiler.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LogAux.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Bitmap.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Bitmap.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XMLTools.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Version.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IOStreamBuffer.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CreateAnimMesh.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CreateAnimMesh.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\LogStream.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Logger.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Win32DebugLogStream.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DefaultLogger.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FileLogStream.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StdOStreamLogStream.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Exporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssimpCExport.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlobIOSystem.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CalcTangentsProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CalcTangentsProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ComputeUVMappingProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ComputeUVMappingProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ConvertToLHProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ConvertToLHProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindDegenerates.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindDegenerates.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindInstancesProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindInstancesProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindInvalidDataProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FindInvalidDataProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FixNormalsStep.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FixNormalsStep.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\GenFaceNormalsProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\GenFaceNormalsProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\GenVertexNormalsProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\GenVertexNormalsProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PretransformVertices.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PretransformVertices.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ImproveCacheLocality.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ImproveCacheLocality.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\JoinVerticesProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\JoinVerticesProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LimitBoneWeightsProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LimitBoneWeightsProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveRedundantMaterials.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveRedundantMaterials.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveVCProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RemoveVCProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SortByPTypeProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SortByPTypeProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SplitLargeMeshes.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SplitLargeMeshes.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TextureTransform.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TextureTransform.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TriangulateProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TriangulateProcess.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ValidateDataStructure.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ValidateDataStructure.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OptimizeGraph.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OptimizeGraph.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OptimizeMeshes.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OptimizeMeshes.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DeboneProcess.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DeboneProcess.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ProcessHelper.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ProcessHelper.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PolyTools.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MakeVerboseFormat.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MakeVerboseFormat.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MaterialSystem.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MaterialSystem.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StepExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\StepExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter_Macro.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter_Node.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter_Geometry.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter_Material.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AMFImporter_Postprocess.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSConverter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSHelper.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\3DSExporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ACLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ACLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ASELoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ASELoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ASEParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ASEParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssbinExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssbinExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssbinLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssbinLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssxmlExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\AssxmlExporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\B3DImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\B3DImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BVHLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BVHLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaHelper.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ColladaExporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DXFLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DXFLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\DXFHelper.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CSMLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\CSMLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\HMPFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\HMPLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\HMPLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\HalfLifeFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRMeshLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRMeshLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRShared.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRShared.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IRRLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOAnimation.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOAnimation.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOBLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWOMaterial.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWSLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\LWSLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD2FileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD2Loader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD2Loader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD2NormalTable.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD3FileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD3Loader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD3Loader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD5Loader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD5Loader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD5Parser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MD5Parser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDCFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDCLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDCLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDCNormalTable.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDLDefaultColorMap.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDLFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDLLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDLLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MDLMaterialLoader.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\NFFLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\NFFLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\NDOLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\NDOLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OFFLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OFFLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileData.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileMtlImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileMtlImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjFileParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjTools.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\ObjExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreImporter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreStructs.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreParsingUtils.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreBinarySerializer.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreXmlSerializer.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreImporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreStructs.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreBinarySerializer.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreXmlSerializer.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OgreMaterial.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OpenGEXExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OpenGEXExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OpenGEXImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OpenGEXImporter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\OpenGEXStructs.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyParser.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\PlyExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MS3DLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MS3DLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\COBLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\COBLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\COBScene.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderDNA.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderDNA.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderDNA.inl" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderScene.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderScene.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderSceneGen.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderIntermediate.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderModifier.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderModifier.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderBMesh.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderBMesh.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderTessellator.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\BlenderTessellator.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCReaderGen1.cpp" >
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCReaderGen2.cpp" >
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">%(AdditionalOptions) /bigobj</AdditionalOptions>
+    </ClCompile>
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCReaderGen.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCUtil.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCUtil.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCGeometry.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCMaterial.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCProfile.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCCurve.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCBoolean.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\IFCOpenings.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STEPFile.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STEPFileReader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STEPFileReader.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STEPFileEncoding.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STEPFileEncoding.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XGLLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XGLLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXCompileConfig.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXParser.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXTokenizer.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXTokenizer.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXImportSettings.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXConverter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXConverter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXUtil.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXUtil.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXDocument.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXDocument.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXProperties.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXProperties.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXMeshGeometry.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXMeshGeometry.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXMaterial.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXModel.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXAnimation.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXNodeAttribute.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXDeformer.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXBinaryTokenizer.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FBXDocumentUtil.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3DLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3DLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPFileData.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPFileParser.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPFileParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPFileImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPFileImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPZipArchive.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\Q3BSPZipArchive.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RawLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\RawLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SIBImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SIBImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SMDLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\SMDLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STLLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STLLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STLExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\STLExporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TerragenLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\TerragenLoader.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\UnrealLoader.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\UnrealLoader.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileHelper.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\XFileExporter.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DExporter.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Geometry2D.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Geometry3D.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Group.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Light.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Macro.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Metadata.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Networking.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Node.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Postprocess.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Rendering.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Shape.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DImporter_Texturing.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FIReader.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\FIReader.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\X3DVocabulary.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFAsset.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFAsset.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFAssetWriter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFAssetWriter.inl" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFImporter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFExporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\glTFExporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\D3MFImporter.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\D3MFImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\D3MFOpcPackage.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\D3MFOpcPackage.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDCpp14.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDImporter.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDImporter.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDPmdParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDPmxParser.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDPmxParser.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\MMDVmdParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\code\irrXMLWrapper.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\unzip\crypt.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\unzip\ioapi.c" >
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\unzip\ioapi.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\unzip\unzip.c" >
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\unzip\unzip.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\common\shapes.cc"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\common\shapes.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\common\utils.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\advancing_front.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\advancing_front.cc"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\cdt.cc"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\cdt.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\sweep.cc"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\sweep.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\sweep_context.cc"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\poly2tri\poly2tri\sweep\sweep_context.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\clipper\clipper.hpp" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\clipper\clipper.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\OpenDDLParser.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\DDLNode.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\OpenDDLCommon.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\OpenDDLExport.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\Value.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\code\OpenDDLStream.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\OpenDDLParser.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\OpenDDLParserUtils.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\OpenDDLCommon.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\OpenDDLExport.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\OpenDDLStream.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\DDLNode.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\openddlparser\include\openddlparser\Value.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcAdjacencyInfo.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcArithmeticCodec.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcArithmeticCodec.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcBinaryStream.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcCommon.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDVEncodeParams.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDynamicVectorDecoder.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDynamicVectorDecoder.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDynamicVectorEncoder.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDynamicVectorEncoder.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcDynamicVector.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcFIFO.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcIndexedFaceSet.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcIndexedFaceSet.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcSC3DMCDecoder.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcSC3DMCDecoder.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcSC3DMCEncodeParams.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcSC3DMCEncoder.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcSC3DMCEncoder.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTimer.h" />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTools.cpp"  />
+    <ClCompile Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleFans.cpp"  />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleFans.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleListDecoder.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleListDecoder.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleListEncoder.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcTriangleListEncoder.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcVector.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\contrib\Open3DGC\o3dgcVector.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\anim.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\ai_assert.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\camera.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\color4.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\color4.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\include\assimp\config.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\defs.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\cfileio.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\light.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\material.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\material.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\matrix3x3.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\matrix3x3.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\matrix4x4.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\matrix4x4.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\mesh.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\postprocess.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\quaternion.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\quaternion.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\scene.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\metadata.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\texture.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\types.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\vector2.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\vector2.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\vector3.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\vector3.inl" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\version.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\cimport.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\importerdesc.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Importer.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\IOStream.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\cexport.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Exporter.hpp" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\DefaultIOStream.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\DefaultIOSystem.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\SceneCombiner.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\code\include\assimp\Compiler\pstdint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\ZERO_CHECK.vcxproj">
+      <Project>{156BC794-8044-3C1B-9234-23848A0ABF6B}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\irrXML\IrrXML.vcxproj">
+      <Project>{E2042975-C676-3782-A11D-0305A84B6925}</Project>
+      <Name>IrrXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Christian\Documents\Lund\Project\CG_Labs\assimp\binary\contrib\zlib\zlibstatic.vcxproj">
+      <Project>{E15895A1-2014-3D9C-B466-00DE73DCA683}</Project>
+      <Name>zlibstatic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

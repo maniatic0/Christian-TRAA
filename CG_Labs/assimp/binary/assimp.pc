@@ -1,0 +1,11 @@
+prefix=C:/Program Files (x86)/CG_Labs
+exec_prefix=C:/Program Files (x86)/CG_Labs/
+libdir=C:/Program Files (x86)/CG_Labs/lib
+includedir=C:/Program Files (x86)/CG_Labs/include/assimp
+
+Name: CG_Labs
+Description: Import various well-known 3D model formats in an uniform manner.
+Version: 4.0.1
+Libs: -L${libdir} -lassimp
+Libs.private:  
+Cflags: -I${includedir}
