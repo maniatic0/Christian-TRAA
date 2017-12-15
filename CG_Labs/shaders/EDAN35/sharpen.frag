@@ -40,12 +40,16 @@ uniform vec2 kernel_off[KERNEL_SIZE] = vec2[KERNEL_SIZE](
 
 #endif
 
+//#define USE_SHARPEN
+
 void main()
 {
 	sharpen_output = texture(temporal_output, fs_in.texcoord);
+	#ifdef USE_SHARPEN
 	for(int i = 0; i < KERNEL_SIZE; i++) {
 		sharpen_output += kernel[i] * texture(temporal_output, fs_in.texcoord + (inv_res * kernel_off[i]));
 	}
 	sharpen_output = clamp(sharpen_output, 0.0, 1.0);
+	#endif // USE_SHARPEN
 	sharpen_output.w = 1.0;
 }

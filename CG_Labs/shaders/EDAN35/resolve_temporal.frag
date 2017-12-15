@@ -16,7 +16,7 @@ in VS_OUT {
 
 out vec4 frag_color;
 
-#define MOTION_BLUR
+//#define MOTION_BLUR
 
 void main()
 {

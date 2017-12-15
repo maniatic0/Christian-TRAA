@@ -25,8 +25,8 @@ uniform float z_far;
 #define USE_SOBEL
 #endif // define(RENDER_SOBEL) && !define(USE_SOBEL)
 
-//#define NO_TRAA // No TRAA
-#define ORIGINAL_TRAA // Use inside TRAA
+#define NO_TRAA // No TRAA
+//#define ORIGINAL_TRAA // Use inside TRAA
 //#define MODIFIED_TRAA // Use Modified TRAA
 
 #ifdef NO_TRAA
@@ -317,7 +317,7 @@ void main()
 #else
 
 	#ifdef NO_TRAA
-	current_history_texture = c_in; // No TRAA
+	current_history_texture = texture(current_texture, fs_in.texcoord); // No TRAA
 	#elif defined(ORIGINAL_TRAA)
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback); // Inside TRAA
 	#elif defined(MODIFIED_TRAA)
