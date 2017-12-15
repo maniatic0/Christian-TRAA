@@ -8,3 +8,6 @@ Using the Bonobo frame work from the EDAF80 and EDAN35 course http://cs.lth.se/e
 
 To compile follow the instrucction on https://github.com/LUGGPublic/CG_Labs.
 Use Cmake.
+
+
+To run, compile the second assigment from EDAN35
