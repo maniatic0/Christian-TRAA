@@ -1,5 +1,5 @@
 # Christian-TRAA
-Thanks for everything https://www.youtube.com/watch?v=jQsDMflBck0 
+Thanks for everything.
 
 TRAA implementation for then EDAN35 project. Second place in the 2017 competition.
 Made by Christian Alexander Oliveros Labrador
