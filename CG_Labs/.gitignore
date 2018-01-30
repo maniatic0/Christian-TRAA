@@ -17,3 +17,6 @@ log.txt
 *.sdf
 *.suo
 *.vcxproj.user
+
+# Testing
+testing/*.png
