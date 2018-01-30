@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <thread>
 
 //! \brief Namespace containing a few helpers for the LUGG computer graphics labs.
 namespace bonobo
@@ -158,4 +159,8 @@ namespace bonobo
 
 	// Get vector magnitude
 	float magnitude(glm::vec3 const v);
+
+	// Take screenshot of opengl frame
+	// save it to file_name in a png
+	void screenShot(std::string file_name, const int &width, const int &height);
 }

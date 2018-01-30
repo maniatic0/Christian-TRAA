@@ -557,3 +557,54 @@ float bonobo::sqrMagnitude(glm::vec3 const v) {
 float bonobo::magnitude(glm::vec3 const v) {
 	return std::sqrt(bonobo::sqrMagnitude(v));
 }
+
+
+void threadSaveScreenshot(std::string file_name, int width, int height, unsigned char* image) {
+	file_name = config::resources_path(file_name + ".png");
+	std::string printing_string = "Saving: " + file_name;
+	Log(printing_string.c_str());
+
+	size_t temp_y, temp_inv_y, temp_x, pos, inv_pos;
+
+	// Image is inverted for png saving
+	for (size_t y = 0; y < height/2; y++)
+	{
+		temp_y = 4 * width * y;
+		temp_inv_y = 4 * width * (height - 1 - y);
+		for (size_t x = 0; x < width; x++)
+		{
+			temp_x = 4 * x;
+			pos = temp_y + temp_x;
+			inv_pos = temp_inv_y + temp_x;
+			std::swap(image[pos + 0], image[inv_pos + 0]);
+			std::swap(image[pos + 1], image[inv_pos + 1]);
+			std::swap(image[pos + 2], image[inv_pos + 2]);
+			std::swap(image[pos + 3], image[inv_pos + 3]);
+		}
+	}
+
+
+	std::vector<unsigned char> png;
+
+	unsigned error = lodepng::encode(png, image, width, height);
+	if (!error) lodepng::save_file(png, file_name);
+
+	//if there's an error, display it
+	if (error) std::cout << "encoder error " << error << ": " << lodepng_error_text(error) << std::endl;
+
+	printing_string = "Done Saving: " + file_name;
+	Log(printing_string.c_str());
+	free(image);
+ }
+
+void bonobo::screenShot(std::string file_name, const int &width, const int &height) {
+	glFinish();
+	const unsigned int image_size = width * height * 4; // 4 channels
+
+	unsigned char* image = (unsigned char*)malloc(image_size);
+	glPixelStorei(GL_PACK_ALIGNMENT, 1);
+	glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, image);
+
+	std::thread t = std::thread(threadSaveScreenshot, file_name, width, height, image);
+	t.detach();
+}

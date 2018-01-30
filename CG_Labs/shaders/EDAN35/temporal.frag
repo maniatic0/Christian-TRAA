@@ -25,8 +25,8 @@ uniform float z_far;
 #define USE_SOBEL
 #endif // define(RENDER_SOBEL) && !define(USE_SOBEL)
 
-#define NO_TRAA // No TRAA
-//#define ORIGINAL_TRAA // Use inside TRAA
+//#define NO_TRAA // No TRAA
+#define ORIGINAL_TRAA // Use inside TRAA
 //#define MODIFIED_TRAA // Use Modified TRAA
 
 #ifdef NO_TRAA

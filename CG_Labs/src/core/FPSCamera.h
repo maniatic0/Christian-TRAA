@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+#define CAMERA_JITTERING_SIZE 16
+
 template<typename T, glm::precision P>
 class FPSCamera
 {

@@ -11,6 +11,7 @@ in VS_OUT {
 layout (location = 0) out vec4 sharpen_output;
 
 
+#define USE_SHARPEN
 #define KERNEL_SIZE 5
 
 // Note: the center pixel is always added so its not necesarry to add one to the center of the convolution
@@ -39,8 +40,6 @@ uniform vec2 kernel_off[KERNEL_SIZE] = vec2[KERNEL_SIZE](
 	vec2(-1.0, 2.0), vec2(0.0, 2.0), vec2(1.0, 2.0));
 
 #endif
-
-//#define USE_SHARPEN
 
 void main()
 {

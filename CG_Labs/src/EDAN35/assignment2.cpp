@@ -182,11 +182,13 @@ edan35::Assignment2::run()
 	GLuint fill_gbuffer_shader = 0u, fill_shadowmap_shader = 0u,
 		accumulate_lights_shader = 0u, resolve_deferred_shader = 0u,
 		temporal_shader = 0u, resolve_temporal_shader = 0u,
-		sharpen_shader = 0u;
+		sharpen_shader = 0u, accumulation_shader = 0u,
+		resolve_accumulation_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
-		&resolve_temporal_shader, &sharpen_shader](){
+		&resolve_temporal_shader, &sharpen_shader,
+		&accumulation_shader, &resolve_accumulation_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
@@ -195,6 +197,8 @@ edan35::Assignment2::run()
 		reload_shader("temporal.vert", "temporal.frag", temporal_shader);
 		reload_shader("resolve_temporal.vert", "resolve_temporal.frag", resolve_temporal_shader);
 		reload_shader("sharpen.vert", "sharpen.frag", sharpen_shader);
+		reload_shader("accumulation.vert", "accumulation.frag", accumulation_shader);
+		reload_shader("resolve_accumulation.vert", "resolve_accumulation.frag", resolve_accumulation_shader);
 	};
 	reload_shaders();
 
@@ -220,6 +224,7 @@ edan35::Assignment2::run()
 	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F);
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
+	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
 
 	//
 	// Setup FBOs
@@ -231,6 +236,7 @@ edan35::Assignment2::run()
 	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture}, 0u), bonobo::createFBO({ history_texture[1], temporal_output_texture}, 0u) };
 	auto const deferred_shading_fbo = bonobo::createFBO({ deferred_shading_texture }, 0u);
 	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
+	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
 
 	//
 	// Setup samplers
@@ -296,9 +302,14 @@ edan35::Assignment2::run()
 	                                        static_cast<float>(constant::shadowmap_res_x) / static_cast<float>(constant::shadowmap_res_y),
 	                                        1.0f, 10000.0f);
 
-
 	auto seconds_nb = 0.0f;
 	auto seconds_sphere = 0.0f;
+
+	// Save Vars
+	bool save = false, save_steps = false;
+	int samples = 16, current_samples = 0;
+	const int FILE_NAME_SIZE = 200;
+	char filename[FILE_NAME_SIZE+10] = "test";
 
 
 	glEnable(GL_DEPTH_TEST);
@@ -357,149 +368,165 @@ edan35::Assignment2::run()
 		windowInverseResolution.y = 1.0f / static_cast<float>(window_size.y);
 		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 
-		glDepthFunc(GL_LESS);
-		//
-		// Pass 1: Render scene into the g-buffer
-		//
-		glBindFramebuffer(GL_FRAMEBUFFER, deferred_fbo);
-		GLenum const deferred_draw_buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
-		glDrawBuffers(4, deferred_draw_buffers);
-		auto const status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-		if (status != GL_FRAMEBUFFER_COMPLETE)
-			LogError("Something went wrong with framebuffer %u", deferred_fbo);
-		glViewport(0, 0, window_size.x, window_size.y);
-		glClearDepth(1.0f);
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-		// XXX: Is any other clearing needed?
 
-		GLStateInspection::CaptureSnapshot("Filling Pass");
-
-		for (auto& element : sponza_elements) {
-			element.render(mCamera.GetWorldToClipMatrix(), element.get_transform(), fill_gbuffer_shader, set_uniforms);
-			element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform();
-		}
-
-
-		glCullFace(GL_FRONT);
-		//
-		// Pass 2: Generate shadowmaps and accumulate lights' contribution
-		//
-		glBindFramebuffer(GL_FRAMEBUFFER, light_fbo);
-		GLenum light_draw_buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
-		glDrawBuffers(2, light_draw_buffers);
-		glViewport(0, 0, window_size.x, window_size.y);
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		// XXX: Is any clearing needed?
-		for (size_t i = 0; i < static_cast<size_t>(lights_nb); ++i) {
-			auto& lightTransform = lightTransforms[i];
-			if (i != constant::lights_nb)
-			{
-				lightTransform.SetRotate(seconds_nb * 0.1f + i * 1.57f, glm::vec3(0.0f, 1.0f, 0.0f));
-			}
-
-			auto light_matrix = lightProjection * lightOffsetTransform.GetMatrixInverse() * lightTransform.GetMatrixInverse();
-
+		auto const Deferred_Shading = [&deferred_fbo, &window_size,
+			&sponza_elements, &mCamera, &fill_gbuffer_shader, &set_uniforms,
+			&light_fbo, &lights_nb, &lightTransforms, &seconds_nb,
+			&lightProjection, &lightOffsetTransform, &shadowmap_fbo,
+			&fill_shadowmap_shader, &accumulate_lights_shader,
+			&windowInverseResolution, &lightColors, &bind_texture_with_sampler,
+			&depth_texture, &depth_sampler, &normal_texture, &default_sampler,
+			&shadowmap_texture, &shadow_sampler, &coneScaleTransform,
+			&cone, &deferred_shading_fbo, &resolve_deferred_shader,
+			&diffuse_texture, &specular_texture,
+			&light_diffuse_contribution_texture,
+			&light_specular_contribution_texture]() {
+			glDepthFunc(GL_LESS);
 			//
-			// Pass 2.1: Generate shadow map for light i
+			// Pass 1: Render scene into the g-buffer
 			//
-			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap_fbo);
-			glViewport(0, 0, constant::shadowmap_res_x, constant::shadowmap_res_y);
-			// XXX: Is any clearing needed?
+			glBindFramebuffer(GL_FRAMEBUFFER, deferred_fbo);
+			GLenum const deferred_draw_buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
+			glDrawBuffers(4, deferred_draw_buffers);
+			auto const status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+			if (status != GL_FRAMEBUFFER_COMPLETE)
+				LogError("Something went wrong with framebuffer %u", deferred_fbo);
+			glViewport(0, 0, window_size.x, window_size.y);
 			glClearDepth(1.0f);
-			glClear(GL_DEPTH_BUFFER_BIT);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+			// XXX: Is any other clearing needed?
 
-			GLStateInspection::CaptureSnapshot("Shadow Map Generation");
+			GLStateInspection::CaptureSnapshot("Filling Pass");
 
-			for (auto const& element : sponza_elements) {
-				element.render(light_matrix, glm::mat4(), fill_shadowmap_shader, set_uniforms);
+			for (auto& element : sponza_elements) {
+				element.render(mCamera.GetWorldToClipMatrix(), element.get_transform(), fill_gbuffer_shader, set_uniforms);
+				element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform();
 			}
-				
 
 
-			glEnable(GL_BLEND);
-			glDepthFunc(GL_GREATER);
-			glDepthMask(GL_FALSE);
-			glBlendEquationSeparate(GL_FUNC_ADD, GL_MIN);
-			glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE, GL_ONE);
+			glCullFace(GL_FRONT);
 			//
-			// Pass 2.2: Accumulate light i contribution
+			// Pass 2: Generate shadowmaps and accumulate lights' contribution
+			//
 			glBindFramebuffer(GL_FRAMEBUFFER, light_fbo);
+			GLenum light_draw_buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 			glDrawBuffers(2, light_draw_buffers);
-			glUseProgram(accumulate_lights_shader);
+			glViewport(0, 0, window_size.x, window_size.y);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			// XXX: Is any clearing needed?
+			for (size_t i = 0; i < static_cast<size_t>(lights_nb); ++i) {
+				auto& lightTransform = lightTransforms[i];
+				if (i != constant::lights_nb)
+				{
+					lightTransform.SetRotate(seconds_nb * 0.1f + i * 1.57f, glm::vec3(0.0f, 1.0f, 0.0f));
+				}
+
+				auto light_matrix = lightProjection * lightOffsetTransform.GetMatrixInverse() * lightTransform.GetMatrixInverse();
+
+				//
+				// Pass 2.1: Generate shadow map for light i
+				//
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap_fbo);
+				glViewport(0, 0, constant::shadowmap_res_x, constant::shadowmap_res_y);
+				// XXX: Is any clearing needed?
+				glClearDepth(1.0f);
+				glClear(GL_DEPTH_BUFFER_BIT);
+
+				GLStateInspection::CaptureSnapshot("Shadow Map Generation");
+
+				for (auto const& element : sponza_elements) {
+					element.render(light_matrix, glm::mat4(), fill_shadowmap_shader, set_uniforms);
+				}
+
+
+
+				glEnable(GL_BLEND);
+				glDepthFunc(GL_GREATER);
+				glDepthMask(GL_FALSE);
+				glBlendEquationSeparate(GL_FUNC_ADD, GL_MIN);
+				glBlendFuncSeparate(GL_ONE, GL_ONE, GL_ONE, GL_ONE);
+				//
+				// Pass 2.2: Accumulate light i contribution
+				glBindFramebuffer(GL_FRAMEBUFFER, light_fbo);
+				glDrawBuffers(2, light_draw_buffers);
+				glUseProgram(accumulate_lights_shader);
+				glViewport(0, 0, window_size.x, window_size.y);
+				// XXX: Is any clearing needed?
+
+				auto const spotlight_set_uniforms = [&windowInverseResolution, &mCamera, &light_matrix, &lightColors, &lightTransform, &i](GLuint program) {
+					glUniform2f(glGetUniformLocation(program, "inv_res"),
+						static_cast<float>(windowInverseResolution.x),
+						static_cast<float>(windowInverseResolution.y));
+					glUniformMatrix4fv(glGetUniformLocation(program, "view_projection_inverse"), 1, GL_FALSE,
+						glm::value_ptr(mCamera.GetClipToWorldMatrix()));
+					glUniform3fv(glGetUniformLocation(program, "camera_position"), 1,
+						glm::value_ptr(mCamera.mWorld.GetTranslation()));
+					glUniformMatrix4fv(glGetUniformLocation(program, "shadow_view_projection"), 1, GL_FALSE,
+						glm::value_ptr(light_matrix));
+					glUniform3fv(glGetUniformLocation(program, "light_color"), 1, glm::value_ptr(lightColors[i]));
+					glUniform3fv(glGetUniformLocation(program, "light_position"), 1, glm::value_ptr(lightTransform.GetTranslation()));
+					glUniform3fv(glGetUniformLocation(program, "light_direction"), 1, glm::value_ptr(lightTransform.GetFront()));
+					glUniform1f(glGetUniformLocation(program, "light_intensity"), constant::light_intensity);
+					glUniform1f(glGetUniformLocation(program, "light_angle_falloff"), constant::light_angle_falloff);
+					glUniform2f(glGetUniformLocation(program, "shadowmap_texel_size"),
+						1.0f / static_cast<float>(constant::shadowmap_res_x),
+						1.0f / static_cast<float>(constant::shadowmap_res_y));
+				};
+
+				bind_texture_with_sampler(GL_TEXTURE_2D, 0, accumulate_lights_shader, "depth_texture", depth_texture, depth_sampler);
+				bind_texture_with_sampler(GL_TEXTURE_2D, 1, accumulate_lights_shader, "normal_texture", normal_texture, default_sampler);
+				bind_texture_with_sampler(GL_TEXTURE_2D, 2, accumulate_lights_shader, "shadow_texture", shadowmap_texture, shadow_sampler);
+
+				GLStateInspection::CaptureSnapshot("Accumulating");
+
+				cone.render(mCamera.GetWorldToClipMatrix(),
+					lightTransform.GetMatrix() * lightOffsetTransform.GetMatrix() * coneScaleTransform.GetMatrix(),
+					accumulate_lights_shader, spotlight_set_uniforms);
+
+				glBindSampler(2u, 0u);
+				glBindSampler(1u, 0u);
+				glBindSampler(0u, 0u);
+
+				glDepthMask(GL_TRUE);
+				glDepthFunc(GL_LESS);
+				glDisable(GL_BLEND);
+			}
+
+
+			glCullFace(GL_BACK);
+			glDepthFunc(GL_ALWAYS);
+			//
+			// Pass 3: Compute final image using both the g-buffer and  the light accumulation buffer
+			//
+			glBindFramebuffer(GL_FRAMEBUFFER, deferred_shading_fbo);
+			GLenum const resolve_deferred_texture_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+			glDrawBuffers(1, resolve_deferred_texture_draw_buffers);
+			auto const status_resolve_deferred_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+			if (status_resolve_deferred_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
+				LogError("Something went wrong with framebuffer %u", deferred_shading_fbo);
+			glUseProgram(resolve_deferred_shader);
 			glViewport(0, 0, window_size.x, window_size.y);
 			// XXX: Is any clearing needed?
 
-			auto const spotlight_set_uniforms = [&windowInverseResolution,&mCamera,&light_matrix,&lightColors,&lightTransform,&i](GLuint program){
-				glUniform2f(glGetUniformLocation(program, "inv_res"),
-							static_cast<float>(windowInverseResolution.x),
-							static_cast<float>(windowInverseResolution.y));
-				glUniformMatrix4fv(glGetUniformLocation(program, "view_projection_inverse"), 1, GL_FALSE,
-				                   glm::value_ptr(mCamera.GetClipToWorldMatrix()));
-				glUniform3fv(glGetUniformLocation(program, "camera_position"), 1,
-				                   glm::value_ptr(mCamera.mWorld.GetTranslation()));
-				glUniformMatrix4fv(glGetUniformLocation(program, "shadow_view_projection"), 1, GL_FALSE,
-				                   glm::value_ptr(light_matrix));
-				glUniform3fv(glGetUniformLocation(program, "light_color"), 1, glm::value_ptr(lightColors[i]));
-				glUniform3fv(glGetUniformLocation(program, "light_position"), 1, glm::value_ptr(lightTransform.GetTranslation()));
-				glUniform3fv(glGetUniformLocation(program, "light_direction"), 1, glm::value_ptr(lightTransform.GetFront()));
-				glUniform1f(glGetUniformLocation(program, "light_intensity"), constant::light_intensity);
-				glUniform1f(glGetUniformLocation(program, "light_angle_falloff"), constant::light_angle_falloff);
-				glUniform2f(glGetUniformLocation(program, "shadowmap_texel_size"),
-				            1.0f / static_cast<float>(constant::shadowmap_res_x),
-				            1.0f / static_cast<float>(constant::shadowmap_res_y));
-			};
+			bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_deferred_shader, "diffuse_texture", diffuse_texture, default_sampler);
+			bind_texture_with_sampler(GL_TEXTURE_2D, 1, resolve_deferred_shader, "specular_texture", specular_texture, default_sampler);
+			bind_texture_with_sampler(GL_TEXTURE_2D, 2, resolve_deferred_shader, "light_d_texture", light_diffuse_contribution_texture, default_sampler);
+			bind_texture_with_sampler(GL_TEXTURE_2D, 3, resolve_deferred_shader, "light_s_texture", light_specular_contribution_texture, default_sampler);
 
-			bind_texture_with_sampler(GL_TEXTURE_2D, 0, accumulate_lights_shader, "depth_texture", depth_texture, depth_sampler);
-			bind_texture_with_sampler(GL_TEXTURE_2D, 1, accumulate_lights_shader, "normal_texture", normal_texture, default_sampler);
-			bind_texture_with_sampler(GL_TEXTURE_2D, 2, accumulate_lights_shader, "shadow_texture", shadowmap_texture, shadow_sampler);
+			GLStateInspection::CaptureSnapshot("Resolve Pass");
 
-			GLStateInspection::CaptureSnapshot("Accumulating");
+			bonobo::drawFullscreen();
 
-			cone.render(mCamera.GetWorldToClipMatrix(),
-			            lightTransform.GetMatrix() * lightOffsetTransform.GetMatrix() * coneScaleTransform.GetMatrix(),
-			            accumulate_lights_shader, spotlight_set_uniforms);
+			glBindSampler(3, 0u);
+			glBindSampler(2, 0u);
+			glBindSampler(1, 0u);
+			glBindSampler(0, 0u);
+			glUseProgram(0u);
+		};
 
-			glBindSampler(2u, 0u);
-			glBindSampler(1u, 0u);
-			glBindSampler(0u, 0u);
-
-			glDepthMask(GL_TRUE);
-			glDepthFunc(GL_LESS);
-			glDisable(GL_BLEND);
-		}
-
-
-		glCullFace(GL_BACK);
-		glDepthFunc(GL_ALWAYS);
-		//
-		// Pass 3: Compute final image using both the g-buffer and  the light accumulation buffer
-		//
-		glBindFramebuffer(GL_FRAMEBUFFER, deferred_shading_fbo);
-		GLenum const resolve_deferred_texture_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
-		glDrawBuffers(1, resolve_deferred_texture_draw_buffers);
-		auto const status_resolve_deferred_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-		if (status_resolve_deferred_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
-			LogError("Something went wrong with framebuffer %u", deferred_shading_fbo);
-		glUseProgram(resolve_deferred_shader);
-		glViewport(0, 0, window_size.x, window_size.y);
-		// XXX: Is any clearing needed?
-
-		bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_deferred_shader, "diffuse_texture", diffuse_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 1, resolve_deferred_shader, "specular_texture", specular_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 2, resolve_deferred_shader, "light_d_texture", light_diffuse_contribution_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 3, resolve_deferred_shader, "light_s_texture", light_specular_contribution_texture, default_sampler);
-
-		GLStateInspection::CaptureSnapshot("Resolve Pass");
-
-		bonobo::drawFullscreen();
-
-		glBindSampler(3, 0u);
-		glBindSampler(2, 0u);
-		glBindSampler(1, 0u);
-		glBindSampler(0, 0u);
-		glUseProgram(0u);
+		Deferred_Shading();
 
 		//
 		// Pass 4: Temporal Reprojection AA
@@ -615,6 +642,106 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 
 
+		if (save)
+		{
+			if (current_samples < CAMERA_JITTERING_SIZE)
+			{
+				if (save_steps)
+				{
+					std::string file_name(filename);
+					file_name += "_temporal_" + std::to_string(current_samples);
+					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+				}
+
+				if (current_samples == CAMERA_JITTERING_SIZE - 1)
+				{
+					if (!save_steps)
+					{
+						std::string file_name(filename);
+						file_name += "_temporal" ;
+						bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+					}
+
+					const float samples_inverse = 1.0 / static_cast<float>(samples);
+
+					auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
+						glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
+					};
+
+					for (size_t i = 0; i < samples; i++)
+					{
+						currentJitter = mCamera.UpdateProjection(windowInverseResolution);
+						Deferred_Shading();
+
+						glFinish();
+						glEnable(GL_BLEND);
+						glBlendFunc(GL_ONE, GL_ONE);
+
+						//
+						// Pass: Accumulation
+						//
+						glBindFramebuffer(GL_FRAMEBUFFER, accumulation_fbo);
+						GLenum const accumulation_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+						glDrawBuffers(1, accumulation_draw_buffers);
+						auto const status_accumulation_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+						if (status_accumulation_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
+							LogError("Something went wrong with framebuffer %u", accumulation_fbo);
+						glUseProgram(accumulation_shader);
+
+						glViewport(0, 0, window_size.x, window_size.y);
+
+						if (i == 0) // Clear the things from before
+						{
+							glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+							glClear(GL_COLOR_BUFFER_BIT);
+						}
+						
+
+						accumulation_set_uniforms(accumulation_shader);
+
+						bind_texture_with_sampler(GL_TEXTURE_2D, 0, accumulation_shader, "deferred_texture", deferred_shading_texture, default_sampler);
+
+						GLStateInspection::CaptureSnapshot("Accumulation Pass");
+
+						bonobo::drawFullscreen();
+
+						glBindSampler(0, 0u);
+						glUseProgram(0u);
+						
+						glDisable(GL_BLEND);
+					}
+
+					//
+					// Pass: Accumulation Resolve
+					//
+					glFinish();
+					glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+					glUseProgram(resolve_accumulation_shader);
+					glViewport(0, 0, window_size.x, window_size.y);
+					glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+					glClear(GL_COLOR_BUFFER_BIT);
+
+					bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_accumulation_shader, "accumulation_texture", accumulation_texture, default_sampler);
+
+					GLStateInspection::CaptureSnapshot("Accumulation Resolve Pass");
+
+					bonobo::drawFullscreen();
+
+					glBindSampler(0, 0u);
+					glUseProgram(0u);
+
+
+					std::string file_name(filename);
+					file_name += "_ground_truth";
+					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+					save = false;
+				}
+			}
+			current_samples++;
+		}
+
+
+
 		//
 		// Pass 4: Draw wireframe cones on top of the final image for debugging purposes
 		//
@@ -638,6 +765,7 @@ edan35::Assignment2::run()
 		bonobo::displayTexture({-0.45f,  0.55f}, {-0.05f,  0.95f}, light_diffuse_contribution_texture,  default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.05f,  0.55f}, { 0.45f,  0.95f}, light_specular_contribution_texture, default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+		//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, accumulation_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 		//
 		// Reset viewport back to normal
 		//
@@ -667,6 +795,20 @@ edan35::Assignment2::run()
 		}
 		ImGui::End();
 
+		opened = ImGui::Begin("Save Image", nullptr, ImVec2(120, 50), -1.0f, 0);
+		if (opened && !save)
+		{
+			ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
+			ImGui::Checkbox("Save Steps", &save_steps);
+			ImGui::SliderInt("Sample Amount", &samples, 1, 256);
+			if (ImGui::Button("Save Image"))
+			{
+				save = true;
+				current_samples = 0;
+			}
+		}
+		ImGui::End();
+
 		ImGui::Render();
 
 		window->Swap();
@@ -677,6 +819,10 @@ edan35::Assignment2::run()
 		lastTime = nowTime;
 	}
 
+	glDeleteProgram(resolve_accumulation_shader);
+	resolve_accumulation_shader = 0u;
+	glDeleteProgram(accumulation_shader);
+	accumulation_shader = 0u;
 	glDeleteProgram(resolve_temporal_shader);
 	resolve_temporal_shader = 0u;
 	glDeleteProgram(sharpen_shader);
