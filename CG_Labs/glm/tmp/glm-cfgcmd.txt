@@ -1,1 +1,0 @@
-cmd='C:/Program Files/CMake/bin/cmake.exe;-GVisual Studio 15 2017;<SOURCE_DIR><SOURCE_SUBDIR>'
