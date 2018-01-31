@@ -26,6 +26,8 @@ log.txt
 testing/*.png
 
 # Configuration Files
+CMakeCache.txt
 config.hpp
 CMakeSettings.json
 cmake_install.cmake
+**/CMakeFiles/
