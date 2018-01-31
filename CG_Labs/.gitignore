@@ -18,6 +18,8 @@ log.txt
 *.suo
 *.vcxproj.user
 *.sln
+*.vxproj
+*.vxproj.filters
 .vs/
 
 # Testing

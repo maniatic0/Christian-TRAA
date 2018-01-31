@@ -74,6 +74,14 @@ set (
 
 	"assignment5.cpp"
 	"assignment5.hpp"
+	"enemyPlane.cpp"
+	"enemyPlane.h"
+	"missile.cpp"
+	"missile.h"
+	"plane.cpp"
+	"plane.h"
+	"rigidBody.cpp"
+	"rigidBody.h"
 )
 
 source_group (
@@ -82,6 +90,14 @@ source_group (
 	FILES
 	${PROJECT_SOURCE_DIR}/assignment5.cpp
 	${PROJECT_SOURCE_DIR}/assignment5.hpp
+	${PROJECT_SOURCE_DIR}/enemyPlane.cpp
+	${PROJECT_SOURCE_DIR}/enemyPlane.h
+	${PROJECT_SOURCE_DIR}/missile.cpp
+	${PROJECT_SOURCE_DIR}/missile.h
+	${PROJECT_SOURCE_DIR}/plane.cpp
+	${PROJECT_SOURCE_DIR}/plane.h
+	${PROJECT_SOURCE_DIR}/rigidBody.cpp
+	${PROJECT_SOURCE_DIR}/rigidBody.h
 )
 
 luggcgl_new_assignment ("EDAF80_Assignment1" "${ASSIGNMENT1_SOURCES}" "${COMMON_SOURCES}")
