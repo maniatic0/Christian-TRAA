@@ -17,6 +17,13 @@ log.txt
 *.sdf
 *.suo
 *.vcxproj.user
+*.sln
+.vs/
 
 # Testing
 testing/*.png
+
+# Configuration Files
+config.hpp
+CMakeSettings.json
+cmake_install.cmake
