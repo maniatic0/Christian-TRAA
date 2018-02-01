@@ -40,7 +40,7 @@ glm::tmat4x4<T, P> FPSCamera<T, P>::UpdateProjection(glm::vec2 window_size_inv)
 		return (jitter);
 	}
 
-	static const glm::tvec2<T, P> offsets[CAMERA_JITTERING_SIZE] = {
+	static const glm::tvec2<T, P> offsets[] = {
 		glm::tvec2<T, P>(0.0, 0.0),
 		glm::tvec2<T, P>(0.500000000000000, 0.666666666666667),
 		glm::tvec2<T, P>(0.250000000000000, 0.333333333333333),
@@ -61,7 +61,7 @@ glm::tmat4x4<T, P> FPSCamera<T, P>::UpdateProjection(glm::vec2 window_size_inv)
 
 	   // Get new offset
 	frameCount++;
-	if (frameCount >= 16) frameCount -= 16;
+	if (frameCount >= CAMERA_JITTERING_SIZE) frameCount -= CAMERA_JITTERING_SIZE;
 
 	const glm::tvec2<T, P> offset = offsets[frameCount];
 

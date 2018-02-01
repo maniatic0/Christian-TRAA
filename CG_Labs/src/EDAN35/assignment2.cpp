@@ -183,12 +183,13 @@ edan35::Assignment2::run()
 		accumulate_lights_shader = 0u, resolve_deferred_shader = 0u,
 		temporal_shader = 0u, resolve_temporal_shader = 0u,
 		sharpen_shader = 0u, accumulation_shader = 0u,
-		resolve_accumulation_shader = 0u;
+		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
 		&resolve_temporal_shader, &sharpen_shader,
-		&accumulation_shader, &resolve_accumulation_shader](){
+		&accumulation_shader, &resolve_accumulation_shader,
+		&resolve_no_aa_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
@@ -199,6 +200,7 @@ edan35::Assignment2::run()
 		reload_shader("sharpen.vert", "sharpen.frag", sharpen_shader);
 		reload_shader("accumulation.vert", "accumulation.frag", accumulation_shader);
 		reload_shader("resolve_accumulation.vert", "resolve_accumulation.frag", resolve_accumulation_shader);
+		reload_shader("resolve_no_aa.vert", "resolve_no_aa.frag", resolve_no_aa_shader);
 	};
 	reload_shaders();
 
@@ -662,6 +664,8 @@ edan35::Assignment2::run()
 						bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
 					}
 
+					// Save Accumulation Buffer
+#pragma region ACCUMULATION_SAVE
 					const float samples_inverse = 1.0 / static_cast<float>(samples);
 
 					auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
@@ -695,7 +699,7 @@ edan35::Assignment2::run()
 							glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 							glClear(GL_COLOR_BUFFER_BIT);
 						}
-						
+
 
 						accumulation_set_uniforms(accumulation_shader);
 
@@ -707,7 +711,7 @@ edan35::Assignment2::run()
 
 						glBindSampler(0, 0u);
 						glUseProgram(0u);
-						
+
 						glDisable(GL_BLEND);
 					}
 
@@ -734,6 +738,40 @@ edan35::Assignment2::run()
 					std::string file_name(filename);
 					file_name += "_ground_truth";
 					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+#pragma endregion
+
+					// Save No AA version
+#pragma region NO_AA_SAVE
+					bool prev_jitterProjection = mCamera.jitterProjection;
+					mCamera.jitterProjection = false;
+					currentJitter = mCamera.UpdateProjection(windowInverseResolution);
+					Deferred_Shading();
+					mCamera.jitterProjection = prev_jitterProjection;
+
+					//
+					// Pass: No AA Resolve
+					//
+					glFinish();
+					glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+					glUseProgram(resolve_accumulation_shader);
+					glViewport(0, 0, window_size.x, window_size.y);
+					glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+					glClear(GL_COLOR_BUFFER_BIT);
+
+					bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_no_aa_shader, "texture_to_load", deferred_shading_texture, default_sampler);
+
+					GLStateInspection::CaptureSnapshot("No AA Resolve Pass");
+
+					bonobo::drawFullscreen();
+
+					glBindSampler(0, 0u);
+					glUseProgram(0u);
+
+					file_name = std::string(filename);
+					file_name += "_no_aa";
+					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+#pragma endregion
+
 					save = false;
 				}
 			}
@@ -819,6 +857,8 @@ edan35::Assignment2::run()
 		lastTime = nowTime;
 	}
 
+	glDeleteProgram(resolve_no_aa_shader);
+	resolve_no_aa_shader = 0u;
 	glDeleteProgram(resolve_accumulation_shader);
 	resolve_accumulation_shader = 0u;
 	glDeleteProgram(accumulation_shader);
