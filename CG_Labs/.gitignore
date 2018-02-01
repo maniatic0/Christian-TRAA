@@ -23,7 +23,8 @@ log.txt
 .vs/
 
 # Testing
-testing/*.png
+!testing/
+testing/*
 
 # Configuration Files
 CMakeCache.txt

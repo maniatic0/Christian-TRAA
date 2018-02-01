@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+"""
+Made by Christian Oliveros on 01/02/2018
+Takes all the png's from pngs_path and moves to a folder with the test name in tests_final_path
+"""
 import os
 import re
 import sys
