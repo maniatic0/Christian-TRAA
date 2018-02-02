@@ -2,8 +2,7 @@ function [code] = analysis_function(name)
 %analysis_function Perform analysis to test 'name'
 
 if exist(name, 'dir') ~= 7 
-    disp(strcat('The test folder was not found: ', ...
-        name));
+    fprintf('The test folder was not found: %s\n', name);
     code = -1;
     return; 
 end
@@ -14,22 +13,22 @@ ground_truth_filename = fullfile(name, strcat(name, '_ground_truth.png'));
 no_aa_filename = fullfile(name, strcat(name, '_no_aa.png'));
 
 if exist(temporal_filename, 'file') ~= 2 
-    disp(strcat('The temporal test file was not found: ', ...
-        temporal_filename));
+    fprintf('The temporal test file was not found: %s\n', ...
+        temporal_filename);
     code = -1;
     return; 
 end
 
 if exist(ground_truth_filename, 'file') ~= 2 
-    disp(strcat('The ground truth test file was not found: ', ...
-        ground_truth_filename));
+    fprintf('The ground truth test file was not found: %s\n', ...
+        ground_truth_filename);
     code = -1;
     return;
 end
 
 if exist(no_aa_filename, 'file') ~= 2 
-    disp(strcat('The no AA test file was not found: ', ...
-        ground_truth_filename));
+    fprintf('The no AA test file was not found: %s\n', ...
+        no_aa_filename);
     code = -1;
     return;
 end

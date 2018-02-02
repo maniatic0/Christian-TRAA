@@ -8,8 +8,15 @@ current_directory(~[current_directory.isdir]) = [];  %remove non-directories
 tf = ismember( {current_directory.name}, {'.', '..'});
 current_directory(tf) = [];  %remove current and parent directory.
 
+
+fprintf('Amount of Tests found: %d\n', length(current_directory));
+fprintf('Starting Tests\n\n');
+
 for i = 1:length(current_directory)
-    disp(current_directory(i).name)
-    analysis_function(current_directory(i).name)
+	fprintf('Working on test: %s\n', current_directory(i).name);
+	fprintf('Return Code of the Tests: %d', ...
+		analysis_function(current_directory(i).name));
 end
+
+fprintf('\nTests Done');
     
