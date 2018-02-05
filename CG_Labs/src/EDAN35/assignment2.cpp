@@ -184,13 +184,14 @@ edan35::Assignment2::run()
 		temporal_shader = 0u, resolve_temporal_shader = 0u,
 		sharpen_shader = 0u, accumulation_shader = 0u,
 		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u,
-		sobel_shader = 0u;
+		sobel_shader = 0u, temporal_sobel_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
 		&resolve_temporal_shader, &sharpen_shader,
 		&accumulation_shader, &resolve_accumulation_shader,
-		&resolve_no_aa_shader, &sobel_shader](){
+		&resolve_no_aa_shader, &sobel_shader,
+		&temporal_sobel_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
@@ -203,6 +204,7 @@ edan35::Assignment2::run()
 		reload_shader("resolve_accumulation.vert", "resolve_accumulation.frag", resolve_accumulation_shader);
 		reload_shader("resolve_no_aa.vert", "resolve_no_aa.frag", resolve_no_aa_shader);
 		reload_shader("sobel.vert", "sobel.frag", sobel_shader);
+		reload_shader("temporal_with_sobel.vert", "temporal_with_sobel.frag", temporal_sobel_shader);
 	};
 	reload_shaders();
 
@@ -327,6 +329,7 @@ edan35::Assignment2::run()
 	int history_switch = 0; // Where do we write and where do we read
 	float k_feedback_max = 0.979f;
 	float k_feedback_min = 0.925f;
+	bool use_sobel = false;
 
 	// Load old MVPS
 	for (auto& element : sponza_elements) {
@@ -502,7 +505,7 @@ edan35::Assignment2::run()
 		&window_size, &bind_texture_with_sampler,
 		&default_sampler, &deferred_shading_texture,
 		&depth_texture, &depth_sampler,
-		&diffuse_texture]() {
+		&diffuse_texture, &light_specular_contribution_texture]() {
 		//
 		// Pass: Sobel
 		//
@@ -532,82 +535,41 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 0, sobel_shader, "deferred_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 1, sobel_shader, "depth_texture", depth_texture, depth_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 2, sobel_shader, "diffuse_texture", diffuse_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 3, sobel_shader, "specular_texture", light_specular_contribution_texture, default_sampler);
+		
 
 		GLStateInspection::CaptureSnapshot("Sobel Pass");
 
 		bonobo::drawFullscreen();
 
+		glBindSampler(3, 0u);
 		glBindSampler(2, 0u);
 		glBindSampler(1, 0u);
 		glBindSampler(0, 0u);
 		glUseProgram(0u);
 	};
 
-	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
-		nowTime = GetTimeMilliseconds();
-		ddeltatime = nowTime - lastTime;
-		if (nowTime > fpsNextTick) {
-			fpsNextTick += 1000.0;
-			fpsSamples = 0;
-		}
-		fpsSamples++;
-		if (!are_lights_paused)
-			seconds_nb += static_cast<float>(ddeltatime / 1000.0);
-		if(!is_sphere_paused)
-			seconds_sphere += static_cast<float>(ddeltatime / 1000.0);
-
-		auto& io = ImGui::GetIO();
-		inputHandler->SetUICapture(io.WantCaptureMouse, io.WantCaptureMouse);
-
-		glfwPollEvents();
-		inputHandler->Advance();
-		mCamera.Update(ddeltatime, *inputHandler);
-
-		ImGui_ImplGlfwGL3_NewFrame();
-
-		if (inputHandler->GetKeycodeState(GLFW_KEY_R) & JUST_PRESSED) {
-			reload_shaders();
-		}
-
-		// Sphere novement
-		// The sphere is the penultimate element in vector
-		sponza_elements[sponza_elements.size() - 2].set_translation(sphere_pos + glm::vec3(amplitude * std::sin(bonobo::two_pi * frequency * seconds_sphere), 0.0f, 0.0f));
-		sponza_elements[sponza_elements.size() - 1].set_rotation_y(bonobo::two_pi * box_rotation);
-
-		// TRAA vars
-		windowInverseResolution.x = 1.0f / static_cast<float>(window_size.x);
-		windowInverseResolution.y = 1.0f / static_cast<float>(window_size.y);
-		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
-
-		// Pass 1-3: Deferred Shading
-		Deferred_Shading();
-
-		// Pass: Sobel
-		Sobel();
-
+	// Temporal Anti Aliasing
+	auto const Temporal_AA = [&history_fbo, &history_switch,
+		&window_size, &bind_texture_with_sampler,
+		&history_texture, &default_sampler,
+		&depth_texture, &velocity_texture,
+		&deferred_shading_texture, &sharpen_fbo,
+		&diffuse_texture, &depth_sampler,
+		&sharpen_shader, &windowInverseResolution,
+		&temporal_output_texture, &resolve_temporal_shader,
+		&ddeltatime, &currentJitter,
+		&sharpen_texture, &sobel_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
 		//
 		// Pass 4: Temporal Reprojection AA
 		//
 		glBindFramebuffer(GL_FRAMEBUFFER, history_fbo[(history_switch + 1) & 1]);
-		GLenum const history_texture_draw_buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1};
+		GLenum const history_texture_draw_buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 		glDrawBuffers(2, history_texture_draw_buffers);
 		auto const status_history_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status_history_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", history_fbo[(history_switch + 1) & 1]);
 		glUseProgram(temporal_shader);
-
-		auto const temporal_set_uniforms = [&windowInverseResolution, &mCamera, &currentJitter,
-			&k_feedback_max, &k_feedback_min] (GLuint program) {
-			glUniform2f(glGetUniformLocation(program, "inv_res"),
-				static_cast<float>(windowInverseResolution.x),
-				static_cast<float>(windowInverseResolution.y));
-			glUniformMatrix4fv(glGetUniformLocation(program, "jitter"), 1, GL_FALSE,
-				glm::value_ptr(currentJitter));
-			glUniform1f(glGetUniformLocation(program, "k_feedback_max"), k_feedback_max);
-			glUniform1f(glGetUniformLocation(program, "k_feedback_min"), k_feedback_min);
-			glUniform1f(glGetUniformLocation(program, "z_near"), mCamera.mNear);
-			glUniform1f(glGetUniformLocation(program, "z_far"), mCamera.mFar);
-		};
 
 		temporal_set_uniforms(temporal_shader);
 
@@ -621,11 +583,13 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 2, temporal_shader, "velocity_texture", velocity_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 3, temporal_shader, "current_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture, default_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
 		bonobo::drawFullscreen();
 
+		glBindSampler(5, 0u);
 		glBindSampler(4, 0u);
 		glBindSampler(3, 0u);
 		glBindSampler(2, 0u);
@@ -697,7 +661,74 @@ edan35::Assignment2::run()
 		glBindSampler(1, 0u);
 		glBindSampler(0, 0u);
 		glUseProgram(0u);
+	};
 
+	auto const temporal_set_uniforms = [&windowInverseResolution, &mCamera, &currentJitter,
+		&k_feedback_max, &k_feedback_min](GLuint program) {
+		glUniform2f(glGetUniformLocation(program, "inv_res"),
+			static_cast<float>(windowInverseResolution.x),
+			static_cast<float>(windowInverseResolution.y));
+		glUniformMatrix4fv(glGetUniformLocation(program, "jitter"), 1, GL_FALSE,
+			glm::value_ptr(currentJitter));
+		glUniform1f(glGetUniformLocation(program, "k_feedback_max"), k_feedback_max);
+		glUniform1f(glGetUniformLocation(program, "k_feedback_min"), k_feedback_min);
+		glUniform1f(glGetUniformLocation(program, "z_near"), mCamera.mNear);
+		glUniform1f(glGetUniformLocation(program, "z_far"), mCamera.mFar);
+	};
+
+	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
+		nowTime = GetTimeMilliseconds();
+		ddeltatime = nowTime - lastTime;
+		if (nowTime > fpsNextTick) {
+			fpsNextTick += 1000.0;
+			fpsSamples = 0;
+		}
+		fpsSamples++;
+		if (!are_lights_paused)
+			seconds_nb += static_cast<float>(ddeltatime / 1000.0);
+		if(!is_sphere_paused)
+			seconds_sphere += static_cast<float>(ddeltatime / 1000.0);
+
+		auto& io = ImGui::GetIO();
+		inputHandler->SetUICapture(io.WantCaptureMouse, io.WantCaptureMouse);
+
+		glfwPollEvents();
+		inputHandler->Advance();
+		mCamera.Update(ddeltatime, *inputHandler);
+
+		ImGui_ImplGlfwGL3_NewFrame();
+
+		if (inputHandler->GetKeycodeState(GLFW_KEY_R) & JUST_PRESSED) {
+			reload_shaders();
+		}
+
+		// Sphere novement
+		// The sphere is the penultimate element in vector
+		sponza_elements[sponza_elements.size() - 2].set_translation(sphere_pos + glm::vec3(amplitude * std::sin(bonobo::two_pi * frequency * seconds_sphere), 0.0f, 0.0f));
+		sponza_elements[sponza_elements.size() - 1].set_rotation_y(bonobo::two_pi * box_rotation);
+
+		// TRAA vars
+		windowInverseResolution.x = 1.0f / static_cast<float>(window_size.x);
+		windowInverseResolution.y = 1.0f / static_cast<float>(window_size.y);
+		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
+
+		// Pass 1-3: Deferred Shading
+		Deferred_Shading();
+
+		// Pass: Sobel
+		Sobel();
+
+		
+		if (use_sobel)
+		{
+			// Temporal Anti Aliasing modified 
+			Temporal_AA(temporal_sobel_shader, temporal_set_uniforms);
+		}
+		else
+		{
+			// Temporal Anti Aliasing from Inside
+			Temporal_AA(temporal_shader, temporal_set_uniforms);
+		}
 
 		if (save)
 		{
@@ -858,6 +889,7 @@ edan35::Assignment2::run()
 		bonobo::displayTexture({-0.45f,  0.55f}, {-0.05f,  0.95f}, light_diffuse_contribution_texture,  default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.05f,  0.55f}, { 0.45f,  0.95f}, light_specular_contribution_texture, default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+		bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 		//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 
 		//
@@ -875,6 +907,7 @@ edan35::Assignment2::run()
 
 		opened = ImGui::Begin("Scene Controls", nullptr, ImVec2(120, 50), -1.0f, 0);
 		if (opened) {
+			ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
 			ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
 			ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 1.0f);
 			ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
@@ -913,6 +946,9 @@ edan35::Assignment2::run()
 		lastTime = nowTime;
 	}
 
+	
+	glDeleteProgram(temporal_sobel_shader);
+	temporal_sobel_shader = 0u;
 	glDeleteProgram(sobel_shader);
 	sobel_shader = 0u;
 	glDeleteProgram(resolve_no_aa_shader);
