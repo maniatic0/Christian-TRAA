@@ -70,8 +70,8 @@ glm::tmat4x4<T, P> FPSCamera<T, P>::UpdateProjection(glm::vec2 window_size_inv)
 	jitter[1][1] = static_cast<T>(1);
 	jitter[2][2] = static_cast<T>(1);
 	jitter[3][3] = static_cast<T>(1);
-	jitter[3][0] = (offset.x - 0.5f) * static_cast<float>(window_size_inv.x) * jitterSpread;
-	jitter[3][1] = (offset.y - 0.5f) * static_cast<float>(window_size_inv.y) * jitterSpread;
+	jitter[3][0] = (2.0f * offset.x - 1.0f) * static_cast<float>(window_size_inv.x) * jitterSpread;
+	jitter[3][1] = (2.0f * offset.y - 1.0f) * static_cast<float>(window_size_inv.y) * jitterSpread;
 	
 	mProjectionJitter = jitter * mProjection;
 	mProjectionInverse = glm::inverse(mProjectionJitter);

@@ -103,6 +103,24 @@ edan35::Assignment2::run()
 		sponza_elements.push_back(node);
 	}
 
+	// Load pipe geometry
+	auto const pipe_geometry = bonobo::loadObjects("SA_LD_Pipe.obj", true);
+	if (pipe_geometry.empty()) {
+		LogError("Failed to load the Pipe model, check the testing folder for the pipe");
+		return;
+	}
+		
+	const glm::vec3 pipe_pos(2300.0f, 100.0f, 0.0f);
+	const glm::vec3 pipe_scale(60.0f, 60.0f, 60.0f);
+
+	for (auto const& shape : pipe_geometry) {
+		Node node;
+		node.set_geometry(shape);
+		node.set_translation(pipe_pos);
+		node.set_scaling(pipe_scale);
+		sponza_elements.push_back(node);
+	}
+
 	// Load the sphere geometry
 	auto const sphere_file = bonobo::loadObjects("sphere.obj");
 	if (sphere_file.empty())

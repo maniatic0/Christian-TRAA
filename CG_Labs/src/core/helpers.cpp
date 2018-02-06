@@ -57,11 +57,19 @@ getTextureData(std::string const& filename, u32& width, u32& height, bool flip)
 }
 
 std::vector<bonobo::mesh_data>
-bonobo::loadObjects(std::string const& filename)
+bonobo::loadObjects(std::string const& filename, bool use_testing)
 {
 	std::vector<bonobo::mesh_data> objects;
 
-	auto const scene_filepath = config::resources_path("scenes/" + filename);
+	std::string scene_filepath;
+	if (!use_testing)
+	{
+		scene_filepath = config::resources_path("scenes/" + filename);
+	}
+	else
+	{
+		scene_filepath = config::resources_path("../testing/models/" + filename);
+	}
 	LogInfo("Loading \"%s\"", scene_filepath.c_str());
 	Assimp::Importer importer;
 	auto const assimp_scene = importer.ReadFile(scene_filepath, aiProcess_Triangulate | aiProcess_SortByPType | aiProcess_CalcTangentSpace);
@@ -69,6 +77,7 @@ bonobo::loadObjects(std::string const& filename)
 		LogError("Assimp failed to load \"%s\": %s", scene_filepath.c_str(), importer.GetErrorString());
 		return objects;
 	}
+
 
 	if (assimp_scene->mNumMeshes == 0u) {
 		LogError("No mesh available; loading \"%s\" must have had issues", scene_filepath.c_str());
@@ -83,13 +92,22 @@ bonobo::loadObjects(std::string const& filename)
 		texture_bindings bindings;
 		auto const material = assimp_scene->mMaterials[i];
 
-		auto const process_texture = [&bindings,&material,i](aiTextureType type, std::string const& type_as_str, std::string const& name){
+		auto const process_texture = [&bindings,&material,&use_testing, i](aiTextureType type, std::string const& type_as_str, std::string const& name){
 			if (material->GetTextureCount(type)) {
 				if (material->GetTextureCount(type) > 1)
 					LogWarning("Material %d has more than one %s texture: discarding all but the first one.", i, type_as_str.c_str());
 				aiString path;
 				material->GetTexture(type, 0, &path);
-				auto const id = bonobo::loadTexture2D("../crysponza/" + std::string(path.C_Str()), type_as_str != "opacity");
+				GLuint id;
+				if (!use_testing)
+				{
+					id = bonobo::loadTexture2D("../crysponza/" + std::string(path.C_Str()), type_as_str != "opacity");
+				}
+				else
+				{
+					id = bonobo::loadTexture2D("../../testing/models/" + std::string(path.C_Str()), type_as_str != "opacity");
+				}
+				
 				if (id != 0u)
 					bindings.emplace(name, id);
 			}

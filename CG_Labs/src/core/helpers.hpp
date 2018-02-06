@@ -54,9 +54,10 @@ namespace bonobo
 	//!
 	//! @param [in] filename of the object/scene file to load, relative to
 	//!             the `res/scenes` folder
+	//! @param [in] if its going to look for materials in the testing folder
 	//! @return a vector of filled in `mesh_data` structures, one per
 	//!         object found in the input file
-	std::vector<mesh_data> loadObjects(std::string const& filename);
+	std::vector<mesh_data> loadObjects(std::string const& filename, bool use_testing = false);
 
 	//! \brief Creates an OpenGL texture without any content nor parameterised.
 	//!
