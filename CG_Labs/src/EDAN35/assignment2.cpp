@@ -136,7 +136,7 @@ edan35::Assignment2::run()
 
 	Node box;
 	box.set_geometry(box_geometry);
-	box.set_scaling(glm::vec3(100.0f, 100.0f, 56.0f));
+	box.set_scaling(glm::vec3(100.0f, 100.0f, 100.0f));
 	box.set_rotation_z(bonobo::pi/2.0f);
 	box.set_rotation_y(bonobo::two_pi * box_rotation);
 	box.set_translation(box_pos);
