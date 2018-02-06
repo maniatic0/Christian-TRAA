@@ -50,7 +50,7 @@ public:
 	glm::tvec2<T, P> mMousePosition;
 	int frameCount;
 	bool jitterProjection = true;
-	float jitterSpread = 1.0f;
+	float jitterSpread = 1.7f;
 
 public:
 	friend std::ostream &operator<<(std::ostream &os, FPSCamera<T, P> &v) {

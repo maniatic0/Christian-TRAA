@@ -934,7 +934,7 @@ edan35::Assignment2::run()
 		if (opened) {
 			ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
 			ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
-			ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 1.0f);
+			ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
 			ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
 			ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
 			ImGui::Checkbox("Pause lights", &are_lights_paused);
