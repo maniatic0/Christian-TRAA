@@ -282,9 +282,10 @@ edan35::Assignment2::run()
 	//
 	// Setup lights properties
 	//
-	std::array<TRSTransform<float, glm::defaultp>, constant::lights_nb + 1> lightTransforms;
-	std::array<glm::vec3, constant::lights_nb + 1> lightColors;
-	int lights_nb = static_cast<int>(constant::lights_nb) + 1;
+	const int extra_lights = 2;
+	std::array<TRSTransform<float, glm::defaultp>, constant::lights_nb + extra_lights> lightTransforms;
+	std::array<glm::vec3, constant::lights_nb + extra_lights> lightColors;
+	int lights_nb = static_cast<int>(constant::lights_nb) + extra_lights;
 	bool are_lights_paused = false;
 
 	for (size_t i = 0; i < static_cast<int>(constant::lights_nb); ++i) {
@@ -299,6 +300,12 @@ edan35::Assignment2::run()
 	lightColors[constant::lights_nb] = glm::vec3(0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
 		                        0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
 		                        0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)));
+
+	lightTransforms[constant::lights_nb + 1].SetTranslate(glm::vec3(1800.0f, 125.0f, 0.0f));
+	lightTransforms[constant::lights_nb + 1].SetRotate(10.97f, glm::vec3(0.0f, 1.0f, 0.0f));
+	lightColors[constant::lights_nb + 1] = glm::vec3(0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
+		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
+		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)));
 
 	TRSTransform<f32, glm::defaultp> coneScaleTransform = TRSTransform<f32, glm::defaultp>();
 	coneScaleTransform.SetScale(glm::vec3(sqrt(constant::light_intensity / constant::light_cutoff)));
@@ -391,7 +398,7 @@ edan35::Assignment2::run()
 		// XXX: Is any clearing needed?
 		for (size_t i = 0; i < static_cast<size_t>(lights_nb); ++i) {
 			auto& lightTransform = lightTransforms[i];
-			if (i != constant::lights_nb)
+			if (i < constant::lights_nb)
 			{
 				lightTransform.SetRotate(seconds_nb * 0.1f + i * 1.57f, glm::vec3(0.0f, 1.0f, 0.0f));
 			}
