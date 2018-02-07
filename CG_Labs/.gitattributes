@@ -1,2 +1,11 @@
 # Set the default behaviour to keep LF as line ending
 * text eol=lf
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.tif binary
+*.tiff binary
+*.ico binary
