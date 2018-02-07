@@ -23,8 +23,8 @@ log.txt
 .vs/
 
 # Testing
-/testing/*
-!/testing/models/
+/testing/tests/**/
+!/testing/tests/
 
 # Configuration Files
 CMakeCache.txt
