@@ -2,6 +2,7 @@
 
 #define DEPTH_EPSILON 0.00001
 
+uniform sampler2D depth_history_texture;
 uniform sampler2D history_texture;
 uniform sampler2D current_texture;
 
@@ -140,6 +141,7 @@ in VS_OUT {
 
 layout (location = 0) out vec4 current_history_texture;
 layout (location = 1) out vec4 temporal_output;
+layout (location = 2) out float depth_next_history_output;
 
 
 // Convert from RGB to YCgCo
@@ -250,6 +252,9 @@ void main()
 	j_uv = vec4(fs_in.texcoord, 0.0, 0.0);
 	j_uv = jitter * (2.0 * j_uv - vec4(1.0, 1.0, 0.0, -1.0));
 	j_uv = j_uv * 0.5 + vec4(0.5);
+
+	depth_next_history_output = texture(depth_texture, j_uv.xy).x;
+
 	vec2 p_uv;
 	vec4 p = vec4(1.0, 1.0, 1.0, 0.0); // everything at the back of fustrum
 	float depth;

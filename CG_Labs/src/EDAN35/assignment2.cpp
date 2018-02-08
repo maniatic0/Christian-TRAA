@@ -250,6 +250,8 @@ edan35::Assignment2::run()
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
 	auto const sobel_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT);
+	GLuint const depth_history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT),
+		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT) };
 
 	//
 	// Setup FBOs
@@ -258,7 +260,8 @@ edan35::Assignment2::run()
 	auto const shadowmap_fbo = bonobo::createFBO({}, shadowmap_texture);
 	auto const light_fbo     = bonobo::createFBO({light_diffuse_contribution_texture, light_specular_contribution_texture}, depth_texture);
 
-	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture}, 0u), bonobo::createFBO({ history_texture[1], temporal_output_texture}, 0u) };
+	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture, depth_history_texture[0]}, 0u),
+		bonobo::createFBO({ history_texture[1], temporal_output_texture, depth_history_texture[1]}, 0u) };
 	auto const deferred_shading_fbo = bonobo::createFBO({ deferred_shading_texture }, 0u);
 	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
 	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
@@ -588,13 +591,14 @@ edan35::Assignment2::run()
 		&sharpen_shader, &windowInverseResolution,
 		&temporal_output_texture, &resolve_temporal_shader,
 		&ddeltatime, &currentJitter,
-		&sharpen_texture, &sobel_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
+		&sharpen_texture, &sobel_texture,
+		&depth_history_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
 		//
 		// Pass 4: Temporal Reprojection AA
 		//
 		glBindFramebuffer(GL_FRAMEBUFFER, history_fbo[(history_switch + 1) & 1]);
-		GLenum const history_texture_draw_buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
-		glDrawBuffers(2, history_texture_draw_buffers);
+		GLenum const history_texture_draw_buffers[3] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
+		glDrawBuffers(3, history_texture_draw_buffers);
 		auto const status_history_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status_history_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", history_fbo[(history_switch + 1) & 1]);
@@ -613,11 +617,13 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 3, temporal_shader, "current_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "depth_history_texture", depth_history_texture[history_switch & 1], default_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
 		bonobo::drawFullscreen();
 
+		glBindSampler(6, 0u);
 		glBindSampler(5, 0u);
 		glBindSampler(4, 0u);
 		glBindSampler(3, 0u);
