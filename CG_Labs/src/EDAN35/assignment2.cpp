@@ -146,7 +146,7 @@ edan35::Assignment2::run()
 
 	auto const& box_geometry = box_file.front();
 
-	auto box_texture = bonobo::loadTexture2D("white.png");
+	auto box_texture = bonobo::loadTexture2D("../../testing/models/textures/white.png");
 
 	// Box movement
 	glm::vec3 box_pos(2500.0f, 100.0f, 0.0f);
@@ -343,10 +343,11 @@ edan35::Assignment2::run()
 	int samples = 16, current_samples = 0;
 	const int FILE_NAME_SIZE = 200;
 	char filename[FILE_NAME_SIZE+10] = "test";
+	glm::vec2 lower_corner(-1.0f, -1.0f);
+	glm::vec2 upper_corner(1.0f, 1.0f);
+	float imgui_temp[4] = { lower_corner.x, lower_corner.y, upper_corner.x, upper_corner.y };
+	bool show_save_area = false;
 
-
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
 
 	// TRAA variables
 	glm::mat4 currentJitter;
@@ -360,6 +361,9 @@ edan35::Assignment2::run()
 	for (auto& element : sponza_elements) {
 		element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform();
 	}
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 
 	double ddeltatime;
 	size_t fpsSamples = 0;
@@ -763,7 +767,7 @@ edan35::Assignment2::run()
 				{
 					std::string file_name(filename);
 					file_name += "_temporal_" + std::to_string(current_samples);
-					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 				}
 
 				if (current_samples == CAMERA_JITTERING_SIZE - 1)
@@ -772,7 +776,7 @@ edan35::Assignment2::run()
 					{
 						std::string file_name(filename);
 						file_name += "_temporal" ;
-						bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+						bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 					}
 
 					// Save Accumulation Buffer
@@ -848,7 +852,7 @@ edan35::Assignment2::run()
 
 					std::string file_name(filename);
 					file_name += "_ground_truth";
-					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 #pragma endregion
 
 					// Save No AA version
@@ -880,7 +884,7 @@ edan35::Assignment2::run()
 
 					file_name = std::string(filename);
 					file_name += "_no_aa";
-					bonobo::screenShot(file_name, static_cast<int>(window_size.x), static_cast<int>(window_size.y));
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 #pragma endregion
 
 					save = false;
@@ -916,6 +920,11 @@ edan35::Assignment2::run()
 		bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 		bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 		//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+		if (show_save_area)
+		{
+			bonobo::displayTexture(lower_corner, upper_corner, shadowmap_texture, default_sampler, { 0, 0, 0, -1 }, window_size, &mCamera);
+		}
+		
 
 		//
 		// Reset viewport back to normal
@@ -953,6 +962,16 @@ edan35::Assignment2::run()
 			ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
 			ImGui::Checkbox("Save Steps", &save_steps);
 			ImGui::SliderInt("Sample Amount", &samples, 1, 256);
+			imgui_temp[0] = lower_corner.x;
+			imgui_temp[1] = lower_corner.y;
+			imgui_temp[2] = upper_corner.x;
+			imgui_temp[3] = upper_corner.y;
+			ImGui::SliderFloat4("Lower and Upper Corner", imgui_temp, -1.0f, 1.0f);
+			lower_corner.x = imgui_temp[0];
+			lower_corner.y = imgui_temp[1];
+			upper_corner.x = std::max(imgui_temp[2], imgui_temp[0]);
+			upper_corner.y = std::max(imgui_temp[3], imgui_temp[1]);
+			ImGui::Checkbox("Show Save Area", &show_save_area);
 			if (ImGui::Button("Save Image"))
 			{
 				save = true;
