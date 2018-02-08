@@ -163,5 +163,8 @@ namespace bonobo
 
 	// Take screenshot of opengl frame
 	// save it to file_name in a png
-	void screenShot(std::string file_name, const int &width, const int &height);
+	// lower_corner [-1,1]*[-1,1] represents the lower corner to take a screenshot
+	// upper_corner [-1,1]*[-1,1] represents the upper corner to take a screenshot
+	// windows size is the current size of the screen
+	void screenShot(std::string file_name, const glm::vec2 &lower_corner, const glm::vec2 &upper_corner, const glm::vec2 &windows_size);
 }

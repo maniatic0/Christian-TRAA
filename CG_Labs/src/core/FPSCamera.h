@@ -7,7 +7,8 @@
 
 #include <iostream>
 
-#define CAMERA_JITTERING_SIZE 16
+#define CAMERA_JITTERING_SIZE 128
+#define TEMPORAL_JITTERING 16
 
 template<typename T, glm::precision P>
 class FPSCamera
@@ -19,7 +20,7 @@ public:
 public:
 	void Update(double dt, InputHandler &ih);
 	void SetProjection(T fovy, T aspect, T nnear, T nfar);
-	glm::tmat4x4<T, P> UpdateProjection(glm::vec2 window_size_inv);
+	glm::tmat4x4<T, P> UpdateProjection(glm::vec2 window_size_inv, int sample_max= TEMPORAL_JITTERING);
 	void SetFov(T fovy);
 	T GetFov();
 	void SetAspect(T a);

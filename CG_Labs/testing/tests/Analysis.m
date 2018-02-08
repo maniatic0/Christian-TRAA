@@ -14,9 +14,9 @@ fprintf('Starting Tests\n\n');
 
 for i = 1:length(current_directory)
 	fprintf('Working on test: %s\n', current_directory(i).name);
-	fprintf('Return Code of the Tests: %d', ...
+	fprintf('Return Code of the Tests: %d\n', ...
 		analysis_function(current_directory(i).name));
 end
 
-fprintf('\nTests Done');
+fprintf('\nTests Done\n');
     

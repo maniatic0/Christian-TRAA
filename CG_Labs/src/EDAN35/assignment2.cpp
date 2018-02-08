@@ -787,9 +787,12 @@ edan35::Assignment2::run()
 						glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
 					};
 
+					float old_frame_count = mCamera.frameCount;
+					mCamera.frameCount = -1;
+
 					for (size_t i = 0; i < samples; i++)
 					{
-						currentJitter = mCamera.UpdateProjection(windowInverseResolution);
+						currentJitter = mCamera.UpdateProjection(windowInverseResolution, samples);
 						Deferred_Shading();
 
 						glFinish();
@@ -829,6 +832,7 @@ edan35::Assignment2::run()
 
 						glDisable(GL_BLEND);
 					}
+					mCamera.frameCount = old_frame_count;
 
 					//
 					// Pass: Accumulation Resolve
@@ -961,7 +965,7 @@ edan35::Assignment2::run()
 		{
 			ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
 			ImGui::Checkbox("Save Steps", &save_steps);
-			ImGui::SliderInt("Sample Amount", &samples, 1, 256);
+			ImGui::SliderInt("Sample Amount", &samples, 1, CAMERA_JITTERING_SIZE);
 			imgui_temp[0] = lower_corner.x;
 			imgui_temp[1] = lower_corner.y;
 			imgui_temp[2] = upper_corner.x;

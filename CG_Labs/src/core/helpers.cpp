@@ -615,14 +615,23 @@ void threadSaveScreenshot(std::string file_name, int width, int height, unsigned
 	free(image);
  }
 
-void bonobo::screenShot(std::string file_name, const int &width, const int &height) {
+void bonobo::screenShot(std::string file_name, const glm::vec2 &lower_corner, const glm::vec2 &upper_corner, const glm::vec2 &windows_size) {
+
+	auto const relative_to_absolute = [](float coord, int size) {
+		return static_cast<GLint>((coord + 1.0f) / 2.0f * size);
+	};
+	auto const viewport_origin = glm::ivec2(relative_to_absolute(lower_corner.x, windows_size.x),
+		relative_to_absolute(lower_corner.y, windows_size.y));
+	auto const viewport_size = glm::ivec2(relative_to_absolute(upper_corner.x, windows_size.x),
+		relative_to_absolute(upper_corner.y, windows_size.y))
+		- viewport_origin;
 	glFinish();
-	const unsigned int image_size = width * height * 4; // 4 channels
+	const unsigned int image_size = viewport_size.x * viewport_size.y * 4; // 4 channels
 
 	unsigned char* image = (unsigned char*)malloc(image_size);
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
-	glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glReadPixels(viewport_origin.x, viewport_origin.y, viewport_size.x, viewport_size.y, GL_RGBA, GL_UNSIGNED_BYTE, image);
 
-	std::thread t = std::thread(threadSaveScreenshot, file_name, width, height, image);
+	std::thread t = std::thread(threadSaveScreenshot, file_name, viewport_size.x, viewport_size.y, image);
 	t.detach();
 }

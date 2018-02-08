@@ -67,15 +67,6 @@ fprintf('\nSSIM, Close to one means it''s good');
 fprintf('\n The SSIM value of Temporal is %0.4f',ssimval);
 fprintf('\n The SSIM value of No AA is %0.4f \n',ssimval_no_aa);
 
-figure('Name','SSIM Index Map of Temporal'), imshow(ssimmap);
-title(sprintf('The SSIM Index Map of Temporal- Mean ssim Value is %0.4f', ...
-    ssimval));
-savefig(fullfile(name, strcat(name, '_ssim_map_temporal.fig')));
-figure('Name','SSIM Index Map of No AA'), imshow(ssimmap_no_aa);
-title(sprintf('The SSIM Index Map of No AA - Mean ssim Value is %0.4f', ...
-    ssimval_no_aa));
-savefig(fullfile(name, strcat(name, '_ssim_map_no_aa.fig')));
-
 % NIQUE, Lower values of score reflect better perceptual quality of image
 % with respect to the input MATLAB model
 fprintf('\nNIQUE, Lower values of score means it''s good');
@@ -99,6 +90,22 @@ fprintf('\n The BRISQUE score delta between Temporal and No AA is %+0.4f \n', ..
     brisqueI - brisqueI_no_aa);
 
 diary off;
+
+% SSIM Maps
+figure('Name','SSIM Index Map of Temporal'), imshow(ssimmap);
+title(sprintf('The SSIM Index Map of Temporal- Mean ssim Value is %0.4f', ...
+    ssimval));
+savefig(fullfile(name, strcat(name, '_ssim_map_temporal.fig')));
+saveas(gcf, fullfile(name, strcat(name, '_ssim_map_temporal.png')));
+close(gcf);
+
+figure('Name','SSIM Index Map of No AA'), imshow(ssimmap_no_aa);
+title(sprintf('The SSIM Index Map of No AA - Mean ssim Value is %0.4f', ...
+    ssimval_no_aa));
+savefig(fullfile(name, strcat(name, '_ssim_map_no_aa.fig')));
+saveas(gcf, fullfile(name, strcat(name, '_ssim_map_no_aa.png')));
+close(gcf);
+
 code = 0;
 end
 
