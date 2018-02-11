@@ -244,7 +244,7 @@ edan35::Assignment2::run()
 	auto const shadowmap_texture                   = bonobo::createTexture(constant::shadowmap_res_x, constant::shadowmap_res_y, GL_TEXTURE_2D, GL_DEPTH_COMPONENT32F, GL_DEPTH_COMPONENT, GL_FLOAT);
 
 	auto const deferred_shading_texture = bonobo::createTexture(window_size.x, window_size.y);
-	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y), bonobo::createTexture(window_size.x, window_size.y) };
+	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT), bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
 	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F);
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
@@ -592,7 +592,7 @@ edan35::Assignment2::run()
 		&temporal_output_texture, &resolve_temporal_shader,
 		&ddeltatime, &currentJitter,
 		&sharpen_texture, &sobel_texture,
-		&depth_history_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
+		&depth_history_texture, &specular_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
 		//
 		// Pass 4: Temporal Reprojection AA
 		//
@@ -618,11 +618,13 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "depth_history_texture", depth_history_texture[history_switch & 1], default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 7, temporal_shader, "specular_texture", specular_texture, default_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
 		bonobo::drawFullscreen();
 
+		glBindSampler(7, 0u);
 		glBindSampler(6, 0u);
 		glBindSampler(5, 0u);
 		glBindSampler(4, 0u);

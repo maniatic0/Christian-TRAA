@@ -55,8 +55,8 @@ fprintf('\nMSE, Close to zero means it''s good');
 fprintf('\n The MSE value of Temporal is %0.4f', mse);
 fprintf('\n The MSE value of No AA is %0.4f \n', mse_no_aa);
 
-% PSNR, Close to zero means it's good
-fprintf('\nPSNR, Close to zero means it''s good');
+% PSNR, Bigger means it's good
+fprintf('\nPSNR, Bigger means it''s good');
 fprintf('\n The Peak-SNR value of Temporal is %0.4f', peaksnr);
 fprintf('\n The SNR value of Temporal is %0.4f', snr);
 fprintf('\n The Peak-SNR value of No AA is %0.4f', peaksnr_no_aa);

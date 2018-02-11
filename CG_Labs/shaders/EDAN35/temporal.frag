@@ -253,7 +253,7 @@ void main()
 	j_uv = jitter * (2.0 * j_uv - vec4(1.0, 1.0, 0.0, -1.0));
 	j_uv = j_uv * 0.5 + vec4(0.5);
 
-	depth_next_history_output = texture(depth_texture, j_uv.xy).x;
+	depth_next_history_output = texture(depth_texture, j_uv.xy).x; // Save depth history for next cycle
 
 	vec2 p_uv;
 	vec4 p = vec4(1.0, 1.0, 1.0, 0.0); // everything at the back of fustrum

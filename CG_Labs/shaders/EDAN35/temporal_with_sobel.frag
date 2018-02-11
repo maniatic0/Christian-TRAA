@@ -1,13 +1,15 @@
 #version 410
 
-#define DEPTH_EPSILON 0.00001
+#define TIE_BREAKER_EPSILON 0.00001
 
+uniform sampler2D depth_history_texture;
 uniform sampler2D history_texture;
 uniform sampler2D current_texture;
 
 uniform sampler2D depth_texture;
 uniform sampler2D velocity_texture;
 uniform sampler2D diffuse_texture;
+uniform sampler2D specular_texture;
 
 uniform sampler2D sobel_texture;
 
@@ -79,6 +81,7 @@ in VS_OUT {
 
 layout (location = 0) out vec4 current_history_texture;
 layout (location = 1) out vec4 temporal_output;
+layout (location = 2) out float depth_next_history_output;
 
 // Convert from RGB to YCgCo
 vec4 rgb_to_ycgco(vec4 color_in) {
@@ -143,11 +146,15 @@ void main()
 	j_uv = vec4(fs_in.texcoord, 0.0, 0.0);
 	j_uv = jitter * (2.0 * j_uv - vec4(1.0, 1.0, 0.0, -1.0));
 	j_uv = j_uv * 0.5 + vec4(0.5);
+
+
+	depth_next_history_output = texture(depth_texture, j_uv.xy).x; // Save depth history for next cycle
+
 	vec2 p_uv;
 	vec4 p = vec4(1.0, 1.0, 1.0, 0.0); // everything at the back of fustrum
 	float depth;
 	float closest_depth;
-	float depth_step;
+	float test_step;
 	// Color constraints
 	vec4 cn_max = vec4(0.0, 0.0, 0.0, 0.0);
 	vec4 cn_min = vec4(1.0, 1.0, 1.0, 0.0);
@@ -156,17 +163,27 @@ void main()
 
 	float sobel = texture(sobel_texture, j_uv.xy).r;
 	float sobel_avg = 0.0;
+	float sobel_step;
+	float highest_sobel;
 
 	// Neighbours box
 	for(float y=-BOX_RANGE; y<=BOX_RANGE; y+=1.0) {
 		for(float x=-BOX_RANGE; x<=BOX_RANGE; x+=1.0) {
 			p_uv = j_uv.xy + vec2(x * inv_res.x, y * inv_res.y);
+
 			depth = texture(depth_texture, p_uv).x;
+			sobel = texture(sobel_texture, p_uv).x;
 
-			depth_step = step(p.z, depth + DEPTH_EPSILON);
-			p.xyz = depth_step * p.xyz +  (1.0 - depth_step) * vec3(p_uv.x, p_uv.y, depth); // Compare using depth
+			//sobel_step = step(p.w + TIE_BREAKER_EPSILON, sobel);
 
-			sobel_avg += texture(sobel_texture, p_uv).r;
+			// test_step = step(p.z, depth + TIE_BREAKER_EPSILON); // closest pixel
+
+			// Test look for the pixel with the highest sobel value
+			test_step =  step(p.w + TIE_BREAKER_EPSILON, sobel);
+
+			p.xyzw = test_step * p.xyzw +  (1.0 - test_step) * vec4(p_uv.x, p_uv.y, depth, sobel); 
+
+			sobel_avg += sobel;
 
 			// Color Constraint
 			cn_temp = texture(current_texture, p_uv);
@@ -175,14 +192,17 @@ void main()
 			cn_avg += cn_temp;
 		}
 	}
+
 	cn_avg = cn_avg / BOX_AMOUNT;
 	sobel_avg = sobel_avg / BOX_AMOUNT;
 
 	p_uv = p.xy;
 	closest_depth = p.z;
+	sobel = p.w;
 
 	// Velocity history
-	vec2 v = texture(velocity_texture, p_uv).rg;
+	//vec2 v = texture(velocity_texture, p_uv).rg; // calculated by test above
+	vec2 v = texture(velocity_texture, j_uv.xy).rg; // this exact pixel
 	vec2 q_uv = (2.0 * fs_in.texcoord - vec2(1.0)) - v;
 	q_uv = 0.5 * q_uv + vec2(0.5);
 
@@ -240,11 +260,17 @@ void main()
 	cn_avg = mix(cn_avg, cn_cross_avg, 0.5);
 	sobel_avg = mix(sobel_avg, sobel_cross_avg, 0.5);
 
-	sobel = 1.0 - sobel_avg;
+
+	//float speed = length(texture(velocity_texture, j_uv.xy).rg);
+	//float specular_part = luminance(texture(specular_texture, j_uv.xy).rgba);
+	
+	//sobel = clamp(mix(sobel_avg, sobel, 0.5), 0.3, 1.0);
+
+	sobel = 1.0;
 
 	vec4 c_in = texture(current_texture, j_uv.xy);
-	cn_min = mix(cn_min, c_in, sobel);
-	cn_max = mix(cn_max, c_in, sobel);
+	cn_min = mix(c_in, cn_min, sobel);
+	cn_max = mix(c_in, cn_max, sobel);
 
 #ifdef HISTORY_CLAMPING
 	vec4 c_hist_constrained = clamp(c_hist, cn_min, cn_max);
