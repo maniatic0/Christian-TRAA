@@ -604,7 +604,18 @@ void threadSaveScreenshot(std::string file_name, int width, int height, unsigned
 
 	std::vector<unsigned char> png;
 
-	unsigned error = lodepng::encode(png, image, width, height);
+	// Taken from https://github.com/lvandeve/lodepng/blob/master/examples/example_encode_type.cpp
+	// we're going to encode with a state rather than a convenient function, because enforcing a color type requires setting options
+	lodepng::State state;
+	// input color type
+	state.info_raw.colortype = LCT_RGBA;
+	state.info_raw.bitdepth = 8;
+	// output color type
+	state.info_png.color.colortype = LCT_RGBA;
+	state.info_png.color.bitdepth = 8;
+	state.encoder.auto_convert = LAC_NO; // without this, it would ignore the output color type specified above and choose an optimal one instead
+
+	unsigned error = lodepng::encode(png, image, width, height, state);
 	if (!error) lodepng::save_file(png, file_name);
 
 	//if there's an error, display it
