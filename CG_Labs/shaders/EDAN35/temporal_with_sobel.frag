@@ -21,7 +21,8 @@ uniform float k_feedback_min;
 //#define COLOR_CLIP clip_aabb_ycgco
 #define COLOR_CLIP clip_aabb
 //#define HISTORY_CLAMPING // Use Clamping rather than clipping
-#define HISTORY_COLOR_AVERAGE // Average for the color of the center of the bounding box that clips history
+//#define HISTORY_COLOR_AVERAGE // Average for the color of the center of the bounding box that clips history
+#define USE_SOBEL_CROSS // Use sobel to change how the color min and max are calculated
 
 #define ORIGINAL_TRAA // Use inside TRAA
 
@@ -255,10 +256,22 @@ void main()
 
 	// Mix min-max averaging
 
+#ifdef USE_SOBEL_CROSS
+
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
+	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
+	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
+	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
+	
+#else
+
 	cn_min = mix(cn_min, cn_cross_min, 0.5);
 	cn_max = mix(cn_max, cn_cross_max, 0.5);
 	cn_avg = mix(cn_avg, cn_cross_avg, 0.5);
 	sobel_avg = mix(sobel_avg, sobel_cross_avg, 0.5);
+
+#endif // USE_SOBEL_CROSS
+	
 
 
 	//float speed = length(texture(velocity_texture, j_uv.xy).rg);

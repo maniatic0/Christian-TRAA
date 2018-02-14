@@ -96,7 +96,7 @@ edan35::Assignment2::run()
 		return;
 	}
 	std::vector<Node> sponza_elements;
-	sponza_elements.reserve(sponza_geometry.size() + 2);
+	sponza_elements.reserve(sponza_geometry.size() + 10);
 	for (auto const& shape : sponza_geometry) {
 		Node node;
 		node.set_geometry(shape);
@@ -147,6 +147,8 @@ edan35::Assignment2::run()
 	auto const& box_geometry = box_file.front();
 
 	auto box_texture = bonobo::loadTexture2D("../../testing/models/textures/white.png");
+	auto box_normal_texture = bonobo::loadTexture2D("../../testing/models/textures/white_normal.png");
+	auto box_specular_texture = bonobo::loadTexture2D("../../testing/models/textures/white_specular.png"); 
 
 	// Box movement
 	glm::vec3 box_pos(2500.0f, 100.0f, 0.0f);
@@ -159,6 +161,8 @@ edan35::Assignment2::run()
 	box.set_rotation_y(bonobo::two_pi * box_rotation);
 	box.set_translation(box_pos);
 	box.add_texture("diffuse_texture", box_texture, GL_TEXTURE_2D);
+	box.add_texture("normals_texture", box_normal_texture, GL_TEXTURE_2D);
+	box.add_texture("specular_texture", box_specular_texture, GL_TEXTURE_2D);
 	sponza_elements.push_back(box);
 
 
@@ -245,7 +249,7 @@ edan35::Assignment2::run()
 
 	auto const deferred_shading_texture = bonobo::createTexture(window_size.x, window_size.y);
 	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT), bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
-	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F);
+	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F, GL_RG, GL_FLOAT);
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
@@ -351,6 +355,8 @@ edan35::Assignment2::run()
 	float imgui_temp[4] = { lower_corner.x, lower_corner.y, upper_corner.x, upper_corner.y };
 	bool show_save_area = false;
 
+	// Accumulation Buffer Variables
+	float accumulation_jitter_spread = 1.0f;
 
 	// TRAA variables
 	glm::mat4 currentJitter;
@@ -406,7 +412,7 @@ edan35::Assignment2::run()
 
 		for (auto& element : sponza_elements) {
 			element.render(mCamera.GetWorldToClipMatrix(), element.get_transform(), fill_gbuffer_shader, set_uniforms);
-			element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform();
+			element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform(); // World to Clip * Vertex
 		}
 
 
@@ -797,6 +803,8 @@ edan35::Assignment2::run()
 
 					float old_frame_count = mCamera.frameCount;
 					mCamera.frameCount = -1;
+					float old_jitter_spread = mCamera.jitterSpread;
+					mCamera.jitterSpread = accumulation_jitter_spread;
 
 					for (size_t i = 0; i < samples; i++)
 					{
@@ -841,6 +849,7 @@ edan35::Assignment2::run()
 						glDisable(GL_BLEND);
 					}
 					mCamera.frameCount = old_frame_count;
+					mCamera.jitterSpread = old_jitter_spread;
 
 					//
 					// Pass: Accumulation Resolve
@@ -974,6 +983,7 @@ edan35::Assignment2::run()
 			ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
 			ImGui::Checkbox("Save Steps", &save_steps);
 			ImGui::SliderInt("Sample Amount", &samples, 1, CAMERA_JITTERING_SIZE);
+			ImGui::SliderFloat("Accumulation Jitter Spread", &accumulation_jitter_spread, 0.0f, 2.0f);
 			imgui_temp[0] = lower_corner.x;
 			imgui_temp[1] = lower_corner.y;
 			imgui_temp[2] = upper_corner.x;

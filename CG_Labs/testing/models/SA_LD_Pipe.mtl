@@ -1,20 +1,20 @@
 # Blender3D MTL File: SA_LD_Pipe.blend
 # Material Count: 1
 newmtl Material_Pipe_CM.png
-Ns 96.0000
-Ni 1.5000
-d 1.0000
-Tr 0.0000
-Tf 1.0000 1.0000 1.0000
-illum 2
-Ka 1.0000 1.0000 1.0000
-Kd 1.0000 1.0000 1.0000
-Ks 0.0000 0.0000 0.0000
-Ke 0.0000 0.0000 0.0000
-illum 2
-map_Kd textures/Pipe_CM.png
-map_Ka textures/Pipe_CM.png
-map_Ks textures/Pipe_SM.png
-map_Kn textures/Pipe_NM.png
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd textures/Pipe_CM.png
+	map_Ka textures/Pipe_CM.png
+	map_Ks textures/Pipe_SM.png
+	map_Kn textures/Pipe_NM.png
 
 
