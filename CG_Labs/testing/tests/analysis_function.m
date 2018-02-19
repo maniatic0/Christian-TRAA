@@ -8,6 +8,17 @@ if exist(name, 'dir') ~= 7
 end
 
 
+results_filename = fullfile(name, strcat(name, '_results.txt'));
+
+if exist(results_filename, 'file') == 2 
+    fprintf('Results File found: %s\n', results_filename);
+    fprintf('The test %s was Already Performed, Skipping\n', ...
+        name);
+    code = 1;
+    return; 
+end
+
+
 temporal_filename = fullfile(name, strcat(name, '_temporal.png'));
 ground_truth_filename = fullfile(name, strcat(name, '_ground_truth.png'));
 no_aa_filename = fullfile(name, strcat(name, '_no_aa.png'));
@@ -106,6 +117,8 @@ savefig(fullfile(name, strcat(name, '_ssim_map_no_aa.fig')));
 saveas(gcf, fullfile(name, strcat(name, '_ssim_map_no_aa.png')));
 close(gcf);
 
+fprintf('The test %s is Complete\n', ...
+    name);
 code = 0;
 end
 

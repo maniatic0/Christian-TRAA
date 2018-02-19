@@ -121,6 +121,43 @@ edan35::Assignment2::run()
 		sponza_elements.push_back(node);
 	}
 
+	// Load Windows Arch geometry
+	auto const window_arch_geometry = bonobo::loadObjects("window_arch.obj", true);
+	if (window_arch_geometry.empty()) {
+		LogError("Failed to load the Windows Arch model, check the testing folder for the Windows Arch");
+		return;
+	}
+
+	const glm::vec3 window_arch_pos(2300.0f, 100.0f, 50.0f);
+	const glm::vec3 window_arch_scale(1.0f, 1.0f, 1.0f);
+
+	for (auto const& shape : window_arch_geometry) {
+		Node node;
+		node.set_geometry(shape);
+		node.set_translation(window_arch_pos);
+		node.set_scaling(window_arch_scale);
+		sponza_elements.push_back(node);
+	}
+
+	// Load Windows Square geometry
+	auto const window_square_geometry = bonobo::loadObjects("window_square.obj", true);
+	if (window_square_geometry.empty()) {
+		LogError("Failed to load the Windows Square model, check the testing folder for the Windows Square");
+		return;
+	}
+
+	const glm::vec3 window_square_pos(2300.0f, 100.0f, -50.0f);
+	const glm::vec3 window_square_scale(1.0f, 1.0f, 1.0f);
+
+	for (auto const& shape : window_square_geometry) {
+		Node node;
+		node.set_geometry(shape);
+		node.set_translation(window_square_pos);
+		node.set_rotation_y(bonobo::pi / 2.0f);
+		node.set_scaling(window_square_scale);
+		sponza_elements.push_back(node);
+	}
+
 	// Load the sphere geometry
 	auto const sphere_file = bonobo::loadObjects("sphere.obj");
 	if (sphere_file.empty())
@@ -151,15 +188,15 @@ edan35::Assignment2::run()
 	auto box_specular_texture = bonobo::loadTexture2D("../../testing/models/textures/white_specular.png"); 
 
 	// Box movement
-	glm::vec3 box_pos(2500.0f, 100.0f, 0.0f);
+	glm::vec3 box_pos(2700.0f, 100.0f, 0.0f);
 	float box_rotation = 0.25;
 
 	Node box;
 	box.set_geometry(box_geometry);
-	box.set_scaling(glm::vec3(100.0f, 100.0f, 100.0f));
+	box.set_translation(box_pos);
+	box.set_scaling(glm::vec3(200.0f, 200.0f, 200.0f));
 	box.set_rotation_z(bonobo::pi/2.0f);
 	box.set_rotation_y(bonobo::two_pi * box_rotation);
-	box.set_translation(box_pos);
 	box.add_texture("diffuse_texture", box_texture, GL_TEXTURE_2D);
 	box.add_texture("normals_texture", box_normal_texture, GL_TEXTURE_2D);
 	box.add_texture("specular_texture", box_specular_texture, GL_TEXTURE_2D);
