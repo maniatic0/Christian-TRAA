@@ -9,12 +9,12 @@ import re
 import sys
 
 
-RE_PNG_PATTERN = r'(?P<test_name>.+)_(temporal|ground_truth|no_aa)\.png'
+RE_PNG_PATTERN = r'(?P<test_name>.+)_(temporal|ground_truth|no_aa|log)\.(png|txt)'
 
 def main(pngs_path=".", tests_final_path="."):
 	prog = re.compile(RE_PNG_PATTERN)
 	for filename in os.listdir(pngs_path):
-		if filename.endswith(".png"):
+		if filename.endswith(".png") or filename.endswith(".txt"):
 			match = re.search(prog, filename)
 
 			test_name = match.group('test_name')

@@ -25,6 +25,7 @@ log.txt
 # Testing
 /testing/tests/**/
 !/testing/tests/
+testing/tests/tests_log.txt
 
 # Configuration Files
 CMakeCache.txt

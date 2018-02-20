@@ -11,6 +11,8 @@
 #include <vector>
 #include <unordered_map>
 #include <thread>
+#include <iostream>
+#include <fstream>
 
 //! \brief Namespace containing a few helpers for the LUGG computer graphics labs.
 namespace bonobo
@@ -155,16 +157,33 @@ namespace bonobo
 	//! \brief Draw full screen.
 	void drawFullscreen();
 
-	// Get vector squared magnitude
+	//! \brief Get vector squared magnitude
 	float sqrMagnitude(glm::vec3 const v);
 
-	// Get vector magnitude
+	//! \brief Get vector magnitude
 	float magnitude(glm::vec3 const v);
 
-	// Take screenshot of opengl frame
-	// save it to file_name in a png
-	// lower_corner [-1,1]*[-1,1] represents the lower corner to take a screenshot
-	// upper_corner [-1,1]*[-1,1] represents the upper corner to take a screenshot
-	// windows size is the current size of the screen
+	//! \brief Take screenshot of opengl frame and saves it to file_name in a png
+	//! 
+	//! @param [in] lower_corner [-1,1]*[-1,1] represents the lower corner to take a screenshot
+	//! @param [in] upper_corner [-1,1]*[-1,1] represents the upper corner to take a screenshot
+	//! @param [in] windows_size is the current size of the screen
 	void screenShot(std::string file_name, const glm::vec2 &lower_corner, const glm::vec2 &upper_corner, const glm::vec2 &windows_size);
+
+	//! \brief Save Current Configure Values
+	//! 
+	//! @param [in] file_name to save the configuration
+	//! @param [in] using_sobel if we are using sobel shader
+	//! @param [in] camera Current Camera
+	//! @param [in] k_feedback_min feedback minimun value
+	//! @param [in] k_feedback_max feedback maximun value
+	//! @param [in] sample_amount amount of samples for the accumulation buffer
+	//! @param [in] accumulation_jitter_spread spread of jitter for the accumulation buffer
+	//! @param [in] lower_corner lower corner of the save area
+	//! @param [in] upper_corner upper corner of the save area
+	void saveConfig(std::string file_name,
+		const bool &using_sobel, FPSCameraf &camera,
+		const float &k_feedback_min, const float &k_feedback_max,
+		const int &sample_amount, const float &accumulation_jitter_spread,
+		const glm::vec2 &lower_corner, const glm::vec2 &upper_corner);
 }

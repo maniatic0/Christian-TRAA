@@ -774,11 +774,16 @@ edan35::Assignment2::run()
 
 		glfwPollEvents();
 		inputHandler->Advance();
-		mCamera.Update(ddeltatime, *inputHandler);
+		// Do not move while saving
+		if (!save)
+		{
+			mCamera.Update(ddeltatime, *inputHandler);
+		}
+		
 
 		ImGui_ImplGlfwGL3_NewFrame();
 
-		if (inputHandler->GetKeycodeState(GLFW_KEY_R) & JUST_PRESSED) {
+		if (!save && inputHandler->GetKeycodeState(GLFW_KEY_R) & JUST_PRESSED) {
 			reload_shaders();
 		}
 
@@ -842,6 +847,8 @@ edan35::Assignment2::run()
 					mCamera.frameCount = -1;
 					float old_jitter_spread = mCamera.jitterSpread;
 					mCamera.jitterSpread = accumulation_jitter_spread;
+					bool old_jittered_projection = mCamera.jitterProjection;
+					mCamera.jitterProjection = true;
 
 					for (size_t i = 0; i < samples; i++)
 					{
@@ -887,6 +894,7 @@ edan35::Assignment2::run()
 					}
 					mCamera.frameCount = old_frame_count;
 					mCamera.jitterSpread = old_jitter_spread;
+					mCamera.jitterProjection = old_jittered_projection;
 
 					//
 					// Pass: Accumulation Resolve
@@ -944,7 +952,6 @@ edan35::Assignment2::run()
 					file_name += "_no_aa";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 #pragma endregion
-
 					save = false;
 				}
 			}
@@ -971,8 +978,8 @@ edan35::Assignment2::run()
 		bonobo::displayTexture({-0.95f, -0.95f}, {-0.55f, -0.55f}, diffuse_texture,                     default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({-0.45f, -0.95f}, {-0.05f, -0.55f}, specular_texture,                    default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.05f, -0.95f}, { 0.45f, -0.55f}, normal_texture,                      default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({ 0.55f, -0.95f}, { 0.95f, -0.55f}, depth_texture,                       default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
-		bonobo::displayTexture({-0.95f,  0.55f}, {-0.55f,  0.95f}, shadowmap_texture,                   default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
+		bonobo::displayTexture({ 0.55f, -0.95f}, { 0.95f, -0.55f}, depth_texture,						default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
+		bonobo::displayTexture({-0.95f,  0.55f}, {-0.55f,  0.95f}, shadowmap_texture,					default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
 		bonobo::displayTexture({-0.45f,  0.55f}, {-0.05f,  0.95f}, light_diffuse_contribution_texture,  default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.05f,  0.55f}, { 0.45f,  0.95f}, light_specular_contribution_texture, default_sampler, {0, 1, 2, -1}, window_size);
 		bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
@@ -997,47 +1004,57 @@ edan35::Assignment2::run()
 			ImGui::Text("%.3f ms", ddeltatime);
 		ImGui::End();
 
-		opened = ImGui::Begin("Scene Controls", nullptr, ImVec2(120, 50), -1.0f, 0);
-		if (opened) {
-			ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
-			ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
-			ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
-			ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
-			ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
-			ImGui::Checkbox("Pause lights", &are_lights_paused);
-			ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb)+1);
-			ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
-			ImGui::Checkbox("Pause sphere", &is_sphere_paused);
-			ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 1000.0f);
-			ImGui::SliderFloat("Frequency", &frequency, 0.0f, 10.0f);
-			ImGui::SliderFloat3("Sphere Home Position", glm::value_ptr(sphere_pos), -2000.0f, 2000.0f);
-		}
-		ImGui::End();
-
-		opened = ImGui::Begin("Save Image", nullptr, ImVec2(120, 50), -1.0f, 0);
-		if (opened && !save)
+		if (!save)
 		{
-			ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
-			ImGui::Checkbox("Save Steps", &save_steps);
-			ImGui::SliderInt("Sample Amount", &samples, 1, CAMERA_JITTERING_SIZE);
-			ImGui::SliderFloat("Accumulation Jitter Spread", &accumulation_jitter_spread, 0.0f, 2.0f);
-			imgui_temp[0] = lower_corner.x;
-			imgui_temp[1] = lower_corner.y;
-			imgui_temp[2] = upper_corner.x;
-			imgui_temp[3] = upper_corner.y;
-			ImGui::SliderFloat4("Lower and Upper Corner", imgui_temp, -1.0f, 1.0f);
-			lower_corner.x = imgui_temp[0];
-			lower_corner.y = imgui_temp[1];
-			upper_corner.x = std::max(imgui_temp[2], imgui_temp[0]);
-			upper_corner.y = std::max(imgui_temp[3], imgui_temp[1]);
-			ImGui::Checkbox("Show Save Area", &show_save_area);
-			if (ImGui::Button("Save Image"))
-			{
-				save = true;
-				current_samples = 0;
+			opened = ImGui::Begin("Scene Controls", nullptr, ImVec2(120, 50), -1.0f, 0);
+			if (opened) {
+				ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
+				ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
+				ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
+				ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
+				ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
+				ImGui::Checkbox("Pause lights", &are_lights_paused);
+				ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb) + 1);
+				ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
+				ImGui::Checkbox("Pause sphere", &is_sphere_paused);
+				ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 1000.0f);
+				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 10.0f);
+				ImGui::SliderFloat3("Sphere Home Position", glm::value_ptr(sphere_pos), -2000.0f, 2000.0f);
 			}
+			ImGui::End();
+
+			opened = ImGui::Begin("Save Image", nullptr, ImVec2(120, 50), -1.0f, 0);
+			if (opened)
+			{
+				ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
+				ImGui::Checkbox("Save Steps", &save_steps);
+				ImGui::SliderInt("Sample Amount", &samples, 1, CAMERA_JITTERING_SIZE);
+				ImGui::SliderFloat("Accumulation Jitter Spread", &accumulation_jitter_spread, 0.0f, 2.0f);
+				imgui_temp[0] = lower_corner.x;
+				imgui_temp[1] = lower_corner.y;
+				imgui_temp[2] = upper_corner.x;
+				imgui_temp[3] = upper_corner.y;
+				ImGui::SliderFloat4("Lower and Upper Corner", imgui_temp, -1.0f, 1.0f);
+				lower_corner.x = imgui_temp[0];
+				lower_corner.y = imgui_temp[1];
+				upper_corner.x = std::max(imgui_temp[2], imgui_temp[0]);
+				upper_corner.y = std::max(imgui_temp[3], imgui_temp[1]);
+				ImGui::Checkbox("Show Save Area", &show_save_area);
+				if (ImGui::Button("Save Image"))
+				{
+					save = true;
+					current_samples = 0;
+
+					// Save Current Info
+					bonobo::saveConfig(filename,
+						use_sobel, mCamera,
+						k_feedback_min, k_feedback_max,
+						samples, accumulation_jitter_spread,
+						lower_corner, upper_corner);
+				}
+			}
+			ImGui::End();
 		}
-		ImGui::End();
 
 		ImGui::Render();
 

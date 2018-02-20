@@ -564,7 +564,8 @@ bonobo::drawFullscreen()
 
 
 // Get vector squared magnitude
-float bonobo::sqrMagnitude(glm::vec3 const v) {
+float bonobo::sqrMagnitude(glm::vec3 const v)
+{
 	auto const x = v.x * v.x;
 	auto const y = v.y * v.y;
 	auto const z = v.z * v.z;
@@ -572,12 +573,14 @@ float bonobo::sqrMagnitude(glm::vec3 const v) {
 }
 
 // Get vector magnitude
-float bonobo::magnitude(glm::vec3 const v) {
+float bonobo::magnitude(glm::vec3 const v)
+{
 	return std::sqrt(bonobo::sqrMagnitude(v));
 }
 
 
-void threadSaveScreenshot(std::string file_name, int width, int height, unsigned char* image) {
+void threadSaveScreenshot(std::string file_name, int width, int height, unsigned char* image)
+{
 	file_name = config::resources_path(file_name + ".png");
 	std::string printing_string = "Saving: " + file_name;
 	Log(printing_string.c_str());
@@ -626,7 +629,8 @@ void threadSaveScreenshot(std::string file_name, int width, int height, unsigned
 	free(image);
  }
 
-void bonobo::screenShot(std::string file_name, const glm::vec2 &lower_corner, const glm::vec2 &upper_corner, const glm::vec2 &windows_size) {
+void bonobo::screenShot(std::string file_name, const glm::vec2 &lower_corner, const glm::vec2 &upper_corner, const glm::vec2 &windows_size)
+{
 
 	auto const relative_to_absolute = [](float coord, int size) {
 		return static_cast<GLint>((coord + 1.0f) / 2.0f * size);
@@ -645,4 +649,29 @@ void bonobo::screenShot(std::string file_name, const glm::vec2 &lower_corner, co
 
 	std::thread t = std::thread(threadSaveScreenshot, file_name, viewport_size.x, viewport_size.y, image);
 	t.detach();
+}
+
+void bonobo::saveConfig(std::string file_name,
+	const bool &using_sobel, FPSCameraf &camera,
+	const float &k_feedback_min, const float &k_feedback_max,
+	const int &sample_amount, const float &accumulation_jitter_spread,
+	const glm::vec2 &lower_corner, const glm::vec2 &upper_corner)
+{
+	std::ofstream log_file;
+	file_name += "_log.txt";
+	log_file.open(config::resources_path(file_name));
+	log_file << "Scene Information" << std::endl;
+	log_file << "Using Sobel: " << using_sobel << std::endl;
+	log_file << "Jittering Camera?: " << camera.jitterProjection << std::endl;
+	log_file << "Jitter Spread: " << camera.jitterSpread << std::endl;
+	log_file << "k_feedback_min: " << k_feedback_min << std::endl;
+	log_file << "k_feedback_max: " << k_feedback_max << std::endl;
+	log_file << "Camera: " << std::endl;
+	log_file << camera << std::endl;
+	log_file << "Saving Information" << std::endl;
+	log_file << "Sample Amount: " << sample_amount << std::endl;
+	log_file << "Accumulation Buffer Jitter Spread: " << accumulation_jitter_spread << std::endl;
+	log_file << "Lower Corner: " << lower_corner.x << " " << lower_corner.y << std::endl;
+	log_file << "Upper Corner: " << upper_corner.x << " " << upper_corner.y << std::endl;
+	log_file.close();
 }
