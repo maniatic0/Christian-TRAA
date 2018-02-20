@@ -67,9 +67,9 @@ fprintf('Timestamp(dd/mm/yyyy): %s\n', datestr(now,'dd/mm/yyyy HH:MM:SS.FFF'))
 
 % MSE, Close to zero means it's good
 fprintf('\nMSE and RMSE, Close to zero means it''s good');
-fprintf('\n The MSE value of Temporal is %0.6f', sqrt(mse));
-fprintf('\n The RMSE value of Temporal is %0.6f', mse);
-fprintf('\n The MSE value of No AA is %0.6f \n', mse_no_aa);
+fprintf('\n The MSE value of Temporal is %0.6f', mse);
+fprintf('\n The RMSE value of Temporal is %0.6f', sqrt(mse));
+fprintf('\n The MSE value of No AA is %0.6f', mse_no_aa);
 fprintf('\n The RMSE value of No AA is %0.6f \n', sqrt(mse_no_aa));
 
 % PSNR, Bigger means it's good
