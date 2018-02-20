@@ -103,6 +103,9 @@ edan35::Assignment2::run()
 		sponza_elements.push_back(node);
 	}
 
+	auto white_normal_texture = bonobo::loadTexture2D("../../testing/models/textures/white_normal.png");
+	auto white_specular_texture = bonobo::loadTexture2D("../../testing/models/textures/white_specular.png");
+
 	// Load pipe geometry
 	auto const pipe_geometry = bonobo::loadObjects("SA_LD_Pipe.obj", true);
 	if (pipe_geometry.empty()) {
@@ -116,6 +119,8 @@ edan35::Assignment2::run()
 	for (auto const& shape : pipe_geometry) {
 		Node node;
 		node.set_geometry(shape);
+		node.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+		node.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
 		node.set_translation(pipe_pos);
 		node.set_scaling(pipe_scale);
 		sponza_elements.push_back(node);
@@ -134,6 +139,8 @@ edan35::Assignment2::run()
 	for (auto const& shape : window_arch_geometry) {
 		Node node;
 		node.set_geometry(shape);
+		node.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+		node.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
 		node.set_translation(window_arch_pos);
 		node.set_scaling(window_arch_scale);
 		sponza_elements.push_back(node);
@@ -152,6 +159,8 @@ edan35::Assignment2::run()
 	for (auto const& shape : window_square_geometry) {
 		Node node;
 		node.set_geometry(shape);
+		node.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+		node.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
 		node.set_translation(window_square_pos);
 		node.set_rotation_y(bonobo::pi / 2.0f);
 		node.set_scaling(window_square_scale);
@@ -172,6 +181,8 @@ edan35::Assignment2::run()
 
 	Node sphere;
 	sphere.set_geometry(sphere_geometry);
+	sphere.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+	sphere.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
 	sphere.set_scaling(glm::vec3(100.0f, 100.0f, 100.0f));
 	sphere.set_translation(sphere_pos);
 	sponza_elements.push_back(sphere);
@@ -184,8 +195,6 @@ edan35::Assignment2::run()
 	auto const& box_geometry = box_file.front();
 
 	auto box_texture = bonobo::loadTexture2D("../../testing/models/textures/white.png");
-	auto box_normal_texture = bonobo::loadTexture2D("../../testing/models/textures/white_normal.png");
-	auto box_specular_texture = bonobo::loadTexture2D("../../testing/models/textures/white_specular.png"); 
 
 	// Box movement
 	glm::vec3 box_pos(2700.0f, 100.0f, 0.0f);
@@ -198,8 +207,8 @@ edan35::Assignment2::run()
 	box.set_rotation_z(bonobo::pi/2.0f);
 	box.set_rotation_y(bonobo::two_pi * box_rotation);
 	box.add_texture("diffuse_texture", box_texture, GL_TEXTURE_2D);
-	box.add_texture("normals_texture", box_normal_texture, GL_TEXTURE_2D);
-	box.add_texture("specular_texture", box_specular_texture, GL_TEXTURE_2D);
+	box.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+	box.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
 	sponza_elements.push_back(box);
 
 
@@ -411,9 +420,10 @@ edan35::Assignment2::run()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
-	double ddeltatime;
+	bool show_debug_display = false;
+	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred;
 	size_t fpsSamples = 0;
-	double nowTime, lastTime = GetTimeMilliseconds();
+	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
 	double fpsNextTick = lastTime + 1000.0;
 
 	// Deferred Shading Pass
@@ -798,21 +808,28 @@ edan35::Assignment2::run()
 		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 
 		// Pass 1-3: Deferred Shading
+		debugLastTime = GetTimeMilliseconds();
 		Deferred_Shading();
+		ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
 
 		// Pass: Sobel
+		debugLastTime = GetTimeMilliseconds();
 		Sobel();
-
+		ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
 		
 		if (use_sobel)
 		{
-			// Temporal Anti Aliasing modified 
+			// Temporal Anti Aliasing modified
+			debugLastTime = GetTimeMilliseconds();
 			Temporal_AA(temporal_sobel_shader, temporal_set_uniforms);
+			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 		}
 		else
 		{
 			// Temporal Anti Aliasing from Inside
+			debugLastTime = GetTimeMilliseconds();
 			Temporal_AA(temporal_shader, temporal_set_uniforms);
+			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 		}
 
 		if (save)
@@ -971,20 +988,23 @@ edan35::Assignment2::run()
 //		}
 //		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-
-		//
-		// Output content of the g-buffer as well as of the shadowmap, for debugging purposes
-		//
-		bonobo::displayTexture({-0.95f, -0.95f}, {-0.55f, -0.55f}, diffuse_texture,                     default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({-0.45f, -0.95f}, {-0.05f, -0.55f}, specular_texture,                    default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({ 0.05f, -0.95f}, { 0.45f, -0.55f}, normal_texture,                      default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({ 0.55f, -0.95f}, { 0.95f, -0.55f}, depth_texture,						default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
-		bonobo::displayTexture({-0.95f,  0.55f}, {-0.55f,  0.95f}, shadowmap_texture,					default_sampler, {0, 0, 0, -1}, window_size, &mCamera);
-		bonobo::displayTexture({-0.45f,  0.55f}, {-0.05f,  0.95f}, light_diffuse_contribution_texture,  default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({ 0.05f,  0.55f}, { 0.45f,  0.95f}, light_specular_contribution_texture, default_sampler, {0, 1, 2, -1}, window_size);
-		bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
-		bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
-		//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+		if (show_debug_display)
+		{
+			//
+			// Output content of the g-buffer as well as of the shadowmap, for debugging purposes
+			//
+			bonobo::displayTexture({ -0.95f, -0.95f }, { -0.55f, -0.55f }, diffuse_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ -0.45f, -0.95f }, { -0.05f, -0.55f }, specular_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.05f, -0.95f }, { 0.45f, -0.55f }, normal_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.55f, -0.95f }, { 0.95f, -0.55f }, depth_texture, default_sampler, { 0, 0, 0, -1 }, window_size, &mCamera);
+			bonobo::displayTexture({ -0.95f,  0.55f }, { -0.55f,  0.95f }, shadowmap_texture, default_sampler, { 0, 0, 0, -1 }, window_size, &mCamera);
+			bonobo::displayTexture({ -0.45f,  0.55f }, { -0.05f,  0.95f }, light_diffuse_contribution_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.05f,  0.55f }, { 0.45f,  0.95f }, light_specular_contribution_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+		}
+		
 		if (show_save_area)
 		{
 			bonobo::displayTexture(lower_corner, upper_corner, shadowmap_texture, default_sampler, { 0, 0, 0, -1 }, window_size, &mCamera);
@@ -1001,7 +1021,20 @@ edan35::Assignment2::run()
 
 		bool opened = ImGui::Begin("Render Time", nullptr, ImVec2(120, 50), -1.0f, 0);
 		if (opened)
-			ImGui::Text("%.3f ms", ddeltatime);
+		{
+			ImGui::Text("Last Frame: %.3f ms", ddeltatime);
+			ImGui::Text("Deferred: %.3f ms", ddeltatimeDeferred);
+			ImGui::Text("Sobel: %.3f ms", ddeltatimeSobel);
+			ImGui::Text("Temporal: %.3f ms", ddeltatimeTemporal);
+		}
+		ImGui::End();
+
+		opened = ImGui::Begin("Debug", nullptr, ImVec2(120, 50), -1.0f, 0);
+		if (opened)
+		{
+			ImGui::Checkbox("Show Debug Displays?", &show_debug_display);
+			
+		}
 		ImGui::End();
 
 		if (!save)
