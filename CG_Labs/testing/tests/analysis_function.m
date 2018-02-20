@@ -46,6 +46,8 @@ if exist(no_aa_filename, 'file') ~= 2
     return;
 end
 
+time_stamp = datestr(now,'dd/mm/yyyy HH:MM:SS.FFF');
+
 temporal = imread(temporal_filename);
 ground_truth = imread(ground_truth_filename);
 no_aa = imread(no_aa_filename);
@@ -63,7 +65,8 @@ no_aa = imread(no_aa_filename);
 % Main Results
 % Save text to diary
 diary(results_filename);
-fprintf('Timestamp(dd/mm/yyyy): %s\n', datestr(now,'dd/mm/yyyy HH:MM:SS.FFF'))
+fprintf('Name: %s\n', name);
+fprintf('Timestamp(dd/mm/yyyy): %s\n', time_stamp);
 
 % MSE, Close to zero means it's good
 fprintf('\nMSE and RMSE, Close to zero means it''s good');
@@ -88,6 +91,9 @@ diary off;
 
 % Extra Results
 diary(results_extra_filename);
+fprintf('Name: %s\n', name);
+fprintf('Timestamp(dd/mm/yyyy): %s\n', time_stamp);
+
 % NIQUE, Lower values of score reflect better perceptual quality of image
 % with respect to the input MATLAB model
 fprintf('\nNIQUE, Lower values of score means it''s good');
