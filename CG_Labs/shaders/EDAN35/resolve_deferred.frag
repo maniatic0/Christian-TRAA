@@ -5,7 +5,6 @@ uniform sampler2D specular_texture;
 uniform sampler2D light_d_texture;
 uniform sampler2D light_s_texture;
 
-
 in VS_OUT {
 	vec2 texcoord;
 } fs_in;
@@ -21,5 +20,6 @@ void main()
 	vec3 light_s  = texture(light_s_texture,  fs_in.texcoord).rgb;
 	const vec3 ambient = vec3(0.15);
 
-	deferred_buffer =  vec4((ambient + light_d) * diffuse + light_s * specular, 1.0);
+	//deferred_buffer =  vec4((ambient + light_d) * diffuse + light_s * specular, 1.0);
+	deferred_buffer =  vec4((ambient + light_d) * diffuse, 1.0);
 }

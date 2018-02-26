@@ -252,14 +252,15 @@ edan35::Assignment2::run()
 		temporal_shader = 0u, resolve_temporal_shader = 0u,
 		sharpen_shader = 0u, accumulation_shader = 0u,
 		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u,
-		sobel_shader = 0u, temporal_sobel_shader = 0u;
+		sobel_shader = 0u, temporal_with_sobel_shader = 0u,
+		temporal_for_Sobel_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
 		&resolve_temporal_shader, &sharpen_shader,
 		&accumulation_shader, &resolve_accumulation_shader,
 		&resolve_no_aa_shader, &sobel_shader,
-		&temporal_sobel_shader](){
+		&temporal_with_sobel_shader, &temporal_for_Sobel_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
@@ -272,7 +273,8 @@ edan35::Assignment2::run()
 		reload_shader("resolve_accumulation.vert", "resolve_accumulation.frag", resolve_accumulation_shader);
 		reload_shader("resolve_no_aa.vert", "resolve_no_aa.frag", resolve_no_aa_shader);
 		reload_shader("sobel.vert", "sobel.frag", sobel_shader);
-		reload_shader("temporal_with_sobel.vert", "temporal_with_sobel.frag", temporal_sobel_shader);
+		reload_shader("temporal_with_sobel.vert", "temporal_with_sobel.frag", temporal_with_sobel_shader);
+		reload_shader("sobel_temporal.vert","sobel_temporal.frag", temporal_for_Sobel_shader);
 	};
 	reload_shaders();
 
@@ -299,8 +301,8 @@ edan35::Assignment2::run()
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
-	auto const sobel_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT);
-	GLuint const depth_history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT),
+	auto const sobel_current_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT);
+	GLuint const sobel_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT),
 		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT) };
 
 	//
@@ -310,12 +312,13 @@ edan35::Assignment2::run()
 	auto const shadowmap_fbo = bonobo::createFBO({}, shadowmap_texture);
 	auto const light_fbo     = bonobo::createFBO({light_diffuse_contribution_texture, light_specular_contribution_texture}, depth_texture);
 
-	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture, depth_history_texture[0]}, 0u),
-		bonobo::createFBO({ history_texture[1], temporal_output_texture, depth_history_texture[1]}, 0u) };
+	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture}, 0u),
+		bonobo::createFBO({ history_texture[1], temporal_output_texture}, 0u) };
 	auto const deferred_shading_fbo = bonobo::createFBO({ deferred_shading_texture }, 0u);
 	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
 	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
-	auto const sobel_fbo = bonobo::createFBO({ sobel_texture }, 0u);
+	auto const sobel_current_fbo = bonobo::createFBO({ sobel_current_texture }, 0u);
+	GLuint const sobel_fbo[] = { bonobo::createFBO({ sobel_texture[0] }, 0u),  bonobo::createFBO({ sobel_texture[1] }, 0u) };
 
 	//
 	// Setup samplers
@@ -565,6 +568,7 @@ edan35::Assignment2::run()
 		if (status_resolve_deferred_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", deferred_shading_fbo);
 		glUseProgram(resolve_deferred_shader);
+
 		glViewport(0, 0, window_size.x, window_size.y);
 		// XXX: Is any clearing needed?
 
@@ -584,22 +588,40 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 	};
 
+
+	auto const temporal_set_uniforms = [&windowInverseResolution, &mCamera, &currentJitter,
+		&k_feedback_max, &k_feedback_min](GLuint program) {
+		glUniform2f(glGetUniformLocation(program, "inv_res"),
+			static_cast<float>(windowInverseResolution.x),
+			static_cast<float>(windowInverseResolution.y));
+		glUniformMatrix4fv(glGetUniformLocation(program, "jitter"), 1, GL_FALSE,
+			glm::value_ptr(currentJitter));
+		glUniform1f(glGetUniformLocation(program, "k_feedback_max"), k_feedback_max);
+		glUniform1f(glGetUniformLocation(program, "k_feedback_min"), k_feedback_min);
+		glUniform1f(glGetUniformLocation(program, "z_near"), mCamera.mNear);
+		glUniform1f(glGetUniformLocation(program, "z_far"), mCamera.mFar);
+	};
+
 	// Sobel Pass
-	auto const Sobel = [&sobel_fbo, &sobel_shader,
+	auto const Sobel = [&sobel_current_fbo, &sobel_shader,
 		&windowInverseResolution, &mCamera,
 		&window_size, &bind_texture_with_sampler,
 		&default_sampler, &deferred_shading_texture,
 		&depth_texture, &depth_sampler,
-		&diffuse_texture, &light_specular_contribution_texture]() {
+		&diffuse_texture, &light_specular_contribution_texture,
+		&sobel_fbo, &sobel_texture, &resolve_accumulation_shader,
+		&history_switch, &sobel_current_texture,
+		&temporal_set_uniforms, &temporal_for_Sobel_shader,
+		&velocity_texture](bool use_temporal) {
 		//
 		// Pass: Sobel
 		//
-		glBindFramebuffer(GL_FRAMEBUFFER, sobel_fbo);
+		glBindFramebuffer(GL_FRAMEBUFFER, sobel_current_fbo);
 		GLenum const sobel_texture_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
 		glDrawBuffers(1, sobel_texture_draw_buffers);
 		auto const status_sobel_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status_sobel_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
-			LogError("Something went wrong with framebuffer %u", sobel_fbo);
+			LogError("Something went wrong with framebuffer %u", sobel_current_fbo);
 		glUseProgram(sobel_shader);
 
 		auto const sobel_uniforms = [&windowInverseResolution, &mCamera](GLuint program) {
@@ -627,10 +649,64 @@ edan35::Assignment2::run()
 
 		bonobo::drawFullscreen();
 
+		glBindSampler(4, 0u);
 		glBindSampler(3, 0u);
 		glBindSampler(2, 0u);
 		glBindSampler(1, 0u);
 		glBindSampler(0, 0u);
+		glUseProgram(0u);
+
+
+		// Use small temporal AA for sobel filter
+		glBindFramebuffer(GL_FRAMEBUFFER, sobel_fbo[(history_switch + 1) & 1]);
+		GLenum const sobel_history_texture_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+		glDrawBuffers(1, sobel_history_texture_draw_buffers);
+		auto const status_sobel_history_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (status_sobel_history_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
+			LogError("Something went wrong with framebuffer %u", sobel_fbo[(history_switch + 1) & 1]);
+
+
+
+		if (use_temporal)
+		{
+			glUseProgram(temporal_for_Sobel_shader);
+			temporal_set_uniforms(temporal_for_Sobel_shader);
+			glViewport(0, 0, window_size.x, window_size.y);
+			// XXX: Is any clearing needed?
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			
+
+			bind_texture_with_sampler(GL_TEXTURE_2D, 0, temporal_for_Sobel_shader, "sobel_current_texture", sobel_current_texture, default_sampler);
+			bind_texture_with_sampler(GL_TEXTURE_2D, 1, temporal_for_Sobel_shader, "sobel_history_texture", sobel_texture[(history_switch) & 1], default_sampler);
+			bind_texture_with_sampler(GL_TEXTURE_2D, 2, temporal_for_Sobel_shader, "velocity_texture", velocity_texture, default_sampler);
+
+
+			GLStateInspection::CaptureSnapshot("Sobel AA Pass");
+
+			bonobo::drawFullscreen();
+
+			glBindSampler(2, 0u);
+			glBindSampler(1, 0u);
+			glBindSampler(0, 0u);
+		}
+		else
+		{
+			glUseProgram(resolve_accumulation_shader);
+
+			glViewport(0, 0, window_size.x, window_size.y);
+			// XXX: Is any clearing needed?
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_accumulation_shader, "accumulation_texture", sobel_current_texture, default_sampler);
+
+			GLStateInspection::CaptureSnapshot("Sobel AA Pass");
+
+			bonobo::drawFullscreen();
+
+			glBindSampler(0, 0u);
+		}
 		glUseProgram(0u);
 	};
 
@@ -645,7 +721,8 @@ edan35::Assignment2::run()
 		&temporal_output_texture, &resolve_temporal_shader,
 		&ddeltatime, &currentJitter,
 		&sharpen_texture, &sobel_texture,
-		&depth_history_texture, &specular_texture](GLuint temporal_shader, auto temporal_set_uniforms) {
+		&specular_texture
+		](GLuint temporal_shader, auto temporal_set_uniforms) {
 		//
 		// Pass 4: Temporal Reprojection AA
 		//
@@ -669,15 +746,13 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 2, temporal_shader, "velocity_texture", velocity_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 3, temporal_shader, "current_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "depth_history_texture", depth_history_texture[history_switch & 1], default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 7, temporal_shader, "specular_texture", specular_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture[(history_switch + 1) & 1], default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "specular_texture", specular_texture, default_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
 		bonobo::drawFullscreen();
 
-		glBindSampler(7, 0u);
 		glBindSampler(6, 0u);
 		glBindSampler(5, 0u);
 		glBindSampler(4, 0u);
@@ -753,19 +828,6 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 	};
 
-	auto const temporal_set_uniforms = [&windowInverseResolution, &mCamera, &currentJitter,
-		&k_feedback_max, &k_feedback_min](GLuint program) {
-		glUniform2f(glGetUniformLocation(program, "inv_res"),
-			static_cast<float>(windowInverseResolution.x),
-			static_cast<float>(windowInverseResolution.y));
-		glUniformMatrix4fv(glGetUniformLocation(program, "jitter"), 1, GL_FALSE,
-			glm::value_ptr(currentJitter));
-		glUniform1f(glGetUniformLocation(program, "k_feedback_max"), k_feedback_max);
-		glUniform1f(glGetUniformLocation(program, "k_feedback_min"), k_feedback_min);
-		glUniform1f(glGetUniformLocation(program, "z_near"), mCamera.mNear);
-		glUniform1f(glGetUniformLocation(program, "z_far"), mCamera.mFar);
-	};
-
 	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
 		nowTime = GetTimeMilliseconds();
 		ddeltatime = nowTime - lastTime;
@@ -814,14 +876,14 @@ edan35::Assignment2::run()
 
 		// Pass: Sobel
 		debugLastTime = GetTimeMilliseconds();
-		Sobel();
+		Sobel(use_sobel);
 		ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
 		
 		if (use_sobel)
 		{
 			// Temporal Anti Aliasing modified
 			debugLastTime = GetTimeMilliseconds();
-			Temporal_AA(temporal_sobel_shader, temporal_set_uniforms);
+			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms);
 			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 		}
 		else
@@ -1001,13 +1063,13 @@ edan35::Assignment2::run()
 			bonobo::displayTexture({ -0.45f,  0.55f }, { -0.05f,  0.95f }, light_diffuse_contribution_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 			bonobo::displayTexture({ 0.05f,  0.55f }, { 0.45f,  0.95f }, light_specular_contribution_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 			bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
-			bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
-			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
+			bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
+			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
 		}
 		
 		if (show_save_area)
 		{
-			bonobo::displayTexture(lower_corner, upper_corner, shadowmap_texture, default_sampler, { 0, 0, 0, -1 }, window_size, &mCamera);
+			bonobo::displayTexture(lower_corner, upper_corner, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
 		}
 		
 
@@ -1099,9 +1161,10 @@ edan35::Assignment2::run()
 		lastTime = nowTime;
 	}
 
-	
-	glDeleteProgram(temporal_sobel_shader);
-	temporal_sobel_shader = 0u;
+	glDeleteProgram(temporal_for_Sobel_shader);
+	temporal_for_Sobel_shader = 0u;
+	glDeleteProgram(temporal_with_sobel_shader);
+	temporal_with_sobel_shader = 0u;
 	glDeleteProgram(sobel_shader);
 	sobel_shader = 0u;
 	glDeleteProgram(resolve_no_aa_shader);

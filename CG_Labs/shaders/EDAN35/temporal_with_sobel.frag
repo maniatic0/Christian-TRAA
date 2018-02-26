@@ -1,6 +1,7 @@
 #version 410
 
 #define TIE_BREAKER_EPSILON 0.00001
+#define TIE_BREAKER_FOR_DEPTH_AVG 0.000002
 
 uniform sampler2D depth_history_texture;
 uniform sampler2D history_texture;
@@ -17,6 +18,10 @@ uniform vec2 inv_res;
 uniform mat4 jitter;
 uniform float k_feedback_max;
 uniform float k_feedback_min;
+
+uniform float z_near;
+uniform float z_far;
+
 
 //#define COLOR_CLIP clip_aabb_ycgco
 #define COLOR_CLIP clip_aabb
@@ -82,7 +87,11 @@ in VS_OUT {
 
 layout (location = 0) out vec4 current_history_texture;
 layout (location = 1) out vec4 temporal_output;
-layout (location = 2) out float depth_next_history_output;
+
+// From http://glampert.com/2014/01-26/visualizing-the-depth-buffer/
+float linear_depth(float depth) {
+    return (2.0 * z_near) / (z_far + z_near - depth * (z_far - z_near));
+}
 
 // Convert from RGB to YCgCo
 vec4 rgb_to_ycgco(vec4 color_in) {
@@ -149,40 +158,46 @@ void main()
 	j_uv = j_uv * 0.5 + vec4(0.5);
 
 
-	depth_next_history_output = texture(depth_texture, j_uv.xy).x; // Save depth history for next cycle
-
 	vec2 p_uv;
+	vec2 pos;
 	vec4 p = vec4(1.0, 1.0, 1.0, 0.0); // everything at the back of fustrum
 	float depth;
-	float closest_depth;
-	float test_step;
+	float current_depth = texture(depth_texture, j_uv.xy).x;
+	float depth_avg = 0.0; // How many times we passed the test
+	float depth_min = 1.0;
+	float depth_max = 0.0;
+
+	//float test_step;
 	// Color constraints
 	vec4 cn_max = vec4(0.0, 0.0, 0.0, 0.0);
 	vec4 cn_min = vec4(1.0, 1.0, 1.0, 0.0);
 	vec4 cn_temp;
 	vec4 cn_avg = vec4(0.0);
 
-	float sobel = texture(sobel_texture, j_uv.xy).r;
+	float sobel;
 	float sobel_avg = 0.0;
-	float sobel_step;
-	float highest_sobel;
+	//float sobel_step;
 
 	// Neighbours box
 	for(float y=-BOX_RANGE; y<=BOX_RANGE; y+=1.0) {
 		for(float x=-BOX_RANGE; x<=BOX_RANGE; x+=1.0) {
-			p_uv = j_uv.xy + vec2(x * inv_res.x, y * inv_res.y);
+			pos = vec2(x * inv_res.x, y * inv_res.y);
+			p_uv = j_uv.xy + pos;
 
 			depth = texture(depth_texture, p_uv).x;
-			sobel = texture(sobel_texture, p_uv).x;
+			sobel = texture(sobel_texture, fs_in.texcoord + pos).x;
+
+			depth_min = min(depth_min, depth);
+			depth_max = min(depth_max, depth);
 
 			//sobel_step = step(p.w + TIE_BREAKER_EPSILON, sobel);
 
-			// test_step = step(p.z, depth + TIE_BREAKER_EPSILON); // closest pixel
+			//test_step = step(p.z, depth + TIE_BREAKER_EPSILON); // closest pixel
 
 			// Test look for the pixel with the highest sobel value
-			test_step =  step(p.w + TIE_BREAKER_EPSILON, sobel);
+			//test_step =  step(p.w + TIE_BREAKER_EPSILON, sobel);
 
-			p.xyzw = test_step * p.xyzw +  (1.0 - test_step) * vec4(p_uv.x, p_uv.y, depth, sobel); 
+			//p.xyzw = test_step * p.xyzw +  (1.0 - test_step) * vec4(p_uv.x, p_uv.y, depth, sobel); 
 
 			sobel_avg += sobel;
 
@@ -197,9 +212,9 @@ void main()
 	cn_avg = cn_avg / BOX_AMOUNT;
 	sobel_avg = sobel_avg / BOX_AMOUNT;
 
-	p_uv = p.xy;
-	closest_depth = p.z;
-	sobel = p.w;
+	// p_uv = p.xy; // Test positions, normally the closest one
+
+	sobel = texture(sobel_texture, fs_in.texcoord).x;
 
 	// Velocity history
 	//vec2 v = texture(velocity_texture, p_uv).rg; // calculated by test above
@@ -258,7 +273,7 @@ void main()
 
 #ifdef USE_SOBEL_CROSS
 
-	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel); 
 	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
 	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
 	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
@@ -271,19 +286,13 @@ void main()
 	sobel_avg = mix(sobel_avg, sobel_cross_avg, 0.5);
 
 #endif // USE_SOBEL_CROSS
-	
-
-
-	//float speed = length(texture(velocity_texture, j_uv.xy).rg);
-	//float specular_part = luminance(texture(specular_texture, j_uv.xy).rgba);
-	
-	//sobel = clamp(mix(sobel_avg, sobel, 0.5), 0.3, 1.0);
-
-	sobel = 1.0;
 
 	vec4 c_in = texture(current_texture, j_uv.xy);
-	cn_min = mix(c_in, cn_min, sobel);
-	cn_max = mix(c_in, cn_max, sobel);
+
+	float final_mix_val = clamp(sobel_avg, 0.0, 1.0);
+
+	cn_min = mix(c_in, cn_min, final_mix_val);
+	cn_max = mix(c_in, cn_max, final_mix_val);
 
 #ifdef HISTORY_CLAMPING
 	vec4 c_hist_constrained = clamp(c_hist, cn_min, cn_max);
@@ -302,6 +311,7 @@ void main()
 	float unbiased_weight_sqr = unbiased_weight * unbiased_weight;
 	float k_feedback = mix(k_feedback_min, k_feedback_max, unbiased_weight_sqr);
 
-	current_history_texture = mix(c_in, c_hist_constrained, k_feedback); // Inside TRAA
+	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
+	//temporal_output.xyz = vec3( (linear_depth(current_depth) - linear_depth(depth_min))/ linear_depth(depth_max) - linear_depth(depth_min));
 }
