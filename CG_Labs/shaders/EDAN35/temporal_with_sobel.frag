@@ -273,11 +273,19 @@ void main()
 	cn_cross_avg /= 5.0;
 	sobel_cross_avg /= 5.0;
 
-	// Mix min-max averaging
 
+	// pseudo depth variance
+	float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
+	max_distance_depth = max(max_distance_depth, 0.00002);
+	float depth_variance = abs(linear_depth(current_depth) - (depth_avg)) / max_distance_depth;
+	depth_variance = depth_variance * depth_variance;
+	//depth_variance = 0.0;
+
+
+	// Mix min-max averaging
 #ifdef USE_SOBEL_CROSS
 
-	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel); 
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
 	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
 	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
 	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
@@ -291,9 +299,12 @@ void main()
 
 #endif // USE_SOBEL_CROSS
 
+	
+
+
 	vec4 c_in = texture(current_texture, j_uv.xy);
 
-	float final_mix_val = clamp(sobel_avg, 0.0, 1.0);
+	float final_mix_val = clamp(sobel_avg + depth_variance, 0.0, 1.0);
 
 	cn_min = mix(c_in, cn_min, final_mix_val);
 	cn_max = mix(c_in, cn_max, final_mix_val);
@@ -313,13 +324,12 @@ void main()
 	float unbiased_diff = abs(lum_current - lum_history) / max(lum_current, max(lum_history, 0.2));
 	float unbiased_weight = 1.0 - unbiased_diff;
 	float unbiased_weight_sqr = unbiased_weight * unbiased_weight;
-	float k_feedback = mix(k_feedback_min, k_feedback_max, unbiased_weight_sqr);
+	
+
+	float k_feedback = mix(k_feedback_min, k_feedback_max, clamp(unbiased_weight_sqr + depth_variance, 0.0, 1.0));
+
 
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
-
-
-	//float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
-
-	//temporal_output.xyz = vec3(abs(linear_depth(current_depth) - (depth_avg)) / max_distance_depth);
+	//temporal_output.xyz = vec3(depth_variance);
 }
