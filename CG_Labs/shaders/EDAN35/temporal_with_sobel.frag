@@ -185,11 +185,12 @@ void main()
 			p_uv = j_uv.xy + pos;
 
 			depth = texture(depth_texture, p_uv).x;
-			sobel = texture(sobel_texture, fs_in.texcoord + pos).x;
+			//sobel = texture(sobel_texture, fs_in.texcoord + pos).x;
+			sobel = texture(sobel_texture, p_uv).x;
 
 			depth_min = min(depth_min, depth);
 			depth_max = min(depth_max, depth);
-
+			depth_avg += linear_depth(depth);
 			//sobel_step = step(p.w + TIE_BREAKER_EPSILON, sobel);
 
 			//test_step = step(p.z, depth + TIE_BREAKER_EPSILON); // closest pixel
@@ -211,10 +212,13 @@ void main()
 
 	cn_avg = cn_avg / BOX_AMOUNT;
 	sobel_avg = sobel_avg / BOX_AMOUNT;
+	depth_avg = depth_avg / BOX_AMOUNT;
 
 	// p_uv = p.xy; // Test positions, normally the closest one
 
-	sobel = texture(sobel_texture, fs_in.texcoord).x;
+	//sobel = texture(sobel_texture, fs_in.texcoord).x;
+	sobel = texture(sobel_texture, j_uv.xy).x;
+
 
 	// Velocity history
 	//vec2 v = texture(velocity_texture, p_uv).rg; // calculated by test above
@@ -313,5 +317,9 @@ void main()
 
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
-	//temporal_output.xyz = vec3( (linear_depth(current_depth) - linear_depth(depth_min))/ linear_depth(depth_max) - linear_depth(depth_min));
+
+
+	//float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
+
+	//temporal_output.xyz = vec3(abs(linear_depth(current_depth) - (depth_avg)) / max_distance_depth);
 }

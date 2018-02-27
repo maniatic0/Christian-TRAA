@@ -667,7 +667,7 @@ edan35::Assignment2::run()
 
 
 
-		if (use_temporal)
+		if (use_temporal && false)
 		{
 			glUseProgram(temporal_for_Sobel_shader);
 			temporal_set_uniforms(temporal_for_Sobel_shader);
