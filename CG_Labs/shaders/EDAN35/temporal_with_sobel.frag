@@ -185,8 +185,8 @@ void main()
 			p_uv = j_uv.xy + pos;
 
 			depth = texture(depth_texture, p_uv).x;
-			//sobel = texture(sobel_texture, fs_in.texcoord + pos).x;
-			sobel = texture(sobel_texture, p_uv).x;
+			sobel = texture(sobel_texture, fs_in.texcoord + pos).x; // non jittered
+			//sobel = texture(sobel_texture, p_uv).x; // jittered
 
 			depth_min = min(depth_min, depth);
 			depth_max = min(depth_max, depth);
@@ -216,8 +216,8 @@ void main()
 
 	// p_uv = p.xy; // Test positions, normally the closest one
 
-	//sobel = texture(sobel_texture, fs_in.texcoord).x;
-	sobel = texture(sobel_texture, j_uv.xy).x;
+	sobel = texture(sobel_texture, fs_in.texcoord).x; // non jittered
+	//sobel = texture(sobel_texture, j_uv.xy).x; // jittered
 
 
 	// Velocity history
@@ -236,39 +236,39 @@ void main()
 
 	vec2 cross_temp;
 
-	cross_temp = j_uv.xy + vec2((-1.0) * inv_res.x, 0.0);
-	cn_temp = texture(current_texture, cross_temp);
+	cross_temp = vec2((-1.0) * inv_res.x, 0.0);
+	cn_temp = texture(current_texture, j_uv.xy + cross_temp);
 	cn_cross_min = min(cn_cross_min, cn_temp);
 	cn_cross_max = max(cn_cross_max, cn_temp);
 	cn_cross_avg += cn_temp;
-	sobel_cross_avg +=  texture(sobel_texture, cross_temp).r;
+	sobel_cross_avg +=  texture(sobel_texture, fs_in.texcoord + cross_temp).r;
 
-	cross_temp = j_uv.xy + vec2(0.0, (1.0) * inv_res.y);
-	cn_temp = texture(current_texture, cross_temp);
+	cross_temp = vec2(0.0, (1.0) * inv_res.y);
+	cn_temp = texture(current_texture, j_uv.xy + cross_temp);
 	cn_cross_min = min(cn_cross_min, cn_temp);
 	cn_cross_max = max(cn_cross_max, cn_temp);
 	cn_cross_avg += cn_temp;
-	sobel_cross_avg +=  texture(sobel_texture, cross_temp).r;
+	sobel_cross_avg +=  texture(sobel_texture, fs_in.texcoord + cross_temp).r;
 
 	cn_temp = texture(current_texture, j_uv.xy);
 	cn_cross_min = min(cn_cross_min, cn_temp);
 	cn_cross_max = max(cn_cross_max, cn_temp);
 	cn_cross_avg += cn_temp;
-	sobel_cross_avg +=  texture(sobel_texture, cross_temp).r;
+	sobel_cross_avg +=  texture(sobel_texture, fs_in.texcoord).r;
 
-	cross_temp = j_uv.xy + vec2(0.0, (-1.0) * inv_res.y);
-	cn_temp = texture(current_texture, cross_temp);
+	cross_temp = vec2(0.0, (-1.0) * inv_res.y);
+	cn_temp = texture(current_texture, j_uv.xy + cross_temp);
 	cn_cross_min = min(cn_cross_min, cn_temp);
 	cn_cross_max = max(cn_cross_max, cn_temp);
 	cn_cross_avg += cn_temp;
-	sobel_cross_avg +=  texture(sobel_texture, cross_temp).r;
+	sobel_cross_avg +=  texture(sobel_texture, fs_in.texcoord + cross_temp).r;
 
-	cross_temp = j_uv.xy + vec2((1.0) * inv_res.x, 0.0);
-	cn_temp = texture(current_texture, cross_temp);
+	cross_temp = vec2((1.0) * inv_res.x, 0.0);
+	cn_temp = texture(current_texture, j_uv.xy + cross_temp);
 	cn_cross_min = min(cn_cross_min, cn_temp);
 	cn_cross_max = max(cn_cross_max, cn_temp);
 	cn_cross_avg += cn_temp;
-	sobel_cross_avg +=  texture(sobel_texture, cross_temp).r;
+	sobel_cross_avg +=  texture(sobel_texture, fs_in.texcoord + cross_temp).r;
 
 	cn_cross_avg /= 5.0;
 	sobel_cross_avg /= 5.0;
@@ -286,6 +286,7 @@ void main()
 #ifdef USE_SOBEL_CROSS
 
 	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
+	sobel_avg = clamp(sobel_avg + depth_variance, 0.0, 1.0);
 	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
 	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
 	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
@@ -298,9 +299,6 @@ void main()
 	sobel_avg = mix(sobel_avg, sobel_cross_avg, 0.5);
 
 #endif // USE_SOBEL_CROSS
-
-	
-
 
 	vec4 c_in = texture(current_texture, j_uv.xy);
 
@@ -331,5 +329,5 @@ void main()
 
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
-	//temporal_output.xyz = vec3(depth_variance);
+	//temporal_output.xyz = vec3(clamp( unbiased_weight_sqr + depth_variance, 0.0, 1.0));
 }

@@ -353,6 +353,8 @@ void main()
 	float unbiased_weight = 1.0 - unbiased_diff;
 	float unbiased_weight_sqr = unbiased_weight * unbiased_weight;
 	float k_feedback = mix(k_feedback_min, k_feedback_max, unbiased_weight_sqr);
+
+
 #ifdef USE_SOBEL
 	// Sobel
 	float g = sobel(j_uv.xy);
