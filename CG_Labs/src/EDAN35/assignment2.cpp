@@ -296,7 +296,10 @@ edan35::Assignment2::run()
 	auto const shadowmap_texture                   = bonobo::createTexture(constant::shadowmap_res_x, constant::shadowmap_res_y, GL_TEXTURE_2D, GL_DEPTH_COMPONENT32F, GL_DEPTH_COMPONENT, GL_FLOAT);
 
 	auto const deferred_shading_texture = bonobo::createTexture(window_size.x, window_size.y);
-	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT), bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
+	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT),
+		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
+	GLuint const history_improved_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT),
+		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
 	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F, GL_RG, GL_FLOAT);
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
@@ -314,6 +317,8 @@ edan35::Assignment2::run()
 
 	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture}, 0u),
 		bonobo::createFBO({ history_texture[1], temporal_output_texture}, 0u) };
+	GLuint const history_improved_fbo[] = { bonobo::createFBO({ history_improved_texture[0], temporal_output_texture }, 0u),
+		bonobo::createFBO({ history_improved_texture[1], temporal_output_texture }, 0u) };
 	auto const deferred_shading_fbo = bonobo::createFBO({ deferred_shading_texture }, 0u);
 	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
 	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
@@ -395,8 +400,8 @@ edan35::Assignment2::run()
 	auto seconds_sphere = 0.0f;
 
 	// Save Vars
-	bool save = false, save_steps = false;
-	int samples = 16, current_samples = 0;
+	bool save = false, save_steps = false, save_acc_test = false, save_both = false;
+	int accumulation_samples = 16, current_samples = 0, both_test_samples = 100;
 	const int FILE_NAME_SIZE = 200;
 	char filename[FILE_NAME_SIZE+10] = "test";
 	glm::vec2 lower_corner(-1.0f, -1.0f);
@@ -667,7 +672,7 @@ edan35::Assignment2::run()
 
 
 
-		if (use_temporal && false)
+		if (use_temporal)
 		{
 			glUseProgram(temporal_for_Sobel_shader);
 			temporal_set_uniforms(temporal_for_Sobel_shader);
@@ -711,9 +716,9 @@ edan35::Assignment2::run()
 	};
 
 	// Temporal Anti Aliasing
-	auto const Temporal_AA = [&history_fbo, &history_switch,
+	auto const Temporal_AA = [&history_switch,
 		&window_size, &bind_texture_with_sampler,
-		&history_texture, &default_sampler,
+		&default_sampler,
 		&depth_texture, &velocity_texture,
 		&deferred_shading_texture, &sharpen_fbo,
 		&diffuse_texture, &depth_sampler,
@@ -722,7 +727,7 @@ edan35::Assignment2::run()
 		&ddeltatime, &currentJitter,
 		&sharpen_texture, &sobel_texture,
 		&specular_texture
-		](GLuint temporal_shader, auto temporal_set_uniforms) {
+		](GLuint temporal_shader, auto temporal_set_uniforms, const GLuint history_fbo[], const GLuint history_texture[]) {
 		//
 		// Pass 4: Temporal Reprojection AA
 		//
@@ -874,27 +879,67 @@ edan35::Assignment2::run()
 		Deferred_Shading();
 		ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
 
-		// Pass: Sobel
-		debugLastTime = GetTimeMilliseconds();
-		Sobel(use_sobel);
-		ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-		
-		if (use_sobel)
+
+		if (save && save_both)
 		{
+			// Pass: Sobel
+			debugLastTime = GetTimeMilliseconds();
+			Sobel(use_sobel);
+			ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+
 			// Temporal Anti Aliasing modified
 			debugLastTime = GetTimeMilliseconds();
-			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms);
+			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
 			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+
+			std::string file_name(filename);
+			file_name += "_both_improved_" + std::to_string(current_samples);
+			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
+
+			// Temporal Anti Aliasing from Inside
+			debugLastTime = GetTimeMilliseconds();
+			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
+			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+
+			file_name = std::string(filename);
+			file_name += "_both_no_improved_" + std::to_string(current_samples);
+			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
+
+			current_samples++;
+
+			if (current_samples >= both_test_samples)
+			{
+				save = false;
+				save_both = false;
+			}
+
 		}
 		else
 		{
-			// Temporal Anti Aliasing from Inside
+			// Pass: Sobel
 			debugLastTime = GetTimeMilliseconds();
-			Temporal_AA(temporal_shader, temporal_set_uniforms);
-			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			Sobel(use_sobel);
+			ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+
+			if (use_sobel)
+			{
+				// Temporal Anti Aliasing modified
+				debugLastTime = GetTimeMilliseconds();
+				Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
+				ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			}
+			else
+			{
+				// Temporal Anti Aliasing from Inside
+				debugLastTime = GetTimeMilliseconds();
+				Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
+				ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			}
 		}
 
-		if (save)
+		
+
+		if (save && save_acc_test)
 		{
 			if (current_samples < CAMERA_JITTERING_SIZE)
 			{
@@ -916,7 +961,7 @@ edan35::Assignment2::run()
 
 					// Save Accumulation Buffer
 #pragma region ACCUMULATION_SAVE
-					const float samples_inverse = 1.0 / static_cast<float>(samples);
+					const float samples_inverse = 1.0 / static_cast<float>(accumulation_samples);
 
 					auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
 						glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
@@ -929,9 +974,9 @@ edan35::Assignment2::run()
 					bool old_jittered_projection = mCamera.jitterProjection;
 					mCamera.jitterProjection = true;
 
-					for (size_t i = 0; i < samples; i++)
+					for (size_t i = 0; i < accumulation_samples; i++)
 					{
-						currentJitter = mCamera.UpdateProjection(windowInverseResolution, samples);
+						currentJitter = mCamera.UpdateProjection(windowInverseResolution, accumulation_samples);
 						Deferred_Shading();
 
 						glFinish();
@@ -1031,7 +1076,9 @@ edan35::Assignment2::run()
 					file_name += "_no_aa";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 #pragma endregion
+
 					save = false;
+					save_acc_test = false;
 				}
 			}
 			current_samples++;
@@ -1123,7 +1170,7 @@ edan35::Assignment2::run()
 			{
 				ImGui::InputText("Filename", filename, FILE_NAME_SIZE);
 				ImGui::Checkbox("Save Steps", &save_steps);
-				ImGui::SliderInt("Sample Amount", &samples, 1, CAMERA_JITTERING_SIZE);
+				ImGui::SliderInt("Sample Amount", &accumulation_samples, 1, CAMERA_JITTERING_SIZE);
 				ImGui::SliderFloat("Accumulation Jitter Spread", &accumulation_jitter_spread, 0.0f, 2.0f);
 				imgui_temp[0] = lower_corner.x;
 				imgui_temp[1] = lower_corner.y;
@@ -1138,13 +1185,28 @@ edan35::Assignment2::run()
 				if (ImGui::Button("Save Image"))
 				{
 					save = true;
+					save_acc_test = true;
 					current_samples = 0;
 
 					// Save Current Info
 					bonobo::saveConfig(filename,
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
-						samples, accumulation_jitter_spread,
+						accumulation_samples, accumulation_jitter_spread,
+						lower_corner, upper_corner);
+				}
+				ImGui::SliderInt("Both Test Samples", &both_test_samples, 1, 200);
+				if (ImGui::Button("Save Both"))
+				{
+					save = true;
+					save_both = true;
+					current_samples = 0;
+
+					// Save Current Info
+					bonobo::saveConfig(filename,
+						use_sobel, mCamera,
+						k_feedback_min, k_feedback_max,
+						accumulation_samples, accumulation_jitter_spread,
 						lower_corner, upper_corner);
 				}
 			}

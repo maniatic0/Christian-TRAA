@@ -324,7 +324,7 @@ void main()
 	float unbiased_weight_sqr = unbiased_weight * unbiased_weight;
 	
 
-	float k_feedback = mix(k_feedback_min, k_feedback_max, clamp(unbiased_weight_sqr + depth_variance, 0.0, 1.0));
+	float k_feedback = mix(k_feedback_min, k_feedback_max, clamp(unbiased_weight_sqr, 0.0, 1.0));
 
 
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
