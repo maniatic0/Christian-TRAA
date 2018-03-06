@@ -4,6 +4,7 @@
 #include "InputHandler.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtx/io.hpp>
 
 #include <iostream>
 
@@ -57,18 +58,8 @@ public:
 	friend std::ostream &operator<<(std::ostream &os, FPSCamera<T, P> &v) {
 		os << v.mFov << " " << v.mAspect << " " << v.mNear << " " << v.mFar << std::endl;
 		os << v.mMovementSpeed << " " << v.mMouseSensitivity << std::endl;
-		os <<  v.mRotation.x << " " << v.mRotation.y << " " << v.mRotation.z << std::endl;
-		for (size_t j = 0; j < 4; j++)
-		{
-			for (size_t i = 0; i < 4; i++)
-			{
-				os << v.mWorld.GetMatrix()[i][j] << " ";
-			}
-			if (j != 3)
-			{
-				os << std::endl;
-			}
-		}
+		os <<  v.mRotation << std::endl;
+		os << v.mWorld.GetMatrix();
 		return os;
 	}
 	friend std::istream &operator>>(std::istream &is, FPSCamera<T, P> &v) {
@@ -76,14 +67,8 @@ public:
 		is >> fov >> aspect >> nnear >> far;
 		v.SetProjection(fov, aspect, nnear, far);
 		is >> v.mMovementSpeed >> v.mMouseSensitivity;
-		is >> v.mRotation.x >> v.mRotation.y >> v.mRotation.z;
-		for (size_t j = 0; j < 4; j++)
-		{
-			for (size_t i = 0; i < 4; i++)
-			{
-				is >> v.mWorld.GetMatrix()[i][j];
-			}
-		}
+		is >> v.mRotation;
+		is >> v.mWorld.GetMatrix();
 		return is;
 	}
 };
