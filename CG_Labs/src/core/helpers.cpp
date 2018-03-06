@@ -11,6 +11,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/io.hpp>
 
 #include <cassert>
 
@@ -671,7 +672,7 @@ void bonobo::saveConfig(std::string file_name,
 	log_file << "Saving Information" << std::endl;
 	log_file << "Sample Amount: " << sample_amount << std::endl;
 	log_file << "Accumulation Buffer Jitter Spread: " << accumulation_jitter_spread << std::endl;
-	log_file << "Lower Corner: " << lower_corner.x << " " << lower_corner.y << std::endl;
-	log_file << "Upper Corner: " << upper_corner.x << " " << upper_corner.y << std::endl;
+	log_file << "Lower Corner: " << std::endl << lower_corner << std::endl;
+	log_file << "Upper Corner: " << std::endl << upper_corner << std::endl;
 	log_file.close();
 }

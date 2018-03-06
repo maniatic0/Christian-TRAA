@@ -26,6 +26,7 @@
 #include <array>
 #include <cstdlib>
 #include <stdexcept>
+#include <sstream>
 
 enum class polygon_mode_t : unsigned int {
 	fill = 0u,
@@ -882,6 +883,9 @@ edan35::Assignment2::run()
 
 		if (save && save_both)
 		{
+			std::ostringstream samples_string;
+			samples_string << std::internal << std::setfill('0') << std::setw(4) << std::to_string(current_samples);
+
 			// Pass: Sobel
 			debugLastTime = GetTimeMilliseconds();
 			Sobel(use_sobel);
@@ -893,7 +897,7 @@ edan35::Assignment2::run()
 			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 
 			std::string file_name(filename);
-			file_name += "_both_improved_" + std::to_string(current_samples);
+			file_name += "_both_improved_" + samples_string.str();
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			// Temporal Anti Aliasing from Inside
@@ -902,7 +906,7 @@ edan35::Assignment2::run()
 			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 
 			file_name = std::string(filename);
-			file_name += "_both_no_improved_" + std::to_string(current_samples);
+			file_name += "_both_no_improved_" + samples_string.str();
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			current_samples++;
