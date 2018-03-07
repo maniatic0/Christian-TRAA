@@ -430,6 +430,7 @@ edan35::Assignment2::run()
 	glEnable(GL_CULL_FACE);
 
 	bool show_debug_display = false;
+	GLuint time_query;
 	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred;
 	size_t fpsSamples = 0;
 	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
@@ -876,10 +877,11 @@ edan35::Assignment2::run()
 		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 
 		// Pass 1-3: Deferred Shading
-		debugLastTime = GetTimeMilliseconds();
+		//debugLastTime = GetTimeMilliseconds();
+		bonobo::beginTimeQuery(time_query);
 		Deferred_Shading();
-		ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
-
+		//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
+		bonobo::endTimeQuery(time_query, ddeltatimeDeferred);
 
 		if (save && save_both)
 		{
@@ -887,23 +889,29 @@ edan35::Assignment2::run()
 			samples_string << std::internal << std::setfill('0') << std::setw(4) << std::to_string(current_samples);
 
 			// Pass: Sobel
-			debugLastTime = GetTimeMilliseconds();
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(time_query);
 			Sobel(use_sobel);
-			ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(time_query, ddeltatimeSobel);
 
 			// Temporal Anti Aliasing modified
-			debugLastTime = GetTimeMilliseconds();
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(time_query);
 			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
-			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
 
 			std::string file_name(filename);
 			file_name += "_both_improved_" + samples_string.str();
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			// Temporal Anti Aliasing from Inside
-			debugLastTime = GetTimeMilliseconds();
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(time_query);
 			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
-			ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
 
 			file_name = std::string(filename);
 			file_name += "_both_no_improved_" + samples_string.str();
@@ -921,28 +929,34 @@ edan35::Assignment2::run()
 		else
 		{
 			// Pass: Sobel
-			debugLastTime = GetTimeMilliseconds();
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(time_query);
 			Sobel(use_sobel);
-			ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(time_query, ddeltatimeSobel);
 
 			if (use_sobel)
 			{
 				// Temporal Anti Aliasing modified
-				debugLastTime = GetTimeMilliseconds();
+				//debugLastTime = GetTimeMilliseconds();
+				bonobo::beginTimeQuery(time_query);
 				Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
-				ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+				bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
 			}
 			else
 			{
 				// Temporal Anti Aliasing from Inside
-				debugLastTime = GetTimeMilliseconds();
+				//debugLastTime = GetTimeMilliseconds();
+				bonobo::beginTimeQuery(time_query);
 				Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
-				ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+				bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
 			}
 		}
 
 		
-
+		// Accumulation Save Test
 		if (save && save_acc_test)
 		{
 			if (current_samples < CAMERA_JITTERING_SIZE)

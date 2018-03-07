@@ -676,3 +676,21 @@ void bonobo::saveConfig(std::string file_name,
 	log_file << "Upper Corner: " << std::endl << upper_corner << std::endl;
 	log_file.close();
 }
+
+void bonobo::beginTimeQuery(GLuint &query)
+{
+	glGenQueries(1, &query);
+	glBeginQuery(GL_TIME_ELAPSED, query);
+}
+
+void bonobo::endTimeQuery(const GLuint &query, double &time, const bool wait_results)
+{
+	glEndQuery(GL_TIME_ELAPSED);
+	GLint done = 0;
+	while (wait_results && !done) {
+		glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
+	}
+	GLuint64 elapsed_time;
+	glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
+	time = static_cast<double>(elapsed_time) / 1000000.0; // convert from nanoseconds
+}

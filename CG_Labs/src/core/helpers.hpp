@@ -186,4 +186,16 @@ namespace bonobo
 		const float &k_feedback_min, const float &k_feedback_max,
 		const int &sample_amount, const float &accumulation_jitter_spread,
 		const glm::vec2 &lower_corner, const glm::vec2 &upper_corner);
+
+	//! \brief Insert time query inGPU pipeline
+	//! 
+	//! @param [in] where to store query id
+	void beginTimeQuery(GLuint &query);
+
+	//! \brief Get the time elapsed since the query started
+	//! 
+	//! @param [in] where the query id is stored
+	//! @param [in] where to store the time elapsed, in miliseconds
+	//! @param [in] if we wait to make sure the results are available
+	void endTimeQuery(const GLuint &query, double &time, const bool wait_results = false);
 }
