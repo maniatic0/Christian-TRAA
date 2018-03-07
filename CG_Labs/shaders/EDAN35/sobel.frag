@@ -16,6 +16,8 @@ in VS_OUT {
 layout (location = 0) out vec4 sobel_buffer;
 
 
+#define SQR(x) ((x)*(x))
+
 // Sobel Edge Filtering
 #define ORIGINAL_SOBEL
 //#define MODIFIED_SOBEL
@@ -93,12 +95,12 @@ float sobel(vec2 uv) {
 	float gx = dot(sx[0], I[0]) + dot(sx[1], I[1]) + dot(sx[2], I[2]); 
 	float gy = dot(sy[0], I[0]) + dot(sy[1], I[1]) + dot(sy[2], I[2]);
 
-	float g = sqrt(pow(gx, 2.0)+pow(gy, 2.0));
+	float g = sqrt(SQR(gx) + SQR(gy));
 
 	float fx = dot(sx[0], D[0]) + dot(sx[1], D[1]) + dot(sx[2], D[2]); 
 	float fy = dot(sy[0], D[0]) + dot(sy[1], D[1]) + dot(sy[2], D[2]);
 
-	float f = sqrt(pow(fx, 2.0)+pow(fy, 2.0));
+	float f = sqrt(SQR(fx)+ SQR(fy));
 
 	//float rx = dot(sx[0], R[0]) + dot(sx[1], R[1]) + dot(sx[2], R[2]); 
 	//float ry = dot(sy[0], R[0]) + dot(sy[1], R[1]) + dot(sy[2], R[2]);
@@ -110,9 +112,9 @@ float sobel(vec2 uv) {
 	float hx = dot(sx[0], J[0]) + dot(sx[1], J[1]) + dot(sx[2], J[2]); 
 	float hy = dot(sy[0], J[0]) + dot(sy[1], J[1]) + dot(sy[2], J[2]);
 
-	float h = sqrt(pow(hx, 2.0)+pow(hy, 2.0));
+	float h = sqrt(SQR(hx)+ SQR(hy));
 
-	h = sqrt(h);
+	//h = sqrt(h);
 
 	g = (mix(g, f, 0.7) + h /*+ r*/);
 	g = clamp(g, 0.0, 1.0);

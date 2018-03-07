@@ -430,7 +430,7 @@ edan35::Assignment2::run()
 	glEnable(GL_CULL_FACE);
 
 	bool show_debug_display = false;
-	GLuint time_query;
+	GLuint time_query, sobel_time_query;
 	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred;
 	size_t fpsSamples = 0;
 	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
@@ -890,10 +890,10 @@ edan35::Assignment2::run()
 
 			// Pass: Sobel
 			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(time_query);
+			bonobo::beginTimeQuery(sobel_time_query);
 			Sobel(use_sobel);
 			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(time_query, ddeltatimeSobel);
+			bonobo::endTimeQuery(sobel_time_query, ddeltatimeSobel);
 
 			// Temporal Anti Aliasing modified
 			//debugLastTime = GetTimeMilliseconds();
@@ -930,10 +930,10 @@ edan35::Assignment2::run()
 		{
 			// Pass: Sobel
 			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(time_query);
+			bonobo::beginTimeQuery(sobel_time_query);
 			Sobel(use_sobel);
 			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(time_query, ddeltatimeSobel);
+			bonobo::endTimeQuery(sobel_time_query, ddeltatimeSobel);
 
 			if (use_sobel)
 			{
