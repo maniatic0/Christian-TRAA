@@ -274,7 +274,7 @@ void main()
 	//depth_variance = 0.0;
 
 	// pseudo temporal depth variance
-	float depth_temporal_variance = abs(depth_avg - linear_depth(texture(depth_history_texture, fs_in.texcoord).x)) / max_distance_depth;
+	float depth_temporal_variance = abs(depth_avg - texture(depth_history_texture, fs_in.texcoord).x) / max_distance_depth;
 	depth_temporal_variance = depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
 
 	//depth_temporal_variance = 0.0;
@@ -324,7 +324,7 @@ void main()
 	float k_feedback = mix(k_feedback_min, k_feedback_max, clamp(unbiased_weight_sqr, 0.0, 1.0));
 
 
-	current_depth_history = current_depth;
+	current_depth_history = linear_current_depth;
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
 	//temporal_output.xyz = vec3(clamp( unbiased_weight_sqr + depth_variance, 0.0, 1.0));
