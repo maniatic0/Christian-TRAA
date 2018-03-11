@@ -297,17 +297,24 @@ edan35::Assignment2::run()
 	auto const shadowmap_texture                   = bonobo::createTexture(constant::shadowmap_res_x, constant::shadowmap_res_y, GL_TEXTURE_2D, GL_DEPTH_COMPONENT32F, GL_DEPTH_COMPONENT, GL_FLOAT);
 
 	auto const deferred_shading_texture = bonobo::createTexture(window_size.x, window_size.y);
+
 	GLuint const history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT),
 		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
 	GLuint const history_improved_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT),
 		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA16F, GL_RGBA, GL_FLOAT) };
+
+	GLuint const depth_history_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R16F, GL_RED, GL_FLOAT),
+		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R16F, GL_RED, GL_FLOAT) };
+
 	auto const velocity_texture = bonobo::createTexture(window_size.x, window_size.y,GL_TEXTURE_2D, GL_RG16F, GL_RG, GL_FLOAT);
 	auto const temporal_output_texture = bonobo::createTexture(window_size.x, window_size.y);
 	auto const sharpen_texture = bonobo::createTexture(window_size.x, window_size.y);
-	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
+	
 	auto const sobel_current_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT);
 	GLuint const sobel_texture[] = { bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT),
 		bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32F, GL_RED, GL_FLOAT) };
+
+	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
 
 	//
 	// Setup FBOs
@@ -316,15 +323,19 @@ edan35::Assignment2::run()
 	auto const shadowmap_fbo = bonobo::createFBO({}, shadowmap_texture);
 	auto const light_fbo     = bonobo::createFBO({light_diffuse_contribution_texture, light_specular_contribution_texture}, depth_texture);
 
-	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture}, 0u),
-		bonobo::createFBO({ history_texture[1], temporal_output_texture}, 0u) };
-	GLuint const history_improved_fbo[] = { bonobo::createFBO({ history_improved_texture[0], temporal_output_texture }, 0u),
-		bonobo::createFBO({ history_improved_texture[1], temporal_output_texture }, 0u) };
 	auto const deferred_shading_fbo = bonobo::createFBO({ deferred_shading_texture }, 0u);
-	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
-	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
+
 	auto const sobel_current_fbo = bonobo::createFBO({ sobel_current_texture }, 0u);
 	GLuint const sobel_fbo[] = { bonobo::createFBO({ sobel_texture[0] }, 0u),  bonobo::createFBO({ sobel_texture[1] }, 0u) };
+
+	GLuint const history_fbo[] = { bonobo::createFBO({ history_texture[0], temporal_output_texture, depth_history_texture[0] }, 0u),
+		bonobo::createFBO({ history_texture[1], temporal_output_texture, depth_history_texture[1] }, 0u) };
+	GLuint const history_improved_fbo[] = { bonobo::createFBO({ history_improved_texture[0], temporal_output_texture, depth_history_texture[0] }, 0u),
+		bonobo::createFBO({ history_improved_texture[1], temporal_output_texture, depth_history_texture[1] }, 0u) };
+
+	auto const sharpen_fbo = bonobo::createFBO({ sharpen_texture }, 0u);
+	auto const accumulation_fbo = bonobo::createFBO({ accumulation_texture }, 0u);
+	
 
 	//
 	// Setup samplers
@@ -430,7 +441,7 @@ edan35::Assignment2::run()
 	glEnable(GL_CULL_FACE);
 
 	bool show_debug_display = false;
-	GLuint time_query, sobel_time_query;
+	GLuint temporal_time_query = 0u, sobel_time_query = 0u, deferred_time_query =0u;
 	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred;
 	size_t fpsSamples = 0;
 	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
@@ -615,8 +626,8 @@ edan35::Assignment2::run()
 		&window_size, &bind_texture_with_sampler,
 		&default_sampler, &deferred_shading_texture,
 		&depth_texture, &depth_sampler,
-		&diffuse_texture, &light_specular_contribution_texture,
-		&sobel_fbo, &sobel_texture, &resolve_accumulation_shader,
+		&diffuse_texture, &sobel_fbo,
+		&sobel_texture, &resolve_accumulation_shader,
 		&history_switch, &sobel_current_texture,
 		&temporal_set_uniforms, &temporal_for_Sobel_shader,
 		&velocity_texture](bool use_temporal) {
@@ -649,15 +660,12 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 0, sobel_shader, "deferred_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 1, sobel_shader, "depth_texture", depth_texture, depth_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 2, sobel_shader, "diffuse_texture", diffuse_texture, default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 3, sobel_shader, "specular_texture", light_specular_contribution_texture, default_sampler);
 		
 
 		GLStateInspection::CaptureSnapshot("Sobel Pass");
 
 		bonobo::drawFullscreen();
 
-		glBindSampler(4, 0u);
-		glBindSampler(3, 0u);
 		glBindSampler(2, 0u);
 		glBindSampler(1, 0u);
 		glBindSampler(0, 0u);
@@ -728,7 +736,7 @@ edan35::Assignment2::run()
 		&temporal_output_texture, &resolve_temporal_shader,
 		&ddeltatime, &currentJitter,
 		&sharpen_texture, &sobel_texture,
-		&specular_texture
+		&depth_history_texture
 		](GLuint temporal_shader, auto temporal_set_uniforms, const GLuint history_fbo[], const GLuint history_texture[]) {
 		//
 		// Pass 4: Temporal Reprojection AA
@@ -754,7 +762,7 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 3, temporal_shader, "current_texture", deferred_shading_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture[(history_switch + 1) & 1], default_sampler);
-		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "specular_texture", specular_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "depth_history_texture", depth_history_texture[(history_switch) & 1], depth_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
@@ -869,6 +877,8 @@ edan35::Assignment2::run()
 		// Sphere novement
 		// The sphere is the penultimate element in vector
 		sponza_elements[sponza_elements.size() - 2].set_translation(sphere_pos + glm::vec3(amplitude * std::sin(bonobo::two_pi * frequency * seconds_sphere), 0.0f, 0.0f));
+
+		// Box Rotation
 		sponza_elements[sponza_elements.size() - 1].set_rotation_y(bonobo::two_pi * box_rotation);
 
 		// TRAA vars
@@ -878,10 +888,10 @@ edan35::Assignment2::run()
 
 		// Pass 1-3: Deferred Shading
 		//debugLastTime = GetTimeMilliseconds();
-		bonobo::beginTimeQuery(time_query);
+		bonobo::beginTimeQuery(deferred_time_query);
 		Deferred_Shading();
 		//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
-		bonobo::endTimeQuery(time_query, ddeltatimeDeferred);
+		bonobo::endTimeQuery(deferred_time_query);
 
 		if (save && save_both)
 		{
@@ -893,14 +903,14 @@ edan35::Assignment2::run()
 			bonobo::beginTimeQuery(sobel_time_query);
 			Sobel(use_sobel);
 			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(sobel_time_query, ddeltatimeSobel);
+			bonobo::endTimeQuery(sobel_time_query);
 
 			// Temporal Anti Aliasing modified
 			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(time_query);
+			//bonobo::beginTimeQuery(temporal_time_query);
 			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
 			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
+			//bonobo::endTimeQuery(temporal_time_query, ddeltatimeTemporal);
 
 			std::string file_name(filename);
 			file_name += "_both_improved_" + samples_string.str();
@@ -908,10 +918,10 @@ edan35::Assignment2::run()
 
 			// Temporal Anti Aliasing from Inside
 			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(time_query);
+			bonobo::beginTimeQuery(temporal_time_query);
 			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
 			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
+			bonobo::endTimeQuery(temporal_time_query);
 
 			file_name = std::string(filename);
 			file_name += "_both_no_improved_" + samples_string.str();
@@ -928,30 +938,31 @@ edan35::Assignment2::run()
 		}
 		else
 		{
-			// Pass: Sobel
-			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(sobel_time_query);
-			Sobel(use_sobel);
-			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(sobel_time_query, ddeltatimeSobel);
-
 			if (use_sobel)
 			{
+				// Pass: Sobel
+				//debugLastTime = GetTimeMilliseconds();
+				bonobo::beginTimeQuery(sobel_time_query);
+				Sobel(use_sobel);
+				//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+				bonobo::endTimeQuery(sobel_time_query);
+
 				// Temporal Anti Aliasing modified
 				//debugLastTime = GetTimeMilliseconds();
-				bonobo::beginTimeQuery(time_query);
+				bonobo::beginTimeQuery(temporal_time_query);
 				Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
 				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-				bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
+				bonobo::endTimeQuery(temporal_time_query);
 			}
 			else
 			{
+				ddeltatimeSobel = 0.0;
 				// Temporal Anti Aliasing from Inside
 				//debugLastTime = GetTimeMilliseconds();
-				bonobo::beginTimeQuery(time_query);
+				bonobo::beginTimeQuery(temporal_time_query);
 				Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
 				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-				bonobo::endTimeQuery(time_query, ddeltatimeTemporal);
+				bonobo::endTimeQuery(temporal_time_query);
 			}
 		}
 
@@ -1146,6 +1157,19 @@ edan35::Assignment2::run()
 		GLStateInspection::View::Render();
 		Log::View::Render();
 
+		// Collect Timers
+		bonobo::collectTimeQuery(temporal_time_query, ddeltatimeTemporal);
+		bonobo::collectTimeQuery(deferred_time_query, ddeltatimeDeferred);
+		if (use_sobel)
+		{
+			bonobo::collectTimeQuery(sobel_time_query, ddeltatimeSobel);
+		}
+		else
+		{
+			ddeltatimeSobel = 0.0;
+		}
+		
+
 		bool opened = ImGui::Begin("Render Time", nullptr, ImVec2(120, 50), -1.0f, 0);
 		if (opened)
 		{
@@ -1178,7 +1202,7 @@ edan35::Assignment2::run()
 				ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
 				ImGui::Checkbox("Pause sphere", &is_sphere_paused);
 				ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 1000.0f);
-				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 10.0f);
+				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 4.0f);
 				ImGui::SliderFloat3("Sphere Home Position", glm::value_ptr(sphere_pos), -2000.0f, 2000.0f);
 			}
 			ImGui::End();
@@ -1240,6 +1264,9 @@ edan35::Assignment2::run()
 
 		lastTime = nowTime;
 	}
+
+	bonobo::destroyTimeQuery(temporal_time_query);
+	bonobo::destroyTimeQuery(sobel_time_query);
 
 	glDeleteProgram(temporal_for_Sobel_shader);
 	temporal_for_Sobel_shader = 0u;

@@ -9,8 +9,6 @@ uniform sampler2D current_texture;
 
 uniform sampler2D depth_texture;
 uniform sampler2D velocity_texture;
-uniform sampler2D diffuse_texture;
-uniform sampler2D specular_texture;
 
 uniform sampler2D sobel_texture;
 
@@ -87,6 +85,7 @@ in VS_OUT {
 
 layout (location = 0) out vec4 current_history_texture;
 layout (location = 1) out vec4 temporal_output;
+layout (location = 2) out float current_depth_history;
 
 // From http://glampert.com/2014/01-26/visualizing-the-depth-buffer/
 float linear_depth(float depth) {
@@ -191,14 +190,6 @@ void main()
 			depth_min = min(depth_min, depth);
 			depth_max = min(depth_max, depth);
 			depth_avg += linear_depth(depth);
-			//sobel_step = step(p.w + TIE_BREAKER_EPSILON, sobel);
-
-			//test_step = step(p.z, depth + TIE_BREAKER_EPSILON); // closest pixel
-
-			// Test look for the pixel with the highest sobel value
-			//test_step =  step(p.w + TIE_BREAKER_EPSILON, sobel);
-
-			//p.xyzw = test_step * p.xyzw +  (1.0 - test_step) * vec4(p_uv.x, p_uv.y, depth, sobel); 
 
 			sobel_avg += sobel;
 
@@ -277,16 +268,22 @@ void main()
 	// pseudo depth variance
 	float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
 	max_distance_depth = max(max_distance_depth, 0.00002);
-	float depth_variance = abs(linear_depth(current_depth) - (depth_avg)) / max_distance_depth;
+	float linear_current_depth = linear_depth(current_depth);
+	float depth_variance = abs(linear_current_depth - depth_avg) / max_distance_depth;
 	depth_variance = depth_variance * depth_variance;
 	//depth_variance = 0.0;
 
+	// pseudo temporal depth variance
+	float depth_temporal_variance = abs(depth_avg - linear_depth(texture(depth_history_texture, fs_in.texcoord).x)) / max_distance_depth;
+	depth_temporal_variance = depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
+
+	//depth_temporal_variance = 0.0;
 
 	// Mix min-max averaging
 #ifdef USE_SOBEL_CROSS
 
 	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
-	sobel_avg = clamp(sobel_avg + depth_variance, 0.0, 1.0);
+	sobel_avg = clamp(sobel_avg + depth_variance + depth_temporal_variance, 0.0, 1.0);
 	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
 	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
 	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
@@ -302,7 +299,7 @@ void main()
 
 	vec4 c_in = texture(current_texture, j_uv.xy);
 
-	float final_mix_val = clamp(sobel_avg + depth_variance, 0.0, 1.0);
+	float final_mix_val = clamp(sobel_avg, 0.0, 1.0);
 
 	cn_min = mix(c_in, cn_min, final_mix_val);
 	cn_max = mix(c_in, cn_max, final_mix_val);
@@ -327,7 +324,10 @@ void main()
 	float k_feedback = mix(k_feedback_min, k_feedback_max, clamp(unbiased_weight_sqr, 0.0, 1.0));
 
 
+	current_depth_history = current_depth;
 	current_history_texture = mix(c_in, c_hist_constrained, k_feedback);
 	temporal_output.xyzw = current_history_texture.xyzw;
 	//temporal_output.xyz = vec3(clamp( unbiased_weight_sqr + depth_variance, 0.0, 1.0));
+	//temporal_output.xyz = vec3(depth_temporal_variance);
+	//temporal_output.xyz = vec3(sobel_avg);
 }

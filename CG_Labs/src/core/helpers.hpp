@@ -192,10 +192,20 @@ namespace bonobo
 	//! @param [in] where to store query id
 	void beginTimeQuery(GLuint &query);
 
+	//! \brief Stop timer
+	//! 
+	//! @param [in] where the query id is stored
+	void endTimeQuery(const GLuint &query);
+
 	//! \brief Get the time elapsed since the query started
 	//! 
 	//! @param [in] where the query id is stored
 	//! @param [in] where to store the time elapsed, in miliseconds
 	//! @param [in] if we wait to make sure the results are available
-	void endTimeQuery(const GLuint &query, double &time, const bool wait_results = false);
+	void collectTimeQuery(const GLuint &query, double &time, const bool wait_results = false);
+
+	//! \brief Get the time elapsed since the query started
+	//! 
+	//! @param [in] where the query id is stored
+	void destroyTimeQuery(GLuint &query);
 }

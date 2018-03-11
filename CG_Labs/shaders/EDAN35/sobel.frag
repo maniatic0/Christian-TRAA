@@ -3,7 +3,6 @@
 uniform sampler2D deferred_texture;
 uniform sampler2D diffuse_texture;
 uniform sampler2D depth_texture;
-uniform sampler2D specular_texture;
 
 uniform vec2 inv_res;
 uniform float z_near;
@@ -87,8 +86,7 @@ float sobel(vec2 uv) {
         	pos = uv + vec2((i-1) * inv_res.x, (j-1) * inv_res.y);
             I[i][j] = luminance(diffuse_texture, pos);
             D[i][j] = luminance(deferred_texture, pos);
-            //R[i][j] = luminance(specular_texture, pos);
-            J[i][j] = linear_depth(texture2D(depth_texture, pos, 0).x);
+            J[i][j] = linear_depth(texture(depth_texture, pos).x);
 	    }
 	}
 
@@ -102,21 +100,12 @@ float sobel(vec2 uv) {
 
 	float f = sqrt(SQR(fx)+ SQR(fy));
 
-	//float rx = dot(sx[0], R[0]) + dot(sx[1], R[1]) + dot(sx[2], R[2]); 
-	//float ry = dot(sy[0], R[0]) + dot(sy[1], R[1]) + dot(sy[2], R[2]);
-
-	//float r = sqrt(pow(rx, 2.0)+pow(ry, 2.0));
-
-	//r = sqrt(r);
-
 	float hx = dot(sx[0], J[0]) + dot(sx[1], J[1]) + dot(sx[2], J[2]); 
 	float hy = dot(sy[0], J[0]) + dot(sy[1], J[1]) + dot(sy[2], J[2]);
 
 	float h = sqrt(SQR(hx)+ SQR(hy));
 
-	//h = sqrt(h);
-
-	g = (mix(g, f, 0.7) + h /*+ r*/);
+	g = (mix(g, f, 0.7) + h);
 	g = clamp(g, 0.0, 1.0);
 	g = smoothstep(0.0, 1.0, g);
 	g = sqrt(g);

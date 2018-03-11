@@ -9,7 +9,6 @@ uniform sampler2D current_texture;
 uniform sampler2D depth_texture;
 uniform sampler2D velocity_texture;
 uniform sampler2D diffuse_texture;
-uniform sampler2D specular_texture;
 
 uniform vec2 inv_res;
 uniform mat4 jitter;

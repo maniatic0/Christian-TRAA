@@ -679,13 +679,20 @@ void bonobo::saveConfig(std::string file_name,
 
 void bonobo::beginTimeQuery(GLuint &query)
 {
-	glGenQueries(1, &query);
+	if (query == 0u)
+	{
+		glGenQueries(1, &query);
+	}
 	glBeginQuery(GL_TIME_ELAPSED, query);
 }
 
-void bonobo::endTimeQuery(const GLuint &query, double &time, const bool wait_results)
+void bonobo::endTimeQuery(const GLuint &query)
 {
 	glEndQuery(GL_TIME_ELAPSED);
+}
+
+void bonobo::collectTimeQuery(const GLuint & query, double & time, const bool wait_results)
+{
 	GLint done = 0;
 	while (wait_results && !done) {
 		glGetQueryObjectiv(query, GL_QUERY_RESULT_AVAILABLE, &done);
@@ -693,4 +700,10 @@ void bonobo::endTimeQuery(const GLuint &query, double &time, const bool wait_res
 	GLuint64 elapsed_time;
 	glGetQueryObjectui64v(query, GL_QUERY_RESULT, &elapsed_time);
 	time = static_cast<double>(elapsed_time) / 1000000.0; // convert from nanoseconds
+}
+
+void bonobo::destroyTimeQuery(GLuint & query)
+{
+	glDeleteQueries(1, &query);
+	query = 0u;
 }
