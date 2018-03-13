@@ -133,6 +133,11 @@ Node::set_translation(glm::vec3 const& translation)
 	_translation = translation;
 }
 
+glm::vec3 Node::get_translation()
+{
+	return _translation;
+}
+
 void
 Node::translate(glm::vec3 const& v)
 {
@@ -166,7 +171,12 @@ Node::get_transform() const
 	return ans;
 }
 
-glm::vec3 Node::getRotations() {
+void Node::set_rotation(glm::vec3 const & rotation)
+{
+	_rotation = rotation;
+}
+
+glm::vec3 Node::get_rotation() {
 	return _rotation;
 }
 

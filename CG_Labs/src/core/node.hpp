@@ -112,6 +112,9 @@ public:
 	//! @param [in] translation new translation vector
 	void set_translation(glm::vec3 const& translation);
 
+	//! \brief Gets the current translation.
+	glm::vec3 get_translation();
+
 	//! \brief Translate this node.
 	//!
 	//! @param [in] v translation vector to be added to the node's
@@ -175,10 +178,15 @@ public:
 	//!         transformations; this is the model matrix of this node
 	glm::mat4x4 get_transform() const;
 
+	//! \brief Reset the rotation to a new value.
+	//!
+	//! @param [in] rotation new rotation vector
+	void set_rotation(glm::vec3 const& rotation);
+
 	//! \brief Return angles of rotations of this node.
 	//!
 	//! @return Return angles of rotations of this node
-	glm::vec3 getRotations();
+	glm::vec3 get_rotation();
 
 	//! \brief Run update function from node.
 	virtual void update(InputHandler* inputHandler, const float& dt);

@@ -421,6 +421,11 @@ edan35::Assignment2::run()
 	float imgui_temp[4] = { lower_corner.x, lower_corner.y, upper_corner.x, upper_corner.y };
 	bool show_save_area = false;
 
+	// Ghosting Test Vars
+	auto const kMaxBothSaveSamples = 200;
+	std::vector<glm::vec3> translations (kMaxBothSaveSamples);
+	std::vector<glm::vec3> rotations(kMaxBothSaveSamples);
+
 	// Accumulation Buffer Variables
 	float accumulation_jitter_spread = 1.0f;
 
@@ -843,6 +848,98 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 	};
 
+	auto const AccumulationBuffer = [
+			&accumulation_samples, &mCamera,
+			&accumulation_jitter_spread, &currentJitter,
+			&windowInverseResolution, &Deferred_Shading,
+			&accumulation_fbo, &accumulation_shader,
+			&window_size, &bind_texture_with_sampler,
+			&deferred_shading_texture, &default_sampler,
+			&resolve_accumulation_shader, &accumulation_texture
+	]() {
+
+		const float samples_inverse = 1.0 / static_cast<float>(accumulation_samples);
+
+		auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
+			glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
+		};
+
+		float old_frame_count = mCamera.frameCount;
+		mCamera.frameCount = -1;
+		float old_jitter_spread = mCamera.jitterSpread;
+		mCamera.jitterSpread = accumulation_jitter_spread;
+		bool old_jittered_projection = mCamera.jitterProjection;
+		mCamera.jitterProjection = true;
+
+		for (size_t i = 0; i < accumulation_samples; i++)
+		{
+			currentJitter = mCamera.UpdateProjection(windowInverseResolution, accumulation_samples);
+			Deferred_Shading();
+
+			glFinish();
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_ONE, GL_ONE);
+
+			//
+			// Pass: Accumulation
+			//
+			glBindFramebuffer(GL_FRAMEBUFFER, accumulation_fbo);
+			GLenum const accumulation_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+			glDrawBuffers(1, accumulation_draw_buffers);
+			auto const status_accumulation_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+			if (status_accumulation_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
+				LogError("Something went wrong with framebuffer %u", accumulation_fbo);
+			glUseProgram(accumulation_shader);
+
+			glViewport(0, 0, window_size.x, window_size.y);
+
+			if (i == 0) // Clear the things from before
+			{
+				glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+				glClear(GL_COLOR_BUFFER_BIT);
+			}
+
+
+			accumulation_set_uniforms(accumulation_shader);
+
+			bind_texture_with_sampler(GL_TEXTURE_2D, 0, accumulation_shader, "deferred_texture", deferred_shading_texture, default_sampler);
+
+			GLStateInspection::CaptureSnapshot("Accumulation Pass");
+
+			bonobo::drawFullscreen();
+
+			glBindSampler(0, 0u);
+			glUseProgram(0u);
+
+			glDisable(GL_BLEND);
+		}
+		mCamera.frameCount = old_frame_count;
+		mCamera.jitterSpread = old_jitter_spread;
+		mCamera.jitterProjection = old_jittered_projection;
+
+		//
+		// Pass: Accumulation Resolve
+		//
+		glFinish();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+		glUseProgram(resolve_accumulation_shader);
+		glViewport(0, 0, window_size.x, window_size.y);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_accumulation_shader, "accumulation_texture", accumulation_texture, default_sampler);
+
+		GLStateInspection::CaptureSnapshot("Accumulation Resolve Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+	};
+
+
+
+
 	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
 		nowTime = GetTimeMilliseconds();
 		ddeltatime = nowTime - lastTime;
@@ -886,17 +983,31 @@ edan35::Assignment2::run()
 		windowInverseResolution.y = 1.0f / static_cast<float>(window_size.y);
 		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 
-		// Pass 1-3: Deferred Shading
-		//debugLastTime = GetTimeMilliseconds();
-		bonobo::beginTimeQuery(deferred_time_query);
-		Deferred_Shading();
-		//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
-		bonobo::endTimeQuery(deferred_time_query);
-
 		if (save && save_both)
 		{
+			// Pass 1-3: Deferred Shading
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(deferred_time_query);
+			Deferred_Shading();
+			//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(deferred_time_query);
+
+			translations[current_samples] = sponza_elements[sponza_elements.size() - 2].get_translation();
+			rotations[current_samples] = sponza_elements[sponza_elements.size() - 2].get_rotation();
+
+			// Temporal Anti Aliasing from Inside
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(temporal_time_query);
+			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
+			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(temporal_time_query);
+
 			std::ostringstream samples_string;
 			samples_string << std::internal << std::setfill('0') << std::setw(4) << std::to_string(current_samples);
+			std::string file_name;
+
+			file_name = std::string(filename) + "_both_" + samples_string.str() + "_no_improved";
+			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			// Pass: Sobel
 			//debugLastTime = GetTimeMilliseconds();
@@ -910,34 +1021,46 @@ edan35::Assignment2::run()
 			//bonobo::beginTimeQuery(temporal_time_query);
 			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
 			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-			//bonobo::endTimeQuery(temporal_time_query, ddeltatimeTemporal);
-
-			std::string file_name(filename);
-			file_name += "_both_improved_" + samples_string.str();
-			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
-
-			// Temporal Anti Aliasing from Inside
-			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(temporal_time_query);
-			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
-			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(temporal_time_query);
-
-			file_name = std::string(filename);
-			file_name += "_both_no_improved_" + samples_string.str();
+			file_name = std::string(filename) + "_both_" + samples_string.str() + "_improved";
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			current_samples++;
 
 			if (current_samples >= both_test_samples)
 			{
+
+				// Generate Accumulation Buffer per saved frame
+				for (size_t i = 0; i < both_test_samples; i++)
+				{
+					samples_string.clear();
+					samples_string.str("");
+
+					// reload position
+					sponza_elements[sponza_elements.size() - 2].set_translation(translations[i]);
+					sponza_elements[sponza_elements.size() - 2].set_rotation(rotations[i]);
+
+					samples_string << std::internal << std::setfill('0') << std::setw(4) << std::to_string(i);
+
+					// Accumulation Buffer
+					AccumulationBuffer();
+					file_name = std::string(filename) + "_both_" + samples_string.str() + "_truth";
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
+				}
+
+				current_samples = 0;
 				save = false;
 				save_both = false;
 			}
-
 		}
 		else
 		{
+			// Pass 1-3: Deferred Shading
+			//debugLastTime = GetTimeMilliseconds();
+			bonobo::beginTimeQuery(deferred_time_query);
+			Deferred_Shading();
+			//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
+			bonobo::endTimeQuery(deferred_time_query);
+
 			if (use_sobel)
 			{
 				// Pass: Sobel
@@ -989,90 +1112,10 @@ edan35::Assignment2::run()
 					}
 
 					// Save Accumulation Buffer
-#pragma region ACCUMULATION_SAVE
-					const float samples_inverse = 1.0 / static_cast<float>(accumulation_samples);
-
-					auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
-						glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
-					};
-
-					float old_frame_count = mCamera.frameCount;
-					mCamera.frameCount = -1;
-					float old_jitter_spread = mCamera.jitterSpread;
-					mCamera.jitterSpread = accumulation_jitter_spread;
-					bool old_jittered_projection = mCamera.jitterProjection;
-					mCamera.jitterProjection = true;
-
-					for (size_t i = 0; i < accumulation_samples; i++)
-					{
-						currentJitter = mCamera.UpdateProjection(windowInverseResolution, accumulation_samples);
-						Deferred_Shading();
-
-						glFinish();
-						glEnable(GL_BLEND);
-						glBlendFunc(GL_ONE, GL_ONE);
-
-						//
-						// Pass: Accumulation
-						//
-						glBindFramebuffer(GL_FRAMEBUFFER, accumulation_fbo);
-						GLenum const accumulation_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
-						glDrawBuffers(1, accumulation_draw_buffers);
-						auto const status_accumulation_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-						if (status_accumulation_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
-							LogError("Something went wrong with framebuffer %u", accumulation_fbo);
-						glUseProgram(accumulation_shader);
-
-						glViewport(0, 0, window_size.x, window_size.y);
-
-						if (i == 0) // Clear the things from before
-						{
-							glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-							glClear(GL_COLOR_BUFFER_BIT);
-						}
-
-
-						accumulation_set_uniforms(accumulation_shader);
-
-						bind_texture_with_sampler(GL_TEXTURE_2D, 0, accumulation_shader, "deferred_texture", deferred_shading_texture, default_sampler);
-
-						GLStateInspection::CaptureSnapshot("Accumulation Pass");
-
-						bonobo::drawFullscreen();
-
-						glBindSampler(0, 0u);
-						glUseProgram(0u);
-
-						glDisable(GL_BLEND);
-					}
-					mCamera.frameCount = old_frame_count;
-					mCamera.jitterSpread = old_jitter_spread;
-					mCamera.jitterProjection = old_jittered_projection;
-
-					//
-					// Pass: Accumulation Resolve
-					//
-					glFinish();
-					glBindFramebuffer(GL_FRAMEBUFFER, 0u);
-					glUseProgram(resolve_accumulation_shader);
-					glViewport(0, 0, window_size.x, window_size.y);
-					glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-					glClear(GL_COLOR_BUFFER_BIT);
-
-					bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_accumulation_shader, "accumulation_texture", accumulation_texture, default_sampler);
-
-					GLStateInspection::CaptureSnapshot("Accumulation Resolve Pass");
-
-					bonobo::drawFullscreen();
-
-					glBindSampler(0, 0u);
-					glUseProgram(0u);
-
-
+					AccumulationBuffer();
 					std::string file_name(filename);
 					file_name += "_ground_truth";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
-#pragma endregion
 
 					// Save No AA version
 #pragma region NO_AA_SAVE
@@ -1237,7 +1280,7 @@ edan35::Assignment2::run()
 						accumulation_samples, accumulation_jitter_spread,
 						lower_corner, upper_corner);
 				}
-				ImGui::SliderInt("Both Test Samples", &both_test_samples, 1, 200);
+				ImGui::SliderInt("Both Test Samples", &both_test_samples, 1, kMaxBothSaveSamples);
 				if (ImGui::Button("Save Both"))
 				{
 					save = true;
