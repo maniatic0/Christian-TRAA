@@ -15,8 +15,20 @@ function [ mse, peaksnr, snr, ssimval, ssimmap, ...
 mse = immse(Test_Image, Reference);
 [peaksnr, snr] = psnr(Test_Image, Reference);
 [ssimval, ssimmap] = ssim(Test_Image, Reference);
-niqeI = niqe(Test_Image);
-niqeRef = niqe(Reference);
+try
+    niqeI = niqe(Test_Image);
+catch
+    warning("Niqe failed for Test_Image")
+    niqeI = NaN;
+end
+
+
+try
+    niqeRef = niqe(Reference);
+catch
+    warning("Niqe failed for Reference")
+    niqeRef = NaN;
+end
 brisqueI = brisque(Test_Image);
 brisqueRef = brisque(Reference);
 
