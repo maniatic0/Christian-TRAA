@@ -656,9 +656,18 @@ void bonobo::saveConfig(std::string file_name,
 	const bool &using_sobel, FPSCameraf &camera,
 	const float &k_feedback_min, const float &k_feedback_max,
 	const int &sample_amount, const float &accumulation_jitter_spread,
-	const glm::vec2 &lower_corner, const glm::vec2 &upper_corner)
+	const glm::vec2 &lower_corner, const glm::vec2 &upper_corner,
+	const bool &ghosting_test, const int &ghosting_test_amount)
 {
 	std::ofstream log_file;
+
+	if (ghosting_test)
+	{
+		log_file.open(config::resources_path(file_name + "_log_gt.txt"));
+		log_file << ghosting_test_amount << std::endl;
+		log_file.close();
+	}
+
 	file_name += "_log.txt";
 	log_file.open(config::resources_path(file_name));
 	log_file << "Scene Information" << std::endl;

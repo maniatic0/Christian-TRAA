@@ -181,11 +181,14 @@ namespace bonobo
 	//! @param [in] accumulation_jitter_spread spread of jitter for the accumulation buffer
 	//! @param [in] lower_corner lower corner of the save area
 	//! @param [in] upper_corner upper corner of the save area
+	//! @param [in] ghosting_test if this is a ghosting test
+	//! @param [in] ghosting_test_amount amount of samples taken in ghosting test
 	void saveConfig(std::string file_name,
 		const bool &using_sobel, FPSCameraf &camera,
 		const float &k_feedback_min, const float &k_feedback_max,
 		const int &sample_amount, const float &accumulation_jitter_spread,
-		const glm::vec2 &lower_corner, const glm::vec2 &upper_corner);
+		const glm::vec2 &lower_corner, const glm::vec2 &upper_corner,
+		const bool &ghosting_test = false, const int &ghosting_test_amount = 0);
 
 	//! \brief Insert time query inGPU pipeline
 	//! 

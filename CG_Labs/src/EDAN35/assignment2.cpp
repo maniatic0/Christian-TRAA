@@ -1245,7 +1245,7 @@ edan35::Assignment2::run()
 				ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
 				ImGui::Checkbox("Pause sphere", &is_sphere_paused);
 				ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 1000.0f);
-				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 4.0f);
+				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 2.0f);
 				ImGui::SliderFloat3("Sphere Home Position", glm::value_ptr(sphere_pos), -2000.0f, 2000.0f);
 			}
 			ImGui::End();
@@ -1292,7 +1292,7 @@ edan35::Assignment2::run()
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,
-						lower_corner, upper_corner);
+						lower_corner, upper_corner, true, both_test_samples);
 				}
 			}
 			ImGui::End();
