@@ -1,2004 +1,2004 @@
 Name: ghosting_test
-Timestamp(dd/mm/yyyy): 14/03/2018 21:47:34.997
+Timestamp(dd/mm/yyyy): 15/03/2018 23:09:29.064
 Ghosting Test Found: ghosting_test\ghosting_test_log_gt.txt
 Ghosting Test Amount: 100
 
 
 Test Number: 0000
 Ground Truth: ghosting_test\ghosting_test_both_0000_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0000_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0000_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0000_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 44.779294
+ The BRISQUE score of Master Thesis Temporal is 44.779294
  The BRISQUE score of Reference is 44.687400
- The BRISQUE score of Not Improved Temporal is 44.775023
- The BRISQUE score delta between Improved Temporal and Reference is +0.091894
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.004271 
+ The BRISQUE score of Uncharted Temporal is 44.775023
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.091894
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.004271 
 
 
 Test Number: 0001
 Ground Truth: ghosting_test\ghosting_test_both_0001_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0001_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0001_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0001_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 44.769744
+ The BRISQUE score of Master Thesis Temporal is 44.769744
  The BRISQUE score of Reference is 44.648618
- The BRISQUE score of Not Improved Temporal is 44.760164
- The BRISQUE score delta between Improved Temporal and Reference is +0.121127
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.009580 
+ The BRISQUE score of Uncharted Temporal is 44.760164
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.121127
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.009580 
 
 
 Test Number: 0002
 Ground Truth: ghosting_test\ghosting_test_both_0002_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0002_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0002_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0002_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 44.797342
+ The BRISQUE score of Master Thesis Temporal is 44.797342
  The BRISQUE score of Reference is 44.689392
- The BRISQUE score of Not Improved Temporal is 44.771651
- The BRISQUE score delta between Improved Temporal and Reference is +0.107950
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.025691 
+ The BRISQUE score of Uncharted Temporal is 44.771651
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.107950
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.025691 
 
 
 Test Number: 0003
 Ground Truth: ghosting_test\ghosting_test_both_0003_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0003_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0003_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0003_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 45.123314
+ The BRISQUE score of Master Thesis Temporal is 45.123314
  The BRISQUE score of Reference is 44.948303
- The BRISQUE score of Not Improved Temporal is 45.066935
- The BRISQUE score delta between Improved Temporal and Reference is +0.175010
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.056379 
+ The BRISQUE score of Uncharted Temporal is 45.066935
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.175010
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.056379 
 
 
 Test Number: 0004
 Ground Truth: ghosting_test\ghosting_test_both_0004_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0004_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0004_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0004_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 45.720190
+ The BRISQUE score of Master Thesis Temporal is 45.720190
  The BRISQUE score of Reference is 45.280553
- The BRISQUE score of Not Improved Temporal is 45.488963
- The BRISQUE score delta between Improved Temporal and Reference is +0.439637
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.231226 
+ The BRISQUE score of Uncharted Temporal is 45.488963
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.439637
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.231226 
 
 
 Test Number: 0005
 Ground Truth: ghosting_test\ghosting_test_both_0005_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0005_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0005_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0005_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 46.336362
+ The BRISQUE score of Master Thesis Temporal is 46.336362
  The BRISQUE score of Reference is 45.763310
- The BRISQUE score of Not Improved Temporal is 46.216125
- The BRISQUE score delta between Improved Temporal and Reference is +0.573052
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.120237 
+ The BRISQUE score of Uncharted Temporal is 46.216125
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.573052
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.120237 
 
 
 Test Number: 0006
 Ground Truth: ghosting_test\ghosting_test_both_0006_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0006_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0006_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0006_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 47.118889
+ The BRISQUE score of Master Thesis Temporal is 47.118889
  The BRISQUE score of Reference is 46.341227
- The BRISQUE score of Not Improved Temporal is 47.008418
- The BRISQUE score delta between Improved Temporal and Reference is +0.777662
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.110471 
+ The BRISQUE score of Uncharted Temporal is 47.008418
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.777662
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.110471 
 
 
 Test Number: 0007
 Ground Truth: ghosting_test\ghosting_test_both_0007_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0007_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0007_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0007_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is NaN
+ The NIQE score of Master Thesis Temporal is NaN
  The NIQE score of Reference is NaN
- The NIQE score of Not Improved Temporal is NaN
- The NIQE score delta between Improved Temporal and Reference is NaN
- The NIQE score delta between Improved Temporal and Not Improved Temporal is NaN 
+ The NIQE score of Uncharted Temporal is NaN
+ The NIQE score delta between Master Thesis Temporal and Reference is NaN
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is NaN 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 48.570588
+ The BRISQUE score of Master Thesis Temporal is 48.570588
  The BRISQUE score of Reference is 47.524897
- The BRISQUE score of Not Improved Temporal is 48.480067
- The BRISQUE score delta between Improved Temporal and Reference is +1.045691
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.090521 
+ The BRISQUE score of Uncharted Temporal is 48.480067
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.045691
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.090521 
 
 
 Test Number: 0008
 Ground Truth: ghosting_test\ghosting_test_both_0008_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0008_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0008_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0008_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 13.230153
+ The NIQE score of Master Thesis Temporal is 13.230153
  The NIQE score of Reference is 13.291574
- The NIQE score of Not Improved Temporal is 14.521865
- The NIQE score delta between Improved Temporal and Reference is -0.061421
- The NIQE score delta between Improved Temporal and Not Improved Temporal is -1.291713 
+ The NIQE score of Uncharted Temporal is 14.521865
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.061421
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.291713 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 49.752351
+ The BRISQUE score of Master Thesis Temporal is 49.752351
  The BRISQUE score of Reference is 48.717648
- The BRISQUE score of Not Improved Temporal is 49.863124
- The BRISQUE score delta between Improved Temporal and Reference is +1.034703
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.110773 
+ The BRISQUE score of Uncharted Temporal is 49.863124
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.034703
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.110773 
 
 
 Test Number: 0009
 Ground Truth: ghosting_test\ghosting_test_both_0009_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0009_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0009_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0009_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 17.036146
+ The NIQE score of Master Thesis Temporal is 17.036146
  The NIQE score of Reference is 14.606264
- The NIQE score of Not Improved Temporal is 18.335275
- The NIQE score delta between Improved Temporal and Reference is +2.429883
- The NIQE score delta between Improved Temporal and Not Improved Temporal is -1.299129 
+ The NIQE score of Uncharted Temporal is 18.335275
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.429883
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.299129 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 50.315609
+ The BRISQUE score of Master Thesis Temporal is 50.315609
  The BRISQUE score of Reference is 49.486852
- The BRISQUE score of Not Improved Temporal is 50.626385
- The BRISQUE score delta between Improved Temporal and Reference is +0.828757
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.310776 
+ The BRISQUE score of Uncharted Temporal is 50.626385
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.828757
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.310776 
 
 
 Test Number: 0010
 Ground Truth: ghosting_test\ghosting_test_both_0010_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0010_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0010_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0010_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 14.128708
+ The NIQE score of Master Thesis Temporal is 14.128708
  The NIQE score of Reference is 14.158803
- The NIQE score of Not Improved Temporal is 14.490383
- The NIQE score delta between Improved Temporal and Reference is -0.030095
- The NIQE score delta between Improved Temporal and Not Improved Temporal is -0.361675 
+ The NIQE score of Uncharted Temporal is 14.490383
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.030095
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -0.361675 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 51.241289
+ The BRISQUE score of Master Thesis Temporal is 51.241289
  The BRISQUE score of Reference is 50.497679
- The BRISQUE score of Not Improved Temporal is 51.344963
- The BRISQUE score delta between Improved Temporal and Reference is +0.743610
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.103674 
+ The BRISQUE score of Uncharted Temporal is 51.344963
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.743610
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.103674 
 
 
 Test Number: 0011
 Ground Truth: ghosting_test\ghosting_test_both_0011_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0011_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0011_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0011_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 15.680751
+ The NIQE score of Master Thesis Temporal is 15.680751
  The NIQE score of Reference is 13.326987
- The NIQE score of Not Improved Temporal is 14.810423
- The NIQE score delta between Improved Temporal and Reference is +2.353764
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.870328 
+ The NIQE score of Uncharted Temporal is 14.810423
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.353764
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.870328 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 51.272067
+ The BRISQUE score of Master Thesis Temporal is 51.272067
  The BRISQUE score of Reference is 50.896130
- The BRISQUE score of Not Improved Temporal is 51.405902
- The BRISQUE score delta between Improved Temporal and Reference is +0.375937
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.133835 
+ The BRISQUE score of Uncharted Temporal is 51.405902
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.375937
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.133835 
 
 
 Test Number: 0012
 Ground Truth: ghosting_test\ghosting_test_both_0012_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0012_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0012_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0012_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 15.413753
+ The NIQE score of Master Thesis Temporal is 15.413753
  The NIQE score of Reference is 13.694978
- The NIQE score of Not Improved Temporal is 15.745905
- The NIQE score delta between Improved Temporal and Reference is +1.718774
- The NIQE score delta between Improved Temporal and Not Improved Temporal is -0.332152 
+ The NIQE score of Uncharted Temporal is 15.745905
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.718774
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -0.332152 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 50.316154
+ The BRISQUE score of Master Thesis Temporal is 50.316154
  The BRISQUE score of Reference is 50.782516
- The BRISQUE score of Not Improved Temporal is 51.055153
- The BRISQUE score delta between Improved Temporal and Reference is -0.466362
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.738999 
+ The BRISQUE score of Uncharted Temporal is 51.055153
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.466362
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.738999 
 
 
 Test Number: 0013
 Ground Truth: ghosting_test\ghosting_test_both_0013_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0013_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0013_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0013_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 17.170899
+ The NIQE score of Master Thesis Temporal is 17.170899
  The NIQE score of Reference is 14.621608
- The NIQE score of Not Improved Temporal is 15.837868
- The NIQE score delta between Improved Temporal and Reference is +2.549291
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.333031 
+ The NIQE score of Uncharted Temporal is 15.837868
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.549291
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.333031 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 49.382941
+ The BRISQUE score of Master Thesis Temporal is 49.382941
  The BRISQUE score of Reference is 49.924845
- The BRISQUE score of Not Improved Temporal is 49.451332
- The BRISQUE score delta between Improved Temporal and Reference is -0.541904
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.068390 
+ The BRISQUE score of Uncharted Temporal is 49.451332
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.541904
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.068390 
 
 
 Test Number: 0014
 Ground Truth: ghosting_test\ghosting_test_both_0014_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0014_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0014_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0014_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 16.694675
+ The NIQE score of Master Thesis Temporal is 16.694675
  The NIQE score of Reference is 14.571843
- The NIQE score of Not Improved Temporal is 16.062186
- The NIQE score delta between Improved Temporal and Reference is +2.122832
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.632489 
+ The NIQE score of Uncharted Temporal is 16.062186
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.122832
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.632489 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 47.565577
+ The BRISQUE score of Master Thesis Temporal is 47.565577
  The BRISQUE score of Reference is 48.365904
- The BRISQUE score of Not Improved Temporal is 47.898962
- The BRISQUE score delta between Improved Temporal and Reference is -0.800327
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.333385 
+ The BRISQUE score of Uncharted Temporal is 47.898962
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.800327
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.333385 
 
 
 Test Number: 0015
 Ground Truth: ghosting_test\ghosting_test_both_0015_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0015_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0015_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0015_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 15.641880
+ The NIQE score of Master Thesis Temporal is 15.641880
  The NIQE score of Reference is 13.022563
- The NIQE score of Not Improved Temporal is 13.483124
- The NIQE score delta between Improved Temporal and Reference is +2.619317
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.158756 
+ The NIQE score of Uncharted Temporal is 13.483124
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.619317
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.158756 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 45.910405
+ The BRISQUE score of Master Thesis Temporal is 45.910405
  The BRISQUE score of Reference is 46.670066
- The BRISQUE score of Not Improved Temporal is 45.332679
- The BRISQUE score delta between Improved Temporal and Reference is -0.759661
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.577726 
+ The BRISQUE score of Uncharted Temporal is 45.332679
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.759661
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.577726 
 
 
 Test Number: 0016
 Ground Truth: ghosting_test\ghosting_test_both_0016_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0016_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0016_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0016_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.877710
+ The NIQE score of Master Thesis Temporal is 10.877710
  The NIQE score of Reference is 11.241531
- The NIQE score of Not Improved Temporal is 9.954636
- The NIQE score delta between Improved Temporal and Reference is -0.363821
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.923074 
+ The NIQE score of Uncharted Temporal is 9.954636
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.363821
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.923074 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 43.729898
+ The BRISQUE score of Master Thesis Temporal is 43.729898
  The BRISQUE score of Reference is 44.622704
- The BRISQUE score of Not Improved Temporal is 41.759678
- The BRISQUE score delta between Improved Temporal and Reference is -0.892806
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +1.970220 
+ The BRISQUE score of Uncharted Temporal is 41.759678
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.892806
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +1.970220 
 
 
 Test Number: 0017
 Ground Truth: ghosting_test\ghosting_test_both_0017_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0017_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0017_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0017_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.580038
+ The NIQE score of Master Thesis Temporal is 8.580038
  The NIQE score of Reference is 8.556960
- The NIQE score of Not Improved Temporal is 8.585279
- The NIQE score delta between Improved Temporal and Reference is +0.023078
- The NIQE score delta between Improved Temporal and Not Improved Temporal is -0.005241 
+ The NIQE score of Uncharted Temporal is 8.585279
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.023078
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -0.005241 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 42.108095
+ The BRISQUE score of Master Thesis Temporal is 42.108095
  The BRISQUE score of Reference is 42.831947
- The BRISQUE score of Not Improved Temporal is 39.615509
- The BRISQUE score delta between Improved Temporal and Reference is -0.723852
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +2.492585 
+ The BRISQUE score of Uncharted Temporal is 39.615509
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.723852
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +2.492585 
 
 
 Test Number: 0018
 Ground Truth: ghosting_test\ghosting_test_both_0018_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0018_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0018_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0018_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.797190
+ The NIQE score of Master Thesis Temporal is 8.797190
  The NIQE score of Reference is 7.587679
- The NIQE score of Not Improved Temporal is 7.631189
- The NIQE score delta between Improved Temporal and Reference is +1.209511
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.166002 
+ The NIQE score of Uncharted Temporal is 7.631189
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.209511
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.166002 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 44.913303
+ The BRISQUE score of Master Thesis Temporal is 44.913303
  The BRISQUE score of Reference is 40.342644
- The BRISQUE score of Not Improved Temporal is 37.997464
- The BRISQUE score delta between Improved Temporal and Reference is +4.570659
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +6.915838 
+ The BRISQUE score of Uncharted Temporal is 37.997464
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +4.570659
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +6.915838 
 
 
 Test Number: 0019
 Ground Truth: ghosting_test\ghosting_test_both_0019_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0019_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0019_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0019_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 7.689040
+ The NIQE score of Master Thesis Temporal is 7.689040
  The NIQE score of Reference is 5.943930
- The NIQE score of Not Improved Temporal is 6.611815
- The NIQE score delta between Improved Temporal and Reference is +1.745109
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.077225 
+ The NIQE score of Uncharted Temporal is 6.611815
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.745109
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.077225 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 43.755478
+ The BRISQUE score of Master Thesis Temporal is 43.755478
  The BRISQUE score of Reference is 40.064516
- The BRISQUE score of Not Improved Temporal is 38.985866
- The BRISQUE score delta between Improved Temporal and Reference is +3.690962
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +4.769612 
+ The BRISQUE score of Uncharted Temporal is 38.985866
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.690962
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +4.769612 
 
 
 Test Number: 0020
 Ground Truth: ghosting_test\ghosting_test_both_0020_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0020_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0020_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0020_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 6.568991
+ The NIQE score of Master Thesis Temporal is 6.568991
  The NIQE score of Reference is 5.391359
- The NIQE score of Not Improved Temporal is 5.838312
- The NIQE score delta between Improved Temporal and Reference is +1.177633
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.730679 
+ The NIQE score of Uncharted Temporal is 5.838312
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.177633
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.730679 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 37.741897
+ The BRISQUE score of Master Thesis Temporal is 37.741897
  The BRISQUE score of Reference is 42.719666
- The BRISQUE score of Not Improved Temporal is 38.500938
- The BRISQUE score delta between Improved Temporal and Reference is -4.977768
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -0.759040 
+ The BRISQUE score of Uncharted Temporal is 38.500938
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.977768
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.759040 
 
 
 Test Number: 0021
 Ground Truth: ghosting_test\ghosting_test_both_0021_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0021_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0021_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0021_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 6.770082
+ The NIQE score of Master Thesis Temporal is 6.770082
  The NIQE score of Reference is 5.258177
- The NIQE score of Not Improved Temporal is 5.992075
- The NIQE score delta between Improved Temporal and Reference is +1.511905
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.778007 
+ The NIQE score of Uncharted Temporal is 5.992075
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.511905
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.778007 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.179506
+ The BRISQUE score of Master Thesis Temporal is 32.179506
  The BRISQUE score of Reference is 41.325082
- The BRISQUE score of Not Improved Temporal is 29.000086
- The BRISQUE score delta between Improved Temporal and Reference is -9.145576
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +3.179420 
+ The BRISQUE score of Uncharted Temporal is 29.000086
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -9.145576
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +3.179420 
 
 
 Test Number: 0022
 Ground Truth: ghosting_test\ghosting_test_both_0022_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0022_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0022_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0022_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 7.625716
+ The NIQE score of Master Thesis Temporal is 7.625716
  The NIQE score of Reference is 5.774059
- The NIQE score of Not Improved Temporal is 6.195653
- The NIQE score delta between Improved Temporal and Reference is +1.851657
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.430063 
+ The NIQE score of Uncharted Temporal is 6.195653
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.851657
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.430063 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 37.395009
+ The BRISQUE score of Master Thesis Temporal is 37.395009
  The BRISQUE score of Reference is 35.250780
- The BRISQUE score of Not Improved Temporal is 29.938354
- The BRISQUE score delta between Improved Temporal and Reference is +2.144228
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +7.456654 
+ The BRISQUE score of Uncharted Temporal is 29.938354
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.144228
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +7.456654 
 
 
 Test Number: 0023
 Ground Truth: ghosting_test\ghosting_test_both_0023_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0023_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0023_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0023_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.411575
+ The NIQE score of Master Thesis Temporal is 8.411575
  The NIQE score of Reference is 6.541857
- The NIQE score of Not Improved Temporal is 6.941403
- The NIQE score delta between Improved Temporal and Reference is +1.869718
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.470172 
+ The NIQE score of Uncharted Temporal is 6.941403
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.869718
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.470172 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 41.755542
+ The BRISQUE score of Master Thesis Temporal is 41.755542
  The BRISQUE score of Reference is 27.750447
- The BRISQUE score of Not Improved Temporal is 36.008366
- The BRISQUE score delta between Improved Temporal and Reference is +14.005095
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +5.747176 
+ The BRISQUE score of Uncharted Temporal is 36.008366
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +14.005095
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +5.747176 
 
 
 Test Number: 0024
 Ground Truth: ghosting_test\ghosting_test_both_0024_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0024_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0024_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0024_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.267833
+ The NIQE score of Master Thesis Temporal is 8.267833
  The NIQE score of Reference is 6.911945
- The NIQE score of Not Improved Temporal is 7.433922
- The NIQE score delta between Improved Temporal and Reference is +1.355887
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.833911 
+ The NIQE score of Uncharted Temporal is 7.433922
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.355887
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.833911 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 39.054512
+ The BRISQUE score of Master Thesis Temporal is 39.054512
  The BRISQUE score of Reference is 30.497416
- The BRISQUE score of Not Improved Temporal is 37.249827
- The BRISQUE score delta between Improved Temporal and Reference is +8.557095
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +1.804685 
+ The BRISQUE score of Uncharted Temporal is 37.249827
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +8.557095
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +1.804685 
 
 
 Test Number: 0025
 Ground Truth: ghosting_test\ghosting_test_both_0025_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0025_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0025_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0025_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.752343
+ The NIQE score of Master Thesis Temporal is 8.752343
  The NIQE score of Reference is 6.953952
- The NIQE score of Not Improved Temporal is 7.661323
- The NIQE score delta between Improved Temporal and Reference is +1.798391
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.091021 
+ The NIQE score of Uncharted Temporal is 7.661323
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.798391
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.091021 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 34.560024
+ The BRISQUE score of Master Thesis Temporal is 34.560024
  The BRISQUE score of Reference is 30.927363
- The BRISQUE score of Not Improved Temporal is 36.162864
- The BRISQUE score delta between Improved Temporal and Reference is +3.632661
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -1.602840 
+ The BRISQUE score of Uncharted Temporal is 36.162864
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.632661
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.602840 
 
 
 Test Number: 0026
 Ground Truth: ghosting_test\ghosting_test_both_0026_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0026_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0026_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0026_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.044469
+ The NIQE score of Master Thesis Temporal is 9.044469
  The NIQE score of Reference is 6.963649
- The NIQE score of Not Improved Temporal is 7.674052
- The NIQE score delta between Improved Temporal and Reference is +2.080820
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.370417 
+ The NIQE score of Uncharted Temporal is 7.674052
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.080820
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.370417 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 31.514783
+ The BRISQUE score of Master Thesis Temporal is 31.514783
  The BRISQUE score of Reference is 30.549515
- The BRISQUE score of Not Improved Temporal is 30.650745
- The BRISQUE score delta between Improved Temporal and Reference is +0.965268
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.864038 
+ The BRISQUE score of Uncharted Temporal is 30.650745
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.965268
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.864038 
 
 
 Test Number: 0027
 Ground Truth: ghosting_test\ghosting_test_both_0027_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0027_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0027_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0027_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.229325
+ The NIQE score of Master Thesis Temporal is 8.229325
  The NIQE score of Reference is 6.773690
- The NIQE score of Not Improved Temporal is 7.560606
- The NIQE score delta between Improved Temporal and Reference is +1.455635
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.668720 
+ The NIQE score of Uncharted Temporal is 7.560606
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.455635
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.668720 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 25.813001
+ The BRISQUE score of Master Thesis Temporal is 25.813001
  The BRISQUE score of Reference is 32.374866
- The BRISQUE score of Not Improved Temporal is 25.482258
- The BRISQUE score delta between Improved Temporal and Reference is -6.561865
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.330744 
+ The BRISQUE score of Uncharted Temporal is 25.482258
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -6.561865
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.330744 
 
 
 Test Number: 0028
 Ground Truth: ghosting_test\ghosting_test_both_0028_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0028_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0028_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0028_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.012461
+ The NIQE score of Master Thesis Temporal is 8.012461
  The NIQE score of Reference is 6.496920
- The NIQE score of Not Improved Temporal is 7.435974
- The NIQE score delta between Improved Temporal and Reference is +1.515541
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.576487 
+ The NIQE score of Uncharted Temporal is 7.435974
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.515541
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.576487 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 11.619428
+ The BRISQUE score of Master Thesis Temporal is 11.619428
  The BRISQUE score of Reference is 33.236643
- The BRISQUE score of Not Improved Temporal is 23.012232
- The BRISQUE score delta between Improved Temporal and Reference is -21.617214
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -11.392804 
+ The BRISQUE score of Uncharted Temporal is 23.012232
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -21.617214
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -11.392804 
 
 
 Test Number: 0029
 Ground Truth: ghosting_test\ghosting_test_both_0029_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0029_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0029_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0029_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.768624
+ The NIQE score of Master Thesis Temporal is 8.768624
  The NIQE score of Reference is 6.487852
- The NIQE score of Not Improved Temporal is 7.740703
- The NIQE score delta between Improved Temporal and Reference is +2.280772
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.027921 
+ The NIQE score of Uncharted Temporal is 7.740703
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.280772
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.027921 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 6.499892
+ The BRISQUE score of Master Thesis Temporal is 6.499892
  The BRISQUE score of Reference is 31.877898
- The BRISQUE score of Not Improved Temporal is 17.658049
- The BRISQUE score delta between Improved Temporal and Reference is -25.378006
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is -11.158157 
+ The BRISQUE score of Uncharted Temporal is 17.658049
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -25.378006
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -11.158157 
 
 
 Test Number: 0030
 Ground Truth: ghosting_test\ghosting_test_both_0030_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0030_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0030_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0030_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.294680
+ The NIQE score of Master Thesis Temporal is 9.294680
  The NIQE score of Reference is 6.510515
- The NIQE score of Not Improved Temporal is 7.941225
- The NIQE score delta between Improved Temporal and Reference is +2.784165
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.353455 
+ The NIQE score of Uncharted Temporal is 7.941225
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.784165
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.353455 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 12.796536
+ The BRISQUE score of Master Thesis Temporal is 12.796536
  The BRISQUE score of Reference is 29.969494
- The BRISQUE score of Not Improved Temporal is 12.124204
- The BRISQUE score delta between Improved Temporal and Reference is -17.172958
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +0.672332 
+ The BRISQUE score of Uncharted Temporal is 12.124204
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -17.172958
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.672332 
 
 
 Test Number: 0031
 Ground Truth: ghosting_test\ghosting_test_both_0031_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0031_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0031_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0031_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.942069
+ The NIQE score of Master Thesis Temporal is 8.942069
  The NIQE score of Reference is 6.532258
- The NIQE score of Not Improved Temporal is 7.769304
- The NIQE score delta between Improved Temporal and Reference is +2.409810
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.172765 
+ The NIQE score of Uncharted Temporal is 7.769304
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.409810
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.172765 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 20.655260
+ The BRISQUE score of Master Thesis Temporal is 20.655260
  The BRISQUE score of Reference is 28.975857
- The BRISQUE score of Not Improved Temporal is 12.120048
- The BRISQUE score delta between Improved Temporal and Reference is -8.320597
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +8.535212 
+ The BRISQUE score of Uncharted Temporal is 12.120048
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -8.320597
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +8.535212 
 
 
 Test Number: 0032
 Ground Truth: ghosting_test\ghosting_test_both_0032_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0032_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0032_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0032_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.274526
+ The NIQE score of Master Thesis Temporal is 9.274526
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.410086
- The NIQE score delta between Improved Temporal and Reference is +2.758433
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.864440 
+ The NIQE score of Uncharted Temporal is 7.410086
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.758433
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.864440 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 17.770854
+ The BRISQUE score of Master Thesis Temporal is 17.770854
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 12.384820
- The BRISQUE score delta between Improved Temporal and Reference is -11.404861
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +5.386034 
+ The BRISQUE score of Uncharted Temporal is 12.384820
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -11.404861
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +5.386034 
 
 
 Test Number: 0033
 Ground Truth: ghosting_test\ghosting_test_both_0033_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0033_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0033_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0033_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.010177
+ The NIQE score of Master Thesis Temporal is 9.010177
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.545850
- The NIQE score delta between Improved Temporal and Reference is +2.494084
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.464327 
+ The NIQE score of Uncharted Temporal is 7.545850
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.494084
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.464327 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 13.482443
+ The BRISQUE score of Master Thesis Temporal is 13.482443
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.981870
- The BRISQUE score delta between Improved Temporal and Reference is -15.693272
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +1.500573 
+ The BRISQUE score of Uncharted Temporal is 11.981870
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -15.693272
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +1.500573 
 
 
 Test Number: 0034
 Ground Truth: ghosting_test\ghosting_test_both_0034_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0034_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0034_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0034_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.907567
+ The NIQE score of Master Thesis Temporal is 8.907567
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.382013
- The NIQE score delta between Improved Temporal and Reference is +2.391474
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.525554 
+ The NIQE score of Uncharted Temporal is 7.382013
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.391474
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.525554 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 22.407461
+ The BRISQUE score of Master Thesis Temporal is 22.407461
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.183065
- The BRISQUE score delta between Improved Temporal and Reference is -6.768254
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +11.224396 
+ The BRISQUE score of Uncharted Temporal is 11.183065
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -6.768254
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +11.224396 
 
 
 Test Number: 0035
 Ground Truth: ghosting_test\ghosting_test_both_0035_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0035_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0035_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0035_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.716130
+ The NIQE score of Master Thesis Temporal is 8.716130
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.104075
- The NIQE score delta between Improved Temporal and Reference is +2.200036
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.612054 
+ The NIQE score of Uncharted Temporal is 7.104075
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.200036
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.612054 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 19.134574
+ The BRISQUE score of Master Thesis Temporal is 19.134574
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.079320
- The BRISQUE score delta between Improved Temporal and Reference is -10.041141
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +9.055254 
+ The BRISQUE score of Uncharted Temporal is 10.079320
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -10.041141
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +9.055254 
 
 
 Test Number: 0036
 Ground Truth: ghosting_test\ghosting_test_both_0036_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0036_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0036_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0036_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.643164
+ The NIQE score of Master Thesis Temporal is 8.643164
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 6.949963
- The NIQE score delta between Improved Temporal and Reference is +2.127071
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.693201 
+ The NIQE score of Uncharted Temporal is 6.949963
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.127071
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.693201 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 18.803145
+ The BRISQUE score of Master Thesis Temporal is 18.803145
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.446057
- The BRISQUE score delta between Improved Temporal and Reference is -10.372570
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +9.357087 
+ The BRISQUE score of Uncharted Temporal is 9.446057
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -10.372570
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +9.357087 
 
 
 Test Number: 0037
 Ground Truth: ghosting_test\ghosting_test_both_0037_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0037_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0037_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0037_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.842855
+ The NIQE score of Master Thesis Temporal is 9.842855
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.006395
- The NIQE score delta between Improved Temporal and Reference is +3.326762
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.836460 
+ The NIQE score of Uncharted Temporal is 7.006395
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.326762
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.836460 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 20.949854
+ The BRISQUE score of Master Thesis Temporal is 20.949854
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.243263
- The BRISQUE score delta between Improved Temporal and Reference is -8.225861
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +11.706591 
+ The BRISQUE score of Uncharted Temporal is 9.243263
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -8.225861
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +11.706591 
 
 
 Test Number: 0038
 Ground Truth: ghosting_test\ghosting_test_both_0038_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0038_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0038_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0038_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.685060
+ The NIQE score of Master Thesis Temporal is 8.685060
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.266380
- The NIQE score delta between Improved Temporal and Reference is +2.168967
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.418680 
+ The NIQE score of Uncharted Temporal is 7.266380
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.168967
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.418680 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 21.798954
+ The BRISQUE score of Master Thesis Temporal is 21.798954
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.071912
- The BRISQUE score delta between Improved Temporal and Reference is -7.376761
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +12.727042 
+ The BRISQUE score of Uncharted Temporal is 9.071912
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -7.376761
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +12.727042 
 
 
 Test Number: 0039
 Ground Truth: ghosting_test\ghosting_test_both_0039_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0039_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0039_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0039_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.494847
+ The NIQE score of Master Thesis Temporal is 9.494847
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.107522
- The NIQE score delta between Improved Temporal and Reference is +2.978754
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.387325 
+ The NIQE score of Uncharted Temporal is 7.107522
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.978754
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.387325 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 24.437448
+ The BRISQUE score of Master Thesis Temporal is 24.437448
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.690336
- The BRISQUE score delta between Improved Temporal and Reference is -4.738266
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +15.747113 
+ The BRISQUE score of Uncharted Temporal is 8.690336
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.738266
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +15.747113 
 
 
 Test Number: 0040
 Ground Truth: ghosting_test\ghosting_test_both_0040_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0040_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0040_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0040_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.239992
+ The NIQE score of Master Thesis Temporal is 8.239992
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.128266
- The NIQE score delta between Improved Temporal and Reference is +1.723899
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.111726 
+ The NIQE score of Uncharted Temporal is 7.128266
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.723899
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.111726 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 20.229502
+ The BRISQUE score of Master Thesis Temporal is 20.229502
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.317324
- The BRISQUE score delta between Improved Temporal and Reference is -8.946213
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +11.912177 
+ The BRISQUE score of Uncharted Temporal is 8.317324
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -8.946213
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +11.912177 
 
 
 Test Number: 0041
 Ground Truth: ghosting_test\ghosting_test_both_0041_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0041_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0041_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0041_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.898802
+ The NIQE score of Master Thesis Temporal is 8.898802
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.240265
- The NIQE score delta between Improved Temporal and Reference is +2.382708
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.658536 
+ The NIQE score of Uncharted Temporal is 7.240265
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.382708
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.658536 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 20.807766
+ The BRISQUE score of Master Thesis Temporal is 20.807766
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.672806
- The BRISQUE score delta between Improved Temporal and Reference is -8.367949
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +12.134960 
+ The BRISQUE score of Uncharted Temporal is 8.672806
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -8.367949
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +12.134960 
 
 
 Test Number: 0042
 Ground Truth: ghosting_test\ghosting_test_both_0042_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0042_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0042_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0042_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.323794
+ The NIQE score of Master Thesis Temporal is 9.323794
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.411303
- The NIQE score delta between Improved Temporal and Reference is +2.807700
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.912491 
+ The NIQE score of Uncharted Temporal is 7.411303
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.807700
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.912491 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.394680
+ The BRISQUE score of Master Thesis Temporal is 28.394680
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.604865
- The BRISQUE score delta between Improved Temporal and Reference is -0.781035
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.789815 
+ The BRISQUE score of Uncharted Temporal is 7.604865
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.781035
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.789815 
 
 
 Test Number: 0043
 Ground Truth: ghosting_test\ghosting_test_both_0043_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0043_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0043_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0043_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.835620
+ The NIQE score of Master Thesis Temporal is 8.835620
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.370370
- The NIQE score delta between Improved Temporal and Reference is +2.319527
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.465251 
+ The NIQE score of Uncharted Temporal is 7.370370
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.319527
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.465251 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 23.926484
+ The BRISQUE score of Master Thesis Temporal is 23.926484
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.449891
- The BRISQUE score delta between Improved Temporal and Reference is -5.249230
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.476593 
+ The BRISQUE score of Uncharted Temporal is 7.449891
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -5.249230
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.476593 
 
 
 Test Number: 0044
 Ground Truth: ghosting_test\ghosting_test_both_0044_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0044_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0044_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0044_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.534778
+ The NIQE score of Master Thesis Temporal is 8.534778
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.598399
- The NIQE score delta between Improved Temporal and Reference is +2.018684
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.936379 
+ The NIQE score of Uncharted Temporal is 7.598399
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.018684
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.936379 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 23.635604
+ The BRISQUE score of Master Thesis Temporal is 23.635604
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.560275
- The BRISQUE score delta between Improved Temporal and Reference is -5.540111
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.075328 
+ The BRISQUE score of Uncharted Temporal is 7.560275
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -5.540111
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.075328 
 
 
 Test Number: 0045
 Ground Truth: ghosting_test\ghosting_test_both_0045_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0045_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0045_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0045_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.566792
+ The NIQE score of Master Thesis Temporal is 9.566792
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.386402
- The NIQE score delta between Improved Temporal and Reference is +3.050699
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.180390 
+ The NIQE score of Uncharted Temporal is 7.386402
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.050699
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.180390 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.978745
+ The BRISQUE score of Master Thesis Temporal is 27.978745
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.284655
- The BRISQUE score delta between Improved Temporal and Reference is -1.196970
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.694090 
+ The BRISQUE score of Uncharted Temporal is 7.284655
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.196970
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.694090 
 
 
 Test Number: 0046
 Ground Truth: ghosting_test\ghosting_test_both_0046_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0046_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0046_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0046_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.894707
+ The NIQE score of Master Thesis Temporal is 9.894707
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.304597
- The NIQE score delta between Improved Temporal and Reference is +3.378613
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.590110 
+ The NIQE score of Uncharted Temporal is 7.304597
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.378613
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.590110 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.409266
+ The BRISQUE score of Master Thesis Temporal is 28.409266
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.366543
- The BRISQUE score delta between Improved Temporal and Reference is -0.766449
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.042723 
+ The BRISQUE score of Uncharted Temporal is 7.366543
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.766449
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.042723 
 
 
 Test Number: 0047
 Ground Truth: ghosting_test\ghosting_test_both_0047_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0047_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0047_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0047_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.966214
+ The NIQE score of Master Thesis Temporal is 8.966214
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.330619
- The NIQE score delta between Improved Temporal and Reference is +2.450120
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.635595 
+ The NIQE score of Uncharted Temporal is 7.330619
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.450120
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.635595 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.744611
+ The BRISQUE score of Master Thesis Temporal is 30.744611
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.352703
- The BRISQUE score delta between Improved Temporal and Reference is +1.568896
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +23.391909 
+ The BRISQUE score of Uncharted Temporal is 7.352703
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.568896
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +23.391909 
 
 
 Test Number: 0048
 Ground Truth: ghosting_test\ghosting_test_both_0048_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0048_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0048_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0048_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.345010
+ The NIQE score of Master Thesis Temporal is 9.345010
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.306816
- The NIQE score delta between Improved Temporal and Reference is +2.828916
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.038194 
+ The NIQE score of Uncharted Temporal is 7.306816
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.828916
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.038194 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 24.729619
+ The BRISQUE score of Master Thesis Temporal is 24.729619
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 6.960301
- The BRISQUE score delta between Improved Temporal and Reference is -4.446096
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.769318 
+ The BRISQUE score of Uncharted Temporal is 6.960301
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.446096
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.769318 
 
 
 Test Number: 0049
 Ground Truth: ghosting_test\ghosting_test_both_0049_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0049_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0049_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0049_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.009481
+ The NIQE score of Master Thesis Temporal is 9.009481
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.341126
- The NIQE score delta between Improved Temporal and Reference is +2.493388
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.668355 
+ The NIQE score of Uncharted Temporal is 7.341126
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.493388
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.668355 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 21.657080
+ The BRISQUE score of Master Thesis Temporal is 21.657080
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.296360
- The BRISQUE score delta between Improved Temporal and Reference is -7.518635
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +14.360720 
+ The BRISQUE score of Uncharted Temporal is 7.296360
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -7.518635
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +14.360720 
 
 
 Test Number: 0050
 Ground Truth: ghosting_test\ghosting_test_both_0050_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0050_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0050_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0050_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.130389
+ The NIQE score of Master Thesis Temporal is 9.130389
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.501957
- The NIQE score delta between Improved Temporal and Reference is +2.614295
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.628432 
+ The NIQE score of Uncharted Temporal is 7.501957
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.614295
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.628432 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.074850
+ The BRISQUE score of Master Thesis Temporal is 27.074850
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.272444
- The BRISQUE score delta between Improved Temporal and Reference is -2.100865
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.802406 
+ The BRISQUE score of Uncharted Temporal is 7.272444
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -2.100865
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.802406 
 
 
 Test Number: 0051
 Ground Truth: ghosting_test\ghosting_test_both_0051_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0051_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0051_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0051_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.798052
+ The NIQE score of Master Thesis Temporal is 8.798052
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.811185
- The NIQE score delta between Improved Temporal and Reference is +2.281958
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.986867 
+ The NIQE score of Uncharted Temporal is 7.811185
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.281958
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.986867 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 22.335647
+ The BRISQUE score of Master Thesis Temporal is 22.335647
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 6.801823
- The BRISQUE score delta between Improved Temporal and Reference is -6.840068
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +15.533823 
+ The BRISQUE score of Uncharted Temporal is 6.801823
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -6.840068
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +15.533823 
 
 
 Test Number: 0052
 Ground Truth: ghosting_test\ghosting_test_both_0052_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0052_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0052_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0052_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.153263
+ The NIQE score of Master Thesis Temporal is 9.153263
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.639424
- The NIQE score delta between Improved Temporal and Reference is +2.637169
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.513839 
+ The NIQE score of Uncharted Temporal is 7.639424
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.637169
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.513839 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 24.886124
+ The BRISQUE score of Master Thesis Temporal is 24.886124
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 6.984138
- The BRISQUE score delta between Improved Temporal and Reference is -4.289591
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.901985 
+ The BRISQUE score of Uncharted Temporal is 6.984138
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.289591
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.901985 
 
 
 Test Number: 0053
 Ground Truth: ghosting_test\ghosting_test_both_0053_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0053_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0053_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0053_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.818303
+ The NIQE score of Master Thesis Temporal is 10.818303
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.834996
- The NIQE score delta between Improved Temporal and Reference is +4.302210
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.983307 
+ The NIQE score of Uncharted Temporal is 7.834996
+ The NIQE score delta between Master Thesis Temporal and Reference is +4.302210
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.983307 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.024165
+ The BRISQUE score of Master Thesis Temporal is 28.024165
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.265523
- The BRISQUE score delta between Improved Temporal and Reference is -1.151550
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.758642 
+ The BRISQUE score of Uncharted Temporal is 7.265523
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.151550
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.758642 
 
 
 Test Number: 0054
 Ground Truth: ghosting_test\ghosting_test_both_0054_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0054_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0054_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0054_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.257801
+ The NIQE score of Master Thesis Temporal is 9.257801
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.767570
- The NIQE score delta between Improved Temporal and Reference is +2.741708
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.490231 
+ The NIQE score of Uncharted Temporal is 7.767570
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.741708
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.490231 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.946022
+ The BRISQUE score of Master Thesis Temporal is 27.946022
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.415470
- The BRISQUE score delta between Improved Temporal and Reference is -1.229693
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.530552 
+ The BRISQUE score of Uncharted Temporal is 7.415470
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.229693
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.530552 
 
 
 Test Number: 0055
 Ground Truth: ghosting_test\ghosting_test_both_0055_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0055_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0055_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0055_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.649948
+ The NIQE score of Master Thesis Temporal is 9.649948
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.988595
- The NIQE score delta between Improved Temporal and Reference is +3.133854
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.661353 
+ The NIQE score of Uncharted Temporal is 7.988595
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.133854
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.661353 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 29.155394
+ The BRISQUE score of Master Thesis Temporal is 29.155394
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.377515
- The BRISQUE score delta between Improved Temporal and Reference is -0.020321
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.777878 
+ The BRISQUE score of Uncharted Temporal is 7.377515
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.020321
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.777878 
 
 
 Test Number: 0056
 Ground Truth: ghosting_test\ghosting_test_both_0056_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0056_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0056_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0056_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.382842
+ The NIQE score of Master Thesis Temporal is 8.382842
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.805987
- The NIQE score delta between Improved Temporal and Reference is +1.866748
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.576855 
+ The NIQE score of Uncharted Temporal is 7.805987
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.866748
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.576855 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 24.796451
+ The BRISQUE score of Master Thesis Temporal is 24.796451
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.753713
- The BRISQUE score delta between Improved Temporal and Reference is -4.379263
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.042738 
+ The BRISQUE score of Uncharted Temporal is 7.753713
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.379263
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.042738 
 
 
 Test Number: 0057
 Ground Truth: ghosting_test\ghosting_test_both_0057_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0057_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0057_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0057_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.060110
+ The NIQE score of Master Thesis Temporal is 9.060110
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.619989
- The NIQE score delta between Improved Temporal and Reference is +2.544017
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.440121 
+ The NIQE score of Uncharted Temporal is 7.619989
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.544017
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.440121 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 25.620901
+ The BRISQUE score of Master Thesis Temporal is 25.620901
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 7.625579
- The BRISQUE score delta between Improved Temporal and Reference is -3.554814
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.995322 
+ The BRISQUE score of Uncharted Temporal is 7.625579
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -3.554814
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.995322 
 
 
 Test Number: 0058
 Ground Truth: ghosting_test\ghosting_test_both_0058_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0058_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0058_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0058_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.361014
+ The NIQE score of Master Thesis Temporal is 9.361014
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.819057
- The NIQE score delta between Improved Temporal and Reference is +2.844920
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.541957 
+ The NIQE score of Uncharted Temporal is 7.819057
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.844920
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.541957 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.853740
+ The BRISQUE score of Master Thesis Temporal is 32.853740
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.149081
- The BRISQUE score delta between Improved Temporal and Reference is +3.678025
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +24.704659 
+ The BRISQUE score of Uncharted Temporal is 8.149081
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.678025
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +24.704659 
 
 
 Test Number: 0059
 Ground Truth: ghosting_test\ghosting_test_both_0059_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0059_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0059_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0059_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.943253
+ The NIQE score of Master Thesis Temporal is 8.943253
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.914476
- The NIQE score delta between Improved Temporal and Reference is +2.427159
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.028777 
+ The NIQE score of Uncharted Temporal is 7.914476
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.427159
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.028777 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.693634
+ The BRISQUE score of Master Thesis Temporal is 28.693634
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.415729
- The BRISQUE score delta between Improved Temporal and Reference is -0.482081
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.277905 
+ The BRISQUE score of Uncharted Temporal is 8.415729
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.482081
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.277905 
 
 
 Test Number: 0060
 Ground Truth: ghosting_test\ghosting_test_both_0060_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0060_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0060_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0060_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.736815
+ The NIQE score of Master Thesis Temporal is 8.736815
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.047444
- The NIQE score delta between Improved Temporal and Reference is +2.220721
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.689371 
+ The NIQE score of Uncharted Temporal is 8.047444
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.220721
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.689371 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.067259
+ The BRISQUE score of Master Thesis Temporal is 28.067259
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 8.572090
- The BRISQUE score delta between Improved Temporal and Reference is -1.108456
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.495169 
+ The BRISQUE score of Uncharted Temporal is 8.572090
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.108456
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.495169 
 
 
 Test Number: 0061
 Ground Truth: ghosting_test\ghosting_test_both_0061_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0061_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0061_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0061_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.734090
+ The NIQE score of Master Thesis Temporal is 9.734090
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.807929
- The NIQE score delta between Improved Temporal and Reference is +3.217996
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.926161 
+ The NIQE score of Uncharted Temporal is 7.807929
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.217996
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.926161 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 31.609641
+ The BRISQUE score of Master Thesis Temporal is 31.609641
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.508430
- The BRISQUE score delta between Improved Temporal and Reference is +2.433926
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +22.101210 
+ The BRISQUE score of Uncharted Temporal is 9.508430
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.433926
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +22.101210 
 
 
 Test Number: 0062
 Ground Truth: ghosting_test\ghosting_test_both_0062_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0062_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0062_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0062_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.199987
+ The NIQE score of Master Thesis Temporal is 10.199987
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.725652
- The NIQE score delta between Improved Temporal and Reference is +3.683894
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.474335 
+ The NIQE score of Uncharted Temporal is 7.725652
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.683894
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.474335 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.118138
+ The BRISQUE score of Master Thesis Temporal is 32.118138
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.588305
- The BRISQUE score delta between Improved Temporal and Reference is +2.942423
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.529833 
+ The BRISQUE score of Uncharted Temporal is 10.588305
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.942423
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.529833 
 
 
 Test Number: 0063
 Ground Truth: ghosting_test\ghosting_test_both_0063_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0063_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0063_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0063_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.053646
+ The NIQE score of Master Thesis Temporal is 9.053646
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.590522
- The NIQE score delta between Improved Temporal and Reference is +2.537552
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.463123 
+ The NIQE score of Uncharted Temporal is 7.590522
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.537552
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.463123 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 33.980170
+ The BRISQUE score of Master Thesis Temporal is 33.980170
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.077604
- The BRISQUE score delta between Improved Temporal and Reference is +4.804455
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +23.902566 
+ The BRISQUE score of Uncharted Temporal is 10.077604
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +4.804455
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +23.902566 
 
 
 Test Number: 0064
 Ground Truth: ghosting_test\ghosting_test_both_0064_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0064_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0064_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0064_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.441944
+ The NIQE score of Master Thesis Temporal is 9.441944
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.651608
- The NIQE score delta between Improved Temporal and Reference is +2.925850
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.790336 
+ The NIQE score of Uncharted Temporal is 7.651608
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.925850
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.790336 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.704086
+ The BRISQUE score of Master Thesis Temporal is 27.704086
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.588395
- The BRISQUE score delta between Improved Temporal and Reference is -1.471629
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +18.115691 
+ The BRISQUE score of Uncharted Temporal is 9.588395
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.471629
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +18.115691 
 
 
 Test Number: 0065
 Ground Truth: ghosting_test\ghosting_test_both_0065_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0065_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0065_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0065_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.998349
+ The NIQE score of Master Thesis Temporal is 8.998349
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.793634
- The NIQE score delta between Improved Temporal and Reference is +2.482256
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.204715 
+ The NIQE score of Uncharted Temporal is 7.793634
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.482256
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.204715 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 25.261608
+ The BRISQUE score of Master Thesis Temporal is 25.261608
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.666013
- The BRISQUE score delta between Improved Temporal and Reference is -3.914107
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +15.595595 
+ The BRISQUE score of Uncharted Temporal is 9.666013
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -3.914107
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +15.595595 
 
 
 Test Number: 0066
 Ground Truth: ghosting_test\ghosting_test_both_0066_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0066_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0066_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0066_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.282065
+ The NIQE score of Master Thesis Temporal is 9.282065
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.956585
- The NIQE score delta between Improved Temporal and Reference is +2.765971
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.325480 
+ The NIQE score of Uncharted Temporal is 7.956585
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.765971
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.325480 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 29.555957
+ The BRISQUE score of Master Thesis Temporal is 29.555957
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.772207
- The BRISQUE score delta between Improved Temporal and Reference is +0.380242
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.783750 
+ The BRISQUE score of Uncharted Temporal is 9.772207
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.380242
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.783750 
 
 
 Test Number: 0067
 Ground Truth: ghosting_test\ghosting_test_both_0067_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0067_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0067_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0067_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.920816
+ The NIQE score of Master Thesis Temporal is 8.920816
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.216634
- The NIQE score delta between Improved Temporal and Reference is +2.404722
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.704182 
+ The NIQE score of Uncharted Temporal is 8.216634
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.404722
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.704182 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 24.191994
+ The BRISQUE score of Master Thesis Temporal is 24.191994
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.193775
- The BRISQUE score delta between Improved Temporal and Reference is -4.983721
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +14.998219 
+ The BRISQUE score of Uncharted Temporal is 9.193775
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -4.983721
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +14.998219 
 
 
 Test Number: 0068
 Ground Truth: ghosting_test\ghosting_test_both_0068_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0068_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0068_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0068_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.296482
+ The NIQE score of Master Thesis Temporal is 9.296482
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.052314
- The NIQE score delta between Improved Temporal and Reference is +2.780389
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.244168 
+ The NIQE score of Uncharted Temporal is 8.052314
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.780389
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.244168 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.382360
+ The BRISQUE score of Master Thesis Temporal is 27.382360
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.233019
- The BRISQUE score delta between Improved Temporal and Reference is -1.793354
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +18.149342 
+ The BRISQUE score of Uncharted Temporal is 9.233019
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.793354
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +18.149342 
 
 
 Test Number: 0069
 Ground Truth: ghosting_test\ghosting_test_both_0069_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0069_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0069_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0069_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.723722
+ The NIQE score of Master Thesis Temporal is 10.723722
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.000585
- The NIQE score delta between Improved Temporal and Reference is +4.207629
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.723137 
+ The NIQE score of Uncharted Temporal is 8.000585
+ The NIQE score delta between Master Thesis Temporal and Reference is +4.207629
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.723137 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.670360
+ The BRISQUE score of Master Thesis Temporal is 30.670360
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.566931
- The BRISQUE score delta between Improved Temporal and Reference is +1.494645
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.103429 
+ The BRISQUE score of Uncharted Temporal is 9.566931
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.494645
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.103429 
 
 
 Test Number: 0070
 Ground Truth: ghosting_test\ghosting_test_both_0070_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0070_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0070_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0070_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.502440
+ The NIQE score of Master Thesis Temporal is 9.502440
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.112591
- The NIQE score delta between Improved Temporal and Reference is +2.986347
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.389849 
+ The NIQE score of Uncharted Temporal is 8.112591
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.986347
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.389849 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.868131
+ The BRISQUE score of Master Thesis Temporal is 30.868131
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 9.944000
- The BRISQUE score delta between Improved Temporal and Reference is +1.692416
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.924131 
+ The BRISQUE score of Uncharted Temporal is 9.944000
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.692416
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.924131 
 
 
 Test Number: 0071
 Ground Truth: ghosting_test\ghosting_test_both_0071_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0071_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0071_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0071_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.830322
+ The NIQE score of Master Thesis Temporal is 9.830322
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.136682
- The NIQE score delta between Improved Temporal and Reference is +3.314228
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.693640 
+ The NIQE score of Uncharted Temporal is 8.136682
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.314228
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.693640 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 31.446143
+ The BRISQUE score of Master Thesis Temporal is 31.446143
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.677932
- The BRISQUE score delta between Improved Temporal and Reference is +2.270428
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.768211 
+ The BRISQUE score of Uncharted Temporal is 10.677932
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.270428
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.768211 
 
 
 Test Number: 0072
 Ground Truth: ghosting_test\ghosting_test_both_0072_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0072_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0072_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0072_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.634461
+ The NIQE score of Master Thesis Temporal is 8.634461
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.173521
- The NIQE score delta between Improved Temporal and Reference is +2.118367
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.460940 
+ The NIQE score of Uncharted Temporal is 8.173521
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.118367
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.460940 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.310934
+ The BRISQUE score of Master Thesis Temporal is 27.310934
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.577964
- The BRISQUE score delta between Improved Temporal and Reference is -1.864781
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.732970 
+ The BRISQUE score of Uncharted Temporal is 10.577964
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.864781
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.732970 
 
 
 Test Number: 0073
 Ground Truth: ghosting_test\ghosting_test_both_0073_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0073_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0073_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0073_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.209218
+ The NIQE score of Master Thesis Temporal is 9.209218
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.234402
- The NIQE score delta between Improved Temporal and Reference is +2.693124
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.974816 
+ The NIQE score of Uncharted Temporal is 8.234402
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.693124
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.974816 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.406996
+ The BRISQUE score of Master Thesis Temporal is 28.406996
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.333358
- The BRISQUE score delta between Improved Temporal and Reference is -0.768719
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +18.073638 
+ The BRISQUE score of Uncharted Temporal is 10.333358
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.768719
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +18.073638 
 
 
 Test Number: 0074
 Ground Truth: ghosting_test\ghosting_test_both_0074_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0074_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0074_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0074_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.687757
+ The NIQE score of Master Thesis Temporal is 9.687757
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.179654
- The NIQE score delta between Improved Temporal and Reference is +3.171663
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.508103 
+ The NIQE score of Uncharted Temporal is 8.179654
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.171663
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.508103 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 34.905897
+ The BRISQUE score of Master Thesis Temporal is 34.905897
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.530331
- The BRISQUE score delta between Improved Temporal and Reference is +5.730182
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +24.375565 
+ The BRISQUE score of Uncharted Temporal is 10.530331
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +5.730182
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +24.375565 
 
 
 Test Number: 0075
 Ground Truth: ghosting_test\ghosting_test_both_0075_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0075_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0075_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0075_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.230648
+ The NIQE score of Master Thesis Temporal is 9.230648
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.226462
- The NIQE score delta between Improved Temporal and Reference is +2.714554
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.004186 
+ The NIQE score of Uncharted Temporal is 8.226462
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.714554
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.004186 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.608737
+ The BRISQUE score of Master Thesis Temporal is 30.608737
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.479712
- The BRISQUE score delta between Improved Temporal and Reference is +1.433022
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.129025 
+ The BRISQUE score of Uncharted Temporal is 10.479712
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.433022
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.129025 
 
 
 Test Number: 0076
 Ground Truth: ghosting_test\ghosting_test_both_0076_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0076_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0076_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0076_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.888473
+ The NIQE score of Master Thesis Temporal is 8.888473
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.342898
- The NIQE score delta between Improved Temporal and Reference is +2.372379
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.545574 
+ The NIQE score of Uncharted Temporal is 8.342898
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.372379
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.545574 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 29.806546
+ The BRISQUE score of Master Thesis Temporal is 29.806546
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.407676
- The BRISQUE score delta between Improved Temporal and Reference is +0.630831
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +18.398870 
+ The BRISQUE score of Uncharted Temporal is 11.407676
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.630831
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +18.398870 
 
 
 Test Number: 0077
 Ground Truth: ghosting_test\ghosting_test_both_0077_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0077_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0077_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0077_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.929295
+ The NIQE score of Master Thesis Temporal is 9.929295
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.016826
- The NIQE score delta between Improved Temporal and Reference is +3.413201
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.912468 
+ The NIQE score of Uncharted Temporal is 8.016826
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.413201
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.912468 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 33.165415
+ The BRISQUE score of Master Thesis Temporal is 33.165415
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 10.922528
- The BRISQUE score delta between Improved Temporal and Reference is +3.989700
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +22.242887 
+ The BRISQUE score of Uncharted Temporal is 10.922528
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.989700
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +22.242887 
 
 
 Test Number: 0078
 Ground Truth: ghosting_test\ghosting_test_both_0078_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0078_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0078_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0078_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.450253
+ The NIQE score of Master Thesis Temporal is 10.450253
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.963623
- The NIQE score delta between Improved Temporal and Reference is +3.934159
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.486630 
+ The NIQE score of Uncharted Temporal is 7.963623
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.934159
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.486630 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 34.060259
+ The BRISQUE score of Master Thesis Temporal is 34.060259
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.869295
- The BRISQUE score delta between Improved Temporal and Reference is +4.884544
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +22.190964 
+ The BRISQUE score of Uncharted Temporal is 11.869295
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +4.884544
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +22.190964 
 
 
 Test Number: 0079
 Ground Truth: ghosting_test\ghosting_test_both_0079_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0079_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0079_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0079_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.252435
+ The NIQE score of Master Thesis Temporal is 9.252435
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 7.904973
- The NIQE score delta between Improved Temporal and Reference is +2.736341
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.347461 
+ The NIQE score of Uncharted Temporal is 7.904973
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.736341
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.347461 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 35.356946
+ The BRISQUE score of Master Thesis Temporal is 35.356946
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.663839
- The BRISQUE score delta between Improved Temporal and Reference is +6.181231
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +23.693106 
+ The BRISQUE score of Uncharted Temporal is 11.663839
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +6.181231
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +23.693106 
 
 
 Test Number: 0080
 Ground Truth: ghosting_test\ghosting_test_both_0080_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0080_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0080_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0080_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.460640
+ The NIQE score of Master Thesis Temporal is 9.460640
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.037606
- The NIQE score delta between Improved Temporal and Reference is +2.944547
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.423035 
+ The NIQE score of Uncharted Temporal is 8.037606
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.944547
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.423035 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 29.325309
+ The BRISQUE score of Master Thesis Temporal is 29.325309
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.859881
- The BRISQUE score delta between Improved Temporal and Reference is +0.149594
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.465428 
+ The BRISQUE score of Uncharted Temporal is 11.859881
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.149594
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.465428 
 
 
 Test Number: 0081
 Ground Truth: ghosting_test\ghosting_test_both_0081_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0081_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0081_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0081_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.076840
+ The NIQE score of Master Thesis Temporal is 9.076840
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.184747
- The NIQE score delta between Improved Temporal and Reference is +2.560747
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.892093 
+ The NIQE score of Uncharted Temporal is 8.184747
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.560747
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.892093 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 27.423998
+ The BRISQUE score of Master Thesis Temporal is 27.423998
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.719679
- The BRISQUE score delta between Improved Temporal and Reference is -1.751717
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +15.704319 
+ The BRISQUE score of Uncharted Temporal is 11.719679
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -1.751717
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +15.704319 
 
 
 Test Number: 0082
 Ground Truth: ghosting_test\ghosting_test_both_0082_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0082_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0082_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0082_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.365645
+ The NIQE score of Master Thesis Temporal is 9.365645
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.230858
- The NIQE score delta between Improved Temporal and Reference is +2.849551
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.134787 
+ The NIQE score of Uncharted Temporal is 8.230858
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.849551
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.134787 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 31.099563
+ The BRISQUE score of Master Thesis Temporal is 31.099563
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 12.070522
- The BRISQUE score delta between Improved Temporal and Reference is +1.923849
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.029041 
+ The BRISQUE score of Uncharted Temporal is 12.070522
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.923849
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.029041 
 
 
 Test Number: 0083
 Ground Truth: ghosting_test\ghosting_test_both_0083_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0083_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0083_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0083_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.962232
+ The NIQE score of Master Thesis Temporal is 8.962232
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.301607
- The NIQE score delta between Improved Temporal and Reference is +2.446138
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.660625 
+ The NIQE score of Uncharted Temporal is 8.301607
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.446138
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.660625 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 25.542784
+ The BRISQUE score of Master Thesis Temporal is 25.542784
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.935704
- The BRISQUE score delta between Improved Temporal and Reference is -3.632931
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +13.607080 
+ The BRISQUE score of Uncharted Temporal is 11.935704
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -3.632931
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +13.607080 
 
 
 Test Number: 0084
 Ground Truth: ghosting_test\ghosting_test_both_0084_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0084_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0084_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0084_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.320579
+ The NIQE score of Master Thesis Temporal is 9.320579
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.281385
- The NIQE score delta between Improved Temporal and Reference is +2.804486
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.039194 
+ The NIQE score of Uncharted Temporal is 8.281385
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.804486
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.039194 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.942222
+ The BRISQUE score of Master Thesis Temporal is 28.942222
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 11.667682
- The BRISQUE score delta between Improved Temporal and Reference is -0.233493
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.274541 
+ The BRISQUE score of Uncharted Temporal is 11.667682
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.233493
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.274541 
 
 
 Test Number: 0085
 Ground Truth: ghosting_test\ghosting_test_both_0085_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0085_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0085_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0085_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.827559
+ The NIQE score of Master Thesis Temporal is 10.827559
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.293189
- The NIQE score delta between Improved Temporal and Reference is +4.311466
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.534370 
+ The NIQE score of Uncharted Temporal is 8.293189
+ The NIQE score delta between Master Thesis Temporal and Reference is +4.311466
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.534370 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.601962
+ The BRISQUE score of Master Thesis Temporal is 32.601962
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 12.119500
- The BRISQUE score delta between Improved Temporal and Reference is +3.426247
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.482462 
+ The BRISQUE score of Uncharted Temporal is 12.119500
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.426247
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.482462 
 
 
 Test Number: 0086
 Ground Truth: ghosting_test\ghosting_test_both_0086_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0086_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0086_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0086_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.558212
+ The NIQE score of Master Thesis Temporal is 9.558212
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.395772
- The NIQE score delta between Improved Temporal and Reference is +3.042119
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.162441 
+ The NIQE score of Uncharted Temporal is 8.395772
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.042119
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.162441 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.667367
+ The BRISQUE score of Master Thesis Temporal is 32.667367
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 12.552057
- The BRISQUE score delta between Improved Temporal and Reference is +3.491652
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +20.115310 
+ The BRISQUE score of Uncharted Temporal is 12.552057
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.491652
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +20.115310 
 
 
 Test Number: 0087
 Ground Truth: ghosting_test\ghosting_test_both_0087_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0087_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0087_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0087_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.779761
+ The NIQE score of Master Thesis Temporal is 9.779761
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.246753
- The NIQE score delta between Improved Temporal and Reference is +3.263668
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.533009 
+ The NIQE score of Uncharted Temporal is 8.246753
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.263668
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.533009 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.781498
+ The BRISQUE score of Master Thesis Temporal is 32.781498
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 13.455016
- The BRISQUE score delta between Improved Temporal and Reference is +3.605783
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.326481 
+ The BRISQUE score of Uncharted Temporal is 13.455016
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.605783
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.326481 
 
 
 Test Number: 0088
 Ground Truth: ghosting_test\ghosting_test_both_0088_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0088_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0088_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0088_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.613105
+ The NIQE score of Master Thesis Temporal is 8.613105
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.132561
- The NIQE score delta between Improved Temporal and Reference is +2.097011
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.480543 
+ The NIQE score of Uncharted Temporal is 8.132561
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.097011
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.480543 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.833366
+ The BRISQUE score of Master Thesis Temporal is 28.833366
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 13.991572
- The BRISQUE score delta between Improved Temporal and Reference is -0.342349
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +14.841793 
+ The BRISQUE score of Uncharted Temporal is 13.991572
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.342349
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +14.841793 
 
 
 Test Number: 0089
 Ground Truth: ghosting_test\ghosting_test_both_0089_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0089_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0089_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0089_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.328727
+ The NIQE score of Master Thesis Temporal is 9.328727
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.301907
- The NIQE score delta between Improved Temporal and Reference is +2.812634
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.026820 
+ The NIQE score of Uncharted Temporal is 8.301907
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.812634
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.026820 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 29.808983
+ The BRISQUE score of Master Thesis Temporal is 29.808983
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 13.573849
- The BRISQUE score delta between Improved Temporal and Reference is +0.633268
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.235134 
+ The BRISQUE score of Uncharted Temporal is 13.573849
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.633268
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.235134 
 
 
 Test Number: 0090
 Ground Truth: ghosting_test\ghosting_test_both_0090_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0090_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0090_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0090_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.802681
+ The NIQE score of Master Thesis Temporal is 9.802681
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.510716
- The NIQE score delta between Improved Temporal and Reference is +3.286588
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.291965 
+ The NIQE score of Uncharted Temporal is 8.510716
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.286588
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.291965 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 36.010248
+ The BRISQUE score of Master Thesis Temporal is 36.010248
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.300538
- The BRISQUE score delta between Improved Temporal and Reference is +6.834533
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.709710 
+ The BRISQUE score of Uncharted Temporal is 14.300538
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +6.834533
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.709710 
 
 
 Test Number: 0091
 Ground Truth: ghosting_test\ghosting_test_both_0091_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0091_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0091_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0091_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.324076
+ The NIQE score of Master Thesis Temporal is 9.324076
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.379879
- The NIQE score delta between Improved Temporal and Reference is +2.807983
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.944198 
+ The NIQE score of Uncharted Temporal is 8.379879
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.807983
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.944198 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 31.919589
+ The BRISQUE score of Master Thesis Temporal is 31.919589
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.523671
- The BRISQUE score delta between Improved Temporal and Reference is +2.743874
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +17.395918 
+ The BRISQUE score of Uncharted Temporal is 14.523671
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.743874
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +17.395918 
 
 
 Test Number: 0092
 Ground Truth: ghosting_test\ghosting_test_both_0092_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0092_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0092_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0092_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 8.937842
+ The NIQE score of Master Thesis Temporal is 8.937842
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.574764
- The NIQE score delta between Improved Temporal and Reference is +2.421748
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.363078 
+ The NIQE score of Uncharted Temporal is 8.574764
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.421748
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.363078 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.991451
+ The BRISQUE score of Master Thesis Temporal is 30.991451
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.552510
- The BRISQUE score delta between Improved Temporal and Reference is +1.815737
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.438941 
+ The BRISQUE score of Uncharted Temporal is 14.552510
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.815737
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.438941 
 
 
 Test Number: 0093
 Ground Truth: ghosting_test\ghosting_test_both_0093_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0093_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0093_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0093_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.048571
+ The NIQE score of Master Thesis Temporal is 10.048571
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.311805
- The NIQE score delta between Improved Temporal and Reference is +3.532478
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.736766 
+ The NIQE score of Uncharted Temporal is 8.311805
+ The NIQE score delta between Master Thesis Temporal and Reference is +3.532478
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.736766 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 34.390275
+ The BRISQUE score of Master Thesis Temporal is 34.390275
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.879271
- The BRISQUE score delta between Improved Temporal and Reference is +5.214560
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.511004 
+ The BRISQUE score of Uncharted Temporal is 14.879271
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +5.214560
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.511004 
 
 
 Test Number: 0094
 Ground Truth: ghosting_test\ghosting_test_both_0094_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0094_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0094_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0094_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 10.518780
+ The NIQE score of Master Thesis Temporal is 10.518780
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.044505
- The NIQE score delta between Improved Temporal and Reference is +4.002686
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +2.474275 
+ The NIQE score of Uncharted Temporal is 8.044505
+ The NIQE score delta between Master Thesis Temporal and Reference is +4.002686
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +2.474275 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 34.951922
+ The BRISQUE score of Master Thesis Temporal is 34.951922
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 15.200968
- The BRISQUE score delta between Improved Temporal and Reference is +5.776208
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +19.750955 
+ The BRISQUE score of Uncharted Temporal is 15.200968
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +5.776208
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +19.750955 
 
 
 Test Number: 0095
 Ground Truth: ghosting_test\ghosting_test_both_0095_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0095_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0095_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0095_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.375994
+ The NIQE score of Master Thesis Temporal is 9.375994
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.104562
- The NIQE score delta between Improved Temporal and Reference is +2.859901
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.271433 
+ The NIQE score of Uncharted Temporal is 8.104562
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.859901
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.271433 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 36.302829
+ The BRISQUE score of Master Thesis Temporal is 36.302829
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 15.256756
- The BRISQUE score delta between Improved Temporal and Reference is +7.127114
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +21.046073 
+ The BRISQUE score of Uncharted Temporal is 15.256756
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +7.127114
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +21.046073 
 
 
 Test Number: 0096
 Ground Truth: ghosting_test\ghosting_test_both_0096_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0096_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0096_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0096_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.503342
+ The NIQE score of Master Thesis Temporal is 9.503342
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.201953
- The NIQE score delta between Improved Temporal and Reference is +2.987249
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.301389 
+ The NIQE score of Uncharted Temporal is 8.201953
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.987249
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.301389 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 30.388025
+ The BRISQUE score of Master Thesis Temporal is 30.388025
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.651358
- The BRISQUE score delta between Improved Temporal and Reference is +1.212310
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +15.736667 
+ The BRISQUE score of Uncharted Temporal is 14.651358
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.212310
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +15.736667 
 
 
 Test Number: 0097
 Ground Truth: ghosting_test\ghosting_test_both_0097_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0097_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0097_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0097_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.210032
+ The NIQE score of Master Thesis Temporal is 9.210032
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.289740
- The NIQE score delta between Improved Temporal and Reference is +2.693939
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.920292 
+ The NIQE score of Uncharted Temporal is 8.289740
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.693939
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.920292 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 28.864247
+ The BRISQUE score of Master Thesis Temporal is 28.864247
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.533911
- The BRISQUE score delta between Improved Temporal and Reference is -0.311468
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +14.330336 
+ The BRISQUE score of Uncharted Temporal is 14.533911
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.311468
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +14.330336 
 
 
 Test Number: 0098
 Ground Truth: ghosting_test\ghosting_test_both_0098_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0098_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0098_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0098_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.456555
+ The NIQE score of Master Thesis Temporal is 9.456555
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.414504
- The NIQE score delta between Improved Temporal and Reference is +2.940462
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +1.042051 
+ The NIQE score of Uncharted Temporal is 8.414504
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.940462
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +1.042051 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 32.348534
+ The BRISQUE score of Master Thesis Temporal is 32.348534
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 15.751552
- The BRISQUE score delta between Improved Temporal and Reference is +3.172819
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +16.596982 
+ The BRISQUE score of Uncharted Temporal is 15.751552
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +3.172819
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +16.596982 
 
 
 Test Number: 0099
 Ground Truth: ghosting_test\ghosting_test_both_0099_truth.png
-Temporal Improved: ghosting_test\ghosting_test_both_0099_improved.png
+Master Thesis Temporal: ghosting_test\ghosting_test_both_0099_improved.png
 Temporal Not Improved: ghosting_test\ghosting_test_both_0099_no_improved.png
 
 NIQUE, Lower values of score means it's good
- The NIQE score of Improved Temporal is 9.036692
+ The NIQE score of Master Thesis Temporal is 9.036692
  The NIQE score of Reference is 6.516094
- The NIQE score of Not Improved Temporal is 8.303588
- The NIQE score delta between Improved Temporal and Reference is +2.520598
- The NIQE score delta between Improved Temporal and Not Improved Temporal is +0.733104 
+ The NIQE score of Uncharted Temporal is 8.303588
+ The NIQE score delta between Master Thesis Temporal and Reference is +2.520598
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is +0.733104 
 
 BRISQUE, Lower values of score means it's good
- The BRISQUE score of Improved Temporal is 26.240927
+ The BRISQUE score of Master Thesis Temporal is 26.240927
  The BRISQUE score of Reference is 29.175715
- The BRISQUE score of Not Improved Temporal is 14.906154
- The BRISQUE score delta between Improved Temporal and Reference is -2.934788
- The BRISQUE score delta between Improved Temporal and Not Improved Temporal is +11.334773 
+ The BRISQUE score of Uncharted Temporal is 14.906154
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -2.934788
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +11.334773 

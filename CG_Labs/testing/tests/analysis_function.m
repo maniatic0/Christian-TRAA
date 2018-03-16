@@ -64,12 +64,12 @@ if exist(ghosting_test_filename, 'file') == 2
         no_improved = imread(no_improved_filename);
         ground_truth = imread(ground_truth_filename);
         
-        % Test againts improved temporal result
+        % Test againts Master Thesis Temporal result
         [ mse, peaksnr, snr, ssimval, ssimmap, ...
             niqeI, niqeRef, brisqueI, brisqueRef ] ...
             = Test_Files(improved, ground_truth);
         
-        % Test againts not improved temporal result
+        % Test againts Uncharted Temporal result
         [ mse_no, peaksnr_no, snr_no, ssimval_no, ssimmap_no, ...
             niqeI_no, ~, brisqueI_no, ~ ] ...
             = Test_Files(no_improved, ground_truth);
@@ -77,27 +77,27 @@ if exist(ghosting_test_filename, 'file') == 2
         diary(results_filename);
         fprintf('\n\nTest Number: %s\n', test_n);
         fprintf('Ground Truth: %s\n', ground_truth_filename);
-        fprintf('Temporal Improved: %s\n', improved_filename);
-        fprintf('Temporal Not Improved: %s\n', no_improved_filename);
+        fprintf('Master Thesis Temporal: %s\n', improved_filename);
+        fprintf('Uncharted Temporal: %s\n', no_improved_filename);
         
         % MSE, Close to zero means it's good
         fprintf('\nMSE and RMSE, Close to zero means it''s good');
-        fprintf('\n The MSE value of Improved Temporal is %0.6f', mse);
-        fprintf('\n The RMSE value of Improved Temporal is %0.6f', sqrt(mse));
-        fprintf('\n The MSE value of Not Improved Temporal is %0.6f', mse_no);
-        fprintf('\n The RMSE value of Not Improved Temporal is %0.6f \n', sqrt(mse_no));
+        fprintf('\n The MSE value of Master Thesis Temporal is %0.6f', mse);
+        fprintf('\n The RMSE value of Master Thesis Temporal is %0.6f', sqrt(mse));
+        fprintf('\n The MSE value of Uncharted Temporal is %0.6f', mse_no);
+        fprintf('\n The RMSE value of Uncharted Temporal is %0.6f \n', sqrt(mse_no));
 
         % PSNR, Bigger means it's good
         fprintf('\nPSNR and SNR, Bigger means it''s good');
-        fprintf('\n The Peak-SNR value of Improved Temporal is %0.6f', peaksnr);
-        fprintf('\n The SNR value of Improved Temporal is %0.6f', snr);
-        fprintf('\n The Peak-SNR value of Not Improved Temporal is %0.6f', peaksnr_no);
-        fprintf('\n The SNR value of Not Improved Temporal is %0.6f \n', snr_no);
+        fprintf('\n The Peak-SNR value of Master Thesis Temporal is %0.6f', peaksnr);
+        fprintf('\n The SNR value of Master Thesis Temporal is %0.6f', snr);
+        fprintf('\n The Peak-SNR value of Uncharted Temporal is %0.6f', peaksnr_no);
+        fprintf('\n The SNR value of Uncharted Temporal is %0.6f \n', snr_no);
 
         % SSIM, Close to one means it's good
         fprintf('\nSSIM, Close to one means it''s good');
-        fprintf('\n The SSIM value of Improved Temporal is %0.6f',ssimval);
-        fprintf('\n The SSIM value of Not Improved Temporal is %0.6f \n',ssimval_no);
+        fprintf('\n The SSIM value of Master Thesis Temporal is %0.6f',ssimval);
+        fprintf('\n The SSIM value of Uncharted Temporal is %0.6f \n',ssimval_no);
         
         diary off;
         
@@ -106,46 +106,46 @@ if exist(ghosting_test_filename, 'file') == 2
         diary(results_extra_filename);
         fprintf('\n\nTest Number: %s\n', test_n);
         fprintf('Ground Truth: %s\n', ground_truth_filename);
-        fprintf('Temporal Improved: %s\n', improved_filename);
+        fprintf('Master Thesis Temporal: %s\n', improved_filename);
         fprintf('Temporal Not Improved: %s\n', no_improved_filename);
 
         % NIQUE, Lower values of score reflect better perceptual quality of image
         % with respect to the input MATLAB model
         fprintf('\nNIQUE, Lower values of score means it''s good');
-        fprintf('\n The NIQE score of Improved Temporal is %0.6f', niqeI);
+        fprintf('\n The NIQE score of Master Thesis Temporal is %0.6f', niqeI);
         fprintf('\n The NIQE score of Reference is %0.6f', niqeRef);
-        fprintf('\n The NIQE score of Not Improved Temporal is %0.6f', niqeI_no);
-        fprintf('\n The NIQE score delta between Improved Temporal and Reference is %+0.6f', ... 
+        fprintf('\n The NIQE score of Uncharted Temporal is %0.6f', niqeI_no);
+        fprintf('\n The NIQE score delta between Master Thesis Temporal and Reference is %+0.6f', ... 
             niqeI - niqeRef);
-        fprintf('\n The NIQE score delta between Improved Temporal and Not Improved Temporal is %+0.6f \n', ... 
+        fprintf('\n The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is %+0.6f \n', ... 
             niqeI - niqeI_no);
 
         % BRISQUE, Lower values of score reflect better perceptual quality of image
         % with respect to the input MATLAB model
         fprintf('\nBRISQUE, Lower values of score means it''s good');
-        fprintf('\n The BRISQUE score of Improved Temporal is %0.6f', brisqueI);
+        fprintf('\n The BRISQUE score of Master Thesis Temporal is %0.6f', brisqueI);
         fprintf('\n The BRISQUE score of Reference is %0.6f', brisqueRef);
-        fprintf('\n The BRISQUE score of Not Improved Temporal is %0.6f', brisqueI_no);
-        fprintf('\n The BRISQUE score delta between Improved Temporal and Reference is %+0.6f', ...
+        fprintf('\n The BRISQUE score of Uncharted Temporal is %0.6f', brisqueI_no);
+        fprintf('\n The BRISQUE score delta between Master Thesis Temporal and Reference is %+0.6f', ...
             brisqueI - brisqueRef);
-        fprintf('\n The BRISQUE score delta between Improved Temporal and Not Improved Temporal is %+0.6f \n', ...
+        fprintf('\n The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is %+0.6f \n', ...
             brisqueI - brisqueI_no);
 
         diary off;
         
         % SSIM Maps
-        figure('Name','SSIM Index Map of Improved Temporal'), imshow(ssimmap);
-        title(sprintf('The SSIM Index Map of Improved Temporal- Mean ssim Value is %0.6f', ...
+        figure('Name','SSIM Index Map of Master Thesis Temporal'), imshow(ssimmap);
+        title(sprintf('The SSIM Index Map of Master Thesis Temporal - Mean ssim Value is %0.6f', ...
             ssimval));
-        savefig(fullfile(name, strcat(name, sprintf('_ssim_map_%s_improved.fig',test_n))));
-        saveas(gcf, fullfile(name, strcat(name, sprintf('_ssim_map_%s_improved.png',test_n))));
+        savefig(fullfile(name, strcat(name, sprintf('_ssim_map_%s_master_thesis_temporal.fig',test_n))));
+        saveas(gcf, fullfile(name, strcat(name, sprintf('_ssim_map_%s_master_thesis_temporal.png',test_n))));
         close(gcf);
 
-        figure('Name','SSIM Index Map of Not Improved Temporal'), imshow(ssimmap_no);
-        title(sprintf('The SSIM Index Map of Not Improved Temporal - Mean ssim Value is %0.6f', ...
+        figure('Name','SSIM Index Map of Uncharted Temporal'), imshow(ssimmap_no);
+        title(sprintf('The SSIM Index Map of Uncharted Temporal - Mean ssim Value is %0.6f', ...
             ssimval_no));
-        savefig(fullfile(name, strcat(name, sprintf('_ssim_map_%s_no_improved.fig',test_n))));
-        saveas(gcf, fullfile(name, strcat(name, sprintf('_ssim_map_%s_no_improved.png',test_n))));
+        savefig(fullfile(name, strcat(name, sprintf('_ssim_map_%s_uncharted_temporal.fig',test_n))));
+        saveas(gcf, fullfile(name, strcat(name, sprintf('_ssim_map_%s_uncharted_temporal.png',test_n))));
         close(gcf);
         
     end
