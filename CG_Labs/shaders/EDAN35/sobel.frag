@@ -83,7 +83,7 @@ float sobel(vec2 uv) {
 
     for (int i=0; i<3; i++) {
         for (int j=0; j<3; j++) {
-        	pos = uv + vec2((i-1) * inv_res.x, (j-1) * inv_res.y);
+        	pos = uv + (inv_res * vec2(i-1, j-1));
             I[i][j] = luminance(diffuse_texture, pos);
             D[i][j] = luminance(deferred_texture, pos);
             J[i][j] = linear_depth(texture(depth_texture, pos).x);

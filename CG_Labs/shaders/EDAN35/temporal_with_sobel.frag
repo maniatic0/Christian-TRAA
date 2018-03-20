@@ -180,7 +180,7 @@ void main()
 	// Neighbours box
 	for(float y=-BOX_RANGE; y<=BOX_RANGE; y+=1.0) {
 		for(float x=-BOX_RANGE; x<=BOX_RANGE; x+=1.0) {
-			pos = vec2(x * inv_res.x, y * inv_res.y);
+			pos = inv_res * vec2(x, y);
 			p_uv = j_uv.xy + pos;
 
 			depth = texture(depth_texture, p_uv).x;

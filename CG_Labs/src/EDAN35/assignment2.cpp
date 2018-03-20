@@ -254,14 +254,15 @@ edan35::Assignment2::run()
 		sharpen_shader = 0u, accumulation_shader = 0u,
 		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u,
 		sobel_shader = 0u, temporal_with_sobel_shader = 0u,
-		temporal_for_Sobel_shader = 0u;
+		temporal_for_Sobel_shader = 0u, fxaa_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
 		&resolve_temporal_shader, &sharpen_shader,
 		&accumulation_shader, &resolve_accumulation_shader,
 		&resolve_no_aa_shader, &sobel_shader,
-		&temporal_with_sobel_shader, &temporal_for_Sobel_shader](){
+		&temporal_with_sobel_shader, &temporal_for_Sobel_shader,
+		&fxaa_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
@@ -276,6 +277,7 @@ edan35::Assignment2::run()
 		reload_shader("sobel.vert", "sobel.frag", sobel_shader);
 		reload_shader("temporal_with_sobel.vert", "temporal_with_sobel.frag", temporal_with_sobel_shader);
 		reload_shader("sobel_temporal.vert","sobel_temporal.frag", temporal_for_Sobel_shader);
+		reload_shader("fxaa.vert", "fxaa.frag", fxaa_shader);
 	};
 	reload_shaders();
 
@@ -362,6 +364,14 @@ edan35::Assignment2::run()
 		GLfloat border_color[4] = { 1.0f, 0.0f, 0.0f, 0.0f};
 		glSamplerParameterfv(sampler, GL_TEXTURE_BORDER_COLOR, border_color);
 	});
+
+	auto const fxaa_sampler = bonobo::createSampler([](GLuint sampler) {
+		glSamplerParameteri(sampler, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glSamplerParameteri(sampler, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glSamplerParameteri(sampler, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glSamplerParameteri(sampler, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	});
+
 	auto const bind_texture_with_sampler = [](GLenum target, unsigned int slot, GLuint program, std::string const& name, GLuint texture, GLuint sampler){
 		glActiveTexture(GL_TEXTURE0 + slot);
 		glBindTexture(target, texture);
@@ -411,9 +421,12 @@ edan35::Assignment2::run()
 	auto seconds_nb = 0.0f;
 	auto seconds_sphere = 0.0f;
 
+	// FXAA Vars
+	bool use_fxaa = false;
+
 	// Save Vars
-	bool save = false, save_steps = false, save_acc_test = false, save_both = false;
-	int accumulation_samples = 16, current_samples = 0, both_test_samples = 100;
+	bool save = false, save_steps = false, save_acc_test = false;
+	int accumulation_samples = 16, current_samples = 0;
 	const int FILE_NAME_SIZE = 200;
 	char filename[FILE_NAME_SIZE+10] = "test";
 	glm::vec2 lower_corner(-1.0f, -1.0f);
@@ -422,6 +435,8 @@ edan35::Assignment2::run()
 	bool show_save_area = false;
 
 	// Ghosting Test Vars
+	bool save_both = false;
+	int both_test_samples = 100;
 	auto const kMaxBothSaveSamples = 200;
 	std::vector<glm::vec3> translations (kMaxBothSaveSamples);
 	std::vector<glm::vec3> rotations(kMaxBothSaveSamples);
@@ -446,8 +461,8 @@ edan35::Assignment2::run()
 	glEnable(GL_CULL_FACE);
 
 	bool show_debug_display = false;
-	GLuint temporal_time_query = 0u, sobel_time_query = 0u, deferred_time_query =0u;
-	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred;
+	GLuint temporal_time_query = 0u, sobel_time_query = 0u, deferred_time_query = 0u, fxaa_time_query= 0u;
+	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred, ddeltatimeFXAA;
 	size_t fpsSamples = 0;
 	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
 	double fpsNextTick = lastTime + 1000.0;
@@ -848,6 +863,7 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 	};
 
+	// Accumulation Buffer
 	auto const AccumulationBuffer = [
 			&accumulation_samples, &mCamera,
 			&accumulation_jitter_spread, &currentJitter,
@@ -938,7 +954,39 @@ edan35::Assignment2::run()
 	};
 
 
+	// FXAA
+	auto const FXAA = [
+		&fxaa_shader, &windowInverseResolution,
+		&window_size, &bind_texture_with_sampler,
+		&fxaa_sampler, &deferred_shading_texture]() {
+		//
+		// Pass: Sobel
+		//
+		glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+		glUseProgram(fxaa_shader);
 
+		auto const fxaa_uniforms = [&windowInverseResolution](GLuint program) {
+			glUniform2f(glGetUniformLocation(program, "inv_res"),
+				static_cast<float>(windowInverseResolution.x),
+				static_cast<float>(windowInverseResolution.y));
+		};
+
+		fxaa_uniforms(fxaa_shader);
+
+		glViewport(0, 0, window_size.x, window_size.y);
+		// XXX: Is any clearing needed?
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, fxaa_shader, "deferred_texture", deferred_shading_texture, fxaa_sampler);
+
+		GLStateInspection::CaptureSnapshot("FXAA Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+	};
 
 	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
 		nowTime = GetTimeMilliseconds();
@@ -1054,39 +1102,56 @@ edan35::Assignment2::run()
 		}
 		else
 		{
-			// Pass 1-3: Deferred Shading
-			//debugLastTime = GetTimeMilliseconds();
-			bonobo::beginTimeQuery(deferred_time_query);
-			Deferred_Shading();
-			//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
-			bonobo::endTimeQuery(deferred_time_query);
-
-			if (use_sobel)
+			if (use_fxaa)
 			{
-				// Pass: Sobel
-				//debugLastTime = GetTimeMilliseconds();
-				bonobo::beginTimeQuery(sobel_time_query);
-				Sobel(use_sobel);
-				//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
-				bonobo::endTimeQuery(sobel_time_query);
+				bool prev_jitterProjection = mCamera.jitterProjection;
+				mCamera.jitterProjection = false;
+				currentJitter = mCamera.UpdateProjection(windowInverseResolution);
+				bonobo::beginTimeQuery(deferred_time_query);
+				Deferred_Shading();
+				bonobo::endTimeQuery(deferred_time_query);
+				mCamera.jitterProjection = prev_jitterProjection;
 
-				// Temporal Anti Aliasing modified
-				//debugLastTime = GetTimeMilliseconds();
-				bonobo::beginTimeQuery(temporal_time_query);
-				Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
-				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-				bonobo::endTimeQuery(temporal_time_query);
+				bonobo::beginTimeQuery(fxaa_time_query);
+				FXAA();
+				bonobo::endTimeQuery(fxaa_time_query);
 			}
-			else
-			{
-				ddeltatimeSobel = 0.0;
-				// Temporal Anti Aliasing from Inside
+			else {
+				// Pass 1-3: Deferred Shading
 				//debugLastTime = GetTimeMilliseconds();
-				bonobo::beginTimeQuery(temporal_time_query);
-				Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
-				//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
-				bonobo::endTimeQuery(temporal_time_query);
+				bonobo::beginTimeQuery(deferred_time_query);
+				Deferred_Shading();
+				//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
+				bonobo::endTimeQuery(deferred_time_query);
+
+				if (use_sobel)
+				{
+					// Pass: Sobel
+					//debugLastTime = GetTimeMilliseconds();
+					bonobo::beginTimeQuery(sobel_time_query);
+					Sobel(use_sobel);
+					//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
+					bonobo::endTimeQuery(sobel_time_query);
+
+					// Temporal Anti Aliasing modified
+					//debugLastTime = GetTimeMilliseconds();
+					bonobo::beginTimeQuery(temporal_time_query);
+					Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
+					//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+					bonobo::endTimeQuery(temporal_time_query);
+				}
+				else
+				{
+					ddeltatimeSobel = 0.0;
+					// Temporal Anti Aliasing from Inside
+					//debugLastTime = GetTimeMilliseconds();
+					bonobo::beginTimeQuery(temporal_time_query);
+					Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
+					//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
+					bonobo::endTimeQuery(temporal_time_query);
+				}
 			}
+			
 		}
 
 		
@@ -1211,6 +1276,14 @@ edan35::Assignment2::run()
 		{
 			ddeltatimeSobel = 0.0;
 		}
+
+		if (use_fxaa)
+		{
+			bonobo::collectTimeQuery(fxaa_time_query, ddeltatimeFXAA);
+		}
+		else {
+			ddeltatimeFXAA = 0.0;
+		}
 		
 
 		bool opened = ImGui::Begin("Render Time", nullptr, ImVec2(120, 50), -1.0f, 0);
@@ -1218,8 +1291,19 @@ edan35::Assignment2::run()
 		{
 			ImGui::Text("Last Frame: %.3f ms", ddeltatime);
 			ImGui::Text("Deferred: %.3f ms", ddeltatimeDeferred);
-			ImGui::Text("Sobel: %.3f ms", ddeltatimeSobel);
-			ImGui::Text("Temporal: %.3f ms", ddeltatimeTemporal);
+			if (use_fxaa)
+			{
+				ImGui::Text("FXAA: %.3f ms", ddeltatimeFXAA);
+			}
+			else
+			{
+				if (use_sobel)
+				{
+					ImGui::Text("Sobel: %.3f ms", ddeltatimeSobel);
+				}
+				ImGui::Text("Temporal: %.3f ms", ddeltatimeTemporal);
+			}
+			
 		}
 		ImGui::End();
 
@@ -1235,11 +1319,15 @@ edan35::Assignment2::run()
 		{
 			opened = ImGui::Begin("Scene Controls", nullptr, ImVec2(120, 50), -1.0f, 0);
 			if (opened) {
-				ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
-				ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
-				ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
-				ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
-				ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
+				ImGui::Checkbox("Use FXAA: ", &use_fxaa);
+				if (!use_fxaa)
+				{
+					ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
+					ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
+					ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
+					ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
+					ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
+				}
 				ImGui::Checkbox("Pause lights", &are_lights_paused);
 				ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb) + 1);
 				ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
@@ -1311,6 +1399,8 @@ edan35::Assignment2::run()
 	bonobo::destroyTimeQuery(temporal_time_query);
 	bonobo::destroyTimeQuery(sobel_time_query);
 
+	glDeleteProgram(fxaa_shader);
+	fxaa_shader = 0u;
 	glDeleteProgram(temporal_for_Sobel_shader);
 	temporal_for_Sobel_shader = 0u;
 	glDeleteProgram(temporal_with_sobel_shader);

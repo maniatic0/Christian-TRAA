@@ -17,7 +17,9 @@ layout (location = 0) out vec4 sharpen_output;
 // Note: the center pixel is always added so its not necesarry to add one to the center of the convolution
 #if KERNEL_SIZE == 5
 
+// Laplacian Filtering
 uniform float kernel[KERNEL_SIZE] = float[KERNEL_SIZE](4.0, -1.0, -1.0, -1.0, -1.0);
+//uniform float kernel[KERNEL_SIZE] = float[KERNEL_SIZE](1.0, -0.25, -0.25, -0.25, -0.25);
 uniform vec2 kernel_off[KERNEL_SIZE] = vec2[KERNEL_SIZE](vec2(0.0, 0.0), vec2(-1.0, 0.0), vec2(1.0, 0.0), vec2(0.0, -1.0), vec2(0.0, 1.0));
 
 #elif KERNEL_SIZE == 9
