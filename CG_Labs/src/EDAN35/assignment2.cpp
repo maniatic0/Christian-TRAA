@@ -1216,6 +1216,14 @@ edan35::Assignment2::run()
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 #pragma endregion
 
+
+					// Save FXAA
+					// We take advantage that we just rendered the unjittered screen
+					FXAA();
+					file_name = std::string(filename);
+					file_name += "_fxaa";
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
+
 					save = false;
 					save_acc_test = false;
 				}
@@ -1364,7 +1372,7 @@ edan35::Assignment2::run()
 					current_samples = 0;
 
 					// Save Current Info
-					bonobo::saveConfig(filename,
+					bonobo::saveConfig(filename, use_fxaa,
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,
@@ -1378,7 +1386,7 @@ edan35::Assignment2::run()
 					current_samples = 0;
 
 					// Save Current Info
-					bonobo::saveConfig(filename,
+					bonobo::saveConfig(filename, use_fxaa,
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,

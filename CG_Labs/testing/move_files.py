@@ -9,7 +9,7 @@ import re
 import sys
 
 
-RE_PNG_PATTERN = r'(?P<test_name>.+)_(temporal|ground_truth|no_aa|log(_gt)?|both_.+)\.(png|txt)'
+RE_PNG_PATTERN = r'(?P<test_name>.+)_(temporal|ground_truth|no_aa|log(_gt)?|both_.+|fxaa)\.(png|txt)'
 
 def main(pngs_path=".", tests_final_path="."):
 	prog = re.compile(RE_PNG_PATTERN)
