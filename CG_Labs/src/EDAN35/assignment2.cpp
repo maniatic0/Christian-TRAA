@@ -1133,6 +1133,8 @@ edan35::Assignment2::run()
 					//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
 					bonobo::endTimeQuery(sobel_time_query);
 
+					glFlush();
+
 					// Temporal Anti Aliasing modified
 					//debugLastTime = GetTimeMilliseconds();
 					bonobo::beginTimeQuery(temporal_time_query);
@@ -1398,6 +1400,8 @@ edan35::Assignment2::run()
 
 	bonobo::destroyTimeQuery(temporal_time_query);
 	bonobo::destroyTimeQuery(sobel_time_query);
+	bonobo::destroyTimeQuery(deferred_time_query);
+	bonobo::destroyTimeQuery(fxaa_time_query);
 
 	glDeleteProgram(fxaa_shader);
 	fxaa_shader = 0u;
