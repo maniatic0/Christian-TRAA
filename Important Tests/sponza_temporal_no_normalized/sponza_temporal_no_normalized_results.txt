@@ -1,0 +1,23 @@
+Name: sponza_temporal_no_normalized
+Timestamp(dd/mm/yyyy): 21/03/2018 16:47:14.758
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 149.271030
+ The RMSD value of Temporal is 12.217652
+ The MSE value of No AA is 15.273623
+ The RMSD value of No AA is 3.908148
+ The MSE value of FXAA is 9.687376
+ The RMSD value of FXAA is 3.112455 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 26.391048
+ The SNR value of Temporal is 16.244567
+ The Peak-SNR value of No AA is 36.291383
+ The SNR value of No AA is 26.144902
+ The Peak-SNR value of FXAA is 38.268742
+ The SNR value of FXAA is 28.122261 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.931604
+ The SSIM value of No AA is 0.990322
+ The SSIM value of FXAA is 0.993422 

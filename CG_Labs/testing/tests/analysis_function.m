@@ -282,7 +282,7 @@ diary off;
 
 % SSIM Maps
 figure('Name','SSIM Index Map of Temporal'), imshow(ssimmap);
-title(sprintf('The SSIM Index Map of Temporal- Mean ssim Value is %0.6f', ...
+title(sprintf('The SSIM Index Map of Temporal - Mean ssim Value is %0.6f', ...
     ssimval));
 savefig(fullfile(name, strcat(name, '_ssim_map_temporal.fig')));
 saveas(gcf, fullfile(name, strcat(name, '_ssim_map_temporal.png')));
