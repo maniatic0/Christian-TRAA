@@ -1,0 +1,18 @@
+Name: acc_128_d
+Timestamp(dd/mm/yyyy): 11/03/2018 21:16:47.201
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 38.947297
+ The RMSE value of Temporal is 6.240777
+ The MSE value of No AA is 24.524992
+ The RMSE value of No AA is 4.952271 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 32.226030
+ The SNR value of Temporal is 30.492374
+ The Peak-SNR value of No AA is 34.234715
+ The SNR value of No AA is 32.501058 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.993451
+ The SSIM value of No AA is 0.996891 

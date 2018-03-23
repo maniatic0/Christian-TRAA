@@ -1,0 +1,32 @@
+1,2c1,2
+< Name: acc_16_d
+< Timestamp(dd/mm/yyyy): 11/03/2018 21:17:15.801
+---
+> Name: acc_128_d
+> Timestamp(dd/mm/yyyy): 11/03/2018 21:16:47.201
+5,8c5,8
+<  The MSE value of Temporal is 40.647863
+<  The RMSE value of Temporal is 6.375568
+<  The MSE value of No AA is 24.872104
+<  The RMSE value of No AA is 4.987194 
+---
+>  The MSE value of Temporal is 38.947297
+>  The RMSE value of Temporal is 6.240777
+>  The MSE value of No AA is 24.524992
+>  The RMSE value of No AA is 4.952271 
+11,14c11,14
+<  The Peak-SNR value of Temporal is 32.040426
+<  The SNR value of Temporal is 30.305960
+<  The Peak-SNR value of No AA is 34.173678
+<  The SNR value of No AA is 32.439212 
+---
+>  The Peak-SNR value of Temporal is 32.226030
+>  The SNR value of Temporal is 30.492374
+>  The Peak-SNR value of No AA is 34.234715
+>  The SNR value of No AA is 32.501058 
+17,18c17,18
+<  The SSIM value of Temporal is 0.993302
+<  The SSIM value of No AA is 0.996826 
+---
+>  The SSIM value of Temporal is 0.993451
+>  The SSIM value of No AA is 0.996891 
