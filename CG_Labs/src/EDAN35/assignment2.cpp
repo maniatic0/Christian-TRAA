@@ -239,10 +239,10 @@ edan35::Assignment2::run()
 		LogError("Failed to load fallback shader");
 		return;
 	}
-	auto const reload_shader = [fallback_shader](std::string const& vertex_path, std::string const& fragment_path, GLuint& program){
+	auto const reload_shader = [fallback_shader](std::string const& vertex_path, std::string const& fragment_path, GLuint& program, std::string const& macros=""){
 		if (program != 0u && program != fallback_shader)
 			glDeleteProgram(program);
-		program = bonobo::createProgram("../EDAN35/" + vertex_path, "../EDAN35/" + fragment_path);
+		program = bonobo::createProgram("../EDAN35/" + vertex_path, "../EDAN35/" + fragment_path, macros);
 		if (program == 0u) {
 			LogError("Failed to load \"%s\" and \"%s\"", vertex_path.c_str(), fragment_path.c_str());
 			program = fallback_shader;
@@ -254,7 +254,8 @@ edan35::Assignment2::run()
 		sharpen_shader = 0u, accumulation_shader = 0u,
 		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u,
 		sobel_shader = 0u, temporal_with_sobel_shader = 0u,
-		temporal_for_Sobel_shader = 0u, fxaa_shader = 0u;
+		temporal_for_Sobel_shader = 0u, fxaa_shader = 0u,
+		clear_gbuffer_shader = 0u, uncharted_sharpen_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
@@ -262,15 +263,18 @@ edan35::Assignment2::run()
 		&accumulation_shader, &resolve_accumulation_shader,
 		&resolve_no_aa_shader, &sobel_shader,
 		&temporal_with_sobel_shader, &temporal_for_Sobel_shader,
-		&fxaa_shader](){
+		&fxaa_shader, &clear_gbuffer_shader,
+		&uncharted_sharpen_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
+		reload_shader("clear_gbuffer.vert", "clear_gbuffer.frag",  clear_gbuffer_shader);
 		reload_shader("fill_shadowmap.vert",    "fill_shadowmap.frag",    fill_shadowmap_shader);
 		reload_shader("accumulate_lights.vert", "accumulate_lights.frag", accumulate_lights_shader);
 		reload_shader("resolve_deferred.vert",  "resolve_deferred.frag",  resolve_deferred_shader);
 		reload_shader("temporal.vert", "temporal.frag", temporal_shader);
 		reload_shader("resolve_temporal.vert", "resolve_temporal.frag", resolve_temporal_shader);
 		reload_shader("sharpen.vert", "sharpen.frag", sharpen_shader);
+		reload_shader("sharpen.vert", "sharpen.frag", uncharted_sharpen_shader, "#version 410\n#define USE_UNCHARTED_4_SATURATE");
 		reload_shader("accumulation.vert", "accumulation.frag", accumulation_shader);
 		reload_shader("resolve_accumulation.vert", "resolve_accumulation.frag", resolve_accumulation_shader);
 		reload_shader("resolve_no_aa.vert", "resolve_no_aa.frag", resolve_no_aa_shader);
@@ -323,6 +327,8 @@ edan35::Assignment2::run()
 	//
 	// Setup FBOs
 	//
+	auto const depth_clearing_fbo = bonobo::createFBO({ }, depth_texture);
+	auto const clearing_fbo = bonobo::createFBO({ diffuse_texture, specular_texture, normal_texture, velocity_texture, model_index_texture}, 0u);
 	auto const deferred_fbo  = bonobo::createFBO({diffuse_texture, specular_texture, normal_texture, velocity_texture, model_index_texture}, depth_texture);
 	auto const shadowmap_fbo = bonobo::createFBO({}, shadowmap_texture);
 	auto const light_fbo     = bonobo::createFBO({light_diffuse_contribution_texture, light_specular_contribution_texture}, depth_texture);
@@ -482,27 +488,62 @@ edan35::Assignment2::run()
 		&cone, &deferred_shading_fbo, &resolve_deferred_shader,
 		&diffuse_texture, &specular_texture,
 		&light_diffuse_contribution_texture,
-		&light_specular_contribution_texture]() {
+		&light_specular_contribution_texture,
+		&clear_gbuffer_shader, &clearing_fbo,
+		&depth_clearing_fbo]() {
 		glDepthFunc(GL_LESS);
+
+		//
+		// Pass 0: Clear the g-buffer
+		//
+		glBindFramebuffer(GL_FRAMEBUFFER, depth_clearing_fbo);
+		glDrawBuffers(0, 0u);
+		auto const depth_clearing_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (depth_clearing_status != GL_FRAMEBUFFER_COMPLETE)
+			LogError("Something went wrong with framebuffer %u", depth_clearing_fbo);
+		glViewport(0, 0, window_size.x, window_size.y);
+		glClearDepth(1.0f);
+		glClear(GL_DEPTH_BUFFER_BIT);
+
+		glBindFramebuffer(GL_FRAMEBUFFER, clearing_fbo);
+		GLenum const clearing_draw_buffers[5] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2,
+			GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4};
+		glDrawBuffers(5, clearing_draw_buffers);
+		auto const clearing_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (clearing_status != GL_FRAMEBUFFER_COMPLETE)
+			LogError("Something went wrong with framebuffer %u", clearing_fbo);
+		glViewport(0, 0, window_size.x, window_size.y);
+
+		glDisable(GL_DITHER); // for uint writting
+		//glClearDepth(1.0f);
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		//glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+		const glm::vec4 clear_color(0.0f, 0.0f, 0.0f, 0.0f);
+		const unsigned int clear_id = 0u;
+		glUseProgram(clear_gbuffer_shader);
+		glUniform4fv(glGetUniformLocation(clear_gbuffer_shader, "clear_color"), 1, glm::value_ptr(clear_color));
+		glUniform1ui(glGetUniformLocation(clear_gbuffer_shader, "clear_id"), clear_id);
+		GLStateInspection::CaptureSnapshot("Clearing Pass");
+		bonobo::drawFullscreen();
+		glUseProgram(0u);
+
+
 		//
 		// Pass 1: Render scene into the g-buffer
 		//
 		glBindFramebuffer(GL_FRAMEBUFFER, deferred_fbo);
 		GLenum const deferred_draw_buffers[5] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2,
-			GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4};
+			GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4 };
 		glDrawBuffers(5, deferred_draw_buffers);
 		auto const status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", deferred_fbo);
 		glViewport(0, 0, window_size.x, window_size.y);
-		glClearDepth(1.0f);
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+
 		// XXX: Is any other clearing needed?
 
 		GLStateInspection::CaptureSnapshot("Filling Pass");
-
-		glDisable(GL_DITHER); // for uint writting
 
 		for (auto& element : sponza_elements) {
 			element.render(mCamera.GetWorldToClipMatrix(), element.get_transform(), fill_gbuffer_shader, set_uniforms);
@@ -763,7 +804,9 @@ edan35::Assignment2::run()
 		&temporal_output_texture, &resolve_temporal_shader,
 		&ddeltatime, &currentJitter,
 		&sharpen_texture, &sobel_texture,
-		&depth_history_texture
+		&depth_history_texture, &model_index_texture,
+		&fxaa_sampler, &uncharted_sharpen_shader,
+		&temporal_with_sobel_shader
 		](GLuint temporal_shader, auto temporal_set_uniforms, const GLuint history_fbo[], const GLuint history_texture[]) {
 		//
 		// Pass 4: Temporal Reprojection AA
@@ -790,6 +833,7 @@ edan35::Assignment2::run()
 		bind_texture_with_sampler(GL_TEXTURE_2D, 4, temporal_shader, "diffuse_texture", diffuse_texture, default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 5, temporal_shader, "sobel_texture", sobel_texture[(history_switch + 1) & 1], default_sampler);
 		bind_texture_with_sampler(GL_TEXTURE_2D, 6, temporal_shader, "depth_history_texture", depth_history_texture[(history_switch) & 1], depth_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 7, temporal_shader, "model_index_texture", model_index_texture, fxaa_sampler);
 
 		GLStateInspection::CaptureSnapshot("Temporal Pass");
 
@@ -813,7 +857,14 @@ edan35::Assignment2::run()
 		auto const status_sharpen_texture_buffer = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status_sharpen_texture_buffer != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", sharpen_fbo);
-		glUseProgram(sharpen_shader);
+
+		if (temporal_with_sobel_shader == temporal_shader) {
+			glUseProgram(sharpen_shader);
+		}
+		else {
+			glUseProgram(uncharted_sharpen_shader);
+		}
+		
 
 		glViewport(0, 0, window_size.x, window_size.y);
 		// XXX: Is any clearing needed?
@@ -826,7 +877,14 @@ edan35::Assignment2::run()
 				static_cast<float>(windowInverseResolution.y));
 		};
 
-		sharpen_set_uniforms(sharpen_shader);
+		if (temporal_with_sobel_shader == temporal_shader) {
+			sharpen_set_uniforms(sharpen_shader);
+		}
+		else {
+			sharpen_set_uniforms(uncharted_sharpen_shader);
+		}
+
+		
 
 		bind_texture_with_sampler(GL_TEXTURE_2D, 0, temporal_shader, "temporal_output", temporal_output_texture, default_sampler);
 
@@ -851,7 +909,7 @@ edan35::Assignment2::run()
 			glUniform2f(glGetUniformLocation(program, "inv_res"),
 				static_cast<float>(windowInverseResolution.x),
 				static_cast<float>(windowInverseResolution.y));
-			glUniform1f(glGetUniformLocation(program, "current_fps"), ddeltatime);
+			glUniform1f(glGetUniformLocation(program, "current_fps"), static_cast<float>(ddeltatime));
 			glUniformMatrix4fv(glGetUniformLocation(program, "jitter"), 1, GL_FALSE,
 				glm::value_ptr(currentJitter));
 		};
@@ -881,20 +939,20 @@ edan35::Assignment2::run()
 			&resolve_accumulation_shader, &accumulation_texture
 	]() {
 
-		const float samples_inverse = 1.0 / static_cast<float>(accumulation_samples);
+		const float samples_inverse = 1.0f / static_cast<float>(accumulation_samples);
 
 		auto const accumulation_set_uniforms = [&samples_inverse](GLuint program) {
 			glUniform1f(glGetUniformLocation(program, "samples_inverse"), samples_inverse);
 		};
 
-		float old_frame_count = mCamera.frameCount;
+		int old_frame_count = mCamera.frameCount;
 		mCamera.frameCount = -1;
 		float old_jitter_spread = mCamera.jitterSpread;
 		mCamera.jitterSpread = accumulation_jitter_spread;
 		bool old_jittered_projection = mCamera.jitterProjection;
 		mCamera.jitterProjection = true;
 
-		for (size_t i = 0; i < accumulation_samples; i++)
+		for (size_t i = 0; i < static_cast<size_t>(accumulation_samples); i++)
 		{
 			currentJitter = mCamera.UpdateProjection(windowInverseResolution, accumulation_samples);
 			Deferred_Shading();
@@ -1085,7 +1143,7 @@ edan35::Assignment2::run()
 			{
 
 				// Generate Accumulation Buffer per saved frame
-				for (size_t i = 0; i < both_test_samples; i++)
+				for (size_t i = 0; i < static_cast<size_t>(both_test_samples); i++)
 				{
 					samples_string.clear();
 					samples_string.str("");

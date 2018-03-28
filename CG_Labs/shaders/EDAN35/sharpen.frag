@@ -13,7 +13,7 @@ layout (location = 0) out vec4 sharpen_output;
 
 #define USE_SHARPEN
 #define KERNEL_SIZE 5
-#define USE_UNCHARTED_4_SATURATE
+//#define USE_UNCHARTED_4_SATURATE
 
 // Note: the center pixel is always added so its not necesarry to add one to the center of the convolution
 #if KERNEL_SIZE == 5

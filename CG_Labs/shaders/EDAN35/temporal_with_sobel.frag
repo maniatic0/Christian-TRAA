@@ -12,6 +12,8 @@ uniform sampler2D velocity_texture;
 
 uniform sampler2D sobel_texture;
 
+uniform usampler2D model_index_texture;
+
 uniform vec2 inv_res;
 uniform mat4 jitter;
 uniform float k_feedback_max;
@@ -27,11 +29,15 @@ uniform float z_far;
 //#define HISTORY_COLOR_AVERAGE // Average for the color of the center of the bounding box that clips history
 #define USE_SOBEL_CROSS // Use sobel to change how the color min and max are calculated
 
-#define ORIGINAL_TRAA // Use inside TRAA
+// Use model index comparison to blurr edges between models
+#define USE_MODEL_INDEX
 
-#ifdef ORIGINAL_TRAA
+// Use original TRAA box size
+#define ORIGINAL_TRAA_BOX 
+
+#ifdef ORIGINAL_TRAA_BOX
 	#define BOX_3X3
-#endif // ORIGINAL_TRAA
+#endif // ORIGINAL_TRAA_BOX
 
 //#define BOX_5X5
 
@@ -157,6 +163,9 @@ void main()
 	j_uv = j_uv * 0.5 + vec4(0.5);
 
 
+	uint model_index = texture(model_index_texture, j_uv.xy).x; // Model index number
+	float model_acc = 0.0;
+
 	vec2 p_uv;
 	vec2 pos;
 	vec4 p = vec4(1.0, 1.0, 1.0, 0.0); // everything at the back of fustrum
@@ -198,12 +207,16 @@ void main()
 			cn_min = min(cn_min, cn_temp);
 			cn_max = max(cn_max, cn_temp);
 			cn_avg += cn_temp;
+
+			// Model Index Comp
+			model_acc += step(1, abs(model_index - texture(model_index_texture, p_uv).x));
 		}
 	}
 
 	cn_avg = cn_avg / BOX_AMOUNT;
 	sobel_avg = sobel_avg / BOX_AMOUNT;
 	depth_avg = depth_avg / BOX_AMOUNT;
+	model_acc = model_acc / BOX_AMOUNT;
 
 	// p_uv = p.xy; // Test positions, normally the closest one
 
@@ -267,23 +280,29 @@ void main()
 
 	// pseudo depth variance
 	float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
-	max_distance_depth = max(max_distance_depth, 0.00002);
+	//max_distance_depth = max(max_distance_depth, 0.0002);
 	float linear_current_depth = linear_depth(current_depth);
 	float depth_variance = abs(linear_current_depth - depth_avg) / max_distance_depth;
-	depth_variance = depth_variance * depth_variance;
+	depth_variance = step(0.002, max_distance_depth) * depth_variance * depth_variance;
 	//depth_variance = 0.0;
 
 	// pseudo temporal depth variance
 	float depth_temporal_variance = abs(depth_avg - texture(depth_history_texture, fs_in.texcoord).x) / max_distance_depth;
-	depth_temporal_variance = depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
+	depth_temporal_variance = step(0.002, max_distance_depth) * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
 
 	//depth_temporal_variance = 0.0;
 
 	// Mix min-max averaging
 #ifdef USE_SOBEL_CROSS
-
+	
+	#ifdef USE_MODEL_INDEX
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, clamp(sobel + model_acc, 0.0, 1.0));
+	sobel_avg = clamp(sobel_avg + depth_variance + depth_temporal_variance + model_acc, 0.0, 1.0);
+	#else
 	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
 	sobel_avg = clamp(sobel_avg + depth_variance + depth_temporal_variance, 0.0, 1.0);
+	#endif // USE_SOBEL_CROSS
+
 	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
 	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
 	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
@@ -330,4 +349,5 @@ void main()
 	//temporal_output.xyz = vec3(clamp( unbiased_weight_sqr + depth_variance, 0.0, 1.0));
 	//temporal_output.xyz = vec3(depth_temporal_variance);
 	//temporal_output.xyz = vec3(sobel_avg);
+	//temporal_output.xyz = vec3(model_acc);
 }

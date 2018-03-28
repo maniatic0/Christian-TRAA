@@ -113,9 +113,12 @@ namespace bonobo
 	//!             code, relative to the `shaders/EDAF80` folder
 	//! @param [in] frag_shader_source_path of the fragment shader source
 	//!             code, relative to the `shaders/EDAF80` folder
+	//! @param [in] macros extra to add to the shaders
+	//!             code, relative to the `shaders/EDAF80` folder
 	//! @return the name of the OpenGL shader program
 	GLuint createProgram(std::string const& vert_shader_source_path,
-	                     std::string const& frag_shader_source_path);
+	                     std::string const& frag_shader_source_path,
+						 std::string const& macros = "");
 
 	//! \brief Display the current texture in the specified rectangle.
 	//!
