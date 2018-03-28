@@ -1,0 +1,22 @@
+1,2c1,2
+< Name: sponza_model_acc
+< Timestamp(dd/mm/yyyy): 28/03/2018 17:00:22.469
+---
+> Name: sponza_model_acc_no
+> Timestamp(dd/mm/yyyy): 28/03/2018 17:01:54.340
+5,6c5,6
+<  The MSE value of Temporal is 2.208032
+<  The RMSD value of Temporal is 1.485945
+---
+>  The MSE value of Temporal is 2.388399
+>  The RMSD value of Temporal is 1.545445
+13,14c13,14
+<  The Peak-SNR value of Temporal is 44.690751
+<  The SNR value of Temporal is 26.847830
+---
+>  The Peak-SNR value of Temporal is 44.349735
+>  The SNR value of Temporal is 26.506815
+21c21
+<  The SSIM value of Temporal is 0.992080
+---
+>  The SSIM value of Temporal is 0.991623

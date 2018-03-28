@@ -1,0 +1,23 @@
+Name: model_acc
+Timestamp(dd/mm/yyyy): 28/03/2018 16:57:22.412
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 2.056816
+ The RMSD value of Temporal is 1.434160
+ The MSE value of No AA is 5.936178
+ The RMSD value of No AA is 2.436427
+ The MSE value of FXAA is 4.580765
+ The RMSD value of FXAA is 2.140272 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 44.998850
+ The SNR value of Temporal is 35.869885
+ The Peak-SNR value of No AA is 40.395735
+ The SNR value of No AA is 31.266770
+ The Peak-SNR value of FXAA is 41.521424
+ The SNR value of FXAA is 32.392459 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.999193
+ The SSIM value of No AA is 0.998199
+ The SSIM value of FXAA is 0.998433 

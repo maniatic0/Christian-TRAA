@@ -1,0 +1,2204 @@
+Name: ghost
+Timestamp(dd/mm/yyyy): 28/03/2018 17:35:38.292
+Ghosting Test Found: ghost\ghost_log_gt.txt
+Ghosting Test Amount: 100
+
+
+Test Number: 0000
+Ground Truth: ghost\ghost_both_0000_truth.png
+Master Thesis Temporal: ghost\ghost_both_0000_improved.png
+Uncharted Temporal: ghost\ghost_both_0000_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.956175
+ The RMSE value of Master Thesis Temporal is 1.989013
+ The MSE value of Uncharted Temporal is 6.032581
+ The RMSE value of Uncharted Temporal is 2.456131 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 42.158049
+ The SNR value of Master Thesis Temporal is 23.493537
+ The Peak-SNR value of Uncharted Temporal is 40.325772
+ The SNR value of Uncharted Temporal is 21.661260 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.992519
+ The SSIM value of Uncharted Temporal is 0.987862 
+
+
+Test Number: 0001
+Ground Truth: ghost\ghost_both_0001_truth.png
+Master Thesis Temporal: ghost\ghost_both_0001_improved.png
+Uncharted Temporal: ghost\ghost_both_0001_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 5.427071
+ The RMSE value of Master Thesis Temporal is 2.329607
+ The MSE value of Uncharted Temporal is 7.108295
+ The RMSE value of Uncharted Temporal is 2.666139 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 40.785149
+ The SNR value of Master Thesis Temporal is 22.440589
+ The Peak-SNR value of Uncharted Temporal is 39.613149
+ The SNR value of Uncharted Temporal is 21.268589 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.990365
+ The SSIM value of Uncharted Temporal is 0.982963 
+
+
+Test Number: 0002
+Ground Truth: ghost\ghost_both_0002_truth.png
+Master Thesis Temporal: ghost\ghost_both_0002_improved.png
+Uncharted Temporal: ghost\ghost_both_0002_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 5.372740
+ The RMSE value of Master Thesis Temporal is 2.317917
+ The MSE value of Uncharted Temporal is 7.682519
+ The RMSE value of Uncharted Temporal is 2.771736 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 40.828845
+ The SNR value of Master Thesis Temporal is 22.848713
+ The Peak-SNR value of Uncharted Temporal is 39.275767
+ The SNR value of Uncharted Temporal is 21.295635 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.990660
+ The SSIM value of Uncharted Temporal is 0.979579 
+
+
+Test Number: 0003
+Ground Truth: ghost\ghost_both_0003_truth.png
+Master Thesis Temporal: ghost\ghost_both_0003_improved.png
+Uncharted Temporal: ghost\ghost_both_0003_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 5.754546
+ The RMSE value of Master Thesis Temporal is 2.398863
+ The MSE value of Uncharted Temporal is 8.785238
+ The RMSE value of Uncharted Temporal is 2.963990 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 40.530693
+ The SNR value of Master Thesis Temporal is 22.939616
+ The Peak-SNR value of Uncharted Temporal is 38.693268
+ The SNR value of Uncharted Temporal is 21.102191 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.990531
+ The SSIM value of Uncharted Temporal is 0.975541 
+
+
+Test Number: 0004
+Ground Truth: ghost\ghost_both_0004_truth.png
+Master Thesis Temporal: ghost\ghost_both_0004_improved.png
+Uncharted Temporal: ghost\ghost_both_0004_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 7.047512
+ The RMSE value of Master Thesis Temporal is 2.654715
+ The MSE value of Uncharted Temporal is 11.983812
+ The RMSE value of Uncharted Temporal is 3.461764 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.650445
+ The SNR value of Master Thesis Temporal is 22.484164
+ The Peak-SNR value of Uncharted Temporal is 37.344854
+ The SNR value of Uncharted Temporal is 20.178572 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.989162
+ The SSIM value of Uncharted Temporal is 0.970706 
+
+
+Test Number: 0005
+Ground Truth: ghost\ghost_both_0005_truth.png
+Master Thesis Temporal: ghost\ghost_both_0005_improved.png
+Uncharted Temporal: ghost\ghost_both_0005_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 8.204257
+ The RMSE value of Master Thesis Temporal is 2.864307
+ The MSE value of Uncharted Temporal is 15.816128
+ The RMSE value of Uncharted Temporal is 3.976950 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 38.990411
+ The SNR value of Master Thesis Temporal is 22.495524
+ The Peak-SNR value of Uncharted Temporal is 36.139802
+ The SNR value of Uncharted Temporal is 19.644915 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.987229
+ The SSIM value of Uncharted Temporal is 0.963329 
+
+
+Test Number: 0006
+Ground Truth: ghost\ghost_both_0006_truth.png
+Master Thesis Temporal: ghost\ghost_both_0006_improved.png
+Uncharted Temporal: ghost\ghost_both_0006_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 7.517753
+ The RMSE value of Master Thesis Temporal is 2.741852
+ The MSE value of Uncharted Temporal is 16.224497
+ The RMSE value of Uncharted Temporal is 4.027964 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.369923
+ The SNR value of Master Thesis Temporal is 23.340340
+ The Peak-SNR value of Uncharted Temporal is 36.029091
+ The SNR value of Uncharted Temporal is 19.999508 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.987038
+ The SSIM value of Uncharted Temporal is 0.959550 
+
+
+Test Number: 0007
+Ground Truth: ghost\ghost_both_0007_truth.png
+Master Thesis Temporal: ghost\ghost_both_0007_improved.png
+Uncharted Temporal: ghost\ghost_both_0007_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 6.500568
+ The RMSE value of Master Thesis Temporal is 2.549621
+ The MSE value of Uncharted Temporal is 17.100129
+ The RMSE value of Uncharted Temporal is 4.135230 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 40.001291
+ The SNR value of Master Thesis Temporal is 24.440072
+ The Peak-SNR value of Uncharted Temporal is 35.800810
+ The SNR value of Uncharted Temporal is 20.239591 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988772
+ The SSIM value of Uncharted Temporal is 0.957437 
+
+
+Test Number: 0008
+Ground Truth: ghost\ghost_both_0008_truth.png
+Master Thesis Temporal: ghost\ghost_both_0008_improved.png
+Uncharted Temporal: ghost\ghost_both_0008_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 8.161605
+ The RMSE value of Master Thesis Temporal is 2.856852
+ The MSE value of Uncharted Temporal is 19.922451
+ The RMSE value of Uncharted Temporal is 4.463457 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.013048
+ The SNR value of Master Thesis Temporal is 23.931626
+ The Peak-SNR value of Uncharted Temporal is 35.137376
+ The SNR value of Uncharted Temporal is 20.055954 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988487
+ The SSIM value of Uncharted Temporal is 0.954002 
+
+
+Test Number: 0009
+Ground Truth: ghost\ghost_both_0009_truth.png
+Master Thesis Temporal: ghost\ghost_both_0009_improved.png
+Uncharted Temporal: ghost\ghost_both_0009_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 13.733140
+ The RMSE value of Master Thesis Temporal is 3.705825
+ The MSE value of Uncharted Temporal is 28.292243
+ The RMSE value of Uncharted Temporal is 5.319045 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 36.753105
+ The SNR value of Master Thesis Temporal is 22.180260
+ The Peak-SNR value of Uncharted Temporal is 33.614130
+ The SNR value of Uncharted Temporal is 19.041284 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.986371
+ The SSIM value of Uncharted Temporal is 0.948992 
+
+
+Test Number: 0010
+Ground Truth: ghost\ghost_both_0010_truth.png
+Master Thesis Temporal: ghost\ghost_both_0010_improved.png
+Uncharted Temporal: ghost\ghost_both_0010_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 19.086325
+ The RMSE value of Master Thesis Temporal is 4.368790
+ The MSE value of Uncharted Temporal is 45.637391
+ The RMSE value of Uncharted Temporal is 6.755545 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.323580
+ The SNR value of Master Thesis Temporal is 21.455000
+ The Peak-SNR value of Uncharted Temporal is 31.537595
+ The SNR value of Uncharted Temporal is 17.669015 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.985046
+ The SSIM value of Uncharted Temporal is 0.939988 
+
+
+Test Number: 0011
+Ground Truth: ghost\ghost_both_0011_truth.png
+Master Thesis Temporal: ghost\ghost_both_0011_improved.png
+Uncharted Temporal: ghost\ghost_both_0011_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 17.888277
+ The RMSE value of Master Thesis Temporal is 4.229454
+ The MSE value of Uncharted Temporal is 63.985397
+ The RMSE value of Uncharted Temporal is 7.999087 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.605119
+ The SNR value of Master Thesis Temporal is 22.353466
+ The Peak-SNR value of Uncharted Temporal is 30.069995
+ The SNR value of Uncharted Temporal is 16.818343 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.985452
+ The SSIM value of Uncharted Temporal is 0.932483 
+
+
+Test Number: 0012
+Ground Truth: ghost\ghost_both_0012_truth.png
+Master Thesis Temporal: ghost\ghost_both_0012_improved.png
+Uncharted Temporal: ghost\ghost_both_0012_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 19.403044
+ The RMSE value of Master Thesis Temporal is 4.404889
+ The MSE value of Uncharted Temporal is 57.396142
+ The RMSE value of Uncharted Temporal is 7.576024 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.252105
+ The SNR value of Master Thesis Temporal is 22.540692
+ The Peak-SNR value of Uncharted Temporal is 30.541977
+ The SNR value of Uncharted Temporal is 17.830564 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.984163
+ The SSIM value of Uncharted Temporal is 0.927105 
+
+
+Test Number: 0013
+Ground Truth: ghost\ghost_both_0013_truth.png
+Master Thesis Temporal: ghost\ghost_both_0013_improved.png
+Uncharted Temporal: ghost\ghost_both_0013_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 19.002125
+ The RMSE value of Master Thesis Temporal is 4.359143
+ The MSE value of Uncharted Temporal is 48.244273
+ The RMSE value of Uncharted Temporal is 6.945810 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.342782
+ The SNR value of Master Thesis Temporal is 22.947000
+ The Peak-SNR value of Uncharted Temporal is 31.296346
+ The SNR value of Uncharted Temporal is 18.900565 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.983025
+ The SSIM value of Uncharted Temporal is 0.925604 
+
+
+Test Number: 0014
+Ground Truth: ghost\ghost_both_0014_truth.png
+Master Thesis Temporal: ghost\ghost_both_0014_improved.png
+Uncharted Temporal: ghost\ghost_both_0014_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 16.088710
+ The RMSE value of Master Thesis Temporal is 4.011073
+ The MSE value of Uncharted Temporal is 66.540805
+ The RMSE value of Uncharted Temporal is 8.157255 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 36.065591
+ The SNR value of Master Thesis Temporal is 23.969379
+ The Peak-SNR value of Uncharted Temporal is 29.899923
+ The SNR value of Uncharted Temporal is 17.803710 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.983189
+ The SSIM value of Uncharted Temporal is 0.918096 
+
+
+Test Number: 0015
+Ground Truth: ghost\ghost_both_0015_truth.png
+Master Thesis Temporal: ghost\ghost_both_0015_improved.png
+Uncharted Temporal: ghost\ghost_both_0015_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 15.400477
+ The RMSE value of Master Thesis Temporal is 3.924344
+ The MSE value of Uncharted Temporal is 80.572023
+ The RMSE value of Uncharted Temporal is 8.976192 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 36.255462
+ The SNR value of Master Thesis Temporal is 24.560423
+ The Peak-SNR value of Uncharted Temporal is 29.068961
+ The SNR value of Uncharted Temporal is 17.373922 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.984074
+ The SSIM value of Uncharted Temporal is 0.913293 
+
+
+Test Number: 0016
+Ground Truth: ghost\ghost_both_0016_truth.png
+Master Thesis Temporal: ghost\ghost_both_0016_improved.png
+Uncharted Temporal: ghost\ghost_both_0016_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 21.599028
+ The RMSE value of Master Thesis Temporal is 4.647475
+ The MSE value of Uncharted Temporal is 72.084596
+ The RMSE value of Uncharted Temporal is 8.490265 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 34.786462
+ The SNR value of Master Thesis Temporal is 23.328839
+ The Peak-SNR value of Uncharted Temporal is 29.552379
+ The SNR value of Uncharted Temporal is 18.094757 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981555
+ The SSIM value of Uncharted Temporal is 0.911854 
+
+
+Test Number: 0017
+Ground Truth: ghost\ghost_both_0017_truth.png
+Master Thesis Temporal: ghost\ghost_both_0017_improved.png
+Uncharted Temporal: ghost\ghost_both_0017_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 22.402602
+ The RMSE value of Master Thesis Temporal is 4.733139
+ The MSE value of Uncharted Temporal is 70.019197
+ The RMSE value of Uncharted Temporal is 8.367747 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 34.627819
+ The SNR value of Master Thesis Temporal is 23.494223
+ The Peak-SNR value of Uncharted Temporal is 29.678632
+ The SNR value of Uncharted Temporal is 18.545036 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981745
+ The SSIM value of Uncharted Temporal is 0.912306 
+
+
+Test Number: 0018
+Ground Truth: ghost\ghost_both_0018_truth.png
+Master Thesis Temporal: ghost\ghost_both_0018_improved.png
+Uncharted Temporal: ghost\ghost_both_0018_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 39.976072
+ The RMSE value of Master Thesis Temporal is 6.322663
+ The MSE value of Uncharted Temporal is 95.361154
+ The RMSE value of Uncharted Temporal is 9.765304 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 32.112802
+ The SNR value of Master Thesis Temporal is 21.167607
+ The Peak-SNR value of Uncharted Temporal is 28.337089
+ The SNR value of Uncharted Temporal is 17.391893 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.978313
+ The SSIM value of Uncharted Temporal is 0.908858 
+
+
+Test Number: 0019
+Ground Truth: ghost\ghost_both_0019_truth.png
+Master Thesis Temporal: ghost\ghost_both_0019_improved.png
+Uncharted Temporal: ghost\ghost_both_0019_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 44.511263
+ The RMSE value of Master Thesis Temporal is 6.671676
+ The MSE value of Uncharted Temporal is 100.870550
+ The RMSE value of Uncharted Temporal is 10.043433 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 31.646104
+ The SNR value of Master Thesis Temporal is 20.864364
+ The Peak-SNR value of Uncharted Temporal is 28.093160
+ The SNR value of Uncharted Temporal is 17.311420 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.978034
+ The SSIM value of Uncharted Temporal is 0.908678 
+
+
+Test Number: 0020
+Ground Truth: ghost\ghost_both_0020_truth.png
+Master Thesis Temporal: ghost\ghost_both_0020_improved.png
+Uncharted Temporal: ghost\ghost_both_0020_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 33.079682
+ The RMSE value of Master Thesis Temporal is 5.751494
+ The MSE value of Uncharted Temporal is 96.253011
+ The RMSE value of Uncharted Temporal is 9.810862 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 32.935190
+ The SNR value of Master Thesis Temporal is 22.366568
+ The Peak-SNR value of Uncharted Temporal is 28.296660
+ The SNR value of Uncharted Temporal is 17.728038 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.980665
+ The SSIM value of Uncharted Temporal is 0.909758 
+
+
+Test Number: 0021
+Ground Truth: ghost\ghost_both_0021_truth.png
+Master Thesis Temporal: ghost\ghost_both_0021_improved.png
+Uncharted Temporal: ghost\ghost_both_0021_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 60.182394
+ The RMSE value of Master Thesis Temporal is 7.757731
+ The MSE value of Uncharted Temporal is 78.275560
+ The RMSE value of Uncharted Temporal is 8.847348 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.336109
+ The SNR value of Master Thesis Temporal is 19.884963
+ The Peak-SNR value of Uncharted Temporal is 29.194542
+ The SNR value of Uncharted Temporal is 18.743396 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.976575
+ The SSIM value of Uncharted Temporal is 0.914027 
+
+
+Test Number: 0022
+Ground Truth: ghost\ghost_both_0022_truth.png
+Master Thesis Temporal: ghost\ghost_both_0022_improved.png
+Uncharted Temporal: ghost\ghost_both_0022_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 61.451912
+ The RMSE value of Master Thesis Temporal is 7.839127
+ The MSE value of Uncharted Temporal is 94.571048
+ The RMSE value of Uncharted Temporal is 9.724765 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.245450
+ The SNR value of Master Thesis Temporal is 19.901945
+ The Peak-SNR value of Uncharted Temporal is 28.373222
+ The SNR value of Uncharted Temporal is 18.029717 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.975768
+ The SSIM value of Uncharted Temporal is 0.912812 
+
+
+Test Number: 0023
+Ground Truth: ghost\ghost_both_0023_truth.png
+Master Thesis Temporal: ghost\ghost_both_0023_improved.png
+Uncharted Temporal: ghost\ghost_both_0023_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 62.671100
+ The RMSE value of Master Thesis Temporal is 7.916508
+ The MSE value of Uncharted Temporal is 88.627580
+ The RMSE value of Uncharted Temporal is 9.414222 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.160130
+ The SNR value of Master Thesis Temporal is 19.909150
+ The Peak-SNR value of Uncharted Temporal is 28.655115
+ The SNR value of Uncharted Temporal is 18.404134 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.976005
+ The SSIM value of Uncharted Temporal is 0.915030 
+
+
+Test Number: 0024
+Ground Truth: ghost\ghost_both_0024_truth.png
+Master Thesis Temporal: ghost\ghost_both_0024_improved.png
+Uncharted Temporal: ghost\ghost_both_0024_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 70.276763
+ The RMSE value of Master Thesis Temporal is 8.383124
+ The MSE value of Uncharted Temporal is 85.524122
+ The RMSE value of Uncharted Temporal is 9.247925 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 29.662686
+ The SNR value of Master Thesis Temporal is 19.487343
+ The Peak-SNR value of Uncharted Temporal is 28.809917
+ The SNR value of Uncharted Temporal is 18.634575 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.975701
+ The SSIM value of Uncharted Temporal is 0.916013 
+
+
+Test Number: 0025
+Ground Truth: ghost\ghost_both_0025_truth.png
+Master Thesis Temporal: ghost\ghost_both_0025_improved.png
+Uncharted Temporal: ghost\ghost_both_0025_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 79.976149
+ The RMSE value of Master Thesis Temporal is 8.942938
+ The MSE value of Uncharted Temporal is 83.461572
+ The RMSE value of Uncharted Temporal is 9.135731 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 29.101199
+ The SNR value of Master Thesis Temporal is 18.987025
+ The Peak-SNR value of Uncharted Temporal is 28.915938
+ The SNR value of Uncharted Temporal is 18.801765 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.974583
+ The SSIM value of Uncharted Temporal is 0.917868 
+
+
+Test Number: 0026
+Ground Truth: ghost\ghost_both_0026_truth.png
+Master Thesis Temporal: ghost\ghost_both_0026_improved.png
+Uncharted Temporal: ghost\ghost_both_0026_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 82.732683
+ The RMSE value of Master Thesis Temporal is 9.095751
+ The MSE value of Uncharted Temporal is 94.973802
+ The RMSE value of Uncharted Temporal is 9.745450 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 28.954033
+ The SNR value of Master Thesis Temporal is 18.906522
+ The Peak-SNR value of Uncharted Temporal is 28.354765
+ The SNR value of Uncharted Temporal is 18.307255 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.974234
+ The SSIM value of Uncharted Temporal is 0.916514 
+
+
+Test Number: 0027
+Ground Truth: ghost\ghost_both_0027_truth.png
+Master Thesis Temporal: ghost\ghost_both_0027_improved.png
+Uncharted Temporal: ghost\ghost_both_0027_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 82.378598
+ The RMSE value of Master Thesis Temporal is 9.076266
+ The MSE value of Uncharted Temporal is 78.949052
+ The RMSE value of Uncharted Temporal is 8.885328 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 28.972660
+ The SNR value of Master Thesis Temporal is 18.954358
+ The Peak-SNR value of Uncharted Temporal is 29.157334
+ The SNR value of Uncharted Temporal is 19.139033 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.974052
+ The SSIM value of Uncharted Temporal is 0.919629 
+
+
+Test Number: 0028
+Ground Truth: ghost\ghost_both_0028_truth.png
+Master Thesis Temporal: ghost\ghost_both_0028_improved.png
+Uncharted Temporal: ghost\ghost_both_0028_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 88.115494
+ The RMSE value of Master Thesis Temporal is 9.386985
+ The MSE value of Uncharted Temporal is 67.800200
+ The RMSE value of Uncharted Temporal is 8.234088 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 28.680281
+ The SNR value of Master Thesis Temporal is 18.688514
+ The Peak-SNR value of Uncharted Temporal is 29.818494
+ The SNR value of Uncharted Temporal is 19.826727 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.973071
+ The SSIM value of Uncharted Temporal is 0.923039 
+
+
+Test Number: 0029
+Ground Truth: ghost\ghost_both_0029_truth.png
+Master Thesis Temporal: ghost\ghost_both_0029_improved.png
+Uncharted Temporal: ghost\ghost_both_0029_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 91.765660
+ The RMSE value of Master Thesis Temporal is 9.579439
+ The MSE value of Uncharted Temporal is 61.158337
+ The RMSE value of Uncharted Temporal is 7.820380 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 28.504002
+ The SNR value of Master Thesis Temporal is 18.523956
+ The Peak-SNR value of Uncharted Temporal is 30.266247
+ The SNR value of Uncharted Temporal is 20.286201 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.972037
+ The SSIM value of Uncharted Temporal is 0.924730 
+
+
+Test Number: 0030
+Ground Truth: ghost\ghost_both_0030_truth.png
+Master Thesis Temporal: ghost\ghost_both_0030_improved.png
+Uncharted Temporal: ghost\ghost_both_0030_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 75.001821
+ The RMSE value of Master Thesis Temporal is 8.660359
+ The MSE value of Uncharted Temporal is 54.597542
+ The RMSE value of Uncharted Temporal is 7.389015 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 29.380086
+ The SNR value of Master Thesis Temporal is 19.404614
+ The Peak-SNR value of Uncharted Temporal is 30.759073
+ The SNR value of Uncharted Temporal is 20.783601 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.975735
+ The SSIM value of Uncharted Temporal is 0.926389 
+
+
+Test Number: 0031
+Ground Truth: ghost\ghost_both_0031_truth.png
+Master Thesis Temporal: ghost\ghost_both_0031_improved.png
+Uncharted Temporal: ghost\ghost_both_0031_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 56.336259
+ The RMSE value of Master Thesis Temporal is 7.505748
+ The MSE value of Uncharted Temporal is 44.457016
+ The RMSE value of Uncharted Temporal is 6.667609 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.622924
+ The SNR value of Master Thesis Temporal is 20.648307
+ The Peak-SNR value of Uncharted Temporal is 31.651400
+ The SNR value of Uncharted Temporal is 21.676784 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.978612
+ The SSIM value of Uncharted Temporal is 0.930388 
+
+
+Test Number: 0032
+Ground Truth: ghost\ghost_both_0032_truth.png
+Master Thesis Temporal: ghost\ghost_both_0032_improved.png
+Uncharted Temporal: ghost\ghost_both_0032_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 30.364970
+ The RMSE value of Master Thesis Temporal is 5.510442
+ The MSE value of Uncharted Temporal is 39.969468
+ The RMSE value of Uncharted Temporal is 6.322141 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 33.307075
+ The SNR value of Master Thesis Temporal is 23.331397
+ The Peak-SNR value of Uncharted Temporal is 32.113520
+ The SNR value of Uncharted Temporal is 22.137842 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.984086
+ The SSIM value of Uncharted Temporal is 0.933722 
+
+
+Test Number: 0033
+Ground Truth: ghost\ghost_both_0033_truth.png
+Master Thesis Temporal: ghost\ghost_both_0033_improved.png
+Uncharted Temporal: ghost\ghost_both_0033_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 11.478773
+ The RMSE value of Master Thesis Temporal is 3.388034
+ The MSE value of Uncharted Temporal is 45.067997
+ The RMSE value of Uncharted Temporal is 6.713270 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 37.531849
+ The SNR value of Master Thesis Temporal is 27.551193
+ The Peak-SNR value of Uncharted Temporal is 31.592121
+ The SNR value of Uncharted Temporal is 21.611465 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988334
+ The SSIM value of Uncharted Temporal is 0.934957 
+
+
+Test Number: 0034
+Ground Truth: ghost\ghost_both_0034_truth.png
+Master Thesis Temporal: ghost\ghost_both_0034_improved.png
+Uncharted Temporal: ghost\ghost_both_0034_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 19.535503
+ The RMSE value of Master Thesis Temporal is 4.419899
+ The MSE value of Uncharted Temporal is 32.953821
+ The RMSE value of Uncharted Temporal is 5.740542 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.222558
+ The SNR value of Master Thesis Temporal is 25.234861
+ The Peak-SNR value of Uncharted Temporal is 32.951746
+ The SNR value of Uncharted Temporal is 22.964049 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.987171
+ The SSIM value of Uncharted Temporal is 0.940369 
+
+
+Test Number: 0035
+Ground Truth: ghost\ghost_both_0035_truth.png
+Master Thesis Temporal: ghost\ghost_both_0035_improved.png
+Uncharted Temporal: ghost\ghost_both_0035_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 49.842684
+ The RMSE value of Master Thesis Temporal is 7.059935
+ The MSE value of Uncharted Temporal is 35.745146
+ The RMSE value of Uncharted Temporal is 5.978724 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 31.154789
+ The SNR value of Master Thesis Temporal is 21.144153
+ The Peak-SNR value of Uncharted Temporal is 32.598633
+ The SNR value of Uncharted Temporal is 22.587997 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981277
+ The SSIM value of Uncharted Temporal is 0.941957 
+
+
+Test Number: 0036
+Ground Truth: ghost\ghost_both_0036_truth.png
+Master Thesis Temporal: ghost\ghost_both_0036_improved.png
+Uncharted Temporal: ghost\ghost_both_0036_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 43.320353
+ The RMSE value of Master Thesis Temporal is 6.581820
+ The MSE value of Uncharted Temporal is 27.508505
+ The RMSE value of Uncharted Temporal is 5.244855 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 31.763884
+ The SNR value of Master Thesis Temporal is 21.711564
+ The Peak-SNR value of Uncharted Temporal is 33.736134
+ The SNR value of Uncharted Temporal is 23.683814 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.982249
+ The SSIM value of Uncharted Temporal is 0.945702 
+
+
+Test Number: 0037
+Ground Truth: ghost\ghost_both_0037_truth.png
+Master Thesis Temporal: ghost\ghost_both_0037_improved.png
+Uncharted Temporal: ghost\ghost_both_0037_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 33.116134
+ The RMSE value of Master Thesis Temporal is 5.754662
+ The MSE value of Uncharted Temporal is 24.785482
+ The RMSE value of Uncharted Temporal is 4.978502 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 32.930407
+ The SNR value of Master Thesis Temporal is 22.835073
+ The Peak-SNR value of Uncharted Temporal is 34.188830
+ The SNR value of Uncharted Temporal is 24.093496 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.984768
+ The SSIM value of Uncharted Temporal is 0.947445 
+
+
+Test Number: 0038
+Ground Truth: ghost\ghost_both_0038_truth.png
+Master Thesis Temporal: ghost\ghost_both_0038_improved.png
+Uncharted Temporal: ghost\ghost_both_0038_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 54.135986
+ The RMSE value of Master Thesis Temporal is 7.357716
+ The MSE value of Uncharted Temporal is 29.445925
+ The RMSE value of Uncharted Temporal is 5.426410 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.795943
+ The SNR value of Master Thesis Temporal is 20.644624
+ The Peak-SNR value of Uncharted Temporal is 33.440552
+ The SNR value of Uncharted Temporal is 23.289233 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.980893
+ The SSIM value of Uncharted Temporal is 0.947754 
+
+
+Test Number: 0039
+Ground Truth: ghost\ghost_both_0039_truth.png
+Master Thesis Temporal: ghost\ghost_both_0039_improved.png
+Uncharted Temporal: ghost\ghost_both_0039_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 52.257048
+ The RMSE value of Master Thesis Temporal is 7.228904
+ The MSE value of Uncharted Temporal is 29.096731
+ The RMSE value of Uncharted Temporal is 5.394139 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.949355
+ The SNR value of Master Thesis Temporal is 20.728628
+ The Peak-SNR value of Uncharted Temporal is 33.492362
+ The SNR value of Uncharted Temporal is 23.271634 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981767
+ The SSIM value of Uncharted Temporal is 0.949310 
+
+
+Test Number: 0040
+Ground Truth: ghost\ghost_both_0040_truth.png
+Master Thesis Temporal: ghost\ghost_both_0040_improved.png
+Uncharted Temporal: ghost\ghost_both_0040_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 56.375399
+ The RMSE value of Master Thesis Temporal is 7.508355
+ The MSE value of Uncharted Temporal is 32.038066
+ The RMSE value of Uncharted Temporal is 5.660218 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.619907
+ The SNR value of Master Thesis Temporal is 20.262091
+ The Peak-SNR value of Uncharted Temporal is 33.074141
+ The SNR value of Uncharted Temporal is 22.716324 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.980532
+ The SSIM value of Uncharted Temporal is 0.950142 
+
+
+Test Number: 0041
+Ground Truth: ghost\ghost_both_0041_truth.png
+Master Thesis Temporal: ghost\ghost_both_0041_improved.png
+Uncharted Temporal: ghost\ghost_both_0041_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 48.283094
+ The RMSE value of Master Thesis Temporal is 6.948604
+ The MSE value of Uncharted Temporal is 30.830031
+ The RMSE value of Uncharted Temporal is 5.552480 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 31.292853
+ The SNR value of Master Thesis Temporal is 20.827530
+ The Peak-SNR value of Uncharted Temporal is 33.241064
+ The SNR value of Uncharted Temporal is 22.775741 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981923
+ The SSIM value of Uncharted Temporal is 0.951213 
+
+
+Test Number: 0042
+Ground Truth: ghost\ghost_both_0042_truth.png
+Master Thesis Temporal: ghost\ghost_both_0042_improved.png
+Uncharted Temporal: ghost\ghost_both_0042_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 49.666133
+ The RMSE value of Master Thesis Temporal is 7.047420
+ The MSE value of Uncharted Temporal is 45.206512
+ The RMSE value of Uncharted Temporal is 6.723579 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 31.170200
+ The SNR value of Master Thesis Temporal is 20.516028
+ The Peak-SNR value of Uncharted Temporal is 31.578794
+ The SNR value of Uncharted Temporal is 20.924622 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.981476
+ The SSIM value of Uncharted Temporal is 0.950296 
+
+
+Test Number: 0043
+Ground Truth: ghost\ghost_both_0043_truth.png
+Master Thesis Temporal: ghost\ghost_both_0043_improved.png
+Uncharted Temporal: ghost\ghost_both_0043_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 55.253224
+ The RMSE value of Master Thesis Temporal is 7.433251
+ The MSE value of Uncharted Temporal is 52.641017
+ The RMSE value of Uncharted Temporal is 7.255413 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 30.707227
+ The SNR value of Master Thesis Temporal is 19.825115
+ The Peak-SNR value of Uncharted Temporal is 30.917561
+ The SNR value of Uncharted Temporal is 20.035449 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.980194
+ The SSIM value of Uncharted Temporal is 0.950755 
+
+
+Test Number: 0044
+Ground Truth: ghost\ghost_both_0044_truth.png
+Master Thesis Temporal: ghost\ghost_both_0044_improved.png
+Uncharted Temporal: ghost\ghost_both_0044_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 26.763215
+ The RMSE value of Master Thesis Temporal is 5.173318
+ The MSE value of Uncharted Temporal is 64.229685
+ The RMSE value of Uncharted Temporal is 8.014342 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 33.855421
+ The SNR value of Master Thesis Temporal is 22.694972
+ The Peak-SNR value of Uncharted Temporal is 30.053446
+ The SNR value of Uncharted Temporal is 18.892996 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.985513
+ The SSIM value of Uncharted Temporal is 0.949158 
+
+
+Test Number: 0045
+Ground Truth: ghost\ghost_both_0045_truth.png
+Master Thesis Temporal: ghost\ghost_both_0045_improved.png
+Uncharted Temporal: ghost\ghost_both_0045_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 15.061796
+ The RMSE value of Master Thesis Temporal is 3.880953
+ The MSE value of Uncharted Temporal is 73.562196
+ The RMSE value of Uncharted Temporal is 8.576841 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 36.352036
+ The SNR value of Master Thesis Temporal is 24.862448
+ The Peak-SNR value of Uncharted Temporal is 29.464257
+ The SNR value of Uncharted Temporal is 17.974669 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988685
+ The SSIM value of Uncharted Temporal is 0.947739 
+
+
+Test Number: 0046
+Ground Truth: ghost\ghost_both_0046_truth.png
+Master Thesis Temporal: ghost\ghost_both_0046_improved.png
+Uncharted Temporal: ghost\ghost_both_0046_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 34.476861
+ The RMSE value of Master Thesis Temporal is 5.871700
+ The MSE value of Uncharted Temporal is 67.376945
+ The RMSE value of Uncharted Temporal is 8.208346 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 32.755526
+ The SNR value of Master Thesis Temporal is 20.899831
+ The Peak-SNR value of Uncharted Temporal is 29.845690
+ The SNR value of Uncharted Temporal is 17.989995 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.982395
+ The SSIM value of Uncharted Temporal is 0.951907 
+
+
+Test Number: 0047
+Ground Truth: ghost\ghost_both_0047_truth.png
+Master Thesis Temporal: ghost\ghost_both_0047_improved.png
+Uncharted Temporal: ghost\ghost_both_0047_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 27.159472
+ The RMSE value of Master Thesis Temporal is 5.211475
+ The MSE value of Uncharted Temporal is 53.706889
+ The RMSE value of Uncharted Temporal is 7.328498 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 33.791590
+ The SNR value of Master Thesis Temporal is 21.658174
+ The Peak-SNR value of Uncharted Temporal is 30.830504
+ The SNR value of Uncharted Temporal is 18.697087 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.983886
+ The SSIM value of Uncharted Temporal is 0.954735 
+
+
+Test Number: 0048
+Ground Truth: ghost\ghost_both_0048_truth.png
+Master Thesis Temporal: ghost\ghost_both_0048_improved.png
+Uncharted Temporal: ghost\ghost_both_0048_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 24.916798
+ The RMSE value of Master Thesis Temporal is 4.991673
+ The MSE value of Uncharted Temporal is 46.754089
+ The RMSE value of Uncharted Temporal is 6.837696 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 34.165881
+ The SNR value of Master Thesis Temporal is 21.731279
+ The Peak-SNR value of Uncharted Temporal is 31.432608
+ The SNR value of Uncharted Temporal is 18.998005 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.985152
+ The SSIM value of Uncharted Temporal is 0.957550 
+
+
+Test Number: 0049
+Ground Truth: ghost\ghost_both_0049_truth.png
+Master Thesis Temporal: ghost\ghost_both_0049_improved.png
+Uncharted Temporal: ghost\ghost_both_0049_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 14.605191
+ The RMSE value of Master Thesis Temporal is 3.821674
+ The MSE value of Uncharted Temporal is 43.429257
+ The RMSE value of Uncharted Temporal is 6.590088 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 36.485731
+ The SNR value of Master Thesis Temporal is 23.557099
+ The Peak-SNR value of Uncharted Temporal is 31.752980
+ The SNR value of Uncharted Temporal is 18.824348 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988772
+ The SSIM value of Uncharted Temporal is 0.960446 
+
+
+Test Number: 0050
+Ground Truth: ghost\ghost_both_0050_truth.png
+Master Thesis Temporal: ghost\ghost_both_0050_improved.png
+Uncharted Temporal: ghost\ghost_both_0050_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 30.123950
+ The RMSE value of Master Thesis Temporal is 5.488529
+ The MSE value of Uncharted Temporal is 51.100022
+ The RMSE value of Uncharted Temporal is 7.148428 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 33.341684
+ The SNR value of Master Thesis Temporal is 19.838867
+ The Peak-SNR value of Uncharted Temporal is 31.046593
+ The SNR value of Uncharted Temporal is 17.543775 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.984115
+ The SSIM value of Uncharted Temporal is 0.962527 
+
+
+Test Number: 0051
+Ground Truth: ghost\ghost_both_0051_truth.png
+Master Thesis Temporal: ghost\ghost_both_0051_improved.png
+Uncharted Temporal: ghost\ghost_both_0051_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 27.930663
+ The RMSE value of Master Thesis Temporal is 5.284947
+ The MSE value of Uncharted Temporal is 45.743584
+ The RMSE value of Uncharted Temporal is 6.763400 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 33.669991
+ The SNR value of Master Thesis Temporal is 19.514880
+ The Peak-SNR value of Uncharted Temporal is 31.527502
+ The SNR value of Uncharted Temporal is 17.372391 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.983538
+ The SSIM value of Uncharted Temporal is 0.965532 
+
+
+Test Number: 0052
+Ground Truth: ghost\ghost_both_0052_truth.png
+Master Thesis Temporal: ghost\ghost_both_0052_improved.png
+Uncharted Temporal: ghost\ghost_both_0052_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 17.418325
+ The RMSE value of Master Thesis Temporal is 4.173527
+ The MSE value of Uncharted Temporal is 44.607644
+ The RMSE value of Uncharted Temporal is 6.678895 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 35.720740
+ The SNR value of Master Thesis Temporal is 21.083101
+ The Peak-SNR value of Uncharted Temporal is 31.636711
+ The SNR value of Uncharted Temporal is 16.999072 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.986122
+ The SSIM value of Uncharted Temporal is 0.966093 
+
+
+Test Number: 0053
+Ground Truth: ghost\ghost_both_0053_truth.png
+Master Thesis Temporal: ghost\ghost_both_0053_improved.png
+Uncharted Temporal: ghost\ghost_both_0053_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 6.911504
+ The RMSE value of Master Thesis Temporal is 2.628974
+ The MSE value of Uncharted Temporal is 29.707529
+ The RMSE value of Uncharted Temporal is 5.450461 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.735078
+ The SNR value of Master Thesis Temporal is 24.341252
+ The Peak-SNR value of Uncharted Temporal is 33.402138
+ The SNR value of Uncharted Temporal is 18.008312 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.992090
+ The SSIM value of Uncharted Temporal is 0.969009 
+
+
+Test Number: 0054
+Ground Truth: ghost\ghost_both_0054_truth.png
+Master Thesis Temporal: ghost\ghost_both_0054_improved.png
+Uncharted Temporal: ghost\ghost_both_0054_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 6.710439
+ The RMSE value of Master Thesis Temporal is 2.590451
+ The MSE value of Uncharted Temporal is 18.975737
+ The RMSE value of Uncharted Temporal is 4.356115 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.863294
+ The SNR value of Master Thesis Temporal is 23.771371
+ The Peak-SNR value of Uncharted Temporal is 35.348817
+ The SNR value of Uncharted Temporal is 19.256893 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988404
+ The SSIM value of Uncharted Temporal is 0.973622 
+
+
+Test Number: 0055
+Ground Truth: ghost\ghost_both_0055_truth.png
+Master Thesis Temporal: ghost\ghost_both_0055_improved.png
+Uncharted Temporal: ghost\ghost_both_0055_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.872302
+ The RMSE value of Master Thesis Temporal is 1.967817
+ The MSE value of Uncharted Temporal is 13.506959
+ The RMSE value of Uncharted Temporal is 3.675181 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 42.251111
+ The SNR value of Master Thesis Temporal is 25.465606
+ The Peak-SNR value of Uncharted Temporal is 36.825228
+ The SNR value of Uncharted Temporal is 20.039722 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.991549
+ The SSIM value of Uncharted Temporal is 0.977849 
+
+
+Test Number: 0056
+Ground Truth: ghost\ghost_both_0056_truth.png
+Master Thesis Temporal: ghost\ghost_both_0056_improved.png
+Uncharted Temporal: ghost\ghost_both_0056_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.647934
+ The RMSE value of Master Thesis Temporal is 1.909957
+ The MSE value of Uncharted Temporal is 9.800002
+ The RMSE value of Uncharted Temporal is 3.130495 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 42.510333
+ The SNR value of Master Thesis Temporal is 25.069090
+ The Peak-SNR value of Uncharted Temporal is 38.218542
+ The SNR value of Uncharted Temporal is 20.777298 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.993026
+ The SSIM value of Uncharted Temporal is 0.981859 
+
+
+Test Number: 0057
+Ground Truth: ghost\ghost_both_0057_truth.png
+Master Thesis Temporal: ghost\ghost_both_0057_improved.png
+Uncharted Temporal: ghost\ghost_both_0057_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.305764
+ The RMSE value of Master Thesis Temporal is 1.818176
+ The MSE value of Uncharted Temporal is 7.117162
+ The RMSE value of Uncharted Temporal is 2.667801 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 42.938085
+ The SNR value of Master Thesis Temporal is 24.905777
+ The Peak-SNR value of Uncharted Temporal is 39.607735
+ The SNR value of Uncharted Temporal is 21.575428 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.993941
+ The SSIM value of Uncharted Temporal is 0.985459 
+
+
+Test Number: 0058
+Ground Truth: ghost\ghost_both_0058_truth.png
+Master Thesis Temporal: ghost\ghost_both_0058_improved.png
+Uncharted Temporal: ghost\ghost_both_0058_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.546640
+ The RMSE value of Master Thesis Temporal is 1.883253
+ The MSE value of Uncharted Temporal is 4.824782
+ The RMSE value of Uncharted Temporal is 2.196539 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 42.632632
+ The SNR value of Master Thesis Temporal is 24.082497
+ The Peak-SNR value of Uncharted Temporal is 41.296026
+ The SNR value of Uncharted Temporal is 22.745891 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.993702
+ The SSIM value of Uncharted Temporal is 0.989733 
+
+
+Test Number: 0059
+Ground Truth: ghost\ghost_both_0059_truth.png
+Master Thesis Temporal: ghost\ghost_both_0059_improved.png
+Uncharted Temporal: ghost\ghost_both_0059_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 2.563521
+ The RMSE value of Master Thesis Temporal is 1.601100
+ The MSE value of Uncharted Temporal is 3.411500
+ The RMSE value of Uncharted Temporal is 1.847025 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 44.042434
+ The SNR value of Master Thesis Temporal is 25.056575
+ The Peak-SNR value of Uncharted Temporal is 42.801350
+ The SNR value of Uncharted Temporal is 23.815491 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.995009
+ The SSIM value of Uncharted Temporal is 0.993342 
+
+
+Test Number: 0060
+Ground Truth: ghost\ghost_both_0060_truth.png
+Master Thesis Temporal: ghost\ghost_both_0060_improved.png
+Uncharted Temporal: ghost\ghost_both_0060_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.977314
+ The RMSE value of Master Thesis Temporal is 0.988592
+ The MSE value of Uncharted Temporal is 1.876995
+ The RMSE value of Uncharted Temporal is 1.370035 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 48.230462
+ The SNR value of Master Thesis Temporal is 28.917468
+ The Peak-SNR value of Uncharted Temporal is 45.396173
+ The SNR value of Uncharted Temporal is 26.083179 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.997932
+ The SSIM value of Uncharted Temporal is 0.996533 
+
+
+Test Number: 0061
+Ground Truth: ghost\ghost_both_0061_truth.png
+Master Thesis Temporal: ghost\ghost_both_0061_improved.png
+Uncharted Temporal: ghost\ghost_both_0061_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.381836
+ The RMSE value of Master Thesis Temporal is 0.617929
+ The MSE value of Uncharted Temporal is 0.631084
+ The RMSE value of Uncharted Temporal is 0.794408 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 52.312034
+ The SNR value of Master Thesis Temporal is 32.856740
+ The Peak-SNR value of Uncharted Temporal is 50.129933
+ The SNR value of Uncharted Temporal is 30.674639 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.999112
+ The SSIM value of Uncharted Temporal is 0.998535 
+
+
+Test Number: 0062
+Ground Truth: ghost\ghost_both_0062_truth.png
+Master Thesis Temporal: ghost\ghost_both_0062_improved.png
+Uncharted Temporal: ghost\ghost_both_0062_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.160302
+ The RMSE value of Master Thesis Temporal is 0.400377
+ The MSE value of Uncharted Temporal is 0.064089
+ The RMSE value of Uncharted Temporal is 0.253158 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 56.081415
+ The SNR value of Master Thesis Temporal is 36.538213
+ The Peak-SNR value of Uncharted Temporal is 60.062983
+ The SNR value of Uncharted Temporal is 40.519781 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.999664
+ The SSIM value of Uncharted Temporal is 0.999868 
+
+
+Test Number: 0063
+Ground Truth: ghost\ghost_both_0063_truth.png
+Master Thesis Temporal: ghost\ghost_both_0063_improved.png
+Uncharted Temporal: ghost\ghost_both_0063_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0064
+Ground Truth: ghost\ghost_both_0064_truth.png
+Master Thesis Temporal: ghost\ghost_both_0064_improved.png
+Uncharted Temporal: ghost\ghost_both_0064_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0065
+Ground Truth: ghost\ghost_both_0065_truth.png
+Master Thesis Temporal: ghost\ghost_both_0065_improved.png
+Uncharted Temporal: ghost\ghost_both_0065_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0066
+Ground Truth: ghost\ghost_both_0066_truth.png
+Master Thesis Temporal: ghost\ghost_both_0066_improved.png
+Uncharted Temporal: ghost\ghost_both_0066_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0067
+Ground Truth: ghost\ghost_both_0067_truth.png
+Master Thesis Temporal: ghost\ghost_both_0067_improved.png
+Uncharted Temporal: ghost\ghost_both_0067_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0068
+Ground Truth: ghost\ghost_both_0068_truth.png
+Master Thesis Temporal: ghost\ghost_both_0068_improved.png
+Uncharted Temporal: ghost\ghost_both_0068_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0069
+Ground Truth: ghost\ghost_both_0069_truth.png
+Master Thesis Temporal: ghost\ghost_both_0069_improved.png
+Uncharted Temporal: ghost\ghost_both_0069_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0070
+Ground Truth: ghost\ghost_both_0070_truth.png
+Master Thesis Temporal: ghost\ghost_both_0070_improved.png
+Uncharted Temporal: ghost\ghost_both_0070_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0071
+Ground Truth: ghost\ghost_both_0071_truth.png
+Master Thesis Temporal: ghost\ghost_both_0071_improved.png
+Uncharted Temporal: ghost\ghost_both_0071_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0072
+Ground Truth: ghost\ghost_both_0072_truth.png
+Master Thesis Temporal: ghost\ghost_both_0072_improved.png
+Uncharted Temporal: ghost\ghost_both_0072_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0073
+Ground Truth: ghost\ghost_both_0073_truth.png
+Master Thesis Temporal: ghost\ghost_both_0073_improved.png
+Uncharted Temporal: ghost\ghost_both_0073_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0074
+Ground Truth: ghost\ghost_both_0074_truth.png
+Master Thesis Temporal: ghost\ghost_both_0074_improved.png
+Uncharted Temporal: ghost\ghost_both_0074_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0075
+Ground Truth: ghost\ghost_both_0075_truth.png
+Master Thesis Temporal: ghost\ghost_both_0075_improved.png
+Uncharted Temporal: ghost\ghost_both_0075_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0076
+Ground Truth: ghost\ghost_both_0076_truth.png
+Master Thesis Temporal: ghost\ghost_both_0076_improved.png
+Uncharted Temporal: ghost\ghost_both_0076_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0077
+Ground Truth: ghost\ghost_both_0077_truth.png
+Master Thesis Temporal: ghost\ghost_both_0077_improved.png
+Uncharted Temporal: ghost\ghost_both_0077_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0078
+Ground Truth: ghost\ghost_both_0078_truth.png
+Master Thesis Temporal: ghost\ghost_both_0078_improved.png
+Uncharted Temporal: ghost\ghost_both_0078_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0079
+Ground Truth: ghost\ghost_both_0079_truth.png
+Master Thesis Temporal: ghost\ghost_both_0079_improved.png
+Uncharted Temporal: ghost\ghost_both_0079_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0080
+Ground Truth: ghost\ghost_both_0080_truth.png
+Master Thesis Temporal: ghost\ghost_both_0080_improved.png
+Uncharted Temporal: ghost\ghost_both_0080_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0081
+Ground Truth: ghost\ghost_both_0081_truth.png
+Master Thesis Temporal: ghost\ghost_both_0081_improved.png
+Uncharted Temporal: ghost\ghost_both_0081_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0082
+Ground Truth: ghost\ghost_both_0082_truth.png
+Master Thesis Temporal: ghost\ghost_both_0082_improved.png
+Uncharted Temporal: ghost\ghost_both_0082_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0083
+Ground Truth: ghost\ghost_both_0083_truth.png
+Master Thesis Temporal: ghost\ghost_both_0083_improved.png
+Uncharted Temporal: ghost\ghost_both_0083_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0084
+Ground Truth: ghost\ghost_both_0084_truth.png
+Master Thesis Temporal: ghost\ghost_both_0084_improved.png
+Uncharted Temporal: ghost\ghost_both_0084_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0085
+Ground Truth: ghost\ghost_both_0085_truth.png
+Master Thesis Temporal: ghost\ghost_both_0085_improved.png
+Uncharted Temporal: ghost\ghost_both_0085_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0086
+Ground Truth: ghost\ghost_both_0086_truth.png
+Master Thesis Temporal: ghost\ghost_both_0086_improved.png
+Uncharted Temporal: ghost\ghost_both_0086_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0087
+Ground Truth: ghost\ghost_both_0087_truth.png
+Master Thesis Temporal: ghost\ghost_both_0087_improved.png
+Uncharted Temporal: ghost\ghost_both_0087_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0088
+Ground Truth: ghost\ghost_both_0088_truth.png
+Master Thesis Temporal: ghost\ghost_both_0088_improved.png
+Uncharted Temporal: ghost\ghost_both_0088_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0089
+Ground Truth: ghost\ghost_both_0089_truth.png
+Master Thesis Temporal: ghost\ghost_both_0089_improved.png
+Uncharted Temporal: ghost\ghost_both_0089_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.000000
+ The RMSE value of Master Thesis Temporal is 0.000000
+ The MSE value of Uncharted Temporal is 0.000000
+ The RMSE value of Uncharted Temporal is 0.000000 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is Inf
+ The SNR value of Master Thesis Temporal is Inf
+ The Peak-SNR value of Uncharted Temporal is Inf
+ The SNR value of Uncharted Temporal is Inf 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 1.000000
+ The SSIM value of Uncharted Temporal is 1.000000 
+
+
+Test Number: 0090
+Ground Truth: ghost\ghost_both_0090_truth.png
+Master Thesis Temporal: ghost\ghost_both_0090_improved.png
+Uncharted Temporal: ghost\ghost_both_0090_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.028971
+ The RMSE value of Master Thesis Temporal is 0.170208
+ The MSE value of Uncharted Temporal is 0.054513
+ The RMSE value of Uncharted Temporal is 0.233481 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 63.511228
+ The SNR value of Master Thesis Temporal is 43.965630
+ The Peak-SNR value of Uncharted Temporal is 60.765788
+ The SNR value of Uncharted Temporal is 41.220190 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.999825
+ The SSIM value of Uncharted Temporal is 0.999669 
+
+
+Test Number: 0091
+Ground Truth: ghost\ghost_both_0091_truth.png
+Master Thesis Temporal: ghost\ghost_both_0091_improved.png
+Uncharted Temporal: ghost\ghost_both_0091_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 0.159944
+ The RMSE value of Master Thesis Temporal is 0.399930
+ The MSE value of Uncharted Temporal is 0.188366
+ The RMSE value of Uncharted Temporal is 0.434012 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 56.091126
+ The SNR value of Master Thesis Temporal is 36.539676
+ The Peak-SNR value of Uncharted Temporal is 55.380777
+ The SNR value of Uncharted Temporal is 35.829327 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.998872
+ The SSIM value of Uncharted Temporal is 0.998506 
+
+
+Test Number: 0092
+Ground Truth: ghost\ghost_both_0092_truth.png
+Master Thesis Temporal: ghost\ghost_both_0092_improved.png
+Uncharted Temporal: ghost\ghost_both_0092_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 1.091863
+ The RMSE value of Master Thesis Temporal is 1.044923
+ The MSE value of Uncharted Temporal is 2.019936
+ The RMSE value of Uncharted Temporal is 1.421244 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 47.749121
+ The SNR value of Master Thesis Temporal is 28.208177
+ The Peak-SNR value of Uncharted Temporal is 45.077428
+ The SNR value of Uncharted Temporal is 25.536485 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.995549
+ The SSIM value of Uncharted Temporal is 0.991723 
+
+
+Test Number: 0093
+Ground Truth: ghost\ghost_both_0093_truth.png
+Master Thesis Temporal: ghost\ghost_both_0093_improved.png
+Uncharted Temporal: ghost\ghost_both_0093_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 3.043795
+ The RMSE value of Master Thesis Temporal is 1.744647
+ The MSE value of Uncharted Temporal is 5.585110
+ The RMSE value of Uncharted Temporal is 2.363284 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 43.296650
+ The SNR value of Master Thesis Temporal is 23.854307
+ The Peak-SNR value of Uncharted Temporal is 40.660486
+ The SNR value of Uncharted Temporal is 21.218143 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.991466
+ The SSIM value of Uncharted Temporal is 0.984503 
+
+
+Test Number: 0094
+Ground Truth: ghost\ghost_both_0094_truth.png
+Master Thesis Temporal: ghost\ghost_both_0094_improved.png
+Uncharted Temporal: ghost\ghost_both_0094_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 4.210107
+ The RMSE value of Master Thesis Temporal is 2.051855
+ The MSE value of Uncharted Temporal is 6.938478
+ The RMSE value of Uncharted Temporal is 2.634099 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 41.887872
+ The SNR value of Master Thesis Temporal is 22.658191
+ The Peak-SNR value of Uncharted Temporal is 39.718161
+ The SNR value of Uncharted Temporal is 20.488480 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.990827
+ The SSIM value of Uncharted Temporal is 0.981583 
+
+
+Test Number: 0095
+Ground Truth: ghost\ghost_both_0095_truth.png
+Master Thesis Temporal: ghost\ghost_both_0095_improved.png
+Uncharted Temporal: ghost\ghost_both_0095_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 5.507500
+ The RMSE value of Master Thesis Temporal is 2.346806
+ The MSE value of Uncharted Temporal is 10.933694
+ The RMSE value of Uncharted Temporal is 3.306614 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 40.721259
+ The SNR value of Master Thesis Temporal is 21.800114
+ The Peak-SNR value of Uncharted Temporal is 37.743134
+ The SNR value of Uncharted Temporal is 18.821990 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.990407
+ The SSIM value of Uncharted Temporal is 0.976345 
+
+
+Test Number: 0096
+Ground Truth: ghost\ghost_both_0096_truth.png
+Master Thesis Temporal: ghost\ghost_both_0096_improved.png
+Uncharted Temporal: ghost\ghost_both_0096_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 6.907299
+ The RMSE value of Master Thesis Temporal is 2.628174
+ The MSE value of Uncharted Temporal is 14.923654
+ The RMSE value of Uncharted Temporal is 3.863115 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.737721
+ The SNR value of Master Thesis Temporal is 21.321783
+ The Peak-SNR value of Uncharted Temporal is 36.392052
+ The SNR value of Uncharted Temporal is 17.976114 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.989418
+ The SSIM value of Uncharted Temporal is 0.970842 
+
+
+Test Number: 0097
+Ground Truth: ghost\ghost_both_0097_truth.png
+Master Thesis Temporal: ghost\ghost_both_0097_improved.png
+Uncharted Temporal: ghost\ghost_both_0097_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 7.388646
+ The RMSE value of Master Thesis Temporal is 2.718206
+ The MSE value of Uncharted Temporal is 17.934151
+ The RMSE value of Uncharted Temporal is 4.234873 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 39.445155
+ The SNR value of Master Thesis Temporal is 21.350253
+ The Peak-SNR value of Uncharted Temporal is 35.593995
+ The SNR value of Uncharted Temporal is 17.499094 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988303
+ The SSIM value of Uncharted Temporal is 0.965951 
+
+
+Test Number: 0098
+Ground Truth: ghost\ghost_both_0098_truth.png
+Master Thesis Temporal: ghost\ghost_both_0098_improved.png
+Uncharted Temporal: ghost\ghost_both_0098_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 8.385096
+ The RMSE value of Master Thesis Temporal is 2.895703
+ The MSE value of Uncharted Temporal is 15.769446
+ The RMSE value of Uncharted Temporal is 3.971076 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 38.895723
+ The SNR value of Master Thesis Temporal is 21.126407
+ The Peak-SNR value of Uncharted Temporal is 36.152639
+ The SNR value of Uncharted Temporal is 18.383324 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988160
+ The SSIM value of Uncharted Temporal is 0.966164 
+
+
+Test Number: 0099
+Ground Truth: ghost\ghost_both_0099_truth.png
+Master Thesis Temporal: ghost\ghost_both_0099_improved.png
+Uncharted Temporal: ghost\ghost_both_0099_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 8.239017
+ The RMSE value of Master Thesis Temporal is 2.870369
+ The MSE value of Uncharted Temporal is 15.045791
+ The RMSE value of Uncharted Temporal is 3.878890 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 38.972050
+ The SNR value of Master Thesis Temporal is 21.542051
+ The Peak-SNR value of Uncharted Temporal is 36.356653
+ The SNR value of Uncharted Temporal is 18.926655 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.988408
+ The SSIM value of Uncharted Temporal is 0.964173 

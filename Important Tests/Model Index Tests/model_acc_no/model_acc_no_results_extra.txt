@@ -1,0 +1,20 @@
+Name: model_acc_no
+Timestamp(dd/mm/yyyy): 28/03/2018 16:58:54.132
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 8.209033
+ The NIQE score of Reference is 6.490555
+ The NIQE score of No AA is 6.810095
+ The NIQE score of FXAA is 6.809760
+ The NIQE score delta between Temporal and Reference is +1.718478
+ The NIQE score delta between Temporal and No AA is +1.398938
+ The NIQE score delta between Temporal and FXAA is +1.399273 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 44.990841
+ The BRISQUE score of Reference is 44.796985
+ The BRISQUE score of No AA is 44.765254
+ The BRISQUE score of FXAA is 44.760444
+ The BRISQUE score delta between Temporal and Reference is +0.193856
+ The BRISQUE score delta between Temporal and No AA is +0.225587
+ The BRISQUE score delta between Temporal and FXAA is +0.230397 
