@@ -8,9 +8,14 @@
 
 std::unordered_set<Node *> Node::nodeList;
 
-Node::Node() : _vao(0u), _vertices_nb(0u), _indices_nb(0u), _drawing_mode(GL_TRIANGLES), _has_indices(true), _program(0u), _textures(), _scaling(1.0f, 1.0f, 1.0f), _rotation(), _translation(), _children()
+unsigned int Node::model_index_count = 1;
+
+Node::Node() : _vao(0u), _vertices_nb(0u), _indices_nb(0u), _drawing_mode(GL_TRIANGLES), 
+	_has_indices(true), _program(0u), _textures(), _scaling(1.0f, 1.0f, 1.0f), _rotation(), 
+	_translation(), _children(), model_index(model_index_count)
 {
 	Node::nodeList.emplace(this);
+	model_index_count++;
 }
 
 Node::~Node() {
@@ -41,6 +46,8 @@ Node::render(glm::mat4 const& WVP, glm::mat4 const& world, GLuint program, std::
 	glUniformMatrix4fv(glGetUniformLocation(program, "old_MVP"), 1, GL_FALSE, glm::value_ptr(oldMVP));
 
 	glUniform1i(glGetUniformLocation(program, "has_textures"), !_textures.empty());
+	glUniform1ui(glGetUniformLocation(program, "model_index"), model_index);
+
 	bool has_diffuse_texture = false, has_opacity_texture = false;
 	for (size_t i = 0u; i < _textures.size(); ++i) {
 		auto const texture = _textures[i];

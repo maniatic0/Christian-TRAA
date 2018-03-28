@@ -6,6 +6,7 @@ uniform sampler2D normals_texture;
 uniform sampler2D opacity_texture;
 uniform bool has_opacity_texture;
 uniform mat4 normal_model_to_world;
+uniform uint model_index; 
 
 in VS_OUT {
 	vec3 normal;
@@ -20,12 +21,16 @@ layout (location = 0) out vec4 geometry_diffuse;
 layout (location = 1) out vec4 geometry_specular;
 layout (location = 2) out vec4 geometry_normal;
 layout (location = 3) out vec2 velocity_buffer;
+layout (location = 4) out uint model_index_buffer;
 
 
 void main()
 {
 	if (has_opacity_texture && texture(opacity_texture, fs_in.texcoord).r < 1.0)
 		discard;
+
+	// Model Index
+	model_index_buffer = model_index;
 
 	// Diffuse color
 	geometry_diffuse = texture(diffuse_texture, fs_in.texcoord);

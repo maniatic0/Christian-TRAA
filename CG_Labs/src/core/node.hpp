@@ -201,6 +201,7 @@ private:
 	GLsizei _indices_nb;
 	GLenum _drawing_mode;
 	bool _has_indices;
+	unsigned int model_index;
 
 	// Program data
 	GLuint _program;
@@ -218,5 +219,5 @@ private:
 	std::vector<Node const*> _children;
 
 	static std::unordered_set<Node *> nodeList;
-
+	static unsigned int model_index_count;
 };

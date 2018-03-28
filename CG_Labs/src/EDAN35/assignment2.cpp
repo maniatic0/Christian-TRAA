@@ -318,10 +318,12 @@ edan35::Assignment2::run()
 
 	auto const accumulation_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RGBA32F, GL_RGBA, GL_FLOAT);
 
+	auto const model_index_texture = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_R32UI, GL_RED_INTEGER, GL_UNSIGNED_INT);
+
 	//
 	// Setup FBOs
 	//
-	auto const deferred_fbo  = bonobo::createFBO({diffuse_texture, specular_texture, normal_texture, velocity_texture}, depth_texture);
+	auto const deferred_fbo  = bonobo::createFBO({diffuse_texture, specular_texture, normal_texture, velocity_texture, model_index_texture}, depth_texture);
 	auto const shadowmap_fbo = bonobo::createFBO({}, shadowmap_texture);
 	auto const light_fbo     = bonobo::createFBO({light_diffuse_contribution_texture, light_specular_contribution_texture}, depth_texture);
 
@@ -365,6 +367,7 @@ edan35::Assignment2::run()
 		glSamplerParameterfv(sampler, GL_TEXTURE_BORDER_COLOR, border_color);
 	});
 
+	// Also Works for Model Indexing
 	auto const fxaa_sampler = bonobo::createSampler([](GLuint sampler) {
 		glSamplerParameteri(sampler, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glSamplerParameteri(sampler, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -485,8 +488,9 @@ edan35::Assignment2::run()
 		// Pass 1: Render scene into the g-buffer
 		//
 		glBindFramebuffer(GL_FRAMEBUFFER, deferred_fbo);
-		GLenum const deferred_draw_buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
-		glDrawBuffers(4, deferred_draw_buffers);
+		GLenum const deferred_draw_buffers[5] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2,
+			GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4};
+		glDrawBuffers(5, deferred_draw_buffers);
 		auto const status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 		if (status != GL_FRAMEBUFFER_COMPLETE)
 			LogError("Something went wrong with framebuffer %u", deferred_fbo);
@@ -498,11 +502,14 @@ edan35::Assignment2::run()
 
 		GLStateInspection::CaptureSnapshot("Filling Pass");
 
+		glDisable(GL_DITHER); // for uint writting
+
 		for (auto& element : sponza_elements) {
 			element.render(mCamera.GetWorldToClipMatrix(), element.get_transform(), fill_gbuffer_shader, set_uniforms);
 			element.oldMVP = mCamera.GetWorldToClipMatrixUnjittered() * element.get_transform(); // World to Clip * Vertex
 		}
 
+		glEnable(GL_DITHER);  // for uint writting
 
 		glCullFace(GL_FRONT);
 		//
