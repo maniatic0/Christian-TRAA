@@ -652,7 +652,7 @@ void bonobo::screenShot(std::string file_name, const glm::vec2 &lower_corner, co
 	t.detach();
 }
 
-void bonobo::saveConfig(std::string file_name, const bool &using_fxaa,
+void bonobo::saveConfig(std::string file_name, const bool &using_other_aa, const int &aa_num,
 	const bool &using_sobel, FPSCameraf &camera,
 	const float &k_feedback_min, const float &k_feedback_max,
 	const int &sample_amount, const float &accumulation_jitter_spread,
@@ -671,7 +671,8 @@ void bonobo::saveConfig(std::string file_name, const bool &using_fxaa,
 	file_name += "_log.txt";
 	log_file.open(config::resources_path(file_name));
 	log_file << "Scene Information" << std::endl;
-	log_file << "Using FXAA: " << using_fxaa << std::endl;
+	log_file << "Using Other AA: " << using_other_aa << std::endl;
+	log_file << "AA Number: " << aa_num << std::endl;
 	log_file << "Using Sobel: " << using_sobel << std::endl;
 	log_file << "Jittering Camera?: " << camera.jitterProjection << std::endl;
 	log_file << "Jitter Spread: " << camera.jitterSpread << std::endl;

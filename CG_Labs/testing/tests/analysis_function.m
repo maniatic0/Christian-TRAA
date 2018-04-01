@@ -164,6 +164,7 @@ temporal_filename = fullfile(name, strcat(name, '_temporal.png'));
 ground_truth_filename = fullfile(name, strcat(name, '_ground_truth.png'));
 no_aa_filename = fullfile(name, strcat(name, '_no_aa.png'));
 fxaa_filename = fullfile(name, strcat(name, '_fxaa.png'));
+smaa_filename = fullfile(name, strcat(name, '_smaa.png'));
 
 if exist(temporal_filename, 'file') ~= 2 
     fprintf('The temporal test file was not found: %s\n', ...
@@ -193,10 +194,18 @@ if exist(fxaa_filename, 'file') ~= 2
     return;
 end
 
+if exist(smaa_filename, 'file') ~= 2 
+    fprintf('The no SMAA test file was not found: %s\n', ...
+        smaa_filename);
+    code = -1;
+    return;
+end
+
 temporal = imread(temporal_filename);
 ground_truth = imread(ground_truth_filename);
 no_aa = imread(no_aa_filename);
 fxaa = imread(fxaa_filename);
+smaa = imread(smaa_filename);
 
 % Test againts temporal result
 [ mse, peaksnr, snr, ssimval, ssimmap, ...
@@ -213,6 +222,11 @@ fxaa = imread(fxaa_filename);
     niqeI_fxaa, ~ , brisqueI_fxaa, ~ ] ...
     = Test_Files(fxaa, ground_truth);
 
+    % Test againts SMAA result
+[ mse_smaa, peaksnr_smaa, snr_smaa, ssimval_smaa, ssimmap_smaa, ...
+    niqeI_smaa, ~ , brisqueI_smaa, ~ ] ...
+    = Test_Files(smaa, ground_truth);
+
 % Main Results
 % Save text to diary
 diary(results_filename);
@@ -226,7 +240,10 @@ fprintf('\n The RMSD value of Temporal is %0.6f', sqrt(mse));
 fprintf('\n The MSE value of No AA is %0.6f', mse_no_aa);
 fprintf('\n The RMSD value of No AA is %0.6f', sqrt(mse_no_aa));
 fprintf('\n The MSE value of FXAA is %0.6f', mse_fxaa);
-fprintf('\n The RMSD value of FXAA is %0.6f \n', sqrt(mse_fxaa));
+fprintf('\n The RMSD value of FXAA is %0.6f', sqrt(mse_fxaa));
+fprintf('\n The MSE value of SMAA is %0.6f', mse_smaa);
+fprintf('\n The RMSD value of SMAA is %0.6f \n', sqrt(mse_smaa));
+
 
 % PSNR, Bigger means it's good
 fprintf('\nPSNR and SNR, Bigger means it''s good');
@@ -235,13 +252,16 @@ fprintf('\n The SNR value of Temporal is %0.6f', snr);
 fprintf('\n The Peak-SNR value of No AA is %0.6f', peaksnr_no_aa);
 fprintf('\n The SNR value of No AA is %0.6f', snr_no_aa);
 fprintf('\n The Peak-SNR value of FXAA is %0.6f', peaksnr_fxaa);
-fprintf('\n The SNR value of FXAA is %0.6f \n', snr_fxaa);
+fprintf('\n The SNR value of FXAA is %0.6f', snr_fxaa);
+fprintf('\n The Peak-SNR value of SMAA is %0.6f', peaksnr_smaa);
+fprintf('\n The SNR value of SMAA is %0.6f \n', snr_smaa);
 
 % SSIM, Close to one means it's good
 fprintf('\nSSIM, Close to one means it''s good');
 fprintf('\n The SSIM value of Temporal is %0.6f', ssimval);
 fprintf('\n The SSIM value of No AA is %0.6f', ssimval_no_aa);
-fprintf('\n The SSIM value of FXAA is %0.6f \n', ssimval_fxaa);
+fprintf('\n The SSIM value of FXAA is %0.6f', ssimval_fxaa);
+fprintf('\n The SSIM value of SMAA is %0.6f \n', ssimval_smaa);
 
 diary off;
 
@@ -257,12 +277,15 @@ fprintf('\n The NIQE score of Temporal is %0.6f', niqeI);
 fprintf('\n The NIQE score of Reference is %0.6f', niqeRef);
 fprintf('\n The NIQE score of No AA is %0.6f', niqeI_no_aa);
 fprintf('\n The NIQE score of FXAA is %0.6f', niqeI_fxaa);
+fprintf('\n The NIQE score of SMAA is %0.6f', niqeI_smaa);
 fprintf('\n The NIQE score delta between Temporal and Reference is %+0.6f', ... 
     niqeI - niqeRef);
 fprintf('\n The NIQE score delta between Temporal and No AA is %+0.6f', ... 
     niqeI - niqeI_no_aa);
-fprintf('\n The NIQE score delta between Temporal and FXAA is %+0.6f \n', ... 
+fprintf('\n The NIQE score delta between Temporal and FXAA is %+0.6f', ... 
     niqeI - niqeI_fxaa);
+fprintf('\n The NIQE score delta between Temporal and SMAA is %+0.6f \n', ... 
+    niqeI - niqeI_smaa);
 
 % BRISQUE, Lower values of score reflect better perceptual quality of image
 % with respect to the input MATLAB model
@@ -275,8 +298,10 @@ fprintf('\n The BRISQUE score delta between Temporal and Reference is %+0.6f', .
     brisqueI - brisqueRef);
 fprintf('\n The BRISQUE score delta between Temporal and No AA is %+0.6f', ...
     brisqueI - brisqueI_no_aa);
-fprintf('\n The BRISQUE score delta between Temporal and FXAA is %+0.6f \n', ...
+fprintf('\n The BRISQUE score delta between Temporal and FXAA is %+0.6f', ...
     brisqueI - brisqueI_fxaa);
+fprintf('\n The BRISQUE score delta between Temporal and SMAA is %+0.6f \n', ...
+    brisqueI - brisqueI_smaa);
 
 diary off;
 
@@ -300,6 +325,13 @@ title(sprintf('The SSIM Index Map of FXAA - Mean ssim Value is %0.6f', ...
     ssimval_fxaa));
 savefig(fullfile(name, strcat(name, '_ssim_map_fxaa.fig')));
 saveas(gcf, fullfile(name, strcat(name, '_ssim_map_fxaa.png')));
+close(gcf);
+
+figure('Name','SSIM Index Map of SMAA'), imshow(ssimmap_fxaa);
+title(sprintf('The SSIM Index Map of SMAA - Mean ssim Value is %0.6f', ...
+    ssimval_smaa));
+savefig(fullfile(name, strcat(name, '_ssim_map_smaa.fig')));
+saveas(gcf, fullfile(name, strcat(name, '_ssim_map_smaa.png')));
 close(gcf);
 
 fprintf('The test %s is Complete\n', ...

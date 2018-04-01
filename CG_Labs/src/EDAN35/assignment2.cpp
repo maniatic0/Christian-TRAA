@@ -28,6 +28,10 @@
 #include <stdexcept>
 #include <sstream>
 
+// SMAA
+#include "AreaTex.h"
+#include "SearchTex.h"
+
 enum class polygon_mode_t : unsigned int {
 	fill = 0u,
 	line,
@@ -255,7 +259,9 @@ edan35::Assignment2::run()
 		resolve_accumulation_shader = 0u, resolve_no_aa_shader = 0u,
 		sobel_shader = 0u, temporal_with_sobel_shader = 0u,
 		temporal_for_Sobel_shader = 0u, fxaa_shader = 0u,
-		clear_gbuffer_shader = 0u, uncharted_sharpen_shader = 0u;
+		clear_gbuffer_shader = 0u, uncharted_sharpen_shader = 0u,
+		smaa_edge_shader = 0u, smaa_blend_weight_shader = 0u,
+		smaa_blending_shader = 0u;
 	auto const reload_shaders = [&reload_shader,&fill_gbuffer_shader,
 		&fill_shadowmap_shader,&accumulate_lights_shader,
 		&resolve_deferred_shader,&temporal_shader,
@@ -264,7 +270,8 @@ edan35::Assignment2::run()
 		&resolve_no_aa_shader, &sobel_shader,
 		&temporal_with_sobel_shader, &temporal_for_Sobel_shader,
 		&fxaa_shader, &clear_gbuffer_shader,
-		&uncharted_sharpen_shader](){
+		&uncharted_sharpen_shader, &smaa_edge_shader,
+		&smaa_blend_weight_shader, &smaa_blending_shader](){
 		LogInfo("Reloading shaders");
 		reload_shader("fill_gbuffer.vert",      "fill_gbuffer.frag",      fill_gbuffer_shader);
 		reload_shader("clear_gbuffer.vert", "clear_gbuffer.frag",  clear_gbuffer_shader);
@@ -282,6 +289,9 @@ edan35::Assignment2::run()
 		reload_shader("temporal_with_sobel.vert", "temporal_with_sobel.frag", temporal_with_sobel_shader);
 		reload_shader("sobel_temporal.vert","sobel_temporal.frag", temporal_for_Sobel_shader);
 		reload_shader("fxaa.vert", "fxaa.frag", fxaa_shader);
+		reload_shader("smaa_edge.vert", "smaa_edge.frag", smaa_edge_shader);
+		reload_shader("smaa_blend_weight.vert", "smaa_blend_weight.frag", smaa_blend_weight_shader);
+		reload_shader("smaa_blending.vert", "smaa_blending.frag", smaa_blending_shader);
 	};
 	reload_shaders();
 
@@ -389,6 +399,33 @@ edan35::Assignment2::run()
 	};
 
 
+#pragma region SMAA
+
+	// Load Special Textures
+	auto const LoadSpecialTexture = [](const unsigned char data[], const auto width, const auto height, GLint internal_format, GLenum format, GLenum type) {
+		GLuint texture = bonobo::createTexture(width, height, GL_TEXTURE_2D, internal_format, format, type, reinterpret_cast<GLvoid const*>(data));
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glBindTexture(GL_TEXTURE_2D, 0u);
+
+		return texture;
+	};
+
+	// Textures
+	auto const edgesTex = bonobo::createTexture(window_size.x, window_size.y, GL_TEXTURE_2D, GL_RG16, GL_RG, GL_UNSIGNED_BYTE);
+	auto const blendTex = bonobo::createTexture(window_size.x, window_size.y);
+
+	auto const areaTex = LoadSpecialTexture(areaTexBytes, AREATEX_WIDTH, AREATEX_HEIGHT, GL_RG8, GL_RG, GL_UNSIGNED_BYTE);
+	auto const searchTex = LoadSpecialTexture(searchTexBytes, SEARCHTEX_WIDTH, SEARCHTEX_HEIGHT, GL_R8, GL_RED, GL_UNSIGNED_BYTE);
+
+	// FBO's
+	auto const edges_fbo = bonobo::createFBO({ edgesTex }, 0u);
+	auto const blend_fbo = bonobo::createFBO({ blendTex }, 0u);
+
+#pragma endregion
+
+
 	//
 	// Setup lights properties
 	//
@@ -430,8 +467,18 @@ edan35::Assignment2::run()
 	auto seconds_nb = 0.0f;
 	auto seconds_sphere = 0.0f;
 
-	// FXAA Vars
-	bool use_fxaa = false;
+	// Other AA Vars
+	enum class AA : int
+	{
+		NOAA = 0,
+		FXAA = 1,
+		SMAA = 2,
+		TXAA = 3
+	};
+
+	AA aa_in_use = AA::FXAA;
+	
+	bool use_other_aa = false;
 
 	// Save Vars
 	bool save = false, save_steps = false, save_acc_test = false;
@@ -470,8 +517,8 @@ edan35::Assignment2::run()
 	glEnable(GL_CULL_FACE);
 
 	bool show_debug_display = false;
-	GLuint temporal_time_query = 0u, sobel_time_query = 0u, deferred_time_query = 0u, fxaa_time_query= 0u;
-	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred, ddeltatimeFXAA;
+	GLuint temporal_time_query = 0u, sobel_time_query = 0u, deferred_time_query = 0u, fxaa_time_query= 0u, smaa_time_query = 0u;
+	double ddeltatime, ddeltatimeSobel, ddeltatimeTemporal, ddeltatimeDeferred, ddeltatimeFXAA, ddeltatimeSMAA;
 	size_t fpsSamples = 0;
 	double nowTime, lastTime = GetTimeMilliseconds(), debugLastTime;
 	double fpsNextTick = lastTime + 1000.0;
@@ -1053,6 +1100,122 @@ edan35::Assignment2::run()
 		glUseProgram(0u);
 	};
 
+
+	// SMAA
+	auto const SMAA = [&edges_fbo, &blend_fbo, &window_size,
+		&default_sampler, &windowInverseResolution, &smaa_edge_shader,
+		&deferred_shading_texture, &bind_texture_with_sampler, &areaTex,
+		&searchTex, &edgesTex, &smaa_blend_weight_shader,
+		&blendTex, &smaa_blending_shader]()
+	{
+		// Edge Detection
+		glBindFramebuffer(GL_FRAMEBUFFER, edges_fbo);
+		GLenum const edge_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+		glDrawBuffers(1, edge_draw_buffers);
+		auto const edges_clearing_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (edges_clearing_status != GL_FRAMEBUFFER_COMPLETE)
+			LogError("Something went wrong with framebuffer %u", edges_fbo);
+
+		glUseProgram(smaa_edge_shader);
+
+		auto const smaa_uniforms = [&windowInverseResolution, &window_size](GLuint program) {
+			glUniform4f(glGetUniformLocation(program, "smaa_rt_metrics"),
+				static_cast<float>(windowInverseResolution.x),
+				static_cast<float>(windowInverseResolution.y),
+				static_cast<float>(window_size.x),
+				static_cast<float>(window_size.y));
+		};
+
+		smaa_uniforms(smaa_edge_shader);
+
+		glViewport(0, 0, window_size.x, window_size.y);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, smaa_edge_shader, "colorTex", deferred_shading_texture, default_sampler);
+
+		GLStateInspection::CaptureSnapshot("SMAA Edge Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+
+		// Blend Weights Calc
+		glBindFramebuffer(GL_FRAMEBUFFER, blend_fbo);
+		GLenum const blend_draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
+		glDrawBuffers(1, blend_draw_buffers);
+		auto const blend_clearing_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (blend_clearing_status != GL_FRAMEBUFFER_COMPLETE)
+			LogError("Something went wrong with framebuffer %u", blend_fbo);
+
+		glUseProgram(smaa_blend_weight_shader);
+		smaa_uniforms(smaa_blend_weight_shader);
+
+		glViewport(0, 0, window_size.x, window_size.y);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, smaa_blend_weight_shader, "edgesTex", edgesTex, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 1, smaa_blend_weight_shader, "areaTex", areaTex, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 2, smaa_blend_weight_shader, "searchTex", searchTex, default_sampler);
+
+		GLStateInspection::CaptureSnapshot("SMAA Blend Weight Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(2, 0u);
+		glBindSampler(1, 0u);
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+		glUseProgram(smaa_blending_shader);
+
+		smaa_uniforms(smaa_blending_shader);
+
+		glViewport(0, 0, window_size.x, window_size.y);
+		// XXX: Is any clearing needed?
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, smaa_blending_shader, "colorTex", deferred_shading_texture, default_sampler);
+		bind_texture_with_sampler(GL_TEXTURE_2D, 1, smaa_blending_shader, "blendTex", blendTex, default_sampler);
+
+		GLStateInspection::CaptureSnapshot("SMAA Blending Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(1, 0u);
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+	};
+
+	// NOAA
+	auto const NOAA = [&resolve_accumulation_shader, &window_size,
+		&bind_texture_with_sampler, &resolve_no_aa_shader,
+		&deferred_shading_texture, &default_sampler]()
+	{
+		//
+		// Pass: No AA Resolve
+		//
+		glFinish();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+		glUseProgram(resolve_accumulation_shader);
+		glViewport(0, 0, window_size.x, window_size.y);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_no_aa_shader, "texture_to_load", deferred_shading_texture, default_sampler);
+
+		GLStateInspection::CaptureSnapshot("No AA Resolve Pass");
+
+		bonobo::drawFullscreen();
+
+		glBindSampler(0, 0u);
+		glUseProgram(0u);
+	};
+
 	while (!glfwWindowShouldClose(window->GetGLFW_Window())) {
 		nowTime = GetTimeMilliseconds();
 		ddeltatime = nowTime - lastTime;
@@ -1167,7 +1330,7 @@ edan35::Assignment2::run()
 		}
 		else
 		{
-			if (use_fxaa)
+			if (use_other_aa)
 			{
 				bool prev_jitterProjection = mCamera.jitterProjection;
 				mCamera.jitterProjection = false;
@@ -1177,9 +1340,24 @@ edan35::Assignment2::run()
 				bonobo::endTimeQuery(deferred_time_query);
 				mCamera.jitterProjection = prev_jitterProjection;
 
-				bonobo::beginTimeQuery(fxaa_time_query);
-				FXAA();
-				bonobo::endTimeQuery(fxaa_time_query);
+				switch (aa_in_use)
+				{
+				case AA::NOAA:
+					NOAA();
+					break;
+				case AA::FXAA:
+					bonobo::beginTimeQuery(fxaa_time_query);
+					FXAA();
+					bonobo::endTimeQuery(fxaa_time_query);
+					break;
+				case AA::SMAA:
+					bonobo::beginTimeQuery(smaa_time_query);
+					SMAA();
+					bonobo::endTimeQuery(smaa_time_query);
+					break;
+				default:
+					break;
+				}
 			}
 			else {
 				// Pass 1-3: Deferred Shading
@@ -1218,7 +1396,6 @@ edan35::Assignment2::run()
 					bonobo::endTimeQuery(temporal_time_query);
 				}
 			}
-			
 		}
 
 		
@@ -1249,44 +1426,32 @@ edan35::Assignment2::run()
 					file_name += "_ground_truth";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
-					// Save No AA version
-#pragma region NO_AA_SAVE
+
+					// Reder Without Jitter
 					bool prev_jitterProjection = mCamera.jitterProjection;
 					mCamera.jitterProjection = false;
 					currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 					Deferred_Shading();
 					mCamera.jitterProjection = prev_jitterProjection;
 
-					//
-					// Pass: No AA Resolve
-					//
-					glFinish();
-					glBindFramebuffer(GL_FRAMEBUFFER, 0u);
-					glUseProgram(resolve_accumulation_shader);
-					glViewport(0, 0, window_size.x, window_size.y);
-					glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-					glClear(GL_COLOR_BUFFER_BIT);
-
-					bind_texture_with_sampler(GL_TEXTURE_2D, 0, resolve_no_aa_shader, "texture_to_load", deferred_shading_texture, default_sampler);
-
-					GLStateInspection::CaptureSnapshot("No AA Resolve Pass");
-
-					bonobo::drawFullscreen();
-
-					glBindSampler(0, 0u);
-					glUseProgram(0u);
-
+					// Save NOAA
+					NOAA();
 					file_name = std::string(filename);
 					file_name += "_no_aa";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
-#pragma endregion
-
 
 					// Save FXAA
 					// We take advantage that we just rendered the unjittered screen
 					FXAA();
 					file_name = std::string(filename);
 					file_name += "_fxaa";
+					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
+
+					// Save SMAA
+					// We take advantage that we just rendered the unjittered screen
+					SMAA();
+					file_name = std::string(filename);
+					file_name += "_smaa";
 					bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 					save = false;
@@ -1324,6 +1489,7 @@ edan35::Assignment2::run()
 			bonobo::displayTexture({ 0.55f,  0.55f }, { 0.95f,  0.95f }, velocity_texture, default_sampler, { 0, 1, 2, -1 }, window_size);
 			bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
 			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
+			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, edgesTex, default_sampler, { 0, 1, 2, -1 }, window_size);
 		}
 		
 		if (show_save_area)
@@ -1352,12 +1518,25 @@ edan35::Assignment2::run()
 			ddeltatimeSobel = 0.0;
 		}
 
-		if (use_fxaa)
+		if (use_other_aa)
 		{
-			bonobo::collectTimeQuery(fxaa_time_query, ddeltatimeFXAA);
+			switch (aa_in_use)
+			{
+			case AA::FXAA:
+				bonobo::collectTimeQuery(fxaa_time_query, ddeltatimeFXAA);
+				break;
+			case AA::SMAA:
+				bonobo::collectTimeQuery(smaa_time_query, ddeltatimeSMAA);
+				break;
+			case AA::NOAA:
+			case AA::TXAA:
+			default:
+				break;
+			}
 		}
 		else {
 			ddeltatimeFXAA = 0.0;
+			ddeltatimeSMAA = 0.0;
 		}
 		
 
@@ -1366,9 +1545,21 @@ edan35::Assignment2::run()
 		{
 			ImGui::Text("Last Frame: %.3f ms", ddeltatime);
 			ImGui::Text("Deferred: %.3f ms", ddeltatimeDeferred);
-			if (use_fxaa)
+			if (use_other_aa)
 			{
-				ImGui::Text("FXAA: %.3f ms", ddeltatimeFXAA);
+				switch (aa_in_use)
+				{
+				case AA::FXAA:
+					ImGui::Text("FXAA: %.3f ms", ddeltatimeFXAA);
+					break;
+				case AA::SMAA:
+					ImGui::Text("SMAA: %.3f ms", ddeltatimeSMAA);
+					break;
+				case AA::NOAA:
+				case AA::TXAA:
+				default:
+					break;
+				}
 			}
 			else
 			{
@@ -1394,14 +1585,23 @@ edan35::Assignment2::run()
 		{
 			opened = ImGui::Begin("Scene Controls", nullptr, ImVec2(120, 50), -1.0f, 0);
 			if (opened) {
-				ImGui::Checkbox("Use FXAA: ", &use_fxaa);
-				if (!use_fxaa)
+				ImGui::Checkbox("Use Other AA: ", &use_other_aa);
+				if (!use_other_aa)
 				{
 					ImGui::Checkbox("Use Sobel Shader?", &use_sobel);
 					ImGui::Checkbox("Jitter?", &mCamera.jitterProjection);
 					ImGui::SliderFloat("Jitter Spread", &mCamera.jitterSpread, 0.0f, 2.0f);
 					ImGui::SliderFloat("k_feedback_min", &k_feedback_min, 0.0f, 1.0f);
 					ImGui::SliderFloat("k_feedback_max", &k_feedback_max, 0.0f, 1.0f);
+					aa_in_use = AA::TXAA;
+				}
+				else
+				{
+					if (aa_in_use == AA::TXAA)
+					{
+						aa_in_use = AA::NOAA;
+					}
+					ImGui::SliderInt("0:NOAA, 1:FXAA, 2:SMAA", reinterpret_cast<int *>(&aa_in_use), static_cast<int>(AA::NOAA), static_cast<int>(AA::SMAA));
 				}
 				ImGui::Checkbox("Pause lights", &are_lights_paused);
 				ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb) + 1);
@@ -1437,7 +1637,7 @@ edan35::Assignment2::run()
 					current_samples = 0;
 
 					// Save Current Info
-					bonobo::saveConfig(filename, use_fxaa,
+					bonobo::saveConfig(filename, use_other_aa, static_cast<int>(aa_in_use),
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,
@@ -1451,7 +1651,7 @@ edan35::Assignment2::run()
 					current_samples = 0;
 
 					// Save Current Info
-					bonobo::saveConfig(filename, use_fxaa,
+					bonobo::saveConfig(filename, use_other_aa, static_cast<int>(aa_in_use),
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,

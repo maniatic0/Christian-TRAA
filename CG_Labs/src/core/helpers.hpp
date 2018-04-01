@@ -176,7 +176,8 @@ namespace bonobo
 	//! \brief Save Current Configure Values
 	//! 
 	//! @param [in] file_name to save the configuration
-	//! @param [in] using_fxaa if we are using fxaa shader
+	//! @param [in] using_other_aa if we are other AA
+	//! @param [in] aa_num AA number in use
 	//! @param [in] using_sobel if we are using sobel shader
 	//! @param [in] camera Current Camera
 	//! @param [in] k_feedback_min feedback minimun value
@@ -187,7 +188,7 @@ namespace bonobo
 	//! @param [in] upper_corner upper corner of the save area
 	//! @param [in] ghosting_test if this is a ghosting test
 	//! @param [in] ghosting_test_amount amount of samples taken in ghosting test
-	void saveConfig(std::string file_name, const bool &using_fxaa,
+	void saveConfig(std::string file_name, const bool &using_other_aa, const int &aa_num,
 		const bool &using_sobel, FPSCameraf &camera,
 		const float &k_feedback_min, const float &k_feedback_max,
 		const int &sample_amount, const float &accumulation_jitter_spread,

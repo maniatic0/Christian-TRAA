@@ -5,6 +5,8 @@ set (
 
 	"assignment2.cpp"
 	"assignment2.hpp"
+	"AreaTex.h"
+	"SearchTex.h"
 )
 
 source_group (
@@ -13,6 +15,8 @@ source_group (
 	FILES
 	${PROJECT_SOURCE_DIR}/assignment2.cpp
 	${PROJECT_SOURCE_DIR}/assignment2.hpp
+	${PROJECT_SOURCE_DIR}/AreaTex.hpp
+	${PROJECT_SOURCE_DIR}/SearchTex.hpp
 )
 
 luggcgl_new_assignment ("EDAN35_Assignment2" "${ASSIGNMENT2_SOURCES}" "")
