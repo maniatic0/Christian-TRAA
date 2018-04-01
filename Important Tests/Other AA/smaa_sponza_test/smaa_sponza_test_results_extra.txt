@@ -1,0 +1,23 @@
+Name: smaa_sponza_test
+Timestamp(dd/mm/yyyy): 01/04/2018 18:53:05.596
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 2.546472
+ The NIQE score of Reference is 2.113244
+ The NIQE score of No AA is 2.691752
+ The NIQE score of FXAA is 2.436988
+ The NIQE score of SMAA is 2.391689
+ The NIQE score delta between Temporal and Reference is +0.433228
+ The NIQE score delta between Temporal and No AA is -0.145280
+ The NIQE score delta between Temporal and FXAA is +0.109484
+ The NIQE score delta between Temporal and SMAA is +0.154783 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 25.087978
+ The BRISQUE score of Reference is 26.008920
+ The BRISQUE score of No AA is 22.724112
+ The BRISQUE score of FXAA is 18.340378
+ The BRISQUE score delta between Temporal and Reference is -0.920943
+ The BRISQUE score delta between Temporal and No AA is +2.363865
+ The BRISQUE score delta between Temporal and FXAA is +6.747599
+ The BRISQUE score delta between Temporal and SMAA is +2.923777 

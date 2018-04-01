@@ -1,0 +1,28 @@
+Name: smaa_hard_test
+Timestamp(dd/mm/yyyy): 01/04/2018 18:47:44.749
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 5.211690
+ The RMSD value of Temporal is 2.282913
+ The MSE value of No AA is 13.337025
+ The RMSD value of No AA is 3.651989
+ The MSE value of FXAA is 10.180882
+ The RMSD value of FXAA is 3.190749
+ The MSE value of SMAA is 9.685464
+ The RMSD value of SMAA is 3.112148 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 40.961018
+ The SNR value of Temporal is 33.973274
+ The Peak-SNR value of No AA is 36.880214
+ The SNR value of No AA is 29.892469
+ The Peak-SNR value of FXAA is 38.052950
+ The SNR value of FXAA is 31.065205
+ The Peak-SNR value of SMAA is 38.269599
+ The SNR value of SMAA is 31.281855 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.998314
+ The SSIM value of No AA is 0.996647
+ The SSIM value of FXAA is 0.997054
+ The SSIM value of SMAA is 0.997356 
