@@ -45,8 +45,9 @@ Node::render(glm::mat4 const& WVP, glm::mat4 const& world, GLuint program, std::
 	glUniformMatrix4fv(glGetUniformLocation(program, "vertex_world_to_clip"), 1, GL_FALSE, glm::value_ptr(WVP));
 	glUniformMatrix4fv(glGetUniformLocation(program, "old_MVP"), 1, GL_FALSE, glm::value_ptr(oldMVP));
 
-	glUniform1i(glGetUniformLocation(program, "has_textures"), !_textures.empty());
 	glUniform1ui(glGetUniformLocation(program, "model_index"), model_index);
+
+	glUniform1i(glGetUniformLocation(program, "has_textures"), !_textures.empty());
 
 	bool has_diffuse_texture = false, has_opacity_texture = false;
 	for (size_t i = 0u; i < _textures.size(); ++i) {

@@ -172,6 +172,25 @@ edan35::Assignment2::run()
 		sponza_elements.push_back(node);
 	}
 
+	// Load Hairball geometry
+	auto const hairball_geometry = bonobo::loadObjects("hairball.obj", true);
+	if (hairball_geometry.empty()) {
+		LogError("Failed to load the Windows Square model, check the testing folder for the Windows Square");
+		return;
+	}
+
+	float hairball_rotation_speed = 0.3f;
+	auto is_hairball_paused = false;
+
+	Node hairball;
+	hairball.set_geometry(hairball_geometry.front());
+	hairball.add_texture("diffuse_texture", white_normal_texture, GL_TEXTURE_2D);
+	hairball.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
+	hairball.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
+	hairball.set_scaling(glm::vec3(10.0f, 10.0f, 10.0f));
+	hairball.set_translation(glm::vec3(-900.0f, 100.0f, 500.0f));
+	sponza_elements.push_back(hairball);
+
 	// Load the sphere geometry
 	auto const sphere_file = bonobo::loadObjects("sphere.obj");
 	if (sphere_file.empty())
@@ -185,9 +204,9 @@ edan35::Assignment2::run()
 	glm::vec3 sphere_pos(0.0f, 100.0f, 0.0f);
 
 	Node sphere;
-	sphere.set_geometry(sphere_geometry);
 	sphere.add_texture("normals_texture", white_normal_texture, GL_TEXTURE_2D);
 	sphere.add_texture("specular_texture", white_specular_texture, GL_TEXTURE_2D);
+	sphere.set_geometry(sphere_geometry);
 	sphere.set_scaling(glm::vec3(100.0f, 100.0f, 100.0f));
 	sphere.set_translation(sphere_pos);
 	sponza_elements.push_back(sphere);
@@ -429,7 +448,7 @@ edan35::Assignment2::run()
 	//
 	// Setup lights properties
 	//
-	const int extra_lights = 2;
+	const int extra_lights = 3;
 	std::array<TRSTransform<float, glm::defaultp>, constant::lights_nb + extra_lights> lightTransforms;
 	std::array<glm::vec3, constant::lights_nb + extra_lights> lightColors;
 	int lights_nb = static_cast<int>(constant::lights_nb) + extra_lights;
@@ -454,6 +473,12 @@ edan35::Assignment2::run()
 		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
 		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)));
 
+	lightTransforms[constant::lights_nb + 2].SetTranslate(glm::vec3(-400.0f, 125.0f, 500.0f));
+	lightTransforms[constant::lights_nb + 2].SetRotate(-10.97f, glm::vec3(0.0f, 1.0f, 0.0f));
+	lightColors[constant::lights_nb + 2] = glm::vec3(0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
+		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)),
+		0.5f + 0.5f * (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)));
+
 	TRSTransform<f32, glm::defaultp> coneScaleTransform = TRSTransform<f32, glm::defaultp>();
 	coneScaleTransform.SetScale(glm::vec3(sqrt(constant::light_intensity / constant::light_cutoff)));
 
@@ -466,6 +491,7 @@ edan35::Assignment2::run()
 
 	auto seconds_nb = 0.0f;
 	auto seconds_sphere = 0.0f;
+	auto seconds_hairball = 0.0f;
 
 	// Other AA Vars
 	enum class AA : int
@@ -482,7 +508,7 @@ edan35::Assignment2::run()
 
 	// Save Vars
 	bool save = false, save_steps = false, save_acc_test = false;
-	int accumulation_samples = 16, current_samples = 0;
+	int accumulation_samples = 128, current_samples = 0;
 	const int FILE_NAME_SIZE = 200;
 	char filename[FILE_NAME_SIZE+10] = "test";
 	glm::vec2 lower_corner(-1.0f, -1.0f);
@@ -495,7 +521,7 @@ edan35::Assignment2::run()
 	int both_test_samples = 100;
 	auto const kMaxBothSaveSamples = 200;
 	std::vector<glm::vec3> translations (kMaxBothSaveSamples);
-	std::vector<glm::vec3> rotations(kMaxBothSaveSamples);
+	std::vector<glm::vec3> rotations (kMaxBothSaveSamples);
 
 	// Accumulation Buffer Variables
 	float accumulation_jitter_spread = 1.0f;
@@ -1228,6 +1254,8 @@ edan35::Assignment2::run()
 			seconds_nb += static_cast<float>(ddeltatime / 1000.0);
 		if(!is_sphere_paused)
 			seconds_sphere += static_cast<float>(ddeltatime / 1000.0);
+		if (!is_hairball_paused)
+			seconds_hairball += static_cast<float>(ddeltatime / 1000.0);
 
 		auto& io = ImGui::GetIO();
 		inputHandler->SetUICapture(io.WantCaptureMouse, io.WantCaptureMouse);
@@ -1247,6 +1275,9 @@ edan35::Assignment2::run()
 			reload_shaders();
 		}
 
+		// Hairball Rotation
+		sponza_elements[sponza_elements.size() - 3].set_rotation_y(seconds_hairball * hairball_rotation_speed);
+
 		// Sphere novement
 		// The sphere is the penultimate element in vector
 		sponza_elements[sponza_elements.size() - 2].set_translation(sphere_pos + glm::vec3(amplitude * std::sin(bonobo::two_pi * frequency * seconds_sphere), 0.0f, 0.0f));
@@ -1262,20 +1293,16 @@ edan35::Assignment2::run()
 		if (save && save_both)
 		{
 			// Pass 1-3: Deferred Shading
-			//debugLastTime = GetTimeMilliseconds();
 			bonobo::beginTimeQuery(deferred_time_query);
 			Deferred_Shading();
-			//ddeltatimeDeferred = GetTimeMilliseconds() - debugLastTime;
 			bonobo::endTimeQuery(deferred_time_query);
 
 			translations[current_samples] = sponza_elements[sponza_elements.size() - 2].get_translation();
-			rotations[current_samples] = sponza_elements[sponza_elements.size() - 2].get_rotation();
+			rotations[current_samples] = sponza_elements[sponza_elements.size() - 3].get_rotation();
 
 			// Temporal Anti Aliasing from Inside
-			//debugLastTime = GetTimeMilliseconds();
 			bonobo::beginTimeQuery(temporal_time_query);
 			Temporal_AA(temporal_shader, temporal_set_uniforms, history_fbo, history_texture);
-			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 			bonobo::endTimeQuery(temporal_time_query);
 
 			std::ostringstream samples_string;
@@ -1286,17 +1313,12 @@ edan35::Assignment2::run()
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
 			// Pass: Sobel
-			//debugLastTime = GetTimeMilliseconds();
 			bonobo::beginTimeQuery(sobel_time_query);
 			Sobel(use_sobel);
-			//ddeltatimeSobel = GetTimeMilliseconds() - debugLastTime;
 			bonobo::endTimeQuery(sobel_time_query);
 
 			// Temporal Anti Aliasing modified
-			//debugLastTime = GetTimeMilliseconds();
-			//bonobo::beginTimeQuery(temporal_time_query);
 			Temporal_AA(temporal_with_sobel_shader, temporal_set_uniforms, history_improved_fbo, history_improved_texture);
-			//ddeltatimeTemporal = GetTimeMilliseconds() - debugLastTime;
 			file_name = std::string(filename) + "_both_" + samples_string.str() + "_improved";
 			bonobo::screenShot(file_name, lower_corner, upper_corner, window_size);
 
@@ -1311,9 +1333,10 @@ edan35::Assignment2::run()
 					samples_string.clear();
 					samples_string.str("");
 
-					// reload position
+					// reload sphere position
 					sponza_elements[sponza_elements.size() - 2].set_translation(translations[i]);
-					sponza_elements[sponza_elements.size() - 2].set_rotation(rotations[i]);
+					// reload hairball rotation
+					sponza_elements[sponza_elements.size() - 3].set_rotation(rotations[i]);
 
 					samples_string << std::internal << std::setfill('0') << std::setw(4) << std::to_string(i);
 
@@ -1490,6 +1513,7 @@ edan35::Assignment2::run()
 			bonobo::displayTexture({ 0.55f,  0.10f }, { 0.95f,  0.50f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
 			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, sobel_texture[(history_switch + 1) & 1], default_sampler, { 0, 1, 2, -1 }, window_size);
 			//bonobo::displayTexture({ -1.0f,  -1.0f }, { 1.0f,  1.0f }, edgesTex, default_sampler, { 0, 1, 2, -1 }, window_size);
+			
 		}
 		
 		if (show_save_area)
@@ -1604,8 +1628,10 @@ edan35::Assignment2::run()
 					ImGui::SliderInt("0:NOAA, 1:FXAA, 2:SMAA", reinterpret_cast<int *>(&aa_in_use), static_cast<int>(AA::NOAA), static_cast<int>(AA::SMAA));
 				}
 				ImGui::Checkbox("Pause lights", &are_lights_paused);
-				ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb) + 1);
+				ImGui::SliderInt("Number of lights", &lights_nb, 1, static_cast<int>(constant::lights_nb) + extra_lights);
 				ImGui::SliderFloat("Box Rotation", &box_rotation, 0.0f, 1.0f);
+				ImGui::Checkbox("Pause Hairball", &is_hairball_paused);
+				ImGui::SliderFloat("Hairball Rotation Speed", &hairball_rotation_speed, 0.0f, 1.0f);
 				ImGui::Checkbox("Pause sphere", &is_sphere_paused);
 				ImGui::SliderFloat("Amplitude", &amplitude, 0.0f, 1000.0f);
 				ImGui::SliderFloat("Frequency", &frequency, 0.0f, 2.0f);
@@ -1675,7 +1701,15 @@ edan35::Assignment2::run()
 	bonobo::destroyTimeQuery(sobel_time_query);
 	bonobo::destroyTimeQuery(deferred_time_query);
 	bonobo::destroyTimeQuery(fxaa_time_query);
+	bonobo::destroyTimeQuery(smaa_time_query);
 
+
+	glDeleteProgram(smaa_edge_shader);
+	smaa_edge_shader = 0u;
+	glDeleteProgram(smaa_blending_shader);
+	smaa_blending_shader = 0u;
+	glDeleteProgram(smaa_blend_weight_shader);
+	smaa_blend_weight_shader = 0u;
 	glDeleteProgram(fxaa_shader);
 	fxaa_shader = 0u;
 	glDeleteProgram(temporal_for_Sobel_shader);
