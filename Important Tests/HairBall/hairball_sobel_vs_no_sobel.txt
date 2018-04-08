@@ -1,0 +1,22 @@
+1,2c1,2
+< Name: hairball_sobel
+< Timestamp(dd/mm/yyyy): 08/04/2018 15:49:56.483
+---
+> Name: hairball_no_sobel
+> Timestamp(dd/mm/yyyy): 08/04/2018 15:48:03.025
+5,6c5,6
+<  The MSE value of Temporal is 10.292908
+<  The RMSD value of Temporal is 3.208256
+---
+>  The MSE value of Temporal is 88.975655
+>  The RMSD value of Temporal is 9.432691
+15,16c15,16
+<  The Peak-SNR value of Temporal is 38.005423
+<  The SNR value of Temporal is 25.153722
+---
+>  The Peak-SNR value of Temporal is 28.638092
+>  The SNR value of Temporal is 15.786391
+25c25
+<  The SSIM value of Temporal is 0.984747
+---
+>  The SSIM value of Temporal is 0.934416
