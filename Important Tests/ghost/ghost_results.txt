@@ -1,5 +1,5 @@
 Name: ghost
-Timestamp(dd/mm/yyyy): 28/03/2018 17:35:38.292
+Timestamp(dd/mm/yyyy): 10/04/2018 13:12:05.057
 Ghosting Test Found: ghost\ghost_log_gt.txt
 Ghosting Test Amount: 100
 

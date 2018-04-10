@@ -1,0 +1,2004 @@
+Name: hairball_ghosting
+Timestamp(dd/mm/yyyy): 10/04/2018 12:59:17.783
+Ghosting Test Found: hairball_ghosting\hairball_ghosting_log_gt.txt
+Ghosting Test Amount: 100
+
+
+Test Number: 0000
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0000_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0000_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0000_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.315688
+ The NIQE score of Reference is 5.119339
+ The NIQE score of Uncharted Temporal is 9.413382
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.196349
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -4.097694 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.588533
+ The BRISQUE score of Reference is 37.282767
+ The BRISQUE score of Uncharted Temporal is 39.615607
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.305766
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.027073 
+
+
+Test Number: 0001
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0001_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0001_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0001_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.240750
+ The NIQE score of Reference is 4.701798
+ The NIQE score of Uncharted Temporal is 9.217912
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.538952
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -3.977162 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.680221
+ The BRISQUE score of Reference is 37.090087
+ The BRISQUE score of Uncharted Temporal is 39.122306
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.590134
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.442084 
+
+
+Test Number: 0002
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0002_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0002_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0002_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.006340
+ The NIQE score of Reference is 4.733707
+ The NIQE score of Uncharted Temporal is 7.754657
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.272632
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.748318 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.181296
+ The BRISQUE score of Reference is 36.652310
+ The BRISQUE score of Uncharted Temporal is 38.321133
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.528985
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.139838 
+
+
+Test Number: 0003
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0003_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0003_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0003_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.734806
+ The NIQE score of Reference is 4.848205
+ The NIQE score of Uncharted Temporal is 7.830080
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.113399
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -3.095274 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.522444
+ The BRISQUE score of Reference is 37.070617
+ The BRISQUE score of Uncharted Temporal is 38.989254
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.451827
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.466809 
+
+
+Test Number: 0004
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0004_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0004_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0004_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.907827
+ The NIQE score of Reference is 4.841114
+ The NIQE score of Uncharted Temporal is 7.690967
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.066713
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.783140 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.980969
+ The BRISQUE score of Reference is 37.318384
+ The BRISQUE score of Uncharted Temporal is 38.712631
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.662585
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.268338 
+
+
+Test Number: 0005
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0005_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0005_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0005_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.189885
+ The NIQE score of Reference is 5.052703
+ The NIQE score of Uncharted Temporal is 6.997750
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.137182
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.807866 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.845167
+ The BRISQUE score of Reference is 37.395259
+ The BRISQUE score of Uncharted Temporal is 39.236147
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.449908
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.390980 
+
+
+Test Number: 0006
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0006_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0006_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0006_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.922217
+ The NIQE score of Reference is 4.896585
+ The NIQE score of Uncharted Temporal is 8.873904
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.025632
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.951687 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.039930
+ The BRISQUE score of Reference is 36.984615
+ The BRISQUE score of Uncharted Temporal is 39.307491
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.055315
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.267562 
+
+
+Test Number: 0007
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0007_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0007_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0007_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.205392
+ The NIQE score of Reference is 5.142598
+ The NIQE score of Uncharted Temporal is 7.764516
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.062794
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.559124 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.281505
+ The BRISQUE score of Reference is 37.382925
+ The BRISQUE score of Uncharted Temporal is 38.365862
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.898580
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.084357 
+
+
+Test Number: 0008
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0008_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0008_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0008_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.902136
+ The NIQE score of Reference is 4.737671
+ The NIQE score of Uncharted Temporal is 8.605616
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.164466
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.703480 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.454696
+ The BRISQUE score of Reference is 37.537309
+ The BRISQUE score of Uncharted Temporal is 39.273186
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.917387
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.818490 
+
+
+Test Number: 0009
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0009_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0009_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0009_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.015761
+ The NIQE score of Reference is 4.397976
+ The NIQE score of Uncharted Temporal is 7.131044
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.617785
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.115283 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.971137
+ The BRISQUE score of Reference is 37.967241
+ The BRISQUE score of Uncharted Temporal is 38.812895
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.003896
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.841757 
+
+
+Test Number: 0010
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0010_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0010_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0010_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.436887
+ The NIQE score of Reference is 4.889169
+ The NIQE score of Uncharted Temporal is 7.650722
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.547718
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.213834 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.910866
+ The BRISQUE score of Reference is 38.121492
+ The BRISQUE score of Uncharted Temporal is 38.718080
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.789374
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.192786 
+
+
+Test Number: 0011
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0011_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0011_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0011_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.209787
+ The NIQE score of Reference is 4.724993
+ The NIQE score of Uncharted Temporal is 7.537861
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.484795
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.328074 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.708417
+ The BRISQUE score of Reference is 37.623922
+ The BRISQUE score of Uncharted Temporal is 37.970716
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.084495
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.737700 
+
+
+Test Number: 0012
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0012_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0012_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0012_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.573690
+ The NIQE score of Reference is 4.694246
+ The NIQE score of Uncharted Temporal is 6.725534
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.120555
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.151844 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.152844
+ The BRISQUE score of Reference is 37.970174
+ The BRISQUE score of Uncharted Temporal is 38.297855
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.182670
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.145010 
+
+
+Test Number: 0013
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0013_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0013_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0013_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.279235
+ The NIQE score of Reference is 4.973770
+ The NIQE score of Uncharted Temporal is 7.719099
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.305465
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.439863 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.438976
+ The BRISQUE score of Reference is 37.742961
+ The BRISQUE score of Uncharted Temporal is 39.228596
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.696015
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.789621 
+
+
+Test Number: 0014
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0014_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0014_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0014_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.946003
+ The NIQE score of Reference is 4.701603
+ The NIQE score of Uncharted Temporal is 6.534320
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.244400
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.588316 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.067724
+ The BRISQUE score of Reference is 37.326862
+ The BRISQUE score of Uncharted Temporal is 38.467291
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.740862
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.399567 
+
+
+Test Number: 0015
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0015_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0015_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0015_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.009908
+ The NIQE score of Reference is 4.890662
+ The NIQE score of Uncharted Temporal is 7.208636
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.119246
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.198728 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.514496
+ The BRISQUE score of Reference is 37.325256
+ The BRISQUE score of Uncharted Temporal is 37.749329
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.189241
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.765167 
+
+
+Test Number: 0016
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0016_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0016_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0016_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.712671
+ The NIQE score of Reference is 4.648929
+ The NIQE score of Uncharted Temporal is 7.184032
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.063742
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.471361 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.902852
+ The BRISQUE score of Reference is 37.633829
+ The BRISQUE score of Uncharted Temporal is 39.109909
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.269023
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.207057 
+
+
+Test Number: 0017
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0017_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0017_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0017_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.348341
+ The NIQE score of Reference is 4.624370
+ The NIQE score of Uncharted Temporal is 8.199392
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.723971
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.851051 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.084347
+ The BRISQUE score of Reference is 37.476026
+ The BRISQUE score of Uncharted Temporal is 38.756094
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.608322
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.671747 
+
+
+Test Number: 0018
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0018_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0018_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0018_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.928703
+ The NIQE score of Reference is 4.772345
+ The NIQE score of Uncharted Temporal is 7.153006
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.156358
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.224303 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.296246
+ The BRISQUE score of Reference is 37.196307
+ The BRISQUE score of Uncharted Temporal is 38.200453
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.099939
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.095794 
+
+
+Test Number: 0019
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0019_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0019_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0019_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.069653
+ The NIQE score of Reference is 5.125212
+ The NIQE score of Uncharted Temporal is 7.241770
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.055559
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.172118 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.608786
+ The BRISQUE score of Reference is 37.593825
+ The BRISQUE score of Uncharted Temporal is 38.606251
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.014961
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.002536 
+
+
+Test Number: 0020
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0020_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0020_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0020_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.870279
+ The NIQE score of Reference is 5.027234
+ The NIQE score of Uncharted Temporal is 7.193969
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.156955
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.323689 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.708119
+ The BRISQUE score of Reference is 37.469492
+ The BRISQUE score of Uncharted Temporal is 38.321262
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.238626
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.386857 
+
+
+Test Number: 0021
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0021_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0021_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0021_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.846032
+ The NIQE score of Reference is 4.657204
+ The NIQE score of Uncharted Temporal is 7.321181
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.188828
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.475148 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.557018
+ The BRISQUE score of Reference is 37.433622
+ The BRISQUE score of Uncharted Temporal is 39.304367
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.123395
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.747350 
+
+
+Test Number: 0022
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0022_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0022_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0022_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.331057
+ The NIQE score of Reference is 4.752726
+ The NIQE score of Uncharted Temporal is 7.505020
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.578332
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.173963 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.662810
+ The BRISQUE score of Reference is 37.681663
+ The BRISQUE score of Uncharted Temporal is 39.209614
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.018854
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.546804 
+
+
+Test Number: 0023
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0023_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0023_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0023_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.439427
+ The NIQE score of Reference is 5.247749
+ The NIQE score of Uncharted Temporal is 7.297965
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.191678
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.858537 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.056867
+ The BRISQUE score of Reference is 37.720018
+ The BRISQUE score of Uncharted Temporal is 38.536361
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.336848
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.479495 
+
+
+Test Number: 0024
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0024_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0024_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0024_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.669827
+ The NIQE score of Reference is 5.116258
+ The NIQE score of Uncharted Temporal is 7.328599
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.553569
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.658772 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.453218
+ The BRISQUE score of Reference is 37.213272
+ The BRISQUE score of Uncharted Temporal is 39.582313
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.239946
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.129095 
+
+
+Test Number: 0025
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0025_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0025_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0025_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.161858
+ The NIQE score of Reference is 4.665161
+ The NIQE score of Uncharted Temporal is 7.348385
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.496697
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.186527 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.203202
+ The BRISQUE score of Reference is 37.612940
+ The BRISQUE score of Uncharted Temporal is 39.570379
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.590262
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.367177 
+
+
+Test Number: 0026
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0026_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0026_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0026_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.595418
+ The NIQE score of Reference is 4.738261
+ The NIQE score of Uncharted Temporal is 7.134508
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.857158
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.539089 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 39.091202
+ The BRISQUE score of Reference is 37.776958
+ The BRISQUE score of Uncharted Temporal is 39.042737
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.314244
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.048465 
+
+
+Test Number: 0027
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0027_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0027_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0027_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.263355
+ The NIQE score of Reference is 5.035291
+ The NIQE score of Uncharted Temporal is 6.843628
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.228064
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.580273 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 39.140288
+ The BRISQUE score of Reference is 37.407856
+ The BRISQUE score of Uncharted Temporal is 38.632767
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.732432
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.507522 
+
+
+Test Number: 0028
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0028_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0028_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0028_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.178511
+ The NIQE score of Reference is 4.646008
+ The NIQE score of Uncharted Temporal is 6.960528
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.532502
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.782017 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.671149
+ The BRISQUE score of Reference is 37.478939
+ The BRISQUE score of Uncharted Temporal is 38.337141
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.192209
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.334008 
+
+
+Test Number: 0029
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0029_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0029_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0029_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.824453
+ The NIQE score of Reference is 4.912662
+ The NIQE score of Uncharted Temporal is 7.642515
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.911791
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.818062 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.550840
+ The BRISQUE score of Reference is 37.039248
+ The BRISQUE score of Uncharted Temporal is 39.269336
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.511593
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.718496 
+
+
+Test Number: 0030
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0030_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0030_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0030_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.475247
+ The NIQE score of Reference is 4.726596
+ The NIQE score of Uncharted Temporal is 7.341278
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.748651
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.866031 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.015449
+ The BRISQUE score of Reference is 37.039986
+ The BRISQUE score of Uncharted Temporal is 38.834670
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.975463
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.819221 
+
+
+Test Number: 0031
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0031_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0031_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0031_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.240477
+ The NIQE score of Reference is 4.741848
+ The NIQE score of Uncharted Temporal is 6.806968
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.498629
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.566491 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.191097
+ The BRISQUE score of Reference is 36.869768
+ The BRISQUE score of Uncharted Temporal is 38.052376
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.321330
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.138721 
+
+
+Test Number: 0032
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0032_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0032_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0032_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.695384
+ The NIQE score of Reference is 4.803089
+ The NIQE score of Uncharted Temporal is 8.324591
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.892295
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.629207 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.686944
+ The BRISQUE score of Reference is 36.864702
+ The BRISQUE score of Uncharted Temporal is 39.156844
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.822242
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.469900 
+
+
+Test Number: 0033
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0033_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0033_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0033_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.768424
+ The NIQE score of Reference is 4.512576
+ The NIQE score of Uncharted Temporal is 8.941491
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.255848
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -3.173067 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.544294
+ The BRISQUE score of Reference is 36.722088
+ The BRISQUE score of Uncharted Temporal is 38.950320
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.822206
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.406026 
+
+
+Test Number: 0034
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0034_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0034_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0034_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.447928
+ The NIQE score of Reference is 5.261331
+ The NIQE score of Uncharted Temporal is 8.276039
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.186598
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.828111 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.067952
+ The BRISQUE score of Reference is 36.711085
+ The BRISQUE score of Uncharted Temporal is 38.118696
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.356867
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.050744 
+
+
+Test Number: 0035
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0035_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0035_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0035_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.439446
+ The NIQE score of Reference is 4.740170
+ The NIQE score of Uncharted Temporal is 7.604005
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.699276
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.164558 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.241056
+ The BRISQUE score of Reference is 36.871962
+ The BRISQUE score of Uncharted Temporal is 38.796392
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.369094
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.555337 
+
+
+Test Number: 0036
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0036_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0036_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0036_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.027327
+ The NIQE score of Reference is 4.723288
+ The NIQE score of Uncharted Temporal is 7.516225
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.304040
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.488897 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.315520
+ The BRISQUE score of Reference is 37.123971
+ The BRISQUE score of Uncharted Temporal is 38.004386
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.191549
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.311134 
+
+
+Test Number: 0037
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0037_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0037_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0037_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.105513
+ The NIQE score of Reference is 5.640948
+ The NIQE score of Uncharted Temporal is 7.374523
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.535435
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.269010 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.195399
+ The BRISQUE score of Reference is 36.924016
+ The BRISQUE score of Uncharted Temporal is 38.764970
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.271383
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.569571 
+
+
+Test Number: 0038
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0038_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0038_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0038_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.645506
+ The NIQE score of Reference is 4.994846
+ The NIQE score of Uncharted Temporal is 8.215330
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.650660
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.569824 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.433000
+ The BRISQUE score of Reference is 36.896066
+ The BRISQUE score of Uncharted Temporal is 38.778075
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.536934
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.345075 
+
+
+Test Number: 0039
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0039_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0039_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0039_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.900576
+ The NIQE score of Reference is 4.814458
+ The NIQE score of Uncharted Temporal is 6.756766
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.086118
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.856190 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.828539
+ The BRISQUE score of Reference is 37.010163
+ The BRISQUE score of Uncharted Temporal is 37.866723
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.818376
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.038184 
+
+
+Test Number: 0040
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0040_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0040_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0040_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.025968
+ The NIQE score of Reference is 5.082277
+ The NIQE score of Uncharted Temporal is 8.356264
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.943691
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.330296 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.888083
+ The BRISQUE score of Reference is 37.163525
+ The BRISQUE score of Uncharted Temporal is 38.918279
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.724559
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.030196 
+
+
+Test Number: 0041
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0041_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0041_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0041_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.151462
+ The NIQE score of Reference is 4.438026
+ The NIQE score of Uncharted Temporal is 8.620785
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.713436
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.469324 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.420976
+ The BRISQUE score of Reference is 36.772277
+ The BRISQUE score of Uncharted Temporal is 38.690180
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.648699
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.269204 
+
+
+Test Number: 0042
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0042_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0042_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0042_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.404350
+ The NIQE score of Reference is 4.355979
+ The NIQE score of Uncharted Temporal is 7.504976
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.048371
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.100626 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.803566
+ The BRISQUE score of Reference is 37.223301
+ The BRISQUE score of Uncharted Temporal is 38.294955
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.580265
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.508611 
+
+
+Test Number: 0043
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0043_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0043_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0043_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.453109
+ The NIQE score of Reference is 4.465714
+ The NIQE score of Uncharted Temporal is 6.681429
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.987395
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.228319 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.603520
+ The BRISQUE score of Reference is 37.094460
+ The BRISQUE score of Uncharted Temporal is 37.810773
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.509060
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.792747 
+
+
+Test Number: 0044
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0044_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0044_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0044_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.209400
+ The NIQE score of Reference is 4.792814
+ The NIQE score of Uncharted Temporal is 6.569575
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.416586
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.360175 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.346113
+ The BRISQUE score of Reference is 36.930366
+ The BRISQUE score of Uncharted Temporal is 37.847676
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.415747
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.498437 
+
+
+Test Number: 0045
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0045_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0045_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0045_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.796661
+ The NIQE score of Reference is 5.532961
+ The NIQE score of Uncharted Temporal is 7.807944
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.263700
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.011284 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.375693
+ The BRISQUE score of Reference is 36.671626
+ The BRISQUE score of Uncharted Temporal is 38.688080
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.704067
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.312387 
+
+
+Test Number: 0046
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0046_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0046_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0046_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.344896
+ The NIQE score of Reference is 5.427025
+ The NIQE score of Uncharted Temporal is 7.481991
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.082129
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.137095 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.868902
+ The BRISQUE score of Reference is 36.544667
+ The BRISQUE score of Uncharted Temporal is 38.400975
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.324235
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.532073 
+
+
+Test Number: 0047
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0047_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0047_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0047_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.938181
+ The NIQE score of Reference is 4.690764
+ The NIQE score of Uncharted Temporal is 7.390785
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.247417
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.452605 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.477933
+ The BRISQUE score of Reference is 35.959083
+ The BRISQUE score of Uncharted Temporal is 37.648937
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.518850
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.828996 
+
+
+Test Number: 0048
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0048_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0048_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0048_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.863604
+ The NIQE score of Reference is 4.921633
+ The NIQE score of Uncharted Temporal is 7.507105
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.941971
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.643501 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.425770
+ The BRISQUE score of Reference is 36.221829
+ The BRISQUE score of Uncharted Temporal is 38.560748
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.203941
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.134978 
+
+
+Test Number: 0049
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0049_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0049_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0049_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.666927
+ The NIQE score of Reference is 4.547164
+ The NIQE score of Uncharted Temporal is 7.618033
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.119762
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.951107 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.600651
+ The BRISQUE score of Reference is 36.251295
+ The BRISQUE score of Uncharted Temporal is 38.412985
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.349356
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.812335 
+
+
+Test Number: 0050
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0050_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0050_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0050_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.958481
+ The NIQE score of Reference is 4.886354
+ The NIQE score of Uncharted Temporal is 6.428684
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.072128
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.470203 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.099463
+ The BRISQUE score of Reference is 36.551331
+ The BRISQUE score of Uncharted Temporal is 37.688927
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.548132
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.410536 
+
+
+Test Number: 0051
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0051_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0051_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0051_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.288659
+ The NIQE score of Reference is 4.417969
+ The NIQE score of Uncharted Temporal is 7.230949
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.870690
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.942290 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.435133
+ The BRISQUE score of Reference is 36.522595
+ The BRISQUE score of Uncharted Temporal is 38.499168
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.912538
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.064035 
+
+
+Test Number: 0052
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0052_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0052_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0052_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.311778
+ The NIQE score of Reference is 4.504706
+ The NIQE score of Uncharted Temporal is 7.932308
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.807072
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.620531 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.694135
+ The BRISQUE score of Reference is 35.904415
+ The BRISQUE score of Uncharted Temporal is 38.141336
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.789720
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.552798 
+
+
+Test Number: 0053
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0053_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0053_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0053_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.059220
+ The NIQE score of Reference is 4.493681
+ The NIQE score of Uncharted Temporal is 7.109909
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.565538
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.050689 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.313413
+ The BRISQUE score of Reference is 35.724927
+ The BRISQUE score of Uncharted Temporal is 38.342251
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.588486
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.028838 
+
+
+Test Number: 0054
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0054_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0054_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0054_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.236990
+ The NIQE score of Reference is 4.662399
+ The NIQE score of Uncharted Temporal is 7.470683
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.574591
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.233693 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.371651
+ The BRISQUE score of Reference is 35.537463
+ The BRISQUE score of Uncharted Temporal is 38.629091
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.834188
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.257440 
+
+
+Test Number: 0055
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0055_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0055_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0055_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.059689
+ The NIQE score of Reference is 4.829045
+ The NIQE score of Uncharted Temporal is 7.545128
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.230643
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.485439 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.609924
+ The BRISQUE score of Reference is 35.759474
+ The BRISQUE score of Uncharted Temporal is 37.566334
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.850450
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.043590 
+
+
+Test Number: 0056
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0056_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0056_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0056_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.651454
+ The NIQE score of Reference is 4.645593
+ The NIQE score of Uncharted Temporal is 8.531023
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.005861
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.879569 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.687568
+ The BRISQUE score of Reference is 35.627573
+ The BRISQUE score of Uncharted Temporal is 38.499680
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.059994
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.812112 
+
+
+Test Number: 0057
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0057_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0057_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0057_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 6.161862
+ The NIQE score of Reference is 4.197111
+ The NIQE score of Uncharted Temporal is 7.299738
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.964750
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.137876 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.189747
+ The BRISQUE score of Reference is 35.996984
+ The BRISQUE score of Uncharted Temporal is 38.512229
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.192762
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.322482 
+
+
+Test Number: 0058
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0058_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0058_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0058_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.450901
+ The NIQE score of Reference is 4.537465
+ The NIQE score of Uncharted Temporal is 6.989453
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.913436
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.538552 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.144301
+ The BRISQUE score of Reference is 36.584719
+ The BRISQUE score of Uncharted Temporal is 38.007203
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.559582
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.137098 
+
+
+Test Number: 0059
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0059_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0059_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0059_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.926242
+ The NIQE score of Reference is 4.313001
+ The NIQE score of Uncharted Temporal is 6.966106
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.613241
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.039864 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.097706
+ The BRISQUE score of Reference is 36.553330
+ The BRISQUE score of Uncharted Temporal is 37.451322
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.544376
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.646384 
+
+
+Test Number: 0060
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0060_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0060_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0060_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.779218
+ The NIQE score of Reference is 4.521295
+ The NIQE score of Uncharted Temporal is 6.828958
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.257923
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.049739 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.992118
+ The BRISQUE score of Reference is 36.358329
+ The BRISQUE score of Uncharted Temporal is 37.746120
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.633788
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.245998 
+
+
+Test Number: 0061
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0061_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0061_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0061_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.531946
+ The NIQE score of Reference is 4.439198
+ The NIQE score of Uncharted Temporal is 7.775545
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.092749
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.243599 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.102168
+ The BRISQUE score of Reference is 36.169865
+ The BRISQUE score of Uncharted Temporal is 38.872282
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.932304
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.770114 
+
+
+Test Number: 0062
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0062_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0062_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0062_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.105324
+ The NIQE score of Reference is 4.669531
+ The NIQE score of Uncharted Temporal is 6.734808
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.435793
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.629483 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.496886
+ The BRISQUE score of Reference is 36.185244
+ The BRISQUE score of Uncharted Temporal is 37.998744
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.311642
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.501859 
+
+
+Test Number: 0063
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0063_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0063_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0063_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.023280
+ The NIQE score of Reference is 4.941501
+ The NIQE score of Uncharted Temporal is 7.112141
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.081779
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.088861 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.066162
+ The BRISQUE score of Reference is 36.619104
+ The BRISQUE score of Uncharted Temporal is 37.431948
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.447058
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.634214 
+
+
+Test Number: 0064
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0064_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0064_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0064_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.428627
+ The NIQE score of Reference is 5.171378
+ The NIQE score of Uncharted Temporal is 6.311561
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.257249
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -0.882934 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.054466
+ The BRISQUE score of Reference is 35.813500
+ The BRISQUE score of Uncharted Temporal is 38.640126
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.240966
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.585660 
+
+
+Test Number: 0065
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0065_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0065_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0065_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.191689
+ The NIQE score of Reference is 4.448722
+ The NIQE score of Uncharted Temporal is 7.068711
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.742967
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.877022 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.022970
+ The BRISQUE score of Reference is 36.462696
+ The BRISQUE score of Uncharted Temporal is 38.103531
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.560274
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.080560 
+
+
+Test Number: 0066
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0066_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0066_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0066_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.729207
+ The NIQE score of Reference is 4.972014
+ The NIQE score of Uncharted Temporal is 6.851084
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.242807
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.121877 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.848118
+ The BRISQUE score of Reference is 36.838418
+ The BRISQUE score of Uncharted Temporal is 37.451803
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.009700
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.396315 
+
+
+Test Number: 0067
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0067_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0067_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0067_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.095155
+ The NIQE score of Reference is 4.614128
+ The NIQE score of Uncharted Temporal is 6.103628
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.481026
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.008473 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.884578
+ The BRISQUE score of Reference is 35.770413
+ The BRISQUE score of Uncharted Temporal is 38.253831
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +2.114165
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.369254 
+
+
+Test Number: 0068
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0068_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0068_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0068_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.049725
+ The NIQE score of Reference is 4.816767
+ The NIQE score of Uncharted Temporal is 6.338114
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.232958
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.288389 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.160454
+ The BRISQUE score of Reference is 36.770069
+ The BRISQUE score of Uncharted Temporal is 37.808058
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.390384
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.352395 
+
+
+Test Number: 0069
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0069_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0069_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0069_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.119500
+ The NIQE score of Reference is 4.465488
+ The NIQE score of Uncharted Temporal is 6.671938
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.654012
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.552439 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.033398
+ The BRISQUE score of Reference is 36.574418
+ The BRISQUE score of Uncharted Temporal is 38.388734
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.458981
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.355335 
+
+
+Test Number: 0070
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0070_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0070_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0070_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.358087
+ The NIQE score of Reference is 4.579178
+ The NIQE score of Uncharted Temporal is 7.745994
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.778909
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.387906 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.971644
+ The BRISQUE score of Reference is 37.034823
+ The BRISQUE score of Uncharted Temporal is 38.404496
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.063179
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.432852 
+
+
+Test Number: 0071
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0071_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0071_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0071_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.025348
+ The NIQE score of Reference is 4.869019
+ The NIQE score of Uncharted Temporal is 7.189095
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.156329
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.163747 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.384904
+ The BRISQUE score of Reference is 36.429238
+ The BRISQUE score of Uncharted Temporal is 37.575305
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.955666
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.190400 
+
+
+Test Number: 0072
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0072_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0072_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0072_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.365152
+ The NIQE score of Reference is 4.460784
+ The NIQE score of Uncharted Temporal is 7.773021
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.904368
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.407869 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.459134
+ The BRISQUE score of Reference is 36.866660
+ The BRISQUE score of Uncharted Temporal is 38.792419
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.592474
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.333284 
+
+
+Test Number: 0073
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0073_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0073_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0073_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.939808
+ The NIQE score of Reference is 4.781532
+ The NIQE score of Uncharted Temporal is 7.593949
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.158275
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.654141 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.046616
+ The BRISQUE score of Reference is 37.191261
+ The BRISQUE score of Uncharted Temporal is 38.710973
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.144644
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.664356 
+
+
+Test Number: 0074
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0074_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0074_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0074_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.199618
+ The NIQE score of Reference is 4.638268
+ The NIQE score of Uncharted Temporal is 7.760211
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.561350
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.560593 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.147916
+ The BRISQUE score of Reference is 36.982445
+ The BRISQUE score of Uncharted Temporal is 38.028947
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.165470
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.118969 
+
+
+Test Number: 0075
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0075_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0075_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0075_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.736276
+ The NIQE score of Reference is 4.744024
+ The NIQE score of Uncharted Temporal is 7.031083
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.007748
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.294807 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 38.179399
+ The BRISQUE score of Reference is 36.761353
+ The BRISQUE score of Uncharted Temporal is 37.461012
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.418046
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.718387 
+
+
+Test Number: 0076
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0076_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0076_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0076_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.011400
+ The NIQE score of Reference is 5.023205
+ The NIQE score of Uncharted Temporal is 7.127409
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.011805
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.116009 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.881652
+ The BRISQUE score of Reference is 36.983853
+ The BRISQUE score of Uncharted Temporal is 37.483619
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.897799
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.398033 
+
+
+Test Number: 0077
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0077_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0077_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0077_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.347818
+ The NIQE score of Reference is 5.502031
+ The NIQE score of Uncharted Temporal is 7.576521
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.154213
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.228704 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.838939
+ The BRISQUE score of Reference is 37.124854
+ The BRISQUE score of Uncharted Temporal is 38.559432
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.714085
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.720493 
+
+
+Test Number: 0078
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0078_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0078_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0078_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.990050
+ The NIQE score of Reference is 4.897184
+ The NIQE score of Uncharted Temporal is 7.390834
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.092866
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.400784 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.142586
+ The BRISQUE score of Reference is 36.997851
+ The BRISQUE score of Uncharted Temporal is 37.991693
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.144735
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.849107 
+
+
+Test Number: 0079
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0079_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0079_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0079_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.044216
+ The NIQE score of Reference is 5.286219
+ The NIQE score of Uncharted Temporal is 7.011351
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.242003
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.967135 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.711552
+ The BRISQUE score of Reference is 36.595876
+ The BRISQUE score of Uncharted Temporal is 37.076244
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.115676
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.635308 
+
+
+Test Number: 0080
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0080_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0080_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0080_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.107810
+ The NIQE score of Reference is 4.592648
+ The NIQE score of Uncharted Temporal is 7.734676
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.515162
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.626865 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.924482
+ The BRISQUE score of Reference is 37.101828
+ The BRISQUE score of Uncharted Temporal is 38.083117
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.822654
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.158634 
+
+
+Test Number: 0081
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0081_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0081_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0081_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.783521
+ The NIQE score of Reference is 4.527854
+ The NIQE score of Uncharted Temporal is 8.695726
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.255667
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.912205 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.993497
+ The BRISQUE score of Reference is 36.937555
+ The BRISQUE score of Uncharted Temporal is 38.047858
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.055942
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.054361 
+
+
+Test Number: 0082
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0082_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0082_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0082_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.149545
+ The NIQE score of Reference is 4.598969
+ The NIQE score of Uncharted Temporal is 7.799119
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.550576
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.649574 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.474216
+ The BRISQUE score of Reference is 36.780432
+ The BRISQUE score of Uncharted Temporal is 37.755929
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.693784
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.281713 
+
+
+Test Number: 0083
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0083_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0083_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0083_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.573749
+ The NIQE score of Reference is 4.754657
+ The NIQE score of Uncharted Temporal is 7.280142
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.819092
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.706393 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.586618
+ The BRISQUE score of Reference is 36.913541
+ The BRISQUE score of Uncharted Temporal is 38.246102
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.673077
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.659484 
+
+
+Test Number: 0084
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0084_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0084_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0084_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.063648
+ The NIQE score of Reference is 4.905903
+ The NIQE score of Uncharted Temporal is 7.745754
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.157745
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.682106 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.810365
+ The BRISQUE score of Reference is 37.282800
+ The BRISQUE score of Uncharted Temporal is 38.168604
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.527565
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.358239 
+
+
+Test Number: 0085
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0085_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0085_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0085_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.091012
+ The NIQE score of Reference is 4.998928
+ The NIQE score of Uncharted Temporal is 7.144037
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.092084
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.053025 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.626993
+ The BRISQUE score of Reference is 38.201326
+ The BRISQUE score of Uncharted Temporal is 38.669730
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.574333
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.042737 
+
+
+Test Number: 0086
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0086_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0086_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0086_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.363366
+ The NIQE score of Reference is 4.635559
+ The NIQE score of Uncharted Temporal is 7.073865
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.727807
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.710499 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.916291
+ The BRISQUE score of Reference is 37.818845
+ The BRISQUE score of Uncharted Temporal is 38.507773
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.902554
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.591482 
+
+
+Test Number: 0087
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0087_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0087_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0087_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.389132
+ The NIQE score of Reference is 4.734296
+ The NIQE score of Uncharted Temporal is 7.898691
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.654836
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.509559 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.911577
+ The BRISQUE score of Reference is 37.251136
+ The BRISQUE score of Uncharted Temporal is 37.678013
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.339560
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.766436 
+
+
+Test Number: 0088
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0088_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0088_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0088_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.684329
+ The NIQE score of Reference is 5.016896
+ The NIQE score of Uncharted Temporal is 8.086321
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.667433
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.401992 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.640717
+ The BRISQUE score of Reference is 37.158434
+ The BRISQUE score of Uncharted Temporal is 38.542593
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.517717
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.901876 
+
+
+Test Number: 0089
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0089_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0089_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0089_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.752337
+ The NIQE score of Reference is 4.861433
+ The NIQE score of Uncharted Temporal is 7.816047
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.890904
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.063710 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.111854
+ The BRISQUE score of Reference is 37.071265
+ The BRISQUE score of Uncharted Temporal is 38.705720
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.040589
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.593866 
+
+
+Test Number: 0090
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0090_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0090_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0090_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.641818
+ The NIQE score of Reference is 4.791691
+ The NIQE score of Uncharted Temporal is 7.429738
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.850127
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.787920 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.735611
+ The BRISQUE score of Reference is 36.703727
+ The BRISQUE score of Uncharted Temporal is 38.175965
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.031885
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.440354 
+
+
+Test Number: 0091
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0091_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0091_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0091_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.569959
+ The NIQE score of Reference is 4.399146
+ The NIQE score of Uncharted Temporal is 7.413118
+ The NIQE score delta between Master Thesis Temporal and Reference is +1.170812
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.843159 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.738711
+ The BRISQUE score of Reference is 36.733391
+ The BRISQUE score of Uncharted Temporal is 37.508998
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +1.005320
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is +0.229713 
+
+
+Test Number: 0092
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0092_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0092_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0092_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.360167
+ The NIQE score of Reference is 5.089732
+ The NIQE score of Uncharted Temporal is 7.002485
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.270435
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.642318 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.660310
+ The BRISQUE score of Reference is 36.720439
+ The BRISQUE score of Uncharted Temporal is 37.948893
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.939870
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.288583 
+
+
+Test Number: 0093
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0093_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0093_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0093_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.542283
+ The NIQE score of Reference is 4.941188
+ The NIQE score of Uncharted Temporal is 8.241654
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.601095
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.699372 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.462068
+ The BRISQUE score of Reference is 36.882879
+ The BRISQUE score of Uncharted Temporal is 38.922407
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.579189
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.460339 
+
+
+Test Number: 0094
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0094_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0094_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0094_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.026243
+ The NIQE score of Reference is 5.455867
+ The NIQE score of Uncharted Temporal is 7.171627
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.429624
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.145384 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.874330
+ The BRISQUE score of Reference is 37.196280
+ The BRISQUE score of Uncharted Temporal is 38.387461
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.321950
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.513131 
+
+
+Test Number: 0095
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0095_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0095_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0095_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.678549
+ The NIQE score of Reference is 4.964821
+ The NIQE score of Uncharted Temporal is 6.737305
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.286272
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -2.058756 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.003063
+ The BRISQUE score of Reference is 36.569568
+ The BRISQUE score of Uncharted Temporal is 37.545482
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.433495
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.542419 
+
+
+Test Number: 0096
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0096_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0096_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0096_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.968484
+ The NIQE score of Reference is 5.007403
+ The NIQE score of Uncharted Temporal is 8.328827
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.038919
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -3.360343 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.428962
+ The BRISQUE score of Reference is 37.355519
+ The BRISQUE score of Uncharted Temporal is 38.580818
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.073443
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.151856 
+
+
+Test Number: 0097
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0097_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0097_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0097_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.010351
+ The NIQE score of Reference is 4.534797
+ The NIQE score of Uncharted Temporal is 6.986879
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.475554
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.976527 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 36.892776
+ The BRISQUE score of Reference is 37.639938
+ The BRISQUE score of Uncharted Temporal is 38.361151
+ The BRISQUE score delta between Master Thesis Temporal and Reference is -0.747163
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -1.468376 
+
+
+Test Number: 0098
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0098_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0098_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0098_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 4.768856
+ The NIQE score of Reference is 4.814035
+ The NIQE score of Uncharted Temporal is 6.402710
+ The NIQE score delta between Master Thesis Temporal and Reference is -0.045179
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.633855 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.131309
+ The BRISQUE score of Reference is 36.882881
+ The BRISQUE score of Uncharted Temporal is 37.756408
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.248428
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.625099 
+
+
+Test Number: 0099
+Ground Truth: hairball_ghosting\hairball_ghosting_both_0099_truth.png
+Master Thesis Temporal: hairball_ghosting\hairball_ghosting_both_0099_improved.png
+Uncharted Temporal: hairball_ghosting\hairball_ghosting_both_0099_no_improved.png
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Master Thesis Temporal is 5.612452
+ The NIQE score of Reference is 5.014581
+ The NIQE score of Uncharted Temporal is 7.009845
+ The NIQE score delta between Master Thesis Temporal and Reference is +0.597872
+ The NIQE score delta between Master Thesis Temporal and Uncharted Temporal is -1.397393 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Master Thesis Temporal is 37.389417
+ The BRISQUE score of Reference is 36.826323
+ The BRISQUE score of Uncharted Temporal is 37.986011
+ The BRISQUE score delta between Master Thesis Temporal and Reference is +0.563095
+ The BRISQUE score delta between Master Thesis Temporal and Uncharted Temporal is -0.596594 

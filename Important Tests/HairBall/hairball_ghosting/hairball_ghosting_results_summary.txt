@@ -1,0 +1,50 @@
+Name: hairball_ghosting
+Timestamp(dd/mm/yyyy): 10/04/2018 12:59:17.783
+Ghosting Test Found: hairball_ghosting\hairball_ghosting_log_gt.txt
+Ghosting Test Amount: 100
+
+Important: The Average values does not represent the behaviour of temporal aliasing (not the technique) because we are using per frame analysis
+
+
+Master Thesis Temporal Summary
+MSE, Close to zero means it's good
+ The Best MSE value of Master Thesis Temporal is 32.692343 at index 0000
+ The Worst MSE value of Master Thesis Temporal is 42.962457 at index 0090
+ The Average MSE value of Master Thesis Temporal is 38.534412
+
+PSNR, Bigger means it's good
+ The Best PSNR value of Master Thesis Temporal is 32.986343 at index 0000
+ The Worst PSNR value of Master Thesis Temporal is 31.799912 at index 0090
+ The Average PSNR value of Master Thesis Temporal is 32.278336
+
+SNR, Bigger means it's good
+ The Best SNR value of Master Thesis Temporal is 20.278312 at index 0000
+ The Worst SNR value of Master Thesis Temporal is 19.201196 at index 0090
+ The Average SNR value of Master Thesis Temporal is 19.601964
+
+SSIM, Close to one means it's good
+ The Best SSIM value of Master Thesis Temporal is 0.946693 at index 0017
+ The Worst SSIM value of Master Thesis Temporal is 0.933505 at index 0068
+ The Average SSIM value of Master Thesis Temporal is 0.939539
+
+
+Uncharted Temporal Summary
+MSE, Close to zero means it's good
+ The Best MSE value of Uncharted Temporal is 70.261242 at index 0017
+ The Worst MSE value of Uncharted Temporal is 93.024313 at index 0090
+ The Average MSE value of Uncharted Temporal is 81.886939
+
+PSNR, Bigger means it's good
+ The Best PSNR value of Uncharted Temporal is 29.663645 at index 0017
+ The Worst PSNR value of Uncharted Temporal is 28.444839 at index 0090
+ The Average PSNR value of Uncharted Temporal is 29.009280
+
+SNR, Bigger means it's good
+ The Best SNR value of Uncharted is 16.940336 at index 0017
+ The Worst SNR value of Uncharted is 15.846122 at index 0090
+ The Average SNR value of Uncharted Temporal is 16.332908
+
+SSIM, Close to one means it's good
+ The Best SSIM value of Uncharted Temporal is 0.925220 at index 0017
+ The Worst SSIM value of Uncharted Temporal is 0.910786 at index 0099
+ The Average SSIM value of Uncharted Temporal is 0.913482

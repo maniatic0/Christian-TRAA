@@ -517,11 +517,11 @@ edan35::Assignment2::run()
 	bool show_save_area = false;
 
 	// Ghosting Test Vars
-	bool save_both = false;
-	int both_test_samples = 100;
-	auto const kMaxBothSaveSamples = 200;
-	std::vector<glm::vec3> translations (kMaxBothSaveSamples);
-	std::vector<glm::vec3> rotations (kMaxBothSaveSamples);
+	bool save_ghosting = false;
+	int ghosting_test_samples = 100;
+	auto const kMaxGhostingSaveSamples = 200;
+	std::vector<glm::vec3> translations (kMaxGhostingSaveSamples);
+	std::vector<glm::vec3> rotations (kMaxGhostingSaveSamples);
 
 	// Accumulation Buffer Variables
 	float accumulation_jitter_spread = 1.0f;
@@ -1290,7 +1290,7 @@ edan35::Assignment2::run()
 		windowInverseResolution.y = 1.0f / static_cast<float>(window_size.y);
 		currentJitter = mCamera.UpdateProjection(windowInverseResolution);
 
-		if (save && save_both)
+		if (save && save_ghosting)
 		{
 			// Pass 1-3: Deferred Shading
 			bonobo::beginTimeQuery(deferred_time_query);
@@ -1324,11 +1324,11 @@ edan35::Assignment2::run()
 
 			current_samples++;
 
-			if (current_samples >= both_test_samples)
+			if (current_samples >= ghosting_test_samples)
 			{
 
 				// Generate Accumulation Buffer per saved frame
-				for (size_t i = 0; i < static_cast<size_t>(both_test_samples); i++)
+				for (size_t i = 0; i < static_cast<size_t>(ghosting_test_samples); i++)
 				{
 					samples_string.clear();
 					samples_string.str("");
@@ -1348,7 +1348,7 @@ edan35::Assignment2::run()
 
 				current_samples = 0;
 				save = false;
-				save_both = false;
+				save_ghosting = false;
 			}
 		}
 		else
@@ -1669,11 +1669,11 @@ edan35::Assignment2::run()
 						accumulation_samples, accumulation_jitter_spread,
 						lower_corner, upper_corner);
 				}
-				ImGui::SliderInt("Both Test Samples", &both_test_samples, 1, kMaxBothSaveSamples);
-				if (ImGui::Button("Save Both"))
+				ImGui::SliderInt("Ghosting Test Samples", &ghosting_test_samples, 1, kMaxGhostingSaveSamples);
+				if (ImGui::Button("Save Ghosting Test"))
 				{
 					save = true;
-					save_both = true;
+					save_ghosting = true;
 					current_samples = 0;
 
 					// Save Current Info
@@ -1681,7 +1681,7 @@ edan35::Assignment2::run()
 						use_sobel, mCamera,
 						k_feedback_min, k_feedback_max,
 						accumulation_samples, accumulation_jitter_spread,
-						lower_corner, upper_corner, true, both_test_samples);
+						lower_corner, upper_corner, true, ghosting_test_samples);
 				}
 			}
 			ImGui::End();

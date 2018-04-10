@@ -32,6 +32,8 @@ if exist(ghosting_test_filename, 'file') == 2
     formatSpec = '%d';
     test_amount = fscanf(fileID,formatSpec);
     fclose(fileID);
+
+    results_summary_filename = fullfile(name, strcat(name, '_results_summary.txt'));
     
     % Save text to diary
     diary(results_filename);
@@ -48,7 +50,62 @@ if exist(ghosting_test_filename, 'file') == 2
     fprintf('Ghosting Test Found: %s\n', ghosting_test_filename);
     fprintf('Ghosting Test Amount: %d\n', test_amount);
     diary off;
+
+    % Results Summary
+    diary(results_summary_filename);
+    fprintf('Name: %s\n', name);
+    fprintf('Timestamp(dd/mm/yyyy): %s\n', time_stamp);
+    fprintf('Ghosting Test Found: %s\n', ghosting_test_filename);
+    fprintf('Ghosting Test Amount: %d\n', test_amount);
+    fprintf('\nImportant: The Average values does not represent the behaviour of temporal aliasing (not the technique) because we are using per frame analysis\n');
+    diary off;
+
+    improved_best_mse = Inf;
+    improved_best_mse_index = -1;
+    improved_best_psnr = -1;
+    improved_best_psnr_index = -1;
+    improved_best_snr = -1;
+    improved_best_snr_index = -1;
+    improved_best_ssim = -1;
+    improved_best_ssim_index = -1;
+
+    improved_worst_mse = -1;
+    improved_worst_mse_index = -1;
+    improved_worst_psnr = Inf;
+    improved_worst_psnr_index = -1;
+    improved_worst_snr = Inf;
+    improved_worst_snr_index = -1;
+    improved_worst_ssim = Inf;
+    improved_worst_ssim_index = -1;
     
+    improved_average_mse = 0;
+    improved_average_psnr = 0;
+    improved_average_snr = 0;
+    improved_average_ssim = 0;
+
+    no_improved_best_mse = Inf;
+    no_improved_best_mse_index = -1;
+    no_improved_best_psnr = -1;
+    no_improved_best_psnr_index = -1;
+    no_improved_best_snr = -1;
+    no_improved_best_snr_index = -1;
+    no_improved_best_ssim = -1;
+    no_improved_best_ssim_index = -1;
+
+    no_improved_worst_mse = -1;
+    no_improved_worst_mse_index = -1;
+    no_improved_worst_psnr = Inf;
+    no_improved_worst_psnr_index = -1;
+    no_improved_worst_snr = Inf;
+    no_improved_worst_snr_index = -1;
+    no_improved_worst_ssim = Inf;
+    no_improved_worst_ssim_index = -1;
+    
+    no_improved_average_mse = 0;
+    no_improved_average_psnr = 0;
+    no_improved_average_snr = 0;
+    no_improved_average_ssim = 0;
+
     for i=0:test_amount-1
         % Save text to diary
         test_n = sprintf('%04d',i);
@@ -65,14 +122,98 @@ if exist(ghosting_test_filename, 'file') == 2
         ground_truth = imread(ground_truth_filename);
         
         % Test againts Master Thesis Temporal result
-        [ mse, peaksnr, snr, ssimval, ssimmap, ...
+        [ mseval, peaksnr, snr, ssimval, ssimmap, ...
             niqeI, niqeRef, brisqueI, brisqueRef ] ...
             = Test_Files(improved, ground_truth);
+
+        % Tests Statistics 
+        % Improved MSE
+        improved_average_mse = improved_average_mse + mseval;
+        if mseval < improved_best_mse
+            improved_best_mse = mseval;
+            improved_best_mse_index = i;
+        elseif improved_worst_mse < mseval
+            improved_worst_mse = mseval;
+            improved_worst_mse_index = i;
+        end
+
+        % Improved PSNR
+        improved_average_psnr = improved_average_psnr + peaksnr;
+        if improved_best_psnr < peaksnr
+            improved_best_psnr = peaksnr;
+            improved_best_psnr_index = i;
+        elseif peaksnr < improved_worst_psnr
+            improved_worst_psnr = peaksnr;
+            improved_worst_psnr_index = i;
+        end
+
+        % Improved SNR
+        improved_average_snr = improved_average_snr + snr;
+        if improved_best_snr < snr
+            improved_best_snr = snr;
+            improved_best_snr_index = i;
+        elseif snr < improved_worst_snr
+            improved_worst_snr = snr;
+            improved_worst_snr_index = i;
+        end
+
+        % Improved SSIM
+        improved_average_ssim = improved_average_ssim + ssimval;
+        if improved_best_ssim < ssimval
+            improved_best_ssim = ssimval;
+            improved_best_ssim_index = i;
+        elseif ssimval < improved_worst_ssim
+            improved_worst_ssim = ssimval;
+            improved_worst_ssim_index = i;
+        end
+
         
         % Test againts Uncharted Temporal result
-        [ mse_no, peaksnr_no, snr_no, ssimval_no, ssimmap_no, ...
+        [ mseval_no, peaksnr_no, snr_no, ssimval_no, ssimmap_no, ...
             niqeI_no, ~, brisqueI_no, ~ ] ...
             = Test_Files(no_improved, ground_truth);
+
+
+        % Tests Statistics 
+        % Not Improved MSE
+        no_improved_average_mse = no_improved_average_mse + mseval_no;
+        if mseval_no < no_improved_best_mse
+            no_improved_best_mse = mseval_no;
+            no_improved_best_mse_index = i;
+        elseif no_improved_worst_mse < mseval_no
+            no_improved_worst_mse = mseval_no;
+            no_improved_worst_mse_index = i;
+        end
+
+        % Not Improved PSNR
+        no_improved_average_psnr = no_improved_average_psnr + peaksnr_no;
+        if no_improved_best_psnr < peaksnr_no
+            no_improved_best_psnr = peaksnr_no;
+            no_improved_best_psnr_index = i;
+        elseif peaksnr_no < no_improved_worst_psnr
+            no_improved_worst_psnr = peaksnr_no;
+            no_improved_worst_psnr_index = i;
+        end
+
+        % Not Improved SNR
+        no_improved_average_snr = no_improved_average_snr + snr_no;
+        if no_improved_best_snr < snr_no
+            no_improved_best_snr = snr_no;
+            no_improved_best_snr_index = i;
+        elseif snr_no < no_improved_worst_snr
+            no_improved_worst_snr = snr_no;
+            no_improved_worst_snr_index = i;
+        end
+
+        % Improved SSIM
+        no_improved_average_ssim = no_improved_average_ssim + ssimval_no;
+        if no_improved_best_ssim < ssimval_no
+            no_improved_best_ssim = ssimval_no;
+            no_improved_best_ssim_index = i;
+        elseif ssimval_no < improved_worst_ssim
+            no_improved_worst_ssim = ssimval_no;
+            no_improved_worst_ssim_index = i;
+        end
         
         diary(results_filename);
         fprintf('\n\nTest Number: %s\n', test_n);
@@ -82,10 +223,10 @@ if exist(ghosting_test_filename, 'file') == 2
         
         % MSE, Close to zero means it's good
         fprintf('\nMSE and RMSE, Close to zero means it''s good');
-        fprintf('\n The MSE value of Master Thesis Temporal is %0.6f', mse);
-        fprintf('\n The RMSE value of Master Thesis Temporal is %0.6f', sqrt(mse));
-        fprintf('\n The MSE value of Uncharted Temporal is %0.6f', mse_no);
-        fprintf('\n The RMSE value of Uncharted Temporal is %0.6f \n', sqrt(mse_no));
+        fprintf('\n The MSE value of Master Thesis Temporal is %0.6f', mseval);
+        fprintf('\n The RMSE value of Master Thesis Temporal is %0.6f', sqrt(mseval));
+        fprintf('\n The MSE value of Uncharted Temporal is %0.6f', mseval_no);
+        fprintf('\n The RMSE value of Uncharted Temporal is %0.6f \n', sqrt(mseval_no));
 
         % PSNR, Bigger means it's good
         fprintf('\nPSNR and SNR, Bigger means it''s good');
@@ -107,7 +248,7 @@ if exist(ghosting_test_filename, 'file') == 2
         fprintf('\n\nTest Number: %s\n', test_n);
         fprintf('Ground Truth: %s\n', ground_truth_filename);
         fprintf('Master Thesis Temporal: %s\n', improved_filename);
-        fprintf('Temporal Not Improved: %s\n', no_improved_filename);
+        fprintf('Uncharted Temporal: %s\n', no_improved_filename);
 
         % NIQUE, Lower values of score reflect better perceptual quality of image
         % with respect to the input MATLAB model
@@ -149,6 +290,86 @@ if exist(ghosting_test_filename, 'file') == 2
         close(gcf);
         
     end
+
+    % Average
+    improved_average_mse = improved_average_mse / test_amount;
+    improved_average_psnr = improved_average_psnr / test_amount;
+    improved_average_snr = improved_average_snr / test_amount;
+    improved_average_ssim = improved_average_ssim / test_amount;
+
+    no_improved_average_mse = no_improved_average_mse / test_amount;
+    no_improved_average_psnr = no_improved_average_psnr / test_amount;
+    no_improved_average_snr = no_improved_average_snr / test_amount;
+    no_improved_average_ssim = no_improved_average_ssim / test_amount;
+
+    % Results Summary
+    diary(results_summary_filename);
+    fprintf('\n\nMaster Thesis Temporal Summary\n');
+    fprintf('MSE, Close to zero means it''s good');
+    fprintf('\n The Best MSE value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_best_mse, sprintf('%04d',improved_best_mse_index));
+    fprintf('\n The Worst MSE value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_worst_mse, sprintf('%04d',improved_worst_mse_index));
+    fprintf('\n The Average MSE value of Master Thesis Temporal is %0.6f\n', ...
+        improved_average_mse);
+
+    fprintf('\nPSNR, Bigger means it''s good');
+    fprintf('\n The Best PSNR value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_best_psnr, sprintf('%04d',improved_best_psnr_index));
+    fprintf('\n The Worst PSNR value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_worst_psnr, sprintf('%04d',improved_worst_psnr_index));
+    fprintf('\n The Average PSNR value of Master Thesis Temporal is %0.6f\n', ...
+        improved_average_psnr);
+
+    fprintf('\nSNR, Bigger means it''s good');
+    fprintf('\n The Best SNR value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_best_snr, sprintf('%04d',improved_best_snr_index));
+    fprintf('\n The Worst SNR value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_worst_snr, sprintf('%04d',improved_worst_snr_index));
+    fprintf('\n The Average SNR value of Master Thesis Temporal is %0.6f\n', ...
+        improved_average_snr);
+
+    fprintf('\nSSIM, Close to one means it''s good');
+    fprintf('\n The Best SSIM value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_best_ssim, sprintf('%04d',improved_best_ssim_index));
+    fprintf('\n The Worst SSIM value of Master Thesis Temporal is %0.6f at index %s', ...
+        improved_worst_ssim, sprintf('%04d',improved_worst_ssim_index));
+    fprintf('\n The Average SSIM value of Master Thesis Temporal is %0.6f\n', ...
+        improved_average_ssim);
+
+    fprintf('\n\nUncharted Temporal Summary\n');
+    fprintf('MSE, Close to zero means it''s good');
+    fprintf('\n The Best MSE value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_best_mse, sprintf('%04d',no_improved_best_mse_index));
+    fprintf('\n The Worst MSE value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_worst_mse, sprintf('%04d',no_improved_worst_mse_index));
+    fprintf('\n The Average MSE value of Uncharted Temporal is %0.6f\n', ...
+        no_improved_average_mse);
+
+    fprintf('\nPSNR, Bigger means it''s good');
+    fprintf('\n The Best PSNR value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_best_psnr, sprintf('%04d',no_improved_best_psnr_index));
+    fprintf('\n The Worst PSNR value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_worst_psnr, sprintf('%04d',no_improved_worst_psnr_index));
+    fprintf('\n The Average PSNR value of Uncharted Temporal is %0.6f\n', ...
+        no_improved_average_psnr);
+
+    fprintf('\nSNR, Bigger means it''s good');
+    fprintf('\n The Best SNR value of Uncharted is %0.6f at index %s', ...
+        no_improved_best_snr, sprintf('%04d',no_improved_best_snr_index));
+    fprintf('\n The Worst SNR value of Uncharted is %0.6f at index %s', ...
+        no_improved_worst_snr, sprintf('%04d',no_improved_worst_snr_index));
+    fprintf('\n The Average SNR value of Uncharted Temporal is %0.6f\n', ...
+        no_improved_average_snr);
+
+    fprintf('\nSSIM, Close to one means it''s good');
+    fprintf('\n The Best SSIM value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_best_ssim, sprintf('%04d',no_improved_best_ssim_index));
+    fprintf('\n The Worst SSIM value of Uncharted Temporal is %0.6f at index %s', ...
+        no_improved_worst_ssim, sprintf('%04d',no_improved_worst_ssim_index));
+    fprintf('\n The Average SSIM value of Uncharted Temporal is %0.6f\n', ...
+        no_improved_average_ssim);
+    diary off;
 
 
     fprintf('The test %s is Complete\n', ...
@@ -208,7 +429,7 @@ fxaa = imread(fxaa_filename);
 smaa = imread(smaa_filename);
 
 % Test againts temporal result
-[ mse, peaksnr, snr, ssimval, ssimmap, ...
+[ mseval, peaksnr, snr, ssimval, ssimmap, ...
     niqeI, niqeRef, brisqueI, brisqueRef ] ...
     = Test_Files(temporal, ground_truth);
 
@@ -235,8 +456,8 @@ fprintf('Timestamp(dd/mm/yyyy): %s\n', time_stamp);
 
 % MSE, Close to zero means it's good
 fprintf('\nMSE and RMSE, Close to zero means it''s good');
-fprintf('\n The MSE value of Temporal is %0.6f', mse);
-fprintf('\n The RMSD value of Temporal is %0.6f', sqrt(mse));
+fprintf('\n The MSE value of Temporal is %0.6f', mseval);
+fprintf('\n The RMSD value of Temporal is %0.6f', sqrt(mseval));
 fprintf('\n The MSE value of No AA is %0.6f', mse_no_aa);
 fprintf('\n The RMSD value of No AA is %0.6f', sqrt(mse_no_aa));
 fprintf('\n The MSE value of FXAA is %0.6f', mse_fxaa);
