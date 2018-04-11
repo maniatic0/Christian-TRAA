@@ -12,7 +12,8 @@ unsigned int Node::model_index_count = 1;
 
 Node::Node() : _vao(0u), _vertices_nb(0u), _indices_nb(0u), _drawing_mode(GL_TRIANGLES), 
 	_has_indices(true), _program(0u), _textures(), _scaling(1.0f, 1.0f, 1.0f), _rotation(), 
-	_translation(), _children(), model_index(model_index_count)
+	_translation(), _children(), model_index(model_index_count), _has_tangent_and_bitangent(true),
+	_has_uv_coordinates(true)
 {
 	Node::nodeList.emplace(this);
 	model_index_count++;
@@ -46,8 +47,12 @@ Node::render(glm::mat4 const& WVP, glm::mat4 const& world, GLuint program, std::
 	glUniformMatrix4fv(glGetUniformLocation(program, "old_MVP"), 1, GL_FALSE, glm::value_ptr(oldMVP));
 
 	glUniform1ui(glGetUniformLocation(program, "model_index"), model_index);
+	glUniform1i(glGetUniformLocation(program, "has_uv"), _has_uv_coordinates);
+	glUniform1i(glGetUniformLocation(program, "has_tangent_bitangent"), _has_tangent_and_bitangent);
 
 	glUniform1i(glGetUniformLocation(program, "has_textures"), !_textures.empty());
+
+	
 
 	bool has_diffuse_texture = false, has_opacity_texture = false;
 	for (size_t i = 0u; i < _textures.size(); ++i) {
@@ -81,6 +86,8 @@ Node::set_geometry(bonobo::mesh_data const& shape)
 	_indices_nb = static_cast<GLsizei>(shape.indices_nb);
 	_drawing_mode = shape.drawing_mode;
 	_has_indices = shape.ibo != 0u;
+	_has_uv_coordinates = shape.has_uv_coordinates;
+	_has_tangent_and_bitangent = shape.has_tangent_and_bitangent;
 
 	if (!shape.bindings.empty()) {
 		for (auto const& binding : shape.bindings)

@@ -201,6 +201,8 @@ private:
 	GLsizei _indices_nb;
 	GLenum _drawing_mode;
 	bool _has_indices;
+	bool _has_tangent_and_bitangent;
+	bool _has_uv_coordinates;
 	unsigned int model_index;
 
 	// Program data

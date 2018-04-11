@@ -4,6 +4,7 @@ uniform mat4 vertex_model_to_world;
 uniform mat4 vertex_world_to_clip;
 uniform mat4 old_MVP;
 uniform mat4 unjittered_vertex_world_to_clip;
+uniform bool has_uv;
 
 layout (location = 0) in vec3 vertex;
 layout (location = 1) in vec3 normal;
@@ -24,6 +25,9 @@ out VS_OUT {
 void main() {
 	vs_out.normal   = normalize(normal);
 	vs_out.texcoord = texcoord.xy;
+	if (has_uv) {
+		vs_out.texcoord = vec2(0.0);
+	}
 	vs_out.tangent  = normalize(tangent);
 	vs_out.binormal = normalize(binormal);
 

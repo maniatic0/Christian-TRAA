@@ -1,0 +1,28 @@
+Name: hairball_light_no_sobel
+Timestamp(dd/mm/yyyy): 10/04/2018 22:23:14.303
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 1444.095477
+ The RMSD value of Temporal is 38.001256
+ The MSE value of No AA is 1294.648846
+ The RMSD value of No AA is 35.981229
+ The MSE value of FXAA is 649.940063
+ The RMSD value of FXAA is 25.493922
+ The MSE value of SMAA is 847.702086
+ The RMSD value of SMAA is 29.115324 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 16.534845
+ The SNR value of Temporal is 7.971335
+ The Peak-SNR value of No AA is 17.009284
+ The SNR value of No AA is 8.445774
+ The Peak-SNR value of FXAA is 20.002071
+ The SNR value of FXAA is 11.438561
+ The Peak-SNR value of SMAA is 18.848371
+ The SNR value of SMAA is 10.284862 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.784915
+ The SSIM value of No AA is 0.801157
+ The SSIM value of FXAA is 0.864553
+ The SSIM value of SMAA is 0.841444 

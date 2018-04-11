@@ -73,8 +73,10 @@ bonobo::loadObjects(std::string const& filename, bool use_testing)
 	}
 	LogInfo("Loading \"%s\"", scene_filepath.c_str());
 	Assimp::Importer importer;
-	auto const assimp_scene = importer.ReadFile(scene_filepath, aiProcess_Triangulate | aiProcess_SortByPType | aiProcess_CalcTangentSpace);
-	if (assimp_scene == nullptr || assimp_scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || assimp_scene->mRootNode == nullptr) {
+	auto const assimp_scene = importer.ReadFile(scene_filepath,
+		aiProcess_Triangulate | aiProcess_SortByPType | aiProcess_GenNormals | aiProcess_CalcTangentSpace | aiProcess_GenUVCoords);
+	auto const post_scence = importer.ApplyPostProcessing(aiProcess_CalcTangentSpace | aiProcess_GenUVCoords); // same as  assimp_scene
+	if (assimp_scene == nullptr || post_scence == nullptr || post_scence != assimp_scene || assimp_scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || assimp_scene->mRootNode == nullptr) {
 		LogError("Assimp failed to load \"%s\": %s", scene_filepath.c_str(), importer.GetErrorString());
 		return objects;
 	}
@@ -122,7 +124,7 @@ bonobo::loadObjects(std::string const& filename, bool use_testing)
 		materials_bindings.push_back(bindings);
 	}
 
-	LogInfo("\t* meshes");
+	LogInfo("\t* meshes:");
 	objects.reserve(assimp_scene->mNumMeshes);
 	for (size_t j = 0; j < assimp_scene->mNumMeshes; ++j) {
 		auto const assimp_object_mesh = assimp_scene->mMeshes[j];
@@ -188,12 +190,14 @@ bonobo::loadObjects(std::string const& filename, bool use_testing)
 			glVertexAttribPointer(static_cast<unsigned int>(bonobo::shader_bindings::normals), 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid const*>(normals_offset));
 		}
 
+		object.has_uv_coordinates = assimp_object_mesh->HasTextureCoords(0u);
 		if (assimp_object_mesh->HasTextureCoords(0u)) {
 			glBufferSubData(GL_ARRAY_BUFFER, texcoords_offset, texcoords_size, static_cast<GLvoid const*>(assimp_object_mesh->mTextureCoords[0u]));
 			glEnableVertexAttribArray(static_cast<unsigned int>(bonobo::shader_bindings::texcoords));
 			glVertexAttribPointer(static_cast<unsigned int>(bonobo::shader_bindings::texcoords), 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<GLvoid const*>(texcoords_offset));
 		}
 
+		object.has_tangent_and_bitangent = assimp_object_mesh->HasTangentsAndBitangents();
 		if (assimp_object_mesh->HasTangentsAndBitangents()) {
 			glBufferSubData(GL_ARRAY_BUFFER, tangents_offset, tangents_size, static_cast<GLvoid const*>(assimp_object_mesh->mTangents));
 			glEnableVertexAttribArray(static_cast<unsigned int>(bonobo::shader_bindings::tangents));
@@ -236,9 +240,9 @@ bonobo::loadObjects(std::string const& filename, bool use_testing)
 
 		objects.push_back(object);
 
-//		LogInfo("Loaded object \"%s\" with normals:%d, tangents&bitangents:%d, texcoords:%d",
-//		        assimp_object_mesh->mName.C_Str(), assimp_object_mesh->HasNormals(),
-//		        assimp_object_mesh->HasTangentsAndBitangents(), assimp_object_mesh->HasTextureCoords(0));
+		LogInfo("Loaded object \"%s\" with normals:%d, tangents&bitangents:%d, texcoords:%d",
+		        assimp_object_mesh->mName.C_Str(), assimp_object_mesh->HasNormals(),
+		        assimp_object_mesh->HasTangentsAndBitangents(), assimp_object_mesh->HasTextureCoords(0));
 	}
 
 	return objects;

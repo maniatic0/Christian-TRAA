@@ -7,6 +7,7 @@ uniform sampler2D opacity_texture;
 uniform bool has_opacity_texture;
 uniform mat4 normal_model_to_world;
 uniform uint model_index; 
+uniform bool has_tangent_bitangent;
 
 in VS_OUT {
 	vec3 normal;
@@ -56,7 +57,16 @@ void main()
 		* TBN
 		* vec4(geometry_normal.xyz, 0.0)
 		).xyz;
+	
+
+	if (!has_tangent_bitangent) {
+		// I am not really sure why it requires it to be like this for hairball
+		geometry_normal = normal_model_to_world * vec4(-N, 0.0);
+	}
+	geometry_normal.w = 1.0;
+
 	geometry_normal.xyz = (normalize(geometry_normal.xyz) * 0.5) + vec3(0.5, 0.5, 0.5);
+	
 
     vec2 a = (fs_in.current_pos.xy / fs_in.current_pos.w);
     vec2 b = (fs_in.old_pos.xy / fs_in.old_pos.w);

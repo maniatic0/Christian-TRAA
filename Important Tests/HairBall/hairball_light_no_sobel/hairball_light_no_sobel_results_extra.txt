@@ -1,0 +1,23 @@
+Name: hairball_light_no_sobel
+Timestamp(dd/mm/yyyy): 10/04/2018 22:23:14.303
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 6.672606
+ The NIQE score of Reference is 4.967731
+ The NIQE score of No AA is 5.584314
+ The NIQE score of FXAA is 5.598787
+ The NIQE score of SMAA is 5.223327
+ The NIQE score delta between Temporal and Reference is +1.704875
+ The NIQE score delta between Temporal and No AA is +1.088292
+ The NIQE score delta between Temporal and FXAA is +1.073819
+ The NIQE score delta between Temporal and SMAA is +1.449279 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 43.659183
+ The BRISQUE score of Reference is 37.505434
+ The BRISQUE score of No AA is 43.716028
+ The BRISQUE score of FXAA is 43.458599
+ The BRISQUE score delta between Temporal and Reference is +6.153749
+ The BRISQUE score delta between Temporal and No AA is -0.056845
+ The BRISQUE score delta between Temporal and FXAA is +0.200585
+ The BRISQUE score delta between Temporal and SMAA is -0.030090 
