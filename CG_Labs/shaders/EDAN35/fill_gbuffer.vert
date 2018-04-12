@@ -25,7 +25,7 @@ out VS_OUT {
 void main() {
 	vs_out.normal   = normalize(normal);
 	vs_out.texcoord = texcoord.xy;
-	if (has_uv) {
+	if (!has_uv) {
 		vs_out.texcoord = vec2(0.0);
 	}
 	vs_out.tangent  = normalize(tangent);
