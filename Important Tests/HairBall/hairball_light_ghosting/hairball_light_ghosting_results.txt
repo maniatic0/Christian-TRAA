@@ -1,0 +1,2204 @@
+Name: hairball_light_ghosting
+Timestamp(dd/mm/yyyy): 12/04/2018 15:40:10.596
+Ghosting Test Found: hairball_light_ghosting\hairball_light_ghosting_log_gt.txt
+Ghosting Test Amount: 100
+
+
+Test Number: 0000
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0000_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0000_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0000_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 631.747653
+ The RMSE value of Master Thesis Temporal is 25.134591
+ The MSE value of Uncharted Temporal is 1609.392565
+ The RMSE value of Uncharted Temporal is 40.117235 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.125367
+ The SNR value of Master Thesis Temporal is 10.710000
+ The Peak-SNR value of Uncharted Temporal is 16.064184
+ The SNR value of Uncharted Temporal is 6.648816 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.754422
+ The SSIM value of Uncharted Temporal is 0.570858 
+
+
+Test Number: 0001
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0001_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0001_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0001_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 603.190375
+ The RMSE value of Master Thesis Temporal is 24.559934
+ The MSE value of Uncharted Temporal is 1298.718274
+ The RMSE value of Uncharted Temporal is 36.037734 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.326260
+ The SNR value of Master Thesis Temporal is 10.913098
+ The Peak-SNR value of Uncharted Temporal is 16.995654
+ The SNR value of Uncharted Temporal is 7.582492 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.766469
+ The SSIM value of Uncharted Temporal is 0.644339 
+
+
+Test Number: 0002
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0002_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0002_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0002_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 672.380965
+ The RMSE value of Master Thesis Temporal is 25.930310
+ The MSE value of Uncharted Temporal is 1232.358469
+ The RMSE value of Uncharted Temporal is 35.104964 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.854650
+ The SNR value of Master Thesis Temporal is 10.445021
+ The Peak-SNR value of Uncharted Temporal is 17.223433
+ The SNR value of Uncharted Temporal is 7.813804 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.733250
+ The SSIM value of Uncharted Temporal is 0.633669 
+
+
+Test Number: 0003
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0003_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0003_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0003_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 692.428971
+ The RMSE value of Master Thesis Temporal is 26.314045
+ The MSE value of Uncharted Temporal is 1131.053048
+ The RMSE value of Uncharted Temporal is 33.631132 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.727051
+ The SNR value of Master Thesis Temporal is 10.315320
+ The Peak-SNR value of Uncharted Temporal is 17.595974
+ The SNR value of Uncharted Temporal is 8.184243 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.721341
+ The SSIM value of Uncharted Temporal is 0.643945 
+
+
+Test Number: 0004
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0004_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0004_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0004_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 691.325554
+ The RMSE value of Master Thesis Temporal is 26.293070
+ The MSE value of Uncharted Temporal is 1026.200022
+ The RMSE value of Uncharted Temporal is 32.034357 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.733978
+ The SNR value of Master Thesis Temporal is 10.326654
+ The Peak-SNR value of Uncharted Temporal is 18.018483
+ The SNR value of Uncharted Temporal is 8.611160 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.721706
+ The SSIM value of Uncharted Temporal is 0.664089 
+
+
+Test Number: 0005
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0005_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0005_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0005_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 670.479168
+ The RMSE value of Master Thesis Temporal is 25.893613
+ The MSE value of Uncharted Temporal is 924.698786
+ The RMSE value of Uncharted Temporal is 30.408860 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.866951
+ The SNR value of Master Thesis Temporal is 10.467803
+ The Peak-SNR value of Uncharted Temporal is 18.470801
+ The SNR value of Uncharted Temporal is 9.071653 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.737040
+ The SSIM value of Uncharted Temporal is 0.697180 
+
+
+Test Number: 0006
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0006_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0006_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0006_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 695.689808
+ The RMSE value of Master Thesis Temporal is 26.375932
+ The MSE value of Uncharted Temporal is 931.067214
+ The RMSE value of Uncharted Temporal is 30.513394 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.706647
+ The SNR value of Master Thesis Temporal is 10.319130
+ The Peak-SNR value of Uncharted Temporal is 18.440993
+ The SNR value of Uncharted Temporal is 9.053476 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.723789
+ The SSIM value of Uncharted Temporal is 0.686435 
+
+
+Test Number: 0007
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0007_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0007_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0007_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 704.188793
+ The RMSE value of Master Thesis Temporal is 26.536556
+ The MSE value of Uncharted Temporal is 946.731511
+ The RMSE value of Uncharted Temporal is 30.769002 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.653913
+ The SNR value of Master Thesis Temporal is 10.263495
+ The Peak-SNR value of Uncharted Temporal is 18.368535
+ The SNR value of Uncharted Temporal is 8.978118 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.715676
+ The SSIM value of Uncharted Temporal is 0.675696 
+
+
+Test Number: 0008
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0008_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0008_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0008_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 661.942543
+ The RMSE value of Master Thesis Temporal is 25.728244
+ The MSE value of Uncharted Temporal is 832.768619
+ The RMSE value of Uncharted Temporal is 28.857731 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.922601
+ The SNR value of Master Thesis Temporal is 10.541418
+ The Peak-SNR value of Uncharted Temporal is 18.925560
+ The SNR value of Uncharted Temporal is 9.544378 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.737398
+ The SSIM value of Uncharted Temporal is 0.714386 
+
+
+Test Number: 0009
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0009_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0009_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0009_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 666.902803
+ The RMSE value of Master Thesis Temporal is 25.824461
+ The MSE value of Uncharted Temporal is 835.025574
+ The RMSE value of Uncharted Temporal is 28.896809 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.890178
+ The SNR value of Master Thesis Temporal is 10.500435
+ The Peak-SNR value of Uncharted Temporal is 18.913806
+ The SNR value of Uncharted Temporal is 9.524063 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.735927
+ The SSIM value of Uncharted Temporal is 0.713719 
+
+
+Test Number: 0010
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0010_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0010_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0010_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 712.966717
+ The RMSE value of Master Thesis Temporal is 26.701437
+ The MSE value of Uncharted Temporal is 931.693635
+ The RMSE value of Uncharted Temporal is 30.523657 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.600111
+ The SNR value of Master Thesis Temporal is 10.217411
+ The Peak-SNR value of Uncharted Temporal is 18.438072
+ The SNR value of Uncharted Temporal is 9.055372 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.711737
+ The SSIM value of Uncharted Temporal is 0.677388 
+
+
+Test Number: 0011
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0011_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0011_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0011_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 694.137557
+ The RMSE value of Master Thesis Temporal is 26.346490
+ The MSE value of Uncharted Temporal is 900.751667
+ The RMSE value of Uncharted Temporal is 30.012525 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.716348
+ The SNR value of Master Thesis Temporal is 10.339591
+ The Peak-SNR value of Uncharted Temporal is 18.584753
+ The SNR value of Uncharted Temporal is 9.207996 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.718852
+ The SSIM value of Uncharted Temporal is 0.686364 
+
+
+Test Number: 0012
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0012_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0012_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0012_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 710.831901
+ The RMSE value of Master Thesis Temporal is 26.661431
+ The MSE value of Uncharted Temporal is 940.073984
+ The RMSE value of Uncharted Temporal is 30.660626 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.613135
+ The SNR value of Master Thesis Temporal is 10.239291
+ The Peak-SNR value of Uncharted Temporal is 18.399183
+ The SNR value of Uncharted Temporal is 9.025339 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.709863
+ The SSIM value of Uncharted Temporal is 0.671535 
+
+
+Test Number: 0013
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0013_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0013_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0013_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 695.536982
+ The RMSE value of Master Thesis Temporal is 26.373035
+ The MSE value of Uncharted Temporal is 884.355588
+ The RMSE value of Uncharted Temporal is 29.738117 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.707601
+ The SNR value of Master Thesis Temporal is 10.336904
+ The Peak-SNR value of Uncharted Temporal is 18.664534
+ The SNR value of Uncharted Temporal is 9.293837 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.718232
+ The SSIM value of Uncharted Temporal is 0.688159 
+
+
+Test Number: 0014
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0014_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0014_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0014_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 665.503388
+ The RMSE value of Master Thesis Temporal is 25.797352
+ The MSE value of Uncharted Temporal is 812.902049
+ The RMSE value of Uncharted Temporal is 28.511437 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.899301
+ The SNR value of Master Thesis Temporal is 10.527718
+ The Peak-SNR value of Uncharted Temporal is 19.030421
+ The SNR value of Uncharted Temporal is 9.658838 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.735132
+ The SSIM value of Uncharted Temporal is 0.717286 
+
+
+Test Number: 0015
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0015_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0015_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0015_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 678.397368
+ The RMSE value of Master Thesis Temporal is 26.046062
+ The MSE value of Uncharted Temporal is 855.787557
+ The RMSE value of Uncharted Temporal is 29.253847 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.815962
+ The SNR value of Master Thesis Temporal is 10.440737
+ The Peak-SNR value of Uncharted Temporal is 18.807144
+ The SNR value of Uncharted Temporal is 9.431919 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.724977
+ The SSIM value of Uncharted Temporal is 0.699026 
+
+
+Test Number: 0016
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0016_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0016_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0016_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 653.978255
+ The RMSE value of Master Thesis Temporal is 25.572999
+ The MSE value of Uncharted Temporal is 818.382819
+ The RMSE value of Uncharted Temporal is 28.607391 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.975171
+ The SNR value of Master Thesis Temporal is 10.594706
+ The Peak-SNR value of Uncharted Temporal is 19.001239
+ The SNR value of Uncharted Temporal is 9.620774 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.739177
+ The SSIM value of Uncharted Temporal is 0.717808 
+
+
+Test Number: 0017
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0017_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0017_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0017_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 655.982867
+ The RMSE value of Master Thesis Temporal is 25.612162
+ The MSE value of Uncharted Temporal is 830.915488
+ The RMSE value of Uncharted Temporal is 28.825605 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.961879
+ The SNR value of Master Thesis Temporal is 10.585070
+ The Peak-SNR value of Uncharted Temporal is 18.935235
+ The SNR value of Uncharted Temporal is 9.558427 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.739863
+ The SSIM value of Uncharted Temporal is 0.718863 
+
+
+Test Number: 0018
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0018_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0018_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0018_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 701.450294
+ The RMSE value of Master Thesis Temporal is 26.484907
+ The MSE value of Uncharted Temporal is 925.933247
+ The RMSE value of Uncharted Temporal is 30.429151 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.670835
+ The SNR value of Master Thesis Temporal is 10.290981
+ The Peak-SNR value of Uncharted Temporal is 18.465007
+ The SNR value of Uncharted Temporal is 9.085153 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.713518
+ The SSIM value of Uncharted Temporal is 0.677873 
+
+
+Test Number: 0019
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0019_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0019_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0019_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 709.531952
+ The RMSE value of Master Thesis Temporal is 26.637041
+ The MSE value of Uncharted Temporal is 949.165922
+ The RMSE value of Uncharted Temporal is 30.808537 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.621084
+ The SNR value of Master Thesis Temporal is 10.237315
+ The Peak-SNR value of Uncharted Temporal is 18.357382
+ The SNR value of Uncharted Temporal is 8.973613 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705928
+ The SSIM value of Uncharted Temporal is 0.665480 
+
+
+Test Number: 0020
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0020_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0020_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0020_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 715.300723
+ The RMSE value of Master Thesis Temporal is 26.745107
+ The MSE value of Uncharted Temporal is 952.251580
+ The RMSE value of Uncharted Temporal is 30.858574 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.585917
+ The SNR value of Master Thesis Temporal is 10.195567
+ The Peak-SNR value of Uncharted Temporal is 18.343287
+ The SNR value of Uncharted Temporal is 8.952937 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.703394
+ The SSIM value of Uncharted Temporal is 0.660246 
+
+
+Test Number: 0021
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0021_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0021_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0021_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 666.561122
+ The RMSE value of Master Thesis Temporal is 25.817845
+ The MSE value of Uncharted Temporal is 832.239223
+ The RMSE value of Uncharted Temporal is 28.848557 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.892404
+ The SNR value of Master Thesis Temporal is 10.509079
+ The Peak-SNR value of Uncharted Temporal is 18.928322
+ The SNR value of Uncharted Temporal is 9.544997 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.729942
+ The SSIM value of Uncharted Temporal is 0.706467 
+
+
+Test Number: 0022
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0022_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0022_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0022_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 678.227728
+ The RMSE value of Master Thesis Temporal is 26.042806
+ The MSE value of Uncharted Temporal is 853.278530
+ The RMSE value of Uncharted Temporal is 29.210932 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.817048
+ The SNR value of Master Thesis Temporal is 10.433259
+ The Peak-SNR value of Uncharted Temporal is 18.819895
+ The SNR value of Uncharted Temporal is 9.436106 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.721609
+ The SSIM value of Uncharted Temporal is 0.696081 
+
+
+Test Number: 0023
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0023_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0023_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0023_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 701.102242
+ The RMSE value of Master Thesis Temporal is 26.478335
+ The MSE value of Uncharted Temporal is 919.607186
+ The RMSE value of Uncharted Temporal is 30.325026 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.672990
+ The SNR value of Master Thesis Temporal is 10.289297
+ The Peak-SNR value of Uncharted Temporal is 18.494780
+ The SNR value of Uncharted Temporal is 9.111087 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.708836
+ The SSIM value of Uncharted Temporal is 0.672456 
+
+
+Test Number: 0024
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0024_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0024_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0024_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 645.110943
+ The RMSE value of Master Thesis Temporal is 25.399034
+ The MSE value of Uncharted Temporal is 798.704531
+ The RMSE value of Uncharted Temporal is 28.261361 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.034460
+ The SNR value of Master Thesis Temporal is 10.646084
+ The Peak-SNR value of Uncharted Temporal is 19.106942
+ The SNR value of Uncharted Temporal is 9.718566 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.735341
+ The SSIM value of Uncharted Temporal is 0.715665 
+
+
+Test Number: 0025
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0025_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0025_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0025_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 644.857104
+ The RMSE value of Master Thesis Temporal is 25.394037
+ The MSE value of Uncharted Temporal is 789.580065
+ The RMSE value of Uncharted Temporal is 28.099467 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.036169
+ The SNR value of Master Thesis Temporal is 10.647057
+ The Peak-SNR value of Uncharted Temporal is 19.156842
+ The SNR value of Uncharted Temporal is 9.767730 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.736925
+ The SSIM value of Uncharted Temporal is 0.719919 
+
+
+Test Number: 0026
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0026_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0026_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0026_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 668.368630
+ The RMSE value of Master Thesis Temporal is 25.852826
+ The MSE value of Uncharted Temporal is 841.661715
+ The RMSE value of Uncharted Temporal is 29.011407 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.880643
+ The SNR value of Master Thesis Temporal is 10.496838
+ The Peak-SNR value of Uncharted Temporal is 18.879428
+ The SNR value of Uncharted Temporal is 9.495622 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.722314
+ The SSIM value of Uncharted Temporal is 0.697987 
+
+
+Test Number: 0027
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0027_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0027_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0027_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 675.661738
+ The RMSE value of Master Thesis Temporal is 25.993494
+ The MSE value of Uncharted Temporal is 877.732519
+ The RMSE value of Uncharted Temporal is 29.626551 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.833510
+ The SNR value of Master Thesis Temporal is 10.447956
+ The Peak-SNR value of Uncharted Temporal is 18.697182
+ The SNR value of Uncharted Temporal is 9.311628 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.719052
+ The SSIM value of Uncharted Temporal is 0.687020 
+
+
+Test Number: 0028
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0028_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0028_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0028_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 689.047343
+ The RMSE value of Master Thesis Temporal is 26.249711
+ The MSE value of Uncharted Temporal is 913.033024
+ The RMSE value of Uncharted Temporal is 30.216436 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.748313
+ The SNR value of Master Thesis Temporal is 10.366063
+ The Peak-SNR value of Uncharted Temporal is 18.525939
+ The SNR value of Uncharted Temporal is 9.143688 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.711656
+ The SSIM value of Uncharted Temporal is 0.674241 
+
+
+Test Number: 0029
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0029_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0029_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0029_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 670.587910
+ The RMSE value of Master Thesis Temporal is 25.895712
+ The MSE value of Uncharted Temporal is 859.435298
+ The RMSE value of Uncharted Temporal is 29.316127 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.866246
+ The SNR value of Master Thesis Temporal is 10.471598
+ The Peak-SNR value of Uncharted Temporal is 18.788672
+ The SNR value of Uncharted Temporal is 9.394023 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.720212
+ The SSIM value of Uncharted Temporal is 0.690324 
+
+
+Test Number: 0030
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0030_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0030_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0030_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 621.192198
+ The RMSE value of Master Thesis Temporal is 24.923728
+ The MSE value of Uncharted Temporal is 746.790851
+ The RMSE value of Uncharted Temporal is 27.327474 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.198544
+ The SNR value of Master Thesis Temporal is 10.799830
+ The Peak-SNR value of Uncharted Temporal is 19.398814
+ The SNR value of Uncharted Temporal is 10.000100 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.744203
+ The SSIM value of Uncharted Temporal is 0.732945 
+
+
+Test Number: 0031
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0031_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0031_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0031_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 646.066609
+ The RMSE value of Master Thesis Temporal is 25.417840
+ The MSE value of Uncharted Temporal is 812.038962
+ The RMSE value of Uncharted Temporal is 28.496297 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.028031
+ The SNR value of Master Thesis Temporal is 10.628398
+ The Peak-SNR value of Uncharted Temporal is 19.035035
+ The SNR value of Uncharted Temporal is 9.635402 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.730115
+ The SSIM value of Uncharted Temporal is 0.707132 
+
+
+Test Number: 0032
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0032_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0032_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0032_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 634.754596
+ The RMSE value of Master Thesis Temporal is 25.194337
+ The MSE value of Uncharted Temporal is 787.796776
+ The RMSE value of Uncharted Temporal is 28.067718 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.104745
+ The SNR value of Master Thesis Temporal is 10.700640
+ The Peak-SNR value of Uncharted Temporal is 19.166662
+ The SNR value of Uncharted Temporal is 9.762557 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.740342
+ The SSIM value of Uncharted Temporal is 0.721557 
+
+
+Test Number: 0033
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0033_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0033_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0033_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 634.038132
+ The RMSE value of Master Thesis Temporal is 25.180114
+ The MSE value of Uncharted Temporal is 797.381723
+ The RMSE value of Uncharted Temporal is 28.237948 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.109650
+ The SNR value of Master Thesis Temporal is 10.702079
+ The Peak-SNR value of Uncharted Temporal is 19.114141
+ The SNR value of Uncharted Temporal is 9.706570 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.741640
+ The SSIM value of Uncharted Temporal is 0.722856 
+
+
+Test Number: 0034
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0034_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0034_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0034_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 682.998672
+ The RMSE value of Master Thesis Temporal is 26.134243
+ The MSE value of Uncharted Temporal is 898.142574
+ The RMSE value of Uncharted Temporal is 29.969027 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.786605
+ The SNR value of Master Thesis Temporal is 10.370525
+ The Peak-SNR value of Uncharted Temporal is 18.597351
+ The SNR value of Uncharted Temporal is 9.181271 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.713288
+ The SSIM value of Uncharted Temporal is 0.679905 
+
+
+Test Number: 0035
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0035_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0035_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0035_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 696.724721
+ The RMSE value of Master Thesis Temporal is 26.395544
+ The MSE value of Uncharted Temporal is 929.535804
+ The RMSE value of Uncharted Temporal is 30.488290 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.700191
+ The SNR value of Master Thesis Temporal is 10.282823
+ The Peak-SNR value of Uncharted Temporal is 18.448142
+ The SNR value of Uncharted Temporal is 9.030774 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705477
+ The SSIM value of Uncharted Temporal is 0.666348 
+
+
+Test Number: 0036
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0036_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0036_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0036_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 683.732057
+ The RMSE value of Master Thesis Temporal is 26.148271
+ The MSE value of Uncharted Temporal is 898.459517
+ The RMSE value of Uncharted Temporal is 29.974314 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.781944
+ The SNR value of Master Thesis Temporal is 10.349542
+ The Peak-SNR value of Uncharted Temporal is 18.595818
+ The SNR value of Uncharted Temporal is 9.163416 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.709405
+ The SSIM value of Uncharted Temporal is 0.672113 
+
+
+Test Number: 0037
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0037_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0037_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0037_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 642.853671
+ The RMSE value of Master Thesis Temporal is 25.354559
+ The MSE value of Uncharted Temporal is 807.486873
+ The RMSE value of Uncharted Temporal is 28.416314 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.049682
+ The SNR value of Master Thesis Temporal is 10.604482
+ The Peak-SNR value of Uncharted Temporal is 19.059449
+ The SNR value of Uncharted Temporal is 9.614248 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.732232
+ The SSIM value of Uncharted Temporal is 0.708833 
+
+
+Test Number: 0038
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0038_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0038_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0038_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 676.352590
+ The RMSE value of Master Thesis Temporal is 26.006780
+ The MSE value of Uncharted Temporal is 865.182576
+ The RMSE value of Uncharted Temporal is 29.413986 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.829072
+ The SNR value of Master Thesis Temporal is 10.373957
+ The Peak-SNR value of Uncharted Temporal is 18.759726
+ The SNR value of Uncharted Temporal is 9.304610 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.715669
+ The SSIM value of Uncharted Temporal is 0.686122 
+
+
+Test Number: 0039
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0039_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0039_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0039_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 674.295050
+ The RMSE value of Master Thesis Temporal is 25.967192
+ The MSE value of Uncharted Temporal is 878.178955
+ The RMSE value of Uncharted Temporal is 29.634084 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.842304
+ The SNR value of Master Thesis Temporal is 10.385348
+ The Peak-SNR value of Uncharted Temporal is 18.694973
+ The SNR value of Uncharted Temporal is 9.238017 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.712454
+ The SSIM value of Uncharted Temporal is 0.678909 
+
+
+Test Number: 0040
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0040_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0040_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0040_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 625.808472
+ The RMSE value of Master Thesis Temporal is 25.016164
+ The MSE value of Uncharted Temporal is 776.045210
+ The RMSE value of Uncharted Temporal is 27.857588 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.166389
+ The SNR value of Master Thesis Temporal is 10.709684
+ The Peak-SNR value of Uncharted Temporal is 19.231933
+ The SNR value of Uncharted Temporal is 9.775228 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.736421
+ The SSIM value of Uncharted Temporal is 0.716350 
+
+
+Test Number: 0041
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0041_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0041_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0041_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 609.670709
+ The RMSE value of Master Thesis Temporal is 24.691511
+ The MSE value of Uncharted Temporal is 736.283653
+ The RMSE value of Uncharted Temporal is 27.134547 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.279850
+ The SNR value of Master Thesis Temporal is 10.821433
+ The Peak-SNR value of Uncharted Temporal is 19.460352
+ The SNR value of Uncharted Temporal is 10.001935 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.744811
+ The SSIM value of Uncharted Temporal is 0.731859 
+
+
+Test Number: 0042
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0042_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0042_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0042_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 658.957006
+ The RMSE value of Master Thesis Temporal is 25.670158
+ The MSE value of Uncharted Temporal is 847.378823
+ The RMSE value of Uncharted Temporal is 29.109772 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.942233
+ The SNR value of Master Thesis Temporal is 10.476637
+ The Peak-SNR value of Uncharted Temporal is 18.850028
+ The SNR value of Uncharted Temporal is 9.384432 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.719215
+ The SSIM value of Uncharted Temporal is 0.689839 
+
+
+Test Number: 0043
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0043_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0043_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0043_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 663.822415
+ The RMSE value of Master Thesis Temporal is 25.764751
+ The MSE value of Uncharted Temporal is 859.842970
+ The RMSE value of Uncharted Temporal is 29.323079 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.910284
+ The SNR value of Master Thesis Temporal is 10.436044
+ The Peak-SNR value of Uncharted Temporal is 18.786612
+ The SNR value of Uncharted Temporal is 9.312371 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.716722
+ The SSIM value of Uncharted Temporal is 0.685928 
+
+
+Test Number: 0044
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0044_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0044_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0044_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 661.056329
+ The RMSE value of Master Thesis Temporal is 25.711016
+ The MSE value of Uncharted Temporal is 857.485572
+ The RMSE value of Uncharted Temporal is 29.282855 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.928419
+ The SNR value of Master Thesis Temporal is 10.453217
+ The Peak-SNR value of Uncharted Temporal is 18.798535
+ The SNR value of Uncharted Temporal is 9.323334 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.716710
+ The SSIM value of Uncharted Temporal is 0.685343 
+
+
+Test Number: 0045
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0045_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0045_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0045_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 651.538942
+ The RMSE value of Master Thesis Temporal is 25.525261
+ The MSE value of Uncharted Temporal is 826.196983
+ The RMSE value of Uncharted Temporal is 28.743642 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.991400
+ The SNR value of Master Thesis Temporal is 10.516472
+ The Peak-SNR value of Uncharted Temporal is 18.959968
+ The SNR value of Uncharted Temporal is 9.485040 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.721945
+ The SSIM value of Uncharted Temporal is 0.694574 
+
+
+Test Number: 0046
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0046_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0046_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0046_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 625.892065
+ The RMSE value of Master Thesis Temporal is 25.017835
+ The MSE value of Uncharted Temporal is 761.918588
+ The RMSE value of Uncharted Temporal is 27.602873 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.165809
+ The SNR value of Master Thesis Temporal is 10.678331
+ The Peak-SNR value of Uncharted Temporal is 19.311718
+ The SNR value of Uncharted Temporal is 9.824240 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.737995
+ The SSIM value of Uncharted Temporal is 0.722381 
+
+
+Test Number: 0047
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0047_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0047_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0047_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 661.100915
+ The RMSE value of Master Thesis Temporal is 25.711883
+ The MSE value of Uncharted Temporal is 851.075008
+ The RMSE value of Uncharted Temporal is 29.173190 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.928126
+ The SNR value of Master Thesis Temporal is 10.430718
+ The Peak-SNR value of Uncharted Temporal is 18.831125
+ The SNR value of Uncharted Temporal is 9.333717 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.718511
+ The SSIM value of Uncharted Temporal is 0.688166 
+
+
+Test Number: 0048
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0048_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0048_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0048_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 632.422482
+ The RMSE value of Master Thesis Temporal is 25.148012
+ The MSE value of Uncharted Temporal is 794.642270
+ The RMSE value of Uncharted Temporal is 28.189400 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.120731
+ The SNR value of Master Thesis Temporal is 10.616649
+ The Peak-SNR value of Uncharted Temporal is 19.129087
+ The SNR value of Uncharted Temporal is 9.625006 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.736209
+ The SSIM value of Uncharted Temporal is 0.714726 
+
+
+Test Number: 0049
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0049_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0049_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0049_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 628.426924
+ The RMSE value of Master Thesis Temporal is 25.068445
+ The MSE value of Uncharted Temporal is 791.233804
+ The RMSE value of Uncharted Temporal is 28.128878 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.148256
+ The SNR value of Master Thesis Temporal is 10.642354
+ The Peak-SNR value of Uncharted Temporal is 19.147755
+ The SNR value of Uncharted Temporal is 9.641853 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.739974
+ The SSIM value of Uncharted Temporal is 0.720902 
+
+
+Test Number: 0050
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0050_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0050_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0050_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 676.926761
+ The RMSE value of Master Thesis Temporal is 26.017816
+ The MSE value of Uncharted Temporal is 886.000661
+ The RMSE value of Uncharted Temporal is 29.765763 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.825387
+ The SNR value of Master Thesis Temporal is 10.320709
+ The Peak-SNR value of Uncharted Temporal is 18.656463
+ The SNR value of Uncharted Temporal is 9.151785 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.712136
+ The SSIM value of Uncharted Temporal is 0.679406 
+
+
+Test Number: 0051
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0051_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0051_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0051_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 692.061714
+ The RMSE value of Master Thesis Temporal is 26.307066
+ The MSE value of Uncharted Temporal is 923.984003
+ The RMSE value of Uncharted Temporal is 30.397105 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.729355
+ The SNR value of Master Thesis Temporal is 10.217805
+ The Peak-SNR value of Uncharted Temporal is 18.474159
+ The SNR value of Uncharted Temporal is 8.962609 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.703439
+ The SSIM value of Uncharted Temporal is 0.664146 
+
+
+Test Number: 0052
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0052_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0052_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0052_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 682.504488
+ The RMSE value of Master Thesis Temporal is 26.124787
+ The MSE value of Uncharted Temporal is 895.942042
+ The RMSE value of Uncharted Temporal is 29.932291 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.789748
+ The SNR value of Master Thesis Temporal is 10.273937
+ The Peak-SNR value of Uncharted Temporal is 18.608004
+ The SNR value of Uncharted Temporal is 9.092193 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.707616
+ The SSIM value of Uncharted Temporal is 0.670573 
+
+
+Test Number: 0053
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0053_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0053_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0053_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 621.552282
+ The RMSE value of Master Thesis Temporal is 24.930950
+ The MSE value of Uncharted Temporal is 763.628905
+ The RMSE value of Uncharted Temporal is 27.633836 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.196027
+ The SNR value of Master Thesis Temporal is 10.674470
+ The Peak-SNR value of Uncharted Temporal is 19.301980
+ The SNR value of Uncharted Temporal is 9.780423 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.737852
+ The SSIM value of Uncharted Temporal is 0.719961 
+
+
+Test Number: 0054
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0054_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0054_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0054_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 648.628808
+ The RMSE value of Master Thesis Temporal is 25.468192
+ The MSE value of Uncharted Temporal is 809.776377
+ The RMSE value of Uncharted Temporal is 28.456570 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.010841
+ The SNR value of Master Thesis Temporal is 10.487780
+ The Peak-SNR value of Uncharted Temporal is 19.047153
+ The SNR value of Uncharted Temporal is 9.524092 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.725344
+ The SSIM value of Uncharted Temporal is 0.701582 
+
+
+Test Number: 0055
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0055_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0055_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0055_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 678.870542
+ The RMSE value of Master Thesis Temporal is 26.055144
+ The MSE value of Uncharted Temporal is 892.025839
+ The RMSE value of Uncharted Temporal is 29.866802 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.812934
+ The SNR value of Master Thesis Temporal is 10.286678
+ The Peak-SNR value of Uncharted Temporal is 18.627029
+ The SNR value of Uncharted Temporal is 9.100773 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.710162
+ The SSIM value of Uncharted Temporal is 0.673145 
+
+
+Test Number: 0056
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0056_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0056_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0056_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 643.710749
+ The RMSE value of Master Thesis Temporal is 25.371455
+ The MSE value of Uncharted Temporal is 813.351037
+ The RMSE value of Uncharted Temporal is 28.519310 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.043896
+ The SNR value of Master Thesis Temporal is 10.515811
+ The Peak-SNR value of Uncharted Temporal is 19.028023
+ The SNR value of Uncharted Temporal is 9.499938 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.729938
+ The SSIM value of Uncharted Temporal is 0.704097 
+
+
+Test Number: 0057
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0057_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0057_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0057_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 645.459897
+ The RMSE value of Master Thesis Temporal is 25.405903
+ The MSE value of Uncharted Temporal is 798.123841
+ The RMSE value of Uncharted Temporal is 28.251086 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.032111
+ The SNR value of Master Thesis Temporal is 10.497386
+ The Peak-SNR value of Uncharted Temporal is 19.110101
+ The SNR value of Uncharted Temporal is 9.575376 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.731130
+ The SSIM value of Uncharted Temporal is 0.710721 
+
+
+Test Number: 0058
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0058_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0058_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0058_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 664.861577
+ The RMSE value of Master Thesis Temporal is 25.784910
+ The MSE value of Uncharted Temporal is 837.894285
+ The RMSE value of Uncharted Temporal is 28.946404 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.903491
+ The SNR value of Master Thesis Temporal is 10.364924
+ The Peak-SNR value of Uncharted Temporal is 18.898911
+ The SNR value of Uncharted Temporal is 9.360344 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.718200
+ The SSIM value of Uncharted Temporal is 0.691900 
+
+
+Test Number: 0059
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0059_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0059_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0059_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 672.895527
+ The RMSE value of Master Thesis Temporal is 25.940230
+ The MSE value of Uncharted Temporal is 865.907681
+ The RMSE value of Uncharted Temporal is 29.426309 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.851327
+ The SNR value of Master Thesis Temporal is 10.307163
+ The Peak-SNR value of Uncharted Temporal is 18.756088
+ The SNR value of Uncharted Temporal is 9.211924 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.715311
+ The SSIM value of Uncharted Temporal is 0.684006 
+
+
+Test Number: 0060
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0060_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0060_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0060_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 664.022827
+ The RMSE value of Master Thesis Temporal is 25.768640
+ The MSE value of Uncharted Temporal is 857.831365
+ The RMSE value of Uncharted Temporal is 29.288758 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.908974
+ The SNR value of Master Thesis Temporal is 10.353217
+ The Peak-SNR value of Uncharted Temporal is 18.796784
+ The SNR value of Uncharted Temporal is 9.241028 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.715561
+ The SSIM value of Uncharted Temporal is 0.683733 
+
+
+Test Number: 0061
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0061_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0061_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0061_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 644.983342
+ The RMSE value of Master Thesis Temporal is 25.396522
+ The MSE value of Uncharted Temporal is 795.324518
+ The RMSE value of Uncharted Temporal is 28.201499 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.035319
+ The SNR value of Master Thesis Temporal is 10.484489
+ The Peak-SNR value of Uncharted Temporal is 19.125360
+ The SNR value of Uncharted Temporal is 9.574530 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.726055
+ The SSIM value of Uncharted Temporal is 0.704497 
+
+
+Test Number: 0062
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0062_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0062_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0062_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 605.667878
+ The RMSE value of Master Thesis Temporal is 24.610321
+ The MSE value of Uncharted Temporal is 714.810763
+ The RMSE value of Uncharted Temporal is 26.735945 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.308458
+ The SNR value of Master Thesis Temporal is 10.756841
+ The Peak-SNR value of Uncharted Temporal is 19.588893
+ The SNR value of Uncharted Temporal is 10.037275 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.746947
+ The SSIM value of Uncharted Temporal is 0.737667 
+
+
+Test Number: 0063
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0063_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0063_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0063_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 676.514246
+ The RMSE value of Master Thesis Temporal is 26.009887
+ The MSE value of Uncharted Temporal is 889.262699
+ The RMSE value of Uncharted Temporal is 29.820508 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.828034
+ The SNR value of Master Thesis Temporal is 10.270184
+ The Peak-SNR value of Uncharted Temporal is 18.640503
+ The SNR value of Uncharted Temporal is 9.082653 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.713409
+ The SSIM value of Uncharted Temporal is 0.677569 
+
+
+Test Number: 0064
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0064_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0064_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0064_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 645.778503
+ The RMSE value of Master Thesis Temporal is 25.412172
+ The MSE value of Uncharted Temporal is 804.865461
+ The RMSE value of Uncharted Temporal is 28.370151 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.029968
+ The SNR value of Master Thesis Temporal is 10.474848
+ The Peak-SNR value of Uncharted Temporal is 19.073571
+ The SNR value of Uncharted Temporal is 9.518451 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.732613
+ The SSIM value of Uncharted Temporal is 0.711462 
+
+
+Test Number: 0065
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0065_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0065_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0065_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 614.341595
+ The RMSE value of Master Thesis Temporal is 24.785915
+ The MSE value of Uncharted Temporal is 755.259456
+ The RMSE value of Uncharted Temporal is 27.481984 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.246704
+ The SNR value of Master Thesis Temporal is 10.692205
+ The Peak-SNR value of Uncharted Temporal is 19.349842
+ The SNR value of Uncharted Temporal is 9.795342 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.746294
+ The SSIM value of Uncharted Temporal is 0.730561 
+
+
+Test Number: 0066
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0066_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0066_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0066_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 676.138077
+ The RMSE value of Master Thesis Temporal is 26.002655
+ The MSE value of Uncharted Temporal is 885.487609
+ The RMSE value of Uncharted Temporal is 29.757144 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.830450
+ The SNR value of Master Thesis Temporal is 10.280124
+ The Peak-SNR value of Uncharted Temporal is 18.658979
+ The SNR value of Uncharted Temporal is 9.108653 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.714774
+ The SSIM value of Uncharted Temporal is 0.681138 
+
+
+Test Number: 0067
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0067_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0067_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0067_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 712.052023
+ The RMSE value of Master Thesis Temporal is 26.684303
+ The MSE value of Uncharted Temporal is 964.212686
+ The RMSE value of Uncharted Temporal is 31.051774 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.605686
+ The SNR value of Master Thesis Temporal is 10.054173
+ The Peak-SNR value of Uncharted Temporal is 18.289075
+ The SNR value of Uncharted Temporal is 8.737562 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.699039
+ The SSIM value of Uncharted Temporal is 0.654873 
+
+
+Test Number: 0068
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0068_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0068_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0068_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 697.802837
+ The RMSE value of Master Thesis Temporal is 26.415958
+ The MSE value of Uncharted Temporal is 911.181822
+ The RMSE value of Uncharted Temporal is 30.185788 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.693476
+ The SNR value of Master Thesis Temporal is 10.143143
+ The Peak-SNR value of Uncharted Temporal is 18.534753
+ The SNR value of Uncharted Temporal is 8.984420 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705604
+ The SSIM value of Uncharted Temporal is 0.668708 
+
+
+Test Number: 0069
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0069_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0069_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0069_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 655.775227
+ The RMSE value of Master Thesis Temporal is 25.608109
+ The MSE value of Uncharted Temporal is 820.572886
+ The RMSE value of Uncharted Temporal is 28.645643 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.963254
+ The SNR value of Master Thesis Temporal is 10.413513
+ The Peak-SNR value of Uncharted Temporal is 18.989632
+ The SNR value of Uncharted Temporal is 9.439892 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.729505
+ The SSIM value of Uncharted Temporal is 0.706684 
+
+
+Test Number: 0070
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0070_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0070_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0070_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 673.402923
+ The RMSE value of Master Thesis Temporal is 25.950008
+ The MSE value of Uncharted Temporal is 839.785376
+ The RMSE value of Uncharted Temporal is 28.979051 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.848054
+ The SNR value of Master Thesis Temporal is 10.299811
+ The Peak-SNR value of Uncharted Temporal is 18.889121
+ The SNR value of Uncharted Temporal is 9.340878 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.719538
+ The SSIM value of Uncharted Temporal is 0.695763 
+
+
+Test Number: 0071
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0071_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0071_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0071_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 676.082142
+ The RMSE value of Master Thesis Temporal is 26.001580
+ The MSE value of Uncharted Temporal is 863.883145
+ The RMSE value of Uncharted Temporal is 29.391889 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.830809
+ The SNR value of Master Thesis Temporal is 10.273725
+ The Peak-SNR value of Uncharted Temporal is 18.766254
+ The SNR value of Uncharted Temporal is 9.209170 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.713356
+ The SSIM value of Uncharted Temporal is 0.683315 
+
+
+Test Number: 0072
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0072_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0072_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0072_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 634.736500
+ The RMSE value of Master Thesis Temporal is 25.193977
+ The MSE value of Uncharted Temporal is 773.987397
+ The RMSE value of Uncharted Temporal is 27.820629 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.104869
+ The SNR value of Master Thesis Temporal is 10.541524
+ The Peak-SNR value of Uncharted Temporal is 19.243465
+ The SNR value of Uncharted Temporal is 9.680120 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.734701
+ The SSIM value of Uncharted Temporal is 0.717749 
+
+
+Test Number: 0073
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0073_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0073_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0073_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 641.622455
+ The RMSE value of Master Thesis Temporal is 25.330268
+ The MSE value of Uncharted Temporal is 786.975326
+ The RMSE value of Uncharted Temporal is 28.053081 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.058008
+ The SNR value of Master Thesis Temporal is 10.494506
+ The Peak-SNR value of Uncharted Temporal is 19.171192
+ The SNR value of Uncharted Temporal is 9.607690 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.733385
+ The SSIM value of Uncharted Temporal is 0.716381 
+
+
+Test Number: 0074
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0074_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0074_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0074_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 662.957245
+ The RMSE value of Master Thesis Temporal is 25.747956
+ The MSE value of Uncharted Temporal is 837.601729
+ The RMSE value of Uncharted Temporal is 28.941350 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.915948
+ The SNR value of Master Thesis Temporal is 10.357127
+ The Peak-SNR value of Uncharted Temporal is 18.900428
+ The SNR value of Uncharted Temporal is 9.341607 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.719387
+ The SSIM value of Uncharted Temporal is 0.695267 
+
+
+Test Number: 0075
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0075_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0075_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0075_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 683.700377
+ The RMSE value of Master Thesis Temporal is 26.147665
+ The MSE value of Uncharted Temporal is 884.902678
+ The RMSE value of Uncharted Temporal is 29.747314 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.782145
+ The SNR value of Master Thesis Temporal is 10.229133
+ The Peak-SNR value of Uncharted Temporal is 18.661849
+ The SNR value of Uncharted Temporal is 9.108836 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.713121
+ The SSIM value of Uncharted Temporal is 0.682612 
+
+
+Test Number: 0076
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0076_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0076_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0076_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 694.312302
+ The RMSE value of Master Thesis Temporal is 26.349806
+ The MSE value of Uncharted Temporal is 911.753334
+ The RMSE value of Uncharted Temporal is 30.195253 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.715255
+ The SNR value of Master Thesis Temporal is 10.151688
+ The Peak-SNR value of Uncharted Temporal is 18.532030
+ The SNR value of Uncharted Temporal is 8.968463 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705419
+ The SSIM value of Uncharted Temporal is 0.669750 
+
+
+Test Number: 0077
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0077_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0077_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0077_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 684.911856
+ The RMSE value of Master Thesis Temporal is 26.170821
+ The MSE value of Uncharted Temporal is 870.547109
+ The RMSE value of Uncharted Temporal is 29.505035 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.774457
+ The SNR value of Master Thesis Temporal is 10.213868
+ The Peak-SNR value of Uncharted Temporal is 18.732881
+ The SNR value of Uncharted Temporal is 9.172292 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.712613
+ The SSIM value of Uncharted Temporal is 0.684533 
+
+
+Test Number: 0078
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0078_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0078_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0078_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 637.038233
+ The RMSE value of Master Thesis Temporal is 25.239616
+ The MSE value of Uncharted Temporal is 758.787925
+ The RMSE value of Uncharted Temporal is 27.546105 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.089149
+ The SNR value of Master Thesis Temporal is 10.535367
+ The Peak-SNR value of Uncharted Temporal is 19.329599
+ The SNR value of Uncharted Temporal is 9.775818 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.736983
+ The SSIM value of Uncharted Temporal is 0.727116 
+
+
+Test Number: 0079
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0079_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0079_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0079_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 658.676415
+ The RMSE value of Master Thesis Temporal is 25.664692
+ The MSE value of Uncharted Temporal is 826.130406
+ The RMSE value of Uncharted Temporal is 28.742484 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.944082
+ The SNR value of Master Thesis Temporal is 10.384277
+ The Peak-SNR value of Uncharted Temporal is 18.960318
+ The SNR value of Uncharted Temporal is 9.400512 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.723217
+ The SSIM value of Uncharted Temporal is 0.700448 
+
+
+Test Number: 0080
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0080_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0080_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0080_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 649.206772
+ The RMSE value of Master Thesis Temporal is 25.479536
+ The MSE value of Uncharted Temporal is 802.045631
+ The RMSE value of Uncharted Temporal is 28.320410 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.006973
+ The SNR value of Master Thesis Temporal is 10.443040
+ The Peak-SNR value of Uncharted Temporal is 19.088813
+ The SNR value of Uncharted Temporal is 9.524880 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.734202
+ The SSIM value of Uncharted Temporal is 0.716239 
+
+
+Test Number: 0081
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0081_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0081_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0081_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 648.862809
+ The RMSE value of Master Thesis Temporal is 25.472786
+ The MSE value of Uncharted Temporal is 814.672173
+ The RMSE value of Uncharted Temporal is 28.542463 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 20.009275
+ The SNR value of Master Thesis Temporal is 10.441689
+ The Peak-SNR value of Uncharted Temporal is 19.020975
+ The SNR value of Uncharted Temporal is 9.453389 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.735841
+ The SSIM value of Uncharted Temporal is 0.716958 
+
+
+Test Number: 0082
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0082_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0082_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0082_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 679.554485
+ The RMSE value of Master Thesis Temporal is 26.068266
+ The MSE value of Uncharted Temporal is 874.722442
+ The RMSE value of Uncharted Temporal is 29.575707 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.808561
+ The SNR value of Master Thesis Temporal is 10.246378
+ The Peak-SNR value of Uncharted Temporal is 18.712101
+ The SNR value of Uncharted Temporal is 9.149918 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.715725
+ The SSIM value of Uncharted Temporal is 0.687580 
+
+
+Test Number: 0083
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0083_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0083_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0083_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 730.141702
+ The RMSE value of Master Thesis Temporal is 27.021134
+ The MSE value of Uncharted Temporal is 980.700792
+ The RMSE value of Uncharted Temporal is 31.316143 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.496732
+ The SNR value of Master Thesis Temporal is 9.947055
+ The Peak-SNR value of Uncharted Temporal is 18.215438
+ The SNR value of Uncharted Temporal is 8.665761 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.694044
+ The SSIM value of Uncharted Temporal is 0.652526 
+
+
+Test Number: 0084
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0084_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0084_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0084_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 717.897331
+ The RMSE value of Master Thesis Temporal is 26.793606
+ The MSE value of Uncharted Temporal is 936.538574
+ The RMSE value of Uncharted Temporal is 30.602918 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.570180
+ The SNR value of Master Thesis Temporal is 10.022125
+ The Peak-SNR value of Uncharted Temporal is 18.415547
+ The SNR value of Uncharted Temporal is 8.867492 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.698757
+ The SSIM value of Uncharted Temporal is 0.662451 
+
+
+Test Number: 0085
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0085_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0085_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0085_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 677.532911
+ The RMSE value of Master Thesis Temporal is 26.029462
+ The MSE value of Uncharted Temporal is 842.533356
+ The RMSE value of Uncharted Temporal is 29.026425 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.821500
+ The SNR value of Master Thesis Temporal is 10.274176
+ The Peak-SNR value of Uncharted Temporal is 18.874933
+ The SNR value of Uncharted Temporal is 9.327609 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.722871
+ The SSIM value of Uncharted Temporal is 0.701683 
+
+
+Test Number: 0086
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0086_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0086_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0086_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 714.160839
+ The RMSE value of Master Thesis Temporal is 26.723788
+ The MSE value of Uncharted Temporal is 904.630190
+ The RMSE value of Uncharted Temporal is 30.077071 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.592843
+ The SNR value of Master Thesis Temporal is 10.049945
+ The Peak-SNR value of Uncharted Temporal is 18.566093
+ The SNR value of Uncharted Temporal is 9.023194 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705724
+ The SSIM value of Uncharted Temporal is 0.677735 
+
+
+Test Number: 0087
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0087_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0087_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0087_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 709.760744
+ The RMSE value of Master Thesis Temporal is 26.641335
+ The MSE value of Uncharted Temporal is 909.938057
+ The RMSE value of Uncharted Temporal is 30.165180 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.619684
+ The SNR value of Master Thesis Temporal is 10.079577
+ The Peak-SNR value of Uncharted Temporal is 18.540685
+ The SNR value of Uncharted Temporal is 9.000578 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.704099
+ The SSIM value of Uncharted Temporal is 0.672501 
+
+
+Test Number: 0088
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0088_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0088_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0088_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 660.955989
+ The RMSE value of Master Thesis Temporal is 25.709064
+ The MSE value of Uncharted Temporal is 804.174989
+ The RMSE value of Uncharted Temporal is 28.357979 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.929078
+ The SNR value of Master Thesis Temporal is 10.393000
+ The Peak-SNR value of Uncharted Temporal is 19.077298
+ The SNR value of Uncharted Temporal is 9.541219 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.728222
+ The SSIM value of Uncharted Temporal is 0.710808 
+
+
+Test Number: 0089
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0089_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0089_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0089_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 651.836423
+ The RMSE value of Master Thesis Temporal is 25.531087
+ The MSE value of Uncharted Temporal is 771.396128
+ The RMSE value of Uncharted Temporal is 27.774019 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.989417
+ The SNR value of Master Thesis Temporal is 10.455094
+ The Peak-SNR value of Uncharted Temporal is 19.258029
+ The SNR value of Uncharted Temporal is 9.723706 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.734275
+ The SSIM value of Uncharted Temporal is 0.724170 
+
+
+Test Number: 0090
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0090_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0090_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0090_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 702.322981
+ The RMSE value of Master Thesis Temporal is 26.501377
+ The MSE value of Uncharted Temporal is 892.362231
+ The RMSE value of Uncharted Temporal is 29.872433 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.665435
+ The SNR value of Master Thesis Temporal is 10.127599
+ The Peak-SNR value of Uncharted Temporal is 18.625392
+ The SNR value of Uncharted Temporal is 9.087556 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.709196
+ The SSIM value of Uncharted Temporal is 0.681231 
+
+
+Test Number: 0091
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0091_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0091_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0091_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 715.261891
+ The RMSE value of Master Thesis Temporal is 26.744381
+ The MSE value of Uncharted Temporal is 921.236242
+ The RMSE value of Uncharted Temporal is 30.351874 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.586153
+ The SNR value of Master Thesis Temporal is 10.050716
+ The Peak-SNR value of Uncharted Temporal is 18.487093
+ The SNR value of Uncharted Temporal is 8.951657 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.705396
+ The SSIM value of Uncharted Temporal is 0.674446 
+
+
+Test Number: 0092
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0092_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0092_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0092_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 704.587086
+ The RMSE value of Master Thesis Temporal is 26.544059
+ The MSE value of Uncharted Temporal is 906.420810
+ The RMSE value of Uncharted Temporal is 30.106823 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.651457
+ The SNR value of Master Thesis Temporal is 10.119399
+ The Peak-SNR value of Uncharted Temporal is 18.557505
+ The SNR value of Uncharted Temporal is 9.025448 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.707482
+ The SSIM value of Uncharted Temporal is 0.676286 
+
+
+Test Number: 0093
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0093_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0093_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0093_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 702.739528
+ The RMSE value of Master Thesis Temporal is 26.509235
+ The MSE value of Uncharted Temporal is 884.451997
+ The RMSE value of Uncharted Temporal is 29.739738 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.662860
+ The SNR value of Master Thesis Temporal is 10.140347
+ The Peak-SNR value of Uncharted Temporal is 18.664061
+ The SNR value of Uncharted Temporal is 9.141548 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.711886
+ The SSIM value of Uncharted Temporal is 0.684557 
+
+
+Test Number: 0094
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0094_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0094_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0094_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 678.720862
+ The RMSE value of Master Thesis Temporal is 26.052272
+ The MSE value of Uncharted Temporal is 815.313899
+ The RMSE value of Uncharted Temporal is 28.553702 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.813892
+ The SNR value of Master Thesis Temporal is 10.296621
+ The Peak-SNR value of Uncharted Temporal is 19.017555
+ The SNR value of Uncharted Temporal is 9.500285 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.727638
+ The SSIM value of Uncharted Temporal is 0.713191 
+
+
+Test Number: 0095
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0095_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0095_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0095_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 718.150851
+ The RMSE value of Master Thesis Temporal is 26.798337
+ The MSE value of Uncharted Temporal is 918.148634
+ The RMSE value of Uncharted Temporal is 30.300968 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.568647
+ The SNR value of Master Thesis Temporal is 10.060355
+ The Peak-SNR value of Uncharted Temporal is 18.501674
+ The SNR value of Uncharted Temporal is 8.993382 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.708247
+ The SSIM value of Uncharted Temporal is 0.678835 
+
+
+Test Number: 0096
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0096_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0096_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0096_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 698.512848
+ The RMSE value of Master Thesis Temporal is 26.429394
+ The MSE value of Uncharted Temporal is 852.615758
+ The RMSE value of Uncharted Temporal is 29.199585 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.689060
+ The SNR value of Master Thesis Temporal is 10.195317
+ The Peak-SNR value of Uncharted Temporal is 18.823270
+ The SNR value of Uncharted Temporal is 9.329527 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.724012
+ The SSIM value of Uncharted Temporal is 0.707110 
+
+
+Test Number: 0097
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0097_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0097_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0097_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 670.941912
+ The RMSE value of Master Thesis Temporal is 25.902546
+ The MSE value of Uncharted Temporal is 800.112758
+ The RMSE value of Uncharted Temporal is 28.286264 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.863954
+ The SNR value of Master Thesis Temporal is 10.372116
+ The Peak-SNR value of Uncharted Temporal is 19.099292
+ The SNR value of Uncharted Temporal is 9.607454 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.736871
+ The SSIM value of Uncharted Temporal is 0.727931 
+
+
+Test Number: 0098
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0098_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0098_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0098_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 736.422782
+ The RMSE value of Master Thesis Temporal is 27.137111
+ The MSE value of Uncharted Temporal is 941.676601
+ The RMSE value of Uncharted Temporal is 30.686750 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.459531
+ The SNR value of Master Thesis Temporal is 9.972983
+ The Peak-SNR value of Uncharted Temporal is 18.391786
+ The SNR value of Uncharted Temporal is 8.905238 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.704504
+ The SSIM value of Uncharted Temporal is 0.676022 
+
+
+Test Number: 0099
+Ground Truth: hairball_light_ghosting\hairball_light_ghosting_both_0099_truth.png
+Master Thesis Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0099_improved.png
+Uncharted Temporal: hairball_light_ghosting\hairball_light_ghosting_both_0099_no_improved.png
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Master Thesis Temporal is 749.516184
+ The RMSE value of Master Thesis Temporal is 27.377293
+ The MSE value of Uncharted Temporal is 976.577829
+ The RMSE value of Uncharted Temporal is 31.250245 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Master Thesis Temporal is 19.382993
+ The SNR value of Master Thesis Temporal is 9.902245
+ The Peak-SNR value of Uncharted Temporal is 18.233735
+ The SNR value of Uncharted Temporal is 8.752987 
+
+SSIM, Close to one means it's good
+ The SSIM value of Master Thesis Temporal is 0.696491
+ The SSIM value of Uncharted Temporal is 0.661563 
