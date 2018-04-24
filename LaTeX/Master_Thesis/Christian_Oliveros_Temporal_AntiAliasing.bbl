@@ -1,0 +1,108 @@
+\begin{thebibliography}{10}
+
+\bibitem{Shreiner2011}
+E.~Angel and D.~Shreiner.
+\newblock {\em Computer Graphics A Top-Down Approach with Shader-Based OpenGL
+  6th Edition}.
+\newblock Addison-Wesley, 2011.
+
+\bibitem{OGSW}
+{Commonwealth Forestry Association}.
+\newblock On-line guide to scientific writing.
+\newblock \url{http://www.cfa-international.org/ONGSWfinish.html}.
+
+\bibitem{CTAN}
+CTAN.
+\newblock Comprehensive tex archive network.
+\newblock \url{http://www.ctan.org}.
+
+\bibitem{few2012show}
+S.~Few.
+\newblock {\em Show Me the Numbers: Designing Tables and Graphs to Enlighten}.
+\newblock Analytics Press, 2012.
+
+\bibitem{goossens93}
+Michel Goossens, Frank Mittelbach, and Alexander Samarin.
+\newblock {\em The LaTeX Companion}.
+\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{heffernan2000writing}
+J.A.W. Heffernan, J.E. Lincoln, and J.~Atwill.
+\newblock {\em Writing: A College Handbook}.
+\newblock W.W. Norton, 2000.
+
+\bibitem{Jimenez2012}
+Jorge Jimenez, Jose~I Echevarria, Tiago Sousa, and Diego Gutierrez.
+\newblock {SMAA}: Enhanced subpixel morphological antialiasing.
+\newblock {\em EUROGRAPHICS 2012 / P. Cignoni, T. Ertl Volume 31 (2012), Number
+  2}, 2012.
+
+\bibitem{JIMENEZ2011_SIGGRAPH11}
+Jorge Jimenez, Diego Gutierrez, Jason Yang, Alexander Reshetov, Pete
+  Demoreuille, Tobias Berghoff, Cedric Perthuis, Henry Yu, Morgan McGuire,
+  Timothy Lottes, Hugh Malan, Emil Persson, Dmitry Andreev, and Tiago Sousa.
+\newblock Filtering approaches for real-time anti-aliasing.
+\newblock In {\em {ACM SIGGRAPH Courses}}, 2011.
+
+\bibitem{Lottes2009}
+Timothy Lottes.
+\newblock {FXAA}.
+\newblock {\em NVIDIA Docs}, 2009.
+\newblock The Document was last edited in 2011.
+
+\bibitem{Doggett2017}
+{Michael Doggett}.
+\newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
+
+\bibitem{Nehab2007}
+D.~Nehab, P.~V. Sander, J.~Lawrence, N.~Tatarchuk, and J.~R. Isidoro.
+\newblock Accelerating real-time shading with reverse reprojection caching.
+\newblock {\em In Proceedings of the 22nd ACM SIGGRAPH/EUROGRAPHICS Symposium
+  on Graphics Hardware (2007), pp. 25–35. 3, 8}, 2007.
+
+\bibitem{shortstyleguide}
+University of~Washington.
+\newblock Style points for scientific writing.
+\newblock
+  \url{http://www.psych.uw.edu/writingcenter/writingguides/pdf/style.pdf}.
+
+\bibitem{Fuglsand2016}
+Lasse Jon~Fuglsang Pedersen.
+\newblock {Temporal Reprojection Anti-Aliasing in INSIDE}.
+\newblock {\em GDC Vault}, 2016.
+\newblock Accessed: 2017-11-28,
+  \url{http://www.gdcvault.com/play/1022970/Temporal-Reprojection-Anti-Aliasing-in}.
+
+\bibitem{fontspec}
+Will Robertson and Khaled Hosny.
+\newblock The fontspec package, May 2012.
+\newblock \url{http://ctan.uib.no/macros/latex/contrib/fontspec/fontspec.pdf}.
+
+\bibitem{Tufte:1986}
+Edward~R. Tufte.
+\newblock {\em The visual display of quantitative information}.
+\newblock Graphics Press, Cheshire, CT, USA, 1986.
+
+\bibitem{XU2016}
+Ke~XU.
+\newblock {Temporal Antialiasing In Uncharted 4}.
+\newblock {\em SIGGRAPH 2016}, 2016.
+
+\bibitem{yalesentences}
+{Yale Graduate Writing Center}.
+\newblock The most common sentence structure problems.
+\newblock
+  \url{http://www.yale.edu/graduateschool/writing/forms/The%20Most%20Common%20Sentence%20Structure%20Problems.pdf}.
+
+\bibitem{Yang2009}
+L.~Yang, D.~Nehab, P.~V. Sander, P.~Sitthiamorn, J.~Lawrence, and H.~Hoppe.
+\newblock Amortized supersampling.
+\newblock {\em ACM Trans. Graph. 28 (2009), 135:1–135:12}, 2009.
+
+\bibitem{subjectverb}
+{yourdictionary.com}.
+\newblock 20 rules of subject verb agreement.
+\newblock
+  \url{http://grammar.yourdictionary.com/sentences/20-Rules-of-subject-verb-agreement.html}.
+
+\end{thebibliography}

@@ -1,0 +1,35 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Problem Definition}{7}{section.1.1}
+\contentsline {section}{\numberline {1.2}Related Work}{8}{section.1.2}
+\contentsline {chapter}{\numberline {2}Technological Background}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}C++ and Bonobo Framework}{9}{section.2.1}
+\contentsline {chapter}{\numberline {3}Short on Formatting}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Page Size and Margins}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Typeface and Font Sizes}{11}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Headers and Footers}{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Chapters, Sections, Paragraphs}{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Tables}{12}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Figures}{13}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Mathematical Formulae and Equations}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}References}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Colours}{14}{section.3.5}
+\contentsline {chapter}{\numberline {4}Language}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Style Elements}{15}{section.4.1}
+\contentsline {subsubsection}{Widows and Orphans}{16}{subsubsection*.7}
+\contentsline {subsubsection}{Footnotes}{16}{subsubsection*.8}
+\contentsline {subsubsection}{Active vs. Passive Voice}{16}{subsubsection*.9}
+\contentsline {subsubsection}{Long and Short Sentences}{16}{subsubsection*.10}
+\contentsline {subsubsection}{Subject-Predicate Agreement}{16}{subsubsection*.11}
+\contentsline {chapter}{\numberline {5}Structure}{17}{chapter.5}
+\contentsline {chapter}{Bibliography}{19}{section*.12}
+\contentsline {chapter}{Appendix \numberline {A}About This Document}{23}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}List of Changes}{25}{Appendix.a.B}
+\contentsline {subsubsection}{Since 2016/04/29}{25}{subsubsection*.14}
+\contentsline {subsubsection}{Since 2015/09/11}{25}{subsubsection*.15}
+\contentsline {subsubsection}{Since 2015/04/27}{25}{subsubsection*.16}
+\contentsline {subsubsection}{Since 2014/02/18}{25}{subsubsection*.17}
+\contentsline {subsubsection}{Since 2013/09/23}{25}{subsubsection*.18}
+\contentsline {subsubsection}{Since 2013/08/30}{25}{subsubsection*.19}
+\contentsline {subsubsection}{Since 2013/02/22}{26}{subsubsection*.20}
+\contentsline {subsubsection}{Since 2013/02/15}{26}{subsubsection*.21}
