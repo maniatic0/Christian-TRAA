@@ -1,8 +1,5 @@
 #version 410
 
-#define TIE_BREAKER_EPSILON 0.00001
-#define TIE_BREAKER_FOR_DEPTH_AVG 0.000002
-
 uniform sampler2D depth_history_texture;
 uniform sampler2D history_texture;
 uniform sampler2D current_texture;
@@ -31,6 +28,8 @@ uniform float z_far;
 
 // Use model index comparison to blurr edges between models
 #define USE_MODEL_INDEX
+
+#define DEPTH_TRESHOLD (0.002)
 
 // Use original TRAA box size
 #define ORIGINAL_TRAA_BOX 
@@ -280,15 +279,14 @@ void main()
 
 	// pseudo depth variance
 	float max_distance_depth = min(abs(linear_depth(depth_min) - (depth_avg)), abs(linear_depth(depth_max) - (depth_avg)));
-	//max_distance_depth = max(max_distance_depth, 0.0002);
 	float linear_current_depth = linear_depth(current_depth);
 	float depth_variance = abs(linear_current_depth - depth_avg) / max_distance_depth;
-	depth_variance = step(0.002, max_distance_depth) * depth_variance * depth_variance;
+	depth_variance = step(DEPTH_TRESHOLD, max_distance_depth) * depth_variance * depth_variance;
 	//depth_variance = 0.0;
 
 	// pseudo temporal depth variance
 	float depth_temporal_variance = abs(depth_avg - texture(depth_history_texture, fs_in.texcoord).x) / max_distance_depth;
-	depth_temporal_variance = step(0.002, max_distance_depth) * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
+	depth_temporal_variance = step(DEPTH_TRESHOLD, max_distance_depth) * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance * depth_temporal_variance;
 
 	//depth_temporal_variance = 0.0;
 
@@ -296,32 +294,42 @@ void main()
 #ifdef USE_SOBEL_CROSS
 	
 	#ifdef USE_MODEL_INDEX
-	sobel_avg = mix(sobel_cross_avg, sobel_avg, clamp(sobel + model_acc, 0.0, 1.0));
-	sobel_avg = clamp(sobel_avg + depth_variance + depth_temporal_variance + model_acc, 0.0, 1.0);
+	
+	float sobel_avg_mix_val = clamp(sobel + model_acc, 0.0, 1.0);
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel_avg_mix_val);
+	
+	float aliased_mix_val = clamp(sobel_avg + depth_variance 
+		+ depth_temporal_variance + model_acc, 0.0, 1.0);
+	
 	#else
-	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel);
-	sobel_avg = clamp(sobel_avg + depth_variance + depth_temporal_variance, 0.0, 1.0);
-	#endif // USE_SOBEL_CROSS
 
-	cn_min = mix(cn_cross_min, cn_min, sobel_avg);
-	cn_max = mix(cn_cross_max, cn_max, sobel_avg);
-	cn_avg = mix(cn_avg, cn_cross_avg, sobel_avg);
+	float sobel_avg_mix_val = sobel;
+	sobel_avg = mix(sobel_cross_avg, sobel_avg, sobel_avg_mix_val);
+
+	float aliased_mix_val = clamp(sobel_avg + depth_variance 
+		+ depth_temporal_variance, 0.0, 1.0);
+	
+	#endif // USE_MODEL_INDEX
+
+	cn_min = mix(cn_cross_min, cn_min, aliased_mix_val);
+	cn_max = mix(cn_cross_max, cn_max, aliased_mix_val);
+	cn_avg = mix(cn_avg, cn_cross_avg, aliased_mix_val);
 	
 #else
-
+	// Fixed mix value using sobel avg
 	cn_min = mix(cn_min, cn_cross_min, 0.5);
 	cn_max = mix(cn_max, cn_cross_max, 0.5);
 	cn_avg = mix(cn_avg, cn_cross_avg, 0.5);
 	sobel_avg = mix(sobel_avg, sobel_cross_avg, 0.5);
+	float aliased_mix_val = sobel_avg;
 
 #endif // USE_SOBEL_CROSS
-
+	
+	// Clipping Box Size Reduction
 	vec4 c_in = texture(current_texture, j_uv.xy);
 
-	float final_mix_val = clamp(sobel_avg, 0.0, 1.0);
-
-	cn_min = mix(c_in, cn_min, final_mix_val);
-	cn_max = mix(c_in, cn_max, final_mix_val);
+	cn_min = mix(c_in, cn_min, aliased_mix_val);
+	cn_max = mix(c_in, cn_max, aliased_mix_val);
 
 #ifdef HISTORY_CLAMPING
 	vec4 c_hist_constrained = clamp(c_hist, cn_min, cn_max);
@@ -348,6 +356,6 @@ void main()
 	temporal_output.xyzw = current_history_texture.xyzw;
 	//temporal_output.xyz = vec3(clamp( unbiased_weight_sqr + depth_variance, 0.0, 1.0));
 	//temporal_output.xyz = vec3(depth_temporal_variance);
-	//temporal_output.xyz = vec3(sobel_avg);
+	//temporal_output.xyz = vec3(aliased_mix_val);
 	//temporal_output.xyz = vec3(model_acc);
 }
