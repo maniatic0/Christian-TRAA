@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{mathtools}
 %\usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
@@ -64,7 +65,7 @@ We have two main uses for this process: Offline Applications, like movies; and R
 
 The focus of this project is to improve Temporal Anti-Aliasing implementation, which is a technique that increases the quality of the images after the process of mapping triangles to pixels by mixing frames previously rendered with current ones.
 
-The main requirement would be to render the highest quality possible representation of the scene, with two main constraints: we must render at least thirty frames per second, with no high frame rate loss; and we must work with a limited amount of memory and bandwidth, because we need to be able to run in an average computer or mobile device.\cite{Doggett2017, Shreiner2011}
+The main requirement would be to render the highest quality possible representation of the scene, with two main constraints: we must render at least thirty frames per second, with no high frame rate loss; and we must work with a limited amount of memory and bandwidth, because we need to be able to run in an average computer or mobile device. \cite{Doggett2017EDAN35, Shreiner2011}
 
 \section{Problem Definition}
 Temporal Anti-Aliasing (TAA) is a relatively new real time technique that provides good results without incurring in heavy memory or processing power costs of other techniques. Edge detection and triangle indexing appear as good candidates to improve the quality of the technique by reducing the ghosting and blurring unwanted effects created by current implementations of TAA. 
@@ -73,7 +74,7 @@ The aim of this thesis is to improve the Temporal Anti-Aliasing technique by usi
 
 
 \section{Related Work}
-As the simplest Anti-Aliasing technique, we have Super Sampling Anti-Aliasing (SSAA), it consists on rendering at a higher resolution and then downsampling it to the required resolution. Another technique is the Multi Sample Anti-Aliasing (MSAA), which calculates the color for the final pixel just once \cite{Doggett2017}.  We can learn what would become the base of Temporal Reprojection Anti-Aliasing (TAA or TRAA) in the papers Accelerating Real-time Shading with Reverse Reprojection Caching  by Nehab D., Sander P. V., Lawrence J., Tatarchuk N., Isidoro J. R. \cite{Nehab2007}, in which they describe how pixel shaders could use save information and reproject it in the next frame; and Amortized Supersampling by Yang L., Nehab D., Sander P. V., Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} in which they describe how to use the reprojection of old frames in the current one as a method of real time Anti-Aliasing.
+As the simplest Anti-Aliasing technique, we have Super Sampling Anti-Aliasing (SSAA), it consists on rendering at a higher resolution and then downsampling it to the required resolution. Another technique is the Multi Sample Anti-Aliasing (MSAA), which calculates the color for the final pixel just once \cite{Doggett2017EDAN35}.  We can learn what would become the base of Temporal Reprojection Anti-Aliasing (TAA or TRAA) in the papers Accelerating Real-time Shading with Reverse Reprojection Caching  by Nehab D., Sander P. V., Lawrence J., Tatarchuk N., Isidoro J. R. \cite{Nehab2007}, in which they describe how pixel shaders could use save information and reproject it in the next frame; and Amortized Supersampling by Yang L., Nehab D., Sander P. V., Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} in which they describe how to use the reprojection of old frames in the current one as a method of real time Anti-Aliasing.
 
 Next, we start to see Post Processing techniques like Fast Approximate Anti-Aliasing (FXAA) by Timothy Lottes \cite{Lottes2009} which uses a form of edge detection to correct aliasing while being compatible with the deferred shading architecture. We also found the Crytek implementation of Temporal Anti-Aliasing (TAA or TXAA) explained by Tiago Sousa on his presentation Anti-Aliasing Methods in CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
 
@@ -84,13 +85,194 @@ Finally, we have the TRAA implementations of Ke Xu  for Uncharted 4 and Lasse Fu
 \chapter{Technological Background}
 \section{C++ and Bonobo Framework}
 C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. It is widely used in Computer Graphics due to its performance, especially on real-time applications, and its wide knowledge base.
+
 The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It is developed in C++ and provides a rendering engine that is easy to modify and use.
-OpenGL and GLSL
+\section{OpenGL and GLSL}
 The Open Graphics Library (OpenGL) is a 2D and 3D computer cross-platform open source graphics Application Programming Interface (API) that abstracts the programmer from directly interacting with Graphic Processor Units (GPUs) to achieve hardware accelerated rendering. It provides the programmer with a graphics pipeline to use, which is normally implemented through hardware.
+
 OpenGL Shading Language (GLSL) is a high-level shading language that allows programmers greater  control of the graphics pipeline without requiring use of the OpenGL assembly language or hardware specific languages. 
-MATLAB
+\section{MATLAB}
 MATLAB is a proprietary multi-paradigm numerical computing environment. Commonly used for science, engineering and economics. It is popular for image processing applications because of its wide library of algorithms for this purpose, including image metrics which are used in this thesis.   
 
+\chapter{Theoretical Background}
+\section{Rendering Pipeline}
+Today’s graphics pipeline can be simplified into three steps: Vertex Shader, which moves the geometry associated with the vertices and prepare them for the next step; Rasterizer, which maps the triangles to pixels in the screen, calculates their visibility and interpolates the parameters of the vertices for each pixel covered by the triangle; and the Pixel (or Fragment) Shader which takes the visual pixels from the Rasterizer and colors them.
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.5]{images/graphics_pipeline.png} 
+	\caption{Rendering Pipeline, based on EDAF80 5th Lecture.~\cite{Doggett2017EDAF80}}\label{fig:graphpipeline}
+\end{figure}
+
+It is important to note that Vertex and Pixel Shaders are controllable by a programmer using special programs called Shaders. They provide a way for the programmer to control the rendering hardware. In contrast, the Rasterizer is not controlled by the programmer and it is handled entirely by a hardware fixed function. \cite{Doggett2017EDAF80}
+
+This Rasterization Process is important for us because it is there where some of the errors corrected by Temporal Anti-Aliasing come from.
+
+\section{Rasterization Process}
+During the Rasterization Process each triangle is tested to establish which pixels are covered by it. While this is being done, each pixel is being tested to find out if another triangle is covering it.
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.75]{images/rasterization_process.png} 
+	\caption{Example of the results of the Rasterization Process.
+		\emph{Note}: colors where added to differentiate the triangles but they would only be added by the Pixel Shader.
+	}\label{fig:rasterizationproc}
+\end{figure}
+
+Because we are mapping a continuous triangle to a finite number of pixels, we face the problem of pixels partially covered and how to determine whether is it enough to qualify it as covered. This is solved by calculating if the center of the pixel is covered by the triangle geometry. This process is susceptible to errors due to precision of the representation used for the vertices.  
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.5]{images/edge_testing.png} 
+	\caption{Example of the Partial Cover problem, based on EDAN35 2th Lecture. ~\cite{Doggett2017EDAN35}}\label{fig:partialcover}
+\end{figure}
+
+This process shows us that what is rendered to the screen approximates what is being represented in the scene because pixels can only be covered by one triangle at a time. \cite{Moller2007, Doggett2017EDAN35}
+
+\section{Aliasing Problem}
+When we map a continuous representation to a finite one, it is going to generate errors. As explained by Edward Angel and Dave Shreiner in their book (page 413) \cite{Shreiner2011}, we can interpret the rendering process as the sampling of a continuous function \(f(x, y)\), which represents the color of the scene at that point, to an \(n\times m\)  grid of pixels in which we assume that the point \(f_{ij}\)  is the value of f over a small area; and to reconstruct the \(f\) function to display the image to the screen using only what we know from the samples. The mathematical tool used to evaluate the issues of this process is the Fourier Analysis, which states that a function can be decomposed into a set of sinusoids, at possibly an infinite number of frequencies. For two-dimensional image analysis we can think of the \(f\) function as a set of sinusoids at two spatial frequencies.
+
+For this thesis we will use  the First part of the Nyquist sampling theorem as a tool to illustrate why aliasing problems appear and relates to sampling problems. \\
+
+\emph{''Nyquist Sampling Theorem (Part 1): The ideal samples of a continuous function contain all the information in the original function if and only if the continuous function is sampled at a frequency greater than twice the highest frequency in the function.}
+
+\emph{The Nyquist frequency is defined as one half of the sampling frequency, which is the lowest frequency that cannot be in the data to avoid aliasing.''
+}
+
+Taken from Edward Angel and Dave Shreiner book page 415. \cite{Shreiner2011} \\
+
+As Edward Angel and Dave Shreiner explain, this idealized sampling assumes that we can take an infinite number of samples per sample frequency which we cannot do in practice. The Aliasing problem that computer graphics experience comes from not being able to sample as required by the Nyquist Sampling Theorem, creating ragged edges that appear in the rasterization process (Spatial Aliasing) and jumps between moving objects (Temporal Aliasing), according with Doggett and Wronski  ~\cite{Doggett2017EDAN35,Wronski2014}. Many solutions have been proposed and used to solve it, e. g. the Super Sampling Anti-Aliasing (SSAA) family of solutions that work on higher frequencies than the required at the cost of more space requirements. 
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=1.0]{images/aliasing_example.png} 
+	\caption{Representation versus Aliased Approximation.}\label{fig:aliasingexample}
+\end{figure}
+
+\section{Shadow Mapping and \\ Deferred Shading Architecture}
+
+As we know, lights and shadows contribute with spatial information to an image. As humans, we have come to expect that objects react to the lights in a scene, considering their geometry; especially because the shadow that it creates gives us a sense of size.
+
+As explained by Michael Dogget \cite{Doggett2017EDAN35}, under the Rendering Pipeline based on the Rasterizer, the process of shadow calculation becomes challenging to do. The Rasterizer does not know if objects are covered or not from a light, so we must figure out a method to calculate if an object is in shadows. 
+
+The shadow calculations are done through a process called Shadow Mapping, it consists of rendering the scene through each light perspective and then test that against the camera perspective to establish if the object is affected by the light or if it is in shadows.
+
+As we might expect, rendering the scene several times is expensive, so we need a way to reduce the cost as much as we can. The Deferred Shading Architecture provides that, it first renders the scene, without light calculations, to a buffer called the Geometry Buffer. There, information regarding colors, normals, depths, specific objects information to interact with lights, etc. is saved so we do not need to recalculate that for each light. After all information is saved in the Geometry Buffer, we calculate the Shadow Map of every light but only performing depth calculations. Then we calculate the effect of the light using it. At the end, we take all the information of the lights, shadows and the Geometry Buffer to render the lighted scene.
+
+
+\section{Anti-Aliasing}
+As we know, there are two main types of Aliasing, Spatial Aliasing and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. This increase is of great importance for real-time applications which try to use the best possible solutions that increase the least the rendering time. 
+
+Another important factor that decides which Anti-Aliasing is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
+
+\subsection{Super Sampling Anti-Aliasing (SSAA)}
+As explained by Michael Dogget \cite{Doggett2017EDAN35}, this technique consists in rendering the scene at 4 times the size of the screen and then averaging pixels 4x4 to calculate the result. It provides good results but requires more rendering time and heavy memory usage.
+
+\subsection{Multi Sample Anti-Aliasing (MSAA)}
+MSAA consist in taking several samples per pixel; on each sample the depth values are calculated but only one color is calculated for the rasterized triangle. This solution provides good results at the cost of increased memory usage for depth calculations. 
+
+As explained by Michael Dogget \cite{Doggett2017EDAN35}, the biggest problem this technique has is that it does not work properly with Deferred Shading. This make it complicated to use with current pipelines, normally requiring other corrections to reduce the artifacts created when applied with Deferred Shading.
+
+\subsection{Fast Approximate Anti-Aliasing (FXAA)}
+FXAA is a post processing anti-aliasing technique that works by detecting edges on the rendered images and then smooth them, as explained by Timothy Lottes. \cite{Lottes2009}
+
+It is relatively cheap compared to MSAA and provides relatively good results, its smoothing capabilities are limited by the amount of information the edge detection can get on a single pass, and it provides relatively good results regarding temporal aliasing.
+
+\subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
+SMAA is a post processing technique based on Morphological Anti-Aliasing. It works by reconstructing edges and their surroundings to regenerate the subpixel information lost by aliasing, as explained by Jorge Jimenez, Jose I. Echeverria, Tiago Sousa and Diego Gutierrez. \cite{Jimenez2012}
+
+\section{Temporal Anti-Aliasing}
+As explained by Ke Xu and Lasse Fuglsang in their respective presentations ~\cite{Fuglsand2016,XU2016}, the basic principle of Temporal Anti-Aliasing is to mix the current frame being rendered with frames from the past. This is done to increase the number of samples through time rather at the same moment. 
+
+One of such techniques is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene blended to the current frame being rendered.  To do this, we take the current frame and look for the color it should have in the History Buffer, this process is called Reprojection.
+
+To implement TRAA we need: Camera Jitter, Velocity Buffer, Frame History Buffer, Clipping Color Box, Sharpen Filter, and Motion Blur.
+
+\subsection{Camera Jitter}
+Camera Jitter is applied every frame to preserve information from local regions of surface fragments. If the current frame is static relative to the past ones then the system is losing information that could be used to refine it. ~\cite{Fuglsand2016,XU2016}
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.3]{images/camera_jitter.png}
+	\caption{Jittering the Projection Process. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
+\end{figure}
+
+The jittering is applied as a translation to the projection matrix using the \(Halton Sequence (2,3)\) as the translation deltas. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016}. 
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.5]{images/halton_16.png}
+	\caption{Values from the \(Halton Sequence (2,3)\) used.}\label{fig:halton16}
+\end{figure}
+
+The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. It was generated using MATLAB with the command \emph{haltonset(2)} then scrambled using reverse-radix scrambling, \emph{scramble(p, 'RR2')} and, finally, generated the 16 points used with \emph{net(p, 16)}.
+
+\subsection{Velocity Buffer}
+The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting in NDC space the current pixel position by its last frame position. This is possible by saving the MVP matrix of each object in the scene.
+
+Also, as suggested by Xu ~\cite{XU2016}, the jittering is not included as part of the motion.
+
+
+\subsection{Frame History Buffer}
+For each fragment in the current frame we look for the 3x3 neighborhood and plus \((+)\) pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look on both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of History ~\cite{Fuglsand2016}.
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.3]{images/sampling_pattern.png}
+	\caption{Sampling Pattern used. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern}
+\end{figure}
+
+On the \(3\times 3\) neighborhood we look for the velocity of the pixel with the closest depth, this is to get better edges in motion for pixels that are occluded ~\cite{Fuglsand2016}. We use this velocity to reproject the position of the current frame in the history. ~\cite{Fuglsand2016,XU2016}
+
+After we have the history, we constrain it (See next subsection) and mix it with the current frame. We linearly mix both using a feedback value that is calculated by the difference of luminance between colors. This feedback is clamped between values closer to one to add some information of the current frame while keeping the history. This mix stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because history is accumulated, we get the effect that each frame weights less the more time the history is not rejected. ~\cite{Fuglsand2016}
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.4]{images/sampling_process.png}
+	\caption{Temporal Reprojection Anti-Aliasing process. Image taken from Fuglsand presentation \protect\cite{Fuglsand2016}}\label{fig:samplingprocess}
+\end{figure}
+
+\subsection{Clipping Color Box} 
+A Clipping Color Box is used to handle color rejection when history is too distant from current color. This is a box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as limits. The history color is taken as a position and projected against the limits of the box if it lies outside, else, it is left untouched. The usage of the Clipping Color Box prevent color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.4]{images/clipping_box.png}
+	\caption{Color Clamping versus Color Clipping. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:clippingbox}
+\end{figure}
+
+
+\subsection{Sharpen Filter} 
+Because the Reprojection process and Color Clipping create blurriness, a Sharpen Filter is required. We used the one proposed by Xu. ~\cite{XU2016}
+
+\begin{figure}[!hbt]
+	\centering
+	\[
+	\begin{bmatrix*}[r]
+	0 & -1 &  0 \\
+	-1 &  5 & -1 \\
+	0 & -1 &  0
+	\end{bmatrix*}
+	\]
+	\caption{Sharpen Filter Convolution Matrix. As used in Xu presentation. \protect\cite{XU2016}}
+	\label{fig:sharpen}
+\end{figure}
+
+\subsection{Motion Blur}
+Because the nature of the History Buffer, ghosting is created by fragments from objects that move so fast that they are not rejected as quickly as necessary, under special lighting and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
+
+The Motion Blur used is the one proposed by Chapman ~\cite{Chapman2012}. It tries to behave like a real camera by scaling the velocity of each pixel by the division of the current Frames Per Second (FPS) to the one wanted, thus, simulating the shutter speed. Then it mixes the colors of the pixels that are sampled while following the direction of the velocity buffer vector.
+
+\subsection{Problems}
+\subsubsection{Blurriness} 
+Current implementations of TAA generate a very aggressive blur because of the way they mix the colors of the current frame and the history; the use of areas larger than the pixel increases the errors generated, therefore a Sharpen Filter is required. The filter applied in the implementation is the one used by Xu ~\cite{XU2016}, it solves blurriness reasonably well but it cannot eliminate some artifacts. 
+
+\subsubsection{Ghosting} 
+Some Ghosting are created when objects move, especially under particular lighting and background conditions that make the foreground and background look alike . This is partially corrected with motion blur nevertheless some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and increase the size of everything using an Stencil technique and manual tagging of objects~\cite{XU2016}. Pederson implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}. 
+
+\section{Accumulation Buffer}
+The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
+This is process increases the sampling per pixel and reduces the aliasing effects at the cost of rendering everything several times per frame.
 
 
 \chapter[Short on Formatting]{Formatting}

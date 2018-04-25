@@ -109,6 +109,7 @@
 
 % Sections and captions
 \RequirePackage{titlesec}
+\setcounter{secnumdepth}{4}
 \makeatletter
 	\titleformat{\chapter}[display]{\normalfont\huge\bfseries}
 	{\chaptertitlename\ \thechapter}{10pt}{\Huge}[\vspace{2cm}\hrulefill]

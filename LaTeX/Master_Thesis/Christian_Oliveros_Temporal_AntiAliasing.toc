@@ -4,32 +4,55 @@
 \contentsline {section}{\numberline {1.2}Related Work}{8}{section.1.2}
 \contentsline {chapter}{\numberline {2}Technological Background}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}C++ and Bonobo Framework}{9}{section.2.1}
-\contentsline {chapter}{\numberline {3}Short on Formatting}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Page Size and Margins}{11}{section.3.1}
-\contentsline {section}{\numberline {3.2}Typeface and Font Sizes}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Headers and Footers}{12}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Chapters, Sections, Paragraphs}{12}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Tables}{12}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Figures}{13}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Mathematical Formulae and Equations}{14}{section.3.3}
-\contentsline {section}{\numberline {3.4}References}{14}{section.3.4}
-\contentsline {section}{\numberline {3.5}Colours}{14}{section.3.5}
-\contentsline {chapter}{\numberline {4}Language}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Style Elements}{15}{section.4.1}
-\contentsline {subsubsection}{Widows and Orphans}{16}{subsubsection*.7}
-\contentsline {subsubsection}{Footnotes}{16}{subsubsection*.8}
-\contentsline {subsubsection}{Active vs. Passive Voice}{16}{subsubsection*.9}
-\contentsline {subsubsection}{Long and Short Sentences}{16}{subsubsection*.10}
-\contentsline {subsubsection}{Subject-Predicate Agreement}{16}{subsubsection*.11}
-\contentsline {chapter}{\numberline {5}Structure}{17}{chapter.5}
-\contentsline {chapter}{Bibliography}{19}{section*.12}
-\contentsline {chapter}{Appendix \numberline {A}About This Document}{23}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}List of Changes}{25}{Appendix.a.B}
-\contentsline {subsubsection}{Since 2016/04/29}{25}{subsubsection*.14}
-\contentsline {subsubsection}{Since 2015/09/11}{25}{subsubsection*.15}
-\contentsline {subsubsection}{Since 2015/04/27}{25}{subsubsection*.16}
-\contentsline {subsubsection}{Since 2014/02/18}{25}{subsubsection*.17}
-\contentsline {subsubsection}{Since 2013/09/23}{25}{subsubsection*.18}
-\contentsline {subsubsection}{Since 2013/08/30}{25}{subsubsection*.19}
-\contentsline {subsubsection}{Since 2013/02/22}{26}{subsubsection*.20}
-\contentsline {subsubsection}{Since 2013/02/15}{26}{subsubsection*.21}
+\contentsline {section}{\numberline {2.2}OpenGL and GLSL}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}MATLAB}{9}{section.2.3}
+\contentsline {chapter}{\numberline {3}Theoretical Background}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Rendering Pipeline}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Rasterization Process}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Aliasing Problem}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Shadow Mapping and \\ Deferred Shading Architecture}{13}{section.3.4}
+\contentsline {section}{\numberline {3.5}Anti-Aliasing}{14}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Super Sampling Anti-Aliasing (SSAA)}{14}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Multi Sample Anti-Aliasing (MSAA)}{14}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Fast Approximate Anti-Aliasing (FXAA)}{15}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Enhanced Subpixel Morphological Antialiasing (SMAA)}{15}{subsection.3.5.4}
+\contentsline {section}{\numberline {3.6}Temporal Anti-Aliasing}{15}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Camera Jitter}{15}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Velocity Buffer}{16}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Frame History Buffer}{16}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{17}{subsection.3.6.4}
+\contentsline {subsection}{\numberline {3.6.5}Sharpen Filter}{18}{subsection.3.6.5}
+\contentsline {subsection}{\numberline {3.6.6}Motion Blur}{18}{subsection.3.6.6}
+\contentsline {subsection}{\numberline {3.6.7}Problems}{18}{subsection.3.6.7}
+\contentsline {subsubsection}{\numberline {3.6.7.1}Blurriness}{18}{subsubsection.3.6.7.1}
+\contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{18}{subsubsection.3.6.7.2}
+\contentsline {section}{\numberline {3.7}Accumulation Buffer}{19}{section.3.7}
+\contentsline {chapter}{\numberline {4}Short on Formatting}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Page Size and Margins}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Typeface and Font Sizes}{21}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Headers and Footers}{22}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Chapters, Sections, Paragraphs}{22}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Tables}{22}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Figures}{23}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Mathematical Formulae and Equations}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}References}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Colours}{24}{section.4.5}
+\contentsline {chapter}{\numberline {5}Language}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Style Elements}{25}{section.5.1}
+\contentsline {subsubsection}{\numberline {5.1.0.1}Widows and Orphans}{26}{subsubsection.5.1.0.1}
+\contentsline {subsubsection}{\numberline {5.1.0.2}Footnotes}{26}{subsubsection.5.1.0.2}
+\contentsline {subsubsection}{\numberline {5.1.0.3}Active vs. Passive Voice}{26}{subsubsection.5.1.0.3}
+\contentsline {subsubsection}{\numberline {5.1.0.4}Long and Short Sentences}{26}{subsubsection.5.1.0.4}
+\contentsline {subsubsection}{\numberline {5.1.0.5}Subject-Predicate Agreement}{26}{subsubsection.5.1.0.5}
+\contentsline {chapter}{\numberline {6}Structure}{27}{chapter.6}
+\contentsline {chapter}{Bibliography}{29}{section*.17}
+\contentsline {chapter}{Appendix \numberline {A}About This Document}{33}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}List of Changes}{35}{Appendix.a.B}
+\contentsline {subsubsection}{\numberline {B.0.0.1}Since 2016/04/29}{35}{subsubsection.a.B.0.0.1}
+\contentsline {subsubsection}{\numberline {B.0.0.2}Since 2015/09/11}{35}{subsubsection.a.B.0.0.2}
+\contentsline {subsubsection}{\numberline {B.0.0.3}Since 2015/04/27}{35}{subsubsection.a.B.0.0.3}
+\contentsline {subsubsection}{\numberline {B.0.0.4}Since 2014/02/18}{35}{subsubsection.a.B.0.0.4}
+\contentsline {subsubsection}{\numberline {B.0.0.5}Since 2013/09/23}{35}{subsubsection.a.B.0.0.5}
+\contentsline {subsubsection}{\numberline {B.0.0.6}Since 2013/08/30}{35}{subsubsection.a.B.0.0.6}
+\contentsline {subsubsection}{\numberline {B.0.0.7}Since 2013/02/22}{36}{subsubsection.a.B.0.0.7}
+\contentsline {subsubsection}{\numberline {B.0.0.8}Since 2013/02/15}{36}{subsubsection.a.B.0.0.8}

@@ -1,10 +1,21 @@
 \begin{thebibliography}{10}
 
+\bibitem{Moller2007}
+Tomas Akenine-Möller.
+\newblock [mobile] graphics hardware.
+\newblock Pages 7-8.
+
 \bibitem{Shreiner2011}
 E.~Angel and D.~Shreiner.
 \newblock {\em Computer Graphics A Top-Down Approach with Shader-Based OpenGL
   6th Edition}.
 \newblock Addison-Wesley, 2011.
+
+\bibitem{Chapman2012}
+John Chapman.
+\newblock {Per-Object Motion Blur}, September 2012.
+\newblock Accessed: 2017-11-30,
+  \url{http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
 
 \bibitem{OGSW}
 {Commonwealth Forestry Association}.
@@ -25,6 +36,12 @@ S.~Few.
 Michel Goossens, Frank Mittelbach, and Alexander Samarin.
 \newblock {\em The LaTeX Companion}.
 \newblock Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{Haeberli1990}
+Paul Haeberli and Kurt Akeley.
+\newblock The accumulation buffer: Hardware support for high-quality rendering,
+  August 1990.
+\newblock Volume 24, Number 4, August 1990.
 
 \bibitem{heffernan2000writing}
 J.A.W. Heffernan, J.E. Lincoln, and J.~Atwill.
@@ -50,7 +67,11 @@ Timothy Lottes.
 \newblock {\em NVIDIA Docs}, 2009.
 \newblock The Document was last edited in 2011.
 
-\bibitem{Doggett2017}
+\bibitem{Doggett2017EDAF80}
+{Michael Doggett}.
+\newblock {{EDAF80} Computer Graphics}, September 2017.
+
+\bibitem{Doggett2017EDAN35}
 {Michael Doggett}.
 \newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
 
@@ -82,6 +103,14 @@ Will Robertson and Khaled Hosny.
 Edward~R. Tufte.
 \newblock {\em The visual display of quantitative information}.
 \newblock Graphics Press, Cheshire, CT, USA, 1986.
+
+\bibitem{Wronski2014}
+Bart Wronski.
+\newblock {Temporal Supersampling and Antialiasing}.
+\newblock
+  \url{https://bartwronski.com/2014/03/15/temporal-supersampling-and-antialiasing/},
+  March 2014.
+\newblock Accessed: 2017-12-01.
 
 \bibitem{XU2016}
 Ke~XU.
