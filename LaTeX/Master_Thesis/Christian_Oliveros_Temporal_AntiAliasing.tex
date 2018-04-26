@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{amsmath}
 \usepackage{mathtools}
 %\usepackage{makeidx}
 \usepackage{graphicx}
@@ -12,6 +13,9 @@
 
 \usepackage{hyperref}
 \usepackage{pdfpages}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
 %\geometry{showframe}
 
@@ -130,7 +134,7 @@ Because we are mapping a continuous triangle to a finite number of pixels, we fa
 This process shows us that what is rendered to the screen approximates what is being represented in the scene because pixels can only be covered by one triangle at a time. \cite{Moller2007, Doggett2017EDAN35}
 
 \section{Aliasing Problem}
-When we map a continuous representation to a finite one, it is going to generate errors. As explained by Edward Angel and Dave Shreiner in their book (page 413) \cite{Shreiner2011}, we can interpret the rendering process as the sampling of a continuous function \(f(x, y)\), which represents the color of the scene at that point, to an \(n\times m\)  grid of pixels in which we assume that the point \(f_{ij}\)  is the value of f over a small area; and to reconstruct the \(f\) function to display the image to the screen using only what we know from the samples. The mathematical tool used to evaluate the issues of this process is the Fourier Analysis, which states that a function can be decomposed into a set of sinusoids, at possibly an infinite number of frequencies. For two-dimensional image analysis we can think of the \(f\) function as a set of sinusoids at two spatial frequencies.
+When we map a continuous representation to a finite one, it is going to generate errors. As explained by Edward Angel and Dave Shreiner in their book (page 413) \cite{Shreiner2011}, we can interpret the rendering process as the sampling of a continuous function $f(x, y)$, which represents the color of the scene at that point, to an $n\times m$  grid of pixels in which we assume that the point $f_{ij}$  is the value of f over a small area; and to reconstruct the $f$ function to display the image to the screen using only what we know from the samples. The mathematical tool used to evaluate the issues of this process is the Fourier Analysis, which states that a function can be decomposed into a set of sinusoids, at possibly an infinite number of frequencies. For two-dimensional image analysis we can think of the $f$ function as a set of sinusoids at two spatial frequencies.
 
 For this thesis we will use  the First part of the Nyquist sampling theorem as a tool to illustrate why aliasing problems appear and relates to sampling problems. \\
 
@@ -197,12 +201,12 @@ Camera Jitter is applied every frame to preserve information from local regions 
 	\caption{Jittering the Projection Process. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
 \end{figure}
 
-The jittering is applied as a translation to the projection matrix using the \(Halton Sequence (2,3)\) as the translation deltas. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016}. 
+The jittering is applied as a translation to the projection matrix using the $Halton Sequence (2,3)$ as the translation deltas. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016}. 
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.5]{images/halton_16.png}
-	\caption{Values from the \(Halton Sequence (2,3)\) used.}\label{fig:halton16}
+	\caption{Values from the $Halton Sequence (2,3)$ used.}\label{fig:halton16}
 \end{figure}
 
 The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. It was generated using MATLAB with the command \emph{haltonset(2)} then scrambled using reverse-radix scrambling, \emph{scramble(p, 'RR2')} and, finally, generated the 16 points used with \emph{net(p, 16)}.
@@ -214,7 +218,7 @@ Also, as suggested by Xu ~\cite{XU2016}, the jittering is not included as part o
 
 
 \subsection{Frame History Buffer}
-For each fragment in the current frame we look for the 3x3 neighborhood and plus \((+)\) pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look on both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of History ~\cite{Fuglsand2016}.
+For each fragment in the current frame we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look on both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of History ~\cite{Fuglsand2016}.
 
 \begin{figure}[!hbt]
 	\centering
@@ -222,7 +226,7 @@ For each fragment in the current frame we look for the 3x3 neighborhood and plus
 	\caption{Sampling Pattern used. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern}
 \end{figure}
 
-On the \(3\times 3\) neighborhood we look for the velocity of the pixel with the closest depth, this is to get better edges in motion for pixels that are occluded ~\cite{Fuglsand2016}. We use this velocity to reproject the position of the current frame in the history. ~\cite{Fuglsand2016,XU2016}
+On the $3\times 3$ neighborhood we look for the velocity of the pixel with the closest depth, this is to get better edges in motion for pixels that are occluded ~\cite{Fuglsand2016}. We use this velocity to reproject the position of the current frame in the history. ~\cite{Fuglsand2016,XU2016}
 
 After we have the history, we constrain it (See next subsection) and mix it with the current frame. We linearly mix both using a feedback value that is calculated by the difference of luminance between colors. This feedback is clamped between values closer to one to add some information of the current frame while keeping the history. This mix stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because history is accumulated, we get the effect that each frame weights less the more time the history is not rejected. ~\cite{Fuglsand2016}
 
@@ -245,18 +249,15 @@ A Clipping Color Box is used to handle color rejection when history is too dista
 \subsection{Sharpen Filter} 
 Because the Reprojection process and Color Clipping create blurriness, a Sharpen Filter is required. We used the one proposed by Xu. ~\cite{XU2016}
 
-\begin{figure}[!hbt]
-	\centering
-	\[
-	\begin{bmatrix*}[r]
-	0 & -1 &  0 \\
-	-1 &  5 & -1 \\
-	0 & -1 &  0
-	\end{bmatrix*}
-	\]
-	\caption{Sharpen Filter Convolution Matrix. As used in Xu presentation. \protect\cite{XU2016}}
-	\label{fig:sharpen}
-\end{figure}
+\begin{equation} \label{eq:sharpen}
+\begin{bmatrix*}[r]
+0 & -1 &  0 \\
+-1 &  5 & -1 \\
+0 & -1 &  0
+\end{bmatrix*}
+\end{equation}
+
+Equation \ref{eq:sharpen} being the Sharpen Filter Convolution Matrix  used in Xu presentation. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
 Because the nature of the History Buffer, ghosting is created by fragments from objects that move so fast that they are not rejected as quickly as necessary, under special lighting and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
@@ -275,10 +276,90 @@ The Accumulation Buffer is an anti-aliasing technique that consists, according t
 This is process increases the sampling per pixel and reduces the aliasing effects at the cost of rendering everything several times per frame.
 
 \section{Sobel Operator}
-It is an efficiently computable \(3\times 3\) isotropic gradient operator, as explained by Irwin Sobel (Cite: History and Definition of Sobel Operator by Irwin Sobel).
+It is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel. \cite{Sobel2014}
 
-It works by taking the four-possible simple central gradient estimates in a \(3\times 3\) neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives  multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
+It works by taking the four-possible simple central gradient estimates in a $3\times 3$ neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives  multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
 
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:sobel_neighborhood}
+0 & -1 &  0 \\
+-1 &  5 & -1 \\
+0 & -1 &  0
+\end{bmatrix*}
+\end{equation}
+
+Let \ref{eq:sobel_neighborhood} be the $3\times 3$ neighborhood and $\abs*{G}$ the magnitude of the directional derivative estimate of the neighborhood.  
+
+The direction of $G$ will be given by the unit vector to the appropriate neighbor. Vector summing causes all the $e$ (center of the $3\times 3$ neighborhood) values to be canceled leaving only the next expression \ref{eq:sobel_simplification}:
+\begin{equation}\label{eq:sobel_simplification}
+\begin{split}
+	G & =\frac{c-g}{4}*\begin{bmatrix*}1 & 1\end{bmatrix*}+\frac{a-i}{4}*\begin{bmatrix*}-1 & 1\end{bmatrix*}+\frac{b-h}{2}*\begin{bmatrix*}0 & 1\end{bmatrix*}+\frac{f-d}{2}*\begin{bmatrix*}1 & 0\end{bmatrix*} \\ & =\begin{bmatrix*}\frac{c-g-a+i}{4}+\frac{f-d}{2} & \frac{c-g+a-i}{4}+\frac{b-h}{2}\end{bmatrix*}
+\end{split}
+\end{equation}
+
+Then we multiply by $4$, rather to divide by $4$, to approximate the value and ensure that we do not lose precision if we perform this with small fixed-point integers. The new calculated magnitude is sixteen times larger than the original average gradient.
+
+\begin{equation}\label{eq:sobel_approximation}
+\begin{split}
+G' = 4 * G =\begin{bmatrix*}(c-g-a+i)+(f-d)*2 & (c-g+a-i)*4+(b-h)*2\end{bmatrix*}
+\end{split}
+\end{equation}
+
+This can be expressed in two weighting matrices. \ref{eq:sobel_x} for the $x$ component and \ref{eq:sobel_y} for the $y$ component.
+
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:sobel_x}
+-1 &  0 & +1 \\
+-2 &  0 & +2 \\
+-1 &  0 & +1
+\end{bmatrix*}
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:sobel_y}
++1 & +2 & +1 \\
+ 0 &  0 &  0 \\
+-1 & -2 & -1
+\end{bmatrix*}
+\end{equation}
+
+For edge-point detection, what is commonly done is compare the magnitude of $G$ against a numeric threshold to mark points as edges. 
+
+\section{Image Metrics}
+The process of measuring the quality of an image is a complicated one. As explained by Yusra A. Y. Al-Najjar and Dr. Der Chen Soong \cite{Yusra2012}, we can follow two main methods: subjective or objective. The subjective methods are based on opinions collected from humans and, as one would expect, are considered expensive, difficult to implement and time consuming to perform. The second kind of methods, the objective ones, are based on mathematical formulas and algorithms to measure the quality of the image without human intervention. For this thesis, we are using objective methods. 
+
+Objectives methods can be categorized in three groups, as described by Yusra A. Y. Al-Najjar and Dr. Der Chen Soong \cite{Yusra2012}:
+
+\begin{itemize}
+	\item \textbf{No-Reference:} In which we have no reference image to compare with.
+	\item \textbf{Reduced-Reference:} Where we have partially a reference image.
+	\item \textbf{Full-Reference:} We have the complete reference image.
+\end{itemize}
+
+For computer graphics the preferred methods are the Full-Reference ones because reference images can be generated using higher quality but bad performing algorithms to render them. The most common metrics used, and the ones used in this thesis, are: Mean Square Error (MSE); Peak Signal-to-Noise Ratio (PSNR); and the Structural Similarity Index (SSIM).
+
+\subsection{Mean Square Error (MSE)}
+Based on the average of the squared error between the pixels of the image and the reference.
+
+\begin{equation}\label{eq:mse}
+	MSE=\frac{1}{N*M}\sum\limits_{i=0}^{N-1}\sum\limits_{j=0}^{M-1}(Im(i,j)-Ref(i,j))^2
+\end{equation}
+Where $N,M$ are the width and height of the images and $Im,Ref$ are the pixel of the Image and Reference.
+
+\subsection{Root Mean Square Deviation (RMSD)}
+It is the standard deviation of MSE. Also called Root Mean Square Error (RMSE).
+\begin{equation}\label{eq:rmse}
+RMSE=\sqrt{MSE}
+\end{equation}
+
+\subsection{Peak Signal-to-Noise Ratio (PSNR)}
+It is based on the mathematical concept of Signal-To-Noise Ratio (SNR) which measures the signal of the image, which is stored as the colors of the pixels for our purposes, against its error compared to the reference. \cite{Yusra2012}
+
+\begin{equation}\label{eq:psnr}
+PSNR=10*\log\left(\frac{S^2}{MSE}\right)
+\end{equation}
+
+Where $S$ is the maximum value the signal can achieve.In our case it is $255$ because we use 8-bit color channels. 
 
 \chapter[Short on Formatting]{Formatting}
 Avoid empty spaces between \textit{chapter}-\textit{section}, \textit{section}-\textit{sub-section}. For instance, a very brief summary of the chapter would be one way of bridging the chapter heading and the first section of that chapter.

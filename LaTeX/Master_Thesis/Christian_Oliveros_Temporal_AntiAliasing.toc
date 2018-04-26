@@ -27,32 +27,37 @@
 \contentsline {subsubsection}{\numberline {3.6.7.1}Blurriness}{18}{subsubsection.3.6.7.1}
 \contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{18}{subsubsection.3.6.7.2}
 \contentsline {section}{\numberline {3.7}Accumulation Buffer}{19}{section.3.7}
-\contentsline {chapter}{\numberline {4}Short on Formatting}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Page Size and Margins}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Typeface and Font Sizes}{21}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Headers and Footers}{22}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Chapters, Sections, Paragraphs}{22}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Tables}{22}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Figures}{23}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Mathematical Formulae and Equations}{24}{section.4.3}
-\contentsline {section}{\numberline {4.4}References}{24}{section.4.4}
-\contentsline {section}{\numberline {4.5}Colours}{24}{section.4.5}
-\contentsline {chapter}{\numberline {5}Language}{25}{chapter.5}
-\contentsline {section}{\numberline {5.1}Style Elements}{25}{section.5.1}
-\contentsline {subsubsection}{\numberline {5.1.0.1}Widows and Orphans}{26}{subsubsection.5.1.0.1}
-\contentsline {subsubsection}{\numberline {5.1.0.2}Footnotes}{26}{subsubsection.5.1.0.2}
-\contentsline {subsubsection}{\numberline {5.1.0.3}Active vs. Passive Voice}{26}{subsubsection.5.1.0.3}
-\contentsline {subsubsection}{\numberline {5.1.0.4}Long and Short Sentences}{26}{subsubsection.5.1.0.4}
-\contentsline {subsubsection}{\numberline {5.1.0.5}Subject-Predicate Agreement}{26}{subsubsection.5.1.0.5}
-\contentsline {chapter}{\numberline {6}Structure}{27}{chapter.6}
-\contentsline {chapter}{Bibliography}{29}{section*.17}
-\contentsline {chapter}{Appendix \numberline {A}About This Document}{33}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}List of Changes}{35}{Appendix.a.B}
-\contentsline {subsubsection}{\numberline {B.0.0.1}Since 2016/04/29}{35}{subsubsection.a.B.0.0.1}
-\contentsline {subsubsection}{\numberline {B.0.0.2}Since 2015/09/11}{35}{subsubsection.a.B.0.0.2}
-\contentsline {subsubsection}{\numberline {B.0.0.3}Since 2015/04/27}{35}{subsubsection.a.B.0.0.3}
-\contentsline {subsubsection}{\numberline {B.0.0.4}Since 2014/02/18}{35}{subsubsection.a.B.0.0.4}
-\contentsline {subsubsection}{\numberline {B.0.0.5}Since 2013/09/23}{35}{subsubsection.a.B.0.0.5}
-\contentsline {subsubsection}{\numberline {B.0.0.6}Since 2013/08/30}{35}{subsubsection.a.B.0.0.6}
-\contentsline {subsubsection}{\numberline {B.0.0.7}Since 2013/02/22}{36}{subsubsection.a.B.0.0.7}
-\contentsline {subsubsection}{\numberline {B.0.0.8}Since 2013/02/15}{36}{subsubsection.a.B.0.0.8}
+\contentsline {section}{\numberline {3.8}Sobel Operator}{19}{section.3.8}
+\contentsline {section}{\numberline {3.9}Image Metrics}{20}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{20}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{20}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{21}{subsection.3.9.3}
+\contentsline {chapter}{\numberline {4}Short on Formatting}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Page Size and Margins}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Typeface and Font Sizes}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Headers and Footers}{24}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Chapters, Sections, Paragraphs}{24}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Tables}{24}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Figures}{25}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Mathematical Formulae and Equations}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}References}{26}{section.4.4}
+\contentsline {section}{\numberline {4.5}Colours}{26}{section.4.5}
+\contentsline {chapter}{\numberline {5}Language}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Style Elements}{27}{section.5.1}
+\contentsline {subsubsection}{\numberline {5.1.0.1}Widows and Orphans}{28}{subsubsection.5.1.0.1}
+\contentsline {subsubsection}{\numberline {5.1.0.2}Footnotes}{28}{subsubsection.5.1.0.2}
+\contentsline {subsubsection}{\numberline {5.1.0.3}Active vs. Passive Voice}{28}{subsubsection.5.1.0.3}
+\contentsline {subsubsection}{\numberline {5.1.0.4}Long and Short Sentences}{28}{subsubsection.5.1.0.4}
+\contentsline {subsubsection}{\numberline {5.1.0.5}Subject-Predicate Agreement}{28}{subsubsection.5.1.0.5}
+\contentsline {chapter}{\numberline {6}Structure}{29}{chapter.6}
+\contentsline {chapter}{Bibliography}{31}{section*.16}
+\contentsline {chapter}{Appendix \numberline {A}About This Document}{35}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}List of Changes}{37}{Appendix.a.B}
+\contentsline {subsubsection}{\numberline {B.0.0.1}Since 2016/04/29}{37}{subsubsection.a.B.0.0.1}
+\contentsline {subsubsection}{\numberline {B.0.0.2}Since 2015/09/11}{37}{subsubsection.a.B.0.0.2}
+\contentsline {subsubsection}{\numberline {B.0.0.3}Since 2015/04/27}{37}{subsubsection.a.B.0.0.3}
+\contentsline {subsubsection}{\numberline {B.0.0.4}Since 2014/02/18}{37}{subsubsection.a.B.0.0.4}
+\contentsline {subsubsection}{\numberline {B.0.0.5}Since 2013/09/23}{37}{subsubsection.a.B.0.0.5}
+\contentsline {subsubsection}{\numberline {B.0.0.6}Since 2013/08/30}{37}{subsubsection.a.B.0.0.6}
+\contentsline {subsubsection}{\numberline {B.0.0.7}Since 2013/02/22}{38}{subsubsection.a.B.0.0.7}
+\contentsline {subsubsection}{\numberline {B.0.0.8}Since 2013/02/15}{38}{subsubsection.a.B.0.0.8}

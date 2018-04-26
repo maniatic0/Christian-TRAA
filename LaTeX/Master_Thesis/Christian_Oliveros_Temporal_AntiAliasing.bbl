@@ -5,6 +5,13 @@ Tomas Akenine-Möller.
 \newblock [mobile] graphics hardware.
 \newblock Pages 7-8.
 
+\bibitem{Yusra2012}
+Yusra A.~Y. Al-Najjar and Dr. Der~Chen Soong.
+\newblock Comparison of image quality assessment: {PSNR, HVS, SSIM, UIQI}.
+\newblock {\em International Journal of Scientific \& Engineering Research},
+  August 2012.
+\newblock Volume 3, Issue 8.
+
 \bibitem{Shreiner2011}
 E.~Angel and D.~Shreiner.
 \newblock {\em Computer Graphics A Top-Down Approach with Shader-Based OpenGL
@@ -39,8 +46,8 @@ Michel Goossens, Frank Mittelbach, and Alexander Samarin.
 
 \bibitem{Haeberli1990}
 Paul Haeberli and Kurt Akeley.
-\newblock The accumulation buffer: Hardware support for high-quality rendering,
-  August 1990.
+\newblock The accumulation buffer: Hardware support for high-quality rendering.
+\newblock {\em ACM Computer Graphics}, August 1990.
 \newblock Volume 24, Number 4, August 1990.
 
 \bibitem{heffernan2000writing}
@@ -98,6 +105,11 @@ Lasse Jon~Fuglsang Pedersen.
 Will Robertson and Khaled Hosny.
 \newblock The fontspec package, May 2012.
 \newblock \url{http://ctan.uib.no/macros/latex/contrib/fontspec/fontspec.pdf}.
+
+\bibitem{Sobel2014}
+Irwin Sobel.
+\newblock An isotropic 3x3 image gradient operator.
+\newblock {\em Irwin Sobel Correspondence}, 02 2014.
 
 \bibitem{Tufte:1986}
 Edward~R. Tufte.
