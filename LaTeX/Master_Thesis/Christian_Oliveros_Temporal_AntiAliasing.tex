@@ -274,6 +274,11 @@ Some Ghosting are created when objects move, especially under particular lightin
 The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
 This is process increases the sampling per pixel and reduces the aliasing effects at the cost of rendering everything several times per frame.
 
+\section{Sobel Operator}
+It is an efficiently computable \(3\times 3\) isotropic gradient operator, as explained by Irwin Sobel (Cite: History and Definition of Sobel Operator by Irwin Sobel).
+
+It works by taking the four-possible simple central gradient estimates in a \(3\times 3\) neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives  multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
+
 
 \chapter[Short on Formatting]{Formatting}
 Avoid empty spaces between \textit{chapter}-\textit{section}, \textit{section}-\textit{sub-section}. For instance, a very brief summary of the chapter would be one way of bridging the chapter heading and the first section of that chapter.
