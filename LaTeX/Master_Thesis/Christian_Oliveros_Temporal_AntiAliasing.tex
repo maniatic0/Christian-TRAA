@@ -14,6 +14,8 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 
+\usepackage{diagbox}
+
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
@@ -87,6 +89,7 @@ Enhanced Subpixel Morphological Antialiasing (SMAA) by Jorge Jimenez, Jose I. Ec
 Finally, we have the TRAA implementations of Ke Xu  for Uncharted 4 and Lasse Fuglsang for Inside, which implement new advances like the Color Clipping Box and Sharpen Filter. This two last implementations are used the base of this master thesis. \cite{Fuglsand2016, XU2016}
 
 \chapter{Technological Background}
+In this chapter we will explain which tools were used in this master thesis and why.
 \section{C++ and Bonobo Framework}
 C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. It is widely used in Computer Graphics due to its performance, especially on real-time applications, and its wide knowledge base.
 
@@ -99,6 +102,7 @@ OpenGL Shading Language (GLSL) is a high-level shading language that allows prog
 MATLAB is a proprietary multi-paradigm numerical computing environment. Commonly used for science, engineering and economics. It is popular for image processing applications because of its wide library of algorithms for this purpose, including image metrics which are used in this thesis.   
 
 \chapter{Theoretical Background}
+In this chapter we will explain all the theoretical information that is the base of this master thesis. From the Computer Graphics Theory to the Image Metrics used.
 \section{Rendering Pipeline}
 Today’s graphics pipeline can be simplified into three steps: Vertex Shader, which moves the geometry associated with the vertices and prepare them for the next step; Rasterizer, which maps the triangles to pixels in the screen, calculates their visibility and interpolates the parameters of the vertices for each pixel covered by the triangle; and the Pixel (or Fragment) Shader which takes the visual pixels from the Rasterizer and colors them.
 
@@ -360,6 +364,95 @@ PSNR=10*\log\left(\frac{S^2}{MSE}\right)
 \end{equation}
 
 Where $S$ is the maximum value the signal can achieve.In our case it is $255$ because we use 8-bit color channels. 
+
+\subsection{Structural Similarity Index (SSIM)}
+SSIM is a widely used image metric that matches human subjectivity and is highly sensitive to degradations in the spatial structure of image luminance, as explained by W.S. Malpica and A.C. Bovik. \cite{Malpica2009}
+
+It requires two images to compare, $X$ and $Y$, and three similarity functions are performed in a sliding $N\times N$ (typically $11\times 11$) gaussian weighted window.
+
+\begin{equation}\label{eq:ssim_components}
+\begin{split}
+l(x,y) & = \frac{2*\mu_X(x,y)*\mu_Y(x,y)+C_1}{\mu_X^2(x,y)+\mu_Y^2(x,y)+C_1} \\ 
+c(x,y) & = \frac{2*\sigma_X(x,y)*\sigma_Y(x,y)+C_2}{\sigma_X^2(x,y)+\sigma_Y^2(x,y)+C_2} \\ 
+s(x,y) & = \frac{\sigma_{XY}(x,y)+C_3}{\sigma_X(x,y)+\sigma_Y(x,y)+C_3}
+\end{split}
+\end{equation}
+
+Where
+\begin{equation*}
+\begin{split}
+\mu_X(x,y) & = \sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)*X(x+p,y+q)\\ 
+\sigma_X^2(x,y) & = \sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)*\lbrack X(x+p,y+q)-\mu_X(x,y) \rbrack^2\\ 
+\sigma_{XY}(x,y) & = \begin{split}\sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)& *\lbrack X(x+p,y+q)-\mu_X(x,y)\rbrack \\ & *\lbrack Y(x+p,y+q)-\mu_Y(x,y)\rbrack\end{split}
+\end{split}
+\end{equation*}
+
+Where $w(p,q)$ is a Gaussian weighing function such that $\sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)=1$ and $C_1,C_2,C_3$ are small constants that provide stability when the denominator approaches zero. Typically, they are set as follows: 
+\begin{equation*}
+	C_1=(K_1*L)^2,C_2=(K_1*L)^2,C_3=\frac{C_2}{2}
+\end{equation*}
+
+Where L is the dynamic range of the image and $K_1,K_2\ll1$ small constants. At the end, the three similarity functions are combined in the general form: 
+
+\begin{equation}\label{eq:ssim}
+SSIM(x,y)=l(x,y)*c(x,y)*s(x,y)
+\end{equation}
+
+
+
+\chapter{Development}
+In this chapter the main work performed in this master thesis.
+\section{EDAN35 Project Improvements}
+For this master thesis, we decided to use our project from High Performance Computer Graphics (EDAN35) project as the base. During the course, we implemented a Temporal Reprojection Anti-Aliasing technique based on the presentations of Ke Xu and Lasse Fuglsang ~\cite{Fuglsand2016,XU2016}, from the games Inside and Uncharted 4. It proved to be reliable and well documented; and allowed us to put in practice the fundamentals of the technique in an academic environment, providing the base for improvements performed for this master thesis.
+
+The EDAN35 project implementation had errors in the jittering process that were corrected by properly expanding what both implementations meant by camera jittering , see Appendix B for full explanation. The management of the Halton points was redone to accomplish the improved camera jittering with the inclusion of support of up to 128 points to work as the jittering of the Accumulation Buffer (See Figure \ref{fig:halton128}). Note, though, for Temporal Anti-Aliasing only the first 16 points are used as suggested by Ke Xu and Lasse Fuglsang. ~\cite{Fuglsand2016,XU2016}
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.5]{images/halton_128.png}
+	\caption{The $128$ $Halton Sequence (2,3)$ Points available to use.}\label{fig:halton128}
+\end{figure}
+
+Specular Lighting Anti-Aliasing is complex problem by itself, which requires specialized solutions that work directly with light reflections. Anti-Aliasing techniques do not correct it by themselves, they usually work with compatible already made solutions. To avoid problems with Specular Lighting, it was decided to be turned off.
+
+Also, there were added models for a sphere, wall, pipe, hairball, a window with blinds and an arched window to test the improvements done to the Temporal Anti-Aliasing. All models, except the wall, were added with one color-solid texture to avoid introducing lighting errors in the calculations of the image metrics for the comparisons between the Uncharted 4 implementation and the one developed in this master thesis. The wall model uses a white texture with black letters on it, this is because letters use hard edges to define their shape and must stay that way after applying any Anti-Aliasing technique.
+
+\subsection{Fast Approximate Anti-Aliasing (FXAA)}
+For this master thesis, the white paper version of Fast Approximate Anti-Aliasing (FXAA) by Timothy Lottes \cite{Lottes2009} was used to compare it against Temporal Anti-Aliasing, on the ground that both techniques are Post-Processing Anti-Aliasing and that FXAA is a popular technique used in the industry. It was implemented  under the highest quality preset according to the white paper without taking in consideration the performance impact because we wanted to compare the raw improvement that both techniques can provide.
+
+\subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
+In order to test a more complex and newer post processing technique, SMAA was implemented following the instructions provided by Jorge Jimenez, Jose I. Echeverria, Tiago Sousa and Diego \cite{Jimenez2012}. It was implemented using the highest     preset that works with the deferred shading pipeline.
+
+\subsection{Accumulation Buffer}
+We use an Accumulation Buffer to provide a reference image of what the scene is. It was implemented following Paul Haeberli and Kurt Akeley \cite{Haeberli1990}. The points used to jitter the camera are Halton Sequence Points as for Temporal Anti-Aliasing, although the Accumulation Buffer can use up to 128. The reasons for using Halton Sequence are that: it fulfils the requirements established by Paul Haeberli and Kurt Akeley; it is easy to extend the current camera system to support more Halton Points; and for Temporal Anti-Aliasing, it provides pseudo random points that do not follow a pattern to help gather as much information of the scene as possible.
+
+\subsubsection{Sample Number Selection}
+The number of samples selected for the Accumulation Buffer is 128. This is because it provides the best representation possible of the scene even though it causes a substantial loss on performance.
+
+In order to show the difference between using 16 and 128 samples, we performed four tests to observe how the metrics behave under different arrangements  of scene objects and lighting. In the next table we see the results of one of such tests:
+
+\begin{table}[!hbt]
+	\centering
+	\caption{Metrics behavior comparison between using 16 samples versus 128 for Accumulation Buffer.}\label{tab:acctest}
+\begin{tabular}{ l | c | c | c | r }
+	\multicolumn{5}{c}{Test D} \\
+	\hline
+	\diagbox{Tests}{Samples}  & \makebox{16} & \makebox{128} & \makebox{Difference} & \makebox{Relative Difference $(\%)$} \\
+	\hline
+	MSE of Temporal	& $40.647863$ & $38.947297$	& $-1.700566$ & $4.183654132\%$ \\
+	RMSD of Temporal & $6.375568$ & $6.240777$ & $-0.134791$ & $2.114180258\%$ \\
+	MSE of No AA & $24.872104$ & $24.524992$ & $-0.347112$ & $1.395587603\%$ \\
+	RMSD of No AA & $4.987194$ & $4.952271$ & $-0.034923$ & $0.700253489\%$ \\
+	Peak-SNR of Temporal & $32.040426$ & $32.22603$ & $0.185604$ & $0.575944353\%$ \\
+	SNR of Temporal & $30.30596$ & $30.492374$ & $0.186414$ & $0.611346299\%$ \\
+	Peak-SNR of No AA & $34.173678$ & $34.234715$ & $0.061037$ & $0.178289786\%$ \\
+	SNR of No AA & $32.439212$ & $32.501058$ & $0.061846$ & $0.190289190\%$ \\
+	SSIM of Temporal & $0.993302$ & $0.993451$ & $0.000149$ & $0.014998223\%$ \\
+	SSIM of No AA & $0.996826$ & $0.996891$ & $6.5E-05$ & $0.006520272\%$ 		
+\end{tabular}
+\end{table}
+
+The changes are large enough on some metrics to be noticeable, especially on MSE and SSIM   of Temporal Anti-Aliasing. As how we are going to notice when we reach the results chapter, these changes are important enough for the comparisons between Anti-Aliasing techniques. 
 
 \chapter[Short on Formatting]{Formatting}
 Avoid empty spaces between \textit{chapter}-\textit{section}, \textit{section}-\textit{sub-section}. For instance, a very brief summary of the chapter would be one way of bridging the chapter heading and the first section of that chapter.

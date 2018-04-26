@@ -74,6 +74,12 @@ Timothy Lottes.
 \newblock {\em NVIDIA Docs}, 2009.
 \newblock The Document was last edited in 2011.
 
+\bibitem{Malpica2009}
+W.~S. Malpica and A.~C. Bovik.
+\newblock Range image quality assessment by structural similarity.
+\newblock In {\em 2009 IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, pages 1149--1152, April 2009.
+
 \bibitem{Doggett2017EDAF80}
 {Michael Doggett}.
 \newblock {{EDAF80} Computer Graphics}, September 2017.
