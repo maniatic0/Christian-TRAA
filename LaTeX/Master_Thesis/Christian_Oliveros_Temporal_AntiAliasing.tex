@@ -171,7 +171,7 @@ As we might expect, rendering the scene several times is expensive, so we need a
 \section{Anti-Aliasing}
 As we have explained, there are two main types of Aliasing, Spatial Aliasing and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. For real-time applications this increase of rendering time limits which Anti-Aliasing solutions are feasible to apply. 
 
-Another important factor that decides which Anti-Aliasing is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
+Another important factor that decides which Anti-Aliasing technique to use is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
 
 \subsection{Super Sampling Anti-Aliasing (SSAA)}
 As explained by Michael Dogget \cite{Doggett2017EDAN35}, this technique consists in rendering the scene at 4 times the size of the screen and then averaging pixels 4x4 to calculate the result. It provides good results but requires more rendering time and heavy memory usage.
