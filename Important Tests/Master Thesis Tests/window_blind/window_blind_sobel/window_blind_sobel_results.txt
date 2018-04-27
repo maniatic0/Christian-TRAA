@@ -1,0 +1,28 @@
+Name: window_blind_sobel
+Timestamp(dd/mm/yyyy): 27/04/2018 20:52:49.761
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 21.982576
+ The RMSD value of Temporal is 4.688558
+ The MSE value of No AA is 56.312608
+ The RMSD value of No AA is 7.504173
+ The MSE value of FXAA is 39.103469
+ The RMSD value of FXAA is 6.253277
+ The MSE value of SMAA is 19.848787
+ The RMSD value of SMAA is 4.455198 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 34.710018
+ The SNR value of Temporal is 31.410476
+ The Peak-SNR value of No AA is 30.624747
+ The SNR value of No AA is 27.325205
+ The Peak-SNR value of FXAA is 32.208651
+ The SNR value of FXAA is 28.909109
+ The Peak-SNR value of SMAA is 35.153464
+ The SNR value of SMAA is 31.853922 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.996127
+ The SSIM value of No AA is 0.991854
+ The SSIM value of FXAA is 0.993947
+ The SSIM value of SMAA is 0.996865 

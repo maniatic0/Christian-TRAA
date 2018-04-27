@@ -1,0 +1,28 @@
+Name: pipe_sobel
+Timestamp(dd/mm/yyyy): 27/04/2018 20:46:18.823
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 1.573562
+ The RMSD value of Temporal is 1.254417
+ The MSE value of No AA is 8.607679
+ The RMSD value of No AA is 2.933885
+ The MSE value of FXAA is 3.572549
+ The RMSD value of FXAA is 1.890119
+ The MSE value of SMAA is 1.277749
+ The RMSD value of SMAA is 1.130375 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 46.161965
+ The SNR value of Temporal is 43.830842
+ The Peak-SNR value of No AA is 38.781943
+ The SNR value of No AA is 36.450819
+ The Peak-SNR value of FXAA is 42.601022
+ The SNR value of FXAA is 40.269898
+ The Peak-SNR value of SMAA is 47.066350
+ The SNR value of SMAA is 44.735226 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.999515
+ The SSIM value of No AA is 0.998613
+ The SSIM value of FXAA is 0.999397
+ The SSIM value of SMAA is 0.999777 

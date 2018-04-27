@@ -1,0 +1,23 @@
+Name: pipe_sobel
+Timestamp(dd/mm/yyyy): 27/04/2018 20:46:18.823
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 10.500389
+ The NIQE score of Reference is 10.814591
+ The NIQE score of No AA is 11.041278
+ The NIQE score of FXAA is 10.985477
+ The NIQE score of SMAA is 10.860514
+ The NIQE score delta between Temporal and Reference is -0.314202
+ The NIQE score delta between Temporal and No AA is -0.540889
+ The NIQE score delta between Temporal and FXAA is -0.485088
+ The NIQE score delta between Temporal and SMAA is -0.360125 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 46.008755
+ The BRISQUE score of Reference is 45.649402
+ The BRISQUE score of No AA is 45.719907
+ The BRISQUE score of FXAA is 45.673016
+ The BRISQUE score delta between Temporal and Reference is +0.359353
+ The BRISQUE score delta between Temporal and No AA is +0.288848
+ The BRISQUE score delta between Temporal and FXAA is +0.335739
+ The BRISQUE score delta between Temporal and SMAA is +0.356747 

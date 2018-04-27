@@ -1,0 +1,23 @@
+Name: window_blind_no_sobel
+Timestamp(dd/mm/yyyy): 27/04/2018 20:50:44.360
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 11.878098
+ The NIQE score of Reference is 11.450745
+ The NIQE score of No AA is 13.128164
+ The NIQE score of FXAA is 12.817664
+ The NIQE score of SMAA is 11.701771
+ The NIQE score delta between Temporal and Reference is +0.427354
+ The NIQE score delta between Temporal and No AA is -1.250066
+ The NIQE score delta between Temporal and FXAA is -0.939566
+ The NIQE score delta between Temporal and SMAA is +0.176328 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 46.256283
+ The BRISQUE score of Reference is 49.088296
+ The BRISQUE score of No AA is 46.218813
+ The BRISQUE score of FXAA is 46.198917
+ The BRISQUE score delta between Temporal and Reference is -2.832013
+ The BRISQUE score delta between Temporal and No AA is +0.037470
+ The BRISQUE score delta between Temporal and FXAA is +0.057367
+ The BRISQUE score delta between Temporal and SMAA is -0.084489 

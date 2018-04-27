@@ -1,0 +1,24 @@
+Scene Information
+Using Other AA: 0
+AA Number: 3
+Using Sobel: 0
+Jittering Camera?: 1
+Jitter Spread: 1.7
+k_feedback_min: 0.925
+k_feedback_max: 0.979
+Camera: 
+0.785398 1.82911 1 10000
+0.25 0.003
+[   -1.794,    0.018,    0.000]
+
+[[   -0.221,   -0.018,   -0.975, 2211.054]
+ [    0.000,    1.000,   -0.018,  119.057]
+ [    0.975,   -0.004,   -0.221,   29.166]
+ [    0.000,    0.000,    0.000,    1.000]]
+Saving Information
+Sample Amount: 128
+Accumulation Buffer Jitter Spread: 1
+Lower Corner: 
+[   -0.500,   -0.625]
+Upper Corner: 
+[    0.500,    0.633]
