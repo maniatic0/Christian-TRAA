@@ -93,7 +93,7 @@ In this chapter we will explain which tools were used in this master thesis and 
 \section{C++ and Bonobo Framework}
 C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. It is widely used in Computer Graphics due to its performance, especially on real-time applications, and its wide knowledge base.
 
-The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It is developed in C++ and provides a rendering engine that is easy to modify and use.
+The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It was developed in C++ and provides a rendering engine that is easy to modify and use.
 \section{OpenGL and GLSL}
 The Open Graphics Library (OpenGL) is a 2D and 3D computer cross-platform open source graphics Application Programming Interface (API) that abstracts the programmer from directly interacting with Graphic Processor Units (GPUs) to achieve hardware accelerated rendering. It provides the programmer with a graphics pipeline to use, which is normally implemented through hardware.
 
@@ -169,7 +169,7 @@ As we might expect, rendering the scene several times is expensive, so we need a
 
 
 \section{Anti-Aliasing}
-As we know, there are two main types of Aliasing, Spatial Aliasing and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. This increase is of great importance for real-time applications which try to use the best possible solutions that increase the least the rendering time. 
+As we have explained, there are two main types of Aliasing, Spatial Aliasing and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. For real-time applications this increase of rendering time limits which Anti-Aliasing solutions are feasible to apply. 
 
 Another important factor that decides which Anti-Aliasing is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
 
