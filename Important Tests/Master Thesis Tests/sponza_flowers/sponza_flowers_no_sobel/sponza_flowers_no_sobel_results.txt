@@ -1,0 +1,28 @@
+Name: sponza_flowers_no_sobel
+Timestamp(dd/mm/yyyy): 30/04/2018 12:13:29.624
+
+MSE and RMSE, Close to zero means it's good
+ The MSE value of Temporal is 490.280555
+ The RMSD value of Temporal is 22.142280
+ The MSE value of No AA is 122.795114
+ The RMSD value of No AA is 11.081296
+ The MSE value of FXAA is 66.061608
+ The RMSD value of FXAA is 8.127829
+ The MSE value of SMAA is 72.279098
+ The RMSD value of SMAA is 8.501711 
+
+PSNR and SNR, Bigger means it's good
+ The Peak-SNR value of Temporal is 21.226357
+ The SNR value of Temporal is 13.576982
+ The Peak-SNR value of No AA is 27.238993
+ The SNR value of No AA is 19.589617
+ The Peak-SNR value of FXAA is 29.931312
+ The SNR value of FXAA is 22.281937
+ The Peak-SNR value of SMAA is 29.540676
+ The SNR value of SMAA is 21.891301 
+
+SSIM, Close to one means it's good
+ The SSIM value of Temporal is 0.862720
+ The SSIM value of No AA is 0.959202
+ The SSIM value of FXAA is 0.974811
+ The SSIM value of SMAA is 0.972488 

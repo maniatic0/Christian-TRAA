@@ -1,0 +1,23 @@
+Name: sponza_flowers_no_sobel
+Timestamp(dd/mm/yyyy): 30/04/2018 12:13:29.624
+
+NIQUE, Lower values of score means it's good
+ The NIQE score of Temporal is 5.030859
+ The NIQE score of Reference is 3.140411
+ The NIQE score of No AA is 5.048971
+ The NIQE score of FXAA is 5.160536
+ The NIQE score of SMAA is 3.303394
+ The NIQE score delta between Temporal and Reference is +1.890448
+ The NIQE score delta between Temporal and No AA is -0.018112
+ The NIQE score delta between Temporal and FXAA is -0.129677
+ The NIQE score delta between Temporal and SMAA is +1.727465 
+
+BRISQUE, Lower values of score means it's good
+ The BRISQUE score of Temporal is 36.065612
+ The BRISQUE score of Reference is 9.535139
+ The BRISQUE score of No AA is 16.859527
+ The BRISQUE score of FXAA is 43.458178
+ The BRISQUE score delta between Temporal and Reference is +26.530473
+ The BRISQUE score delta between Temporal and No AA is +19.206085
+ The BRISQUE score delta between Temporal and FXAA is -7.392565
+ The BRISQUE score delta between Temporal and SMAA is +20.204233 
