@@ -58,13 +58,14 @@
 \contentsline {subsubsection}{\numberline {6.1.0.5}Subject-Predicate Agreement}{32}{subsubsection.6.1.0.5}
 \contentsline {chapter}{\numberline {7}Structure}{33}{chapter.7}
 \contentsline {chapter}{Bibliography}{35}{section*.18}
-\contentsline {chapter}{Appendix \numberline {A}About This Document}{41}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}List of Changes}{43}{Appendix.a.B}
-\contentsline {subsubsection}{\numberline {B.0.0.1}Since 2016/04/29}{43}{subsubsection.a.B.0.0.1}
-\contentsline {subsubsection}{\numberline {B.0.0.2}Since 2015/09/11}{43}{subsubsection.a.B.0.0.2}
-\contentsline {subsubsection}{\numberline {B.0.0.3}Since 2015/04/27}{43}{subsubsection.a.B.0.0.3}
-\contentsline {subsubsection}{\numberline {B.0.0.4}Since 2014/02/18}{43}{subsubsection.a.B.0.0.4}
-\contentsline {subsubsection}{\numberline {B.0.0.5}Since 2013/09/23}{43}{subsubsection.a.B.0.0.5}
-\contentsline {subsubsection}{\numberline {B.0.0.6}Since 2013/08/30}{43}{subsubsection.a.B.0.0.6}
-\contentsline {subsubsection}{\numberline {B.0.0.7}Since 2013/02/22}{44}{subsubsection.a.B.0.0.7}
-\contentsline {subsubsection}{\numberline {B.0.0.8}Since 2013/02/15}{44}{subsubsection.a.B.0.0.8}
+\contentsline {chapter}{Appendix \numberline {A}Camera Jittering Explanation}{41}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}About This Document}{43}{Appendix.a.B}
+\contentsline {chapter}{Appendix \numberline {C}List of Changes}{45}{Appendix.a.C}
+\contentsline {subsubsection}{\numberline {C.0.0.1}Since 2016/04/29}{45}{subsubsection.a.C.0.0.1}
+\contentsline {subsubsection}{\numberline {C.0.0.2}Since 2015/09/11}{45}{subsubsection.a.C.0.0.2}
+\contentsline {subsubsection}{\numberline {C.0.0.3}Since 2015/04/27}{45}{subsubsection.a.C.0.0.3}
+\contentsline {subsubsection}{\numberline {C.0.0.4}Since 2014/02/18}{45}{subsubsection.a.C.0.0.4}
+\contentsline {subsubsection}{\numberline {C.0.0.5}Since 2013/09/23}{45}{subsubsection.a.C.0.0.5}
+\contentsline {subsubsection}{\numberline {C.0.0.6}Since 2013/08/30}{45}{subsubsection.a.C.0.0.6}
+\contentsline {subsubsection}{\numberline {C.0.0.7}Since 2013/02/22}{46}{subsubsection.a.C.0.0.7}
+\contentsline {subsubsection}{\numberline {C.0.0.8}Since 2013/02/15}{46}{subsubsection.a.C.0.0.8}
