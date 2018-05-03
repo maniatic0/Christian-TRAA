@@ -10,6 +10,7 @@
 %\usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[titletoc, header, page]{appendix}
+\usepackage{float}
 
 \usepackage{hyperref}
 \usepackage{pdfpages}
@@ -157,7 +158,7 @@ As Edward Angel and Dave Shreiner explain, this idealized sampling assumes that 
 	\caption{Representation versus Aliased Approximation.}\label{fig:aliasingexample}
 \end{figure}
 
-\section{Shadow Mapping and \\ Deferred Shading Architecture}
+\section[Shadow Mapping and Deferred Shading Architecture]{Shadow Mapping and \\ Deferred Shading Architecture}
 
 As we know, lights and shadows contribute with spatial information to an image. As humans, we have come to expect that objects react to the lights in a scene, considering their geometry; especially because the shadow that it creates gives us a sense of size.
 
@@ -169,7 +170,7 @@ As we might expect, rendering the scene several times is expensive, so we need a
 
 
 \section{Anti-Aliasing}
-As we have explained, there are two main types of Aliasing, Spatial Aliasing, and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. For real-time applications this increase of rendering time limits which Anti-Aliasing solutions are feasible to apply. . 
+As we have explained, there are two main types of Aliasing, Spatial Aliasing, and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. For real-time applications this increase of rendering time limits which Anti-Aliasing solutions are feasible to apply.
 
 Another important factor that decides which Anti-Aliasing technique to use is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
 
@@ -434,8 +435,9 @@ In order to show the difference between using 16 and 128 samples, we performed f
 \begin{table}[!hbt]
 	\centering
 	\caption{Metrics behavior comparison between using 16 samples versus 128 for Accumulation Buffer.}\label{tab:acctest}
-\begin{tabular}{ l | c | c | c | r }
-	\multicolumn{5}{c}{Test D} \\
+\begin{tabular}{ | l | c | c | c | c | }
+	\hline
+	\multicolumn{5}{| c |}{Test D} \\
 	\hline
 	\diagbox{Tests}{Samples}  & \makebox{16} & \makebox{128} & \makebox{Difference} & \makebox{Relative Difference $(\%)$} \\
 	\hline
@@ -448,7 +450,8 @@ In order to show the difference between using 16 and 128 samples, we performed f
 	Peak-SNR of No AA & $34.173678$ & $34.234715$ & $0.061037$ & $0.178289786\%$ \\
 	SNR of No AA & $32.439212$ & $32.501058$ & $0.061846$ & $0.190289190\%$ \\
 	SSIM of Temporal & $0.993302$ & $0.993451$ & $0.000149$ & $0.014998223\%$ \\
-	SSIM of No AA & $0.996826$ & $0.996891$ & $6.5E-05$ & $0.006520272\%$ 		
+	SSIM of No AA & $0.996826$ & $0.996891$ & $6.5E-05$ & $0.006520272\%$ \\
+	\hline		
 \end{tabular}
 \end{table}
 
@@ -475,7 +478,7 @@ For Static Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to the T
 For Ghosting Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to each frame rendered with the Temporal Anti-Aliasing of Uncharted 4 technique and the Temporal Anti-Aliasing of the master thesis using the corresponding Accumulation Buffer rendered frame. A local SSIM map is generated for each rendered image, except the Accumulation Buffer ones, and saved as PNGs and MATLAB FIGs. All the results of all images are stored in a plain text file. In this SSIM maps, dissimilarity is represented as colors and white as similarity.
 
 
-\section{Temporal Reprojection \\ Anti-Aliasing Modifications}
+\section[Temporal Reprojection Anti-Aliasing Modifications]{Temporal Reprojection \\ Anti-Aliasing Modifications}
 For this thesis, the Color Clipping Box technique was modified to be affected by the values calculated from the new techniques applied in this thesis. These changes follow the rationale that we want to apply the full force of the Temporal Anti-Aliasing technique when needed, and not elsewhere, to minimize the effects of ghosting and blurring.
 
 The first change consists in that the Colors that were calculated from the average between the $3\times 3$ and Cross neighborhoods by the sampling patterns are now mixed in a variable amount. This follows the idea that we prefer the Cross neighborhood over the $3\times 3$ neighborhood if the pixel we are currently calculating is not considered to be aliased, this is because the Cross neighborhood is less likely to introduce unwanted information in the minimum, maximum and average calculations. But, if the pixel is considered to be aliased, we prefer the $3\times 3$ neighborhood because it provides more information about the surroundings of the pixel to create the unaliased image. 
@@ -560,6 +563,102 @@ After all the Sobel Operators are applied, we save the results to a texture and 
 
 The output of this TRAA is used to calculate the Sobel value of the current pixel, the average Sobel value in the Cross Neighborhood and the average Sobel value in the $3\times 3$ Neighborhood.
 
+\subsection{Final Mixing}
+Finally, we use the values previously calculated to modify how the Clipping Box is calculated.
+
+First , we define the mix function as follows:
+\begin{equation} \label{eq:mixfunction}
+Mix(x,y,t)=x*(1-t)+y*t\quad with\; 0\leq t\leq 1
+\end{equation} 
+
+Then, the final mixing is applied as follows:
+\begin{equation}\label{eq:sobelavgmixval}
+sobelAvgMixVal=Clamp01(modelAverage_i+sobel) 
+\end{equation}
+ 
+Where $sobel$ is the Sobel value of the current pixel, Equation \ref{eq:sobel_sqrt}, $modelAverage_i$ comes from the Equation \ref{eq:model_index_acc} and $Clamp01$ is the clamping function between $0$ and $1$. \\
+
+\begin{equation}\label{eq:sobelavg}
+sobelAvg=Mix(sobelAvgCross, sobelAvg3x3, sobelAvgMixVal)
+\end{equation}
+
+Where $sobelAvgCross$ is the average Sobel value of the Cross Neighborhood and $sobelAvg3x3$ is the average Sobel value of the $3\times 3$ Neighborhood around the current pixel. \\ 
+
+And, we use Equations \ref{eq:sobelavg}, \ref{eq:depthpseudovariance}, \ref{eq:depthtemporalpseudovariance} and \ref{eq:model_index_acc} to calculate how much this pixel is considered to be aliased:
+\begin{equation}\label{eq:aliasedvalue}
+\begin{split}
+aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
+ & + depthTemporalPseudoVariance \\
+ & + modelAverage_i)
+\end{split}
+\end{equation}
+
+With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we change how the colors are calculated:
+\begin{equation}\label{eq:newcolors}
+\begin{split}
+colorMin= & Mix(colorMinCross,colorMin3x3,aliasedValue) \\
+colorMax= & Mix(colorMaxCross,colorMax3x3,aliasedValue) \\
+colorAvg= & Mix(colorAvgCross,colorAvg3x3,aliasedValue) \\
+\end{split}
+\end{equation}
+
+Then we modify the size of the box:
+\begin{equation}\label{eq:clipredux}
+\begin{split}
+	clipColoorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
+	clipColorMax= & Mix(colorCurrent,colorMax,aliasedValue)
+\end{split}
+\end{equation}
+
+
+
+The Figures \ref{fig:aliasedval1}, \ref{fig:aliasedval2} and \ref{fig:aliasedval3} are examples of the aliased values calculated. The white color represents a value of $1$ and the black color of $0$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/aliased_value_example_1_temporal.png}
+	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/aliased_value_example_2_temporal.png}
+	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/aliased_value_example_3_temporal.png}
+	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval3}
+\end{figure}
+
+\subsection{Sharpen Filter Modifications}
+The Sharpen Filter was normalized to avoid creating a color peak. It was changed from \ref{eq:sharpen} to:
+\begin{equation} \label{eq:new_sharpen}
+\centering
+\begin{bmatrix*}[c]
+0 & -0.25 &  0 \\
+-0.25  &  2 & -0.25  \\
+0 & -0.25  &  0
+\end{bmatrix*}
+\end{equation}
+
+Equation \ref{eq:new_sharpen} shows the new Sharpen Filter Convolution Matrix used.
+
+
+\chapter{Results}
+In this chapter we explain how we evaluated the improvements done to the Temporal Anti-Aliasing. We show the numerical and visual results obtained. Finally, we explain said results and their meaning compared to the previous implementation of TAA and other Anti-Aliasing solutions.
+\section{Evaluation Methodology}
+To evaluate the improvements done to the Temporal Anti-Aliasing technique we selected models and camera angles that put the technique under stress. Then, using the Testing Framework we developed, we proceed to render and save images of each of those models to compare how the technique behaves in comparison to the original TAA implementation and other Anti-Aliasing techniques to see if the changes we proposed provided images with better quality without incurring in heavy memory usage or time consumption. Also, an especial test was taken to measure if changing the Sharpen Filter was the only thing providing an improvement.
+
+The tests were performed on the computer provided by Lund University which has the next specification:
+
+\begin{itemize}
+\item CPU: Intel(R) Core(TM) i7-3820 CPU @ 3.60GHz, 3601 Mhz, 4 Cores, 8 Logical Processors
+\item RAM: 64,0 GB	
+\item GPU: NVIDIA GeForce GTX 1080 with 8 GB of VRAM
+\item Rendering Resolution when not zooming: 1600 x 900
+\end{itemize}
 
 
 
