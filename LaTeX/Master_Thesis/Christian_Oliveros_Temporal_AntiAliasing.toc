@@ -55,33 +55,38 @@
 \contentsline {subsection}{\numberline {5.2.1}Sharpen Filter}{36}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Pipe}{37}{subsection.5.2.2}
 \contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{37}{subsubsection.5.2.2.1}
-\contentsline {chapter}{\numberline {6}Short on Formatting}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Page Size and Margins}{39}{section.6.1}
-\contentsline {section}{\numberline {6.2}Typeface and Font Sizes}{39}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Headers and Footers}{40}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Chapters, Sections, Paragraphs}{40}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Tables}{40}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Figures}{41}{subsection.6.2.4}
-\contentsline {section}{\numberline {6.3}Mathematical Formulae and Equations}{42}{section.6.3}
-\contentsline {section}{\numberline {6.4}References}{42}{section.6.4}
-\contentsline {section}{\numberline {6.5}Colours}{42}{section.6.5}
-\contentsline {chapter}{\numberline {7}Language}{43}{chapter.7}
-\contentsline {section}{\numberline {7.1}Style Elements}{43}{section.7.1}
-\contentsline {subsubsection}{\numberline {7.1.0.1}Widows and Orphans}{44}{subsubsection.7.1.0.1}
-\contentsline {subsubsection}{\numberline {7.1.0.2}Footnotes}{44}{subsubsection.7.1.0.2}
-\contentsline {subsubsection}{\numberline {7.1.0.3}Active vs. Passive Voice}{44}{subsubsection.7.1.0.3}
-\contentsline {subsubsection}{\numberline {7.1.0.4}Long and Short Sentences}{44}{subsubsection.7.1.0.4}
-\contentsline {subsubsection}{\numberline {7.1.0.5}Subject-Predicate Agreement}{44}{subsubsection.7.1.0.5}
-\contentsline {chapter}{\numberline {8}Structure}{45}{chapter.8}
-\contentsline {chapter}{Bibliography}{47}{section*.29}
-\contentsline {chapter}{Appendix \numberline {A}Camera Jittering Explanation}{53}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}About This Document}{55}{Appendix.a.B}
-\contentsline {chapter}{Appendix \numberline {C}List of Changes}{57}{Appendix.a.C}
-\contentsline {subsubsection}{\numberline {C.0.0.1}Since 2016/04/29}{57}{subsubsection.a.C.0.0.1}
-\contentsline {subsubsection}{\numberline {C.0.0.2}Since 2015/09/11}{57}{subsubsection.a.C.0.0.2}
-\contentsline {subsubsection}{\numberline {C.0.0.3}Since 2015/04/27}{57}{subsubsection.a.C.0.0.3}
-\contentsline {subsubsection}{\numberline {C.0.0.4}Since 2014/02/18}{57}{subsubsection.a.C.0.0.4}
-\contentsline {subsubsection}{\numberline {C.0.0.5}Since 2013/09/23}{57}{subsubsection.a.C.0.0.5}
-\contentsline {subsubsection}{\numberline {C.0.0.6}Since 2013/08/30}{57}{subsubsection.a.C.0.0.6}
-\contentsline {subsubsection}{\numberline {C.0.0.7}Since 2013/02/22}{58}{subsubsection.a.C.0.0.7}
-\contentsline {subsubsection}{\numberline {C.0.0.8}Since 2013/02/15}{58}{subsubsection.a.C.0.0.8}
+\contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{39}{subsubsection.5.2.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{40}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Arched Window Test}{41}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Sponza}{42}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Sponza Flowers}{43}{subsection.5.2.6}
+\contentsline {chapter}{\numberline {6}Short on Formatting}{45}{chapter.6}
+\contentsline {section}{\numberline {6.1}Page Size and Margins}{45}{section.6.1}
+\contentsline {section}{\numberline {6.2}Typeface and Font Sizes}{45}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Headers and Footers}{46}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Chapters, Sections, Paragraphs}{46}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Tables}{46}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Figures}{47}{subsection.6.2.4}
+\contentsline {section}{\numberline {6.3}Mathematical Formulae and Equations}{48}{section.6.3}
+\contentsline {section}{\numberline {6.4}References}{48}{section.6.4}
+\contentsline {section}{\numberline {6.5}Colours}{48}{section.6.5}
+\contentsline {chapter}{\numberline {7}Language}{49}{chapter.7}
+\contentsline {section}{\numberline {7.1}Style Elements}{49}{section.7.1}
+\contentsline {subsubsection}{\numberline {7.1.0.1}Widows and Orphans}{50}{subsubsection.7.1.0.1}
+\contentsline {subsubsection}{\numberline {7.1.0.2}Footnotes}{50}{subsubsection.7.1.0.2}
+\contentsline {subsubsection}{\numberline {7.1.0.3}Active vs. Passive Voice}{50}{subsubsection.7.1.0.3}
+\contentsline {subsubsection}{\numberline {7.1.0.4}Long and Short Sentences}{50}{subsubsection.7.1.0.4}
+\contentsline {subsubsection}{\numberline {7.1.0.5}Subject-Predicate Agreement}{50}{subsubsection.7.1.0.5}
+\contentsline {chapter}{\numberline {8}Structure}{51}{chapter.8}
+\contentsline {chapter}{Bibliography}{53}{section*.44}
+\contentsline {chapter}{Appendix \numberline {A}Camera Jittering Explanation}{59}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}About This Document}{61}{Appendix.a.B}
+\contentsline {chapter}{Appendix \numberline {C}List of Changes}{63}{Appendix.a.C}
+\contentsline {subsubsection}{\numberline {C.0.0.1}Since 2016/04/29}{63}{subsubsection.a.C.0.0.1}
+\contentsline {subsubsection}{\numberline {C.0.0.2}Since 2015/09/11}{63}{subsubsection.a.C.0.0.2}
+\contentsline {subsubsection}{\numberline {C.0.0.3}Since 2015/04/27}{63}{subsubsection.a.C.0.0.3}
+\contentsline {subsubsection}{\numberline {C.0.0.4}Since 2014/02/18}{63}{subsubsection.a.C.0.0.4}
+\contentsline {subsubsection}{\numberline {C.0.0.5}Since 2013/09/23}{63}{subsubsection.a.C.0.0.5}
+\contentsline {subsubsection}{\numberline {C.0.0.6}Since 2013/08/30}{63}{subsubsection.a.C.0.0.6}
+\contentsline {subsubsection}{\numberline {C.0.0.7}Since 2013/02/22}{64}{subsubsection.a.C.0.0.7}
+\contentsline {subsubsection}{\numberline {C.0.0.8}Since 2013/02/15}{64}{subsubsection.a.C.0.0.8}
