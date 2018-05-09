@@ -71,4 +71,5 @@
 \contentsline {section}{\numberline {5.3}Discussion}{49}{section.5.3}
 \contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{51}{chapter.6}
 \contentsline {chapter}{Bibliography}{53}{section*.55}
-\contentsline {chapter}{Appendix \numberline {A}Camera Jittering Explanation}{57}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {A}GitHub Repository}{57}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}Camera Jittering Explanation}{59}{Appendix.a.B}
