@@ -663,11 +663,23 @@ In this chapter we explain how we evaluated the improvements done to the Tempora
 \section{Evaluation Methodology}
 To evaluate the improvements achieved to the Temporal Anti-Aliasing technique we selected models and camera angles that place the technique under stress. Then, using the Testing Framework we developed, we proceed to render and save images of each of those models to compare how the technique behaves in comparison to the original TAA implementation and other Anti-Aliasing techniques to determine if the proposed techniques in this thesis provided images with better quality without incurring in heavy memory usage or time consumption. Also, an especial test was taken to measure if changing the Sharpen Filter was the sole mechanism providing an improvement.
 
-The tests were performed on the computer provided by Lund University which has the following specification:
-
+The models used on the tests were:
 \begin{itemize}
+\item Pipe: A brown pipe with hard edges.
+\item Window with Blinds: A blue window with closed blinds.
+\item Arched Window: A blue window with an arch at the top.
+\item Wall: A white wall with black text.
+\item Sponza Atrium: exemplifies a general scene.
+\item Sponza Atrium Flowers: exemplifies a cutout model.
+\item Hairball: contains many fine details for its numerous fibers.
+\end{itemize}
+Note that Sponza Atrium and Hairball models were downloaded from Morgan McGuire's Computer Graphics Archive \cite{McGuire2017Data}; the Pipe model is from Spencer Arts \cite{Spencer2010}; the Arched Window model is from Isabela H. \cite{Isabela2016}; and the Window with Blinds is from Channa Yim \cite{Channa2015}.
+
+The tests were performed on the computer provided by Lund University which has the following specification:
+\begin{itemize}
+\setlength\itemsep{1em}
 \item CPU: Intel(R) Core(TM) i7-3820 CPU @ 3.60GHz, 3601 Mhz, 4 Cores, 8 Logical Processors
-\item RAM: 64,0 GB	
+\item RAM: 64.0 GB	
 \item GPU: NVIDIA GeForce GTX 1080 with 8 GB of VRAM
 \item Rendering Resolution when not zooming: 1600 x 900
 \end{itemize}
@@ -1220,7 +1232,7 @@ From both Pipe Tests we can observe that the results from the Master Thesis TAA 
 
 From the Window with Blinds and Arched Window Tests we can appreciate how the techniques react to small, almost pixel sized, features like the blinds and the doors from the Arched Window. Although the Master Thesis TAA and SMAA appear numerically (See Tables \ref{tab:window_blind} and \ref{tab:window_arch}) better than the Uncharted TAA, they are not able to reconstruct all the small details leaving pixel thin stripes that flicker when the camera moves. We believe that in this case, admitting the blurring of the Uncharted TAA benefits its final application because losing some small details is better than having many pixels flickering each time the camera moves.
 
-The Sponza Test shows us that the Master Thesis TAA is more than capable of handling a general scene with lighting and shadows. As seen on the Table \ref{tab:sponza}, our implementation proved to be better than the other Anti-Aliasing techniques by a fair margin in almost all the tests.
+The Sponza Test shows us that the Master Thesis TAA is more than capable of handling a general scene with lighting and shadows. As seen in the Table \ref{tab:sponza}, our implementation proved to be better than the other Anti-Aliasing techniques by a fair margin in almost all the tests.
 
 We consider the Sponza Flowers Test a distinctive experiment because the flowers are a 2D flat surface with many complex transparent holes and they are rotated around the column. As we observe from the numerical results in the Table \ref{tab:sponza_flowers} and SSIM maps on Figure \ref{fig:sponza_flowers_render}, all the techniques struggle with those transparent holes but our Master Thesis TAA proves to be the best at handling them.  We see from this test that our implementation is good at handling this type of small details, compared to the Windows Tests, because they are larger than just a pixel. 
 
