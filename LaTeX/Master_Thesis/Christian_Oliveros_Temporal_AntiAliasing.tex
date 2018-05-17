@@ -95,7 +95,7 @@ The aim of this thesis is to improve the Temporal Anti-Aliasing technique by usi
 
 
 \section{Related Work}
-As the simplest Anti-Aliasing technique, we have Super Sampling Anti-Aliasing (SSAA), it consists on rendering at a higher resolution and then downsampling it to the required resolution. Another technique is the Multi Sample Anti-Aliasing (MSAA), which calculates the color for the final pixel just once \cite{Doggett2017EDAN35}.  We can learn what would become the base of Temporal Reprojection Anti-Aliasing (TAA or TRAA) in the papers Accelerating Real-time Shading with Reverse Reprojection Caching  by Nehab D., Sander P. V., Lawrence J., Tatarchuk N., Isidoro J. R. \cite{Nehab2007}, in which they describe how pixel shaders could could save pixel information from the previous frame  and reproject it in the next frame; and Amortized Supersampling by Yang L., Nehab D., Sander P. V., Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} in which they describe how to use the reprojection of old frames in the current one as a method of real time Anti-Aliasing.
+As the simplest Anti-Aliasing technique, we have Super Sampling Anti-Aliasing (SSAA), it consists on rendering at a higher resolution and then downsampling it to the required resolution. Another technique is the Multi Sample Anti-Aliasing (MSAA), which calculates the color for the final pixel just once \cite{Doggett2017EDAN35}.  We can learn what would become the base of Temporal Reprojection Anti-Aliasing (TAA or TRAA) in the papers Accelerating Real-time Shading with Reverse Reprojection Caching  by Nehab D., Sander P. V., Lawrence J., Tatarchuk N., Isidoro J. R. \cite{Nehab2007}, in which they describe how pixel shaders could be used to save pixel information from the previous frame and reproject it in the next frame; and Amortized Supersampling by Yang L., Nehab D., Sander P. V., Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} in which they describe how to use the reprojection of old frames in the current one as a method of real time Anti-Aliasing.
 
 Next, we start to see Post Processing techniques like Fast Approximate Anti-Aliasing (FXAA) by Timothy Lottes \cite{Lottes2009} which uses a form of edge detection to correct aliasing while being compatible with the deferred shading architecture. We also found the Crytek implementation of Temporal Anti-Aliasing (TAA or TXAA) explained by Tiago Sousa on his presentation Anti-Aliasing Methods in CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
 
@@ -184,9 +184,9 @@ The shadow calculations are done through a process called Shadow Mapping, it con
 
 As we might expect, rendering the scene several times is expensive, so we need a way to reduce the cost as much as we can. The Deferred Shading Architecture provides that solution to only shade, possibly using an operation that could be expensive, only visible pixels to avoid wasting resources shading pixels from geometry that is not visible; it works by first rendering the scene, without shading calculations, to a buffer called the Geometry Buffer. There, information regarding colors, normals, depths, specific object information to interact with lights, etc. is saved for future use. 
 
-Then, we perform a technique called Shadow Mapping, which takes advantage of the Deferred Shading Architecture to calculate the way lights affects only visible pixels; we calculate the Shadow Map of every light only performing depth calculations. Afterwards, we compute and save the effect of each light using the Shadow Maps. 
+Then, we perform a technique called Shadow Mapping, which takes advantage of the Deferred Shading Architecture to calculate the way lights affects only visible pixels; we calculate the Shadow Map of every light only performing depth calculations. Afterward, we compute and save the effect of each light using the Shadow Maps. 
 
-At the end, we take all the information of the lights, shadows and the Geometry Buffer to render the light scene.
+In the end, we take all the information of the lights, shadows, and the Geometry Buffer to render the light scene.
 
 
 
@@ -212,9 +212,9 @@ It is relatively cheap compared to MSAA and provides relatively good results, it
 SMAA is a post-processing technique based on Morphological Anti-Aliasing. It works by reconstructing edges and their surroundings to regenerate the subpixel information lost by aliasing. \cite{Jimenez2012}
 
 \section{Temporal Anti-Aliasing}
-As explained by Ke Xu and Lasse Fuglsang in their respective presentations ~\cite{Fuglsand2016,XU2016}, the basic principle of Temporal Anti-Aliasing is to mix the current frame being rendered with frames from the past. This is done to increase the number of samples through time rather than only using samples from the same frame. 
+As explained by Ke Xu and Lasse Fuglsang in their respective presentations ~\cite{XU2016,Fuglsand2016}, the basic principle of Temporal Anti-Aliasing is to mix the current frame being rendered with frames from the past. This is done to increase the number of samples through time rather than only using samples from the same frame. 
 
-One such techniques is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene and blended to the current frame being rendered.  To do this, we take the current frame and look for the color it should have in the History Buffer, this process is called Reprojection.
+One such technique is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene and blended to the current frame being rendered.  To do this, we take the current frame and look for the color it should have in the History Buffer, this process is called Reprojection.
 
 To implement TRAA we need: Camera Jitter, Velocity Buffer, Frame History Buffer, Clipping Color Box, Sharpen Filter, and Motion Blur.
 
@@ -246,7 +246,7 @@ Also, as suggested by Xu ~\cite{XU2016}, the jittering is not included as part o
 
 
 \subsection{Frame History Buffer}
-For each fragment in the current frame, we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of the pixels in the History Buffer ~\cite{Fuglsand2016}.
+For each fragment in the current frame, we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of the pixels in the History Buffer. ~\cite{Fuglsand2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -297,12 +297,12 @@ The Motion Blur used is the one proposed by Chapman ~\cite{Chapman2012}. It trie
 Current implementations of TAA generate a very aggressive blur because of the way they mix the colors of the current frame and the history; the use of areas larger than the pixel increases the errors generated, therefore a Sharpen Filter is required. The filter applied in the implementation is the one used by Xu ~\cite{XU2016}, it solves blurriness reasonably well but it cannot eliminate some artifacts. 
 
 \subsubsection{Ghosting} 
-Some Ghosting is created when objects move, especially under particular lighting and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}. 
+Some Ghosting is created when objects move, especially under particular lighting and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}. 
 
 \section{Accumulation Buffer}
 The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
 
-This is process increases the sampling per pixel and reduces the aliasing effects producing a high quality image at the cost of rendering everything several times per frame.
+This is process increases the sampling per pixel and reduces the aliasing effects producing a high-quality image at the cost of rendering everything several times per frame.
 
 \section{Sobel Operator}
 It is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel. \cite{Sobel2014}
@@ -426,7 +426,7 @@ SSIM(x,y)=l(x,y)*c(x,y)*s(x,y)
 
 
 \chapter{Development}
-In this chapter the main work performed in this master thesis is presented.
+In this chapter, the main work performed in this master thesis is presented.
 \section{EDAN35 Project Improvements}
 For this master thesis, we decided to use our project from High Performance Computer Graphics (EDAN35) as the base. During the course, we implemented a Temporal Reprojection Anti-Aliasing technique based on the presentations of Ke Xu and Lasse Fuglsang ~\cite{XU2016,Fuglsand2016}, from the games Inside and Uncharted 4. It proved to be reliable and well documented; and allowed us to put into practice the fundamentals of the technique in an academic environment, providing the base for improvements performed for this master thesis.
 
@@ -532,7 +532,7 @@ The second change is that the size of the Color Clipping Box depends on how much
 \end{figure}
 
 \subsection{Triangle Indexing Improvements Implementation}
-The main idea behind the application of this technique is to detect pixels that we considered aliasing by using how many different models one pixel is surrounded with to edges between models. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
+The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
 
 To implement this technique, all models in the scene receive a unique integer index. Then, in the renderization geometry pass, all triangles belonging to the same model receive the model index as its ID. Subsequently, it is used in the pixel shader to generate a texture in which every pixel contains the ID of the model it belongs to.
 
@@ -570,7 +570,7 @@ Then we calculate the depth pseudo variance as:
 
 This provides us with a pseudo-variance that measures the distance between the average depth and the current pixel depth. Note that normally the value is going to be between $0$ and $1$ and but, if the pixel depth is an outlier, this value is going to be over $1$.
 
-Finally, we calculate how relates the depth of the pixel in the last frame to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations.
+Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
@@ -579,21 +579,21 @@ depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxD
 \subsection{Sobel Improvements Implementation}
 The main idea behind applying Sobel edge detection technique is to concentrate the TAA effects on pixels on edges to correct aliasing, if necessary.  
 
-We apply the Sobel Operator to the luminance of the lighted scene produced by the Deferred Shading Pipeline, the luminance of the unlighted scene from the Geometric Buffer and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes on it and we use the lighted and unlighted scene to avoid problems detecting edges because of lights or shadows.
+We apply the Sobel Operator to the luminance of the light scene produced by the Deferred Shading Pipeline, the luminance of the unlighted scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes in it and we use the light and unlight scene to avoid problems detecting edges because of lights or shadows.
 
 Each Sobel Operator is performed separately, and their magnitudes mixed at the end as follows:
 \begin{equation} \label{eq:sobel_g}
 	g=(u*0.3 +l*0.7)+d 
 \end{equation}
 
-Where $u$ is the magnitud of the sobel operator of the luminance of the unlighted scene, $l$ is the magnitud of the sobel operator of the luminance of the lighted scene and $d$ is the magnitud of the sobel operator of the current linear depth. \\
+Where $u$ is the magnitude of the sobel operator of the luminance of the unlight scene, $l$ is the magnitude of the sobel operator of the luminance of the lighted scene and $d$ is the magnitude of the sobel operator of the current linear depth. \\
 
-Then, we clamp $g$ between $0.0$ and $1.0$ to finally apply the smoothstep polynomial as follow:
+Then, we clamp $g$ between $0.0$ and $1.0$ to finally apply the smoothstep polynomial as follows:
 \begin{equation} \label{eq:sobel_sqrt}
 sobel=\sqrt{g^2*(3.0-2.0*g)} 
 \end{equation}
 
-After all the Sobel Operators are applied, we save the results to a texture and perform a simplified version of TRAA to keep the results stable through time. This simplified version is almost the same as the one we use as a base of this master thesis, the differences come from the use Clamping rather than a Clipping Box because the texture values are one dimensional; and we do not apply a sharpen filter.
+After all the Sobel Operators are applied, we save the results to a texture and perform a simplified version of TRAA to keep the results stable through time. This simplified version is almost the same as the one we use as a base of this master thesis, the differences come from the use of Clamping rather than a Clipping Box because the texture values are one dimensional; and we do not apply a sharpen filter.
 
 The output of this TRAA is used to calculate the Sobel value of the current pixel, the average Sobel value in the Cross Neighborhood and the average Sobel value in the $3\times 3$ Neighborhood.
 
@@ -681,9 +681,9 @@ Equation \ref{eq:new_sharpen} shows the new Sharpen Filter Convolution Matrix us
 
 
 \chapter{Results}
-In this chapter we explain how we evaluated the improvements done to the Temporal Anti-Aliasing. We show the numerical and visual results obtained. Finally, we explain said results and their meaning compared to the previous implementation of TAA and other Anti-Aliasing solutions.
+In this chapter, we explain how we evaluated the improvements done to the Temporal Anti-Aliasing. We show the numerical and visual results obtained. Finally, we explain the results and their meaning compared to the previous implementation of TAA and other Anti-Aliasing solutions.
 \section{Evaluation Methodology}
-To evaluate the improvements achieved to the Temporal Anti-Aliasing technique we selected models and camera angles that place the technique under stress. Then, using the Testing Framework we developed, we proceed to render and save images of each of those models to compare how the technique behaves in comparison to the original TAA implementation and other Anti-Aliasing techniques to determine if the proposed techniques in this thesis provided images with better quality without incurring in heavy memory usage or time consumption. Also, an especial test was taken to measure if changing the Sharpen Filter was the sole mechanism providing an improvement.
+To evaluate the improvements achieved to the Temporal Anti-Aliasing technique we selected models and camera angles that place the technique under stress. Then, using the Testing Framework we developed, we proceed to render and save images of each of those models to compare how the technique behaves in comparison to the original TAA implementation and other Anti-Aliasing techniques to determine if the proposed techniques in this thesis provided images with better quality without incurring heavy memory usage or time consumption. Also, a special test was taken to measure if changing the Sharpen Filter was the sole mechanism providing an improvement.
 
 The models used on the tests were:
 \begin{itemize}
@@ -709,6 +709,7 @@ The tests were performed on the computer provided by Lund University which has t
 \section{Results and Comparisons}
 
 \subsection{Sharpen Filter}
+For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!hbt]
@@ -747,12 +748,15 @@ The tests were performed on the computer provided by Lund University which has t
 	\caption{SSIM Maps comparison.}\label{fig:sharpen_ssim}
 \end{figure}
 
+\newpage
 
 \subsection{Pipe}
+For this test, we rendered the Pipe Model in order to test how the improvements behaved when rendering a model with hard edges. We wanted to test if our improvements reduced the amount of blur around those hard edges while still fixing the aliasing problem. We rendered the Pipe twice, the first time using a regular camera angle, for normal aliasing around the edges, and a skewed camera angle, for increased aliasing effects. As we see from the results, TAA with our improvements is at the same quality level as SMAA. 
+
 \subsubsection{Regular}
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
-\begin{table}[htbp]	
+\begin{table}[!hbt]	
 	\small
 	\centering
 	\caption{Numerical results of the Pipe Test with regular camera inclination.}
@@ -829,6 +833,7 @@ The tests were performed on the computer provided by Lund University which has t
 
 
 \subsection{Window with Blinds}
+On this test, we used the Window with Blinds model for its small details at the blinds. We tested how our improvements behaved with this kind of details and discovered that it did not react in a proper way even if the numerical results showed otherwise.
 
 % Table generated by Excel2LaTeX from sheet 'Window Blind'
 \begin{table}[H]
@@ -868,6 +873,7 @@ The tests were performed on the computer provided by Lund University which has t
 \end{figure}
 
 \subsection{Arched Window Test}
+For this test, we used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. The results surprised us, as the best visual quality was achieved by the Uncharted TAA while the numerical test showed SMAA as the best one.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[H]
 	\small
@@ -906,6 +912,7 @@ The tests were performed on the computer provided by Lund University which has t
 \end{figure}
 
 \subsection{Sponza}
+For this test, we wanted to see how the Master TAA implementation behaved with a general scene with lights and shadows, we used the Sponza Atrium Model with the Sphere Model being static in the center. The visual and numerical results showed us how that our techniques properly handles this type of general scene.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'
 \begin{table}[H]
 	\small
@@ -944,6 +951,7 @@ The tests were performed on the computer provided by Lund University which has t
 \end{figure}
 
 \subsection{Sponza Flowers}
+On this test, we looked at how do our improvements handle the details of a model with transparent parts, as in the Flowers from the Sponza Atrium Model, because the aliasing they present is considered hard to properly detect and correct, as our results show.
 
 % Table generated by Excel2LaTeX from sheet 'Sponza Flowers'
 \begin{table}[H]
@@ -983,6 +991,7 @@ The tests were performed on the computer provided by Lund University which has t
 \end{figure}
 
 \subsection{Hard Edges Test}
+For this test, we explored how the Master Thesis Implementation with many small details at a far distance and how it behaved with hard edges. We used both Windows Models for the small details and the Pipe and Wall Models for the hard edges. The result showed us that, both visually and numerically, our improvements achieved better quality.
 
 % Table generated by Excel2LaTeX from sheet 'Hard Test'
 \begin{table}[H]
@@ -1024,7 +1033,7 @@ The tests were performed on the computer provided by Lund University which has t
 
 
 \subsection{Sphere Ghosting}
-
+For this test, we wanted to measure how the improvements we performed decreased the effects of ghosting that were present in the Uncharted Implementation. For this reason, we selected the Sphere Model to move in the hall of the Sponza and rendered it under a camera angle that showed us ghosting trails. As we see from the visual results, ghosting effects were diminished in our implementation. 
 % Table generated by Excel2LaTeX from sheet 'Sphere Ghosting'
 \begin{table}[H]
 	\small
@@ -1071,10 +1080,11 @@ The tests were performed on the computer provided by Lund University which has t
 \end{figure}
 
 \subsection{Hairball}
+These tests were the hardest for all the techniques we tried. The Hairball Model contains many fibers with many details that provide a complex test for any Anti-Aliasing solution. We performed all the tests without light, to see the silhouette, and with light, to see how its reaction to the fibers affected all the Anti-Aliasing solutions. We did two sets of tests, the first one was static, to show us the behavior of blurring and aliasing correction; and the second set was rotating, to show us how ghosting behaved on the fibers. The results from the static tests were surprising, as we did not expect the Master Thesis Implementation to be the best handling the fibers.
 \subsubsection{Static Shadow}
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Shadow'
-\begin{table}[H]
+\begin{table}[!hbt]
 	\small
 	\centering
 	\caption{Numerical results of the Hairball Static Shadow Test.}
@@ -1111,16 +1121,16 @@ The tests were performed on the computer provided by Lund University which has t
 	\caption{Hairball Static Shadow ground truth.}\label{fig:hairball_static_shadow_truth}
 \end{figure}
 
-\subsubsection{Static Lighted}
+\subsubsection{Static Light}
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Lighted'
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Numerical results of the Hairball Static Lighted Test.}
+	\caption{Numerical results of the Hairball Static Light Test.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Hairball Static Lighted Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Hairball Static Light Test}} \\
 		\hline
 		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
 		\hline
@@ -1197,15 +1207,15 @@ The tests were performed on the computer provided by Lund University which has t
 	\caption{Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 90.}\label{fig:hairball_ghosting_shadow}
 \end{figure}
 
-\subsubsection{Ghosting Lighted}
+\subsubsection{Ghosting Light}
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Lighted'
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Numerical results summary of the 100 tests performed for the Hairball Ghosting Lighted Test.}
+	\caption{Numerical results summary of the 100 tests performed for the Hairball Ghosting Light Test.}
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
-		\multicolumn{5}{|c|}{\textbf{Hairball Lighted Shadow Test Summary}} \\
+		\multicolumn{5}{|c|}{\textbf{Hairball Light Shadow Test Summary}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textbf{\diagbox{Tests}{AA}}} & \textbf{Uncharted TAA} & \textbf{Test Index} & \textbf{Master TAA} & \textbf{Test Index} \\
 		\hline
@@ -1248,7 +1258,7 @@ The tests were performed on the computer provided by Lund University which has t
 The measured time the improved temporal technique took to run was between $0.5$ and $0.6$ $ms$ on average. The Sobel pass took between $0.2$ $ms$ and $0.3$ $ms$, and the reprojection was around $0.3$ $ms$.
 
 \section{Discussion}
-As we appreciate the Sharpen Filter Test, see Table \ref{tab:sharpen_res}, the improvements achieved in this master thesis go beyond modifying the filter from the Uncharted implementation. We believe that their use of that specific filter is of artistic nature. It tends to pronounce the edges at the cost of creating white pixels that flicker, especially, when the camera moves while the foreground is illuminated but the background is on shadows or vice versa. 
+As we appreciate the results of the Sharpen Filter Test, see Table \ref{tab:sharpen_res}, the improvements achieved in this master thesis go beyond modifying the filter from the Uncharted implementation. We believe that their use of that specific filter is of artistic nature. It tends to pronounce the edges at the cost of creating white pixels that flicker, especially, when the camera moves while the foreground is illuminated but the background is on shadows or vice versa. 
 
 From both Pipe Tests we can observe that the results from the Master Thesis TAA are close to SMAA results when drawing hard edges. We can quantify the reduction of blurring when comparing to the Uncharted TAA implementation in the numerical results from the Tables \ref{tab:pipe_regular} and \ref{tab:pipe_inclination}. When we compare the SSIM maps results (Figures \ref{fig:pipe_regular_render} and \ref{fig:pipe_inclination_render}), we observe that the thick error line around the edges in the Uncharted implementation is not present our Master Thesis implementation. But, the blurring reduction is not perfect, as we see on the tests scores, the blurring that remains around the edges lets SMAA the high score on some tests.
 
@@ -1260,13 +1270,13 @@ We consider the Sponza Flowers Test a distinctive experiment because the flowers
 
 From the Hard Edges Test we continue to observe that the Master Thesis technique handles better the blur compared to the Uncharted TAA (See Table \ref{tab:hard_test}), especially on the letters, the pipe, and the square; and that the Master Thesis technique still has a hard time handling the super fine details from the windows, at this distance we still believe the blurring of the Uncharted TAA helps to hide the unwanted pixel stripes that flicker (See Figure \ref{fig:hard_test_render}).
 
-In the Sphere Ghosting Test we see a clear example of the improvements accomplished in this Thesis. The Figure \ref{fig:sphere_ghosting} shows one example of the ghosting that is created by the Uncharted TAA implementation, we can clearly perceive the stripes that are left by the sphere while it moves, whereas on our Master Thesis TAA implementation they are barely visible.
+In the Sphere Ghosting Test we see a clear example of the improvements accomplished in this Thesis. Figure \ref{fig:sphere_ghosting} shows one example of the ghosting that is created by the Uncharted TAA implementation, we can clearly perceive the stripes that are left by the sphere while it moves, whereas on our Master Thesis TAA implementation they are barely visible.
 
-Finally, we have the four Hairball Tests, the most complex tests performed. The Hairball model has many gaps and small details that reacts to lighting and shadows. We anticipated a high amount of errors thanks to them because all Anti-Aliasing techniques have difficulties reconstructing this high density of fine details. 
+Finally, we have the four Hairball Tests, the most complex tests performed. The Hairball model has many gaps and small details that react to lighting and shadows. We anticipated a high amount of errors due to them because all Anti-Aliasing techniques have difficulties reconstructing this high density of fine details. 
 
-On the Shadow and Lighted Static Test (See Tables \ref{tab:hairball_static_shadow} and \ref{tab:hairball_static_lighted}) we can observe that the Master Thesis Implementation is the best at handling the hair fibers. It is able to reconstruct smoother edges than the Uncharted TAA and reconstructs more details than SMAA technique. Especially on the lighted version (See Figure \ref{fig:hairball_static_lighted_render}), we can appreciate how smooth the result is; it looks almost like the ground truth. This test far exceeded the expectation of our improvements, the visual and numerical (See Table \ref{tab:hairball_static_lighted}) results shows a big increase in quality compared to the other Anti-Aliasing solutions.
+On the Shadow and Light Static Test (See Tables \ref{tab:hairball_static_shadow} and \ref{tab:hairball_static_lighted}) we can observe that the Master Thesis Implementation is the best at handling the hair fibers. It is able to reconstruct smoother edges than the Uncharted TAA and reconstructs more details than SMAA technique. Especially on the light version (See Figure \ref{fig:hairball_static_lighted_render}), we can appreciate how smooth the result is; it looks almost like the ground truth. This test far exceeded the expectation of our improvements, the visual and numerical (See Table \ref{tab:hairball_static_lighted}) results shows a big increase in quality compared to the other Anti-Aliasing solutions.
 
-On the Shadow and Lighted Ghosting Test we observe that both techniques results are blurred in excess (See Figures \ref{fig:hairball_ghosting_shadow} and \ref{fig:hairball_ghosting_lighted}), especially the Master Thesis TAA implementation on the lighted version. We believe this to be caused by the History Buffer and the Sobel Temporal Pass, for the Master Thesis TAA, not being able to stabilize as fast as the colors change when the fibers move thanks to the color rejection being slower than needed. The numerical values from Tables \ref{tab:hairball_ghosting_shadow} and \ref{tab:hairball_ghosting_lighted} confirm us the effects of blurring thanks to the MSE being higher than normal.
+On the Shadow and Light Ghosting Test we observe that both techniques results are blurred excessively (See Figures \ref{fig:hairball_ghosting_shadow} and \ref{fig:hairball_ghosting_lighted}), especially the Master Thesis TAA implementation on the light version. We believe this to be caused by the History Buffer and the Sobel Temporal Pass, for the Master Thesis TAA, not being able to stabilize as fast as the colors change when the fibers move thanks to the color rejection being slower than needed. The numerical values from Tables \ref{tab:hairball_ghosting_shadow} and \ref{tab:hairball_ghosting_lighted} confirm the effects of blurring thanks to the MSE being higher than normal.
 
 
 From our timing results (See \ref{result_timing}), we can see that our improvements fit the time requirements to run on real-time applications.
@@ -1277,7 +1287,7 @@ As we have shown numerically and visually with the tests performed, the Master T
 
 As possible improvements, we are confident that our implementation could be optimized to run faster than our current timing. Our current implementation was made with flexibility in mind to help us test different approaches, this could be simplified to reduce the number of passes required. 
 
-As for recommendations for further research, we suggest on improving the technique behavior under high detail density moving objects, like on the Hairball Tests. Another improvement subject is the stability for pixel size details that cause flickering, like on the Windows Tests. Furthermore, a Specular Lighting Anti-Aliasing solution compatible with Temporal Anti-Aliasing it is still required to provide a full range solution to Aliasing in real-time applications. Also, we suggest searching for more specific Image Metrics for Computer Graphics, especially, finding tuning values for SSIM to provide more numerical resolution when comparing different rendered images.
+As for recommendations for further research, we suggest improving the technique's behavior under high detail density moving objects, like on the Hairball Tests. Another improvement subject is the stability for pixel size details that cause flickering, like on the Windows Tests. Furthermore, a Specular Lighting Anti-Aliasing solution compatible with Temporal Anti-Aliasing is still required to provide a full range solution to Aliasing in real-time applications. Also, we suggest searching for more specific Image Metrics for Computer Graphics, especially, finding tuning values for SSIM to provide more numerical resolution when comparing different rendered images.
 
 
 \makebibliography{MyMSc}

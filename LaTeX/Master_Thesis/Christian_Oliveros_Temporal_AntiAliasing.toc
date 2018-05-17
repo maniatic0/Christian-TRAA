@@ -64,9 +64,9 @@
 \contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{43}{subsection.5.2.8}
 \contentsline {subsection}{\numberline {5.2.9}Hairball}{44}{subsection.5.2.9}
 \contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{44}{subsubsection.5.2.9.1}
-\contentsline {subsubsection}{\numberline {5.2.9.2}Static Lighted}{45}{subsubsection.5.2.9.2}
+\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{46}{subsubsection.5.2.9.2}
 \contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{47}{subsubsection.5.2.9.3}
-\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Lighted}{48}{subsubsection.5.2.9.4}
+\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{48}{subsubsection.5.2.9.4}
 \contentsline {subsection}{\numberline {5.2.10}Timing}{48}{subsection.5.2.10}
 \contentsline {section}{\numberline {5.3}Discussion}{49}{section.5.3}
 \contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{51}{chapter.6}
