@@ -57,10 +57,10 @@
 \contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{36}{subsubsection.5.2.2.1}
 \contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{37}{subsubsection.5.2.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{38}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Arched Window Test}{39}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Sponza}{40}{subsection.5.2.5}
-\contentsline {subsection}{\numberline {5.2.6}Sponza Flowers}{41}{subsection.5.2.6}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges Test}{42}{subsection.5.2.7}
+\contentsline {subsection}{\numberline {5.2.4}Arched Window}{39}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{40}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{41}{subsection.5.2.6}
+\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{42}{subsection.5.2.7}
 \contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{43}{subsection.5.2.8}
 \contentsline {subsection}{\numberline {5.2.9}Hairball}{44}{subsection.5.2.9}
 \contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{44}{subsubsection.5.2.9.1}
