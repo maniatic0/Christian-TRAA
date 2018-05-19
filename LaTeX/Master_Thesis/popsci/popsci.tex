@@ -12,6 +12,8 @@
 
 \usepackage{lmodern}
 
+\usepackage{graphicx}
+
 
 
 \presentationsdag{2018-05-31}
@@ -32,14 +34,25 @@
 \theabstract{Graphic Real-time applications, like video games, require solutions for jaggies and pixel flickering in movement problems, aliasing, to render high-quality images. In this thesis, we improved the Temporal Anti-Aliasing technique to provide higher quality images.}
 
 
-{\noindent För att öka prestandan i dagens processorer finns det vektorenheter och flera kärnor i processorer. Vektorenheten finns till för att kunna utföra en operation på en mängd data samtidigt och flera kärnor gör att man kan utföra fler instruktioner samtidigt. Ofta är processorerna designade för att kunna stödja en mängd olika datorprogram. Detta resulterar i att det blir kompromisser som kan påverka prestandan för vissa program och vara överflödigt för andra. I t.ex. videokameror, mobiltelefoner, medicinsk utrustning, digital kameror och annan inbyggd elektronik, kan man istället använda en processor som saknar vissa funktioner men som istället är mer energieffektiv. Man kan jämföra det med att frakta ett paket med en stor lastbil istället för att använda en mindre bil där samma paketet också skulle få plats.
+{\noindent Current computer graphics real-time applications strive to provide the highest image quality available at the lowest computation time possible, they normally need to run at 30 images (frames) per second or more. One of the obstacles its got to overpass is that normally there is not enough resolution to render everything the best way possible, thus, creating what is commonly referred as jaggies or the blocky look that some rendered images get (officially named Spatial Aliasing); and pixel flickering or jumps in moving objects (Temporal Aliasing). 
+	
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.87]{images/pipe_sobel_no_aa.png}
+	\caption{Example of Jaggies.}\label{fig:jaggies}
+\end{figure}
+	
+This thesis works improved one of the current Anti-Aliasing techniques, Temporal Anti-Aliasing, which mitigates the effect of Spatial and Temporal Aliasing using previously rendered frames in the process of rendering the current one. The key benefits that this technique provide are that it solves two types of aliasing problems at the same time; that it is compatible with current rendering pipelines and that it provides good results while being lightweight in computational time. But, it’s got two main drawbacks, it generates unnecessary blurriness; and the appearance of trails of objects from previous frames that were moving (ghosting). 
 
-I mitt examensarbete har jag skrivit en modell som kan användas för att snabbt designa en processor enligt vissa parametrar. Dessa parametrar väljs utifrån vilket eller vilka program man tänkta köra på den. Vissa program kan t.ex. lättare använda flera kärnor och vissa program kan använda korta eller längre vektorenheter för dess data.
+The work of this thesis achieved a reduction in both drawbacks by the use of edge detection, using the Sobel Operator, and by numbering (indexing) models in the scene to differentiate them. Also, the improvements managed to be at the same level or surpass other Anti-Aliasing solutions like FXAA and SMAA, which are common in video games.
 
-För att kunna välja vilken typ av processor som är rätt för den specifika applikationen krävs det ofta att man snabbt kan testa olika prototyper. Att implementera dessa till hårdvara kan ofta vara tidskrävande och ifall det visar sig att implementationen inte klarar dem kraven man ställt för prestanda och energieffektivitet, måste man designa för nya parametrar och mer tid har blivit slösat. Om den här processen istället kan göras automatiskt utifrån dessa design-parametrar kan man teoretiskt spara en massa tid.
-Modellen testades med olika multimedia program. Den mest beräkningsintensiva och mest upprepande delen av programmen användes. Dessa kallas för kärnor av programmen. Kärnorna som användes var ifrån MPEG och JPEG, som används för bildkomprimering och videokomprimering.
 
-Resultatet visar att det finns en prestanda vinst jämfört med generella processorer men att detta också ökar resurserna som behövs. Detta trots att den generella processorn har nästan dubbelt så hög klockfrekvens än dem applikations-specifika processorerna. Resultatet visar också att schemaläggning av instruktionerna i programmen spelar en stor roll för att kunna utnyttja resurserna som finns tillgängliga och därmed öka prestandan. Med den schemaläggningen som utnyttjade resurserna bäst var prestandan minst 79\% bättre än den generella processorn.
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[scale=0.6]{images/ghosting.png}
+	\caption{Example of Ghosting reduction.}\label{fig:ghosting}
+\end{figure}
+	
 }
 
 \end{document}
