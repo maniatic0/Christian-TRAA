@@ -18,21 +18,21 @@
 \contentsline {subsection}{\numberline {3.5.4}Enhanced Subpixel Morphological Antialiasing (SMAA)}{16}{subsection.3.5.4}
 \contentsline {section}{\numberline {3.6}Temporal Anti-Aliasing}{16}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Camera Jitter}{17}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Velocity Buffer}{18}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.2}Velocity Buffer}{17}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Frame History Buffer}{18}{subsection.3.6.3}
 \contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{19}{subsection.3.6.4}
-\contentsline {subsection}{\numberline {3.6.5}Sharpen Filter}{20}{subsection.3.6.5}
-\contentsline {subsection}{\numberline {3.6.6}Motion Blur}{20}{subsection.3.6.6}
-\contentsline {subsection}{\numberline {3.6.7}Problems}{20}{subsection.3.6.7}
-\contentsline {subsubsection}{\numberline {3.6.7.1}Blurriness}{20}{subsubsection.3.6.7.1}
+\contentsline {subsection}{\numberline {3.6.5}Sharpen Filter}{19}{subsection.3.6.5}
+\contentsline {subsection}{\numberline {3.6.6}Motion Blur}{19}{subsection.3.6.6}
+\contentsline {subsection}{\numberline {3.6.7}Problems}{19}{subsection.3.6.7}
+\contentsline {subsubsection}{\numberline {3.6.7.1}Blurriness}{19}{subsubsection.3.6.7.1}
 \contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{20}{subsubsection.3.6.7.2}
-\contentsline {section}{\numberline {3.7}Accumulation Buffer}{21}{section.3.7}
-\contentsline {section}{\numberline {3.8}Sobel Operator}{21}{section.3.8}
-\contentsline {section}{\numberline {3.9}Image Metrics}{22}{section.3.9}
+\contentsline {section}{\numberline {3.7}Accumulation Buffer}{20}{section.3.7}
+\contentsline {section}{\numberline {3.8}Sobel Operator}{20}{section.3.8}
+\contentsline {section}{\numberline {3.9}Image Metrics}{21}{section.3.9}
 \contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{22}{subsection.3.9.1}
-\contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{23}{subsection.3.9.2}
-\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{23}{subsection.3.9.3}
-\contentsline {subsection}{\numberline {3.9.4}Structural Similarity Index (SSIM)}{23}{subsection.3.9.4}
+\contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{22}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{22}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.4}Structural Similarity Index (SSIM)}{22}{subsection.3.9.4}
 \contentsline {chapter}{\numberline {4}Development}{25}{chapter.4}
 \contentsline {section}{\numberline {4.1}EDAN35 Project Improvements}{25}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{26}{subsection.4.1.1}

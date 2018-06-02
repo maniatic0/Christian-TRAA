@@ -223,9 +223,7 @@ One such technique is Temporal Reprojection Anti-Aliasing (TRAA), it works by sa
 For TRAA to work we need to implement other common Computer Graphics techniques to serve as the base. We need Camera Jittering to be able to reconstruct pixel information around edges; a Velocity Buffer to determine the positions of the pixels on the last frame if they were moving; a Frame History Buffer to collect past frames to perform the reprojections in the next frame; a Clipping Color Box to constrain the History Buffer and avoid noise or wrong colors to appear; a Sharpen Filter to reduce part of the blur created; and Motion Blur to correct the effects of objects moving too fast for the Clipping Color Box.
 
 \subsection{Camera Jitter}
-Camera Jitter is applied every frame to preserve information from local regions of surface fragments. If the current frame is static relative to the past ones then the system is losing information that could be used to refine it. ~\cite{Fuglsand2016,XU2016}
-
-\newpage
+Camera Jitter consists in moving the camera vertically and horizontally with a sub-pixel translation, Figure \ref{fig:camerajittering} is an example of the horizontal translation. It is applied every frame to preserve information from local regions of surface fragments. If the current frame is static relative to the past ones then the system is losing information that could be used to refine it. ~\cite{Fuglsand2016,XU2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -233,7 +231,7 @@ Camera Jitter is applied every frame to preserve information from local regions 
 	\caption{Jittering the Projection Process. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
 \end{figure}
 
-The jittering is applied as a translation to the projection matrix using the $Halton Sequence (2,3)$ as the translation deltas. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016} 
+The jittering is applied as a translation to the projection matrix using the $Halton Sequence (2,3)$ as translation vectors. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016} 
 
 \begin{figure}[!hbt]
 	\centering
@@ -241,16 +239,14 @@ The jittering is applied as a translation to the projection matrix using the $Ha
 	\caption{Values from the $Halton Sequence (2,3)$ used.}\label{fig:halton16}
 \end{figure}
 
-The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection in the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. It was generated using MATLAB with the command \emph{haltonset(2)} then scrambled using reverse-radix scrambling, \emph{scramble(p, 'RR2')} and, finally, generated the 16 points used with \emph{net(p, 16)}.
+The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection in the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. The points were generated using MATLAB then scrambled to improve their randomness using reverse-radix scrambling.
 
 \subsection{Velocity Buffer}
-The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting in NDC space the current pixel position by its last frame position. This is possible by saving the MVP matrix of each object in the scene.
-
-Also, as suggested by Xu ~\cite{XU2016}, the jittering is not included as part of the motion.
+The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting the current pixel position by its last frame position. This is possible by saving the matrix that represents each object in the scene. Also, as suggested by Xu ~\cite{XU2016}, to avoid noise created by the Camera Jittering, we do not include it in the velocity calculations.
 
 
 \subsection{Frame History Buffer}
-For each fragment in the current frame, we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use it in the Clipping of the pixels in the History Buffer. ~\cite{Fuglsand2016}
+For each fragment in the current frame, we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use them to build part of the Clipping to constrain the pixels of the History Buffer. ~\cite{Fuglsand2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -260,7 +256,7 @@ For each fragment in the current frame, we look for the 3x3 neighborhood and plu
 
 On the $3\times 3$ neighborhood we look for the velocity of the pixel with the closest depth, this is to get better edges in motion for pixels that are occluded ~\cite{Fuglsand2016}. We use this velocity to reproject the position of the current frame in the History Buffer. ~\cite{Fuglsand2016,XU2016}
 
-After we have the pixels in the History Buffer, we constrain it (See next subsection) and mix it with the current frame. We linearly mix both using a feedback value that is calculated by the difference of luminance between colors. This feedback is clamped between values closer to one to add some information of the current frame while keeping the pixel's history. This mix stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because each pixel's history is accumulated in the History Buffer, we get the effect that pixel history from previous frames weights less the more time the pixel's history is not rejected from the History Buffer. ~\cite{Fuglsand2016}
+After we have the pixels in the History Buffer, we constrain it (See next subsection) and linearly interpolate it with the current frame (See Figure \ref{ fig:samplingprocess} for the visual representation of this process). We linearly interpolate both using a feedback value that is calculated by the difference of luminance between the colors of the constrained History Buffer and the current frame. This feedback value is made to bias in favor of keeping the pixel’s history over the current frame, this is done to add some information of the current frame while keeping most of the pixel's history. This linear interpolation stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because each pixel's history is accumulated in the History Buffer, we get the effect that pixel history from previous frames weighs less the more time the pixel's history is not rejected from the History Buffer. ~\cite{Fuglsand2016}
 
 \begin{figure}[!hbt]
 	\centering
