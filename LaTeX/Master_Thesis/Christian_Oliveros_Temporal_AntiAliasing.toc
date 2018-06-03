@@ -53,23 +53,23 @@
 \contentsline {section}{\numberline {5.1}Evaluation Methodology}{37}{section.5.1}
 \contentsline {section}{\numberline {5.2}Results and Comparisons}{38}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Sharpen Filter}{38}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Pipe}{40}{subsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{40}{subsubsection.5.2.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{41}{subsubsection.5.2.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{42}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Arched Window}{43}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{44}{subsection.5.2.5}
-\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{45}{subsection.5.2.6}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{46}{subsection.5.2.7}
-\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{47}{subsection.5.2.8}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{48}{subsection.5.2.9}
-\contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{48}{subsubsection.5.2.9.1}
-\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{50}{subsubsection.5.2.9.2}
-\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{51}{subsubsection.5.2.9.3}
-\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{52}{subsubsection.5.2.9.4}
-\contentsline {subsection}{\numberline {5.2.10}Timing}{52}{subsection.5.2.10}
-\contentsline {section}{\numberline {5.3}Discussion}{53}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{55}{chapter.6}
-\contentsline {chapter}{Bibliography}{57}{section*.56}
-\contentsline {chapter}{Appendix \numberline {A}GitHub Repository}{61}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}Camera Jittering Explanation}{63}{Appendix.a.B}
+\contentsline {subsection}{\numberline {5.2.2}Pipe}{41}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{41}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{42}{subsubsection.5.2.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{43}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Arched Window}{44}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{45}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{46}{subsection.5.2.6}
+\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{47}{subsection.5.2.7}
+\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{48}{subsection.5.2.8}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{49}{subsection.5.2.9}
+\contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{49}{subsubsection.5.2.9.1}
+\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{51}{subsubsection.5.2.9.2}
+\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{52}{subsubsection.5.2.9.3}
+\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{53}{subsubsection.5.2.9.4}
+\contentsline {subsection}{\numberline {5.2.10}Timing}{53}{subsection.5.2.10}
+\contentsline {section}{\numberline {5.3}Discussion}{54}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{57}{chapter.6}
+\contentsline {chapter}{Bibliography}{59}{section*.56}
+\contentsline {chapter}{Appendix \numberline {A}GitHub Repository}{63}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}Camera Jittering Explanation}{65}{Appendix.a.B}
