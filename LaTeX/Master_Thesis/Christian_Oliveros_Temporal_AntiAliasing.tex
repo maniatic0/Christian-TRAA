@@ -256,21 +256,21 @@ For each fragment in the current frame, we look for the 3x3 neighborhood and plu
 
 On the $3\times 3$ neighborhood we look for the velocity of the pixel with the closest depth, this is to get better edges in motion for pixels that are occluded ~\cite{Fuglsand2016}. We use this velocity to reproject the position of the current frame in the History Buffer. ~\cite{Fuglsand2016,XU2016}
 
-After we have the pixels in the History Buffer, we constrain it (See next subsection) and linearly interpolate it with the current frame (See Figure \ref{ fig:samplingprocess} for the visual representation of this process). We linearly interpolate both using a feedback value that is calculated by the difference of luminance between the colors of the constrained History Buffer and the current frame. This feedback value is made to bias in favor of keeping the pixel’s history over the current frame, this is done to add some information of the current frame while keeping most of the pixel's history. This linear interpolation stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because each pixel's history is accumulated in the History Buffer, we get the effect that pixel history from previous frames weighs less the more time the pixel's history is not rejected from the History Buffer. ~\cite{Fuglsand2016}
+After we have the pixels in the History Buffer, we constrain it (See next subsection) and linearly interpolate it with the current frame (See Figure \ref{fig:samplingprocess} for the visual representation of the complete process). We linearly interpolate both using a feedback value that is calculated by the difference of luminance between the colors of the constrained History Buffer and the current frame. This feedback value is made to bias in favor of keeping the pixel’s history over the current frame, this is done to add some information of the current frame while keeping most of the pixel's history. This linear interpolation stabilizes the image, removing the jittering and smoothing the edges ~\cite{Fuglsand2016,XU2016}. Because each pixel's history is accumulated in the History Buffer, we get the effect that pixel history from previous frames weighs less the more time the pixel's history is not rejected from the History Buffer. ~\cite{Fuglsand2016}
 
-\begin{figure}[!hbt]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{images/sampling_process.png}
 	\caption{Temporal Reprojection Anti-Aliasing process. Image taken from Fuglsand presentation \protect\cite{Fuglsand2016}}\label{fig:samplingprocess}
 \end{figure}
 
 \subsection{Clipping Color Box} 
-A Clipping Color Box is used to handle color rejection when the pixel's history in the History Buffer is too distant from current color. This is a box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as limits. The history color is taken as a position and projected against the limits of the box if it lies outside, else, it is left untouched. The usage of the Clipping Color Box prevents the color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
+A Clipping Color Box a is 3D box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as the limits. It is used to handle color rejection when the pixel's history in the History Buffer is too distant from current color. The history’s color is taken as a vector and then it is projected against the limits of the box; if it lies outside the projection against the border of the box is kept, else, history’s color is left untouched. The usage of the Clipping Color Box prevents the color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.4]{images/clipping_box.png}
-	\caption{Color Clamping versus Color Clipping. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:clippingbox}
+	\caption{Color Clamping versus Color Clipping. Image taken from Fuglsand paper. \protect\cite{Fuglsand2016}}\label{fig:clippingbox}
 \end{figure}
 
 
@@ -285,19 +285,22 @@ Because the Reprojection process and Color Clipping create blurriness, a Sharpen
 \end{bmatrix*}
 \end{equation}
 
-Equation \ref{eq:sharpen} being the Sharpen Filter Convolution Matrix  used in Xu presentation. \protect\cite{XU2016}
+Equation \ref{eq:sharpen} being the Sharpen Filter Convolution Matrix  used in Xu paper. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
-Because of the nature of the History Buffer, ghosting is created by fragments from objects that move so fast that they are not rejected as quickly as necessary, under special lighting and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
+Because of the nature of the History Buffer, some ghosting is created by pixels from objects that are moving faster than the time it takes for the Color Clipping Box to reject the color from old pixels, this is especially noticeable under special light and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
 
 The Motion Blur used is the one proposed by Chapman ~\cite{Chapman2012}. It tries to behave like a real camera by scaling the velocity of each pixel by the division of the current Frames Per Second (FPS) to the one wanted, thus, simulating the shutter speed. Then it mixes the colors of the pixels that are sampled while following the direction of the velocity buffer vector.
 
+
 \subsection{Problems}
+Temporal Anti-Aliasing has two main problems, ghosting from moving objects and blurring from the way the Color Clipping Box works. This master thesis aims to help reduce the effects of these two drawbacks using new approaches but, for completeness, we present some of the current solutions proposed. 
+
 \subsubsection{Blurriness} 
 Current implementations of TAA generate a very aggressive blur because of the way they mix the colors of the current frame and the history; the use of areas larger than the pixel increases the errors generated, therefore a Sharpen Filter is required. The filter applied in the implementation is the one used by Xu ~\cite{XU2016}, it solves blurriness reasonably well but it cannot eliminate some artifacts. 
 
 \subsubsection{Ghosting} 
-Some Ghosting is created when objects move, especially under particular lighting and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}. 
+Some Ghosting is created when objects move, especially under particular light and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}, but we aim to avoid requiring artists to manually tag and tests objects for ghosting. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}.  
 
 \section{Accumulation Buffer}
 The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
@@ -305,7 +308,7 @@ The Accumulation Buffer is an anti-aliasing technique that consists, according t
 This is process increases the sampling per pixel and reduces the aliasing effects producing a high-quality image at the cost of rendering everything several times per frame.
 
 \section{Sobel Operator}
-It is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel. \cite{Sobel2014}
+The Sobel Operator is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel. \cite{Sobel2014}
 
 It works by taking the four-possible simple central gradient estimates in a $3\times 3$ neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
 
@@ -317,7 +320,7 @@ g & h & i
 \end{bmatrix*}
 \end{equation}
 
-Let \ref{eq:sobel_neighborhood} be the $3\times 3$ neighborhood and $\abs*{G}$ the magnitude of the directional derivative estimate of the neighborhood.  
+Let the Matrix \ref{eq:sobel_neighborhood} be the $3\times 3$ neighborhood and $\abs*{G}$ the magnitude of the directional derivative estimate of the neighborhood.  
 
 The direction of $G$ will be given by the unit vector to the appropriate neighbor. Vector summing causes all the $e$ (center of the $3\times 3$ neighborhood) values to be canceled leaving only the next expression \ref{eq:sobel_simplification}:
 \begin{equation}\label{eq:sobel_simplification}
@@ -326,7 +329,7 @@ The direction of $G$ will be given by the unit vector to the appropriate neighbo
 \end{split}
 \end{equation}
 
-Then we multiply by $4$, rather divide by $4$, to approximate the value and ensure that we do not lose precision if we perform this with small fixed-point integers. The newly calculated magnitude is sixteen times larger than the original average gradient.
+Then we multiply by $4$ to approximate the value and ensure that we do not lose precision if we perform this with small fixed-point integers. The newly calculated magnitude is sixteen times larger than the original average gradient.
 
 \begin{equation}\label{eq:sobel_approximation}
 \begin{split}
@@ -334,7 +337,7 @@ G' = 4 * G =\begin{bmatrix*}(c-g-a+i)+(f-d)*2 & (c-g+a-i)*4+(b-h)*2\end{bmatrix*
 \end{split}
 \end{equation}
 
-This can be expressed in two weighting matrices. \ref{eq:sobel_x} for the $x$ component and \ref{eq:sobel_y} for the $y$ component.
+Equation \ref{eq:sobel_approximation} can be expressed in two weighting matrices. We use Matrix \ref{eq:sobel_x} for the $x$ component and Matrix\ref{eq:sobel_y} for the $y$ component.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:sobel_x}
@@ -440,7 +443,7 @@ The EDAN35 project implementation had errors in the jittering process that were 
 
 Specular Lighting Anti-Aliasing is a complex problem by itself, which requires specialized solutions that work directly with light reflections. Anti-Aliasing techniques do not correct it by themselves, they usually work with suitable already made solutions. To avoid problems with Specular Lighting, it was decided to be turned off.
 
-Also, there were added models for a sphere, wall, pipe, hairball, a window with blinds and an arched window to test the improvements done to the Temporal Anti-Aliasing. All models, except the wall, were added with one color-solid texture to avoid introducing lighting errors in the calculations of the image metrics for the comparisons between the Uncharted 4 implementation and the one developed in this master thesis. The wall model uses a white texture with black letters on it, this is because letters use hard edges to define their shape and must stay that way after applying any Anti-Aliasing technique.
+Also, there were added models for a sphere, wall, pipe, hairball, a window with blinds and an arched window to test the improvements done to the Temporal Anti-Aliasing. All models, except the wall, were added with one color-solid texture to avoid introducing lighting errors in the calculations of the image metrics for the comparisons between the Uncharted 4 implementation and the one developed in this master thesis. The wall model uses a white texture with black letters on it because letters use hard edges to define their shape and must stay that way after applying any Anti-Aliasing technique.
 
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
 For this master thesis, the white paper version of Fast Approximate Anti-Aliasing (FXAA) by Lottes \cite{Lottes2009} was used to compare it against Temporal Anti-Aliasing, on the ground that both techniques are Post-Processing Anti-Aliasing and that FXAA is a popular technique used in the industry. It was implemented  under the highest quality preset according to the white paper without taking into consideration the performance impact because we wanted to compare the raw improvement that both techniques can provide.
@@ -454,7 +457,7 @@ We use an Accumulation Buffer to provide a reference image of what the scene is.
 \subsubsection{Sample Number Selection}
 The number of samples selected for the Accumulation Buffer is 128. This is because it provides the best representation possible of the scene even though it causes a substantial loss of performance.
 
-In order to show the difference between using 16 and 128 samples, we performed four tests to observe how the metrics behave under different arrangements  of scene objects and lighting. In the next table we see the results of one such test:
+In order to show the difference between using 16 and 128 samples, we performed four tests, named from A to D, to observe how the metrics behave under different arrangements  of scene objects and lighting. In the Table \ref{tab:acctest} we see the results of one such test:
 
 \begin{table}[!hbt]
 	\centering
@@ -488,7 +491,7 @@ In order to show the difference between using 16 and 128 samples, we performed f
 \end{tabular}
 \end{table}
 
-The changes are large enough on some metrics to be noticeable, especially on MSE and SSIM of Temporal Anti-Aliasing. We are going to notice the effects of the use of 128 samples when we reach the comparisons between Anti-Aliasing techniques.
+The changes are large enough on some metrics to be noticeable, especially on MSE and SSIM of Temporal Anti-Aliasing, for our comparisons between Anti-Aliasing techniques. We are going to notice the effects of the use of 128 samples when we reach the comparisons between Anti-Aliasing techniques.
 
 \section{Testing Framework Implementation}
 To measure any improvement achieved, we developed a testing framework that allows us to save the important information when the test is performed. The framework allows us to select which technique to use as the main renderer: the Master Thesis Temporal Anti-Aliasing implementation; Uncharted 4 Temporal Anti-aliasing implementation; Enhanced Subpixel Morphological Antialiasing (SMAA); or Fast Approximate Anti-Aliasing (FXAA). It also allows us to zoom any part of the screen and then perform all the image metrics calculations using MATLAB.
@@ -497,15 +500,18 @@ When a test is performed, selected rendered images are saved as PNGs with 4 colo
 To quantify if improvements were achieved on the main objectives of this thesis, ghosting, and blurriness, two different types of tests were developed: Static Test and Ghosting Test.
 
 \subsection{Static Test}
-This type of test consists of letting the History Buffer fill for 16 frames by rendering them with the Temporal Anti-Aliasing technique selected and then saving the last frame rendered. Immediately rendering the last frame using the Accumulation Buffer, to generate the ground truth image of the scene, and SMAA, FXAA and No Anti-Aliasing (No AA), for comparison purposes. 
+This type of test consists of letting the History Buffer fill for 16 frames by rendering the scene without any moving object with the Temporal Anti-Aliasing technique selected and then saving the last frame rendered. Immediately after saving the last TAA frame rendered, we render the last frame again but now using the Accumulation Buffer, to generate the ground truth image of the scene, and SMAA, FXAA and No Anti-Aliasing (No AA), for comparison purposes. 
 
 \subsection{Ghosting Test}
 This type of test is performed only with the sphere and hairball models; the first is moving through the alley of the scene simulating a moving object in an application and the second one is rotating in a static position simulating many edges moving. The test consists of rendering the scene for a selected number of frames, with the Master Thesis Temporal Anti-Aliasing implementation and the Uncharted 4 Temporal Anti-Aliasing implementation at the same time. After each frame is rendered, each image, the position of the sphere and the rotation of the hairball are saved.
 
 Once the selected number of frames has run through, the sphere is returned to its original position and the movement is repeated using the positions saved before; and the hairball is returned to its original rotation and the movement is also repeated. The difference this time is that every frame is rendered using the Accumulation Buffer and then saved, it is done to avoid the heavy performance loss caused by the Accumulation Buffer impacting the Temporal Anti-Aliasing techniques.
 
+After all the images rendered are saved, we compare the Master Thesis Temporal Anti-Aliasing and the Uncharted Temporal Anti-Aliasing against the ground truth to calculate the image metrics of them. The image metrics we calculate shows how us much error did the ghosting generate in both implementations so we can compare them. 
+
+
 \subsection{MATLAB Image Metrics}
-Once all the test results are saved, one script takes all the images and organizes them into folders by name and type of test. Afterward, all the test results are processed using MATLAB.
+Once all the test results are saved, one script takes all the images and organizes them into folders by name and type of test. Afterward, all the test results are processed using MATLAB to get the images metrics results. With the image metrics results, we compare how the Mater Thesis Temporal Anti-Aliasing behaved against the Uncharted 4 Temporal Anti-Aliasing and the other Anti-Aliasing techniques, to see if the improvements worked and to see how our improved implementation behaved against other common Anti-Aliasing techniques.
 
 For Static Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to the TAA, FXAA, SMAA and No AA rendered images, using the Accumulation Buffer rendered images as the reference to compare with. Also, we generate a local SSIM map for each rendered image, apart from the one rendered with the Accumulation Buffer, which are saved as PNGs and MATLAB FIGs. All the measurements results are stored in the folder with the test results as plain text. 
 
@@ -515,7 +521,7 @@ For Ghosting Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to eac
 \section[Temporal Reprojection Anti-Aliasing Modifications]{Temporal Reprojection \\ Anti-Aliasing Modifications}
 For this thesis, the Color Clipping Box technique was modified to be affected by the values calculated from the new techniques applied in this thesis. These changes follow the rationale that we want to apply the full force of the Temporal Anti-Aliasing technique when needed, and not elsewhere, to minimize the effects of ghosting and blurring.
 
-The first change consists in that the Colors that were calculated from the average between the $3\times 3$ and Cross neighborhoods by the sampling patterns are now mixed in a variable amount. This follows the idea that we prefer the Cross neighborhood over the $3\times 3$ neighborhood if the pixel we are currently calculating is not considered to be aliased, this is because the Cross neighborhood is less likely to introduce unwanted information in the minimum, maximum and average calculations. But, if the pixel is considered to be aliased, we prefer the $3\times 3$ neighborhood because it provides more information about the surroundings of the pixel to create the unaliased image. 
+The first change consists in that the Colors that were calculated from the average between the $3\times 3$ and Cross neighborhoods by the sampling patterns (See Figure \ref{fig:samplingpattern_2}) are now mixed in a variable amount. This follows the idea that we prefer the Cross neighborhood if the pixel we are currently calculating is not considered to be aliased because the Cross neighborhood is less likely to introduce noise in the Color Clipping Box calculations. But, if the pixel is considered to be aliased, we prefer the $3\times 3$ neighborhood because it provides more information about the surroundings of the pixel to create the unaliased image.  
 
 \begin{figure}[!hbt]
 	\centering
@@ -523,13 +529,15 @@ The first change consists in that the Colors that were calculated from the avera
 	\caption{Sampling Pattern used. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern_2}
 \end{figure}
 
-The second change is that the size of the Color Clipping Box depends on how much the pixel is considered to be aliased. By using smaller Color Clipping boxes than the original technique on unaliased pixels, we increase the elimination of unwanted colors from the history, reducing the effects of ghosting since we are rejecting colors faster on pixels that we know are not considered to be aliased. This is implemented by linearly interpolating the current pixel color and the minimum and maximum colors calculated for the Color Clipping Box.
+The second change is that the size of the Color Clipping Box depends on how much the pixel is considered to be aliased. By using smaller Color Clipping boxes (See Figure \ref{fig:colorclippingboxredux}) than the original technique on unaliased pixels, we increase the elimination of unwanted colors from the history, reducing the effects of ghosting since we are rejecting colors faster on pixels that we know are not considered to be aliased. This is implemented by linearly interpolating the current pixel color and the minimum and maximum colors calculated for the Color Clipping Box.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.7]{images/clipping_box_reduction.png}
 	\caption{Color Clipping Box size reduction}\label{fig:colorclippingboxredux}
 \end{figure}
+
+On the next subsections, we are going to explain all the values we calculate to decide if a pixel is considered aliased or not. All of these values are calculated at the same time as TAA is being run, with the exception of the Sobel Operator which is used before the TAA technique. Afterward, we show how we use that value to reduce the size of the Color Clipping Box and the preference of the Sampling Pattern.
 
 \subsection{Triangle Indexing Improvements Implementation}
 The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
@@ -549,8 +557,26 @@ Where
 ModelDiff(i,j) = \left\lbrace \begin{split}1\quad & if\quad ModelID_i \neq ModelID_j \\ 0\quad & else\end{split} \right.
 \end{equation*}
 
+Next we are going to show some examples of how this technique works. For each matrix, the numbers represent the triangles ID's with the center position being the current pixel being calculated and the rest being its neighborhood. Matrix \ref{eq:triang_index_not_aliased} shows an example of a pixel not considered aliased because most of the neighborhood have the same ID. On the other hand, Matrix \ref{eq:triang_index_aliased} shows a pixel considered aliased because of the high amount of different ID's around.
+
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:triang_index_not_aliased}
+3 &  3 & 3 \\
+3 &  3 & 3 \\
+5 &  23 & 82
+\end{bmatrix*}
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:triang_index_aliased}
+3 &  3 & 3 \\
+3 &  5 & 3 \\
+5 &  23 & 82
+\end{bmatrix*}
+\end{equation}
+
 \subsection{Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}
-The key point behind this technique is that we want to detect pixels that we consider aliased because they are in a neighborhood of pixels separated by relatively long depth distances or that they change their depth relatively a long distance through frames. 
+The key point behind this technique is that we want to detect pixels that we consider aliased because they are in a neighborhood of pixels separated by relatively long depth distances or that their depth in the last frame changed relatively a long distance in contrast to its current neighborhood.
 
 First, we calculate the minimum, maximum and average linear depth from the $3\times 3$ neighborhood. Then we proceed to use the next formula to calculate the value we are going to use to normalize results:
 \begin{equation} \label{eq:maxdepthdistance}
@@ -560,7 +586,7 @@ First, we calculate the minimum, maximum and average linear depth from the $3\ti
 \end{split} 
 \end{equation}
 
-We calculate the normalizing value using the minimum to avoid the interference of outliers. If $maxDepthDistance$  is below $0.002$ everything that follows is set to zero because pixels are so close that it’s probably not aliased. This threshold was defined by experimenting which values would not get noise inside the calculations but would let the interesting pixels in. 
+We calculate the normalizing value using the minimum to avoid the interference of outliers. If $maxDepthDistance$  is below $0.002$ everything that follows is set to zero because pixels are so close that it is probably not aliased. This threshold was defined by experimenting which values would not get noise inside the calculations but would let the interesting pixels in. 
 
 Then we calculate the depth pseudo variance as:
 
@@ -570,16 +596,34 @@ Then we calculate the depth pseudo variance as:
 
 This provides us with a pseudo-variance that measures the distance between the average depth and the current pixel depth. Note that normally the value is going to be between $0$ and $1$ and but, if the pixel depth is an outlier, this value is going to be over $1$.
 
-Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations.
+Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations because the normalized value is between $0$ and $1$, therefore, making it converge to $0$ if the value was close to $0$.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
 \end{equation}
 
-\subsection{Sobel Improvements Implementation}
-The main idea behind applying Sobel edge detection technique is to concentrate the TAA effects on pixels on edges to correct aliasing, if necessary.  
+Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being calculated and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
 
-We apply the Sobel Operator to the luminance of the light scene produced by the Deferred Shading Pipeline, the luminance of the unlighted scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes in it and we use the light and unlight scene to avoid problems detecting edges because of lights or shadows.
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:eq:depth_var_not_aliased}
+9.0 &  9.3 & 8.7 \\
+9.2 &  9.0 & 9.3 \\
+8.8 &  8.9 & 8.7
+\end{bmatrix*}
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix*}[r]\label{eq:eq:depth_var_aliased}
+9.0 &  9.3 & 8.7 \\
+9.2 &  4.0 & 9.3 \\
+8.8 &  8.9 & 8.7
+\end{bmatrix*}
+\end{equation}
+
+\subsection{Sobel Improvements Implementation}
+The main idea behind applying Sobel edge detection technique is to concentrate the TAA effects on pixels on edges to correct aliasing, if necessary.  It is important to note that this is the only technique from the improvements of the master thesis that runs before the main TAA algorithm.
+
+We apply the Sobel Operator to the luminance of the light scene produced by the Deferred Shading Pipeline, the luminance of the unlighted scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes in it and we use the lit and unlit scene to avoid problems detecting edges because of lights or shadows.
 
 Each Sobel Operator is performed separately, and their magnitudes mixed at the end as follows:
 \begin{equation} \label{eq:sobel_g}
@@ -627,7 +671,7 @@ aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
 \end{split}
 \end{equation}
 
-With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we change how the colors are calculated:
+With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we select how much of each Sampling Pattern we want to be part of the Color Clipping Box:With this aliasedValue we proceed to modify the Color Clipping Box. First, we change how the colors are calculated:
 \begin{equation}\label{eq:newcolors}
 \begin{split}
 colorMin= & Mix(colorMinCross,colorMin3x3,aliasedValue) \\
@@ -636,7 +680,7 @@ colorAvg= & Mix(colorAvgCross,colorAvg3x3,aliasedValue) \\
 \end{split}
 \end{equation}
 
-Then we modify the size of the box:
+Then we modify the size of the Color Clipping Box by interpolating towards the normal size if the $aliasedValue$ is close to one, else, we use the current color, which is the center of the box.
 \begin{equation}\label{eq:clipredux}
 \begin{split}
 	clipColoorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
@@ -646,7 +690,7 @@ Then we modify the size of the box:
 
 
 
-The Figures \ref{fig:aliasedval1}, \ref{fig:aliasedval2} and \ref{fig:aliasedval3} are examples of the aliased values calculated. The white color represents a value of $1$ and the black color of $0$.
+The Figures \ref{fig:aliasedval1}, \ref{fig:aliasedval2} and \ref{fig:aliasedval3} are examples of the aliased values calculated, each pixel is the current $aliasedValue$ of that picture. The white color represents an $aliasedValue$ of $1$ and the black color of $0$. As we expect, most the edges are marked as probably aliased by the techniques we used.
 
 \begin{figure}[H]
 	\centering
@@ -667,7 +711,7 @@ The Figures \ref{fig:aliasedval1}, \ref{fig:aliasedval2} and \ref{fig:aliasedval
 \end{figure}
 
 \subsection{Sharpen Filter Modifications}
-The Sharpen Filter was normalized to avoid creating a color peak. It was changed from \ref{eq:sharpen} to:
+With the current The Sharpen Filter, a color peak is created when the center pixel is bright and the neighboring pixels are dark, this is because dark colors are close to zero but the center pixel is still multiplied by $5$. An example of the worst possible case is having the center pixel as a bright color and the neighborhood’s pixels as pure black, which are represented as zero. Therefore, we normalized Sharpen Filter to avoid creating that color peak and to work better with bright pixels with dark neighborhoods. The Filter was changed from \ref{eq:sharpen} to:
 \begin{equation} \label{eq:new_sharpen}
 \centering
 \begin{bmatrix*}[c]
