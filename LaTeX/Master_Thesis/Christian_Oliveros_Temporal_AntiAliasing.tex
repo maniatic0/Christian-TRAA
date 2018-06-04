@@ -176,7 +176,7 @@ As Edward Angel and Dave Shreiner explain, this idealized sampling assumes that 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=1.0]{images/aliasing_example.png} 
-	\caption{Anti-Aliased Line versus Aliased Approximation.}\label{fig:aliasingexample}
+	\caption{Ground Truth image of a Line versus its Aliased Approximation.}\label{fig:aliasingexample}
 \end{figure}
 
 \section[Shadow Mapping and Deferred Shading Architecture]{Shadow Mapping and \\ Deferred Shading Architecture}
@@ -218,7 +218,7 @@ SMAA is a post-processing technique based on Morphological Anti-Aliasing. It wor
 \section{Temporal Anti-Aliasing}
 As explained by Ke Xu and Lasse Fuglsang in their respective presentations ~\cite{XU2016,Fuglsand2016}, the basic principle of Temporal Anti-Aliasing is to mix the current frame being rendered with frames from the past. This is done to increase the number of samples through time rather than only using samples from the same frame. 
 
-One such technique is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene and blended to the current frame being rendered.  To achieve this, we perform a process called Reprojection in which we take the current frame and look for the color it should have in the History Buffer.
+One such technique is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene and blended to the current frame being rendered.  To achieve this, we take the current frame and look for the color it should have in the History Buffer; this step is called Reprojection.
 
 For TRAA to work we need to implement other common Computer Graphics techniques to serve as the base. We need Camera Jittering to be able to reconstruct pixel information around edges; a Velocity Buffer to determine the positions of the pixels on the last frame if they were moving; a Frame History Buffer to collect past frames to perform the reprojections in the next frame; a Clipping Color Box to constrain the History Buffer and avoid noise or wrong colors to appear; a Sharpen Filter to reduce part of the blur created; and Motion Blur to correct the effects of objects moving too fast for the Clipping Color Box.
 
@@ -242,7 +242,7 @@ The jittering is applied as a translation to the projection matrix using the $Ha
 The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection in the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. The points were generated using MATLAB then scrambled to improve their randomness using reverse-radix scrambling.
 
 \subsection{Velocity Buffer}
-The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting the current pixel position by its last frame position. This is possible by saving the matrix that represents each object in the scene. Also, as suggested by Xu ~\cite{XU2016}, to avoid noise created by the Camera Jittering, we do not include it in the velocity calculations.
+The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting the current pixel position by its last frame position. This is possible by saving the matrix that represents each object in the scene. Also, we cancel the jittering from the Camera Jittering before the calculating the velocities, to avoid the noise it creates, as suggested by Xu. ~\cite{XU2016}
 
 
 \subsection{Frame History Buffer}
@@ -264,7 +264,7 @@ After we have the pixels in the History Buffer, we constrain it (See next subsec
 \end{figure}
 
 \subsection{Clipping Color Box} 
-A Clipping Color Box a is 3D box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as the limits. It is used to handle color rejection when the pixel's history in the History Buffer is too distant from current color. The history’s color is taken as a vector and then it is projected against the limits of the box; if it lies outside the projection against the border of the box is kept, else, history’s color is left untouched. The usage of the Clipping Color Box prevents the color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
+A Clipping Color Box a is 3D box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as the limits. It is used to handle color rejection when the pixel's history in the History Buffer is too distant from current color. We take the color’s history as a vector and then project it against the limits of the box; if it lies outside the projection against the border of the box is then we keep the projection, else, history’s color is left untouched. The usage of the Clipping Color Box prevents the color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
 
 \begin{figure}[!hbt]
 	\centering
@@ -287,19 +287,19 @@ Because the Reprojection process and Color Clipping create blurriness, a Sharpen
 Equation \ref{eq:sharpen} being the Sharpen Filter Convolution Matrix  used in Xu paper. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
-Because of the nature of the History Buffer, some ghosting is created by pixels from objects that are moving faster than the time it takes for the Color Clipping Box to reject the color from old pixels, this is especially noticeable under special light and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
+Because of the nature of the History Buffer, some ghosting is created by fragments  from objects that are moving faster than the time it takes for the Color Clipping Box to reject the color from old pixels, this is especially noticeable under special light and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
 
 The Motion Blur used is the one proposed by Chapman ~\cite{Chapman2012}. It tries to behave like a real camera by scaling the velocity of each pixel by the division of the current Frames Per Second (FPS) to the one wanted, thus, simulating the shutter speed. Then it mixes the colors of the pixels that are sampled while following the direction of the velocity buffer vector.
 
 
 \subsection{Problems}
-Temporal Anti-Aliasing has two main problems, ghosting from moving objects and blurring from the way the Color Clipping Box works. This master thesis aims to help reduce the effects of these two drawbacks using new approaches but, for completeness, we present some of the current solutions proposed. 
+Temporal Anti-Aliasing has two main drawbacks, ghosting from moving objects and blurring from the way the Color Clipping Box works. This master thesis aims to help reduce the effects of these two drawbacks using new approaches but, for completeness, we present some of the current solutions available. 
 
 \subsubsection{Blurriness} 
 Current implementations of TAA generate a very aggressive blur because of the way they mix the colors of the current frame and the history; the use of areas larger than the pixel increases the errors generated, therefore a Sharpen Filter is required. The filter applied in the implementation is the one used by Xu ~\cite{XU2016}, it solves blurriness reasonably well but it cannot eliminate some artifacts. 
 
 \subsubsection{Ghosting} 
-Some Ghosting is created when objects move, especially under particular light and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}, but we aim to avoid requiring artists to manually tag and tests objects for ghosting. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}.  
+Some Ghosting is created when objects move, especially under particular light and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}, but we aim to avoid requiring artists to manually tag and test objects for their ghosting behaviors. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}.  
 
 \section{Accumulation Buffer}
 The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
@@ -506,11 +506,11 @@ This type of test is performed only with the sphere and hairball models; the fir
 
 Once the selected number of frames has run through, the sphere is returned to its original position and the movement is repeated using the positions saved before; and the hairball is returned to its original rotation and the movement is also repeated. The difference this time is that every frame is rendered using the Accumulation Buffer and then saved, it is done to avoid the heavy performance loss caused by the Accumulation Buffer impacting the Temporal Anti-Aliasing techniques.
 
-After all the images rendered are saved, we compare the Master Thesis Temporal Anti-Aliasing and the Uncharted Temporal Anti-Aliasing against the ground truth to calculate the image metrics of them. The image metrics we calculate shows how us much error did the ghosting generate in both implementations so we can compare them. 
+After all the images rendered are saved, we compare the ones produced by the Master Thesis Temporal Anti-Aliasing and the Uncharted Temporal Anti-Aliasing against the ground truth to calculate the image metrics of them. The image metrics we calculate show how much error was generated by ghosting in both implementations, allowing us to compare how both techniques behave. 
 
 
 \subsection{MATLAB Image Metrics}
-Once all the test results are saved, one script takes all the images and organizes them into folders by name and type of test. Afterward, all the test results are processed using MATLAB to get the images metrics results. With the image metrics results, we compare how the Mater Thesis Temporal Anti-Aliasing behaved against the Uncharted 4 Temporal Anti-Aliasing and the other Anti-Aliasing techniques, to see if the improvements worked and to see how our improved implementation behaved against other common Anti-Aliasing techniques.
+Once all the test results are saved, one script takes all the images and organizes them into folders by name and type of test. Afterward, all the test results are processed using MATLAB to get the images metrics results. With the image metrics results, we compare how the Mater Thesis Temporal Anti-Aliasing behaved against the Uncharted 4 Temporal Anti-Aliasing and the other Anti-Aliasing techniques, to detect if the improvements worked and to observe how our improved implementation behaved against other common Anti-Aliasing techniques.
 
 For Static Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to the TAA, FXAA, SMAA and No AA rendered images, using the Accumulation Buffer rendered images as the reference to compare with. Also, we generate a local SSIM map for each rendered image, apart from the one rendered with the Accumulation Buffer, which are saved as PNGs and MATLAB FIGs. All the measurements results are stored in the folder with the test results as plain text. 
 
@@ -536,7 +536,7 @@ The second change is that the size of the Color Clipping Box depends on how much
 	\caption{Color Clipping Box size reduction}\label{fig:colorclippingboxredux}
 \end{figure}
 
-On the next subsections, we are going to explain all the values we calculate to decide if a pixel is considered aliased or not. All of these values are calculated at the same time as TAA is being run, with the exception of the Sobel Operator which is used before the TAA technique. Afterward, we show how we use that value to reduce the size of the Color Clipping Box and the preference of the Sampling Pattern.
+On the next subsections, we explain how all the values are calculated that contribute to decide if a pixel is considered aliased or not. All of these values are calculated at the same time as TAA is being applied, with the exception of the Sobel Operator which happens before the main TAA technique. Afterward, we show how we use that value to reduce the size of the Color Clipping Box and the preference of the Sampling Pattern.
 
 \subsection{Triangle Indexing Improvements Implementation}
 The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
@@ -595,13 +595,13 @@ Then we calculate the depth pseudo variance as:
 
 This provides us with a pseudo-variance that measures the distance between the average depth and the current pixel depth. Note that normally the value is going to be between $0$ and $1$ and but, if the pixel depth is an outlier, this value is going to be over $1$.
 
-Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations because the normalized value is between $0$ and $1$, therefore, making it converge to $0$ if the value was close to $0$.
+Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations because the normalized value is between $0$ and $1$, therefore, making it converge to $0$ if the value was near $0$.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
 \end{equation}
 
-Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being calculated and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
+Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being analyzed and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:eq:depth_var_not_aliased}
@@ -622,7 +622,7 @@ Next, we are going to show examples of how this technique decides if a pixel is 
 \subsection{Sobel Improvements Implementation}
 The main idea behind applying Sobel edge detection technique is to concentrate the TAA effects on pixels on edges to correct aliasing, if necessary.  It is important to note that this is the only technique from the improvements of the master thesis that runs before the main TAA algorithm.
 
-We apply the Sobel Operator to the luminance of the light scene produced by the Deferred Shading Pipeline, the luminance of the unlighted scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes in it and we use the lit and unlit scene to avoid problems detecting edges because of lights or shadows.
+We apply the Sobel Operator to the luminance of the colors of the lit scene produced by the Deferred Shading Pipeline, the luminance of the colors of the unlit scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes on it and we use the lit and unlit scene to avoid problems detecting edges because of lights or shadows. 
 
 Each Sobel Operator is performed separately, and their magnitudes mixed at the end as follows:
 \begin{equation} \label{eq:sobel_g}
@@ -756,7 +756,7 @@ The tests were performed on the computer provided by Lund University which has t
 First, we need to know that the best possible value for MSE and RMSD is zero, meaning that there is no error; that having a high PSNR and SNR value means it is better because the noise, which is the denominator in the equation of this metric, is close to zero; and, finally, that having an SSIM of $1$ means that the image is structurally the same as the ground truth, while having a value of $0$ means that it is structurally different. For the SSIM maps, each pixel represents its SSIM value; having a white color means that is structurally the same while having a darker color means that there are structural differences.
 
 \subsection{Sharpen Filter}
-For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image. From Figure \ref{fig:sharpen_ssim} we can see that the Normalized Sharpen Filter contributes to reduce the artifacts in the rendered image, as there is almost no black pixels on the SSIM maps of the TAA's using it.
+For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image. If we zoom on Figure \ref{fig:sharpen_render} From Figure \ref{fig:sharpen_ssim} we can see that the Normalized Sharpen Filter contributes to reduce the artifacts in the rendered image, as there are almost no dark areas on the SSIM maps of the TAA's using it.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!hbt]
@@ -795,12 +795,11 @@ For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to 
 	\caption{SSIM Maps comparison.}\label{fig:sharpen_ssim}
 \end{figure}
 
-\newpage
-
 \subsection{Pipe}
 For this test, we rendered the Pipe Model in order to test how the improvements behaved when rendering a model with hard edges. We wanted to test if our improvements reduced the amount of blur around those hard edges while still fixing the aliasing problem. We rendered the Pipe twice, the first time using a regular camera angle, for normal aliasing around the edges, and a skewed camera angle, for increased aliasing effects. As we see from the results, TAA with our improvements is at the same quality level as SMAA. 
 
 \subsubsection{Regular}
+When we zoom and compare Figure \ref{fig:pipe_regular_truth} with the rendered images in Figure \ref{fig:pipe_regular_render}, especially around the edges, we observe that there is a reduction of blurring in the Master Thesis TAA in comparison with the Uncharted TAA. As well, we observe that the Uncharted TAA generates bright colors around the edges which should not be there; this is easier to observe as the dark edges on the SSIM map of the Uncharted TAA on Figure \ref{fig:pipe_regular_render}. Furthermore, Table \ref{tab:pipe_regular} confirm us that the Master Thesis TAA reaches almost the same quality as SMAA.
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
 \begin{table}[!hbt]	
@@ -841,6 +840,10 @@ For this test, we rendered the Pipe Model in order to test how the improvements 
 
 
 \subsubsection{With Camera Inclination}
+Zooming and comparing the Figures \ref{fig:pipe_inclination_render} and \ref{fig:pipe_inclination_truth}, we can observe that the Master TAA is the most similar to the Ground Truth. From the SSIM map of the Uncharted TAA, we notice that blurring is being generated around the edges. 
+
+Finally, from Figure \ref{fig:pipe_inclination_render} and Table \ref{fig:pipe_inclination_truth} we note that SMAA is not properly detecting the upper edge of the pipe, when zoomed we observe a small staircase forming around the edge.  This is due to the fact that the camera was set up with a skewed inclination which pushed to the limit the edge detection techniques used in SMAA.
+
 % Table generated by Excel2LaTeX from sheet 'Pipe with Inclination'
 \begin{table}[H]
 	\small
@@ -882,6 +885,8 @@ For this test, we rendered the Pipe Model in order to test how the improvements 
 \subsection{Window with Blinds}
 On this test, we used the Window with Blinds model for its small details at the blinds. We tested how our improvements behaved with this kind of details and discovered that it did not react in a proper way even if the numerical results showed otherwise.
 
+From Figures \ref{fig:window_blind_render} and \ref{fig:window_blind_truth} we can observe it is complicated for the techniques to handle the small gaps between the blinds. From Figure \ref{fig:window_blind_render} and Table \ref{tab:window_blind}, we notice that the Master Thesis TAA and SMAA are able to reconstruct more details than the Uncharted TAA but, aesthetically and visually, we believe it is better the Uncharted TAA than the other techniques because those small gaps between the blinds flicker less when moving.
+
 % Table generated by Excel2LaTeX from sheet 'Window Blind'
 \begin{table}[H]
 	\small
@@ -901,7 +906,7 @@ On this test, we used the Window with Blinds model for its small details at the 
 		\hline
 		SNR   & 25.467 & 26.810 & 29.834 & 22.981 & 30.224 & Master TAA & 0.000 \\
 		\hline
-		SSIM  & 0.986 & 0.990 & 0.995 & 0.976 & 0.995 & SMAA  & 0.000 \\
+		SSIM  & 0.986 & 0.990 & 0.995 & 0.976 & 0.995 & Master TAA  & 0.000 \\
 		\hline
 	\end{tabular}%
 	\label{tab:window_blind}%
@@ -909,18 +914,20 @@ On this test, we used the Window with Blinds model for its small details at the 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.8]{images/results/window_blind.png}
-	\caption{Window with Blinds comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:window_blind_render}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
 	\includegraphics[scale=0.14]{images/results/window_blind_sobel_ground_truth.png}
 	\caption{Window with Blinds ground truth.}\label{fig:window_blind_truth}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{images/results/window_blind.png}
+	\caption{Window with Blinds comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:window_blind_render}
+\end{figure}
+
+
+
 \subsection{Arched Window}
-We used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. The results surprised us, as the best visual quality was achieved by the Uncharted TAA while the numerical test showed SMAA as the best one.
+We used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. We can observe from Figures \ref{fig:window_arch_render} and \ref{fig:window_arch_truth} that for all the techniques, the small gaps around the window's door are hard to render. On some parts small gaps we see that the techniques could not render it completely. Even though on Table \ref{tab:window_arch} SMAA appears to be the best, but we believe that the Uncharted TAA has the best visual quality because those incomplete gaps generate flickering when there is movement.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[H]
 	\small
