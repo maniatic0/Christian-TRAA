@@ -101,22 +101,27 @@ Next, we start to see Post Processing techniques like Fast Approximate Anti-Alia
 
 Enhanced Subpixel Morphological Antialiasing (SMAA) by Jorge Jimenez, Jose I. Echeverria, Tiago Sousa and Diego Gutierrez \cite{Jimenez2012} which uses a more complex edge reconstruction technique while being able to work with SSAA, MSAA and a basic form of TAA.
  
-Finally, we have the TRAA implementations of Ke Xu for Uncharted 4 and Lasse Fuglsang for Inside, which implement new advances like the Color Clipping Box and Sharpen Filter. These two last implementations are used as the base of this master thesis \cite{Fuglsand2016, XU2016}. This thesis improves upon these two last advances with the use of edge detections and triangle indexing techniques to reduce the drawbacks that TRAA has.
+Finally, we have the TRAA implementations of Ke Xu for Uncharted 4 and Lasse Fuglsang for Inside, which implement new advances like the Color Clipping Box and Sharpen Filter. These two last implementations are used as the base of this master thesis. \cite{Fuglsand2016, XU2016} 
+
+\section{Contribution}
+This thesis improves upon the last two advances from Ke Xu and Lasse Fuglsang \cite{Fuglsand2016, XU2016}. We propose the use of the Sobel Operator to perform edge detections and triangle indexing techniques to detect pixels that are considered aliased. Once we have these pixels detected, we use this information to change how colors are rejected from the past frames in order to reduce the ghosting and blurring artifacts that Temporal Anti-Aliasing has.
 
 \chapter{Technological Background}
 In this chapter, we will explain which tools were used in this master thesis and why.
 \section{C++ and Bonobo Framework}
-C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. It is widely used in Computer Graphics due to its performance, especially on real-time applications, and its wide knowledge base.
+We use C++ and the Bonobo Framework to implement all of the improvements done in this Master Thesis. C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. We used it for its performance, especially for real-time Computer Graphics applications, and its wide knowledge base.
 
-The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It was developed in C++ and provides a rendering engine that we found easy to modify and use, especially, it served as the base in which we developed our improvements. 
+The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It was developed in C++ and provides a rendering engine that we found easy to modify and use, especially, as the base in which we developed our improvements. 
+
 
 \section{OpenGL and GLSL}
-The Open Graphics Library (OpenGL) is a 2D and 3D computer cross-platform open-source graphics Application Programming Interface (API) that abstracts the programmer from directly interacting with the Graphics Processing Unit (GPU) to achieve hardware accelerated rendering. It provides the programmer with a graphics pipeline to use, which is normally implemented through hardware. This API was used as it is the base of the Bonobo Framework rendering system which we modified to develop our improvement.
+We used this Application Programming Interface (API) as it is the base of the Bonobo Framework rendering system, which we modified to develop our improvement, and because of its cross-platform compatibility. The Open Graphics Library (OpenGL) is a 2D and 3D computer cross-platform open-source graphics API that abstracts the programmer from directly interacting with the Graphics Processing Unit (GPU) to achieve hardware accelerated rendering. It provides the programmer with a graphics pipeline to use, which is normally implemented through hardware. 
 
-OpenGL Shading Language (GLSL) is a high-level shading language that allows programmers greater control of the graphics pipeline without requiring the use of the OpenGL assembly language or hardware-specific languages. This language was used to implement TAA and our improvements as it is part of the OpenGL standard.
+We used the OpenGL Shading Language (GLSL) to implement TAA and our improvements as it is part of the OpenGL standard. GLSL is a high-level shading language that allows programmers greater control of the graphics pipeline without requiring the use of the OpenGL assembly language or hardware-specific languages.
 
 \section{MATLAB}
-MATLAB is a proprietary multi-paradigm numerical computing environment. Commonly used for science, engineering, and economics. It is popular for image processing applications because of its wide library of algorithms for this purpose, including image metrics which were used as the base of our testing framework.
+We selected MATLAB to be where we developed our testing framework because of the high quality of their tools, its wide knowledge base and for its fast prototyping abilities.
+MATLAB is a proprietary multi-paradigm numerical computing environment. Commonly used for science, engineering, and economics. It is popular for image processing applications because of its wide library of algorithms for this purpose, including image metrics. 
 
 \chapter{Theoretical Background}
 In this chapter, we will explain all the theoretical information that is the base of this master thesis, from the Computer Graphics Theory to the Image Metrics used.
@@ -157,7 +162,6 @@ Because we are mapping a continuous triangle to a finite number of pixels, we fa
 
 This process shows us that what is rendered to the screen approximates what is being represented in the scene because pixels can only be covered by one triangle at a time. \cite{Moller2007, Doggett2017EDAN35}
 
-\newpage
 
 \section{Aliasing Problem}
 When we map a continuous representation to a finite one, it is going to generate errors. As explained by Edward Angel and Dave Shreiner in their book (page 413) \cite{Shreiner2011}, we can interpret the rendering process as the sampling of a continuous function $f(x, y)$, which represents the color of the scene at that point, to an $n\times m$  grid of pixels in which we assume that the point $f_{ij}$  is the value of f over a small area; and to reconstruct the $f$ function to display the image to the screen using only what we know from the samples. The mathematical tool used to evaluate the issues of this process is the Fourier Analysis, which states that a function can be decomposed into a set of sinusoids, at possibly an infinite number of frequencies. For two-dimensional image analysis, we can think of the $f$ function as a set of sinusoids at two spatial frequencies.
@@ -307,7 +311,7 @@ The Accumulation Buffer is an anti-aliasing technique that consists, according t
 This is process increases the sampling per pixel and reduces the aliasing effects producing a high-quality image at the cost of rendering everything several times per frame.
 
 \section{Sobel Operator}
-The Sobel Operator is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel. \cite{Sobel2014}
+The Sobel Operator is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel \cite{Sobel2014}. We use this operator to detect edges in the rendered images to mark the as possibly aliased, because they are a common place for aliasing artifacts to appear.
 
 It works by taking the four-possible simple central gradient estimates in a $3\times 3$ neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
 
@@ -510,6 +514,8 @@ After all the images rendered are saved, we compare the ones produced by the Mas
 
 
 \subsection{MATLAB Image Metrics}
+The images metrics for each test represent, numerically, the quality of each image. We calculate them to compare how each technique behaved on each test in order to identify if the Master Thesis Temporal Anti-Aliasing generates higher quality images than the other techniques tested. 
+
 Once all the test results are saved, one script takes all the images and organizes them into folders by name and type of test. Afterward, all the test results are processed using MATLAB to get the images metrics results. With the image metrics results, we compare how the Mater Thesis Temporal Anti-Aliasing behaved against the Uncharted 4 Temporal Anti-Aliasing and the other Anti-Aliasing techniques, to detect if the improvements worked and to observe how our improved implementation behaved against other common Anti-Aliasing techniques.
 
 For Static Tests, we perform MSE, RMSD, PSNR, SNR and SSIM measurements to the TAA, FXAA, SMAA and No AA rendered images, using the Accumulation Buffer rendered images as the reference to compare with. Also, we generate a local SSIM map for each rendered image, apart from the one rendered with the Accumulation Buffer, which are saved as PNGs and MATLAB FIGs. All the measurements results are stored in the folder with the test results as plain text. 
@@ -601,18 +607,18 @@ Finally, we calculate how the depth of the pixel in the last frame relates to th
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
 \end{equation}
 
-Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being analyzed and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
+Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being analyzed and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{eq:depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
 
-\begin{equation}
-\begin{bmatrix*}[r]\label{eq:eq:depth_var_not_aliased}
+\begin{equation}\label{eq:depth_var_not_aliased}
+\begin{bmatrix*}[r]
 9.0 &  9.3 & 8.7 \\
 9.2 &  9.0 & 9.3 \\
 8.8 &  8.9 & 8.7
 \end{bmatrix*}
 \end{equation}
 
-\begin{equation}
-\begin{bmatrix*}[r]\label{eq:eq:depth_var_aliased}
+\begin{equation}\label{eq:depth_var_aliased}
+\begin{bmatrix*}[r]
 9.0 &  9.3 & 8.7 \\
 9.2 &  4.0 & 9.3 \\
 8.8 &  8.9 & 8.7
@@ -641,7 +647,7 @@ After all the Sobel Operators are applied, we save the results to a texture and 
 The output of this TRAA is used to calculate the Sobel value of the current pixel, the average Sobel value in the Cross Neighborhood and the average Sobel value in the $3\times 3$ Neighborhood.
 
 \subsection{Final Mixing}
-Finally, we use the values previously calculated to modify how the Clipping Box is calculated.
+Finally, we  modify how the Clipping Box is calculated using the values we previously calculated. We call this final mixed value $aliasedValue$, it represents how much a pixel is considered to be aliased. After it is calculated, we use it to change the Sampling Pattern from which colors the Color Clipping Box is built upon and its  size.
 
 First , we define the mix function as follows:
 \begin{equation} \label{eq:mixfunction}
@@ -1097,7 +1103,7 @@ For this test, we wanted to measure how the improvements we performed decreased 
 
 As we see from the visual results on Figure \ref{fig:sphere_ghosting}, ghosting effects were diminished in our implementation as the stripes visible on the Uncharted TAA are almost invisible on the Master Thesis TAA. Furthermore, in Table \ref{tab:sphere_ghosting} the average results on the Master TAA image metrics are better than the average from the Uncharted TAA. 
 
-It is important to note that some metrics got an infinite result as they were exactly the same as the ground truth. This happens on some images in which the spheres cover the whole frame with a dark blue color.
+It is important to note that some metrics got an infinite result as they were exactly the same as the ground truth. This happens on some images in which the spheres cover the whole frame with a dark blue color. As well, the Test Index marks which test the associated result belongs to; on the averages we use Not Applicable (N\\A) because those results come from the average of all the tests. 
 % Table generated by Excel2LaTeX from sheet 'Sphere Ghosting'
 \begin{table}[H]
 	\small
@@ -1175,16 +1181,16 @@ From Figures \ref{fig:hairball_static_shadow_render} and \ref{fig:hairball_stati
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=0.9]{images/results/hairball_static_shadow.png}
+	\caption{Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_shadow_render}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
 	\includegraphics[scale=0.3]{images/results/hairball_sobel_ground_truth.png}
 	\caption{Hairball Static Shadow ground truth.}\label{fig:hairball_static_shadow_truth}
 \end{figure}
 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.9]{images/results/hairball_static_shadow.png}
-	\caption{Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_shadow_render}
-\end{figure}
 
 \subsubsection{Static Light}
 From Figures \ref{tab:hairball_static_lighted} and \ref{fig:hairball_static_lighted_truth}, we observe that the Uncharted TAA generated wrong bright colors around all the fibers, on its SSIM this appears as the complete model is dark; SMAA fails to correct a high amount of fibers, they appear aliased on the rendered image and its SSIM map contains many dark zones; and, finally, we can observe that the Master TAA has the smoothest edges of all the rendered images, on its SSIM map and on Table \ref{tab:hairball_static_lighted} we notice that there still errors but they are smaller by a large margin compared to any other technique.
@@ -1216,19 +1222,19 @@ From Figures \ref{tab:hairball_static_lighted} and \ref{fig:hairball_static_ligh
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.9]{images/results/hairball_static_lighted.png}
-	\caption{Hairball Static Lighted comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_lighted_render}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
 	\includegraphics[scale=0.2]{images/results/hairball_light_sobel_ground_truth.png}
 	\caption{Hairball Static Lighted ground truth.}\label{fig:hairball_static_lighted_truth}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/results/hairball_static_lighted.png}
+	\caption{Hairball Static Lighted comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_lighted_render}
+\end{figure}
+
 
 \subsubsection{Ghosting Shadow}
-From Figure \ref{fig:hairball_ghosting_shadow}, we can observe that both implementations generate blurriness around the fibers edges, this is visible on both SSIM maps as the dark ring around the model. On Table \ref{tab:hairball_ghosting_shadow} we observe that the Master Thesis TAA is numerically better than the Uncharted TAA.
+From Figure \ref{fig:hairball_ghosting_shadow}, we can observe that both implementations generate blurriness around the fibers edges, this is visible on both SSIM maps as the dark ring around the model. On Table \ref{tab:hairball_ghosting_shadow} we observe that the Master Thesis TAA is numerically better than the Uncharted TAA. As well, the Test Index on Table \ref{tab:hairball_ghosting_shadow} marks which test the associated result belongs to; on the averages we use Not Applicable (N\\A) because those results come from the average of all the tests. 
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Shadow'
 \begin{table}[H]
@@ -1276,7 +1282,7 @@ From Figure \ref{fig:hairball_ghosting_shadow}, we can observe that both impleme
 \end{figure}
 
 \subsubsection{Ghosting Light}
-From Figure \ref{fig:hairball_ghosting_lighted} and Table \ref{tab:hairball_ghosting_lighted}, we observe that both techniques generate a high amount of blurring around the fibers. On both SSIM maps the blurring is visible as Hairball is seen as a big dark area.
+From Figure \ref{fig:hairball_ghosting_lighted} and Table \ref{tab:hairball_ghosting_lighted}, we observe that both techniques generate a high amount of blurring around the fibers. On both SSIM maps the blurring is visible as Hairball is seen as a big dark area. As well, the Test Index on Table \ref{tab:hairball_ghosting_lighted} marks which test the associated result belongs to; on the averages we use Not Applicable (N\\A) because those results come from the average of all the tests. 
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Lighted'
 \begin{table}[H]
 	\small

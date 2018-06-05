@@ -30,14 +30,6 @@ J.~Chapman.
 \newblock Accessed: 2017-11-30,
   \url{http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
 
-\bibitem{Doggett2017EDAF80}
-{Doggett, M.}
-\newblock {{EDAF80} Computer Graphics}, September 2017.
-
-\bibitem{Doggett2017EDAN35}
-{Doggett, M.}
-\newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
-
 \bibitem{Fuglsand2016}
 L.~J. Fuglsang~Pedersen.
 \newblock {Temporal Reprojection Anti-Aliasing in INSIDE}.
@@ -75,6 +67,14 @@ T.~Lottes.
 \newblock {FXAA}.
 \newblock {\em NVIDIA Docs}, 2009.
 \newblock The Document was last edited in 2011.
+
+\bibitem{Doggett2017EDAF80}
+{M. Doggett}.
+\newblock {{EDAF80} Computer Graphics}, September 2017.
+
+\bibitem{Doggett2017EDAN35}
+{M. Doggett}.
+\newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
 
 \bibitem{Malpica2009}
 W.~S. Malpica and A.~C. Bovik.
@@ -117,7 +117,7 @@ L.~Yang, D.~Nehab, P.~V. Sander, P.~Sitthiamorn, J.~Lawrence, and H.~Hoppe.
 \newblock {\em ACM Trans. Graph. 28 (2009), 135:1–135:12}, 2009.
 
 \bibitem{Channa2015}
-Channa Yim.
+C.~Yim.
 \newblock Window with blinds model, October 2015.
 \newblock Accessed: 2018-02-15,
   \url{https://www.cgtrader.com/free-3d-models/architectural/window/window-brown}.

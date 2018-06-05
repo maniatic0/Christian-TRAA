@@ -2,6 +2,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
 \contentsline {section}{\numberline {1.1}Problem Definition}{7}{section.1.1}
 \contentsline {section}{\numberline {1.2}Related Work}{8}{section.1.2}
+\contentsline {section}{\numberline {1.3}Contribution}{8}{section.1.3}
 \contentsline {chapter}{\numberline {2}Technological Background}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}C++ and Bonobo Framework}{9}{section.2.1}
 \contentsline {section}{\numberline {2.2}OpenGL and GLSL}{9}{section.2.2}
@@ -48,7 +49,7 @@
 \contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{29}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{30}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Final Mixing}{31}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{32}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{33}{subsection.4.3.5}
 \contentsline {chapter}{\numberline {5}Results}{35}{chapter.5}
 \contentsline {section}{\numberline {5.1}Evaluation Methodology}{35}{section.5.1}
 \contentsline {section}{\numberline {5.2}Results and Comparisons}{36}{section.5.2}
@@ -64,12 +65,12 @@
 \contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{47}{subsection.5.2.8}
 \contentsline {subsection}{\numberline {5.2.9}Hairball}{48}{subsection.5.2.9}
 \contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{48}{subsubsection.5.2.9.1}
-\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{49}{subsubsection.5.2.9.2}
-\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{50}{subsubsection.5.2.9.3}
-\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{51}{subsubsection.5.2.9.4}
-\contentsline {subsection}{\numberline {5.2.10}Timing}{52}{subsection.5.2.10}
-\contentsline {section}{\numberline {5.3}Discussion}{53}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{55}{chapter.6}
-\contentsline {chapter}{Bibliography}{57}{section*.56}
-\contentsline {chapter}{Appendix \numberline {A}GitHub Repository}{61}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}Camera Jittering Explanation}{63}{Appendix.a.B}
+\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{50}{subsubsection.5.2.9.2}
+\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{51}{subsubsection.5.2.9.3}
+\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{52}{subsubsection.5.2.9.4}
+\contentsline {subsection}{\numberline {5.2.10}Timing}{53}{subsection.5.2.10}
+\contentsline {section}{\numberline {5.3}Discussion}{54}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{57}{chapter.6}
+\contentsline {chapter}{Bibliography}{59}{section*.56}
+\contentsline {chapter}{Appendix \numberline {A}GitHub Repository}{63}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}Camera Jittering Explanation}{65}{Appendix.a.B}
