@@ -670,7 +670,7 @@ aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
 \end{split}
 \end{equation}
 
-With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we select how much of each Sampling Pattern we want to be part of the Color Clipping Box:With this aliasedValue we proceed to modify the Color Clipping Box. First, we change how the colors are calculated:
+With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we select how much of each Sampling Pattern we want to be part of the Color Clipping Box:
 \begin{equation}\label{eq:newcolors}
 \begin{split}
 colorMin= & Mix(colorMinCross,colorMin3x3,aliasedValue) \\
@@ -682,7 +682,7 @@ colorAvg= & Mix(colorAvgCross,colorAvg3x3,aliasedValue) \\
 Then we modify the size of the Color Clipping Box by interpolating towards the normal size if the $aliasedValue$ is close to one, else, we use the current color, which is the center of the box.
 \begin{equation}\label{eq:clipredux}
 \begin{split}
-	clipColoorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
+	clipColorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
 	clipColorMax= & Mix(colorCurrent,colorMax,aliasedValue)
 \end{split}
 \end{equation}
@@ -739,7 +739,7 @@ The models used on the tests were:
 \item Hairball: contains many fine details for its numerous fibers.
 \end{itemize}
 
-An explanation why each model was selected is available under each test subsection.
+It is important to note that in Computer Graphics there are only common models used to test techniques, there is no standard per se. On this Master Thesis, we used two common models: the Sponza Atrium, which has many variations and it is commonly used to test many Computer Graphics techniques; and Hairball, which is sometimes used to test Ray and Path Tracing techniques. As well, an explanation why each model was selected is available under each test subsection.
 
 Note that Sponza Atrium and Hairball models were downloaded from Morgan McGuire's Computer Graphics Archive \cite{McGuire2017Data}; the Pipe model is from Spencer Arts \cite{Spencer2010}; the Arched Window model is from Isabela H. \cite{Isabela2016}; and the Window with Blinds is from Channa Yim \cite{Channa2015}.
 
@@ -756,7 +756,7 @@ The tests were performed on the computer provided by Lund University which has t
 First, we need to know that the best possible value for MSE and RMSD is zero, meaning that there is no error; that having a high PSNR and SNR value means it is better because the noise, which is the denominator in the equation of this metric, is close to zero; and, finally, that having an SSIM of $1$ means that the image is structurally the same as the ground truth, while having a value of $0$ means that it is structurally different. For the SSIM maps, each pixel represents its SSIM value; having a white color means that is structurally the same while having a darker color means that there are structural differences.
 
 \subsection{Sharpen Filter}
-For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image. If we zoom on Figure \ref{fig:sharpen_render} From Figure \ref{fig:sharpen_ssim} we can see that the Normalized Sharpen Filter contributes to reduce the artifacts in the rendered image, as there are almost no dark areas on the SSIM maps of the TAA's using it.
+For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image. If we zoom on Figure \ref{fig:sharpen_render} From Figure \ref{fig:sharpen_ssim} we can see that the Normalized Sharpen Filter contributes reducing the artifacts in the rendered image, as there are almost no dark areas on the SSIM maps of the TAA's using it.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!hbt]
@@ -927,7 +927,7 @@ From Figures \ref{fig:window_blind_render} and \ref{fig:window_blind_truth} we c
 
 
 \subsection{Arched Window}
-We used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. We can observe from Figures \ref{fig:window_arch_render} and \ref{fig:window_arch_truth} that for all the techniques, the small gaps around the window's door are hard to render. On some parts small gaps we see that the techniques could not render it completely. Even though on Table \ref{tab:window_arch} SMAA appears to be the best, but we believe that the Uncharted TAA has the best visual quality because those incomplete gaps generate flickering when there is movement.
+We used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. We can observe from Figures \ref{fig:window_arch_render} and \ref{fig:window_arch_truth} that for all the techniques, the small gaps around the window's door are hard to render. On some parts small gaps, we see that the techniques could not render it completely. Even though on Table \ref{tab:window_arch} SMAA appears to be the best, but we believe that the Uncharted TAA has the best visual quality because those incomplete gaps generate flickering when there is movement.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[H]
 	\small
@@ -966,7 +966,9 @@ We used the Arched Window Model to test how our improved implementation with the
 \end{figure}
 
 \subsection{Sponza Atrium}
-For this test, we wanted to analyze how the Master TAA implementation behaved with a general scene with lights and shadows, we used the Sponza Atrium Model with the Sphere Model being static in the center. The visual and numerical results showed us how that our technique properly handles this type of general scene.
+For this test, we wanted to analyze how the Master TAA implementation behaved with a general scene with lights and shadows, we used the Sponza Atrium Model with the Sphere Model being static in the center.
+
+If we compare Figures \ref{fig:sponza_render} and \ref{fig:sponza_truth}, we can observe that the Uncharted TAA had blurring problems around all the edges, which is visible on its SSIM map; SMAA had problems with all the flowers, we can observe the flower shape on its SSIM map; and that the Master Thesis TAA only had minor problems with the flowers, as seen on the gray areas on its SSIM map. Furthermore, Table \ref{tab:sponza} confirm what we are observing on the visual results, as the Master Thesis TAA got the best scores on most of the test; the Uncharted TAA got the worst scores due to the edges problems; and SMAA got worse than normally scores due to the flowers problem.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'
 \begin{table}[H]
 	\small
@@ -986,7 +988,7 @@ For this test, we wanted to analyze how the Master TAA implementation behaved wi
 		\hline
 		SNR   & 20.056 & 22.160 & 21.996 & 15.038 & 25.356 & Master TAA & 0.000 \\
 		\hline
-		SSIM  & 0.988 & 0.991 & 0.991 & 0.938 & 0.991 & FXAA  & 0.000 \\
+		SSIM  & 0.988 & 0.991 & 0.991 & 0.938 & 0.991 & Master TAA  & 0.000 \\
 		\hline
 	\end{tabular}%
 	\label{tab:sponza}%
@@ -1005,7 +1007,9 @@ For this test, we wanted to analyze how the Master TAA implementation behaved wi
 \end{figure}
 
 \subsection{Sponza Atrium Flowers}
-On this test, we looked at how do our improvements handle the details of a model with transparent parts, as in the Flowers from the Sponza Atrium Model, because the aliasing they present is considered hard to properly detect and correct, as our results show.
+On this test, we looked at how do our improvements handle the details of a model with transparent parts, as in the Flowers from the Sponza Atrium Model, because the aliasing they present is considered hard to properly detect and correct.
+
+From Figures \ref{fig:sponza_flowers_render} and \ref{fig:sponza_flowers_truth}, we observe the Uncharted TAA has many problems handling this type of model, especially if we look at its SSIM map; we notice that SMAA could not correct all the aliasing artifacts from the edges of the flowers, we see the edges of the flowers appear on its SSIM map; and, finally, we observe that the Master Thesis TAA corrected the most aliasing artifacts, some are still left as seen on its SSIM map on the gray areas. Furthermore, Table \ref{tab:sponza_flowers} confirm what we observe visually, as the Master TAA got the best scores and SMAA scored worse than average.
 
 % Table generated by Excel2LaTeX from sheet 'Sponza Flowers'
 \begin{table}[H]
@@ -1045,7 +1049,9 @@ On this test, we looked at how do our improvements handle the details of a model
 \end{figure}
 
 \subsection{Hard Edges}
-For this test, we explored how the Master Thesis Implementation with many small details at a far distance and how it behaved with hard edges. We used both Windows Models for the small details and the Pipe and Wall Models for the hard edges. The result showed us that, both visually and numerically, our improvements achieved better quality.
+For this test, we explored how the Master Thesis Implementation with many small details at a far distance and how it behaved with hard edges. We used both Windows Models for the small details and the Pipe and Wall Models for the hard edges. 
+
+From Figures \ref{fig:hard_test_render} and \ref{fig:hard_test_truth}, we observe that the Master TAA is the best technique for handling all the edges from all the models, its SSIM map barely has any dark area and on Table \ref{tab:hard_test} it surpasses any other technique; the Uncharted TAA creates blurring around all the edges, this appears on its SSIM maps as all the edges are visible; and SMAA fail to correct some aliasing artifacts which we can observe on its SSIM map.
 
 % Table generated by Excel2LaTeX from sheet 'Hard Test'
 \begin{table}[H]
@@ -1087,7 +1093,11 @@ For this test, we explored how the Master Thesis Implementation with many small 
 
 
 \subsection{Sphere Ghosting}
-For this test, we wanted to measure how the improvements we performed decreased the effects of ghosting that were present in the Uncharted Implementation. For this reason, we selected the Sphere Model to move in the hall of the Sponza Atrium and rendered it under a camera angle that showed us ghosting trails. As we see from the visual results, ghosting effects were diminished in our implementation. 
+For this test, we wanted to measure how the improvements we performed decreased the effects of ghosting that were present in the Uncharted Implementation. For this reason, we selected the Sphere Model to move in the hall of the Sponza Atrium and rendered it under a camera angle that showed us ghosting trails. 
+
+As we see from the visual results on Figure \ref{fig:sphere_ghosting}, ghosting effects were diminished in our implementation as the stripes visible on the Uncharted TAA are almost invisible on the Master Thesis TAA. Furthermore, in Table \ref{tab:sphere_ghosting} the average results on the Master TAA image metrics are better than the average from the Uncharted TAA. 
+
+It is important to note that some metrics got an infinite result as they were exactly the same as the ground truth. This happens on some images in which the spheres cover the whole frame with a dark blue color.
 % Table generated by Excel2LaTeX from sheet 'Sphere Ghosting'
 \begin{table}[H]
 	\small
@@ -1099,27 +1109,27 @@ For this test, we wanted to measure how the improvements we performed decreased 
 		\hline
 		\multicolumn{1}{|c|}{\textbf{\diagbox{Tests}{AA}}} & \textbf{Uncharted TAA} & \textbf{Test Index} & \textbf{Master TAA} & \textbf{Test Index} \\
 		\hline
-		Best MSE & 0.000 & 63.000 & 0.000 & 63.000 \\
+		Best MSE & 0.000 & 63 & 0.000 & 63 \\
 		\hline
-		Worst MSE & 100.871 & 19.000 & 91.766 & 29.000 \\
+		Worst MSE & 100.871 & 19 & 91.766 & 29 \\
 		\hline
 		Average MSE & 28.634 & N/A   & 19.501 & N/A \\
 		\hline
-		Best Peak-SNR & Inf   & 63.000 & Inf   & 63.000 \\
+		Best Peak-SNR & Inf   & 63 & Inf   & 63 \\
 		\hline
-		Worst Peak-SNR & 28.093 & 19.000 & 28.504 & 29.000 \\
+		Worst Peak-SNR & 28.093 & 19 & 28.504 & 29 \\
 		\hline
 		Average Peak-SNR  & Inf   & N/A   & Inf   & N/A \\
 		\hline
-		Best SNR & Inf   & 63.000 & Inf   & 63.000 \\
+		Best SNR & Inf   & 63 & Inf   & 63 \\
 		\hline
-		Worst SNR & 16.818 & 11.000 & 18.524 & 29.000 \\
+		Worst SNR & 16.818 & 11 & 18.524 & 29 \\
 		\hline
 		Average SNR  & Inf   & N/A   & Inf   & N/A \\
 		\hline
-		Best SSIM & 1.000 & 63.000 & 1.000 & 63.000 \\
+		Best SSIM & 1.000 & 63 & 1.000 & 63 \\
 		\hline
-		Worst SSIM & 0.964 & 99.000 & 0.972 & 29.000 \\
+		Worst SSIM & 0.964 & 99 & 0.972 & 29 \\
 		\hline
 		Average SSIM & 0.965 & N/A   & 0.990 & N/A \\
 		\hline
@@ -1134,8 +1144,9 @@ For this test, we wanted to measure how the improvements we performed decreased 
 \end{figure}
 
 \subsection{Hairball}
-These tests were the hardest for all the techniques we tried. The Hairball Model contains many fibers with many details that provide a complex test for any Anti-Aliasing solution. We performed all the tests without light, to see the silhouette, and with light, to see how its reaction to the fibers affected all the Anti-Aliasing solutions. We did two sets of tests, the first one was static, to show us the behavior of blurring and aliasing correction; and the second set was rotating, to show us how ghosting behaved on the fibers. The results from the static tests were surprising, as we did not expect the Master Thesis Implementation to be the best handling the fibers.
+These tests were the hardest for all the techniques we tried. The Hairball Model contains many fibers with many details that provide a complex test for any Anti-Aliasing solution. We performed all the tests without light, to see the silhouette, and with light, to see how its reaction to the fibers affected all the Anti-Aliasing solutions. We did two sets of tests, the first one was static, to show us the behavior of blurring and aliasing correction; and the second set was rotating, to show us how ghosting behaved on the fibers. The results from the static tests were surprising, as we did not expect the Master Thesis Implementation to be the best handling the fibers because of the results in both windows tests.
 \subsubsection{Static Shadow}
+From Figures \ref{fig:hairball_static_shadow_render} and \ref{fig:hairball_static_shadow_truth}, we can observe that the Uncharted TAA has problems on most of the fibers, on its SSIM map this is visible as the big dark edge around Hairball; SMAA fails to correct aliasing on the smaller fibers, we observe this as the gray areas around the Hairball model on the SSIM map; and, finally, we notice that the Master TAA is the best at handling the fibers, they look smooth as in the original model, and its SSIM map has the least amount of dark areas. Also, from Table \ref{tab:hairball_static_shadow} we can confirm that the Master TAA is the best at rendering the static shadow Hairball by a relatively big margin compared to the other techniques.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Shadow'
 \begin{table}[!hbt]
@@ -1162,6 +1173,12 @@ These tests were the hardest for all the techniques we tried. The Hairball Model
 	\label{tab:hairball_static_shadow}%
 \end{table}%
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{images/results/hairball_sobel_ground_truth.png}
+	\caption{Hairball Static Shadow ground truth.}\label{fig:hairball_static_shadow_truth}
+\end{figure}
+
 
 \begin{figure}[H]
 	\centering
@@ -1169,13 +1186,8 @@ These tests were the hardest for all the techniques we tried. The Hairball Model
 	\caption{Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_shadow_render}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.3]{images/results/hairball_sobel_ground_truth.png}
-	\caption{Hairball Static Shadow ground truth.}\label{fig:hairball_static_shadow_truth}
-\end{figure}
-
 \subsubsection{Static Light}
+From Figures \ref{tab:hairball_static_lighted} and \ref{fig:hairball_static_lighted_truth}, we observe that the Uncharted TAA generated wrong bright colors around all the fibers, on its SSIM this appears as the complete model is dark; SMAA fails to correct a high amount of fibers, they appear aliased on the rendered image and its SSIM map contains many dark zones; and, finally, we can observe that the Master TAA has the smoothest edges of all the rendered images, on its SSIM map and on Table \ref{tab:hairball_static_lighted} we notice that there still errors but they are smaller by a large margin compared to any other technique.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Lighted'
 \begin{table}[H]
@@ -1216,6 +1228,8 @@ These tests were the hardest for all the techniques we tried. The Hairball Model
 
 
 \subsubsection{Ghosting Shadow}
+From Figure \ref{fig:hairball_ghosting_shadow}, we can observe that both implementations generate blurriness around the fibers edges, this is visible on both SSIM maps as the dark ring around the model. On Table \ref{tab:hairball_ghosting_shadow} we observe that the Master Thesis TAA is numerically better than the Uncharted TAA.
+
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Shadow'
 \begin{table}[H]
 	\small
@@ -1262,6 +1276,7 @@ These tests were the hardest for all the techniques we tried. The Hairball Model
 \end{figure}
 
 \subsubsection{Ghosting Light}
+From Figure \ref{fig:hairball_ghosting_lighted} and Table \ref{tab:hairball_ghosting_lighted}, we observe that both techniques generate a high amount of blurring around the fibers. On both SSIM maps the blurring is visible as Hairball is seen as a big dark area.
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Lighted'
 \begin{table}[H]
 	\small
@@ -1309,10 +1324,12 @@ These tests were the hardest for all the techniques we tried. The Hairball Model
 
 
 \subsection{Timing} \label{result_timing}
-The measured time the Master Thesis TAA technique took to run was between $0.5$ and $0.6$ $ms$ on average. The Sobel pass took between $0.2$ $ms$ and $0.3$ $ms$, and the reprojection was around $0.3$ $ms$.
+It is important to note that all the tested techniques are of Post-Processing nature, that means that they receive the output image from the Deferred Shading Architecture as input, making them not dependent on the complexity of the scene.
+ 
+The measured time the Master Thesis TAA technique took to run was between $0.5$ and $0.6$ $ms$ on average. The Sobel pass took between $0.2$ $ms$ and $0.3$ $ms$, and the reprojection was around $0.3$ $ms$. The measured time the Uncharted TAA technique took was between $0.2$ $ms$ and $0.3$ $ms$; FXAA took between $0.1$ $ms$ and $0.2$ $ms$; and SMAA took $0.2$ $ms$ and $0.3$ $ms$.
 
 \section{Discussion}
-As we appreciate the results of the Sharpen Filter Test, see Table \ref{tab:sharpen_res}, the improvements achieved in this master thesis go beyond modifying the filter from the Uncharted implementation. We believe that their use of that specific filter is of artistic nature. It tends to pronounce the edges at the cost of creating white pixels that flicker, especially, when the camera moves while the foreground is illuminated but the background is on shadows or vice versa. 
+As we appreciate the results of the Sharpen Filter Test, see Table \ref{tab:sharpen_res}, the improvements achieved in this master thesis go beyond modifying the filter from the Uncharted implementation, because changing this filter only avoids generating those wrong bright pixels around edges. We believe that their use of that specific filter is of artistic nature. It tends to pronounce the edges at the cost of creating bright pixels around the edges that flicker, especially, when the camera moves while the foreground is illuminated but the background is on shadows or vice versa. 
 
 From both Pipe Tests we can observe that the results from the Master Thesis TAA are close to SMAA results when drawing hard edges. We can quantify the reduction of blurring when comparing to the Uncharted TAA implementation in the numerical results from the Tables \ref{tab:pipe_regular} and \ref{tab:pipe_inclination}. When we compare the SSIM maps results (Figures \ref{fig:pipe_regular_render} and \ref{fig:pipe_inclination_render}), we observe that the thick error line around the edges in the Uncharted implementation is not present our Master Thesis implementation. But, the blurring reduction is not perfect, as we see on the tests scores, the blurring that remains around the edges lets SMAA the high score on some tests.
 
@@ -1333,13 +1350,13 @@ On the Shadow and Light Static Test (See Tables \ref{tab:hairball_static_shadow}
 On the Shadow and Light Ghosting Test we observe that both techniques results are blurred excessively (See Figures \ref{fig:hairball_ghosting_shadow} and \ref{fig:hairball_ghosting_lighted}), especially the Master Thesis TAA implementation on the light version. We believe this to be caused by the History Buffer and the Sobel Temporal Pass, for the Master Thesis TAA, not being able to stabilize as fast as the colors change when the fibers move thanks to the color rejection being slower than needed. The numerical values from Tables \ref{tab:hairball_ghosting_shadow} and \ref{tab:hairball_ghosting_lighted} confirm the effects of blurring thanks to the MSE being higher than normal.
 
 
-From our timing results (See \ref{result_timing}), we can see that our improvements fit the time requirements to run on real-time applications.
+From our timing results (See \ref{result_timing}), we can see that our improvements fit the time requirements to run on real-time applications as it is below the $1$ $ms$ common limit.
 
 
 \chapter{Conclusions and Recommendations}
 As we have shown numerically and visually with the tests performed, the Master Thesis implementation accomplished its objective of reducing the effects of blurring and ghosting of the Temporal Anti-Aliasing technique with the use of edge detection of both color and depth, and triangle indexing. Our results show that this technique can provide the same or better quality than other standard Anti-Aliasing solutions. 
 
-As possible improvements, we are confident that our implementation could be optimized to run faster than our current timing. Our current implementation was made with flexibility in mind to help us test different approaches, this could be simplified to reduce the number of passes required. 
+As possible improvements, we are confident that our implementation could be optimized to run faster than our current timing. Our current implementation was made with flexibility in mind to help us test different approaches. This could be simplified to reduce the number of passes required. 
 
 As for recommendations for further research, we suggest improving the technique's behavior under high detail density moving objects, like on the Hairball Tests. Another improvement subject is the stability for pixel size details that cause flickering, like on the Windows Tests. Furthermore, a Specular Lighting Anti-Aliasing solution compatible with Temporal Anti-Aliasing is still required to provide a full range solution to Aliasing in real-time applications. Also, we suggest searching for more specific Image Metrics for Computer Graphics, especially, finding tuning values for SSIM to provide more numerical resolution when comparing different rendered images.
 

@@ -60,13 +60,13 @@
 \contentsline {subsection}{\numberline {5.2.4}Arched Window}{44}{subsection.5.2.4}
 \contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{45}{subsection.5.2.5}
 \contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{46}{subsection.5.2.6}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{47}{subsection.5.2.7}
-\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{48}{subsection.5.2.8}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{49}{subsection.5.2.9}
+\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{48}{subsection.5.2.7}
+\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{49}{subsection.5.2.8}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{50}{subsection.5.2.9}
 \contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{50}{subsubsection.5.2.9.1}
 \contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{51}{subsubsection.5.2.9.2}
-\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{53}{subsubsection.5.2.9.3}
-\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{54}{subsubsection.5.2.9.4}
+\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{52}{subsubsection.5.2.9.3}
+\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{53}{subsubsection.5.2.9.4}
 \contentsline {subsection}{\numberline {5.2.10}Timing}{54}{subsection.5.2.10}
 \contentsline {section}{\numberline {5.3}Discussion}{55}{section.5.3}
 \contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{57}{chapter.6}
