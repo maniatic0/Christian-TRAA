@@ -1,0 +1,125 @@
+\begin{thebibliography}{10}
+
+\bibitem{Moller2007}
+T.~Akenine-Möller.
+\newblock [mobile] graphics hardware.
+\newblock Pages 7-8.
+
+\bibitem{Yusra2012}
+Y.~A.~Y. Al-Najjar and D.~C. Soong.
+\newblock Comparison of image quality assessment: {PSNR, HVS, SSIM, UIQI}.
+\newblock {\em International Journal of Scientific \& Engineering Research},
+  August 2012.
+\newblock Volume 3, Issue 8.
+
+\bibitem{Shreiner2011}
+E.~Angel and D.~Shreiner.
+\newblock {\em Computer Graphics A Top-Down Approach with Shader-Based OpenGL
+  6th Edition}.
+\newblock Addison-Wesley, 2011.
+
+\bibitem{Spencer2010}
+Specter Arts.
+\newblock Pipe model, March 2010.
+\newblock Accessed: 2018-02-15,
+  \url{https://www.turbosquid.com/3d-models/pipe-stone-bowl-3d-model/522479}.
+
+\bibitem{Chapman2012}
+J.~Chapman.
+\newblock {Per-Object Motion Blur}, September 2012.
+\newblock Accessed: 2017-11-30,
+  \url{http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
+
+\bibitem{Fuglsand2016}
+L.~J. Fuglsang~Pedersen.
+\newblock {Temporal Reprojection Anti-Aliasing in INSIDE}.
+\newblock {\em GDC Vault}, 2016.
+\newblock Accessed: 2017-11-28,
+  \url{http://www.gdcvault.com/play/1022970/Temporal-Reprojection-Anti-Aliasing-in}.
+
+\bibitem{Isabela2016}
+Isabela H.
+\newblock Arched window model, January 2016.
+\newblock Accessed: 2018-02-15,
+  \url{https://www.cgtrader.com/free-3d-models/architectural/window/window-arch}.
+
+\bibitem{Haeberli1990}
+P.~Haeberli and K.~Akeley.
+\newblock The accumulation buffer: Hardware support for high-quality rendering.
+\newblock {\em ACM Computer Graphics}, August 1990.
+\newblock Volume 24, Number 4, August 1990.
+
+\bibitem{Jimenez2012}
+J.~Jimenez, J.~I. Echevarria, T.~Sousa, and D.~Gutierrez.
+\newblock {SMAA}: Enhanced subpixel morphological antialiasing.
+\newblock {\em EUROGRAPHICS 2012 / P. Cignoni, T. Ertl Volume 31 (2012), Number
+  2}, 2012.
+
+\bibitem{JIMENEZ2011_SIGGRAPH11}
+J.~Jimenez, D.~Gutierrez, J.~Yang, A.~Reshetov, P.~Demoreuille, T.~Berghoff,
+  C.~Perthuis, H.~Yu, M.~McGuire, T.~Lottes, H.~Malan, E.~Persson, D.~Andreev,
+  and T.~Sousa.
+\newblock Filtering approaches for real-time anti-aliasing.
+\newblock In {\em {ACM SIGGRAPH Courses}}, 2011.
+
+\bibitem{Lottes2009}
+T.~Lottes.
+\newblock {FXAA}.
+\newblock {\em NVIDIA Docs}, 2009.
+\newblock The Document was last edited in 2011.
+
+\bibitem{Doggett2017EDAF80}
+{M. Doggett}.
+\newblock {{EDAF80} Computer Graphics}, September 2017.
+
+\bibitem{Doggett2017EDAN35}
+{M. Doggett}.
+\newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
+
+\bibitem{Malpica2009}
+W.~S. Malpica and A.~C. Bovik.
+\newblock Range image quality assessment by structural similarity.
+\newblock In {\em 2009 IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, pages 1149--1152, April 2009.
+
+\bibitem{McGuire2017Data}
+M.~McGuire.
+\newblock Computer graphics archive, July 2017.
+\newblock Accessed: 2018-02-15, \url{https://casual-effects.com/data}.
+
+\bibitem{Nehab2007}
+D.~Nehab, P.~V. Sander, J.~Lawrence, N.~Tatarchuk, and J.~R. Isidoro.
+\newblock Accelerating real-time shading with reverse reprojection caching.
+\newblock {\em In Proceedings of the 22nd ACM SIGGRAPH/EUROGRAPHICS Symposium
+  on Graphics Hardware (2007), pp. 25–35. 3, 8}, 2007.
+
+\bibitem{Sobel2014}
+I.~Sobel.
+\newblock An isotropic 3x3 image gradient operator.
+\newblock {\em Irwin Sobel Correspondence}, 02 2014.
+
+\bibitem{Wronski2014}
+B.~Wronski.
+\newblock {Temporal Supersampling and Antialiasing}.
+\newblock
+  \url{https://bartwronski.com/2014/03/15/temporal-supersampling-and-antialiasing/},
+  March 2014.
+\newblock Accessed: 2017-12-01.
+
+\bibitem{XU2016}
+K.~XU.
+\newblock {Temporal Antialiasing In Uncharted 4}.
+\newblock {\em SIGGRAPH 2016}, 2016.
+
+\bibitem{Yang2009}
+L.~Yang, D.~Nehab, P.~V. Sander, P.~Sitthiamorn, J.~Lawrence, and H.~Hoppe.
+\newblock Amortized supersampling.
+\newblock {\em ACM Trans. Graph. 28 (2009), 135:1–135:12}, 2009.
+
+\bibitem{Channa2015}
+C.~Yim.
+\newblock Window with blinds model, October 2015.
+\newblock Accessed: 2018-02-15,
+  \url{https://www.cgtrader.com/free-3d-models/architectural/window/window-brown}.
+
+\end{thebibliography}

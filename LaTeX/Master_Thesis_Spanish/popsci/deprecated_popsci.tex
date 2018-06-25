@@ -1,0 +1,125 @@
+\documentclass[paper=a4, fontsize=12pt, twocolumn]{article}	 % A4 paper and 12pt font size
+
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+\usepackage{framed,lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[english,swedish]{babel} % English language/hyphenation
+%\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+%\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
+%\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+%\usepackage{fix-cm}	 % Custom font sizes - used for the initial letter in the document
+
+\usepackage[normalem]{ulem} % strikethrough text
+\usepackage{graphicx}
+\usepackage{sectsty} % Enables custom section titles
+\allsectionsfont{\usefont{OT1}{phv}{b}{n}} % Change the font of all section commands
+
+\usepackage{fancyhdr} % Needed to define custom headers/footers
+\setlength{\headheight}{88pt}
+\setlength{\headsep}{-50pt}
+
+\pagestyle{fancy} % Enables the custom headers/footers
+
+% Headers - all currently empty
+\lhead{\begin{leftbar}\textsc{Institutionen f\"or Datavetenskap} \hfill\textbar\hfill Lunds Tekniska H\"ogskola \hfill\textbar\hfill Redovisas  \textsc{\sout{\today}} \\ \textsc{Examensarbete:} \sout{The Title of Your Report} \\ \textsc{Student(er):} \sout{Firstname Lastname, Firstname Lastname}\\ \textsc{Handledare:} \sout{Firstname Lastname (LTH), Firstname Lastname (Company AB)}\\ \textsc{Examinator:} \sout{Firstname Lastname}\end{leftbar}}
+\chead{}
+\rhead{}
+
+% Footers
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.0pt} % No header rule
+\renewcommand{\footrulewidth}{0.0pt} % No footer rule
+
+% figure text separation
+%\setlength{\belowcaptionskip}{-10pt}
+\setlength{\textfloatsep}{5pt}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\usepackage{titling} % Allows custom title configuration
+
+\newcommand{\hr}{\rule{\linewidth}{1pt}} % horisontal rule
+
+\pretitle{\begin{flushleft} \Huge \vskip 1em \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont} % 
+
+\title{\sout{Pop-Sci Article Title}} % Your article title
+
+\posttitle{\par\end{flushleft}} %
+
+\preauthor{\hr \begin{flushleft} \vskip -1em \footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} \textsc{Popul\"arvetenskaplig Sammanfattning av} \large \usefont{OT1}{phv}{b}{sl} \color{DarkRed}} % Author font configuration
+
+\author{\sout{John Smith, Jane Doe}} % Your name
+
+\postauthor{\par\end{flushleft} \vskip -1.5em \hr \\ \vspace*{-5em}} % Horizontal rule after the author
+
+\date{} % no date here
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+    \thispagestyle{fancy} % Enabling the custom headers/footers for the first page  
+	\noindent {\usefont{OT1}{phv}{m}{sc}{The ingress (this part) should awake the reader's interest and briefly describe the most important aspect of your work. Allow 3--4 lines only for this part. Anything longer than this will only make the text harder to read and understand, especially for non-interested readers. Do not use more than one page! Language preference: \textbf{Swedish}}}
+	\vspace{2em}
+  \end{@twocolumnfalse}
+]
+%\noindent\parbox{\dimexpr\textwidth}{%
+%\textsf{Here is some sample text to show the initial in the introductory paragraph of this template article. The color and lineheight of the initial can be modified in the preamble of this document.}}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\subsection*{Use Subsections, Not Sections}
+
+\lipsum[1-2] % Dummy text
+\begin{figure}[b!]
+\center
+\includegraphics[width=0.33\textwidth]{../examplepic1.pdf}
+% \caption{A readable figure}
+% Avoid captions to gain space
+\end{figure}
+
+\lipsum[3] % Dummy text
+
+%------------------------------------------------
+
+\subsection*{Figures Are Welcome}
+
+%\lipsum[4] % Dummy text
+Captions are not really needed, if you only have one table or one figure. You can always refer to "the figure", "the table".
+
+\begin{table}[bt!]
+%\caption{Random table}
+% avoid captions to gain space
+\centering
+\begin{tabular}{llr}
+\toprule
+\multicolumn{2}{c}{Name} \\
+\cmidrule(r){1-2}
+First name & Last Name & Grade \\
+\midrule
+John & Doe & $7.5$ \\
+Richard & Miles & $2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\lipsum[9] % Dummy text
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
