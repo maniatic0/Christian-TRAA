@@ -140,7 +140,7 @@ MATLAB es un entorno de cómputo numérico multi-paradigma propietario. Comúnme
 En este capítulo, explicaremos toda la información teórica que es la base de esta tesis, desde la teoría de base de Computación Gráfica hasta las Métricas de Imágenes utilizadas.
 
 \section{Canal de Renderizado}
-El Canal de Renderizado Gráfico actual se puede simplificar en tres pasos: Vertex Shader, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; Rasterizer, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el Pixel Shader (o Fragment Shader) que toma los píxeles visibles del Rasterizer y los colorea.
+El Canal de Renderizado Gráfico actual se puede simplificar en tres pasos: Vertex Shader, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; Rasterizer, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el Pixel Shader (o Fragment Shader) que toma los píxeles visibles del Rasterizer y los colorea. La Figura \ref{fig:graphpipeline} es un ejemplo del Canal de Renderizado simplificado.
 
 \begin{figure}[!hbt]
 	\centering
@@ -154,24 +154,24 @@ Este proceso de rasterización es importante para nosotros porque de allí donde
 
 
 \section{Rasterization Process}
-During the Rasterization Process, each triangle is tested to establish which pixels are covered by it. While this is being done, each pixel is being tested to find out if another triangle is covering it.
+Durante el proceso de rasterización, cada triángulo se le realiza una prueba para establecer qué píxeles están cubiertos por él. Mientras esto se hace, cada píxel se está probando para descubrir si otro triángulo lo está cubriendo.
 
-In Figure \ref{fig:rasterizationproc} we have an example of the Rasterization Process. In the left image, we have the triangles as continuous surfaces before being sent to the Rasterizer and, in the right image, we have triangles mapped to the pixels on the screen after going through the Rasterizer.
+En la Figura \ref{fig:rasterizationproc} tenemos un ejemplo del Proceso de Rasterización. En la imagen de la izquierda, tenemos los triángulos como superficies continuas antes de enviarlos al Rasterizer y, en la imagen de la derecha, tenemos triángulos mapeados a los píxeles en la pantalla después de pasar por el Rasterizer.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.75]{images/rasterization_process.png} 
-	\caption{Example of the results of the Rasterization Process. 
-		\emph{Note}: colors were added to differentiate the triangles, but they would only be added at the Pixel Shader stage.
+	\caption{Ejemplo de los resultados del Proceso de Rasterización.
+		\emph{Nota}: se agregaron colores para diferenciar los triángulos, pero solo se agregarían en la etapa del Pixel Shader.
 	}\label{fig:rasterizationproc}
 \end{figure}
 
-Because we are mapping a continuous triangle to a finite number of pixels, we face the problem of pixels partially covered and how to determine what is enough to qualify it as covered, Figure \ref{fig:partialcover} show examples of this problem. This is solved by calculating if the center of the pixel is covered by the triangle geometry. This process is susceptible to errors due to the precision of the representation used for the vertices.  
+Debido a que estamos mapeando un triángulo continuo a un número finito de píxeles, enfrentamos el problema de los píxeles parcialmente cubiertos y cómo determinar cuánto es suficiente para calificarlos como cubiertos, la Figura \ref{fig:partialcover} muestra ejemplos de este problema. Esto se resuelve calculando si el centro del píxel está cubierto por la geometría del triángulo. Este proceso es susceptible a errores debido a la precisión de la representación utilizada para los vértices.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.5]{images/edge_testing.png} 
-	\caption{Example of the Partial Cover problem, based on EDAN35 second Lecture. ~\cite{Doggett2017EDAN35}}\label{fig:partialcover}
+	\caption{Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35. ~\cite{Doggett2017EDAN35}}\label{fig:partialcover}
 \end{figure}
 
 This process shows us that what is rendered to the screen approximates what is being represented in the scene because pixels can only be covered by one triangle at a time. \cite{Moller2007, Doggett2017EDAN35}
