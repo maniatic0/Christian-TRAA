@@ -109,44 +109,49 @@ A continuación, comenzamos a ver técnicas de Posprocesamiento como Fast Approx
 
 También tenemos Enhanced Subpixel Morphological Anti-Aliasing (SMAA, Anti-Aliasing de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jiménez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
 
-Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el Color Clipping Box (Caja de Recorte de Colores) y el Sharpen Filter (Filtro de Afilamiento). Estas dos últimas implementaciones se utilizan como base de esta tesis de maestría. \cite{Fuglsand2016, XU2016}
+Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el Color Clipping Box (Caja de Recorte de Colores) y el Sharpen Filter (Filtro de Afilamiento). Estas dos últimas implementaciones se utilizan como base de esta tesis. \cite{Fuglsand2016, XU2016}
 
 
 \section{Contribución}
 Esta tesis mejora los últimos dos avances de Ke Xu y Lasse Fuglsang \cite{Fuglsand2016, XU2016}. Proponemos el uso del Operador de Sobel para realizar detecciones de bordes y técnicas de indexación de triángulos para detectar píxeles que se consideran con aliasing. Una vez que tenemos estos píxeles detectados, usamos esta información para cambiar la forma en que se rechazan los colores de los cuadros anteriores a fin de reducir los artefactos de ghosting y desenfoque que tiene Temporal Anti-Aliasing.
 
-\chapter{Technological Background}
-In this chapter, we will explain which tools were used in this master thesis and why.
-\section{C++ and Bonobo Framework}
-We use C++ and the Bonobo Framework to implement all of the improvements done in this Master Thesis. C++ is a compiled general-purpose programming language with imperative, object-oriented programming and low-level memory management features. We used it for its performance, especially for real-time Computer Graphics applications, and its wide knowledge base.
+\chapter{Marco Tecnológico}
+En este capítulo, explicaremos qué herramientas se utilizaron en esta tesis y por qué.
 
-The Bonobo Framework is the base of the laboratories of Computer Graphics (EDAF80) and High-Performance Computer Graphics (EDAN35) courses from Lund University. It was developed in C++ and provides a rendering engine that we found easy to modify and use, especially, as the base in which we developed our improvements. 
+\section{C++ y el Bonobo Framework}
+Utilizamos C ++ y el Bonobo Framework para implementar todas las mejoras realizadas en esta Tesis. C ++ es un lenguaje de programación de propósito general, compilado, con funciones imperativas, programación orientada a objetos y administración de memoria de bajo nivel. Lo usamos por su rendimiento, especialmente para aplicaciones de computación gráfica en tiempo real, y por su amplia base de conocimiento.
+
+El Bonobo Framework es la base de los laboratorios de Computación Gráfica (EDAF80) y Computación Gráfica de Alto Rendimiento (EDAN35) de la Universidad de Lund. Fue desarrollado en C ++ y proporciona un motor de renderizado que encontramos fácil de modificar y usar, especialmente, como la base en la que desarrollamos nuestras mejoras.
 
 
-\section{OpenGL and GLSL}
-We used this Application Programming Interface (API) as it is the base of the Bonobo Framework rendering system, which we modified to develop our improvement, and because of its cross-platform compatibility. The Open Graphics Library (OpenGL) is a 2D and 3D computer cross-platform open-source graphics API that abstracts the programmer from directly interacting with the Graphics Processing Unit (GPU) to achieve hardware accelerated rendering. It provides the programmer with a graphics pipeline to use, which is normally implemented through hardware. 
+\section{OpenGL y GLSL}
+Usamos esta Application Programming Interface (API, Interfaz de Programación de Aplicaciones) ya que es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y debido a su compatibilidad multiplataforma. La Open Graphics Library Library (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, que abstrae al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (Rendering Pipeline) para usar, normalmente se implementado directamente en hardware.
 
-We used the OpenGL Shading Language (GLSL) to implement TAA and our improvements as it is part of the OpenGL standard. GLSL is a high-level shading language that allows programmers greater control of the graphics pipeline without requiring the use of the OpenGL assembly language or hardware-specific languages.
+Usamos el OpenGL Shading Language (GLSL, Lenguaje de Coloreado de OpenGL) para implementar TAA y nuestras mejoras, ya que es parte del estándar de OpenGL. GLSL es un lenguaje de coloreado de alto nivel que permite a los programadores un mayor control del Canal de Renderizado de Gráficos sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
+
 
 \section{MATLAB}
-We selected MATLAB to be where we developed our testing framework because of the high quality of their tools, its wide knowledge base and for its fast prototyping abilities.
-MATLAB is a proprietary multi-paradigm numerical computing environment. Commonly used for science, engineering, and economics. It is popular for image processing applications because of its wide library of algorithms for this purpose, including image metrics. 
+Seleccionamos MATLAB para que fuera el entorno donde desarrollamos nuestro marco de pruebas debido a la alta calidad de sus herramientas, su amplia base de conocimientos y sus capacidades de creación rápida de prototipos.
 
-\chapter{Theoretical Background}
-In this chapter, we will explain all the theoretical information that is the base of this master thesis, from the Computer Graphics Theory to the Image Metrics used.
+MATLAB es un entorno de cómputo numérico multi-paradigma propietario. Comúnmente utilizado para ciencia, ingeniería y economía. Es popular para aplicaciones de procesamiento de imágenes debido a su amplia biblioteca de algoritmos para este propósito, incluidas las métricas de imágenes.
 
-\section{Rendering Pipeline}
-Today’s graphics pipeline can be simplified into three steps: Vertex Shader, which processes the geometry associated with the vertices and prepares them for the next step; Rasterizer, which maps the triangles to pixels in the screen, calculates their visibility and interpolates the parameters of the vertices for each pixel covered by the triangle; and the Pixel (or Fragment) Shader which takes the visual pixels from the Rasterizer and colors them.
+
+\chapter{Marco Teórico}
+En este capítulo, explicaremos toda la información teórica que es la base de esta tesis, desde la teoría de base de Computación Gráfica hasta las Métricas de Imágenes utilizadas.
+
+\section{Canal de Renderizado}
+El Canal de Renderizado Gráfico actual se puede simplificar en tres pasos: Vertex Shader, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; Rasterizer, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el Pixel Shader (o Fragment Shader) que toma los píxeles visibles del Rasterizer y los colorea.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.7]{images/graphics_pipeline.png} 
-	\caption{Rendering Pipeline, based on EDAF80 5th Lecture.~\cite{Doggett2017EDAF80}}\label{fig:graphpipeline}
+	\caption{Canal de Renderizado, basado en la 5ta clase de EDAF80.~\cite{Doggett2017EDAF80}}\label{fig:graphpipeline}
 \end{figure}
 
-It is important to note that Vertex and Pixel Shaders are controllable by a programmer using special programs called Shaders. They provide a way for the programmer to control the rendering hardware. In contrast, the Rasterizer is not controlled by the programmer and it is handled entirely by a hardware fixed function. \cite{Doggett2017EDAF80}
+Es importante tener en cuenta que las etapas de Vertex y Pixel Shaders son controlables por el programador usando programas especiales llamados Shaders; estos proporcionan una forma para controlar el hardware de renderizado. Por el contrario, el Rasterizer no está controlado por el programador y se maneja por completo mediante una función fija de hardware. \cite{Doggett2017EDAF80}
 
-This Rasterization Process is important for us because it is there where some of the errors corrected by Temporal Anti-Aliasing come from.
+Este proceso de rasterización es importante para nosotros porque de allí donde provienen algunos de los errores corregidos por Temporal Anti-Aliasing.
+
 
 \section{Rasterization Process}
 During the Rasterization Process, each triangle is tested to establish which pixels are covered by it. While this is being done, each pixel is being tested to find out if another triangle is covering it.
