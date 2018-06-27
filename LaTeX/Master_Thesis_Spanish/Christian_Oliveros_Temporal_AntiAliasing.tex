@@ -58,7 +58,7 @@ Tengo muchas personas para agradecer por esta increíble aventura. Viniendo de V
 Me gustaría agradecer a toda mi familia, especialmente a mi papá, Wilmer Oliveros; mi mamá, Raixa Labrador; y mi hermano, Jean Pierre Oliveros, por toda su ayuda y apoyo durante este viaje. Además, me gustaría agradecer a todos mis amigos de todo el mundo. Gracias por ayudarme a ser lo que soy en este momento y por estar conmigo todo este tiempo.
 
 Me gustaría agradecer a mi supervisor de la Universidad de Lund, el profesor Michael Doggett, por darme esta increíble oportunidad y por ayudarme durante su transcurso. Además, me gustaría agradecer a Pierre Moreau por ayudarme en las veces que estuve estancado.
-Además, me gustaría agradecer a mi supervisora ​​de la Universidad Simón Bolívar, la profesora Angela Di Serio; y mi Coordinadora de Ingeniería de la Computación, la profesora Marlene Goncalves, por ayudarme y apoyarme en este increíble viaje.
+Además, me gustaría agradecer a mi supervisora de la Universidad Simón Bolívar, la profesora Angela Di Serio; y mi Coordinadora de Ingeniería de la Computación, la profesora Marlene Goncalves, por ayudarme y apoyarme en este increíble viaje.
 
 Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón Bolívar, con un agradecimiento especial a la Oficina Internacional LTH, el Departamento de Ciencias de la Computación de la Universidad de Lund, la Coordinación de Ingeniería de la Computación de la Universidad Simón Bolívar; y la Dirección de Relaciones Internacionales y Cooperación de la Universidad Simón Bolívar, por permitir que los estudiantes aprovechen este tipo de oportunidades de desarrollo académico y de auto crecimiento.
 
@@ -69,7 +69,7 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 }
 
 \theabstract{
-Anti-Aliasing es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de Coloreado Diferido. Una solución innovadora a este problema es la técnica de Temporal Anti-Aliasing (TAA) que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar, efectivamente, la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que solo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos TAA creados con las implementaciones actuales. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altos, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA mejoraron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99.
+Anti-aliasing es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de Coloreado Diferido. Una solución innovadora a este problema es la técnica de Temporal Anti-Aliasing (TAA) que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar, efectivamente, la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que solo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos TAA creados con las implementaciones actuales. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altos, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA mejoraron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99.
 }
 
 \keywords{TAA, Sobel, Anti-Aliasing, Triangle Indexing, TRAA}
@@ -105,11 +105,11 @@ El objetivo de esta tesis es mejorar la técnica de Anti-Aliasing Temporal media
 \section{Trabajos Relacionados}
 Como la técnica más simple de Anti-Aliasing, tenemos Super Sampling Anti-Aliasing (SSAA, Anti-Aliasing con Super Muestreo), que consiste en renderizar a una resolución más alta y luego reducir la imagen a la resolución requerida. Otra técnica es el Multi Sample Anti-Aliasing (MSAA, Anti-Aliasing Multi Muestra), que calcula el color para el píxel final solo una vez \cite{Doggett2017EDAN35}. Podemos aprender lo que se convertiría en la base del Temporal Reprojection Anti-Aliasing  (TAA o TRAA, Anti-Aliasing de Reproyección Temporal) en los artículos Aceleración del Coloreado en Tiempo Real con Caching de Reproducción Inversa por Nehab D., Sander PV, Lawrence J., Tatarchuk N., Isidoro JR \cite{Nehab2007}, en el que describen cómo se pueden usar los pixel shaders para guardar información de píxeles del cuadro anterior y reproyectarla en el siguiente cuadro; y Supermuestreo Amortizado por Yang L., Nehab D., Sander PV, Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} en el que describen cómo utilizar la reproyección de cuadros prévios en el actual como método de Anti-Aliasing en tiempo real.
 
-A continuación, comenzamos a ver técnicas de Posprocesamiento como Fast Approximate Anti-Aliasing (FXAA, Anti-Aliasing Aproximado Rápido) por Timothy Lottes \cite{Lottes2009} que usa una forma de detección de bordes para corregir el aliasing mientras es compatible con la Arquitectura de Coloreado Diferida (Deferred Shading Architecture). También encontramos la implementación de Crytek de Temporal Anti-Aliasing (TAA o TXAA) explicada por Tiago Sousa en su presentación Métodos de Anti-Aliasing en CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
+A continuación, comenzamos a ver técnicas de Post-Procesamiento como Fast Approximate Anti-Aliasing (FXAA, Anti-Aliasing Aproximado Rápido) por Timothy Lottes \cite{Lottes2009} que usa una forma de detección de bordes para corregir el aliasing mientras es compatible con la Arquitectura de Coloreado Diferida (Deferred Shading Architecture). También encontramos la implementación de Crytek de Temporal Anti-Aliasing (TAA o TXAA) explicada por Tiago Sousa en su presentación Métodos de Anti-Aliasing en CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
 
 También tenemos Enhanced Subpixel Morphological Anti-Aliasing (SMAA, Anti-Aliasing de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jiménez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
 
-Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el Color Clipping Box (Caja de Recorte de Colores) y el Sharpen Filter (Filtro de Afilamiento). Estas dos últimas implementaciones se utilizan como base de esta tesis. \cite{Fuglsand2016, XU2016}
+Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el Color Clipping Box (Caja de Recorte de Colores) y el Filtro de Nitidez (Sharpen Filter). Estas dos últimas implementaciones se utilizan como base de esta tesis. \cite{Fuglsand2016, XU2016}
 
 
 \section{Contribución}
@@ -131,9 +131,10 @@ Usamos el OpenGL Shading Language (GLSL, Lenguaje de Coloreado de OpenGL) para i
 
 
 \section{MATLAB}
-Seleccionamos MATLAB para que fuera el entorno donde desarrollamos nuestro marco de pruebas debido a la alta calidad de sus herramientas, su amplia base de conocimientos y sus capacidades de creación rápida de prototipos.
+Elegimos MATLAB para que fuera el entorno donde desarrollamos nuestro marco de pruebas debido a la alta calidad de sus herramientas, su amplia base de conocimientos y sus capacidades de creación rápida de prototipos.
 
 MATLAB es un entorno de cómputo numérico multi-paradigma propietario. Comúnmente utilizado para ciencia, ingeniería y economía. Es popular para aplicaciones de procesamiento de imágenes debido a su amplia biblioteca de algoritmos para este propósito, incluidas las métricas de imágenes.
+
 
 
 \chapter{Marco Teórico}
@@ -153,7 +154,7 @@ Es importante tener en cuenta que las etapas de Vertex y Pixel Shaders son contr
 Este proceso de rasterización es importante para nosotros porque de allí donde provienen algunos de los errores corregidos por Temporal Anti-Aliasing.
 
 
-\section{Rasterization Process}
+\section{Proceso de Rasterización}
 Durante el proceso de rasterización, cada triángulo se le realiza una prueba para establecer qué píxeles están cubiertos por él. Mientras esto se hace, cada píxel se está probando para descubrir si otro triángulo lo está cubriendo.
 
 En la Figura \ref{fig:rasterizationproc} tenemos un ejemplo del Proceso de Rasterización. En la imagen de la izquierda, tenemos los triángulos como superficies continuas antes de enviarlos al Rasterizer y, en la imagen de la derecha, tenemos triángulos mapeados a los píxeles en la pantalla después de pasar por el Rasterizer.
@@ -174,90 +175,91 @@ Debido a que estamos mapeando un triángulo continuo a un número finito de píx
 	\caption{Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35. ~\cite{Doggett2017EDAN35}}\label{fig:partialcover}
 \end{figure}
 
-This process shows us that what is rendered to the screen approximates what is being represented in the scene because pixels can only be covered by one triangle at a time. \cite{Moller2007, Doggett2017EDAN35}
+Este proceso nos muestra que lo que se renderiza en la pantalla es una aproximación a lo que se representa en la escena, ya que los píxeles solo pueden ser cubiertos con un triángulo a la vez. \cite{Moller2007, Doggett2017EDAN35}
 
 
-\section{Aliasing Problem}
-When we map a continuous representation to a finite one, it is going to generate errors. As explained by Edward Angel and Dave Shreiner in their book (page 413) \cite{Shreiner2011}, we can interpret the rendering process as the sampling of a continuous function $f(x, y)$, which represents the color of the scene at that point, to an $n\times m$  grid of pixels in which we assume that the point $f_{ij}$  is the value of f over a small area; and to reconstruct the $f$ function to display the image to the screen using only what we know from the samples. The mathematical tool used to evaluate the issues of this process is the Fourier Analysis, which states that a function can be decomposed into a set of sinusoids, at possibly an infinite number of frequencies. For two-dimensional image analysis, we can think of the $f$ function as a set of sinusoids at two spatial frequencies.
+\section{El Problema del Aliasing}
+Cuando mapeamos una representación continua a una finita vamos a generar errores. Como explican Edward Angel y Dave Shreiner en su libro (página 413) \cite{Shreiner2011}, podemos interpretar el proceso de renderización como el muestreo de una función continua $f(x, y)$, que representa el color de la escena en ese punto, a una cuadrícula de píxeles $n\times m$ en la que suponemos que el punto $f_{ij}$ es el valor de $f$ sobre un área pequeña; reconstruyendo la función $f$, para mostrar la imagen en la pantalla, usando solo lo que sabemos de las muestras finitas. La herramienta matemática utilizada para evaluar los problemas de este proceso es el Análisis de Fourier, que establece que una función se puede descomponer en un conjunto de sinusoides, posiblemente en un número infinito de frecuencias. Para el análisis de imágenes bidimensionales, podemos pensar en la función $f$ como un conjunto de sinusoides en dos frecuencias espaciales.
+Para esta tesis, usaremos la primera parte del Teorema de Muestreo de Nyquist como una herramienta para ilustrar por qué aparecen problemas de aliasing y se relacionan con problemas de muestreo. \\
 
-For this thesis, we will use the First part of the Nyquist sampling theorem as a tool to illustrate why aliasing problems appear and relate to sampling problems. \\
+\emph{'' Teorema de Muestreo de Nyquist (Parte 1): Las muestras ideales de una función continua contienen toda la información de la función original si y solo si la función continua se muestrea a una frecuencia mayor que el doble de la frecuencia más alta en la función. }
 
-\emph{''Nyquist Sampling Theorem (Part 1): The ideal samples of a continuous function contain all the information in the original function if and only if the continuous function is sampled at a frequency greater than twice the highest frequency in the function.}
+\emph{La Frecuencia de Nyquist se define como la mitad de la frecuencia de muestreo, que es la frecuencia más baja que no puede estar en los datos para evitar el aliasing ''.
+} 
 
-\emph{The Nyquist frequency is defined as one half of the sampling frequency, which is the lowest frequency that cannot be in the data to avoid aliasing.''
-}
 
-Taken from Edward Angel and Dave Shreiner book page 415. \cite{Shreiner2011} \\
+Tomado de la página 415 del libro de Edward Angel y Dave Shreiner. \cite{Shreiner2011} \\
 
-As Edward Angel and Dave Shreiner explain, this idealized sampling assumes that we can take an infinite number of samples per sample frequency which we cannot do in practice. The Aliasing problem that computer graphics experience comes from not being able to sample as required by the Nyquist Sampling Theorem, creating ragged edges that appear in the rasterization process (Spatial Aliasing), Figure \ref{fig:aliasingexample} shows an example of this type of aliasing, and jumps between moving objects (Temporal Aliasing), according to Doggett and Wronski  ~\cite{Doggett2017EDAN35,Wronski2014}. Many solutions have been proposed and used to solve it, e. g. the Super Sampling Anti-Aliasing (SSAA) family of solutions that work on higher frequencies than the required at the cost of more space requirements. 
+Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que podemos tomar un número infinito de muestras por frecuencia de muestreo que no podemos hacer en la práctica. El problema de Aliasing que la Computación Gráfica experiencia proviene de no poder muestrear según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (Aliasing Espacial), la Figura \ref{fig:aliasingexample} muestra un ejemplo de este tipo de aliasing y saltos entre objetos en movimiento (Aliasing Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. Se han propuesto y utilizado muchas soluciones para resolverlo, por ejemplo la familia de soluciones Super Sampling Anti-Aliasing (SSAA) que trabaja en frecuencias más altas que las requeridas a costa de más requisitos de espacio.
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[scale=1.0]{images/aliasing_example.png} 
-	\caption{Ground Truth image of a Line versus its Aliased Approximation.}\label{fig:aliasingexample}
+	\includegraphics[scale=0.6]{images/aliasing_example.png} 
+	\caption{Imagen Base de una línea frente a su Aproximación con Aliasing.}\label{fig:aliasingexample}
 \end{figure}
 
-\section[Shadow Mapping and Deferred Shading Architecture]{Shadow Mapping and \\ Deferred Shading Architecture}
+\section[Mapeado de Sombras y la Arquitectura de Coloreado Diferido]{Mapeado de Sombras y \\ la Arquitectura de Coloreado Diferido}
 
-As humans, we have come to expect that objects react to the lights in a scene, considering their geometry because lights and shadows contribute with spatial information to an image, especially, shadows give us a sense of size and distance.
+Como humanos, hemos llegado a esperar que los objetos reaccionen a las luces de una escena, tomando en cuenta la geometría de los objetos, porque las luces y sombras contribuyen con la información espacial a una imagen, especialmente, las sombras nos dan una sensación de tamaño y distancia.
 
-As explained by Doggett \cite{Doggett2017EDAN35}, under the Rendering Pipeline based on the Rasterizer, the process of shadow calculation is challenging to perform. The Rasterizer does not know if objects are covered or not from a light, so we must figure out a method to calculate if an object is in shadows. This process is called Shadow Mapping, it consists of rendering the scene through each light perspective and then perform tests against the camera perspective to establish if the object is affected by the light or if it is in shadows.
+Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo de la Canal de Renderizado Gráfico basado en el Rasterizador, el proceso de cálculo de la sombra es difícil de realizar. El Rasterizer no sabe si los objetos están cubiertos o no de una luz, por lo que debemos encontrar un método para calcular si un objeto está en sombras. Este proceso se denomina Mapeado de Sombras, consiste en representar la escena a través de la perspectiva de cada luz y luego realizar pruebas en la perspectiva de la cámara para establecer si el objeto se ve afectado por la luz o si está en sombras.
 
-But, as we might expect, rendering the scene several times is expensive, so we need a way to reduce the cost as much as we can. The Deferred Shading Architecture provides that solution to only shade, possibly using an operation that could be expensive, only visible pixels to avoid wasting resources shading pixels from geometry that is not visible. It works by first rendering the scene, without shading calculations, to a buffer called the Geometry Buffer. There, information regarding colors, normals, depths, specific object information to interact with lights, etc. is saved for future use. 
+Pero, como es de esperar, renderizar la escena varias veces es costoso, entonces necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de Coloreado Diferido proporciona esa solución solo para colorear, posiblemente utilizando una operación que podría ser costosa, solo píxeles visibles y, así, evitar desperdiciar recursos coloreando píxeles de geometría que no es visible. Esta arquitectura funciona renderizando primero la escena, sin cálculos de coloreado, en un buffer llamado Geometry Buffer. Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro.
 
-After we have filled the Geometry Buffer, we perform the Shadow Mapping technique, which takes advantage of the Deferred Shading Architecture to calculate the way lights affects only visible pixels; we calculate the Shadow Map of every light only performing depth calculations. Afterward, we compute and save the effect of each light using the Shadow Maps. 
+Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de Coloreado Diferido para calcular la forma en que las luces afectan solo a los píxeles visibles; calculamos el Mapa de Sombreado de cada luz solo realizando cálculos de profundidad. Después, calculamos y guardamos el efecto de cada luz usando los Mapas de las Sombreado.
 
-In the end, we take all the information of the lights, shadows, and the Geometry Buffer to render the light scene.
-
-
+Al final, tomamos toda la información de las luces, las sombras y el Buffer de Geometría para renderizar la escena con iluminación.
 
 
 \section{Anti-Aliasing}
-As we have explained, there are two main types of Aliasing, Spatial Aliasing, and Temporal Aliasing; Anti-Aliasing solutions provide improvements against the artifacts created by either of those types at the cost of increased rendering time. For real-time applications this increase of rendering time limits which Anti-Aliasing solutions are feasible to apply.
+Como hemos explicado, hay dos tipos principales de Aliasing, Espacial y Temporal. Las soluciones Anti-Aliasing proporcionan mejoras contra los artefactos creados por cualquiera de esos tipos a costa de un mayor tiempo de renderizado. Para aplicaciones en tiempo real, este aumento del tiempo de renderización limita qué soluciones Anti-Aliasing son factibles de aplicar.
 
-Another important factor that decides which Anti-Aliasing technique to use is how it behaves with current architectures. For example, old Anti-Aliasing solutions do not work with Deferred Shading.
+Otro factor importante que decide qué técnica Anti-Aliasing usar es cómo se comporta con las arquitecturas actuales. Por ejemplo, las viejas soluciones Anti-Aliasing no funcionan con el Coloreado Diferido.
+
 
 \subsection{Super Sampling Anti-Aliasing (SSAA)}
-This technique consists in rendering the scene at 4 times the size of the screen and then averaging pixels 4x4 to calculate the result \cite{Doggett2017EDAN35}. It provides good results but requires more rendering time and heavy memory usage.
+Esta técnica consiste en renderizar la escena a 4 veces el tamaño de la pantalla y luego promediar píxeles, en un área 4x4 para cada pixel, para calcular el resultado \cite{Doggett2017EDAN35}. Proporciona buenos resultados, pero requiere más tiempo de renderizado y un gran uso de memoria.
 
 \subsection{Multi Sample Anti-Aliasing (MSAA)}
-MSAA consist in taking several samples per pixel; on each sample, the depth values are calculated but only one color is calculated for the rasterized triangle. This solution provides good results at the cost of increased memory usage for depth calculations. 
+MSAA consiste en tomar varias muestras por píxel; en cada muestra, los valores de profundidad se calculan, pero solo se calcula un color para el triángulo rasterizado. Esta solución proporciona buenos resultados a costa de un mayor uso de memoria para cálculos de profundidad.
 
-The biggest problem this technique has is that it does not work properly with Deferred Shading \cite{Doggett2017EDAN35}. This makes it complicated to use with current pipelines, normally requiring other corrections to reduce the artifacts created when applied with Deferred Shading.
+El mayor problema que tiene esta técnica es que no funciona correctamente con el Coloreado Diferido \cite{Doggett2017EDAN35}. Esto hace que sea complicado utilizarlo con los Canales de Renderización actuales, que normalmente requieren otras correcciones para reducir los artefactos creados cuando se aplica con Coloreado Diferido.
+
 
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
-FXAA is a post-processing anti-aliasing technique that works by detecting edges on the rendered images and then smoothing them. \cite{Lottes2009}
+FXAA es una técnica de Anti-Aliasing que se utiliza durante el posprocesamiento. Esta funciona al detectar bordes en las imágenes renderizadas, para luego suavizarlos. \cite{Lottes2009}
 
-It is relatively cheap compared to MSAA and provides relatively good results, its smoothing capabilities are limited by the amount of information the edge detection can get on a single pass, and it provides relatively good results for temporal aliasing.
+Es relativamente barata en comparación con MSAA y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada, y proporciona resultados relativamente buenos para el alias temporal.
 
 \subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
-SMAA is a post-processing technique based on Morphological Anti-Aliasing. It works by reconstructing edges and their surroundings to regenerate the subpixel information lost by aliasing. \cite{Jimenez2012}
+SMAA es una técnica de post-procesamiento basada en Morphological Anti-Aliasing (Anti-Aliasing Morfológico). Funciona mediante la reconstrucción de bordes y sus alrededores para regenerar la información de subpíxel perdida por aliasing. \cite{Jimenez2012}
 
 \section{Temporal Anti-Aliasing}
-As explained by Ke Xu and Lasse Fuglsang in their respective presentations ~\cite{XU2016,Fuglsand2016}, the basic principle of Temporal Anti-Aliasing is to mix the current frame being rendered with frames from the past. This is done to increase the number of samples through time rather than only using samples from the same frame. 
+Como explicaron Ke Xu y Lasse Fuglsang en sus respectivas presentaciones ~ \cite{XU2016, Fuglsand2016}, el principio básico del Temporal Anti-Aliasing es mezclar el cuadro que actualmente está siendo renderizado con cuadros del pasado. Esto se hace para aumentar el número de muestras a través del tiempo en lugar de solo usar muestras del mismo cuadro.
 
-One such technique is Temporal Reprojection Anti-Aliasing (TRAA), it works by saving the past frames as a History Buffer which it is then reprojected to the present scene and blended to the current frame being rendered.  To achieve this, we take the current frame and look for the color it should have in the History Buffer; this step is called Reprojection.
+Una de esas técnicas es el Temporal Reprojection Anti-Aliasing  (TRAA, Anti-Aliasing de Reproyección Temporal), que funciona guardando los cuadros pasados en un Buffer de Historia para luego reproyectarlos a la escena actual y mezclarlos con el cuadro actual que se está procesando. Para lograr esto, tomamos el cuadro actual y buscamos el color que debería tener en el Buffer de Historia; este paso se llama Reprojection (Reproyección).
 
-For TRAA to work we need to implement other common Computer Graphics techniques to serve as the base. We need Camera Jittering to be able to reconstruct pixel information around edges; a Velocity Buffer to determine the positions of the pixels on the last frame if they were moving; a Frame History Buffer to collect past frames to perform the reprojections in the next frame; a Clipping Color Box to constrain the History Buffer and avoid noise or wrong colors to appear; a Sharpen Filter to reduce part of the blur created; and Motion Blur to correct the effects of objects moving too fast for the Clipping Color Box.
+Para que TRAA funcione, debemos implementar otras técnicas comunes de computación gráfica para que sirvan de base. Necesitamos Camera Jittering (Agitamiento de Cámara) para poder reconstruir la información de píxeles alrededor de los bordes; un Buffer de Velocidad para determinar las posiciones de los píxeles en el último cuadro, si se movían; un Buffer de Historia de cuadros para recopilar los pixeles anteriores para realizar las reproyecciones en el siguiente cuadro; un Color Clipping Box (Caja de Recorte de Colores) para restringir el Buffer de Historia y evitar que aparezca ruido o colores incorrectos; un Filtro de Nitidez (Sharpen Filter) para reducir parte del desenfoque creado; y Motion Blur (Desenfoque por Movimiento) para corregir los efectos de objetos que se mueven demasiado rápido para el cuadro de recorte de colores.
 
-\subsection{Camera Jitter}
-Camera Jitter consists in moving the camera vertically and horizontally with a sub-pixel translation, Figure \ref{fig:camerajittering} is an example of the horizontal translation. It is applied every frame to preserve information from local regions of surface fragments. If the current frame is static relative to the past ones then the system is losing information that could be used to refine it. ~\cite{Fuglsand2016,XU2016}
+
+\subsection{Camera Jittering}
+Camera Jittering (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja es estático en relación con los pasados, entonces el sistema está perdiendo información subpíxel que podría usarse para refinarla. ~\cite{Fuglsand2016, XU2016}
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.3]{images/camera_jitter.png}
-	\caption{Jittering the Projection Process. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
+	\caption{Proceso de Jittering sobre la proyección de la cámara. Imagen tomada de la presentación de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
 \end{figure}
 
-The jittering is applied as a translation to the projection matrix using the $Halton Sequence (2,3)$ as translation vectors. This sequence is used because it generates an irregular pattern for the translations that help preserve more information than a regular pattern and the Halton Sequence provides a cheap pseudorandom pattern generator. ~\cite{Fuglsand2016,XU2016} 
+El Jittering se aplica como una traslación a la matriz de proyección de la cámara usando la $Halton Sequence (2,3)$ (Secuencia de Halton) como los vectores de traslación. Esta secuencia se usa porque genera un patrón irregular para las traslaciones, que ayuda a conservar más información que un patrón regular, y porque, la Secuencia de Halton, proporciona un generador barato de patrones pseudoaleatorios. ~\cite{Fuglsand2016, XU2016}
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.5]{images/halton_16.png}
-	\caption{Values from the $Halton Sequence (2,3)$ used.}\label{fig:halton16}
+	\caption{Valores usados de la $Halton Sequence (2,3)$ (Secuencia de Halton).}\label{fig:halton16}
 \end{figure}
 
-The Figure~\ref{fig:halton16} shows the representation of the 16 points used to jitter the projection in the current implementation, as proposed by Fuglsand ~\cite{Fuglsand2016}. The points were generated using MATLAB then scrambled to improve their randomness using reverse-radix scrambling.
+La Figura ~\ref{fig:halton16} muestra la representación de los 16 puntos utilizados para agitar la proyección en la implementación actual, tal como lo propusieron Fuglsand ~\cite{Fuglsand2016}. Los puntos se generaron usando MATLAB y luego se codificaron para mejorar su aleatoriedad usando reverse-radix scrambling.
 
 \subsection{Velocity Buffer}
 The Velocity Buffer algorithm used in this implementation is the one proposed by Chapman ~\cite{Chapman2012} which is calculated by subtracting the current pixel position by its last frame position. This is possible by saving the matrix that represents each object in the scene. Also, we cancel the jittering from the Camera Jittering before the calculating the velocities, to avoid the noise it creates, as suggested by Xu. ~\cite{XU2016}

@@ -8,16 +8,16 @@
 \BOOKMARK [1][-]{section.2.3}{MATLAB}{chapter.2}% 8
 \BOOKMARK [0][-]{chapter.3}{Marco Teórico}{}% 9
 \BOOKMARK [1][-]{section.3.1}{Canal\040de\040Renderizado}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Rasterization\040Process}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.3}{Aliasing\040Problem}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.4}{Shadow\040Mapping\040and\040Deferred\040Shading\040Architecture}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Proceso de Rasterización}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.3}{El\040Problema\040del\040Aliasing}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.4}{Mapeado\040de\040Sombras\040y\040la\040Arquitectura\040de\040Coloreado\040Diferido}{chapter.3}% 13
 \BOOKMARK [1][-]{section.3.5}{Anti-Aliasing}{chapter.3}% 14
 \BOOKMARK [2][-]{subsection.3.5.1}{Super\040Sampling\040Anti-Aliasing\040\(SSAA\)}{section.3.5}% 15
 \BOOKMARK [2][-]{subsection.3.5.2}{Multi\040Sample\040Anti-Aliasing\040\(MSAA\)}{section.3.5}% 16
 \BOOKMARK [2][-]{subsection.3.5.3}{Fast\040Approximate\040Anti-Aliasing\040\(FXAA\)}{section.3.5}% 17
 \BOOKMARK [2][-]{subsection.3.5.4}{Enhanced\040Subpixel\040Morphological\040Antialiasing\040\(SMAA\)}{section.3.5}% 18
 \BOOKMARK [1][-]{section.3.6}{Temporal\040Anti-Aliasing}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.6.1}{Camera\040Jitter}{section.3.6}% 20
+\BOOKMARK [2][-]{subsection.3.6.1}{Camera\040Jittering}{section.3.6}% 20
 \BOOKMARK [2][-]{subsection.3.6.2}{Velocity\040Buffer}{section.3.6}% 21
 \BOOKMARK [2][-]{subsection.3.6.3}{Frame\040History\040Buffer}{section.3.6}% 22
 \BOOKMARK [2][-]{subsection.3.6.4}{Clipping\040Color\040Box}{section.3.6}% 23

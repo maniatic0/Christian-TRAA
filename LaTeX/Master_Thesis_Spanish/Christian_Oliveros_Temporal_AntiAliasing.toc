@@ -10,16 +10,16 @@
 \contentsline {section}{\numberline {2.3}MATLAB}{12}{section.2.3}
 \contentsline {chapter}{\numberline {3}Marco Teórico}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Canal de Renderizado}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}Rasterization Process}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Aliasing Problem}{15}{section.3.3}
-\contentsline {section}{\numberline {3.4}Shadow Mapping and Deferred Shading Architecture}{16}{section.3.4}
+\contentsline {section}{\numberline {3.2}Proceso de Rasterización}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}El Problema del Aliasing}{15}{section.3.3}
+\contentsline {section}{\numberline {3.4}Mapeado de Sombras y la Arquitectura de Coloreado Diferido}{16}{section.3.4}
 \contentsline {section}{\numberline {3.5}Anti-Aliasing}{16}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Super Sampling Anti-Aliasing (SSAA)}{16}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.1}Super Sampling Anti-Aliasing (SSAA)}{17}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Multi Sample Anti-Aliasing (MSAA)}{17}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Fast Approximate Anti-Aliasing (FXAA)}{17}{subsection.3.5.3}
 \contentsline {subsection}{\numberline {3.5.4}Enhanced Subpixel Morphological Antialiasing (SMAA)}{17}{subsection.3.5.4}
 \contentsline {section}{\numberline {3.6}Temporal Anti-Aliasing}{17}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Camera Jitter}{18}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.1}Camera Jittering}{18}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Velocity Buffer}{18}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Frame History Buffer}{19}{subsection.3.6.3}
 \contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{20}{subsection.3.6.4}
@@ -33,45 +33,45 @@
 \contentsline {section}{\numberline {3.9}Image Metrics}{23}{section.3.9}
 \contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{23}{subsection.3.9.1}
 \contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{23}{subsection.3.9.2}
-\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{23}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{24}{subsection.3.9.3}
 \contentsline {subsection}{\numberline {3.9.4}Structural Similarity Index (SSIM)}{24}{subsection.3.9.4}
-\contentsline {chapter}{\numberline {4}Development}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}EDAN35 Project Improvements}{25}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{26}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Enhanced Subpixel Morphological Antialiasing (SMAA)}{26}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Accumulation Buffer}{26}{subsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.3.1}Sample Number Selection}{27}{subsubsection.4.1.3.1}
-\contentsline {section}{\numberline {4.2}Testing Framework Implementation}{27}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Static Test}{28}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Ghosting Test}{28}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}MATLAB Image Metrics}{28}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Temporal Reprojection Anti-Aliasing Modifications}{29}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Triangle Indexing Improvements Implementation}{30}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{31}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{32}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Final Mixing}{33}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{35}{subsection.4.3.5}
-\contentsline {chapter}{\numberline {5}Results}{37}{chapter.5}
-\contentsline {section}{\numberline {5.1}Evaluation Methodology}{37}{section.5.1}
-\contentsline {section}{\numberline {5.2}Results and Comparisons}{38}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Sharpen Filter}{38}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Pipe}{40}{subsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{40}{subsubsection.5.2.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{42}{subsubsection.5.2.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{43}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Arched Window}{44}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{45}{subsection.5.2.5}
-\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{46}{subsection.5.2.6}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{48}{subsection.5.2.7}
-\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{49}{subsection.5.2.8}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{50}{subsection.5.2.9}
-\contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{50}{subsubsection.5.2.9.1}
-\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{52}{subsubsection.5.2.9.2}
-\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{53}{subsubsection.5.2.9.3}
-\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{54}{subsubsection.5.2.9.4}
-\contentsline {subsection}{\numberline {5.2.10}Timing}{55}{subsection.5.2.10}
-\contentsline {section}{\numberline {5.3}Discussion}{56}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{59}{chapter.6}
-\contentsline {chapter}{Bibliografía}{61}{section*.56}
-\contentsline {chapter}{Apéndice \numberline {A}GitHub Repository}{65}{Apéndice.a.A}
-\contentsline {chapter}{Apéndice \numberline {B}Camera Jittering Explanation}{67}{Apéndice.a.B}
+\contentsline {chapter}{\numberline {4}Development}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}EDAN35 Project Improvements}{27}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{28}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Enhanced Subpixel Morphological Antialiasing (SMAA)}{28}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Accumulation Buffer}{28}{subsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.3.1}Sample Number Selection}{29}{subsubsection.4.1.3.1}
+\contentsline {section}{\numberline {4.2}Testing Framework Implementation}{29}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Static Test}{30}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Ghosting Test}{30}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}MATLAB Image Metrics}{30}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Temporal Reprojection Anti-Aliasing Modifications}{31}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Triangle Indexing Improvements Implementation}{32}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{33}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{34}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Final Mixing}{35}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{37}{subsection.4.3.5}
+\contentsline {chapter}{\numberline {5}Results}{39}{chapter.5}
+\contentsline {section}{\numberline {5.1}Evaluation Methodology}{39}{section.5.1}
+\contentsline {section}{\numberline {5.2}Results and Comparisons}{40}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Sharpen Filter}{40}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Pipe}{42}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Regular}{42}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}With Camera Inclination}{44}{subsubsection.5.2.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{45}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Arched Window}{46}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{47}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{48}{subsection.5.2.6}
+\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{50}{subsection.5.2.7}
+\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{51}{subsection.5.2.8}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{52}{subsection.5.2.9}
+\contentsline {subsubsection}{\numberline {5.2.9.1}Static Shadow}{52}{subsubsection.5.2.9.1}
+\contentsline {subsubsection}{\numberline {5.2.9.2}Static Light}{54}{subsubsection.5.2.9.2}
+\contentsline {subsubsection}{\numberline {5.2.9.3}Ghosting Shadow}{55}{subsubsection.5.2.9.3}
+\contentsline {subsubsection}{\numberline {5.2.9.4}Ghosting Light}{56}{subsubsection.5.2.9.4}
+\contentsline {subsection}{\numberline {5.2.10}Timing}{57}{subsection.5.2.10}
+\contentsline {section}{\numberline {5.3}Discussion}{58}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions and Recommendations}{61}{chapter.6}
+\contentsline {chapter}{Bibliografía}{63}{section*.56}
+\contentsline {chapter}{Apéndice \numberline {A}GitHub Repository}{67}{Apéndice.a.A}
+\contentsline {chapter}{Apéndice \numberline {B}Camera Jittering Explanation}{69}{Apéndice.a.B}
