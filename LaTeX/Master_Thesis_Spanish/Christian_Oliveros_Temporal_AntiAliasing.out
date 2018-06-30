@@ -18,8 +18,8 @@
 \BOOKMARK [2][-]{subsection.3.5.4}{Enhanced\040Subpixel\040Morphological\040Antialiasing\040\(SMAA\)}{section.3.5}% 18
 \BOOKMARK [1][-]{section.3.6}{Temporal\040Anti-Aliasing}{chapter.3}% 19
 \BOOKMARK [2][-]{subsection.3.6.1}{Camera\040Jittering}{section.3.6}% 20
-\BOOKMARK [2][-]{subsection.3.6.2}{Velocity\040Buffer}{section.3.6}% 21
-\BOOKMARK [2][-]{subsection.3.6.3}{Frame\040History\040Buffer}{section.3.6}% 22
+\BOOKMARK [2][-]{subsection.3.6.2}{Buffer\040de\040Velocidad}{section.3.6}% 21
+\BOOKMARK [2][-]{subsection.3.6.3}{Buffer\040de\040Historia}{section.3.6}% 22
 \BOOKMARK [2][-]{subsection.3.6.4}{Clipping\040Color\040Box}{section.3.6}% 23
 \BOOKMARK [2][-]{subsection.3.6.5}{Sharpen\040Filter}{section.3.6}% 24
 \BOOKMARK [2][-]{subsection.3.6.6}{Motion\040Blur}{section.3.6}% 25

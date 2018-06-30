@@ -250,7 +250,7 @@ The Velocity Buffer algorithm used in this implementation is the one proposed by
 
 
 \subsection{Frame History Buffer}
-For each fragment in the current frame, we look for the 3x3 neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use them to build part of the Clipping to constrain the pixels of the History Buffer. ~\cite{Fuglsand2016}
+For each fragment in the current frame, we look for the $3\times 3$ neighborhood and plus $(+)$ pattern neighborhood (See Figure~\ref{fig:samplingpattern}). We look at both patterns for the minimum and maximum of colors of the current frame, next we average them and use them to build part of the Clipping to constrain the pixels of the History Buffer. ~\cite{Fuglsand2016}
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.8]{images/sampling_pattern.png}
