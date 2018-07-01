@@ -23,8 +23,8 @@
 \BOOKMARK [2][-]{subsection.3.6.4}{Clipping\040Color\040Box}{section.3.6}% 23
 \BOOKMARK [2][-]{subsection.3.6.5}{Filtro\040de\040Nitidez}{section.3.6}% 24
 \BOOKMARK [2][-]{subsection.3.6.6}{Motion\040Blur}{section.3.6}% 25
-\BOOKMARK [2][-]{subsection.3.6.7}{Problems}{section.3.6}% 26
-\BOOKMARK [1][-]{section.3.7}{Accumulation\040Buffer}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.6.7}{Problemas}{section.3.6}% 26
+\BOOKMARK [1][-]{section.3.7}{Buffer de Acumulación}{chapter.3}% 27
 \BOOKMARK [1][-]{section.3.8}{Sobel\040Operator}{chapter.3}% 28
 \BOOKMARK [1][-]{section.3.9}{Image\040Metrics}{chapter.3}% 29
 \BOOKMARK [2][-]{subsection.3.9.1}{Mean\040Square\040Error\040\(MSE\)}{section.3.9}% 30

@@ -307,24 +307,25 @@ Como el Proceso de Reproyección y el \textit{Clipping} de Colores crean imágen
 La Ecuación \ref{eq:sharpen} es la matriz de convolución utilizada como Filtro de Nitidez en el \textit{paper} de Xu. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
-Because of the nature of the History Buffer, some ghosting is created by fragments  from objects that are moving faster than the time it takes for the Color Clipping Box to reject the color from old pixels, this is especially noticeable under special light and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.
+Debido a la naturaleza del Buffer de Historia, algo de \textit{ghosting} es creado por fragmentos de objetos que se mueven más rápido que el tiempo que tarda el \textit{Clipping Color Box} para rechazar el color de píxeles antiguos, esto es especialmente notable bajo condiciones especiales de luz y fondo. Fuglsand y Xu ~\cite{Fuglsand2016, XU2016} propusieron usar soluciones como \textit{Motion Blur} para ocultar estos artefactos.
 
-The Motion Blur used is the one proposed by Chapman ~\cite{Chapman2012}. It tries to behave like a real camera by scaling the velocity of each pixel by the division of the current Frames Per Second (FPS) to the one wanted, thus, simulating the shutter speed. Then it mixes the colors of the pixels that are sampled while following the direction of the velocity buffer vector.
+El \textit{Motion Blur} utilizado es el propuesto por Chapman ~\cite{Chapman2012}. Intenta comportarse como una cámara real, escalando la velocidad de cada píxel mediante la división de los cuadros actuales por segundo (FPS) a la velocidad deseada, simulando así la velocidad de obturación. Luego, mezcla los colores de los píxeles que se muestrean al seguir la dirección del vector del Buffer de Velocidad.
 
 
-\subsection{Problems}
-Temporal Anti-Aliasing has two main drawbacks, ghosting from moving objects and blurring from the way the Color Clipping Box works. This master thesis aims to help reduce the effects of these two drawbacks using new approaches but, for completeness, we present some of the current solutions available. 
+\subsection{Problemas}
+Temporal Anti-Aliasing tiene dos inconvenientes principales, el efecto de Ghosting de los objetos en movimiento y el Desenfoque proveniente de la forma en que funciona el Clipping Color Box. Esta tesis pretende ayudar a reducir los efectos de estos dos inconvenientes utilizando nuevos enfoques, pero, por completitud, presentamos algunas de las soluciones actuales disponibles.
 
-\subsubsection{Blurriness} 
-Current implementations of TAA generate a very aggressive blur because of the way they mix the colors of the current frame and the history; the use of areas larger than the pixel increases the errors generated, therefore a Sharpen Filter is required. The filter applied in the implementation is the one used by Xu ~\cite{XU2016}, it solves blurriness reasonably well but it cannot eliminate some artifacts. 
+\subsubsection{Desenfoque} 
+Las implementaciones actuales de TAA generan un desenfoque muy agresivo debido a la forma en que mezclan los colores del cuadro actual y el historial; el uso de áreas más grandes que el píxel aumenta los errores generados, por lo tanto, se requiere un Filtro de Nitidez. El filtro aplicado en la implementación es el utilizado por Xu ~\cite{XU2016}, resuelve el desenfoque razonablemente bien, pero no puede eliminar algunos artefactos. 
 
 \subsubsection{Ghosting} 
-Some Ghosting is created when objects move, especially under particular light and background conditions that make the foreground and background look alike. This is partially corrected with motion blur, nevertheless, some of it remains near objects that move fast enough to create some Ghosting but slow enough to avoid Motion Blur. Xu proposes the use of Motion Blur and to increase the size of everything using a Stencil technique and manual tagging of objects~\cite{XU2016}, but we aim to avoid requiring artists to manually tag and test objects for their ghosting behaviors. Pederson's implementation allows the jitter in the Velocity Buffer calculations to avoid ghosting but it creates some unwanted blurriness ~\cite{Fuglsand2016}.  
+Algo de \textit{Ghosting} se crean cuando los objetos se mueven, especialmente bajo condiciones particulares de luz y fondo que hacen que el primer plano y el fondo se vean de manera similar. Esto se corrige parcialmente con \textit{Motion Blur}, sin embargo, parte de él permanece cerca de objetos que se mueven lo suficientemente rápido como para crear algo de \textit{Ghosting} pero lo suficientemente lentos como para evitar el \textit{Motion Blur}. Xu propone el uso de \textit{Motion Blur} y aumentar el tamaño de todo utilizando una técnica \textit{Stencil} y el etiquetado manual de objetos ~\cite{XU2016}, pero nuestro objetivo es evitar que los artistas etiqueten manualmente y prueben objetos por sus comportamientos bajo \textit{Ghosting}. La implementación de Pederson permite el \textit{Jittering} en los cálculos del Buffer de Velocidad para evitar \textit{Ghosting} en las imágenes, pero crea desenfoque no deseado. ~\cite{Fuglsand2016}. 
 
-\section{Accumulation Buffer}
-The Accumulation Buffer is an anti-aliasing technique that consists, according to Paul Haeberli and Kurt Akeley \cite{Haeberli1990}, on rendering the scene several times with camera jittering and then performing a scaled weighted sum of the renderings to generate the current frame.
+\section{Buffer de Acumulación}
+El Buffer de Acumulación es una técnica de \textit{Anti-Aliasing} que consiste, según Paul Haeberli y Kurt Akeley \cite{Haeberli1990}, en renderizar la escena varias veces aplicando \textit{Jittering} a la cámara y luego realizar una suma ponderada a escala de las renderizaciones para generar el cuadro actual.
 
-This is process increases the sampling per pixel and reduces the aliasing effects producing a high-quality image at the cost of rendering everything several times per frame.
+Este es un proceso que aumenta el muestreo por píxel y reduce los efectos de \textit{aliasing}, lo que produce una imagen de alta calidad a costa de procesar todo varias veces por cuadro.
+
 
 \section{Sobel Operator}
 The Sobel Operator is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel \cite{Sobel2014}. We use this operator to detect edges in the rendered images to mark the as possibly aliased, because they are a common place for aliasing artifacts to appear.
