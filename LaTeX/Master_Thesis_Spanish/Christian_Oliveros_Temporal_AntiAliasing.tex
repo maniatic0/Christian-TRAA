@@ -284,17 +284,17 @@ Después de tener los píxeles en el Buffer de Historia, lo restringimos (explic
 \end{figure}
 
 \subsection{Clipping Color Box} 
-A Clipping Color Box a is 3D box built using the current pixel color as the center and the minimum and maximum color calculated in the last subsection as the limits. It is used to handle color rejection when the pixel's history in the History Buffer is too distant from current color. We take the color’s history as a vector and then project it against the limits of the box; if it lies outside the projection against the border of the box is then we keep the projection, else, history’s color is left untouched. The usage of the Clipping Color Box prevents the color clustering that would happen if Clamp is applied (See Figure~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
+Una \textit{Clipping Color Box} (Caja de Recorte de Colores) a es una caja 3D construida utilizando el color de píxel actual como el centro y el color mínimo y máximo calculado en la última subsección como los límites. Se utiliza para manejar el rechazo de la historia cuando el color del píxel en el Buffer de Historia está demasiado alejado del color actual. Tomamos el color de la historia del como un vector y luego lo proyectamos contra los límites de la caja; si se encuentra fuera del borde de la caja, entonces mantenemos la proyección; de lo contrario, el color de la historia quedará intacto. El uso del Clipping Color Box evita la agrupación de colores en las esquinas que ocurriría si se aplicara \textit{clamping} (Ver Figura ~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.4]{images/clipping_box.png}
-	\caption{Color Clamping versus Color Clipping. Image taken from Fuglsand paper. \protect\cite{Fuglsand2016}}\label{fig:clippingbox}
+	\caption{\textit{Color Clamping} versus \textit{Color Clipping}. Imagen tomada del \textit{paper} de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:clippingbox}
 \end{figure}
 
 
-\subsection{Sharpen Filter} 
-Because the Reprojection process and Color Clipping create blurriness, a Sharpen Filter is required. We used the one proposed by Xu. ~\cite{XU2016}
+\subsection{Filtro de Nitidez} 
+Como el Proceso de Reproyección y el \textit{Clipping} de Colores crean imágenes borrosas, se requiere un Filtro de Nitidez. Usamos el propuesto por Xu. ~\cite{XU2016}
 
 \begin{equation} \label{eq:sharpen}
 \begin{bmatrix*}[r]
@@ -304,7 +304,7 @@ Because the Reprojection process and Color Clipping create blurriness, a Sharpen
 \end{bmatrix*}
 \end{equation}
 
-Equation \ref{eq:sharpen} being the Sharpen Filter Convolution Matrix  used in Xu paper. \protect\cite{XU2016}
+La Ecuación \ref{eq:sharpen} es la matriz de convolución utilizada como Filtro de Nitidez en el \textit{paper} de Xu. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
 Because of the nature of the History Buffer, some ghosting is created by fragments  from objects that are moving faster than the time it takes for the Color Clipping Box to reject the color from old pixels, this is especially noticeable under special light and background conditions. Fuglsand and Xu ~\cite{Fuglsand2016,XU2016} proposed to use Motion Blur solutions to hide these artifacts.

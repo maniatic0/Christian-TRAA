@@ -23,15 +23,15 @@
 \contentsline {subsection}{\numberline {3.6.2}Buffer de Velocidad}{18}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Buffer de Historia}{19}{subsection.3.6.3}
 \contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{20}{subsection.3.6.4}
-\contentsline {subsection}{\numberline {3.6.5}Sharpen Filter}{21}{subsection.3.6.5}
+\contentsline {subsection}{\numberline {3.6.5}Filtro de Nitidez}{20}{subsection.3.6.5}
 \contentsline {subsection}{\numberline {3.6.6}Motion Blur}{21}{subsection.3.6.6}
 \contentsline {subsection}{\numberline {3.6.7}Problems}{21}{subsection.3.6.7}
 \contentsline {subsubsection}{\numberline {3.6.7.1}Blurriness}{21}{subsubsection.3.6.7.1}
-\contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{21}{subsubsection.3.6.7.2}
+\contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{22}{subsubsection.3.6.7.2}
 \contentsline {section}{\numberline {3.7}Accumulation Buffer}{22}{section.3.7}
 \contentsline {section}{\numberline {3.8}Sobel Operator}{22}{section.3.8}
 \contentsline {section}{\numberline {3.9}Image Metrics}{23}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{23}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{24}{subsection.3.9.1}
 \contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{24}{subsection.3.9.2}
 \contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{24}{subsection.3.9.3}
 \contentsline {subsection}{\numberline {3.9.4}Structural Similarity Index (SSIM)}{24}{subsection.3.9.4}
