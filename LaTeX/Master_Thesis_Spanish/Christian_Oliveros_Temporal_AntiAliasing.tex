@@ -50,17 +50,17 @@
 %\date{January 16, 2015}
 
 \acknowledgements{
-\emph{“The day we stop exploring is the day we commit ourselves to live in a stagnant world, devoid of curiosity, empty of dreams.”}
+\emph{“El día que dejemos de explorar será el día en que nos comprometemos a vivir en un mundo estancado, desprovisto de curiosidad, vacío de sueños”.}
 – Neil deGrasse Tyson
 
-Tengo muchas personas para agradecer por esta increíble aventura. Viniendo de Venezuela, a más de 8000 km de distancia de Suecia, siendo la primera vez que estoy fuera de casa por tanto tiempo, la primera vez que tomo clases solo en inglés y ser el primer estudiante de intercambio en realizar una Tesis de Maestría en el Departamento de Ciencias de la Computación de la Universidad de Lund, esta ha sido una experiencia que me cambió la vida.
+Tengo muchas personas para agradecer por esta increíble aventura. Viniendo de Venezuela, a más de 8000 km de distancia de Suecia, siendo la primera vez que estoy fuera de casa por tanto tiempo, la primera vez que tomo clases sólo en inglés y ser el primer estudiante de intercambio en realizar una Tesis de Maestría en el Departamento de Ciencias de la Computación de la Universidad de Lund, ha sido una experiencia que me cambió la vida.
 
-Me gustaría agradecer a toda mi familia, especialmente a mi papá, Wilmer Oliveros; mi mamá, Raixa Labrador; y mi hermano, Jean Pierre Oliveros, por toda su ayuda y apoyo durante este viaje. Además, me gustaría agradecer a todos mis amigos de todo el mundo. Gracias por ayudarme a ser lo que soy en este momento y por estar conmigo todo este tiempo.
+Me gustaría agradecer a toda mi familia, especialmente a mi papá, Wilmer Oliveros; mi mamá, Raixa Labrador; y mi hermano, Jean Pierre Oliveros, por toda su ayuda y apoyo durante este viaje. Además, me gustaría agradecer a mis amigos de todo el mundo. Gracias por ayudarme a ser lo que soy en este momento y por estar conmigo todo este tiempo.
 
 Me gustaría agradecer a mi supervisor de la Universidad de Lund, el profesor Michael Doggett, por darme esta increíble oportunidad y por ayudarme durante su transcurso. Además, me gustaría agradecer a Pierre Moreau por ayudarme en las veces que estuve estancado.
 Además, me gustaría agradecer a mi supervisora de la Universidad Simón Bolívar, la profesora Angela Di Serio; y mi Coordinadora de Ingeniería de la Computación, la profesora Marlene Goncalves, por ayudarme y apoyarme en este increíble viaje.
 
-Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón Bolívar, con un agradecimiento especial a la Oficina Internacional LTH, el Departamento de Ciencias de la Computación de la Universidad de Lund, la Coordinación de Ingeniería de la Computación de la Universidad Simón Bolívar; y la Dirección de Relaciones Internacionales y Cooperación de la Universidad Simón Bolívar, por permitir que los estudiantes aprovechen este tipo de oportunidades de desarrollo académico y de auto crecimiento.
+Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón Bolívar, con un agradecimiento especial a la Oficina Internacional LTH; el Departamento de Ciencias de la Computación de la Universidad de Lund, la Coordinación de Ingeniería de la Computación de la Universidad Simón Bolívar; y la Dirección de Relaciones Internacionales y Cooperación de la Universidad Simón Bolívar, por permitir que los estudiantes aprovechemos estas oportunidades de desarrollo académico y de auto crecimiento.
 
 \begin{figure}[!hbt]
 	\centering
@@ -69,7 +69,7 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 }
 
 \theabstract{
-\textit{Anti-aliasing} es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de Coloreado Diferido. Una solución innovadora a este problema es la técnica de \textit{Temporal Anti-Aliasing} (TAA) que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar, efectivamente, la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que solo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos TAA creados con las implementaciones actuales. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altos, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA mejoraron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99.
+\textit{Anti-aliasing} es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de \textit{Shading} Diferido. Una solución innovadora a este problema es la técnica de \textit{Temporal Anti-Aliasing} (TAA) que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar, efectivamente, la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que sólo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos creados con las implementaciones actuales de TAA. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altas, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA enriquecieron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99.
 }
 
 \keywords{TAA, Sobel, Anti-Aliasing, Triangle Indexing, TRAA}
@@ -85,29 +85,29 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 \selectlanguage{spanish}
 \makefrontmatter
 \chapter[Introducción]{Introducción}
-La Computación Gráfica moderna se basa en la representación de escenas que están hechas de objetos representados como modelos compuestos de polígonos primitivos, siendo el triángulo el más común. Esto es para aprovechar su simplicidad y todas sus propiedades geométricas para crear algoritmos óptimos que manejan su renderizado. Los triángulos están compuestos por tres vértices, cada uno de los cuales consiste en una posición y otros parámetros asociados a ellos, es decir, el color o las normales del triángulo, para la interpolación.
+La Computación Gráfica moderna se basa en la representación de escenas que están hechas de objetos representados como modelos compuestos de polígonos primitivos, siendo el triángulo el más común. Esto es para aprovechar su simplicidad y sus propiedades geométricas para crear algoritmos óptimos que manejan su renderizado  (\textit{rendering}). Los triángulos están compuestos por tres vértices, cada uno de los cuales consiste en una posición y otros parámetros asociados a ellos, es decir, el color o las normales del triángulo, para la interpolación.
 
 Cuando queremos renderizar los objetos en una escena, tomamos los vértices y los enviamos por el Canal de Renderizado (\textit{Rendering Pipeline}). Allí, son procesados y mapeados a los píxeles de la pantalla con su color respectivo.
 
-Este proceso tiene dos usos principales: Aplicaciones \textit{offline}, como películas; y aplicaciones en tiempo real, como los videojuegos. Cada uno de ellos tiene sus requisitos y limitaciones, pero para este proyecto, solo prestaremos atención a las aplicaciones en tiempo real.
+Este proceso tiene dos usos principales: Aplicaciones fuera de línea (\textit{offline}), como películas; y aplicaciones en tiempo real, como los videojuegos. Cada uno de ellos tiene sus requisitos y limitaciones, pero, para este proyecto, solo prestaremos atención a las aplicaciones en tiempo real.
 
-El objetivo de este proyecto es mejorar el algoritmo \textit{Temporal Anti-Aliasing}, que es una técnica que aumenta la calidad de las imágenes, después del proceso de mapeo de triángulos a píxeles, al mezclar cuadros previamente renderizados con los actuales.
+El objetivo de este proyecto es mejorar el algoritmo de \textit{Temporal Anti-Aliasing}, técnica que aumenta la calidad de las imágenes, después del proceso de mapeo de triángulos a píxeles, al mezclar cuadros previamente renderizados con los actuales.
 
-El principal requisito sería proporcionar la representación de la escena con la mayor calidad posible, con dos restricciones principales: debemos renderizar al menos treinta cuadros por segundo, sin causar pérdida de velocidad al renderizar los cuadros; y debemos trabajar con una cantidad limitada de memoria y ancho de banda, porque necesitamos poder ejecutar en una computadora promedio o un dispositivo móvil. \cite{Doggett2017EDAN35, Shreiner2011}
+El principal requisito sería proporcionar la representación de la escena con la mayor calidad posible, con dos restricciones principales: renderizar al menos treinta cuadros por segundo, sin causar pérdida de velocidad al renderizar los cuadros; y trabajar con una cantidad limitada de memoria y ancho de banda, porque necesitamos poder ejecutarlo en una computadora promedio o un dispositivo móvil. \cite{Doggett2017EDAN35, Shreiner2011}
 
 
 \section{Definición del Problema}
-\textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real, relativamente nueva, que proporciona buenos resultados sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas. Las técnicas de detección de bordes y de indexación de triángulos, parecen ser buenos candidatos para mejorar la calidad de TAA al ayudar a reducir los efectos no deseados de \textit{ghosting} y desenfoque creados por las implementaciones actuales de TAA.
+\textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real, relativamente nueva, que proporciona buenos resultados sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas. Las técnicas de detección de bordes y de indexación de triángulos, parecen ser buenas candidatas para mejorar la calidad de TAA, al ayudar a reducir los efectos no deseados de \textit{ghosting} y desenfoque  (\textit{blurring}) creados por las implementaciones actuales de TAA.
 
-El objetivo de esta tesis es mejorar la técnica de \textit{Temporal Anti-Aliasing} mediante el uso de detección de bordes, de color y profundidad, y técnicas de indexación de triángulos para reducir el efecto de desenfoque y \textit{ghosting}, sin disminuir la calidad de la imagen renderizada o incurrir en un gran consumo de memoria o de costo de procesamiento.
+El objetivo de esta tesis es mejorar la técnica de \textit{Temporal Anti-Aliasing} mediante el uso de detección de bordes, de color y profundidad, y técnicas de indexación de triángulos para reducir el efecto de desenfoque y \textit{ghosting}, sin disminuir la calidad de la imagen renderizada o incurrir en un gran consumo de memoria o costo de procesamiento.
 
 
 \section{Trabajos Relacionados}
-Como la técnica más simple de \textit{Anti-Aliasing}, tenemos \textit{Super Sampling Anti-Aliasing} (SSAA, \textit{Anti-Aliasing} con Super Muestreo), que consiste en renderizar a una resolución más alta y luego reducir la imagen a la resolución requerida. Otra técnica es el \textit{Multi Sample Anti-Aliasing} (MSAA, \textit{Anti-Aliasing} Multi Muestra), que calcula el color para el píxel final solo una vez \cite{Doggett2017EDAN35}. Podemos aprender lo que se convertiría en la base del \textit{Temporal Reprojection Anti-Aliasing}  (TAA o TRAA, \textit{Anti-Aliasing} de Reproyección Temporal) en los artículos Aceleración del Coloreado en Tiempo Real con Caching de Reproducción Inversa por Nehab D., Sander PV, Lawrence J., Tatarchuk N., Isidoro JR \cite{Nehab2007}, en el que describen cómo se pueden usar los pixel shaders para guardar información de píxeles del cuadro anterior y reproyectarla en el siguiente cuadro; y Supermuestreo Amortizado por Yang L., Nehab D., Sander PV, Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} en el que describen cómo utilizar la reproyección de cuadros prévios en el actual como método de \textit{Anti-Aliasing} en tiempo real.
+La técnica más simple de \textit{Anti-Aliasing} es \textit{Super Sampling Anti-Aliasing} (SSAA, \textit{Anti-Aliasing} con Super Muestreo), que consiste en renderizar a una resolución más alta y luego reducir la imagen a la resolución requerida. Otra técnica es \textit{Multi Sample Anti-Aliasing} (MSAA, \textit{Anti-Aliasing} Multi Muestra), que calcula el color para el píxel final solo una vez \cite{Doggett2017EDAN35}. Podemos aprender lo que se convertiría en la base del \textit{Temporal Reprojection Anti-Aliasing}  (TAA o TRAA, \textit{Anti-Aliasing} de Reproyección Temporal) en los artículos Aceleración del \textit{Shading} en Tiempo Real con Caching de Reproducción Inversa por Nehab D., Sander PV, Lawrence J., Tatarchuk N., Isidoro JR \cite{Nehab2007}, en el que describen cómo se pueden usar los pixel shaders para guardar información de píxeles del cuadro anterior y reproyectarla en el siguiente cuadro; y Supermuestreo Amortizado por Yang L., Nehab D., Sander PV, Sitthiamorn P., Lawrence J., Hoppe H. \cite{Yang2009} en el que describen cómo utilizar la reproyección de cuadros previos  en el actual, como método de \textit{Anti-Aliasing} en tiempo real.
 
-A continuación, comenzamos a ver técnicas de Post-Procesamiento como \textit{Fast Approximate Anti-Aliasing} (FXAA, \textit{Anti-Aliasing} Aproximado Rápido) por Timothy Lottes \cite{Lottes2009} que usa una forma de detección de bordes para corregir el \textit{aliasing} mientras es compatible con la Arquitectura de Coloreado Diferida (\textit{Deferred Shading Architecture}). También encontramos la implementación de Crytek de \textit{Temporal Anti-Aliasing} (TAA o TXAA) explicada por Tiago Sousa en su presentación Métodos de \textit{Anti-Aliasing} en CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
+A continuación, encontramos técnicas de Post-Procesamiento como \textit{Fast Approximate Anti-Aliasing} (FXAA, \textit{Anti-Aliasing} Aproximado Rápido) por Timothy Lottes \cite{Lottes2009} que usa una forma de detección de bordes para corregir el \textit{aliasing} mientras es compatible con la Arquitectura de \textit{Shading} Diferida (\textit{Deferred Shading Architecture}). También tenemos la implementación de Crytek de \textit{Temporal Anti-Aliasing} (TAA o TXAA) explicada por Tiago Sousa en su presentación Métodos de \textit{Anti-Aliasing} en CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
 
-También tenemos \textit{Enhanced Subpixel Morphological Anti-Aliasing} (SMAA, \textit{Anti-Aliasing} de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jiménez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
+También disponemos de la técnica \textit{Enhanced Subpixel Morphological Anti-Aliasing} (SMAA, \textit{Anti-Aliasing} de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jiménez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
 
 Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el \textit{Color Clipping Box} (Caja de Recorte de Colores) y el Filtro de Nitidez (\textit{Sharpen Filter}). Estas dos últimas implementaciones se utilizan como base de esta tesis. \cite{Fuglsand2016, XU2016}
 
@@ -127,7 +127,7 @@ El \textit{Bonobo Framework} es la base de los laboratorios de Computación Grá
 \section{OpenGL y GLSL}
 Usamos esta \textit{Application Programming Interface} (API, Interfaz de Programación de Aplicaciones) ya que es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y debido a su compatibilidad multiplataforma. La \textit{Open Graphics Library Library} (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, que abstrae al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (\textit{Rendering Pipeline}) para usar, normalmente se implementado directamente en hardware.
 
-Usamos el \textit{OpenGL Shading Language} (GLSL, Lenguaje de Coloreado de OpenGL) para implementar TAA y nuestras mejoras, ya que es parte del estándar de OpenGL. GLSL es un lenguaje de coloreado de alto nivel que permite a los programadores un mayor control del Canal de Renderizado de Gráficos sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
+Usamos el \textit{OpenGL Shading Language} (GLSL, Lenguaje de \textit{Shading} de OpenGL) para implementar TAA y nuestras mejoras, ya que es parte del estándar de OpenGL. GLSL es un lenguaje de \textit{shading} de alto nivel que permite a los programadores un mayor control del Canal de Renderizado de Gráficos sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
 
 
 \section{MATLAB}
@@ -198,15 +198,15 @@ Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que 
 	\caption{Imagen Base de una línea frente a su Aproximación con \textit{Aliasing}.}\label{fig:aliasingexample}
 \end{figure}
 
-\section[Mapeado de Sombras y la Arquitectura de Coloreado Diferido]{Mapeado de Sombras y \\ la Arquitectura de Coloreado Diferido}
+\section[Mapeado de Sombras y la Arquitectura de Shading Diferido]{Mapeado de Sombras y \\ la Arquitectura de Shading Diferido}
 
 Como humanos, hemos llegado a esperar que los objetos reaccionen a las luces de una escena, tomando en cuenta la geometría de los objetos, porque las luces y sombras contribuyen con la información espacial a una imagen, especialmente, las sombras nos dan una sensación de tamaño y distancia.
 
 Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo de la Canal de Renderizado Gráfico basado en el Rasterizador, el proceso de cálculo de la sombra es difícil de realizar. El \textit{Rasterizer} no sabe si los objetos están cubiertos o no de una luz, por lo que debemos encontrar un método para calcular si un objeto está en sombras. Este proceso se denomina Mapeado de Sombras, consiste en representar la escena a través de la perspectiva de cada luz y luego realizar pruebas en la perspectiva de la cámara para establecer si el objeto se ve afectado por la luz o si está en sombras.
 
-Pero, como es de esperar, renderizar la escena varias veces es costoso, entonces necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de Coloreado Diferido proporciona esa solución solo para colorear, posiblemente utilizando una operación que podría ser costosa, solo píxeles visibles y, así, evitar desperdiciar recursos coloreando píxeles de geometría que no es visible. Esta arquitectura funciona renderizando primero la escena, sin cálculos de coloreado, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro.
+Pero, como es de esperar, renderizar la escena varias veces es costoso, entonces necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de \textit{Shading} Diferido proporciona esa solución solo para colorear, posiblemente utilizando una operación que podría ser costosa, solo píxeles visibles y, así, evitar desperdiciar recursos coloreando píxeles de geometría que no es visible. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro.
 
-Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de Coloreado Diferido para calcular la forma en que las luces afectan solo a los píxeles visibles; calculamos el Mapa de Sombreado de cada luz solo realizando cálculos de profundidad. Después, calculamos y guardamos el efecto de cada luz usando los Mapas de las Sombreado.
+Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan solo a los píxeles visibles; calculamos el Mapa de Sombreado de cada luz solo realizando cálculos de profundidad. Después, calculamos y guardamos el efecto de cada luz usando los Mapas de las Sombreado.
 
 Al final, tomamos toda la información de las luces, las sombras y el Buffer de Geometría para renderizar la escena con iluminación.
 
@@ -214,7 +214,7 @@ Al final, tomamos toda la información de las luces, las sombras y el Buffer de 
 \section{Anti-Aliasing}
 Como hemos explicado, hay dos tipos principales de \textit{Aliasing}, Espacial y Temporal. Las soluciones \textit{Anti-Aliasing} proporcionan mejoras contra los artefactos creados por cualquiera de esos tipos a costa de un mayor tiempo de renderizado. Para aplicaciones en tiempo real, este aumento del tiempo de renderización limita qué soluciones Anti-Aliasing son factibles de aplicar.
 
-Otro factor importante que decide qué técnica \textit{Anti-Aliasing} usar es cómo se comporta con las arquitecturas actuales. Por ejemplo, las viejas soluciones Anti-Aliasing no funcionan con el Coloreado Diferido.
+Otro factor importante que decide qué técnica \textit{Anti-Aliasing} usar es cómo se comporta con las arquitecturas actuales. Por ejemplo, las viejas soluciones Anti-Aliasing no funcionan con el \textit{Shading} Diferido.
 
 
 \subsection{Super Sampling Anti-Aliasing (SSAA)}
@@ -223,7 +223,7 @@ Esta técnica consiste en renderizar la escena a 4 veces el tamaño de la pantal
 \subsection{Multi Sample Anti-Aliasing (MSAA)}
 MSAA consiste en tomar varias muestras por píxel; en cada muestra, los valores de profundidad se calculan, pero solo se calcula un color para el triángulo rasterizado. Esta solución proporciona buenos resultados a costa de un mayor uso de memoria para cálculos de profundidad.
 
-El mayor problema que tiene esta técnica es que no funciona correctamente con el Coloreado Diferido \cite{Doggett2017EDAN35}. Esto hace que sea complicado utilizarlo con los Canales de Renderización actuales, que normalmente requieren otras correcciones para reducir los artefactos creados cuando se aplica con Coloreado Diferido.
+El mayor problema que tiene esta técnica es que no funciona correctamente con el \textit{Shading} Diferido \cite{Doggett2017EDAN35}. Esto hace que sea complicado utilizarlo con los Canales de Renderización actuales, que normalmente requieren otras correcciones para reducir los artefactos creados cuando se aplica con \textit{Shading} Diferido.
 
 
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
@@ -327,10 +327,10 @@ El Buffer de Acumulación es una técnica de \textit{Anti-Aliasing} que consiste
 Este es un proceso que aumenta el muestreo por píxel y reduce los efectos de \textit{aliasing}, lo que produce una imagen de alta calidad a costa de procesar todo varias veces por cuadro.
 
 
-\section{Sobel Operator}
-The Sobel Operator is an efficiently computable $3\times 3$ isotropic gradient operator, as explained by Irwin Sobel \cite{Sobel2014}. We use this operator to detect edges in the rendered images to mark the as possibly aliased, because they are a common place for aliasing artifacts to appear.
+\section{Operador de Sobel}
+El Operador Sobel es un operador de gradiente isotrópico $3\times 3$ eficientemente computable, como lo explica Irwin Sobel \cite{Sobel2014}. Usamos este operador para detectar bordes en las imágenes renderizadas y marcarlos como posibles lugares con aliasing. Esto es porque son un lugar común para que aparezcan los artefactos de aliasing. 
 
-It works by taking the four-possible simple central gradient estimates in a $3\times 3$ neighborhood and adding them together. The image function is taken as a density/intensity function and the four-possible estimates as orthogonal vectors which are directional derivatives multiplied by a unit vector specifying the derivative’s direction.  The sum of the four-possible simple central gradient estimates is equivalent to the vector sum of the eight directional derivative vectors.
+Funciona al tomar las cuatro estimaciones de gradiente simple central posibles en un vecindario de $3\times 3$ y sumarlas. La función de imagen se toma como una función de densidad / intensidad y las cuatro posibles estimaciones como vectores ortogonales que son derivadas direccionales multiplicadas por un vector unitario que especifica la dirección de la derivada. La suma de las cuatro estimaciones posibles de gradiente simple central es equivalente a la suma vectorial de los ocho vectores derivativos direccionales.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:sobel_neighborhood}
@@ -340,16 +340,16 @@ g & h & i
 \end{bmatrix*}
 \end{equation}
 
-Let the Matrix \ref{eq:sobel_neighborhood} be the $3\times 3$ neighborhood and $\abs*{G}$ the magnitude of the directional derivative estimate of the neighborhood.  
+Sea la Matriz \ref{eq:sobel_neighborhood} sea Vecindario $3\times 3$ y $\abs*{G}$ la magnitud de la estimación derivada direccional del vecindario.
 
-The direction of $G$ will be given by the unit vector to the appropriate neighbor. Vector summing causes all the $e$ (center of the $3\times 3$ neighborhood) values to be canceled leaving only the next expression \ref{eq:sobel_simplification}:
+La dirección de $G$ estará dada por el vector unitario asociado al vecino apropiado. La suma vectorial hace que se cancelen todos los valores de $e$ (centro del  Vecindario $3\times 3$) dejando solo la siguiente expresión \ref{eq:sobel_simplification}:
 \begin{equation}\label{eq:sobel_simplification}
 \begin{split}
 	G & =\frac{c-g}{4}*\begin{bmatrix*}1 & 1\end{bmatrix*}+\frac{a-i}{4}*\begin{bmatrix*}-1 & 1\end{bmatrix*}+\frac{b-h}{2}*\begin{bmatrix*}0 & 1\end{bmatrix*}+\frac{f-d}{2}*\begin{bmatrix*}1 & 0\end{bmatrix*} \\ & =\begin{bmatrix*}\frac{c-g-a+i}{4}+\frac{f-d}{2} & \frac{c-g+a-i}{4}+\frac{b-h}{2}\end{bmatrix*}
 \end{split}
 \end{equation}
 
-Then we multiply by $4$ to approximate the value and ensure that we do not lose precision if we perform this with small fixed-point integers. The newly calculated magnitude is sixteen times larger than the original average gradient.
+Luego multiplicamos por $4$ para aproximar el valor y asegurarnos de que no perdamos precisión si lo realizamos con enteros pequeños de punto fijo. La magnitud recién calculada es dieciséis veces más grande que el gradiente promedio original.
 
 \begin{equation}\label{eq:sobel_approximation}
 \begin{split}
@@ -357,7 +357,7 @@ G' = 4 * G =\begin{bmatrix*}(c-g-a+i)+(f-d)*2 & (c-g+a-i)*4+(b-h)*2\end{bmatrix*
 \end{split}
 \end{equation}
 
-Equation \ref{eq:sobel_approximation} can be expressed in two weighting matrices. We use Matrix \ref{eq:sobel_x} for the $x$ component and Matrix\ref{eq:sobel_y} for the $y$ component.
+La Ecuación \ref{eq:sobel_approximation} se puede expresar en dos matrices de ponderación. Usamos la Matriz \ref{eq:sobel_x} para el componente $x$ y la Matriz \ref{eq:sobel_y} para el componente $y$.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:sobel_x}
@@ -375,48 +375,49 @@ Equation \ref{eq:sobel_approximation} can be expressed in two weighting matrices
 \end{bmatrix*}
 \end{equation}
 
-For edge-point detection, what is commonly done is compare the magnitude of $G$ against a numeric threshold to mark points as edges. 
+Para la detección de bordes, lo que se hace comúnmente es comparar la magnitud de $G$ contra un umbral numérico para marcar píxels como bordes.
 
-\section{Image Metrics}
-The process of measuring the quality of an image is a complicated one. As explained by Al-Najjar and Soong \cite{Yusra2012}, we can follow two main methods: subjective or objective. The subjective methods are based on opinions collected from humans and, as one would expect, are considered expensive, difficult to implement and time-consuming to perform. The second kind of methods, the objective ones, are based on mathematical formulas and algorithms to measure the quality of the image without human intervention. For this thesis, we are using objective methods. 
+\section{Métricas de Imagen}
+El proceso de medir la calidad de una imagen es complicado. Como explican Al-Najjar y Soong \cite{Yusra2012}, podemos seguir dos tipos métodos principales: subjetivo u objetivo. Los métodos subjetivos se basan en opiniones recogidas de humanos y, como cabría esperar, se consideran costosos, difíciles de implementar y llevan mucho tiempo. El segundo tipo de métodos, los objetivos, se basan en fórmulas matemáticas y algoritmos para medir la calidad de la imagen sin intervención humana. Para esta tesis, usamos métodos objetivos.
 
-Objectives methods can be categorized into three groups, as described by Al-Najjar and Soong \cite{Yusra2012}:
+Los métodos de objetivos se pueden categorizar en tres grupos, como describen Al-Najjar y Soong \cite{Yusra2012}:
 
 \begin{itemize}
-	\item \textbf{No-Reference:} In which we have no reference image to compare with.
-	\item \textbf{Reduced-Reference:} Where we have part of a reference image.
-	\item \textbf{Full-Reference:} We have the complete reference image.
+	\item \textbf{Sin-Referencia:} En el cual no tenemos una imagen de referencia para comparar.
+	\item \textbf{Referencia-Reducida:} Donde tenemos parte de una imagen de referencia.
+	\item \textbf{Referencia-Completa:} Tenemos la imagen de referencia completa.
 \end{itemize}
 
-For computer graphics, the preferred methods are the Full-Reference ones because reference images can be generated using higher quality but bad performing algorithms to render them. The most common metrics used, and the ones used in this thesis, are: Mean Square Error (MSE); Peak Signal-to-Noise Ratio (PSNR); and the Structural Similarity Index (SSIM).
 
-\subsection{Mean Square Error (MSE)}
-Based on the average of the squared error between the pixels of the image and the reference.
+Para la computación gráfica, los métodos preferidos son los de Referencia-Completa porque las imágenes de referencia se pueden generar utilizando algoritmos de mayor calidad pero con mal rendimiento para representarlos. Las métricas más comunes utilizadas, y las utilizadas en esta tesis, son: Error Cuadrado Medio (MSE, \textit{Mean Square Error}); Relación Señal a Ruido de Pico (PSNR, \textit{Peak Signal-to-Noise Ratio}); y el Índice de Similitud Estructural  (SSIM, \textit{Structural Similarity Index}).
+
+\subsection{Error Cuadrado Medio (MSE)}
+Basada en el promedio del error cuadrado entre los píxeles de la imagen y la referencia. 
 
 \begin{equation}\label{eq:mse}
 	MSE=\frac{1}{N*M}\sum\limits_{i=0}^{N-1}\sum\limits_{j=0}^{M-1}(Im(i,j)-Ref(i,j))^2
 \end{equation}
-Where $N,M$ are the width and height of the images and $Im,Ref$ are the pixel of the Image and Reference.
+Donde $N, M$ son el ancho y largo de las imágenes y $Im, Ref$ son el píxel de la Imagen y la Referencia.
 
-\subsection{Root Mean Square Deviation (RMSD)}
-It is the standard deviation of MSE. Also called Root Mean Square Error (RMSE).
+\subsection{Desviación de la Raíz Cuadrada Media  (RMSD)}
+Es la desviación estándar de MSE (\textit{Root Mean Square Deviation}). También llamada \textit{Root Mean Square Error} (RMSE).
 \begin{equation}\label{eq:rmse}
 RMSE=\sqrt{MSE}
 \end{equation}
 
-\subsection{Peak Signal-to-Noise Ratio (PSNR)}
-It is based on the mathematical concept of Signal-To-Noise Ratio (SNR) which measures the signal of the image, which is stored as the colors of the pixels for our purposes, against its error compared to the reference. \cite{Yusra2012}
+\subsection{Relación Señal a Ruido de Pico (PSNR)}
+Se basa en el concepto matemático de Relación de Señal a Ruido (SNR, Signal-To-Noise Ratio) que mide la señal de la imagen, que se almacena como los colores de los píxeles para nuestros propósitos, contra su error en comparación con la referencia. \cite{Yusra2012}
 
 \begin{equation}\label{eq:psnr}
 PSNR=10*\log\left(\frac{S^2}{MSE}\right)
 \end{equation}
 
-Where $S$ is the maximum value the signal can achieve.In our case it is $255$ because we use 8-bit color channels. 
+Donde $S$ es el valor máximo que puede alcanzar la señal. En nuestro caso es $255$ porque usamos canales de color de 8 bits.
 
-\subsection{Structural Similarity Index (SSIM)}
-SSIM is a widely used image metric that matches human subjectivity and is highly sensitive to degradations in the spatial structure of image luminance, as explained by Malpica and Bovik. \cite{Malpica2009}
+\subsection{Índice de Similitud Estructural (SSIM)}
+SSIM es una métrica de imagen ampliamente utilizada, que coincide con la subjetividad humana y es muy sensible a las degradaciones en la estructura espacial de la luminancia de la imagen, como explican Malpica y Bovik. \cite{Malpica2009}
 
-It requires two images to compare, $X$ and $Y$, and three similarity functions are performed in a sliding $N\times N$ (typically $11\times 11$) gaussian weighted window.
+Requiere dos imágenes para comparar, $X$ y $Y$, y se calcula en base a tres funciones de similitud en una ventana ponderada gaussiana de $N\times N$ (típicamente $11\times 11$).
 
 \begin{equation}\label{eq:ssim_components}
 \begin{split}
@@ -426,7 +427,7 @@ s(x,y) & = \frac{\sigma_{XY}(x,y)+C_3}{\sigma_X(x,y)+\sigma_Y(x,y)+C_3}
 \end{split}
 \end{equation}
 
-Where
+Donde
 \begin{equation*}
 \begin{split}
 \mu_X(x,y) & = \sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)*X(x+p,y+q)\\ 
@@ -435,12 +436,12 @@ Where
 \end{split}
 \end{equation*}
 
-Where $w(p,q)$ is a Gaussian weighing function such that $\sum\limits_{p=-P}^{P} \sum\limits_{q=-Q}^{Q} w(p,q)=1$ and $C_1,C_2,C_3$ are small constants that provide stability when the denominator approaches zero. Typically, they are set as follows: 
+Donde $w(p, q)$ es una función de ponderación gaussiana tal que $\sum\limits_{p = -P}^{P}\sum\limits_{q = -Q}^{Q} w(p, q) = 1$ y $C_1, C_2, C_3$ son pequeñas constantes que proporcionan estabilidad cuando el denominador se aproxima a cero. Por lo general, se establecen de la siguiente manera: 
 \begin{equation*}
 	C_1=(K_1*L)^2,C_2=(K_1*L)^2,C_3=\frac{C_2}{2}
 \end{equation*}
 
-Where L is the dynamic range of the image and $K_1,K_2\ll1$ are small constants. At the end, the three similarity functions are combined in the general form: 
+Donde $L$ es el rango dinámico de la imagen y $K_1, K_2 \ll1$ son pequeñas constantes. Al final, las tres funciones de similitud se combinan en la forma general:
 
 \begin{equation}\label{eq:ssim}
 SSIM(x,y)=l(x,y)*c(x,y)*s(x,y)

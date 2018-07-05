@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {3.1}Canal de Renderizado}{13}{section.3.1}
 \contentsline {section}{\numberline {3.2}Proceso de Rasterización}{14}{section.3.2}
 \contentsline {section}{\numberline {3.3}El Problema del Aliasing}{15}{section.3.3}
-\contentsline {section}{\numberline {3.4}Mapeado de Sombras y la Arquitectura de Coloreado Diferido}{16}{section.3.4}
+\contentsline {section}{\numberline {3.4}Mapeado de Sombras y la Arquitectura de Shading Diferido}{16}{section.3.4}
 \contentsline {section}{\numberline {3.5}Anti-Aliasing}{16}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Super Sampling Anti-Aliasing (SSAA)}{17}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Multi Sample Anti-Aliasing (MSAA)}{17}{subsection.3.5.2}
@@ -29,12 +29,12 @@
 \contentsline {subsubsection}{\numberline {3.6.7.1}Desenfoque}{21}{subsubsection.3.6.7.1}
 \contentsline {subsubsection}{\numberline {3.6.7.2}Ghosting}{22}{subsubsection.3.6.7.2}
 \contentsline {section}{\numberline {3.7}Buffer de Acumulación}{22}{section.3.7}
-\contentsline {section}{\numberline {3.8}Sobel Operator}{22}{section.3.8}
-\contentsline {section}{\numberline {3.9}Image Metrics}{23}{section.3.9}
-\contentsline {subsection}{\numberline {3.9.1}Mean Square Error (MSE)}{24}{subsection.3.9.1}
-\contentsline {subsection}{\numberline {3.9.2}Root Mean Square Deviation (RMSD)}{24}{subsection.3.9.2}
-\contentsline {subsection}{\numberline {3.9.3}Peak Signal-to-Noise Ratio (PSNR)}{24}{subsection.3.9.3}
-\contentsline {subsection}{\numberline {3.9.4}Structural Similarity Index (SSIM)}{24}{subsection.3.9.4}
+\contentsline {section}{\numberline {3.8}Operador de Sobel}{22}{section.3.8}
+\contentsline {section}{\numberline {3.9}Métricas de Imagen}{23}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{24}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{24}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{24}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{24}{subsection.3.9.4}
 \contentsline {chapter}{\numberline {4}Development}{27}{chapter.4}
 \contentsline {section}{\numberline {4.1}EDAN35 Project Improvements}{27}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{28}{subsection.4.1.1}
