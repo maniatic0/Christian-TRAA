@@ -1,0 +1,48 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Canal de Renderizado, basado en la 5ta clase de EDAF80.~\cite {Doggett2017EDAF80}\relax }}{6}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de los resultados del Proceso de Rasterización. \emph {Nota}: se agregaron colores para diferenciar los triángulos, pero solo se agregarían en la etapa del \textit {Pixel Shader}. \relax }}{7}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35. ~\cite {Doggett2017EDAN35}\relax }}{8}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Imagen Base de una línea frente a su Aproximación con \textit {Aliasing}.\relax }}{9}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Proceso de \textit {Jittering} sobre la proyección de la cámara. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{12}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Valores usados de la $Halton Sequence (2,3)$ (Secuencia de Halton).\relax }}{12}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Patrón de Muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{13}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Proceso de \textit {Temporal Reprojection Anti-Aliasing}. Imagen tomada de la presentación de Fuglsand \cite {Fuglsand2016}\relax }}{14}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces \textit {Color Clamping} versus \textit {Color Clipping}. Imagen tomada del \textit {paper} de Fuglsand. \cite {Fuglsand2016}\relax }}{15}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The $128$ $Halton Sequence (2,3)$ points available to use.\relax }}{22}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sampling Pattern used. Image taken from Fuglsand presentation. \cite {Fuglsand2016}\relax }}{26}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Color Clipping Box size reduction\relax }}{27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Rendered Images comparison.\relax }}{37}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces SSIM Maps comparison.\relax }}{37}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pipe Regular comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{39}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pipe Regular Test ground truth.\relax }}{39}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Pipe with Camera Inclination comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{40}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Pipe with Camera Inclination Test ground truth.\relax }}{40}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Window with Blinds ground truth.\relax }}{41}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Window with Blinds comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{42}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Arched Window comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{43}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Arched Window ground truth.\relax }}{43}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Sponza Atrium comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{44}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Sponza Atrium ground truth.\relax }}{44}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Sponza Atrium Flowers comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{46}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Sponza Atrium Flowers ground truth.\relax }}{46}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Hard Edges comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{47}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Hard Edges ground truth.\relax }}{47}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Example of Ghosting. Comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 19.\relax }}{49}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{50}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Hairball Static Shadow ground truth.\relax }}{51}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Hairball Static Lighted ground truth.\relax }}{52}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Hairball Static Lighted comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{52}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 90.\relax }}{53}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 83.\relax }}{55}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

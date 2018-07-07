@@ -1,24 +1,29 @@
-\documentclass{cslthse-msc}
+%\documentclass{cslthse-msc} %% Lund
+\documentclass[pregrado]{tesis-usb} %% USB
 \usepackage[utf8]{inputenc}
-\usepackage[spanish,english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{mathtools}
-%\usepackage{makeidx}
+%%\usepackage{makeidx}
 \usepackage{graphicx}
-\usepackage[titletoc, header, page]{appendix}
+
+\usepackage{acronym}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 
 
-\usepackage{hyperref}
-\usepackage{pdfpages}
+
+%\usepackage{hyperref}
 
 \usepackage{diagbox}
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{makecell}
+
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -31,25 +36,59 @@
 %	{Tabla de Contenidos}%
 %}
 
-\author{
-	Christian Alexander Oliveros Labrador \\
-	{\normalsize \href{mailto:christianol_01@hotmail.com}{\texttt{christianol\_01@hotmail.com}}}
-	%\and
-	%Camilla Lekebjer \\
-	%{\normalsize \href{mailto:Camilla.Lekebjer@cs.lth.se}{\texttt{Camilla.Lekebjer@cs.lth.se}}}
-}
+%\author{
+%	Christian Alexander Oliveros Labrador \\
+%	{\normalsize \href{mailto:christianol_01@hotmail.com}{\texttt{christianol\_01@hotmail.com}}}
+%	%\and
+%	%Camilla Lekebjer \\
+%	%{\normalsize \href{mailto:Camilla.Lekebjer@cs.lth.se}{\texttt{Camilla.Lekebjer@cs.lth.se}}}
+%}
 
-\title{Muestreo Mejorado\\para \\Temporal Anti-Aliasing}
-\subtitle{Un Temporal Anti-Aliasing Mejorado con Sobel}
-%\company{The Corporation AB LTD Inc}
-\supervisors{Ángela Di Serio, \href{mailto:adiserio@ldc.usb.ve }{\texttt{adiserio@ldc.usb.ve}}}{Michael Doggett, \href{mailto:michael.doggett@cs.lth.se}{\texttt{michael.doggett@cs.lth.se}}}
-%\supervisor{John Deer, \href{mailto:jdeer@company.com}{\texttt{jdeer@company.com}}}
-\examiner{Flavius Gruian, \href{mailto:Flavius.Gruian@cs.lth.se}{\texttt{Flavius.Gruian@cs.lth.se}}}
+%\title{Muestreo Mejorado\\para \\Temporal Anti-Aliasing}
+%\subtitle{Un Temporal Anti-Aliasing Mejorado con Sobel}
+%%\company{The Corporation AB LTD Inc}
+%\supervisors{Ángela Di Serio, \href{mailto:adiserio@ldc.usb.ve }{\texttt{adiserio@ldc.usb.ve}}}{Michael Doggett, \href{mailto:michael.doggett@cs.lth.se}{\texttt{michael.doggett@cs.lth.se}}}
+%%\supervisor{John Deer, \href{mailto:jdeer@company.com}{\texttt{jdeer@company.com}}}
+%\examiner{Flavius Gruian, \href{mailto:Flavius.Gruian@cs.lth.se}{\texttt{Flavius.Gruian@cs.lth.se}}}
 
-\date{\today}
-%\date{January 16, 2015}
+%\date{\today}
+%%\date{January 16, 2015}
 
-\acknowledgements{
+% estilo de las referencias
+\bibliographystyle{plain}
+
+\autor{Oliveros Labrador/Christian Alexander}
+\autori{C. A. Oliveros Labrador}
+\usbid{13-11000}
+\titulo{Muestreo Mejorado para Temporal Anti-Aliasing}
+\fecha{Julio~de~2018}\usarcotutor
+\agno{2018}
+\fechadefensa{\today}
+\tutor{Ángela Di Serio}
+\usarcotutor
+\cotutor{Michael Doggett \mbox{(Lund)}} 
+\trabajo{Trabajo de Grado}
+\coord{Ingeniería de Computación} %Coloca la coordinación
+\grado{Ineniero en Compuatación} %coloca el postgrado
+\carrera{Carrera}
+\programa{Ingeniería de Computación}
+%\juradouno{Ren\'e Escalante}
+%\juradodos{Johana Figueroa \mbox{(UC)}}
+%\juradotres{Irene Garc\'ia}
+%\juradocuatro{José Luis Palacios}
+
+\begin{document}
+\selectlanguage{spanish}
+\frontmatter
+\maketitle
+\chapter*{Dedicatoria}
+
+Debe ser elaborada bajo las mismas normas del desarrollo del trabajo y mismo tipo de letra seleccionado (tama\~no 12).
+
+\par Dedicado a la Universidad Sim\'on Bol\'ivar y a su comunidad universidad.
+
+\chapter*{Agradecimientos}
+
 \emph{“El día que dejemos de explorar será el día en que nos comprometemos a vivir en un mundo estancado, desprovisto de curiosidad, vacío de sueños”.}
 – Neil deGrasse Tyson
 
@@ -66,24 +105,44 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 	\centering
 	\includegraphics[scale=0.3]{images/univ_logotypes.png}
 \end{figure}
-}
 
-\theabstract{
-\textit{Anti-aliasing} es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de \textit{Shading} Diferido. Una solución innovadora a este problema es la técnica de \textit{Temporal Anti-Aliasing} (TAA), que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar efectivamente la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que sólo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos creados con las implementaciones actuales de TAA. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altas, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA enriquecieron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99.
-}
+\begin{resumen}
+	\textit{Anti-aliasing} es un componente clave de los sistemas modernos de computación gráfica 3D. Para la generación de imágenes en tiempo real en aplicaciones como juegos, es importante aumentar la tasa de muestreo por píxel para mejorar la calidad general de la imagen. Pero aumentar el muestreo puede ser costoso, especialmente para las arquitecturas actuales de \textit{Shading} Diferido. Una solución innovadora a este problema es la técnica de \textit{Temporal Anti-Aliasing} (TAA), que combina muestras de cuadros previos con las muestras del cuadro actual para aumentar efectivamente la tasa de muestreo. En esta tesis, exploraremos métodos para mejorar la calidad del TAA mediante el uso de detección de bordes, tanto de color como de profundidad, y la indexación de triángulos para asegurar que sólo las muestras pertenecientes a los píxeles del cuadro actual se combinen. Nuestro objetivo es reducir el efecto de ghosting y otros artefactos creados con las implementaciones actuales de TAA. La mejora de la calidad se evaluará comparando las imágenes generadas por TAA con las imágenes base (ground truth) generadas mediante el uso de tasas de muestreo mucho más altas, que no serían prácticas en tiempo real. El TAA mejorado se probó utilizando métricas de imágenes, en particular, MSE, PSNR y SSIM, para comparar con la implementación de TAA original y otras técnicas actuales de Anti-Aliasing. Los resultados obtenidos mostraron que las mejoras aplicadas a TAA enriquecieron la calidad de la imagen por encima de las técnicas existentes, con valores de PSNR en torno a 39 y valores de SSIM por encima de 0,99. \\
+	\vspace{2cm}\par\noindent {\small{\bf Palabras Clave\/}: TAA, Sobel, Anti-Aliasing, Triangle Indexing, TRAA.}
+\end{resumen}
 
-\keywords{TAA, Sobel, Anti-Aliasing, Triangle Indexing, TRAA}
+\tableofcontents
+\listoffigures
+\listoftables
 
-%% Only used to display font sizes
-\makeatletter
-\newcommand\thefontsize[1]{{#1 \f@size pt\par}}
-\makeatother
-%%%%%%%%%%
+\chapter*{Lista de Acrónimos}
+\begin{acronym}
+	\acro{USB}[USB]{Universidad Sim\'on Bol\'ivar}
+	\acro{CCE}[Dpto.~CCE]{Departamento de Cómputo Científico y Estadísitica}
+	\acro{DEP}[DEP]{Decanato de Estudios Profesionales}
+	\acro{PDF}[PDF]{Documento en Formato Portable\copyright}
+	\acro{PS}[PS]{PostScript\copyright}
+	\acro{GCC}[GCC]{GNU Compiler Collection, colección de compiladores de GNU}
+	\acro{FMC}[FMC]{Flujo de Mínimo Costo}
+	\acro{FNL}[FNL]{Flujo en Redes No Lineal}
+	\acro{GER}[GER]{Gradiente Espectral Reducido}
+	\acro{LI}[LI]{Linealmente Independientes}
+	\acro{PNL}[PNL]{Programaci\'on No Lineal}
+	\acro{SAE}[SAE]{Soluci\'on \'Arbol de Expansi\'on}
+	\acro{SBF}[SBF]{Soluci\'on B\'asica Factible}
+\end{acronym}
+\clearpage
 
+\chapter*{Notación Matemática}
+\begin{tabular}{ll}
+	$\mathbb{R}$ & Conjunto de n\'umeros reales\\
+	$M_{m,n}$ & Espacio de las matrices de tama\~no $m$ por $n$ con entradas reales\\
+	$\mathcal{L}$ & Operador de Laplace\\
+	$\emptyset$ & Conjunto vac\'io
+\end{tabular}
 
-\begin{document}
-\selectlanguage{spanish}
-\makefrontmatter
+\mainmatter
+
 \chapter[Introducción]{Introducción}
 La Computación Gráfica moderna se basa en la presentación de escenas hechas de objetos representados como modelos compuestos de polígonos primitivos, siendo el triángulo el más utilizado. Esto para aprovechar su simplicidad y propiedades geométricas para crear algoritmos óptimos que manejen su renderizado (\textit{rendering}). Los triángulos están compuestos por tres vértices, cada uno de los cuales consiste en una posición y otros parámetros asociados, por ejemplo, el color o las normales del triángulo, para la interpolación.
 
@@ -1385,22 +1444,22 @@ As possible improvements, we are confident that our implementation could be opti
 As for recommendations for further research, we suggest improving the technique's behavior under high detail density moving objects, like on the Hairball Tests. Another improvement subject is the stability for pixel size details that cause flickering, like on the Windows Tests. Furthermore, a Specular Lighting Anti-Aliasing solution compatible with Temporal Anti-Aliasing is still required to provide a full range solution to Aliasing in real-time applications. Also, we suggest searching for more specific Image Metrics for Computer Graphics, especially, finding tuning values for SSIM to provide more numerical resolution when comparing different rendered images.
 
 
-\makebibliography{MyMSc}
+\bibliography{MyMSc}
 
-\begin{appendices}
+\appendix
 \chapter{GitHub Repository}
-The main link to the repository is \href{https://github.com/maniatic0/Christian-TRAA}{https://github.com/maniatic0/Christian-TRAA} . From there, the next links can be accessed for the printed version of this report.
+The main link to the repository is https://github.com/maniatic0/Christian-TRAA . From there, the next links can be accessed for the printed version of this report.
 \begin{itemize}
-	\item \href{https://github.com/maniatic0/Christian-TRAA}{Full Repository}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/PC\%20Specification}{Complete Computer Specification}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests}{All Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Accumulation\%20Buffer\%20Tests}{Accumulation Buffer Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Master\%20Thesis\%20Tests}{Most of the Master Thesis Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Sharpening\%20Tests}{Sharpening Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Ghosting}{Ghosting Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/HairBall}{HairBall Tests}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/CG_Labs}{Code}.
-	\item \href{https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master_Thesis}{\LaTeX Report}.
+	\item Full Repository: https://github.com/maniatic0/Christian-TRAA.
+	\item Complete Computer Specification: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/PC\%20Specification.
+	\item All Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests.
+	\item Accumulation Buffer Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Accumulation\%20Buffer\%20Tests.
+	\item Most of the Master Thesis Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Master\%20Thesis\%20Tests.
+	\item Sharpening Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Sharpening\%20Tests.
+	\item Ghosting Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Ghosting.
+	\item HairBall Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/HairBall.
+	\item Code: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/CG\_Labs.
+	\item \LaTeX Report: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master\_Thesis.
 \end{itemize}
 \chapter{Camera Jittering Explanation} \label{appendix:jitter}
 The $Halton Sequence (2, 3)$ generates points in the $[0,1]\times [0,1]$ space. First, we need to transform it to the $[-1,1]\times [-1,1]$ space because we consider the pixel to be at the center, i.e. in OpenGL the first pixel is at $(0.5, 0.5)$, so we apply the transformation $T_1(x, y) = 2 * (x, y) – (1, 1)$.
@@ -1476,7 +1535,6 @@ Accordingly, we only need to be sure we can apply the Jitter Matrix alone to use
 	\end{bmatrix*}
 \end{equation}
 
-\end{appendices}
 
 
 \end{document}

@@ -22,26 +22,26 @@ E.~Angel and D.~Shreiner.
 Specter Arts.
 \newblock Pipe model, March 2010.
 \newblock Accessed: 2018-02-15,
-  \url{https://www.turbosquid.com/3d-models/pipe-stone-bowl-3d-model/522479}.
+  {https://www.turbosquid.com/3d-models/pipe-stone-bowl-3d-model/522479}.
 
 \bibitem{Chapman2012}
 J.~Chapman.
 \newblock {Per-Object Motion Blur}, September 2012.
 \newblock Accessed: 2017-11-30,
-  \url{http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
+  {http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
 
 \bibitem{Fuglsand2016}
 L.~J. Fuglsang~Pedersen.
 \newblock {Temporal Reprojection Anti-Aliasing in INSIDE}.
 \newblock {\em GDC Vault}, 2016.
 \newblock Accessed: 2017-11-28,
-  \url{http://www.gdcvault.com/play/1022970/Temporal-Reprojection-Anti-Aliasing-in}.
+  {http://www.gdcvault.com/play/1022970/Temporal-Reprojection-Anti-Aliasing-in}.
 
 \bibitem{Isabela2016}
 Isabela H.
 \newblock Arched window model, January 2016.
 \newblock Accessed: 2018-02-15,
-  \url{https://www.cgtrader.com/free-3d-models/architectural/window/window-arch}.
+  {https://www.cgtrader.com/free-3d-models/architectural/window/window-arch}.
 
 \bibitem{Haeberli1990}
 P.~Haeberli and K.~Akeley.
@@ -85,7 +85,7 @@ W.~S. Malpica and A.~C. Bovik.
 \bibitem{McGuire2017Data}
 M.~McGuire.
 \newblock Computer graphics archive, July 2017.
-\newblock Accessed: 2018-02-15, \url{https://casual-effects.com/data}.
+\newblock Accessed: 2018-02-15, {https://casual-effects.com/data}.
 
 \bibitem{Nehab2007}
 D.~Nehab, P.~V. Sander, J.~Lawrence, N.~Tatarchuk, and J.~R. Isidoro.
@@ -102,7 +102,7 @@ I.~Sobel.
 B.~Wronski.
 \newblock {Temporal Supersampling and Antialiasing}.
 \newblock
-  \url{https://bartwronski.com/2014/03/15/temporal-supersampling-and-antialiasing/},
+  {https://bartwronski.com/2014/03/15/temporal-supersampling-and-antialiasing/},
   March 2014.
 \newblock Accessed: 2017-12-01.
 
@@ -120,6 +120,6 @@ L.~Yang, D.~Nehab, P.~V. Sander, P.~Sitthiamorn, J.~Lawrence, and H.~Hoppe.
 C.~Yim.
 \newblock Window with blinds model, October 2015.
 \newblock Accessed: 2018-02-15,
-  \url{https://www.cgtrader.com/free-3d-models/architectural/window/window-brown}.
+  {https://www.cgtrader.com/free-3d-models/architectural/window/window-brown}.
 
 \end{thebibliography}
