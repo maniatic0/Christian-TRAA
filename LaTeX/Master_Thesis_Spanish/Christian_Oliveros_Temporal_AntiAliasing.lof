@@ -8,8 +8,8 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35. ~\cite {Doggett2017EDAN35}\relax }}{8}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Imagen Base de una línea frente a su Aproximación con \textit {Aliasing}.\relax }}{9}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Proceso de \textit {Jittering} sobre la proyección de la cámara. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{12}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Valores usados de la $Halton Sequence (2,3)$ (Secuencia de Halton).\relax }}{12}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Patrón de Muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{13}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Valores usados de la $Halton Sequence (2,3)$ (Secuencia de Halton).\relax }}{13}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Patrón de Muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{14}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Proceso de \textit {Temporal Reprojection Anti-Aliasing}. Imagen tomada de la presentación de Fuglsand \cite {Fuglsand2016}\relax }}{14}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces \textit {Color Clamping} versus \textit {Color Clipping}. Imagen tomada del \textit {paper} de Fuglsand. \cite {Fuglsand2016}\relax }}{15}
 \addvspace {10\p@ }

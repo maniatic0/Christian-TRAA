@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {3.5.4}Enhanced Subpixel Morphological Antialiasing (SMAA)}{11}
 \contentsline {section}{\numberline {3.6}Temporal Anti-Aliasing}{11}
 \contentsline {subsection}{\numberline {3.6.1}Camera Jittering}{12}
-\contentsline {subsection}{\numberline {3.6.2}Buffer de Velocidad}{13}
+\contentsline {subsection}{\numberline {3.6.2}Buffer de Velocidad}{12}
 \contentsline {subsection}{\numberline {3.6.3}Buffer de Historia}{13}
 \contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{14}
 \contentsline {subsection}{\numberline {3.6.5}Filtro de Nitidez}{15}
@@ -36,10 +36,10 @@
 \contentsline {subsection}{\numberline {3.6.7}Problemas}{16}
 \contentsline {subsubsection}{Desenfoque}{16}
 \contentsline {subsubsection}{Ghosting}{16}
-\contentsline {section}{\numberline {3.7}Buffer de Acumulación}{16}
+\contentsline {section}{\numberline {3.7}Buffer de Acumulación}{17}
 \contentsline {section}{\numberline {3.8}Operador de Sobel}{17}
 \contentsline {section}{\numberline {3.9}Métricas de Imagen}{18}
-\contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{18}
+\contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{19}
 \contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{19}
 \contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{19}
 \contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{19}

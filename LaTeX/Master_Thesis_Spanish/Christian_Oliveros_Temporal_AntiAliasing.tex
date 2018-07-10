@@ -172,7 +172,7 @@ Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse 
 
 
 \section{Contribución}
-Esta tesis mejora los últimos dos avances de Ke Xu y Lasse Fuglsang \cite{Fuglsand2016, XU2016}. Proponemos el uso del Operador de Sobel para realizar detecciones de bordes y técnicas de indexación de triángulos para detectar píxeles que se consideran con aliasing. Una vez que tenemos estos píxeles detectados, usamos su información para cambiar la forma en la que se rechazan los colores de los cuadros anteriores, a fin de reducir los artefactos de \textit{ghosting} (\textit{ghosting artifacts})  y desenfoque que tiene \textit{Temporal Anti-Aliasing}.
+Esta tesis mejora los últimos avances de Ke Xu y Lasse Fuglsang \cite{Fuglsand2016, XU2016}. Proponemos el uso del Operador de Sobel para realizar detecciones de bordes y técnicas de indexación de triángulos para detectar píxeles que se consideran con aliasing. Una vez tenemos estos píxeles detectados, usamos su información para cambiar la forma en la que se rechazan los colores de los cuadros anteriores, a fin de reducir los artefactos de \textit{ghosting} (\textit{ghosting artifacts})  y desenfoque que tiene \textit{Temporal Anti-Aliasing}.
 
 \chapter{Marco Tecnológico}
 En este capítulo, explicaremos qué herramientas se utilizaron en esta tesis y por qué.
@@ -184,9 +184,9 @@ El \textit{Bonobo Framework} es la base de los cursos de laboratorio de Computac
 
 
 \section{OpenGL y GLSL}
-Usamos esta \textit{Application Programming Interface} (API, Interfaz de Programación de Aplicaciones) ya que es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y por su compatibilidad multiplataforma. La \textit{Open Graphics Library Library} (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, y permite abstraer al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (\textit{Rendering Pipeline}), que normalmente se implementa directamente en hardware.
+Usamos esta \textit{Application Programming Interface} (API, Interfaz de Programación de Aplicaciones) porque es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y por su compatibilidad multiplataforma. La \textit{Open Graphics Library Library} (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, y permite abstraer al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (\textit{Rendering Pipeline}), que normalmente se implementa directamente en hardware.
 
-Usamos el \textit{OpenGL Shading Language} (GLSL, Lenguaje de \textit{Shading} de OpenGL) para implementar TAA y nuestras mejoras, ya que es parte del estándar de OpenGL. GLSL es un lenguaje de \textit{shading} de alto nivel que permite a los programadores un mayor control del Canal de Renderizado de Gráficos sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
+Usamos el \textit{OpenGL Shading Language} (GLSL, Lenguaje de \textit{Shading} de OpenGL) para implementar TAA y nuestras mejoras, como es parte del estándar de OpenGL. GLSL es un lenguaje para \textit{shading} de alto nivel, que permite a los programadores un mayor control del Canal de Renderizado de Gráficos, sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
 
 
 \section{MATLAB}
@@ -200,7 +200,7 @@ MATLAB es un entorno de cómputo numérico multi-paradigma propietario. Comúnme
 En este capítulo, explicaremos toda la información teórica que es la base de esta tesis, desde la teoría de base de Computación Gráfica hasta las Métricas de Imágenes utilizadas.
 
 \section{Canal de Renderizado}
-El Canal de Renderizado Gráfico actual se puede simplificar en tres pasos: \textit{Vertex Shader}, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; \textit{Rasterizer}, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el \textit{Pixel Shader} (o \textit{Fragment Shader}) que toma los píxeles visibles del \textit{Rasterizer} y los colorea. La Figura \ref{fig:graphpipeline} es un ejemplo del Canal de Renderizado simplificado.
+El Canal de Renderizado Gráfico actual se puede simplificar en tres etapas: \textit{Vertex Shader}, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; \textit{Rasterizer}, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el \textit{Pixel Shader} (o \textit{Fragment Shader}) que toma los píxeles visibles del \textit{Rasterizer} y los colorea. La Figura \ref{fig:graphpipeline} es un ejemplo del Canal de Renderizado simplificado.
 
 \begin{figure}[!hbt]
 	\centering
@@ -234,12 +234,13 @@ Debido a que estamos mapeando un triángulo continuo a un número finito de píx
 	\caption{Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35. ~\cite{Doggett2017EDAN35}}\label{fig:partialcover}
 \end{figure}
 
-Este proceso nos muestra que lo que se renderiza en la pantalla es una aproximación a lo que se representa en la escena, ya que los píxeles solo pueden ser cubiertos con un triángulo a la vez. \cite{Moller2007, Doggett2017EDAN35}
+Este proceso nos muestra que lo que se renderiza en la pantalla, es una aproximación a lo que se representa en la escena, ya que los píxeles solo pueden ser cubiertos con un triángulo a la vez. \cite{Moller2007, Doggett2017EDAN35}
 
 
 \section{El Problema del Aliasing}
-Cuando mapeamos una representación continua a una finita vamos a generar errores. Como explican Edward Angel y Dave Shreiner en su libro (página 413) \cite{Shreiner2011}, podemos interpretar el proceso de renderización como el muestreo de una función continua $f(x, y)$, que representa el color de la escena en ese punto, a una cuadrícula de píxeles $n\times m$ en la que suponemos que el punto $f_{ij}$ es el valor de $f$ sobre un área pequeña; reconstruyendo la función $f$, para mostrar la imagen en la pantalla, usando solo lo que sabemos de las muestras finitas. La herramienta matemática utilizada para evaluar los problemas de este proceso es el Análisis de Fourier, que establece que una función se puede descomponer en un conjunto de sinusoides, posiblemente en un número infinito de frecuencias. Para el análisis de imágenes bidimensionales, podemos pensar en la función $f$ como un conjunto de sinusoides en dos frecuencias espaciales.
-Para esta tesis, usaremos la primera parte del Teorema de Muestreo de Nyquist como una herramienta para ilustrar por qué aparecen problemas de aliasing y se relacionan con problemas de muestreo. \\
+Cuando mapeamos una representación continua en una finita, vamos a generar errores. Como explican Edward Angel y Dave Shreiner en su libro (página 413) \cite{Shreiner2011}, podemos interpretar el proceso de renderización como el muestreo de una función continua $f(x, y)$, que representa el color de la escena en ese punto, a una cuadrícula de píxeles $n\times m$ en la que suponemos que el punto $f_{ij}$ es el valor de $f$ sobre un área pequeña; reconstruyendo la función $f$, para mostrar la imagen en la pantalla, usando solo lo que sabemos de las muestras finitas. La herramienta matemática utilizada para evaluar los problemas de este proceso es el Análisis de Fourier, que establece que una función se puede descomponer en un conjunto de sinusoides, posiblemente en un número infinito de frecuencias. Para el análisis de imágenes bidimensionales, podemos pensar en la función $f$ como un conjunto de sinusoides en dos frecuencias espaciales.
+
+Para esta tesis, usaremos la primera parte del Teorema de Muestreo de Nyquist, como una herramienta para ilustrar por qué aparecen problemas de aliasing y se relacionan con problemas de muestreo. \\
 
 \emph{'' Teorema de Muestreo de Nyquist (Parte 1): Las muestras ideales de una función continua contienen toda la información de la función original si y solo si la función continua se muestrea a una frecuencia mayor que el doble de la frecuencia más alta en la función. }
 
@@ -249,7 +250,7 @@ Para esta tesis, usaremos la primera parte del Teorema de Muestreo de Nyquist co
 
 Tomado de la página 415 del libro de Edward Angel y Dave Shreiner. \cite{Shreiner2011} \\
 
-Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que podemos tomar un número infinito de muestras por frecuencia de muestreo que no podemos hacer en la práctica. El Problema de \textit{Aliasing} que la Computación Gráfica experiencia proviene de no poder muestrear según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial), la Figura \ref{fig:aliasingexample} muestra un ejemplo de este tipo de aliasing y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. Se han propuesto y utilizado muchas soluciones para resolverlo, por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA) que trabaja en frecuencias más altas que las requeridas a costa de más requisitos de espacio.
+Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que podemos tomar un número infinito de muestras por frecuencia de muestreo, que no podemos hacer en la práctica. El Problema de \textit{Aliasing} que se experimenta en la Computación Gráfica, proviene de no poder muestrear según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial), la Figura \ref{fig:aliasingexample} muestra un ejemplo de este tipo de aliasing, y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. Se han propuesto y utilizado muchas soluciones para resolverlo, por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA) que trabaja en frecuencias más altas que las requeridas a costa de mayores requerimientos de espacio.
 
 \begin{figure}[!hbt]
 	\centering
@@ -259,36 +260,36 @@ Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que 
 
 \section[Mapeado de Sombras y la Arquitectura de Shading Diferido]{Mapeado de Sombras y \\ la Arquitectura de Shading Diferido}
 
-Como humanos, hemos llegado a esperar que los objetos reaccionen a las luces de una escena, tomando en cuenta la geometría de los objetos, porque las luces y sombras contribuyen con la información espacial a una imagen, especialmente, las sombras nos dan una sensación de tamaño y distancia.
+Como humanos, esperamos que los objetos reaccionen de cierta forma a las luces de una escena, tomando en cuenta la geometría de los objetos, porque las luces y sombras contribuyen con la información espacial a una imagen. En especial, las sombras nos dan una sensación de tamaño y distancia.
 
-Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo de la Canal de Renderizado Gráfico basado en el Rasterizador, el proceso de cálculo de la sombra es difícil de realizar. El \textit{Rasterizer} no sabe si los objetos están cubiertos o no de una luz, por lo que debemos encontrar un método para calcular si un objeto está en sombras. Este proceso se denomina Mapeado de Sombras, consiste en representar la escena a través de la perspectiva de cada luz y luego realizar pruebas en la perspectiva de la cámara para establecer si el objeto se ve afectado por la luz o si está en sombras.
+Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo de la Canal de Renderizado Gráfico basado en el Rasterizer , el proceso de cálculo de la sombra es difícil de realizar. El \textit{Rasterizer} no sabe si los objetos están cubiertos o no por una fuente de luz, por lo que debemos encontrar un método para calcular si un objeto está en la sombra. Este proceso se denomina Mapeado de Sombras, consiste en representar la escena a través de la perspectiva de cada  fuente de luz y luego realizar pruebas en la perspectiva de la cámara, para establecer si el objeto se ve afectado por la luz o si está en sombras.
 
-Pero, como es de esperar, renderizar la escena varias veces es costoso, entonces necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de \textit{Shading} Diferido proporciona esa solución solo para colorear, posiblemente utilizando una operación que podría ser costosa, solo píxeles visibles y, así, evitar desperdiciar recursos coloreando píxeles de geometría que no es visible. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro.
+Pero, como es de esperar, renderizar la escena varias veces es costoso y necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de \textit{Shading} Diferido proporciona esa solución solo para realizar el \textit{Shading}, utilizando una operación que podría ser costosa, solo píxeles visibles y así evitar desperdiciar recursos realizando el \textit{Shading} a píxeles de geometrías que no son visibles. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{Shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro. 
 
-Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan solo a los píxeles visibles; calculamos el Mapa de Sombreado de cada luz solo realizando cálculos de profundidad. Después, calculamos y guardamos el efecto de cada luz usando los Mapas de las Sombreado.
+Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan sólo a los píxeles visibles; calculamos el Mapa de Sombreado de cada fuente de luz realizando cálculos de profundidad únicamente. Posteriormente, calculamos y guardamos el efecto de cada luz usando los Mapas de  Sombreado.
 
-Al final, tomamos toda la información de las luces, las sombras y el Buffer de Geometría para renderizar la escena con iluminación.
+Al final, tomamos la información de las luces, sombras y el Buffer de Geometría para renderizar la escena con iluminación.
 
 
 \section{Anti-Aliasing}
 Como hemos explicado, hay dos tipos principales de \textit{Aliasing}, Espacial y Temporal. Las soluciones \textit{Anti-Aliasing} proporcionan mejoras contra los artefactos creados por cualquiera de esos tipos a costa de un mayor tiempo de renderizado. Para aplicaciones en tiempo real, este aumento del tiempo de renderización limita qué soluciones Anti-Aliasing son factibles de aplicar.
 
-Otro factor importante que decide qué técnica \textit{Anti-Aliasing} usar es cómo se comporta con las arquitecturas actuales. Por ejemplo, las viejas soluciones Anti-Aliasing no funcionan con el \textit{Shading} Diferido.
+Otro factor importante para decidir qué técnica \textit{Anti-Aliasing} utilizar,  es cómo se comporta con las arquitecturas actuales. Por ejemplo, las primeras  soluciones Anti-Aliasing no funcionan con el \textit{Shading} Diferido.
 
 
 \subsection{Super Sampling Anti-Aliasing (SSAA)}
-Esta técnica consiste en renderizar la escena a 4 veces el tamaño de la pantalla y luego promediar píxeles, en un área 4x4 para cada pixel, para calcular el resultado \cite{Doggett2017EDAN35}. Proporciona buenos resultados, pero requiere más tiempo de renderizado y un gran uso de memoria.
+Esta técnica consiste en renderizar la escena a $4$ veces el tamaño de la pantalla y luego promediar píxeles, en un área $4\times 4$ alrededor de cada pixel, para calcular el resultado \cite{Doggett2017EDAN35}. Proporciona buenos resultados, pero requiere más tiempo de renderizado y un gran uso de memoria.
 
 \subsection{Multi Sample Anti-Aliasing (MSAA)}
-MSAA consiste en tomar varias muestras por píxel; en cada muestra, los valores de profundidad se calculan, pero solo se calcula un color para el triángulo rasterizado. Esta solución proporciona buenos resultados a costa de un mayor uso de memoria para cálculos de profundidad.
+MSAA consiste en tomar varias muestras por píxel; en cada muestra, se calculan los valores de profundidad, pero solo se computa un color para el triángulo rasterizado. Esta solución proporciona buenos resultados a costa de un mayor uso de memoria para cálculos de profundidad.
 
-El mayor problema que tiene esta técnica es que no funciona correctamente con el \textit{Shading} Diferido \cite{Doggett2017EDAN35}. Esto hace que sea complicado utilizarlo con los Canales de Renderización actuales, que normalmente requieren otras correcciones para reducir los artefactos creados cuando se aplica con \textit{Shading} Diferido.
+El mayor problema que tiene esta técnica es que no funciona correctamente con el \textit{Shading} Diferido \cite{Doggett2017EDAN35}. Esto hace que sea complicado de utilizar con los Canales de Renderización actuales, que normalmente requieren otras correcciones para reducir los artefactos creados cuando se aplica con \textit{Shading} Diferido.
 
 
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
 FXAA es una técnica de \textit{Anti-Aliasing} que se utiliza durante el posprocesamiento. Esta funciona al detectar bordes en las imágenes renderizadas, para luego suavizarlos. \cite{Lottes2009}
 
-Es relativamente barata en comparación con MSAA y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada, y proporciona resultados relativamente buenos para el alias temporal.
+Es relativamente barata en comparación con MSAA y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada y proporciona resultados relativamente buenos para el aliasing temporal.
 
 \subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
 SMAA es una técnica de post-procesamiento basada en \textit{Morphological Anti-Aliasing} (Anti-Aliasing Morfológico). Funciona mediante la reconstrucción de bordes y sus alrededores para regenerar la información de subpíxel perdida por aliasing. \cite{Jimenez2012}
@@ -296,13 +297,13 @@ SMAA es una técnica de post-procesamiento basada en \textit{Morphological Anti-
 \section{Temporal Anti-Aliasing}
 Como explicaron Ke Xu y Lasse Fuglsang en sus respectivas presentaciones ~ \cite{XU2016, Fuglsand2016}, el principio básico del \textit{Temporal Anti-Aliasing} es mezclar el cuadro que actualmente está siendo renderizado con cuadros del pasado. Esto se hace para aumentar el número de muestras a través del tiempo en lugar de solo usar muestras del mismo cuadro.
 
-Una de esas técnicas es el \textit{Temporal Reprojection Anti-Aliasing}  (TRAA, \textit{Anti-Aliasing} de Reproyección Temporal), que funciona guardando los cuadros pasados en un Buffer de Historia para luego reproyectarlos a la escena actual y mezclarlos con el cuadro actual que se está procesando. Para lograr esto, tomamos el cuadro actual y buscamos el color que debería tener en el Buffer de Historia; este paso se llama \textit{Reprojection} (Reproyección).
+Una de esas técnicas es \textit{Temporal Reprojection Anti-Aliasing}  (TRAA, \textit{Anti-Aliasing} de Reproyección Temporal), que funciona guardando los cuadros pasados en un Buffer de Historia para luego reproyectarlos a la escena actual y mezclarlos con el cuadro actual que se está procesando. Para lograrlo, tomamos el cuadro actual y buscamos el color que debería tener en el Buffer de Historia; este paso se llama \textit{Reprojection} (Reproyección).
 
-Para que TRAA funcione, debemos implementar otras técnicas comunes de computación gráfica para que sirvan de base. Necesitamos \textit{Camera Jittering} (Agitamiento de Cámara) para poder reconstruir la información de píxeles alrededor de los bordes; un Buffer de Velocidad para determinar las posiciones de los píxeles en el último cuadro, si se movían; un Buffer de Historia de cuadros para recopilar los pixeles anteriores para realizar las reproyecciones en el siguiente cuadro; un \textit{Color Clipping Box} (Caja de Recorte de Colores) para restringir el Buffer de Historia y evitar que aparezca ruido o colores incorrectos; un Filtro de Nitidez (\textit{Sharpen Filter}) para reducir parte del desenfoque creado; y \textit{Motion Blur} (Desenfoque por Movimiento) para corregir los efectos de objetos que se mueven demasiado rápido para el cuadro de recorte de colores.
+Para que TRAA funcione, debemos implementar otras técnicas comunes de computación gráfica para que sirvan de base. Necesitamos de \textit{Camera Jittering} (Agitamiento de Cámara) para poder reconstruir la información de píxeles alrededor de los bordes. Un Buffer de Velocidad para determinar las posiciones de los píxeles en el último cuadro, si se movían. Un Buffer de Historia de cuadros donde recopilar los pixeles anteriores para realizar las reproyecciones en el siguiente cuadro. Un \textit{Color Clipping Box} (Caja de Recorte de Colores) para restringir el Buffer de Historia y evitar que aparezca ruido o colores incorrectos. Un Filtro de Nitidez (\textit{Sharpen Filter}) para reducir parte del desenfoque creado. Y \textit{Motion Blur} (Desenfoque por Movimiento) para corregir los efectos de objetos que se mueven demasiado rápido para el cuadro de recorte de colores.
 
 
 \subsection{Camera Jittering}
-\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja es estático en relación con los pasados, entonces el sistema está perdiendo información subpíxel que podría usarse para refinarla. ~\cite{Fuglsand2016, XU2016}
+\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja estático en relación con los pasados, es decir, es idéntico a los cuadros anteriores, el sistema está pierde información subpíxel alrededor de los bordes que podría usarse para refinarla.  ~\cite{Fuglsand2016, XU2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -310,7 +311,7 @@ Para que TRAA funcione, debemos implementar otras técnicas comunes de computaci
 	\caption{Proceso de \textit{Jittering} sobre la proyección de la cámara. Imagen tomada de la presentación de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:camerajittering}
 \end{figure}
 
-El \textit{Jittering} se aplica como una traslación a la matriz de proyección de la cámara usando la $Halton Sequence (2,3)$ (Secuencia de Halton) como los vectores de traslación. Esta secuencia se usa porque genera un patrón irregular para las traslaciones, que ayuda a conservar más información que un patrón regular, y porque, la Secuencia de Halton, proporciona un generador barato de patrones pseudoaleatorios. ~\cite{Fuglsand2016, XU2016}
+El \textit{Jittering} se aplica como una traslación a la matriz de proyección de la cámara usando la $Halton Sequence (2,3)$ (Secuencia de Halton) como los vectores de traslación. Esta secuencia se usa porque genera un patrón irregular para las traslaciones, que ayuda a conservar más información que un patrón regular y porque la Secuencia de Halton, proporciona un generador económico de patrones pseudoaleatorios. ~\cite{Fuglsand2016, XU2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -318,23 +319,23 @@ El \textit{Jittering} se aplica como una traslación a la matriz de proyección 
 	\caption{Valores usados de la $Halton Sequence (2,3)$ (Secuencia de Halton).}\label{fig:halton16}
 \end{figure}
 
-La Figura ~\ref{fig:halton16} muestra la representación de los 16 puntos utilizados para agitar la proyección en la implementación actual, tal como lo propusieron Fuglsand ~\cite{Fuglsand2016}. Los puntos se generaron usando MATLAB y luego se codificaron para mejorar su aleatoriedad usando reverse-radix scrambling.
+La Figura ~\ref{fig:halton16} muestra la representación de los 16 puntos utilizados para trasladar la proyección en la implementación actual de la tesis, tal como lo propusieron Fuglsand ~\cite{Fuglsand2016}. Los puntos se generaron usando MATLAB y luego se codificaron para mejorar su aleatoriedad usando reverse-radix scrambling.
 
 \subsection{Buffer de Velocidad}
-El algoritmo de Buffer de Velocidad (Velocity Buffer) utilizado en esta implementación es el propuesto por Chapman ~\cite{Chapman2012}, el cual es calculado restando la posición actual del píxel por su posición en el cuadro pasado. Esto es posible ya que guardamos la matriz que representa cada objeto en la escena y la utilizamos en el siguiente cuadro para calcular los píxeles del Buffer de Velocidad. Además, cancelamos matemáticamente el Cámara Jittering antes de calcular las velocidades, para evitar el ruido que crea, como lo sugiere Xu. ~\cite{XU2016}
+El algoritmo de Buffer de Velocidad (Velocity Buffer) utilizado en esta implementación es el propuesto por Chapman ~\cite{Chapman2012}, el cual es calculado restando la posición actual del píxel de su posición en el cuadro pasado. Esto es posible ya que guardamos la matriz que representa cada objeto en la escena y la utilizamos en el siguiente cuadro para calcular los píxeles del Buffer de Velocidad. Además, cancelamos matemáticamente el Cámara Jittering antes de calcular las velocidades, para evitar el ruido que crea, como lo sugiere Xu. ~\cite{XU2016}
 
 
 \subsection{Buffer de Historia}
-Para cada fragmento en el marco actual, buscamos en la vecindad de $3\times 3$ y en la vecindad del patrón más $(+)$ alrededor de cada píxel (Ver figura ~\ref{fig:samplingpattern}). Buscamos en ambos patrones para el mínimo y el máximo de colores del cuadro actual, luego los promediamos y los usamos para construir parte del Color Clipping Box para restringir los píxeles del Buffer de Historia. ~\cite{Fuglsand2016}
+Para cada fragmento en el marco actual, buscamos en la vecindad de $3\times 3$ y en la vecindad del patrón más $(+)$ alrededor de cada píxel (Ver figura ~\ref{fig:samplingpattern}). Buscamos en ambos patrones para el mínimo y el máximo de colores del cuadro actual, luego los promediamos y los usamos para construir parte del Color Clipping Box restringiendo los píxeles del Buffer de Historia. ~\cite{Fuglsand2016}
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.8]{images/sampling_pattern.png}
 	\caption{Patrón de Muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern}
 \end{figure}
 
-En el vecindario $3\times 3$ buscamos la velocidad del píxel con la profundidad más cercana a la cámara, esto es para obtener mejores bordes en movimiento para los píxeles que están ocluidos ~\cite{Fuglsand2016}. Usamos esta velocidad para reproyectar la posición del píxel del cuadro actual en el Buffer de Historia. ~\cite{Fuglsand2016, XU2016}
+En la vecindad $3\times 3$ buscamos la velocidad del píxel con la profundidad más cercana a la cámara, esto es para obtener mejores bordes en movimiento para los píxeles que están ocultos detrás de otros ~\cite{Fuglsand2016}. Usamos esta velocidad para reproyectar la posición del píxel del cuadro actual en el Buffer de Historia. ~\cite{Fuglsand2016, XU2016}
 
-Después de tener los píxeles en el Buffer de Historia, lo restringimos (explicación en la siguiente subsección) y lo interpolamos linealmente con el cuadro actual (Ver la Figura \ref{fig:samplingprocess} para obtener una representación visual del proceso completo). Interpolamos linealmente ambos usando un valor de retroalimentación que se calcula por la diferencia de luminancia entre los colores del Buffer de Historia restringido y el cuadro actual. Este valor de retroalimentación es sesgado a favor de mantener el color del Buffer de Historia del píxel sobre el color del cuadro actual, esto se hace para agregar cierta información del cuadro actual mientras se mantiene la mayor parte de la historia del píxel. Esta interpolación lineal estabiliza la imagen, eliminando el \textit{Jittering} y suavizando los bordes ~\cite{Fuglsand2016, XU2016}. Dado que el historial de cada píxel se acumula en el Buffer de Historia, obtenemos el efecto de que el historial de píxeles de los cuadros anteriores pesa menos cuanto más tiempo sea mantenido el historial del píxel dentro Buffer de Historia. ~\cite{Fuglsand2016}
+Después de tener los píxeles en el Buffer de Historia, lo restringimos (explicación en la siguiente subsección) y lo interpolamos linealmente con el cuadro actual (Ver la Figura \ref{fig:samplingprocess} para obtener una representación visual del proceso completo). Interpolamos linealmente los píxeles del Buffer de Historia y el cuadro actual usando un valor de retroalimentación que se calcula por la diferencia de luminancia entre los colores del Buffer de Historia restringido y el cuadro actual. Este valor de retroalimentación es sesgado a favor de mantener el color del Buffer de Historia del píxel sobre el color del cuadro actual, esto se hace para agregar información del cuadro actual mientras se mantiene la mayor parte de la historia del píxel. Esta interpolación lineal estabiliza la imagen, eliminando el \textit{Jittering} y suavizando los bordes ~\cite{Fuglsand2016, XU2016}. Dado que el historial de cada píxel se acumula en el Buffer de Historia, obtenemos el efecto que el historial de píxeles de los cuadros anteriores pese menos cuanto más tiempo sea mantenido el historial del píxel dentro Buffer de Historia. ~\cite{Fuglsand2016}
 
 \begin{figure}[H]
 	\centering
