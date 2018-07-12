@@ -118,18 +118,28 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 \chapter*{Lista de Acrónimos}
 \begin{acronym}
 	\acro{USB}[USB]{Universidad Sim\'on Bol\'ivar}
-	\acro{CCE}[Dpto.~CCE]{Departamento de Cómputo Científico y Estadísitica}
 	\acro{DEP}[DEP]{Decanato de Estudios Profesionales}
 	\acro{PDF}[PDF]{Documento en Formato Portable\copyright}
-	\acro{PS}[PS]{PostScript\copyright}
-	\acro{GCC}[GCC]{GNU Compiler Collection, colección de compiladores de GNU}
-	\acro{FMC}[FMC]{Flujo de Mínimo Costo}
-	\acro{FNL}[FNL]{Flujo en Redes No Lineal}
-	\acro{GER}[GER]{Gradiente Espectral Reducido}
-	\acro{LI}[LI]{Linealmente Independientes}
-	\acro{PNL}[PNL]{Programaci\'on No Lineal}
-	\acro{SAE}[SAE]{Soluci\'on \'Arbol de Expansi\'on}
-	\acro{SBF}[SBF]{Soluci\'on B\'asica Factible}
+	\acro{2D}[2D]{\textit{Two Dimensions}, Dos Dimensiones}
+	\acro{3D}[3D]{\textit{Three Dimensions}, Tres Dimensiones}
+	\acro{TAA}[TAA]{\textit{Temporal Anti-Aliasing}}
+	\acro{TXAA}[TXAA]{\textit{Temporal X Anti-Aliasing}, donde la X representa alguna versión de TAA}
+	\acro{TRAA}[TRAA]{\textit{Temporal Reprojection Anti-Aliasing}, TAA utilizando reproyección (técnica base de TAA)}
+	\acro{SSAA}[SSAA]{\textit{Super Sampling Anti-Aliasing}, Anti-Aliasing con Super Muestreo}
+	\acro{MSAA}[MSAA]{\textit{Multi Sample Anti-Aliasing}, Anti-Aliasing Multi Muestra}
+	\acro{FXAA}[FXAA]{\textit{Fast Approximate Anti-Aliasing}, Anti-Aliasing Aproximado Rápido}
+	\acro{SMAA}[SMAA]{\textit{Enhanced Subpixel Morphological Anti-Aliasing}, Anti-Aliasing de Mejora Morfológica de Subpíxeles}
+	\acro{API}[API]{\textit{Application Programming Interface}, Interfaz de Programación de Aplicaciones}
+	\acro{OpenGL}[OpenGL]{\textit{Open Graphics Library}, Librería Abierta de Gráficos}
+	\acro{GPU}[GPU]{\textit{Graphics Processing Unit}, Unidad de Procesamiento de Gráficos}
+	\acro{GLSL}[GLSL]{\textit{OpenGL Shading Language}, Lenguaje de Shading de OpenGL}
+	\acro{MSE}[MSE]{\textit{Mean Square Error}, Error Cuadrado Medio}
+	\acro{RMSD}[RMSD]{\textit{Root Mean Square Deviation}, Desviación de la Raíz Media Cuadrada}
+	\acro{RMSE}[RMSE]{\textit{Root Mean Square Error}, Raíz del Error Cuadrado Medio}
+	\acro{PSNR}[PSNR]{\textit{Peak Signal-To-Noise Ratio}, Relación Señal a Ruido de Pico}
+	\acro{SNR}[SNR]{\textit{Signal-To-Noise Ratio}, Relación Señal a Ruido}
+	\acro{SSIM}[SSIM]{\textit{Structural Similarity Index}, Relación Señal a Ruido}
+
 \end{acronym}
 \clearpage
 
@@ -184,7 +194,7 @@ El \textit{Bonobo Framework} es la base de los cursos de laboratorio de Computac
 
 
 \section{OpenGL y GLSL}
-Usamos esta \textit{Application Programming Interface} (API, Interfaz de Programación de Aplicaciones) porque es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y por su compatibilidad multiplataforma. La \textit{Open Graphics Library Library} (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, y permite abstraer al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (\textit{Rendering Pipeline}), que normalmente se implementa directamente en hardware.
+Usamos esta \textit{Application Programming Interface} (API, Interfaz de Programación de Aplicaciones) porque es la base del sistema de renderización del Bonobo Framework, el cual modificamos para desarrollar nuestras mejoras, y por su compatibilidad multiplataforma. La \textit{Open Graphics Library} (OpenGL, Librería Abierta de Gráficos) es una API de computación gráfica de código abierto, multiplataforma, que maneja 2D y 3D, y permite abstraer al programador de interactuar directamente con la Unidad de Procesamiento de Gráficos (GPU) para lograr una renderización acelerada por hardware. Además, proporciona al programador un Canal de Renderizado de Gráficos (\textit{Rendering Pipeline}), que normalmente se implementa directamente en hardware.
 
 Usamos el \textit{OpenGL Shading Language} (GLSL, Lenguaje de \textit{Shading} de OpenGL) para implementar TAA y nuestras mejoras, como es parte del estándar de OpenGL. GLSL es un lenguaje para \textit{shading} de alto nivel, que permite a los programadores un mayor control del Canal de Renderizado de Gráficos, sin requerir el uso del lenguaje ensamblador de OpenGL o lenguajes específicos de cada hardware.
 
@@ -214,7 +224,7 @@ Este proceso de rasterización es importante para nosotros porque de allí donde
 
 
 \section{Proceso de Rasterización}
-Durante el proceso de rasterización, cada triángulo se le realiza una prueba para establecer qué píxeles están cubiertos por él. Mientras esto se hace, cada píxel se está probando para descubrir si otro triángulo lo está cubriendo.
+Durante el proceso de rasterización, a cada triángulo se le realiza una prueba para establecer qué píxeles está cubriendo. Mientras se hace, cada píxel se está probando para descubrir si está cubierto por otro triángulo.
 
 En la Figura \ref{fig:rasterizationproc} tenemos un ejemplo del Proceso de Rasterización. En la imagen de la izquierda, tenemos los triángulos como superficies continuas antes de enviarlos al Rasterizer y, en la imagen de la derecha, tenemos triángulos mapeados a los píxeles en la pantalla después de pasar por el \textit{Rasterizer}.
 
