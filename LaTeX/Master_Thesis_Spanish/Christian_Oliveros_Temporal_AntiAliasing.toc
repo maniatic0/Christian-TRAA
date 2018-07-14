@@ -43,11 +43,11 @@
 \contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{19}
 \contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{19}
 \contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{19}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~IV:~\MakeTextUppercase {Development}}{21}
-\contentsline {section}{\numberline {4.1}EDAN35 Project Improvements}{21}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~IV:~\MakeTextUppercase {Desarrollo}}{21}
+\contentsline {section}{\numberline {4.1}Mejoras al Proyecto de EDAN35}{21}
 \contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{22}
 \contentsline {subsection}{\numberline {4.1.2}Enhanced Subpixel Morphological Antialiasing (SMAA)}{22}
-\contentsline {subsection}{\numberline {4.1.3}Accumulation Buffer}{22}
+\contentsline {subsection}{\numberline {4.1.3}Buffer de Acumulación}{23}
 \contentsline {subsubsection}{Sample Number Selection}{23}
 \contentsline {section}{\numberline {4.2}Testing Framework Implementation}{24}
 \contentsline {subsection}{\numberline {4.2.1}Static Test}{24}
@@ -56,7 +56,7 @@
 \contentsline {section}{\numberline {4.3}Temporal Reprojection Anti-Aliasing Modifications}{26}
 \contentsline {subsection}{\numberline {4.3.1}Triangle Indexing Improvements Implementation}{27}
 \contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{28}
-\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{29}
+\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{30}
 \contentsline {subsection}{\numberline {4.3.4}Final Mixing}{30}
 \contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{33}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Results}}{34}

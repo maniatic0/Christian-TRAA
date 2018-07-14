@@ -519,31 +519,31 @@ SSIM(x,y)=l(x,y)*c(x,y)*s(x,y)
 
 
 
-\chapter{Development}
-In this chapter, the main work performed in this master thesis is presented.
-\section{EDAN35 Project Improvements}
-For this master thesis, we decided to use our project from High Performance Computer Graphics (EDAN35) as the base. During the course, we implemented a Temporal Reprojection Anti-Aliasing technique based on the presentations of Ke Xu and Lasse Fuglsang ~\cite{XU2016,Fuglsand2016}, from the games Inside and Uncharted 4. It proved to be reliable and well documented; and allowed us to put into practice the fundamentals of the technique in an academic environment, providing the base for improvements performed for this master thesis.
+\chapter{Desarrollo}
+En este capítulo, se presenta el trabajo principal realizado en esta tesis.
+\section{Mejoras al Proyecto de EDAN35}
+Para esta tesis, decidimos utilizar nuestro proyecto de \textit{High Performance Computer Graphics} (EDAN35) como base. Durante el curso implementamos una técnica de \textit{Temporal Reprojection Anti-Aliasing} (TRAA, Anti-Aliasing de Reproyección Temporal) basada en las presentaciones de Ke Xu y Lasse Fuglsang ~\cite{XU2016, Fuglsand2016}, de los juegos \textit{Inside} y \textit{Uncharted 4}. Esta resultó ser confiable y bien documentada; y nos permitió poner en práctica los fundamentos de la técnica en un entorno académico, proporcionando la base para las mejoras realizadas para esta tesis.
 
-The EDAN35 project implementation had errors in the jittering process that were corrected by properly expanding what both implementations meant by camera jittering , see Appendix \ref{appendix:jitter} for a full explanation. The management of the Halton points was redone to accomplish the improved camera jittering with the inclusion of support of up to 128 points to work as the jittering of the Accumulation Buffer (See Figure \ref{fig:halton128}). Note, though, for Temporal Anti-Aliasing only the first 16 points are used as suggested by Xu and Fuglsang. ~\cite{XU2016,Fuglsand2016}
+La implementación del proyecto EDAN35 tenía errores en el Proceso de \textit{Jittering} que se corrigieron al expandir correctamente en lo que ambas implementaciones se referían por \textit{Jittering} de Cámara, consulte el Apéndice \ref{appendix:jitter} para obtener una explicación completa. El manejo de los puntos de \textit{Halton} se rehizo para lograr la mejora del movimiento de la cámara, se incluyó el soporte de hasta 128 puntos para que funcione como el \textit{Jittering} del Buffer de Acumulación (Ver Figura \ref{fig:halton128}). Sin embargo, hay que tener en cuenta que para el \textit{Temporal Anti-Aliasing}, solo los primeros 16 puntos se usan según lo sugerido por Xu y Fuglsang. ~\cite{XU2016, Fuglsand2016}
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.5]{images/halton_128.png}
-	\caption{The $128$ $Halton Sequence (2,3)$ points available to use.}\label{fig:halton128}
+	\caption{Los $128$ de la $Secuendia Halton (2,3)$ disponibles para usar.}\label{fig:halton128}
 \end{figure}
 
-Specular Lighting Anti-Aliasing is a complex problem by itself, which requires specialized solutions that work directly with light reflections. Anti-Aliasing techniques do not correct it by themselves, they usually work with suitable already made solutions. To avoid problems with Specular Lighting, it was decided to be turned off.
+El \textit{Anti-Aliasing} de Iluminación Especular, como superficies metálicas, es un problema complejo en sí mismo que requiere soluciones especializadas que funcionen directamente con los reflejos de la luz. Las técnicas \textit{Anti-Aliasing} no lo corrigen este problema por sí mismas, generalmente funcionan en conjunto con soluciones adecuadas ya hechas. Por esto, para evitar problemas con la iluminación especular, se decidió apagarla.
 
-Also, there were added models for a sphere, wall, pipe, hairball, a window with blinds and an arched window to test the improvements done to the Temporal Anti-Aliasing. All models, except the wall, were added with one color-solid texture to avoid introducing lighting errors in the calculations of the image metrics for the comparisons between the Uncharted 4 implementation and the one developed in this master thesis. The wall model uses a white texture with black letters on it because letters use hard edges to define their shape and must stay that way after applying any Anti-Aliasing technique.
+Además, se agregaron modelos de una esfera, pared, tubería, \textit{Hairball} (Bola de Pelo), una ventana con persianas y una ventana arqueada para probar las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Todos los modelos, excepto la pared, se agregaron con una textura de color sólido para evitar la introducción de errores de iluminación en los cálculos de las métricas de imagen, ya que estas son usadas para las comparaciones entre la implementación de Uncharted 4 y la desarrollada en esta tesis. El modelo de la pared usa una textura blanca con letras negras, porque las letras usan bordes duros para definir su forma y debe permanecer así después de aplicar cualquier técnica de \textit{Anti-Aliasing}.
 
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
-For this master thesis, the white paper version of Fast Approximate Anti-Aliasing (FXAA) by Lottes \cite{Lottes2009} was used to compare it against Temporal Anti-Aliasing, on the ground that both techniques are Post-Processing Anti-Aliasing and that FXAA is a popular technique used in the industry. It was implemented  under the highest quality preset according to the white paper without taking into consideration the performance impact because we wanted to compare the raw improvement that both techniques can provide.
+Para esta tesis, se usó la versión del \textit{white paper} (paper inicial) de \textit{Fast Approximate Anti-Aliasing} (FXAA, \textit{Anti-Aliasing} Aproximado Rápido) de Lottes \cite{Lottes2009} para compararla con \textit{Temporal Anti-Aliasing}, basándose en que ambas técnicas son \textit{Anti-Aliasing} y post-procesamiento, y que FXAA es una técnica popular utilizada en la industria. Esta técnica se implementó bajo el preajuste de mayor calidad según el \textit{white paper} sin tener en cuenta el impacto en el rendimiento porque queríamos comparar la mejora cruda que ambas técnicas pueden proporcionar.
 
 \subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
-In order to test a more complex and newer post-processing technique, SMAA was implemented following the instructions provided by Jimenez et al. \cite{Jimenez2012}. It was implemented using the highest     preset that works with the deferred shading pipeline.
+Con el fin de probar una técnica de post-procesado más compleja y más nueva, se implementó SMAA siguiendo las instrucciones proporcionadas por Jiménez et al \cite{Jimenez2012}. Se utilizó el valor preestablecido más alto que funciona con la Arquitectura de \textit{Shading} Diferido.
 
-\subsection{Accumulation Buffer}
-We use an Accumulation Buffer to provide a reference image of what the scene is. It was implemented following Haeberli and Akeley \cite{Haeberli1990}. The points used to jitter the camera are Halton Sequence Points as for Temporal Anti-Aliasing, although the Accumulation Buffer can use up to 128. The reasons for using Halton Sequence are that: it fulfils the requirements established by Haeberli and Akeley; it is easy to extend the current camera system to support more Halton Points; and for Temporal Anti-Aliasing, it provides pseudo-random points that do not follow a pattern to help gather as much information of the scene as possible.
+\subsection{Buffer de Acumulación}
+Usamos un Buffer de Acumulación para proporcionar una imagen de referencia de la escena. Fue implementado siguiendo a Haeberli y Akeley \cite{Haeberli1990}. Los puntos usados para realizar jittering a la cámara son los mismos puntos de la Secuencia de Halton que usa Temporal Anti-Aliasing, aunque el buffer de acumulación puede usar hasta 128. Las razones para usar la Secuencia de Halton son las siguientes: cumple con los requisitos establecidos por Haeberli y Akeley; es fácil ampliar el sistema de cámara actual para admitir más puntos Halton; e, igual que para Anti-Aliasing temporal, proporciona puntos pseudoaleatorios que no siguen un patrón para ayudar a reunir tanta información de la escena como sea posible.
 
 \subsubsection{Sample Number Selection}
 The number of samples selected for the Accumulation Buffer is 128. This is because it provides the best representation possible of the scene even though it causes a substantial loss of performance.
