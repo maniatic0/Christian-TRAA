@@ -119,7 +119,8 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 \begin{acronym}
 	\acro{USB}[USB]{Universidad Sim\'on Bol\'ivar}
 	\acro{DEP}[DEP]{Decanato de Estudios Profesionales}
-	\acro{PDF}[PDF]{Documento en Formato Portable\copyright}
+	\acro{PDF}[PDF]{\textit{Portable Document Format}, Documento en Formato Portable\copyright}
+	\acro{PNG}[PNG]{\textit{Portable Network Graphics}, Gráficos de Red Portátiles}
 	\acro{2D}[2D]{\textit{Two Dimensions}, Dos Dimensiones}
 	\acro{3D}[3D]{\textit{Three Dimensions}, Tres Dimensiones}
 	\acro{TAA}[TAA]{\textit{Temporal Anti-Aliasing}}
@@ -543,52 +544,53 @@ Para esta tesis, se usó la versión del \textit{white paper} (paper inicial) de
 Con el fin de probar una técnica de post-procesado más compleja y más nueva, se implementó SMAA siguiendo las instrucciones proporcionadas por Jiménez et al \cite{Jimenez2012}. Se utilizó el valor preestablecido más alto que funciona con la Arquitectura de \textit{Shading} Diferido.
 
 \subsection{Buffer de Acumulación}
-Usamos un Buffer de Acumulación para proporcionar una imagen de referencia de la escena. Fue implementado siguiendo a Haeberli y Akeley \cite{Haeberli1990}. Los puntos usados para realizar jittering a la cámara son los mismos puntos de la Secuencia de Halton que usa Temporal Anti-Aliasing, aunque el buffer de acumulación puede usar hasta 128. Las razones para usar la Secuencia de Halton son las siguientes: cumple con los requisitos establecidos por Haeberli y Akeley; es fácil ampliar el sistema de cámara actual para admitir más puntos Halton; e, igual que para Anti-Aliasing temporal, proporciona puntos pseudoaleatorios que no siguen un patrón para ayudar a reunir tanta información de la escena como sea posible.
+Usamos un Buffer de Acumulación para proporcionar una imagen de referencia de la escena. Fue implementado siguiendo a Haeberli y Akeley \cite{Haeberli1990}. Los puntos usados para realizar \textit{jittering} a la cámara son los mismos puntos de la Secuencia de Halton que usa \textit{Temporal Anti-Aliasing}, aunque el Buffer de Acumulación puede usar hasta 128. Las razones para usar la Secuencia de Halton son las siguientes: cumple con los requisitos establecidos por Haeberli y Akeley; es fácil ampliar el sistema de cámara actual para admitir más puntos Halton; e, igual que para \textit{Temporal Anti-Aliasing}, proporciona puntos pseudoaleatorios que no siguen un patrón para ayudar a reunir tanta información de la escena como sea posible.
 
-\subsubsection{Sample Number Selection}
-The number of samples selected for the Accumulation Buffer is 128. This is because it provides the best representation possible of the scene even though it causes a substantial loss of performance.
+\subsubsection{Número de Muestras Seleccionadas}
+El número de muestras seleccionadas para el Buffer de Acumulación es 128. Esto se debe a que proporciona la mejor representación posible de la escena a pesar de que causa una pérdida sustancial de rendimiento.
 
-In order to show the difference between using 16 and 128 samples, we performed four tests, named from A to D, to observe how the metrics behave under different arrangements  of scene objects and lighting. In the Table \ref{tab:acctest} we see the results of one such test:
+Para mostrar la diferencia entre el uso de 16 y 128 muestras, realizamos cuatro pruebas, denominadas de A a D, para observar cómo se comportan las medidas bajo diferentes arreglos de objetos e iluminación en la escena. En la tabla \ref{tab:acctest} vemos los resultados de una de esas pruebas:
 
 \begin{table}[!hbt]
 	\centering
-	\caption{Metrics behavior comparison between using 16 samples versus 128 for Accumulation Buffer.}\label{tab:acctest}
+	\caption{Comparación del comportamiento de las métricas entre el uso de 16 muestras frente a 128 para el Buffer de Acumulación.}\label{tab:acctest}
 \begin{tabular}{ | l | c | c | c | c | }
 	\hline
-	\multicolumn{5}{| c |}{\textbf{Test D}} \\
+	\multicolumn{5}{| c |}{\textbf{Prueba D}} \\
 	\hline
-	\textbf{\diagbox{Tests}{Samples}}  & \textbf{\makebox{16}} & \textbf{\makebox{128}} & \textbf{\makebox{Difference}} & \textbf{\makebox{Relative Difference $(\%)$}} \\
+	\textbf{\diagbox{Pruebas}{Muestras}}  & \textbf{\makebox{16}} & \textbf{\makebox{128}} & \textbf{\makebox{Diferencia}} & \textbf{\makebox{Diferencia Relativa $(\%)$}} \\
 	\hline
-	MSE of Temporal	& $40.647863$ & $38.947297$	& $-1.700566$ & $4.183654132\%$ \\
+	MSE de Temporal	& $40.647863$ & $38.947297$	& $-1.700566$ & $4.183654132\%$ \\
 	\hline
-	RMSD of Temporal & $6.375568$ & $6.240777$ & $-0.134791$ & $2.114180258\%$ \\
+	RMSD de Temporal & $6.375568$ & $6.240777$ & $-0.134791$ & $2.114180258\%$ \\
 	\hline
-	MSE of No AA & $24.872104$ & $24.524992$ & $-0.347112$ & $1.395587603\%$ \\
+	MSE de No AA & $24.872104$ & $24.524992$ & $-0.347112$ & $1.395587603\%$ \\
 	\hline
-	RMSD of No AA & $4.987194$ & $4.952271$ & $-0.034923$ & $0.700253489\%$ \\
+	RMSD de No AA & $4.987194$ & $4.952271$ & $-0.034923$ & $0.700253489\%$ \\
 	\hline
-	Peak-SNR of Temporal & $32.040426$ & $32.22603$ & $0.185604$ & $0.575944353\%$ \\
+	Peak-SNR de Temporal & $32.040426$ & $32.22603$ & $0.185604$ & $0.575944353\%$ \\
 	\hline
-	SNR of Temporal & $30.30596$ & $30.492374$ & $0.186414$ & $0.611346299\%$ \\
+	SNR de Temporal & $30.30596$ & $30.492374$ & $0.186414$ & $0.611346299\%$ \\
 	\hline
-	Peak-SNR of No AA & $34.173678$ & $34.234715$ & $0.061037$ & $0.178289786\%$ \\
+	Peak-SNR de No AA & $34.173678$ & $34.234715$ & $0.061037$ & $0.178289786\%$ \\
 	\hline
-	SNR of No AA & $32.439212$ & $32.501058$ & $0.061846$ & $0.190289190\%$ \\
+	SNR de No AA & $32.439212$ & $32.501058$ & $0.061846$ & $0.190289190\%$ \\
 	\hline
-	SSIM of Temporal & $0.993302$ & $0.993451$ & $0.000149$ & $0.014998223\%$ \\
+	SSIM de Temporal & $0.993302$ & $0.993451$ & $0.000149$ & $0.014998223\%$ \\
 	\hline
-	SSIM of No AA & $0.996826$ & $0.996891$ & $6.5E-05$ & $0.006520272\%$ \\
+	SSIM de No AA & $0.996826$ & $0.996891$ & $6.5E-05$ & $0.006520272\%$ \\
 	\hline		
 \end{tabular}
 \end{table}
 
-The changes are large enough on some metrics to be noticeable, especially on MSE and SSIM of Temporal Anti-Aliasing, for our comparisons between Anti-Aliasing techniques. We are going to notice the effects of the use of 128 samples when we reach the comparisons between Anti-Aliasing techniques.
+Los cambios son lo suficientemente grandes en algunas métricas para ser perceptibles, especialmente en MSE y SSIM de Temporal Anti-Aliasing para nuestras comparaciones entre técnicas \textit{Anti-Aliasing}. Vamos a notar los efectos del uso de 128 muestras cuando lleguemos a las comparaciones entre las técnicas \textit{Anti-Aliasing}.
 
-\section{Testing Framework Implementation}
-To measure any improvement achieved, we developed a testing framework that allows us to save the important information when the test is performed. The framework allows us to select which technique to use as the main renderer: the Master Thesis Temporal Anti-Aliasing implementation; Uncharted 4 Temporal Anti-aliasing implementation; Enhanced Subpixel Morphological Antialiasing (SMAA); or Fast Approximate Anti-Aliasing (FXAA). It also allows us to zoom any part of the screen and then perform all the image metrics calculations using MATLAB.
+\section{Implementación del Marco de Pruebas}
+Para medir cualquier mejora lograda, desarrollamos un marco de prueba que nos permite guardar la información importante cuando se realiza una prueba. El marco nos permite seleccionar qué técnica utilizar como el renderizador principal: la implementación de \textit{Temporal Anti-Aliasing} de la Tesis, \textit{Temporal Anti-Aliasing} de \textit{Uncharted 4},  Enhanced Subpixel Morphological Anti-Aliasing (SMAA) o \textit{Fast Approximate Anti-Aliasing} (FXAA). También nos permite hacer zoom en cualquier parte de la pantalla y luego realizar todos los cálculos de métricas de imágenes usando MATLAB.
 
-When a test is performed, selected rendered images are saved as PNGs with 4 color channels and no compression. Also, basic information regarding the date when the test was performed; the camera information and data regarding the values used for Temporal Anti-Aliasing are saved in a plain text file.
-To quantify if improvements were achieved on the main objectives of this thesis, ghosting, and blurriness, two different types of tests were developed: Static Test and Ghosting Test.
+Cuando se realiza una prueba, las imágenes renderizadas seleccionadas se guardan como PNG’s con 4 canales de color y sin compresión. Además, información básica sobre la fecha en que se realizó la prueba, la información de la cámara y los datos de a los valores utilizados para el \textit{Temporal Anti-Aliasing} se guardan en un archivo de texto sin plano.
+
+Para cuantificar si se lograron los objetivos propuestos de esta tesis, sobre \textit{ghosting} y desenfoque, desarrollamos dos tipos diferentes de pruebas: Pruebas Estáticas y Pruebas de \textit{Ghosting}.
 
 \subsection{Static Test}
 This type of test consists of letting the History Buffer fill for 16 frames by rendering the scene without any moving object with the Temporal Anti-Aliasing technique selected and then saving the last frame rendered. Immediately after saving the last TAA frame rendered, we render the last frame again but now using the Accumulation Buffer, to generate the ground truth image of the scene, and SMAA, FXAA and No Anti-Aliasing (No AA), for comparison purposes. 

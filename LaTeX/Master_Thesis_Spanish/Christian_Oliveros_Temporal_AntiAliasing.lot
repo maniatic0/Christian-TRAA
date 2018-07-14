@@ -4,7 +4,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Metrics behavior comparison between using 16 samples versus 128 for Accumulation Buffer.\relax }}{23}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Comparación del comportamiento de las métricas entre el uso de 16 muestras frente a 128 para el Buffer de Acumulación.\relax }}{23}
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {5.1}{\ignorespaces Sharpen Filter Test numerical results\relax }}{36}
 \contentsline {table}{\numberline {5.2}{\ignorespaces Numerical results of the Pipe Test with regular camera inclination.\relax }}{38}

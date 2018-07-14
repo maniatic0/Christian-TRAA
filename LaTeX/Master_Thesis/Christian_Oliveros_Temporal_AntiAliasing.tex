@@ -497,9 +497,10 @@ In order to show the difference between using 16 and 128 samples, we performed f
 The changes are large enough on some metrics to be noticeable, especially on MSE and SSIM of Temporal Anti-Aliasing, for our comparisons between Anti-Aliasing techniques. We are going to notice the effects of the use of 128 samples when we reach the comparisons between Anti-Aliasing techniques.
 
 \section{Testing Framework Implementation}
-To measure any improvement achieved, we developed a testing framework that allows us to save the important information when the test is performed. The framework allows us to select which technique to use as the main renderer: the Master Thesis Temporal Anti-Aliasing implementation; Uncharted 4 Temporal Anti-aliasing implementation; Enhanced Subpixel Morphological Antialiasing (SMAA); or Fast Approximate Anti-Aliasing (FXAA). It also allows us to zoom any part of the screen and then perform all the image metrics calculations using MATLAB.
+To measure any improvement achieved, we developed a testing framework that allows us to save the important information when a test is performed. The framework allows us to select which technique to use as the main renderer: the Master Thesis Temporal Anti-Aliasing implementation; Uncharted 4 Temporal Anti-aliasing implementation; Enhanced Subpixel Morphological Anti-Aliasing (SMAA); or Fast Approximate Anti-Aliasing (FXAA). It also allows us to zoom any part of the screen and then perform all the image metrics calculations using MATLAB.
 
 When a test is performed, selected rendered images are saved as PNGs with 4 color channels and no compression. Also, basic information regarding the date when the test was performed; the camera information and data regarding the values used for Temporal Anti-Aliasing are saved in a plain text file.
+
 To quantify if improvements were achieved on the main objectives of this thesis, ghosting, and blurriness, two different types of tests were developed: Static Test and Ghosting Test.
 
 \subsection{Static Test}
