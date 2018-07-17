@@ -32,6 +32,8 @@
 \newacro{MSAA}[\AC@hyperlink{MSAA}{MSAA}]{\textit  {Multi Sample Anti-Aliasing}, Anti-Aliasing Multi Muestra}
 \newacro{FXAA}[\AC@hyperlink{FXAA}{FXAA}]{\textit  {Fast Approximate Anti-Aliasing}, Anti-Aliasing Aproximado Rápido}
 \newacro{SMAA}[\AC@hyperlink{SMAA}{SMAA}]{\textit  {Enhanced Subpixel Morphological Anti-Aliasing}, Anti-Aliasing de Mejora Morfológica de Subpíxeles}
+\newacro{AA}[\AC@hyperlink{AA}{AA}]{\textit  {Anti-Aliasing}}
+\newacro{NOAA}[\AC@hyperlink{NOAA}{NOAA}]{No \textit  {Anti-Aliasing}}
 \newacro{API}[\AC@hyperlink{API}{API}]{\textit  {Application Programming Interface}, Interfaz de Programación de Aplicaciones}
 \newacro{OpenGL}[\AC@hyperlink{OpenGL}{OpenGL}]{\textit  {Open Graphics Library}, Librería Abierta de Gráficos}
 \newacro{GPU}[\AC@hyperlink{GPU}{GPU}]{\textit  {Graphics Processing Unit}, Unidad de Procesamiento de Gráficos}
@@ -195,13 +197,13 @@
 \@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparación del comportamiento de las métricas entre el uso de 16 muestras frente a 128 para el Buffer de Acumulación.\relax }}{23}}
 \newlabel{tab:acctest}{{4.1}{23}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Implementación del Marco de Pruebas}{24}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Static Test}{24}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Ghosting Test}{24}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}MATLAB Image Metrics}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Pruebas Estáticas}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{25}}
 \citation{Fuglsand2016}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Temporal Reprojection Anti-Aliasing Modifications}{26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Sampling Pattern used. Image taken from Fuglsand presentation. \cite {Fuglsand2016}\relax }}{26}}
-\newlabel{fig:samplingpattern_2}{{4.2}{26}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Sampling Pattern used. Image taken from Fuglsand presentation. \cite {Fuglsand2016}\relax }}{27}}
+\newlabel{fig:samplingpattern_2}{{4.2}{27}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Color Clipping Box size reduction\relax }}{27}}
 \newlabel{fig:colorclippingboxredux}{{4.3}{27}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Triangle Indexing Improvements Implementation}{27}}
@@ -209,15 +211,15 @@
 \newlabel{eq:triang_index_not_aliased}{{4.2}{28}}
 \newlabel{eq:triang_index_aliased}{{4.3}{28}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{28}}
-\newlabel{eq:maxdepthdistance}{{4.4}{28}}
+\newlabel{eq:maxdepthdistance}{{4.4}{29}}
 \newlabel{eq:depthpseudovariance}{{4.5}{29}}
 \newlabel{eq:depthtemporalpseudovariance}{{4.6}{29}}
 \newlabel{eq:depth_var_not_aliased}{{4.7}{29}}
-\newlabel{eq:depth_var_aliased}{{4.8}{29}}
+\newlabel{eq:depth_var_aliased}{{4.8}{30}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{30}}
 \newlabel{eq:sobel_g}{{4.9}{30}}
 \newlabel{eq:sobel_sqrt}{{4.10}{30}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Final Mixing}{30}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Final Mixing}{31}}
 \newlabel{eq:mixfunction}{{4.11}{31}}
 \newlabel{eq:sobelavgmixval}{{4.12}{31}}
 \newlabel{eq:sobelavg}{{4.13}{31}}

@@ -14,7 +14,7 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces \textit {Color Clamping} versus \textit {Color Clipping}. Imagen tomada del \textit {paper} de Fuglsand. \cite {Fuglsand2016}\relax }}{15}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Los $128$ de la $Secuendia Halton (2,3)$ disponibles para usar.\relax }}{22}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Sampling Pattern used. Image taken from Fuglsand presentation. \cite {Fuglsand2016}\relax }}{26}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sampling Pattern used. Image taken from Fuglsand presentation. \cite {Fuglsand2016}\relax }}{27}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Color Clipping Box size reduction\relax }}{27}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
