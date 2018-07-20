@@ -179,7 +179,7 @@ La técnica más simple de \textit{Anti-Aliasing} es \textit{Super Sampling Anti
 
 A continuación, encontramos técnicas de Post-Procesamiento como \textit{Fast Approximate Anti-Aliasing} (FXAA, \textit{Anti-Aliasing} Aproximado Rápido) por Timothy Lottes \cite{Lottes2009} que usa una forma de detección de bordes para corregir el \textit{aliasing} mientras es compatible con la Arquitectura de \textit{Shading} Diferido (\textit{Deferred Shading Architecture}). También tenemos la implementación de Crytek del \textit{Temporal Anti-Aliasing} (TAA o TXAA) explicada por Tiago Sousa en su presentación Métodos de \textit{Anti-Aliasing} en CryENGINE 3 \cite{JIMENEZ2011_SIGGRAPH11}.
 
-También disponemos de la técnica \textit{Enhanced Subpixel Morphological Anti-Aliasing} (SMAA, \textit{Anti-Aliasing} de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jiménez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
+También disponemos de la técnica \textit{Enhanced Subpixel Morphological Anti-Aliasing} (SMAA, \textit{Anti-Aliasing} de Mejora Morfológica de Subpíxeles) de Jorge Jiménez, José I. Echeverría, Tiago Sousa y Diego Gutiérrez \cite{Jimenez2012} que utiliza una técnica de reconstrucción de bordes más compleja, al mismo tiempo que puede trabajar con SSAA, MSAA y una forma básica de TAA.
 
 Finalmente, tenemos las implementaciones TRAA de Ke Xu para Uncharted 4 y Lasse Fuglsang para Inside, que implementan nuevos avances como el \textit{Color Clipping Box} (Caja de Recorte de Colores) y el Filtro de Nitidez (\textit{Sharpen Filter}). Estas dos últimas implementaciones se utilizan como base de esta tesis. \cite{Fuglsand2016, XU2016}
 
@@ -630,13 +630,13 @@ El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} d
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[scale=0.7]{images/clipping_box_reduction.png}
+	\includegraphics[scale=0.3]{images/clipping_box_reduction.png}
 	\caption{Reducción de tamaño de la Color Clipping Box}\label{fig:colorclippingboxredux}
 \end{figure}
 
-On the next subsections, we explain how all the values are calculated that contribute to decide if a pixel is considered aliased or not. All of these values are calculated at the same time as TAA is being applied, with the exception of the Sobel Operator which happens before the main TAA technique. Afterward, we show how we use that value to reduce the size of the Color Clipping Box and the preference of the Sampling Pattern.
+En las siguientes subsecciones, explicaremos cómo se calculan todos los valores que contribuyen a decidir si un píxel se considera con \textit{aliasing} o no. Todos estos valores se calculan al mismo tiempo que se aplica TAA, con la excepción del Operador de Sobel, que ocurre antes de la técnica TAA principal. Después, mostramos cómo usamos ese valor para reducir el tamaño del \textit{Color Clipping Box} y la preferencia del patrón de muestreo.
 
-\subsection{Triangle Indexing Improvements Implementation}
+\subsection{Implementación de Mejoras de Indexación de Triángulos}
 The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
 
 To implement this technique, all models in the scene receive a unique integer index. Then, in the renderization geometry pass, all triangles belonging to the same model receive the model index as its ID. Subsequently, it is used in the pixel shader to generate a texture in which every pixel contains the ID of the model it belongs to.
