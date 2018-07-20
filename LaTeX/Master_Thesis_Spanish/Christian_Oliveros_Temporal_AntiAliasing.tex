@@ -691,15 +691,15 @@ Luego calculamos la Pseudo-Varianza de Profundidad como:
 	depthPseudoVariance = \left( \frac{\left|currentDepth-depthAvg\right|}{maxDepthDistance}\right)^2
 \end{equation}
 
-This provides us with a pseudo-variance that measures the distance between the average depth and the current pixel depth. Note that normally the value is going to be between $0$ and $1$ and but, if the pixel depth is an outlier, this value is going to be over $1$.
+Esto nos proporciona una Pseudo-Varianza que mide la distancia entre la profundidad promedio de la vecindad y la profundidad actual del píxel. Hay que tener en cuenta que normalmente el valor va a ser entre $0$ y $1$ pero, si la profundidad del píxel es un valor atípico en la vecinda, este valor va a ser superior a $1$.
 
-Finally, we calculate how the depth of the pixel in the last frame relates to the current neighborhood, using the depth temporal pseudo variance. Note that we use the fourth power to reduce the noise in the calculations because the normalized value is between $0$ and $1$, therefore, making it converge to $0$ if the value was near $0$.
+Finalmente, calculamos cómo la profundidad del píxel en el último cuadro se relaciona con la vecindad actual, usando la Pseudo-Varianza Temporal de Profundidad. Hay que tener en cuenta que usamos la cuarta potencia para reducir el ruido en los cálculos; dado que el valor normalizado está entre $0$ y $1$, esto lo hace converger a $0$ si el valor era cercano a $0$ o a $1$ si es cercano a $1$.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
 \end{equation}
 
-Next, we are going to show examples of how this technique decides if a pixel is considered aliased or not. For each matrix, the numbers represent the triangles depths with the center position being the current pixel being analyzed and the rest being its neighborhood.  Matrix \ref{eq:depth_var_not_aliased} shows us an example of a pixel not considered aliased because it is relatively close to most of its neighborhoods. In contrast, Matrix \ref{eq:depth_var_aliased} shows an example of a pixel that would be considered aliased because it has a relatively big distance in comparison to its neighborhood. An example of a pixel considered aliased by the Depth Temporal Pseudo-Variance would be if the depth of the pixel of Matrix  \ref{eq:depth_var_not_aliased} in the last frame was $4.0$.
+A continuación, vamos a mostrar ejemplos de cómo esta técnica decide si un píxel se considera con aliasing o no. Para cada matriz, los números representan las profundidades de los triángulos, siendo la posición central el píxel actual que se analiza y el resto es su vecindad. La Matriz \ref{eq:depth_var_not_aliased} nos muestra un ejemplo de un pixel no considerado con aliasing porque está relativamente cerca de la mayoría de sus vecinos. Por el contrario, la Matriz \ref{eq:depth_var_aliased} muestra un ejemplo de un píxel que se consideraría con aliasing porque tiene una distancia relativamente grande en comparación con su vecindad. Un ejemplo de un píxel considerado con aliasing por la Pseudo-Varianza Temporal de Profundidad, sería si la profundidad del píxel de la Matriz \ref{eq:depth_var_not_aliased} en el último cuadro fuera de $4.0$.
 
 \begin{equation}\label{eq:depth_var_not_aliased}
 \begin{bmatrix*}[r]
