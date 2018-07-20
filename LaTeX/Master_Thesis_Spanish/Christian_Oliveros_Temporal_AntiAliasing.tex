@@ -637,24 +637,24 @@ El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} d
 En las siguientes subsecciones, explicaremos cómo se calculan todos los valores que contribuyen a decidir si un píxel se considera con \textit{aliasing} o no. Todos estos valores se calculan al mismo tiempo que se aplica TAA, con la excepción del Operador de Sobel, que ocurre antes de la técnica TAA principal. Después, mostramos cómo usamos ese valor para reducir el tamaño del \textit{Color Clipping Box} y la preferencia del patrón de muestreo.
 
 \subsection{Implementación de Mejoras de Indexación de Triángulos}
-The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
+La idea principal detrás de la aplicación de esta técnica es detectar los píxeles que consideramos con \textit{aliasing} utilizando la cantidad de modelos diferentes que rodean a un píxel. Queremos detectar los bordes entre diferentes modelos porque el \textit{aliasing} normalmente ocurre allí. Una vez que tenemos esta información, procedemos a modificar la \textit{Color Clipping Box} que controla la aplicación de TAA.
 
-To implement this technique, all models in the scene receive a unique integer index. Then, in the renderization geometry pass, all triangles belonging to the same model receive the model index as its ID. Subsequently, it is used in the pixel shader to generate a texture in which every pixel contains the ID of the model it belongs to.
+Para implementar esta técnica, todos los modelos en la escena reciben un índice único. Luego, en el pase de Renderización de Geometría, todos los triángulos que pertenecen a un mismo modelo reciben el índice del modelo como su ID. Posteriormente, se usa en el \textit{píxel shader} para generar una textura en la que cada píxel contiene el ID del modelo al que pertenece.
 
-On the Temporal Reprojection pass, the average on the number of pixels belonging to different models in the $3\times 3$ neighborhood of the current pixel is calculated. With this average, we proceed to skew the color linear interpolation between the minimum, maximum and average between the Cross and $3\times 3$ neighborhoods of the pixel and we proceed to change the size of the Color Clipping Box. 
+En el pase de Reproyección Temporal, se calcula el promedio del número de píxeles pertenecientes a diferentes modelos en la vecindad $3\times 3$ del píxel siendo revisado. Con este promedio, procedemos a sesgar la interpolación lineal de color entre el mínimo, máximo y promedio entre las vecindades Cruz y $3\times 3$ del píxel y procedemos a cambiar el tamaño del \textit{Color Clipping Box}.
 
-If the average is close to zero, meaning that the pixel is surrounded by pixels of its same model, we interpolate towards colors from the Cross neighborhood and reduce the size of the Color Clipping Box. But, if the average is close to one, meaning that the pixel is surrounded by many pixels of other models, we interpolate towards colors from the $3\times 3$ neighborhood and let the Color Clipping Box stay on its original size.
+Si el promedio es cercano a cero, lo que significa que el píxel está rodeado por píxeles de su mismo modelo, interpolamos hacia los colores de la vecindad Cruz y reducimos el tamaño de la \textit{Color Clipping Box}. Pero, si el promedio es cercano a uno, lo que significa que el píxel está rodeado por muchos píxeles de otros modelos, interpolamos hacia los colores de la vecindad $3\times 3$ y dejamos que la \textit{Color Clipping Box} permanezca en su tamaño original.
 
 \begin{equation}\label{eq:model_index_acc}
 modelAverage_i = \frac{\sum\limits_{j=1}^{9} ModelDiff(i,j)}{9} 
 \end{equation}
 
-Where
+Donde
 \begin{equation*}
 ModelDiff(i,j) = \left\lbrace \begin{split}1\quad & if\quad ModelID_i \neq ModelID_j \\ 0\quad & else\end{split} \right.
 \end{equation*}
 
-Next we are going to show some examples of how this technique works. For each matrix, the numbers represent the triangles ID's with the center position being the current pixel being calculated and the rest being its neighborhood. Matrix \ref{eq:triang_index_not_aliased} shows an example of a pixel not considered aliased because most of the neighborhood have the same ID. On the other hand, Matrix \ref{eq:triang_index_aliased} shows a pixel considered aliased because of the high amount of different ID's around.
+A continuación, vamos a mostrar algunos ejemplos de cómo funciona esta técnica. Para cada matriz, los números representan los ID’s de los triángulos, siendo la posición central el píxel que actualmente se está calculando y el resto siendo su vecindad. La Matriz \ref{eq:triang_index_not_aliased} muestra un ejemplo de un píxel no considerado con \textit{aliasing} porque la mayoría de sus vecinos tienen el mismo ID. Por otro lado, la Matriz \ref{eq:triang_index_aliased} muestra un pixel considerado con \textit{aliasing} debido a la gran cantidad de ID’s diferentes alrededor.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:triang_index_not_aliased}
@@ -672,10 +672,10 @@ Next we are going to show some examples of how this technique works. For each ma
 \end{bmatrix*}
 \end{equation}
 
-\subsection{Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}
-The key point behind this technique is that we want to detect pixels that we consider aliased because they are in a neighborhood of pixels separated by relatively long depth distances or that their depth in the last frame changed relatively a long distance in contrast to its current neighborhood.
+\subsection{Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}
+La razón detrás de esta técnica es que queremos detectar píxeles que están en una vecindad de píxeles separados por profundidades relativamente largas. También, queremos detectar píxeles cuya profundidad en el último cuadro cambió, relativamente, una distancia larga en contraste con su vecindad actual. Todos los píxeles que detectamos los consideramos con \textit{aliasing}.
 
-First, we calculate the minimum, maximum and average linear depth from the $3\times 3$ neighborhood. Then we proceed to use the next formula to calculate the value we are going to use to normalize results:
+Primero, calculamos la profundidad lineal mínima, máxima y su promedio del vecindario $3\times 3$. Luego procedemos a usar la siguiente fórmula para calcular el valor que vamos a usar para normalizar los resultados: 
 \begin{equation} \label{eq:maxdepthdistance}
 \begin{split} 
 	maxDepthDistance = min \left( \right. & \left| depthMin-depthAvg \right|  ,   \\ 
@@ -683,9 +683,9 @@ First, we calculate the minimum, maximum and average linear depth from the $3\ti
 \end{split} 
 \end{equation}
 
-We calculate the normalizing value using the minimum to avoid the interference of outliers. If $maxDepthDistance$  is below $0.002$ everything that follows is set to zero because pixels are so close that it is probably not aliased. This threshold was defined by experimenting which values would not get noise inside the calculations but would let the interesting pixels in. 
+Calculamos el valor de normalización utilizando el mínimo para evitar la interferencia de valores atípicos. Si $maxDepthDistance$ está por debajo de $0.002$, todo lo que sigue se establece en cero porque los píxeles están tan cerca que probablemente no tengan aliasing. Este umbral se definió experimentando qué valores no generan ruido dentro de los cálculos, pero dejan entrar los píxeles interesantes.
 
-Then we calculate the depth pseudo variance as:
+Luego calculamos la Pseudo-Varianza de Profundidad como:
 
 \begin{equation} \label{eq:depthpseudovariance}
 	depthPseudoVariance = \left( \frac{\left|currentDepth-depthAvg\right|}{maxDepthDistance}\right)^2

@@ -548,7 +548,7 @@ On the next subsections, we explain how all the values are calculated that contr
 \subsection{Triangle Indexing Improvements Implementation}
 The main idea behind the application of this technique is to detect pixels that we considered aliasing by using the number of different models the pixel is surrounded with. We want to detect the edges between different models because aliasing normally occurs there. Once we have this information, we proceed to alter the Color Clipping Box that controls the application of TAA.
 
-To implement this technique, all models in the scene receive a unique integer index. Then, in the renderization geometry pass, all triangles belonging to the same model receive the model index as its ID. Subsequently, it is used in the pixel shader to generate a texture in which every pixel contains the ID of the model it belongs to.
+To implement this technique, all models in the scene receive a unique integer index. Then, in the renderization of the geometry pass, all triangles belonging to the same model receive the model index as its ID. Subsequently, it is used in the pixel shader to generate a texture in which every pixel contains the ID of the model it belongs to.
 
 On the Temporal Reprojection pass, the average on the number of pixels belonging to different models in the $3\times 3$ neighborhood of the current pixel is calculated. With this average, we proceed to skew the color linear interpolation between the minimum, maximum and average between the Cross and $3\times 3$ neighborhoods of the pixel and we proceed to change the size of the Color Clipping Box. 
 
@@ -563,7 +563,7 @@ Where
 ModelDiff(i,j) = \left\lbrace \begin{split}1\quad & if\quad ModelID_i \neq ModelID_j \\ 0\quad & else\end{split} \right.
 \end{equation*}
 
-Next we are going to show some examples of how this technique works. For each matrix, the numbers represent the triangles ID's with the center position being the current pixel being calculated and the rest being its neighborhood. Matrix \ref{eq:triang_index_not_aliased} shows an example of a pixel not considered aliased because most of the neighborhood have the same ID. On the other hand, Matrix \ref{eq:triang_index_aliased} shows a pixel considered aliased because of the high amount of different ID's around.
+Next we are going to show some examples of how this technique works. For each matrix, the numbers represent the triangles' ID's with the center position being the current pixel being calculated and the rest being its neighborhood. Matrix \ref{eq:triang_index_not_aliased} shows an example of a pixel not considered aliased because most of the neighborhood have the same ID. On the other hand, Matrix \ref{eq:triang_index_aliased} shows a pixel considered aliased because of the high amount of different ID's around.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:triang_index_not_aliased}
@@ -582,7 +582,7 @@ Next we are going to show some examples of how this technique works. For each ma
 \end{equation}
 
 \subsection{Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}
-The key point behind this technique is that we want to detect pixels that we consider aliased because they are in a neighborhood of pixels separated by relatively long depth distances or that their depth in the last frame changed relatively a long distance in contrast to its current neighborhood.
+The key point behind this technique is that we want to detect pixels that are in a neighborhood of pixels separated by relatively long depth distances. As well, we want to detect pixel of which their depth in the last frame changed relatively a long distance in contrast to its current neighborhood. We consider aliased all the pixels that we detect here. 
 
 First, we calculate the minimum, maximum and average linear depth from the $3\times 3$ neighborhood. Then we proceed to use the next formula to calculate the value we are going to use to normalize results:
 \begin{equation} \label{eq:maxdepthdistance}

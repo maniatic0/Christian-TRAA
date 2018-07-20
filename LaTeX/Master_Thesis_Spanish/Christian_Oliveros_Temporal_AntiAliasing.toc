@@ -54,8 +54,8 @@
 \contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{25}
 \contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{25}
 \contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{26}
-\contentsline {subsection}{\numberline {4.3.1}Triangle Indexing Improvements Implementation}{27}
-\contentsline {subsection}{\numberline {4.3.2}Depth Pseudo-Variance and Depth Temporal Pseudo-Variance}{28}
+\contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{27}
+\contentsline {subsection}{\numberline {4.3.2}Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}{29}
 \contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{30}
 \contentsline {subsection}{\numberline {4.3.4}Final Mixing}{31}
 \contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{33}
