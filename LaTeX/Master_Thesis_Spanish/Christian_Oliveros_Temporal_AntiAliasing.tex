@@ -339,7 +339,7 @@ El algoritmo de Buffer de Velocidad (Velocity Buffer) utilizado en esta implemen
 
 
 \subsection{Buffer de Historia}
-Para cada fragmento en el marco actual, buscamos en la vecindad de $3\times 3$ y en la vecindad del patrón más $(+)$ alrededor de cada píxel (Ver figura ~\ref{fig:samplingpattern}). Buscamos en ambos patrones para el mínimo y el máximo de colores del cuadro actual, luego los promediamos y los usamos para construir parte del Color Clipping Box restringiendo los píxeles del Buffer de Historia. ~\cite{Fuglsand2016}
+Para cada fragmento en el marco actual, buscamos en la vecindad de $3\times 3$ y en la vecindad del patrón Cruz $(+)$ alrededor de cada píxel (Ver figura ~\ref{fig:samplingpattern}). Buscamos en ambos patrones para el mínimo y el máximo de colores del cuadro actual, luego los promediamos y los usamos para construir parte del Color Clipping Box restringiendo los píxeles del Buffer de Historia. ~\cite{Fuglsand2016}
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.8]{images/sampling_pattern.png}
@@ -618,20 +618,20 @@ Para Pruebas de Ghosting, realizamos mediciones de MSE, RMSD, PSNR, SNR y SSIM e
 \section[Modificaciones de Temporal Reprojection Anti-Aliasing ]{Modificaciones de Temporal Reprojection Anti-Aliasing }
 Para esta tesis, la técnica del \textit{Color Clipping Box} se modificó para que se viera afectada por los valores calculados a partir de las nuevas técnicas aplicadas en esta tesis. Estos cambios siguen la lógica de que queremos aplicar toda la fuerza de la técnica de \textit{Temporal Anti-Aliasing} cuando sea necesario y minimizar la aplicación de la técnica en otras partes, para minimizar los efectos de la \textit{ghosting} y el desenfoque.
 
-The first change consists in that the Colors that were calculated from the average between the $3\times 3$ and Cross neighborhoods by the sampling patterns (See Figure \ref{fig:samplingpattern_2}) are now mixed in a variable amount. This follows the idea that we prefer the Cross neighborhood if the pixel we are currently calculating is not considered to be aliased because the Cross neighborhood is less likely to introduce noise in the Color Clipping Box calculations. But, if the pixel is considered to be aliased, we prefer the $3\times 3$ neighborhood because it provides more information about the surroundings of the pixel to create the unaliased image.  
+El primer cambio consiste en que los colores que se calcularon a partir del promedio entre las vecindades $3\times 3$ y Cruz, de los patrones de muestreo (ver Figura \ref{fig:samplingpattern_2}), ahora se mezclan en una cantidad variable. Esto sigue la idea de que preferimos la vecindad de Cruz si el píxel que estamos calculando actualmente no se considera con \textit{aliasing}, porque es menos probable que la vecindad de Cruz introduzca ruido en los cálculos de la \textit{Color Clipping Box}. Pero, si se considera que el píxel con \textit{aliasing}, preferimos el vecindario $3\times 3$ porque proporciona más información sobre el entorno del píxel para crear la imagen sin \textit{aliasing}. 
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.3]{images/sampling_pattern.png}
-	\caption{Sampling Pattern used. Image taken from Fuglsand presentation. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern_2}
+	\caption{Patrón de muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern_2}
 \end{figure}
 
-The second change is that the size of the Color Clipping Box depends on how much the pixel is considered to be aliased. By using smaller Color Clipping boxes (See Figure \ref{fig:colorclippingboxredux}) than the original technique on unaliased pixels, we increase the elimination of unwanted colors from the history, reducing the effects of ghosting since we are rejecting colors faster on pixels that we know are not considered to be aliased. This is implemented by linearly interpolating the current pixel color and the minimum and maximum colors calculated for the Color Clipping Box.
+El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} depende de cuánto \textit{aliasing} se considera que el píxel tiene. Al utilizar \textit{Color Clipping Box} más pequeñas (Ver Figura \ref{fig:colorclippingboxredux}) que la técnica original en píxeles sin \textit{aliasing}, aumentamos la eliminación de colores no deseados del historial, reduciendo los efectos del efecto \textit{ghosting} ya que rechazamos colores más rápido en píxeles que sabemos que no se consideran con aliasing. Esto se implementa mediante la interpolación lineal del color de píxel actual y los colores mínimo y máximo calculados para construir la \textit{Color Clipping Box}.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.7]{images/clipping_box_reduction.png}
-	\caption{Color Clipping Box size reduction}\label{fig:colorclippingboxredux}
+	\caption{Reducción de tamaño de la Color Clipping Box}\label{fig:colorclippingboxredux}
 \end{figure}
 
 On the next subsections, we explain how all the values are calculated that contribute to decide if a pixel is considered aliased or not. All of these values are calculated at the same time as TAA is being applied, with the exception of the Sobel Operator which happens before the main TAA technique. Afterward, we show how we use that value to reduce the size of the Color Clipping Box and the preference of the Sampling Pattern.
