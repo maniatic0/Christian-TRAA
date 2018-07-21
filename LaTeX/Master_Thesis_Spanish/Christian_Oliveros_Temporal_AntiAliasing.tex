@@ -717,49 +717,49 @@ A continuación, vamos a mostrar ejemplos de cómo esta técnica decide si un p�
 \end{bmatrix*}
 \end{equation}
 
-\subsection{Sobel Improvements Implementation}
-The main idea behind applying Sobel edge detection technique is to concentrate the TAA effects on pixels on edges to correct aliasing, if necessary.  It is important to note that this is the only technique from the improvements of the master thesis that runs before the main TAA algorithm.
+\subsection{Implementación de las Mejoras de Sobel}
+La idea principal detrás de la aplicación de la técnica de detección de bordes de Sobel es concentrar los efectos TAA en píxeles en los bordes para corregir el \textit{aliasing}, si es necesario. Es importante señalar que esta es la única técnica de las mejoras de la tesis que se ejecuta antes del algoritmo TAA principal.
 
-We apply the Sobel Operator to the luminance of the colors of the lit scene produced by the Deferred Shading Pipeline, the luminance of the colors of the unlit scene from the Geometric Buffer, and the current linear depth. We use luminance because the human eye is better at recognizing sudden changes on it and we use the lit and unlit scene to avoid problems detecting edges because of lights or shadows. 
+Aplicamos el Operador Sobel a la luminancia de los colores de la escena iluminada producida por la Arquitectura de \textit{Shading} Diferido, la luminancia de los colores de la escena no iluminada del Buffer de Geometría y la profundidad lineal actual. Utilizamos la luminancia porque el ojo humano reconoce mejor los cambios repentinos y usamos la escena, iluminada y no iluminada, para evitar problemas al detectar bordes debido a luces o sombras.
 
-Each Sobel Operator is performed separately, and their magnitudes mixed at the end as follows:
+Cada operador de Sobel se realiza por separado, y sus magnitudes se mezclan al final de la siguiente manera:
 \begin{equation} \label{eq:sobel_g}
 	g=(u*0.3 +l*0.7)+d 
 \end{equation}
 
-Where $u$ is the magnitude of the sobel operator of the luminance of the unlight scene, $l$ is the magnitude of the sobel operator of the luminance of the lighted scene and $d$ is the magnitude of the sobel operator of the current linear depth. \\
+Donde $u$ es la magnitud del Operador Sobel de la luminancia de la escena no iluminada, $l$ es la magnitud del Operador Sobel de la luminancia de la escena iluminada y $d$ es la magnitud del Operador Sobel de la profundidad lineal actual. \\
 
-Then, we clamp $g$ between $0.0$ and $1.0$ to finally apply the smoothstep polynomial as follows:
+Luego, restringimos(\textit{clamp}) $g$ entre $0.0$ y $1.0$ para finalmente aplicar el polinomio de paso suave (\textit{smoothstep}) de la siguiente manera:
 \begin{equation} \label{eq:sobel_sqrt}
 sobel=\sqrt{g^2*(3.0-2.0*g)} 
 \end{equation}
 
-After all the Sobel Operators are applied, we save the results to a texture and perform a simplified version of TRAA to keep the results stable through time. This simplified version is almost the same as the one we use as a base of this master thesis, the differences come from the use of Clamping rather than a Clipping Box because the texture values are one dimensional; and we do not apply a sharpen filter.
+Después de aplicar todos los Operadores de Sobel, guardamos los resultados en una textura y realizamos una versión simplificada de TRAA para mantener los resultados estables a lo largo del tiempo. Esta versión simplificada es casi la misma que la que usamos como base de esta tesis, las diferencias provienen del uso de \textit{Clamping} (Restricción) en lugar de una \textit{Color Clipping Box}, porque los valores de textura son unidimensionales; y que no aplicamos un Filtro de Nitidez.
 
-The output of this TRAA is used to calculate the Sobel value of the current pixel, the average Sobel value in the Cross Neighborhood and the average Sobel value in the $3\times 3$ Neighborhood.
+La salida de este TRAA se usa para calcular el valor de Sobel del píxel actual, el valor promedio de Sobel en la Vecindad Cruz y el valor promedio de Sobel en la Vecindad $3\times 3$.
 
-\subsection{Final Mixing}
-Finally, we  modify how the Clipping Box is calculated using the values we previously calculated. We call this final mixed value $aliasedValue$, it represents how much a pixel is considered to be aliased. After it is calculated, we use it to change the Sampling Pattern from which colors the Color Clipping Box is built upon and its  size.
+\subsection{Mezcla Final}
+Finalmente, modificamos cómo se calcula la \textit{Color Clipping Box} utilizando los valores que calculamos previamente. Llamamos a este valor mezclado final $aliasedValue$, el cual representa la cantidad de un pixel que se considera con \textit{aliasing}. Después de calcularlo, lo usamos para cambiar el patrón de muestreo a partir del cual se construye la \textit{Color Clipping Box} y su tamaño.
 
-First , we define the mix function as follows:
+Primero, definimos la función de mezcla de la siguiente manera:
 \begin{equation} \label{eq:mixfunction}
 Mix(x,y,t)=x*(1-t)+y*t\quad with\; 0\leq t\leq 1
 \end{equation} 
 
-Then, the final mixing is applied as follows:
+Luego, la mezcla final se aplica de la siguiente manera:
 \begin{equation}\label{eq:sobelavgmixval}
 sobelAvgMixVal=Clamp01(modelAverage_i+sobel) 
 \end{equation}
  
-Where $sobel$ is the Sobel value of the current pixel, Equation \ref{eq:sobel_sqrt}, $modelAverage_i$ comes from the Equation \ref{eq:model_index_acc} and $Clamp01$ is the clamping function between $0$ and $1$. \\
+Donde $sobel$ es el valor Sobel del píxel actual, de la Ecuación \ref{eq:sobel_sqrt}, $modelAverage_i$ proviene de la Ecuación \ref{eq:model_index_acc} y $Clamp01$ es la función de Clamping (Restricción) entre $0$ y $1$. \\
 
 \begin{equation}\label{eq:sobelavg}
 sobelAvg=Mix(sobelAvgCross, sobelAvg3x3, sobelAvgMixVal)
 \end{equation}
 
-Where $sobelAvgCross$ is the average Sobel value of the Cross Neighborhood and $sobelAvg3x3$ is the average Sobel value of the $3\times 3$ Neighborhood around the current pixel. \\ 
+Donde $sobelAvgCross$ es el valor promedio de Sobel de la Vecindad Cruz y $sobelAvg3x3$ es el valor promedio de Sobel de la Vecindad $3\times 3$ alrededor del píxel actual. \\ 
 
-And, we use Equations \ref{eq:sobelavg}, \ref{eq:depthpseudovariance}, \ref{eq:depthtemporalpseudovariance} and \ref{eq:model_index_acc} to calculate how much this pixel is considered to be aliased:
+Y, utilizamos las Ecuaciones \ref{eq:sobelavg}, \ref{eq:depthpseudovariance}, \ref{eq:depthtemporalpseudovariance} y \ref{eq:model_index_acc} para calcular cuánto \textit{aliasing} se considera este píxel tiene:
 \begin{equation}\label{eq:aliasedvalue}
 \begin{split}
 aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
@@ -768,7 +768,7 @@ aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
 \end{split}
 \end{equation}
 
-With this $aliasedValue$ we proceed to modify the Color Clipping Box. First, we select how much of each Sampling Pattern we want to be part of the Color Clipping Box:
+Con este $aliasedValue$ (valor de \textit{aliasing}) procedemos a modificar la \textit{Color Clipping Box}. Primero, seleccionamos cuánto de cada patrón de muestreo queremos que sea parte del \textit{Color Clipping Box}:
 \begin{equation}\label{eq:newcolors}
 \begin{split}
 colorMin= & Mix(colorMinCross,colorMin3x3,aliasedValue) \\
@@ -777,7 +777,7 @@ colorAvg= & Mix(colorAvgCross,colorAvg3x3,aliasedValue) \\
 \end{split}
 \end{equation}
 
-Then we modify the size of the Color Clipping Box by interpolating towards the normal size if the $aliasedValue$ is close to one, else, we use the current color, which is the center of the box.
+Luego modificamos el tamaño del \textit{Color Clipping Box} mediante la interpolación hacia el tamaño normal si el $aliasedValue$ está cerca de uno; en caso contrario, usamos el color actual, que es el centro del cuadro, lo cual disminuye el tamaño.
 \begin{equation}\label{eq:clipredux}
 \begin{split}
 	clipColorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
@@ -787,28 +787,28 @@ Then we modify the size of the Color Clipping Box by interpolating towards the n
 
 
 
-The Figures \ref{fig:aliasedval1}, \ref{fig:aliasedval2} and \ref{fig:aliasedval3} are examples of the aliased values calculated, each pixel is the current $aliasedValue$ of that picture. The white color represents an $aliasedValue$ of $1$ and the black color of $0$. As we expect, most the edges are marked as probably aliased by the techniques we used.
+Las Figuras \ref{fig:aliasedval1}, \ref{fig:aliasedval2} y \ref{fig:aliasedval3} son ejemplos de los valores de \textit{aliasing} calculados, cada píxel representa el $aliasedValue$ actual de esa imagen. El color blanco representa un $aliasedValue$ de $1$ y el color negro de $0$. Como esperamos, la mayoría de los bordes están marcados como probablemente con \textit{aliasing} por las técnicas que utilizamos.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{images/aliased_value_example_1_temporal.png}
-	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval1}
+	\caption{Imagen hecha de los valores de \textit{aliasing} de cada píxel.}\label{fig:aliasedval1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{images/aliased_value_example_2_temporal.png}
-	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval2}
+	\caption{Imagen hecha de los valores de \textit{aliasing} de cada píxel.}\label{fig:aliasedval2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{images/aliased_value_example_3_temporal.png}
-	\caption{Image made of the Aliased Values of each pixel.}\label{fig:aliasedval3}
+	\caption{Imagen hecha de los valores de \textit{aliasing} de cada píxel.}\label{fig:aliasedval3}
 \end{figure}
 
-\subsection{Sharpen Filter Modifications}
-With the current The Sharpen Filter, a color peak is created when the center pixel is bright and the neighboring pixels are dark, this is because dark colors are close to zero but the center pixel is still multiplied by $5$. An example of the worst possible case is having the center pixel as a bright color and the neighborhood’s pixels as pure black, which are represented as zero. Therefore, we normalized Sharpen Filter to avoid creating that color peak and to work better with bright pixels with dark neighborhoods. The Filter was changed from \ref{eq:sharpen} to:
+\subsection{Modificaciones del Filtro de Nitidez}
+Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel central es brillante y los píxeles vecinos están oscuros, esto ocurre porque los colores oscuros son cercanos a cero y no son capaces de cancelar el aumento al píxel central, el cual se multiplica por $5$. Un ejemplo del peor caso posible es tener el píxel central con un color brillante y los píxeles del vecindario como negro puro, que se representan como cero. Por lo tanto, hemos normalizado el Filtro de Nitidez para evitar crear ese pico de color y trabajar mejor con píxeles brillantes con vecindarios oscuros. El filtro se cambió de \ref{eq:sharpen} a:
 \begin{equation} \label{eq:new_sharpen}
 \centering
 \begin{bmatrix*}[c]
@@ -818,7 +818,7 @@ With the current The Sharpen Filter, a color peak is created when the center pix
 \end{bmatrix*}
 \end{equation}
 
-Equation \ref{eq:new_sharpen} shows the new Sharpen Filter Convolution Matrix used.
+La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del Filtro de Nitidez utilizada.
 
 
 \chapter{Results}

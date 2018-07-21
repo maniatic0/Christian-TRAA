@@ -16,9 +16,9 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Los $128$ de la $Secuendia Halton (2,3)$ disponibles para usar.\relax }}{22}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Patrón de muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \cite {Fuglsand2016}\relax }}{27}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Reducción de tamaño de la Color Clipping Box\relax }}{27}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{32}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{33}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Image made of the Aliased Values of each pixel.\relax }}{33}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Imagen hecha de los valores de \textit {aliasing} de cada píxel.\relax }}{33}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Imagen hecha de los valores de \textit {aliasing} de cada píxel.\relax }}{33}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Imagen hecha de los valores de \textit {aliasing} de cada píxel.\relax }}{33}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Rendered Images comparison.\relax }}{38}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces SSIM Maps comparison.\relax }}{38}

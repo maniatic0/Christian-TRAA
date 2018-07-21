@@ -648,9 +648,9 @@ After all the Sobel Operators are applied, we save the results to a texture and 
 The output of this TRAA is used to calculate the Sobel value of the current pixel, the average Sobel value in the Cross Neighborhood and the average Sobel value in the $3\times 3$ Neighborhood.
 
 \subsection{Final Mixing}
-Finally, we  modify how the Clipping Box is calculated using the values we previously calculated. We call this final mixed value $aliasedValue$, it represents how much a pixel is considered to be aliased. After it is calculated, we use it to change the Sampling Pattern from which colors the Color Clipping Box is built upon and its  size.
+Finally, we modify how the Clipping Box is calculated using the values we previously calculated. We call this final mixed value $aliasedValue$, it represents how much a pixel is considered to be aliased. After it is calculated, we use it to change the Sampling Pattern from which colors the Color Clipping Box is built upon and its size.
 
-First , we define the mix function as follows:
+First, we define the mix function as follows:
 \begin{equation} \label{eq:mixfunction}
 Mix(x,y,t)=x*(1-t)+y*t\quad with\; 0\leq t\leq 1
 \end{equation} 
@@ -660,7 +660,7 @@ Then, the final mixing is applied as follows:
 sobelAvgMixVal=Clamp01(modelAverage_i+sobel) 
 \end{equation}
  
-Where $sobel$ is the Sobel value of the current pixel, Equation \ref{eq:sobel_sqrt}, $modelAverage_i$ comes from the Equation \ref{eq:model_index_acc} and $Clamp01$ is the clamping function between $0$ and $1$. \\
+Where $sobel$ is the Sobel value of the current pixel, from Equation \ref{eq:sobel_sqrt}, $modelAverage_i$ comes from the Equation \ref{eq:model_index_acc} and $Clamp01$ is the clamping function between $0$ and $1$. \\
 
 \begin{equation}\label{eq:sobelavg}
 sobelAvg=Mix(sobelAvgCross, sobelAvg3x3, sobelAvgMixVal)

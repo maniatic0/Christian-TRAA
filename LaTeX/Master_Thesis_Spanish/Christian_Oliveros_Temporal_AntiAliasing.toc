@@ -56,9 +56,9 @@
 \contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{26}
 \contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{27}
 \contentsline {subsection}{\numberline {4.3.2}Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}{29}
-\contentsline {subsection}{\numberline {4.3.3}Sobel Improvements Implementation}{30}
-\contentsline {subsection}{\numberline {4.3.4}Final Mixing}{31}
-\contentsline {subsection}{\numberline {4.3.5}Sharpen Filter Modifications}{33}
+\contentsline {subsection}{\numberline {4.3.3}Implementación de las Mejoras de Sobel}{30}
+\contentsline {subsection}{\numberline {4.3.4}Mezcla Final}{31}
+\contentsline {subsection}{\numberline {4.3.5}Modificaciones del Filtro de Nitidez}{34}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Results}}{35}
 \contentsline {section}{\numberline {5.1}Evaluation Methodology}{35}
 \contentsline {section}{\numberline {5.2}Results and Comparisons}{36}
