@@ -263,7 +263,7 @@ Para esta tesis, usaremos la primera parte del Teorema de Muestreo de Nyquist, c
 
 Tomado de la página 415 del libro de Edward Angel y Dave Shreiner. \cite{Shreiner2011} \\
 
-Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que podemos tomar un número infinito de muestras por frecuencia de muestreo, que no podemos hacer en la práctica. El Problema de \textit{Aliasing} que se experimenta en la Computación Gráfica, proviene de no poder muestrear según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial), la Figura \ref{fig:aliasingexample} muestra un ejemplo de este tipo de aliasing, y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. Se han propuesto y utilizado muchas soluciones para resolverlo, por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA) que trabaja en frecuencias más altas que las requeridas a costa de mayores requerimientos de espacio.
+Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que podemos tomar un número infinito de muestras por frecuencia de muestreo, que no podemos hacer en la práctica. El Problema de \textit{Aliasing} que se experimenta en la Computación Gráfica, proviene de no poder tomar muestras según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial) y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. La Figura \ref{fig:aliasingexample} muestra un ejemplo de Aliasing Espacial. Se han propuesto y utilizado muchas soluciones para resolver el problema de \textit{Aliasing}, como por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA), que trabaja con frecuencias más altas que las requeridas a costa de mayores requerimientos de espacio.
 
 \begin{figure}[!hbt]
 	\centering
@@ -277,7 +277,7 @@ Como humanos, esperamos que los objetos reaccionen de cierta forma a las luces d
 
 Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo de la Canal de Renderizado Gráfico basado en el Rasterizer , el proceso de cálculo de la sombra es difícil de realizar. El \textit{Rasterizer} no sabe si los objetos están cubiertos o no por una fuente de luz, por lo que debemos encontrar un método para calcular si un objeto está en la sombra. Este proceso se denomina Mapeado de Sombras, consiste en representar la escena a través de la perspectiva de cada  fuente de luz y luego realizar pruebas en la perspectiva de la cámara, para establecer si el objeto se ve afectado por la luz o si está en sombras.
 
-Pero, como es de esperar, renderizar la escena varias veces es costoso y necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de \textit{Shading} Diferido proporciona esa solución solo para realizar el \textit{Shading}, utilizando una operación que podría ser costosa, solo píxeles visibles y así evitar desperdiciar recursos realizando el \textit{Shading} a píxeles de geometrías que no son visibles. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{Shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro. 
+Pero, como es de esperar, renderizar la escena varias veces es costoso y necesitamos una forma de reducir el costo tanto como podamos. La Arquitectura de \textit{Shading} Diferido proporciona esa solución para realizar el \textit{Shading}, utilizando una operación que podría ser costosa, a solo píxeles visibles y así evitar desperdiciar recursos realizando el \textit{Shading} a píxeles de geometrías que están cubiertas por otros objetos. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{Shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro. 
 
 Después de llenar el Buffer de Geometría, llevamos a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan sólo a los píxeles visibles; calculamos el Mapa de Sombreado de cada fuente de luz realizando cálculos de profundidad únicamente. Posteriormente, calculamos y guardamos el efecto de cada luz usando los Mapas de  Sombreado.
 
@@ -291,7 +291,7 @@ Otro factor importante para decidir qué técnica \textit{Anti-Aliasing} utiliza
 
 
 \subsection{Super Sampling Anti-Aliasing (SSAA)}
-Esta técnica consiste en renderizar la escena a $4$ veces el tamaño de la pantalla y luego promediar píxeles, en un área $4\times 4$ alrededor de cada pixel, para calcular el resultado \cite{Doggett2017EDAN35}. Proporciona buenos resultados, pero requiere más tiempo de renderizado y un gran uso de memoria.
+Esta técnica consiste en renderizar la escena a $4$ veces el tamaño de la pantalla y luego promediar el área $4\times 4$ alrededor de cada pixel para calcular el resultado \cite{Doggett2017EDAN35}. Proporciona buenos resultados, pero requiere más tiempo de renderizado y un gran uso de memoria.
 
 \subsection{Multi Sample Anti-Aliasing (MSAA)}
 MSAA consiste en tomar varias muestras por píxel; en cada muestra, se calculan los valores de profundidad, pero solo se computa un color para el triángulo rasterizado. Esta solución proporciona buenos resultados a costa de un mayor uso de memoria para cálculos de profundidad.
@@ -302,7 +302,7 @@ El mayor problema que tiene esta técnica es que no funciona correctamente con e
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
 FXAA es una técnica de \textit{Anti-Aliasing} que se utiliza durante el posprocesamiento. Esta funciona al detectar bordes en las imágenes renderizadas, para luego suavizarlos. \cite{Lottes2009}
 
-Es relativamente barata en comparación con MSAA y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada y proporciona resultados relativamente buenos para el aliasing temporal.
+Es relativamente barata en comparación con MSAA y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada y proporciona resultados relativamente buenos para el \textit{Aliasing} Temporal.
 
 \subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
 SMAA es una técnica de post-procesamiento basada en \textit{Morphological Anti-Aliasing} (Anti-Aliasing Morfológico). Funciona mediante la reconstrucción de bordes y sus alrededores para regenerar la información de subpíxel perdida por aliasing. \cite{Jimenez2012}
