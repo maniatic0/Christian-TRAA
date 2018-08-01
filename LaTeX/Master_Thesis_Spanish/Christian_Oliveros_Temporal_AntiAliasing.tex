@@ -316,7 +316,7 @@ Para que TRAA funcione, debemos implementar otras técnicas comunes de computaci
 
 
 \subsection{Camera Jittering}
-\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja estático en relación con los pasados, es decir, es idéntico a los cuadros anteriores, el sistema está pierde información subpíxel alrededor de los bordes que podría usarse para refinarla.  ~\cite{Fuglsand2016, XU2016}
+\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja estático en relación con los pasados, es decir, es idéntico a los cuadros anteriores, se pierde información subpíxel alrededor de los bordes que podría usarse para refinar la imágen final.  ~\cite{Fuglsand2016, XU2016}
 
 \begin{figure}[!hbt]
 	\centering
@@ -357,7 +357,7 @@ Después de tener los píxeles en el Buffer de Historia, lo restringimos (explic
 \end{figure}
 
 \subsection{Clipping Color Box} 
-Una \textit{Clipping Color Box} (Caja de Recorte de Colores) a es una caja 3D construida utilizando el color de píxel actual como el centro y el color mínimo y máximo calculado en la última subsección como los límites. Se utiliza para manejar el rechazo de la historia cuando el color del píxel en el Buffer de Historia está demasiado alejado del color actual. Tomamos el color de la historia del como un vector y luego lo proyectamos contra los límites de la caja; si se encuentra fuera del borde de la caja, entonces mantenemos la proyección; de lo contrario, el color de la historia quedará intacto. El uso del Clipping Color Box evita la agrupación de colores en las esquinas que ocurriría si se aplicara \textit{clamping} (Ver Figura ~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
+La \textit{Clipping Color Box} (Caja de Recorte de Colores) a es una caja 3D construida utilizando el color de píxel actual como el centro y el color mínimo y máximo calculado en la última subsección como los límites. Se utiliza para manejar el rechazo de la historia, cuando el color del píxel en el Buffer de Historia está muy alejado del color actual. Tomamos el color de la historia como un vector y luego lo proyectamos contra los bordes de la caja; si se encuentra fuera del borde de la caja, mantenemos la proyección; de lo contrario, el color de la historia quedará intacto. El uso del Clipping Color Box evita la agrupación de colores en las esquinas que ocurriría si se aplicara \textit{clamping} (Ver Figura ~\ref{fig:clippingbox}). ~\cite{Fuglsand2016}.
 
 \begin{figure}[!hbt]
 	\centering
@@ -367,7 +367,7 @@ Una \textit{Clipping Color Box} (Caja de Recorte de Colores) a es una caja 3D co
 
 
 \subsection{Filtro de Nitidez} 
-Como el Proceso de Reproyección y el \textit{Clipping} de Colores crean imágenes borrosas, se requiere un Filtro de Nitidez. Usamos el propuesto por Xu. ~\cite{XU2016}
+El Proceso de Reproyección y el \textit{Clipping} de Colores crean imágenes borrosas, por lo que se requiere un Filtro de Nitidez. Usamos el filtro propuesto por Xu. ~\cite{XU2016}
 
 \begin{equation} \label{eq:sharpen}
 \begin{bmatrix*}[r]
@@ -377,19 +377,19 @@ Como el Proceso de Reproyección y el \textit{Clipping} de Colores crean imágen
 \end{bmatrix*}
 \end{equation}
 
-La Ecuación \ref{eq:sharpen} es la matriz de convolución utilizada como Filtro de Nitidez en el \textit{paper} de Xu. \protect\cite{XU2016}
+La Ecuación \ref{eq:sharpen} representa la matriz de convolución utilizada como Filtro de Nitidez en el \textit{paper} de Xu. \protect\cite{XU2016}
 
 \subsection{Motion Blur}
-Debido a la naturaleza del Buffer de Historia, algo de \textit{ghosting} es creado por fragmentos de objetos que se mueven más rápido que el tiempo que tarda el \textit{Clipping Color Box} para rechazar el color de píxeles antiguos, esto es especialmente notable bajo condiciones especiales de luz y fondo. Fuglsand y Xu ~\cite{Fuglsand2016, XU2016} propusieron usar soluciones como \textit{Motion Blur} para ocultar estos artefactos.
+Debido a la naturaleza del Buffer de Historia, algo de \textit{ghosting} es creado por algunos fragmentos de objetos que se mueven más rápido que el tiempo que tarda el \textit{Clipping Color Box} para rechazar el color de píxeles antiguos, esto es especialmente notable bajo condiciones especiales de luz y fondo. Fuglsand y Xu ~\cite{Fuglsand2016, XU2016} propusieron usar soluciones como \textit{Motion Blur} para ocultar estos artefactos.
 
 El \textit{Motion Blur} utilizado es el propuesto por Chapman ~\cite{Chapman2012}. Intenta comportarse como una cámara real, escalando la velocidad de cada píxel mediante la división de los cuadros actuales por segundo (FPS) a la velocidad deseada, simulando así la velocidad de obturación. Luego, mezcla los colores de los píxeles que se muestrean al seguir la dirección del vector del Buffer de Velocidad.
 
 
 \subsection{Problemas}
-Temporal Anti-Aliasing tiene dos inconvenientes principales, el efecto de Ghosting de los objetos en movimiento y el Desenfoque proveniente de la forma en que funciona el Clipping Color Box. Esta tesis pretende ayudar a reducir los efectos de estos dos inconvenientes utilizando nuevos enfoques, pero, por completitud, presentamos algunas de las soluciones actuales disponibles.
+Temporal Anti-Aliasing tiene dos inconvenientes principales, el efecto de Ghosting de los objetos en movimiento y el Desenfoque proveniente de la forma en que funciona el Clipping Color Box. Esta tesis pretende ayudar a reducir los efectos de estos dos inconvenientes utilizando nuevos enfoques. Por completitud, presentamos algunas de las soluciones actuales disponibles.
 
 \subsubsection{Desenfoque} 
-Las implementaciones actuales de TAA generan un desenfoque muy agresivo debido a la forma en que mezclan los colores del cuadro actual y el historial; el uso de áreas más grandes que el píxel aumenta los errores generados, por lo tanto, se requiere un Filtro de Nitidez. El filtro aplicado en la implementación es el utilizado por Xu ~\cite{XU2016}, resuelve el desenfoque razonablemente bien, pero no puede eliminar algunos artefactos. 
+Las implementaciones actuales de TAA generan un desenfoque muy agresivo debido a la forma en que mezclan los colores del cuadro actual y el historial; el uso de áreas más grandes que el píxel aumenta los errores generados, por lo tanto, se requiere un Filtro de Nitidez. El filtro aplicado en la implementación es el utilizado por Xu ~\cite{XU2016}, que resuelve el desenfoque razonablemente bien, pero no logra eliminar algunos artefactos. 
 
 \subsubsection{Ghosting} 
 Algo de \textit{Ghosting} se crean cuando los objetos se mueven, especialmente bajo condiciones particulares de luz y fondo que hacen que el primer plano y el fondo se vean de manera similar. Esto se corrige parcialmente con \textit{Motion Blur}, sin embargo, parte de él permanece cerca de objetos que se mueven lo suficientemente rápido como para crear algo de \textit{Ghosting} pero lo suficientemente lentos como para evitar el \textit{Motion Blur}. Xu propone el uso de \textit{Motion Blur} y aumentar el tamaño de todo utilizando una técnica \textit{Stencil} y el etiquetado manual de objetos ~\cite{XU2016}, pero nuestro objetivo es evitar que los artistas etiqueten manualmente y prueben objetos por sus comportamientos bajo \textit{Ghosting}. La implementación de Pederson permite el \textit{Jittering} en los cálculos del Buffer de Velocidad para evitar \textit{Ghosting} en las imágenes, pero crea desenfoque no deseado. ~\cite{Fuglsand2016}. 
