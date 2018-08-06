@@ -392,18 +392,17 @@ Temporal Anti-Aliasing tiene dos inconvenientes principales, el efecto de Ghosti
 Las implementaciones actuales de TAA generan un desenfoque muy agresivo debido a la forma en que mezclan los colores del cuadro actual y el historial; el uso de áreas más grandes que el píxel aumenta los errores generados, por lo tanto, se requiere un Filtro de Nitidez. El filtro aplicado en la implementación es el utilizado por Xu ~\cite{XU2016}, que resuelve el desenfoque razonablemente bien, pero no logra eliminar algunos artefactos. 
 
 \subsubsection{Ghosting} 
-Algo de \textit{Ghosting} se crean cuando los objetos se mueven, especialmente bajo condiciones particulares de luz y fondo que hacen que el primer plano y el fondo se vean de manera similar. Esto se corrige parcialmente con \textit{Motion Blur}, sin embargo, parte de él permanece cerca de objetos que se mueven lo suficientemente rápido como para crear algo de \textit{Ghosting} pero lo suficientemente lentos como para evitar el \textit{Motion Blur}. Xu propone el uso de \textit{Motion Blur} y aumentar el tamaño de todo utilizando una técnica \textit{Stencil} y el etiquetado manual de objetos ~\cite{XU2016}, pero nuestro objetivo es evitar que los artistas etiqueten manualmente y prueben objetos por sus comportamientos bajo \textit{Ghosting}. La implementación de Pederson permite el \textit{Jittering} en los cálculos del Buffer de Velocidad para evitar \textit{Ghosting} en las imágenes, pero crea desenfoque no deseado. ~\cite{Fuglsand2016}. 
+Algunos artefactos de \textit{Ghosting} se crean cuando los objetos se mueven, especialmente bajo condiciones particulares de luz y fondo, que hacen que el primer plano y el fondo se vean de manera similar. Esto se corrige parcialmente con \textit{Motion Blur}, sin embargo, parte del \textit{Ghosting} permanece cerca de objetos que se mueven lo suficientemente rápido como para crearlo, pero son lo suficientemente lentos como para evitar el \textit{Motion Blur}. Xu propone el uso de \textit{Motion Blur} y aumentar el tamaño de todo utilizando una técnica \textit{Stencil} y el etiquetado manual de objetos ~\cite{XU2016}, pero nuestro objetivo es evitar que los artistas etiqueten manualmente y prueben objetos por sus comportamientos bajo \textit{Ghosting}. La implementación de Pederson permite el \textit{Jittering} en los cálculos del Buffer de Velocidad para evitar \textit{Ghosting} en las imágenes, pero crea desenfoque no deseado. ~\cite{Fuglsand2016}. 
 
 \section{Buffer de Acumulación}
 El Buffer de Acumulación es una técnica de \textit{Anti-Aliasing} que consiste, según Paul Haeberli y Kurt Akeley \cite{Haeberli1990}, en renderizar la escena varias veces aplicando \textit{Jittering} a la cámara y luego realizar una suma ponderada a escala de las renderizaciones para generar el cuadro actual.
 
 Este es un proceso que aumenta el muestreo por píxel y reduce los efectos de \textit{aliasing}, lo que produce una imagen de alta calidad a costa de procesar todo varias veces por cuadro.
 
-
 \section{Operador de Sobel}
-El Operador Sobel es un operador de gradiente isotrópico $3\times 3$ eficientemente computable, como lo explica Irwin Sobel \cite{Sobel2014}. Usamos este operador para detectar bordes en las imágenes renderizadas y marcarlos como posibles lugares con aliasing. Esto es porque son un lugar común para que aparezcan los artefactos de aliasing. 
+El Operador Sobel es un operador de gradiente isotrópico $3\times 3$ computable eficientemente, como lo explica Irwin Sobel \cite{Sobel2014}. Usamos este operador para detectar bordes en las imágenes renderizadas y marcarlos como posibles lugares con aliasing. Esto es porque los bordes son lugar común para que aparezcan los artefactos de aliasing. 
 
-Funciona al tomar las cuatro estimaciones de gradiente simple central posibles en un vecindario de $3\times 3$ y sumarlas. La función de imagen se toma como una función de densidad / intensidad y las cuatro posibles estimaciones como vectores ortogonales que son derivadas direccionales multiplicadas por un vector unitario que especifica la dirección de la derivada. La suma de las cuatro estimaciones posibles de gradiente simple central es equivalente a la suma vectorial de los ocho vectores derivativos direccionales.
+Funciona al tomar las cuatro estimaciones posibles del gradiente simple central en un vecindario de $3\times 3$ y sumarlas. La función de imagen se toma como una función de densidad / intensidad y las cuatro estimaciones posibles como vectores ortogonales que son derivadas direccionales, multiplicadas por un vector unitario que especifica la dirección de la derivada. La suma de las cuatro estimaciones posibles de gradiente simple central es equivalente a la suma vectorial de los ocho vectores derivativos direccionales.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:sobel_neighborhood}
@@ -413,16 +412,16 @@ g & h & i
 \end{bmatrix*}
 \end{equation}
 
-Sea la Matriz \ref{eq:sobel_neighborhood} sea Vecindario $3\times 3$ y $\abs*{G}$ la magnitud de la estimación derivada direccional del vecindario.
+Siendo la Matriz \ref{eq:sobel_neighborhood} el Vecindario $3\times 3$ y $\abs*{G}$ la magnitud de la estimación derivada direccional del vecindario.
 
-La dirección de $G$ estará dada por el vector unitario asociado al vecino apropiado. La suma vectorial hace que se cancelen todos los valores de $e$ (centro del  Vecindario $3\times 3$) dejando solo la siguiente expresión \ref{eq:sobel_simplification}:
+La dirección de $G$ estará dada por el vector unitario asociado al vecino apropiado. La suma vectorial hace que se cancelen todos los valores de $e$ (centro del Vecindario $3\times 3$) dejando la siguiente expresión \ref{eq:sobel_simplification}:
 \begin{equation}\label{eq:sobel_simplification}
 \begin{split}
 	G & =\frac{c-g}{4}*\begin{bmatrix*}1 & 1\end{bmatrix*}+\frac{a-i}{4}*\begin{bmatrix*}-1 & 1\end{bmatrix*}+\frac{b-h}{2}*\begin{bmatrix*}0 & 1\end{bmatrix*}+\frac{f-d}{2}*\begin{bmatrix*}1 & 0\end{bmatrix*} \\ & =\begin{bmatrix*}\frac{c-g-a+i}{4}+\frac{f-d}{2} & \frac{c-g+a-i}{4}+\frac{b-h}{2}\end{bmatrix*}
 \end{split}
 \end{equation}
 
-Luego multiplicamos por $4$ para aproximar el valor y asegurarnos de que no perdamos precisión si lo realizamos con enteros pequeños de punto fijo. La magnitud recién calculada es dieciséis veces más grande que el gradiente promedio original.
+Luego multiplicamos por $4$ para aproximar el valor y asegurarnos que no perdemos precisión si lo realizamos con enteros pequeños de punto fijo. La magnitud recién calculada es dieciséis veces más grande que el gradiente promedio original.
 
 \begin{equation}\label{eq:sobel_approximation}
 \begin{split}
@@ -448,10 +447,10 @@ La Ecuación \ref{eq:sobel_approximation} se puede expresar en dos matrices de p
 \end{bmatrix*}
 \end{equation}
 
-Para la detección de bordes, lo que se hace comúnmente es comparar la magnitud de $G$ contra un umbral numérico para marcar píxels como bordes.
+Para la detección de bordes, lo que se hace comúnmente es comparar la magnitud de $G$ contra un umbral numérico, para marcar píxels como bordes.
 
 \section{Métricas de Imagen}
-El proceso de medir la calidad de una imagen es complicado. Como explican Al-Najjar y Soong \cite{Yusra2012}, podemos seguir dos tipos métodos principales: subjetivo u objetivo. Los métodos subjetivos se basan en opiniones recogidas de humanos y, como cabría esperar, se consideran costosos, difíciles de implementar y llevan mucho tiempo. El segundo tipo de métodos, los objetivos, se basan en fórmulas matemáticas y algoritmos para medir la calidad de la imagen sin intervención humana. Para esta tesis, usamos métodos objetivos.
+El proceso de medir la calidad de una imagen es complicado. Como explican Al-Najjar y Soong \cite{Yusra2012}, podemos seguir dos métodos principales: subjetivos u objetivos. Los métodos subjetivos se basan en opiniones recogidas de humanos y, como cabría esperar, se consideran costosos, difíciles de implementar y llevan mucho tiempo. El segundo tipo de métodos, los objetivos, se basan en fórmulas matemáticas y algoritmos para medir la calidad de la imagen sin intervención humana. Para esta tesis, usamos métodos objetivos.
 
 Los métodos de objetivos se pueden categorizar en tres grupos, como describen Al-Najjar y Soong \cite{Yusra2012}:
 
@@ -462,7 +461,7 @@ Los métodos de objetivos se pueden categorizar en tres grupos, como describen A
 \end{itemize}
 
 
-Para la computación gráfica, los métodos preferidos son los de Referencia-Completa porque las imágenes de referencia se pueden generar utilizando algoritmos de mayor calidad pero con mal rendimiento para representarlos. Las métricas más comunes utilizadas, y las utilizadas en esta tesis, son: Error Cuadrado Medio (MSE, \textit{Mean Square Error}); Relación Señal a Ruido de Pico (PSNR, \textit{Peak Signal-to-Noise Ratio}); y el Índice de Similitud Estructural  (SSIM, \textit{Structural Similarity Index}).
+Para Computación Gráfica, los métodos preferidos son los de Referencia-Completa, porque las imágenes de referencia se pueden generar utilizando algoritmos de mayor calidad pero con mal rendimiento para representarlos. Las métricas más comunes utilizadas, y utilizadas en esta tesis, son: Error Cuadrado Medio (MSE, \textit{Mean Square Error}); Relación Señal a Ruido de Pico (PSNR, \textit{Peak Signal-to-Noise Ratio}); y el Índice de Similitud Estructural  (SSIM, \textit{Structural Similarity Index}).
 
 \subsection{Error Cuadrado Medio (MSE)}
 Basada en el promedio del error cuadrado entre los píxeles de la imagen y la referencia. 
