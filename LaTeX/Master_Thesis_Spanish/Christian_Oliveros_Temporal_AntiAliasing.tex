@@ -820,20 +820,21 @@ Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel centr
 La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del Filtro de Nitidez utilizada.
 
 
-\chapter{Results}
-In this chapter, we explain how we evaluated the improvements done to the Temporal Anti-Aliasing. We show the numerical and visual results obtained. Finally, we explain the results and their meaning compared to the previous implementation of TAA and other Anti-Aliasing solutions.
-\section{Evaluation Methodology}
-To evaluate the improvements achieved to the Temporal Anti-Aliasing technique we selected models and camera angles that place the technique under stress. Then, using the Testing Framework we developed, we proceed to render and save images of each of those models to compare how the technique behaves in comparison to the original TAA implementation and other Anti-Aliasing techniques to determine if the proposed techniques in this thesis provided images with better quality without incurring heavy memory usage or time consumption. Also, a special test was taken to measure if changing the Sharpen Filter was the sole mechanism providing an improvement.
+\chapter{Resultados}
+En este capítulo, explicamos cómo evaluamos las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Mostramos los resultados numéricos y visuales obtenidos. Finalmente, explicamos los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
 
-The models used on the tests were:
+\section{Metodología de Evaluación}
+Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, seleccionamos modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba que desarrollamos, procedemos a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing} para determinar si las técnicas propuestas en esta tesis proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
+
+Los modelos utilizados en las pruebas fueron:
 \begin{itemize}
-\item Pipe: A brown pipe with hard edges.
-\item Window with Blinds: A blue window with closed blinds.
-\item Arched Window: A blue window with an arch at the top.
-\item Wall: A white wall with black text.
-\item Sponza Atrium: exemplifies a general scene.
-\item Sponza Atrium Flowers: exemplifies a cutout model.
-\item Hairball: contains many fine details for its numerous fibers.
+\item Tubería: una tubería marrón con bordes duros.
+\item Ventana con Persianas: una ventana azul con persianas cerradas.
+\item Ventana Arqueada: una ventana azul con un arco en la parte superior.
+\item Pared: una pared blanca con texto negro.
+\item Atrium de Sponza: ejemplifica una escena general.
+\item Flores del Atrium de Sponza: ejemplifica un modelo con recortes.
+\item \textit{Hairball}: contiene muchos detalles finos por sus numerosas fibras.
 \end{itemize}
 
 It is important to note that in Computer Graphics there are only common models used to test techniques, there is no standard per se. On this Master Thesis, we used two common models: the Sponza Atrium, which has many variations and it is commonly used to test many Computer Graphics techniques; and Hairball, which is sometimes used to test Ray and Path Tracing techniques. As well, an explanation why each model was selected is available under each test subsection.
