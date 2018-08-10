@@ -61,25 +61,25 @@
 \contentsline {subsection}{\numberline {4.3.5}Modificaciones del Filtro de Nitidez}{34}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Resultados}}{35}
 \contentsline {section}{\numberline {5.1}Metodología de Evaluación}{35}
-\contentsline {section}{\numberline {5.2}Results and Comparisons}{36}
-\contentsline {subsection}{\numberline {5.2.1}Sharpen Filter}{36}
-\contentsline {subsection}{\numberline {5.2.2}Pipe}{38}
+\contentsline {section}{\numberline {5.2}Resultados y Comparaciones}{36}
+\contentsline {subsection}{\numberline {5.2.1}Filtro de Nitidez}{36}
+\contentsline {subsection}{\numberline {5.2.2}Tubería}{38}
 \contentsline {subsubsection}{Regular}{39}
-\contentsline {subsubsection}{With Camera Inclination}{40}
-\contentsline {subsection}{\numberline {5.2.3}Window with Blinds}{42}
-\contentsline {subsection}{\numberline {5.2.4}Arched Window}{43}
-\contentsline {subsection}{\numberline {5.2.5}Sponza Atrium}{44}
+\contentsline {subsubsection}{Con Ángulo de Cámara Inclinada}{40}
+\contentsline {subsection}{\numberline {5.2.3}Ventana con Persianas}{42}
+\contentsline {subsection}{\numberline {5.2.4}Ventana Arqueada}{43}
+\contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{45}
 \contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{46}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{47}
+\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{48}
 \contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{49}
 \contentsline {subsection}{\numberline {5.2.9}Hairball}{50}
-\contentsline {subsubsection}{Static Shadow}{50}
+\contentsline {subsubsection}{Static Shadow}{51}
 \contentsline {subsubsection}{Static Light}{52}
-\contentsline {subsubsection}{Ghosting Shadow}{53}
-\contentsline {subsubsection}{Ghosting Light}{55}
-\contentsline {subsection}{\numberline {5.2.10}Timing}{56}
-\contentsline {section}{\numberline {5.3}Discussion}{56}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusions and Recommendations}}{59}
-\contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {GitHub Repository}}{62}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Camera Jittering Explanation}}{63}
+\contentsline {subsubsection}{Ghosting Shadow}{54}
+\contentsline {subsubsection}{Ghosting Light}{56}
+\contentsline {subsection}{\numberline {5.2.10}Timing}{57}
+\contentsline {section}{\numberline {5.3}Discussion}{57}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusions and Recommendations}}{60}
+\contentsline {chapter}{\MakeTextUppercase {Referencias}}{61}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {GitHub Repository}}{63}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Camera Jittering Explanation}}{64}

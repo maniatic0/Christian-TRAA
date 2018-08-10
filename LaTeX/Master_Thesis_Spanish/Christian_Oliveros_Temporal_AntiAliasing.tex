@@ -837,45 +837,45 @@ Los modelos utilizados en las pruebas fueron:
 \item \textit{Hairball}: contiene muchos detalles finos por sus numerosas fibras.
 \end{itemize}
 
-It is important to note that in Computer Graphics there are only common models used to test techniques, there is no standard per se. On this Master Thesis, we used two common models: the Sponza Atrium, which has many variations and it is commonly used to test many Computer Graphics techniques; and Hairball, which is sometimes used to test Ray and Path Tracing techniques. As well, an explanation why each model was selected is available under each test subsection.
+Es importante tener en cuenta que en Computación Gráfica solo hay modelos comunes que se usan para probar técnicas, no existe un estándar per se. En esta Tesis, utilizamos dos modelos comunes: el Atrium de Sponza, que tiene muchas variaciones y se usa comúnmente para probar muchas técnicas de Computación Gráfica; y \textit{Hairball}, que a veces se usa para probar las técnicas \textit{Ray} y \textit{Path Tracing}. Para el resto de los modelos, presentamos una explicación de por qué se seleccionó cada modelo en cada subsección de cada prueba.
 
-Note that Sponza Atrium and Hairball models were downloaded from Morgan McGuire's Computer Graphics Archive \cite{McGuire2017Data}; the Pipe model is from Spencer Arts \cite{Spencer2010}; the Arched Window model is from Isabela H. \cite{Isabela2016}; and the Window with Blinds is from Channa Yim \cite{Channa2015}.
+Es importante mencionar que los modelos del Atrium de Sponza y \textit{Hairball} se descargaron del \textit{Computer Graphics Archive} \cite{McGuire2017Data} de Morgan McGuire, el modelo de la Tubería es de Spencer Arts \cite{Spencer2010}, el modelo de Ventana Arqueada es de Isabela H. \cite{Isabela2016} y la Ventana con Persianas es de Channa Yim \cite{Channa2015}.
 
-The tests were performed on the computer provided by Lund University which has the following specification:
+Las pruebas se realizaron en la computadora proporcionada por la Universidad de Lund, que tiene la siguiente especificación:
 \begin{itemize}
 \setlength\itemsep{0em}
-\item CPU: Intel(R) Core(TM) i7-3820 CPU @ 3.60GHz, 3601 Mhz, 4 Cores, 8 Logical Processors
+\item CPU: Intel(R) Core(TM) i7-3820 CPU @ 3.60GHz, 3601 Mhz, 4 Cores, 8 Procesadores Lógicos
 \item RAM: 64.0 GB	
-\item GPU: NVIDIA GeForce GTX 1080 with 8 GB of VRAM
-\item Rendering Resolution when not zooming: 1600 x 900
+\item GPU: NVIDIA GeForce GTX 1080 con 8 GB de VRAM
+\item Resolución de Renderizado cuando no se utiliza el zoom: 1600 x 900
 \end{itemize}
 
-\section{Results and Comparisons}
-First, we need to know that the best possible value for MSE and RMSD is zero, meaning that there is no error; that having a high PSNR and SNR value means it is better because the noise, which is the denominator in the equation of this metric, is close to zero; and, finally, that having an SSIM of $1$ means that the image is structurally the same as the ground truth, while having a value of $0$ means that it is structurally different. For the SSIM maps, each pixel represents its SSIM value; having a white color means that is structurally the same while having a darker color means that there are structural differences.
+\section{Resultados y Comparaciones}
+Primero, para tener una base para analizar los datos, necesitamos saber que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error; tener un alto valor de PSNR y SNR significa que es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero; y, finalmente, que tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel representa su valor SSIM: tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
 
-\subsection{Sharpen Filter}
-For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to evaluate the effects of the Normalized Sharpen Filter to the general quality of the rendered image, especially, regarding the blurring normally caused by TAA. Everything was rendered using both implementations of TAA with and without the Normalized Sharpen Filter to see if this change was the only improvement that was increasing the quality of the rendered image. The scene was selected for the test because it provided an example of a general scene that should not generate any blur. As we see from the Table \ref{tab:sharpen_res}, even if the Master Thesis TAA and the Uncharted TAA used the new Sharpen Filter, our other improvements still rendered a higher quality image. If we zoom on Figure \ref{fig:sharpen_render} From Figure \ref{fig:sharpen_ssim} we can see that the Normalized Sharpen Filter contributes reducing the artifacts in the rendered image, as there are almost no dark areas on the SSIM maps of the TAA's using it.
+\subsection{Filtro de Nitidez}
+Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para ver si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. La escena fue seleccionada para la prueba porque proporcionaba un ejemplo de una escena general que no debería generar ningún efecto de desenfoque. Como se ve en la tabla \ref{tab:sharpen_res}, incluso si el TAA de la Tesis y el TAA de Uncharted utilizaron el nuevo filtro de nitidez, nuestras otras mejoras aún renderizan una imagen de mayor calidad. Si hacemos zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} podemos ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!hbt]
 	\small
 	\centering
-	\caption{Sharpen Filter Test numerical results}
-	\begin{tabular}{|m{2.5em}|c|c|c|c|c|}
+	\caption{Resultados numéricos de la prueba del Filtro de Nitidez}
+	\begin{tabular}{|m{5em}|c|c|c|c|c|}
 		\hline
-		\multicolumn{6}{|c|}{\textbf{Sharpen Filter Test}} \\
+		\multicolumn{6}{|c|}{\textbf{Prueba del Filtro de Nitidez}} \\
 		\hline
-		\textbf{\makecell{\diagbox[height=3em,innerwidth=2.5em]{Tests}{AA}}} & \textbf{\makecell{Uncharted \\ TAA \\ Not \\ Normalized}} & \textbf{\makecell{Uncharted \\ TAA \\ Normalized}} & \textbf{\makecell{Master \\ TAA \\ Not \\ Normalized}} & \textbf{\makecell{Master \\ TAA \\ Normalized}} & \textbf{\makecell{Best} } \\
+		\textbf{\makecell{\diagbox[innerwidth=5em]{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA \\ No \\ Normalizado}} & \textbf{\makecell{Uncharted \\ TAA \\ Normalizado}} & \textbf{\makecell{Tesis \\ TAA \\ No \\ Normalizado}} & \textbf{\makecell{Tesis \\ TAA \\ Normalizado}} & \textbf{\makecell{Mejor} } \\
 		\hline
-		MSE   & 149.271 & 8.835 & 148.036 & 8.224 & \textbf{\makecell{\scriptsize Master \\ \scriptsize TAA \\ \scriptsize Normalized}} \\
+		MSE   & 149.271 & 8.835 & 148.036 & 8.224 & \textbf{\makecell{\scriptsize Tesis \\ \scriptsize TAA \\ \scriptsize Normalizado}} \\
 		\hline
-		RMSD  & 12.218 & 2.972 & 12.167 & 2.868 & \textbf{\makecell{\scriptsize Master \\ \scriptsize TAA \\ \scriptsize Normalized}} \\
+		RMSD  & 12.218 & 2.972 & 12.167 & 2.868 & \textbf{\makecell{\scriptsize Tesis \\ \scriptsize TAA \\ \scriptsize Normalizado}} \\
 		\hline
-		Peak-SNR  & 26.391 & 38.669 & 26.427 & 38.980 & \textbf{\makecell{\scriptsize Master \\ \scriptsize TAA \\ \scriptsize Normalized}} \\
+		Peak-SNR  & 26.391 & 38.669 & 26.427 & 38.980 & \textbf{\makecell{\scriptsize Tesis \\ \scriptsize TAA \\ \scriptsize Normalizado}} \\
 		\hline
-		SNR   & 16.245 & 28.522 & 16.281 & 28.833 & \textbf{\makecell{\scriptsize Master \\ \scriptsize TAA \\ \scriptsize Normalized}} \\
+		SNR   & 16.245 & 28.522 & 16.281 & 28.833 & \textbf{\makecell{\scriptsize Tesis \\ \scriptsize TAA \\ \scriptsize Normalizado}} \\
 		\hline
-		SSIM  & 0.932 & 0.992 & 0.933 & 0.992 & \textbf{\makecell{\scriptsize Master \\ \scriptsize TAA \\ \scriptsize Normalized}} \\
+		SSIM  & 0.932 & 0.992 & 0.933 & 0.992 & \textbf{\makecell{\scriptsize Tesis \\ \scriptsize TAA \\ \scriptsize Normalizado}} \\
 		\hline
 	\end{tabular}%
 	\label{tab:sharpen_res}%
@@ -884,31 +884,31 @@ For this test, we rendered the Sponza Atrium Model and a Static Sphere Model to 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{images/results/sharpen_test_render.png}
-	\caption{Rendered Images comparison.}\label{fig:sharpen_render}
+	\caption{Comparación de las Imágenes Renderizadas.}\label{fig:sharpen_render}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{images/results/sharpen_test_ssim.png}
-	\caption{SSIM Maps comparison.}\label{fig:sharpen_ssim}
+	\caption{Comparación de Mapas de SSIM.}\label{fig:sharpen_ssim}
 \end{figure}
 
-\subsection{Pipe}
-For this test, we rendered the Pipe Model in order to test how the improvements behaved when rendering a model with hard edges. We wanted to test if our improvements reduced the amount of blur around those hard edges while still fixing the aliasing problem. We rendered the Pipe twice, the first time using a regular camera angle, for normal aliasing around the edges, and a skewed camera angle, for increased aliasing effects. As we see from the results, TAA with our improvements is at the same quality level as SMAA. 
+\subsection{Tubería}
+Para esta prueba, utilizamos el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros. Queríamos probar si nuestras mejoras reducían la cantidad de desenfoque alrededor de esos bordes duros mientras se disminuyen los problemas causados por el \textit{aliasing}. Renderizamos el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como vemos en los resultados, TAA con nuestras mejoras se encuentra en el mismo nivel de calidad que SMAA.
 
 \subsubsection{Regular}
-When we zoom and compare Figure \ref{fig:pipe_regular_truth} with the rendered images in Figure \ref{fig:pipe_regular_render}, especially around the edges, we observe that there is a reduction of blurring in the Master Thesis TAA in comparison with the Uncharted TAA. As well, we observe that the Uncharted TAA generates bright colors around the edges which should not be there; this is easier to observe as the dark edges on the SSIM map of the Uncharted TAA on Figure \ref{fig:pipe_regular_render}. Furthermore, Table \ref{tab:pipe_regular} confirm us that the Master Thesis TAA reaches almost the same quality as SMAA.
+Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, observamos que hay una reducción del desenfoque en el TAA de la Tesis en comparación con la TAA de Uncharted. Además, observamos que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar allí; esto es más fácil de observar que los bordes oscuros en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. Además, la Tabla \ref{tab:pipe_regular} nos confirma que el TAA de la Tesis alcanza casi la misma calidad que SMAA.
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
 \begin{table}[!hbt]	
 	\small
 	\centering
-	\caption{Numerical results of the Pipe Test with regular camera inclination.}
+	\caption{Resultados numéricos de la prueba de Tubería con un ángulo de cámara regular.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Pipe Regular Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba de Tubería Regular}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
 		MSE   & 8.608 & 3.573 & 1.278 & 14.602 & 1.574 & SMAA  & -0.296 \\
 		\hline
@@ -927,39 +927,39 @@ When we zoom and compare Figure \ref{fig:pipe_regular_truth} with the rendered i
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
-	\caption{Pipe Regular comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:pipe_regular_render}
+	\caption{Comparación de Tubería Regular entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{images/results/pipe_regular_sobel_ground_truth.png}
-	\caption{Pipe Regular Test ground truth.}\label{fig:pipe_regular_truth}
+	\caption{Imagen Base de la Prueba de Tubería Regular.}\label{fig:pipe_regular_truth}
 \end{figure}
 
 
-\subsubsection{With Camera Inclination}
-Zooming and comparing the Figures \ref{fig:pipe_inclination_render} and \ref{fig:pipe_inclination_truth}, we can observe that the Master TAA is the most similar to the Ground Truth. From the SSIM map of the Uncharted TAA, we notice that blurring is being generated around the edges. 
+\subsubsection{Con Ángulo de Cámara Inclinada}
+Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, podemos observar que el TAA de la Tesis es el más parecido a la imagen base. En el mapa de SSIM del TAA de Uncharted, notamos que se está generando desenfoque alrededor de los bordes.
 
-Finally, from Figure \ref{fig:pipe_inclination_render} and Table \ref{fig:pipe_inclination_truth} we note that SMAA is not properly detecting the upper edge of the pipe, when zoomed we observe a small staircase forming around the edge.  This is due to the fact that the camera was set up with a skewed inclination which pushed to the limit the edge detection techniques used in SMAA.
+Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} observamos que SMAA no está detectando correctamente el borde superior de la tubería. Cuando hacemos zoom, observamos una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
 
 % Table generated by Excel2LaTeX from sheet 'Pipe with Inclination'
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Numerical results of the Pipe Test with a skewed camera inclination.}
+	\caption{Resultados numéricos de la prueba de Tubería con una inclinación de cámara sesgada.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Pipe with Camera Inclination Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba de Tubería con Inclinación de Cámara}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
-		MSE   & 16.112 & 6.470 & 2.810 & 14.349 & 2.664 & Master TAA & 0.000 \\
+		MSE   & 16.112 & 6.470 & 2.810 & 14.349 & 2.664 & Tesis TAA & 0.000 \\
 		\hline
-		RMSD  & 4.014 & 2.544 & 1.676 & 3.788 & 1.632 & Master TAA & 0.000 \\
+		RMSD  & 4.014 & 2.544 & 1.676 & 3.788 & 1.632 & Tesis TAA & 0.000 \\
 		\hline
-		Peak-SNR  & 36.059 & 40.022 & 43.644 & 36.563 & 43.876 & Master TAA & 0.000 \\
+		Peak-SNR  & 36.059 & 40.022 & 43.644 & 36.563 & 43.876 & Tesis TAA & 0.000 \\
 		\hline
-		SNR   & 32.474 & 36.437 & 40.059 & 32.978 & 40.291 & Master TAA & 0.000 \\
+		SNR   & 32.474 & 36.437 & 40.059 & 32.978 & 40.291 & Tesis TAA & 0.000 \\
 		\hline
 		SSIM  & 0.998 & 0.999 & 1.000 & 0.996 & 0.999 & SMAA  & 0.000 \\
 		\hline
@@ -970,41 +970,41 @@ Finally, from Figure \ref{fig:pipe_inclination_render} and Table \ref{fig:pipe_i
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{images/results/pipe_inclination.png}
-	\caption{Pipe with Camera Inclination comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:pipe_inclination_render}
+	\caption{Comparación de Prueba de Tubería con Inclinación de Cámara entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:pipe_inclination_render}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{images/results/pipe_with_inclination_sobel_ground_truth.png}
-	\caption{Pipe with Camera Inclination Test ground truth.}\label{fig:pipe_inclination_truth}
+	\caption{Imagen Base de Prueba de Tubería con Inclinación de Cámara.}\label{fig:pipe_inclination_truth}
 \end{figure}
 
 
-\subsection{Window with Blinds}
-On this test, we used the Window with Blinds model for its small details at the blinds. We tested how our improvements behaved with this kind of details and discovered that it did not react in a proper way even if the numerical results showed otherwise.
+\subsection{Ventana con Persianas}
+En esta prueba, usamos el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Probamos cómo se comportaban nuestras mejoras con este tipo de detalles y descubrimos que no reaccionaba de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
 
-From Figures \ref{fig:window_blind_render} and \ref{fig:window_blind_truth} we can observe it is complicated for the techniques to handle the small gaps between the blinds. From Figure \ref{fig:window_blind_render} and Table \ref{tab:window_blind}, we notice that the Master Thesis TAA and SMAA are able to reconstruct more details than the Uncharted TAA but, aesthetically and visually, we believe it is better the Uncharted TAA than the other techniques because those small gaps between the blinds flicker less when moving.
+De las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} podemos observar que es complicado que las técnicas manejen las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, notamos que el TAA de la Tesis y SMAA pueden reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, creemos que es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
 
 % Table generated by Excel2LaTeX from sheet 'Window Blind'
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Numerical results of the Window with Blinds Test.}
+	\caption{Resultados numéricos de la prueba de Ventana con Persianas.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Window with Blinds Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba de Ventana con Persianas}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
-		MSE   & 96.044 & 70.486 & 35.134 & 170.229 & 32.115 & Master TAA & 0.000 \\
+		MSE   & 96.044 & 70.486 & 35.134 & 170.229 & 32.115 & Tesis TAA & 0.000 \\
 		\hline
-		RMSD  & 9.800 & 8.396 & 5.927 & 13.047 & 5.667 & Master TAA & 0.000 \\
+		RMSD  & 9.800 & 8.396 & 5.927 & 13.047 & 5.667 & Tesis TAA & 0.000 \\
 		\hline
-		Peak-SNR  & 28.306 & 29.650 & 32.674 & 25.820 & 33.064 & Master TAA & 0.000 \\
+		Peak-SNR  & 28.306 & 29.650 & 32.674 & 25.820 & 33.064 & Tesis TAA & 0.000 \\
 		\hline
-		SNR   & 25.467 & 26.810 & 29.834 & 22.981 & 30.224 & Master TAA & 0.000 \\
+		SNR   & 25.467 & 26.810 & 29.834 & 22.981 & 30.224 & Tesis TAA & 0.000 \\
 		\hline
-		SSIM  & 0.986 & 0.990 & 0.995 & 0.976 & 0.995 & Master TAA  & 0.000 \\
+		SSIM  & 0.986 & 0.990 & 0.995 & 0.976 & 0.995 & Tesis TAA  & 0.000 \\
 		\hline
 	\end{tabular}%
 	\label{tab:window_blind}%
@@ -1013,29 +1013,29 @@ From Figures \ref{fig:window_blind_render} and \ref{fig:window_blind_truth} we c
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.14]{images/results/window_blind_sobel_ground_truth.png}
-	\caption{Window with Blinds ground truth.}\label{fig:window_blind_truth}
+	\caption{Imagen Base de Ventana con Persianas.}\label{fig:window_blind_truth}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{images/results/window_blind.png}
-	\caption{Window with Blinds comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:window_blind_render}
+	\caption{Comparación de Prueba de Ventana con Persianas entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:window_blind_render}
 \end{figure}
 
 
 
-\subsection{Arched Window}
-We used the Arched Window Model to test how our improved implementation with the small details of the window’s door and the aliasing from the arch. We can observe from Figures \ref{fig:window_arch_render} and \ref{fig:window_arch_truth} that for all the techniques, the small gaps around the window's door are hard to render. On some parts small gaps, we see that the techniques could not render it completely. Even though on Table \ref{tab:window_arch} SMAA appears to be the best, but we believe that the Uncharted TAA has the best visual quality because those incomplete gaps generate flickering when there is movement.
+\subsection{Ventana Arqueada}
+Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación mejorada se maneja con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Podemos observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las pequeñas brechas, vemos que las técnicas no pueden renderizarla la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, pero creemos que el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan parpadeos de píxeles cuando hay movimiento.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[H]
 	\small
 	\centering
-	\caption{Numerical results of the Arched Window Test.}
+	\caption{Resultados numéricos de la prueba de Ventana Arqueada.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Arched Window Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba de Ventana Arqueada}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
 		MSE   & 56.313 & 39.103 & 19.849 & 76.483 & 21.983 & SMAA  & -2.134 \\
 		\hline
@@ -1054,17 +1054,17 @@ We used the Arched Window Model to test how our improved implementation with the
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{images/results/window_arch.png}
-	\caption{Arched Window comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:window_arch_render}
+	\caption{Comparación de Prueba de Ventana Arqueada entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:window_arch_render}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.18]{images/results/window_arch_sobel_ground_truth.png}
-	\caption{Arched Window ground truth.}\label{fig:window_arch_truth}
+	\caption{Imagen Base de Ventana Arqueada.}\label{fig:window_arch_truth}
 \end{figure}
 
-\subsection{Sponza Atrium}
-For this test, we wanted to analyze how the Master TAA implementation behaved with a general scene with lights and shadows, we used the Sponza Atrium Model with the Sphere Model being static in the center.
+\subsection{Atrium de Sponza}
+Para esta prueba, queríamos analizar cómo se comporta la implementación de TAA de la Tesis con una escena general con luces y sombras. Utilizamos el modelo del Atrium  de Sponza con el modelo de Esfera, estática, en el centro.
 
 If we compare Figures \ref{fig:sponza_render} and \ref{fig:sponza_truth}, we can observe that the Uncharted TAA had blurring problems around all the edges, which is visible on its SSIM map; SMAA had problems with all the flowers, we can observe the flower shape on its SSIM map; and that the Master Thesis TAA only had minor problems with the flowers, as seen on the gray areas on its SSIM map. Furthermore, Table \ref{tab:sponza} confirm what we are observing on the visual results, as the Master Thesis TAA got the best scores on most of the test; the Uncharted TAA got the worst scores due to the edges problems; and SMAA got worse than normally scores due to the flowers problem.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'

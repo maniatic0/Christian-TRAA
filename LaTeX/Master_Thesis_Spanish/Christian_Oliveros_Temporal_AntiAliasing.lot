@@ -6,19 +6,19 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces Comparación del comportamiento de las métricas entre el uso de 16 muestras frente a 128 para el Buffer de Acumulación.\relax }}{23}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Sharpen Filter Test numerical results\relax }}{37}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Numerical results of the Pipe Test with regular camera inclination.\relax }}{39}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Numerical results of the Pipe Test with a skewed camera inclination.\relax }}{41}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Numerical results of the Window with Blinds Test.\relax }}{42}
-\contentsline {table}{\numberline {5.5}{\ignorespaces Numerical results of the Arched Window Test.\relax }}{43}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Resultados numéricos de la prueba del Filtro de Nitidez\relax }}{37}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resultados numéricos de la prueba de Tubería con un ángulo de cámara regular.\relax }}{39}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Resultados numéricos de la prueba de Tubería con una inclinación de cámara sesgada.\relax }}{41}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Resultados numéricos de la prueba de Ventana con Persianas.\relax }}{42}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Resultados numéricos de la prueba de Ventana Arqueada.\relax }}{44}
 \contentsline {table}{\numberline {5.6}{\ignorespaces Numerical results of the Sponza Atrium Test.\relax }}{45}
-\contentsline {table}{\numberline {5.7}{\ignorespaces Numerical results of the Sponza Atrium Flowers Test.\relax }}{46}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Numerical results of the Sponza Atrium Flowers Test.\relax }}{47}
 \contentsline {table}{\numberline {5.8}{\ignorespaces Numerical results of the Hard Edges Test.\relax }}{48}
-\contentsline {table}{\numberline {5.9}{\ignorespaces Numerical results summary of the 100 tests performed for the Sphere Ghosting Test.\relax }}{49}
+\contentsline {table}{\numberline {5.9}{\ignorespaces Numerical results summary of the 100 tests performed for the Sphere Ghosting Test.\relax }}{50}
 \contentsline {table}{\numberline {5.10}{\ignorespaces Numerical results of the Hairball Static Shadow Test.\relax }}{51}
-\contentsline {table}{\numberline {5.11}{\ignorespaces Numerical results of the Hairball Static Light Test.\relax }}{52}
-\contentsline {table}{\numberline {5.12}{\ignorespaces Numerical results summary of the 100 tests performed for the Hairball Ghosting Shadow Test.\relax }}{54}
-\contentsline {table}{\numberline {5.13}{\ignorespaces Numerical results summary of the 100 tests performed for the Hairball Ghosting Light Test.\relax }}{55}
+\contentsline {table}{\numberline {5.11}{\ignorespaces Numerical results of the Hairball Static Light Test.\relax }}{53}
+\contentsline {table}{\numberline {5.12}{\ignorespaces Numerical results summary of the 100 tests performed for the Hairball Ghosting Shadow Test.\relax }}{55}
+\contentsline {table}{\numberline {5.13}{\ignorespaces Numerical results summary of the 100 tests performed for the Hairball Ghosting Light Test.\relax }}{56}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
