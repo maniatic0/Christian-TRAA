@@ -68,18 +68,18 @@
 \contentsline {subsubsection}{Con Ángulo de Cámara Inclinada}{40}
 \contentsline {subsection}{\numberline {5.2.3}Ventana con Persianas}{42}
 \contentsline {subsection}{\numberline {5.2.4}Ventana Arqueada}{43}
-\contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{45}
-\contentsline {subsection}{\numberline {5.2.6}Sponza Atrium Flowers}{46}
-\contentsline {subsection}{\numberline {5.2.7}Hard Edges}{48}
-\contentsline {subsection}{\numberline {5.2.8}Sphere Ghosting}{49}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{50}
-\contentsline {subsubsection}{Static Shadow}{51}
-\contentsline {subsubsection}{Static Light}{52}
-\contentsline {subsubsection}{Ghosting Shadow}{54}
-\contentsline {subsubsection}{Ghosting Light}{56}
-\contentsline {subsection}{\numberline {5.2.10}Timing}{57}
-\contentsline {section}{\numberline {5.3}Discussion}{57}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusions and Recommendations}}{60}
-\contentsline {chapter}{\MakeTextUppercase {Referencias}}{61}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {GitHub Repository}}{63}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Camera Jittering Explanation}}{64}
+\contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{44}
+\contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{45}
+\contentsline {subsection}{\numberline {5.2.7}Bordes Duros}{47}
+\contentsline {subsection}{\numberline {5.2.8}Prueba de Ghosting de Esfera}{48}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{49}
+\contentsline {subsubsection}{Static Shadow}{50}
+\contentsline {subsubsection}{Static Light}{51}
+\contentsline {subsubsection}{Ghosting Shadow}{53}
+\contentsline {subsubsection}{Ghosting Light}{55}
+\contentsline {subsection}{\numberline {5.2.10}Timing}{56}
+\contentsline {section}{\numberline {5.3}Discussion}{56}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusions and Recommendations}}{59}
+\contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {GitHub Repository}}{62}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Camera Jittering Explanation}}{63}
