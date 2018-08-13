@@ -119,6 +119,7 @@ Finalmente, me gustaría agradecer a la Universidad Lund y la Universidad Simón
 \chapter*{Lista de Acrónimos}
 \begin{acronym}
 	\acro{USB}[USB]{Universidad Sim\'on Bol\'ivar}
+	\acro{ms}[ms]{Milisegundo}
 	\acro{DEP}[DEP]{Decanato de Estudios Profesionales}
 	\acro{PDF}[PDF]{\textit{Portable Document Format}, Documento en Formato Portable\copyright}
 	\acro{PNG}[PNG]{\textit{Portable Network Graphics}, Gráficos de Red Portátiles}
@@ -928,14 +929,14 @@ Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.2]{images/results/pipe_regular_sobel_ground_truth.png}
-	\caption{Imagen Base de la Prueba de Tubería Regular.}\label{fig:pipe_regular_truth}
+	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
+	\caption{Comparación de Tubería Regular entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
-	\caption{Comparación de Tubería Regular entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
+	\includegraphics[scale=0.2]{images/results/pipe_regular_sobel_ground_truth.png}
+	\caption{Imagen Base de la Prueba de Tubería Regular.}\label{fig:pipe_regular_truth}
 \end{figure}
 
 \FloatBarrier
@@ -1100,14 +1101,14 @@ Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, pode
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.1]{images/results/sponza_sobel_ground_truth.png}
-	\caption{Imagen Base del Atrium de Sponza.}\label{fig:sponza_truth}
+	\includegraphics[scale=0.9]{images/results/sponza.png}
+	\caption{Comparación de Prueba del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:sponza_render}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.9]{images/results/sponza.png}
-	\caption{Comparación de Prueba del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:sponza_render}
+	\includegraphics[scale=0.1]{images/results/sponza_sobel_ground_truth.png}
+	\caption{Imagen Base del Atrium de Sponza.}\label{fig:sponza_truth}
 \end{figure}
 
 \FloatBarrier
@@ -1144,14 +1145,14 @@ De las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth},
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.9]{images/results/sponza_flowers.png}
-	\caption{Comparación de Prueba de las Flores del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:sponza_flowers_render}
+	\includegraphics[scale=0.2]{images/results/sponza_flowers_sobel_ground_truth.png}
+	\caption{Imagen Base de las Flores del Atrium de Sponza.}\label{fig:sponza_flowers_truth}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.2]{images/results/sponza_flowers_sobel_ground_truth.png}
-	\caption{Imagen Base de las Flores del Atrium de Sponza.}\label{fig:sponza_flowers_truth}
+	\includegraphics[scale=0.9]{images/results/sponza_flowers.png}
+	\caption{Comparación de Prueba de las Flores del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:sponza_flowers_render}
 \end{figure}
 
 \FloatBarrier
@@ -1256,188 +1257,193 @@ Es importante notar que algunas métricas obtuvieron un resultado infinito ya qu
 
 \subsection{Hairball}
 Estas pruebas fueron las más complicadas para todas las técnicas que probamos. El modelo Hairball contiene muchas fibras con muchos detalles que proporcionan una prueba compleja para cualquier solución de \textit{Anti-Aliasing}. Realizamos todas las pruebas sin luz, para ver la silueta, y con la luz, para ver cómo su reacción a las fibras afectaba a todas las soluciones Anti-Aliasing. Hicimos dos series de pruebas, en la primera Hairball está estático, para mostrarnos el comportamiento de la corrección del desenfoque y \textit{aliasing}; y el segundo set Hairball gira sobre su propio eje, para mostrarnos cómo se comporta el efecto de \textit{Ghosting} en las fibras. Los resultados de las pruebas estáticas fueron sorprendentes, ya que no esperábamos que la implementación de TAA de la Tesis fuera el mejor manejo de las fibras debido a los resultados en ambas pruebas con las Ventanas.
-\subsubsection{Static Shadow}
-From Figures \ref{fig:hairball_static_shadow_render} and \ref{fig:hairball_static_shadow_truth}, we can observe that the Uncharted TAA has problems on most of the fibers, on its SSIM map this is visible as the big dark edge around Hairball; SMAA fails to correct aliasing on the smaller fibers, we observe this as the gray areas around the Hairball model on the SSIM map; and, finally, we notice that the Master TAA is the best at handling the fibers, they look smooth as in the original model, and its SSIM map has the least amount of dark areas. Also, from Table \ref{tab:hairball_static_shadow} we can confirm that the Master TAA is the best at rendering the static shadow Hairball by a relatively big margin compared to the other techniques.
+\subsubsection{Prueba Estática Sin Luz}
+De las Figuras \ref{fig:hairball_static_shadow_render} y \ref{fig:hairball_static_shadow_truth}, podemos observar que el TAA de Uncharted tiene problemas en la mayoría de las fibras, en su Mapa de SSIM esto es visible como el gran borde oscuro alrededor de Hairball; SMAA no puede corregir el aliasing en las fibras más pequeñas, observamos esto como las áreas grises alrededor del modelo Hairball en su Mapa de SSIM; y, finalmente, notamos que el TAA de la Tesis es el mejor manejando las fibras, las cuales se ven lisas como en el modelo original, y en su Mapa de SSIM tiene la menor cantidad de áreas oscuras. Además, en la Tabla \ref{tab:hairball_static_shadow} podemos confirmar que el TAA de la Tesis es el mejor para renderizar Hairball estático sin luz por un margen relativamente grande en comparación con las otras técnicas.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Shadow'
-\begin{table}[!hbt]
+\begin{table}[!htb]
 	\small
 	\centering
-	\caption{Numerical results of the Hairball Static Shadow Test.}
+	\caption{Resultados numéricos de la Prueba Estática de Hairball Sin Luz.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Hairball Static Shadow Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba Estática de Hairball Sin Luz}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
-		MSE   & 44.367 & 21.101 & 25.379 & 88.976 & 10.293 & Master TAA & 0.000 \\
+		MSE   & 44.367 & 21.101 & 25.379 & 88.976 & 10.293 & Tesis TAA & 0.000 \\
 		\hline
-		RMSD  & 6.661 & 4.594 & 5.038 & 9.433 & 3.208 & Master TAA & 0.000 \\
+		RMSD  & 6.661 & 4.594 & 5.038 & 9.433 & 3.208 & Tesis TAA & 0.000 \\
 		\hline
-		Peak-SNR  & 31.660 & 34.888 & 34.086 & 28.638 & 38.005 & Master TAA & 0.000 \\
+		Peak-SNR  & 31.660 & 34.888 & 34.086 & 28.638 & 38.005 & Tesis TAA & 0.000 \\
 		\hline
-		SNR   & 18.808 & 22.036 & 21.234 & 15.786 & 25.154 & Master TAA & 0.000 \\
+		SNR   & 18.808 & 22.036 & 21.234 & 15.786 & 25.154 & Tesis TAA & 0.000 \\
 		\hline
-		SSIM  & 0.962 & 0.978 & 0.974 & 0.934 & 0.985 & Master TAA & 0.000 \\
+		SSIM  & 0.962 & 0.978 & 0.974 & 0.934 & 0.985 & Tesis TAA & 0.000 \\
 		\hline
 	\end{tabular}%
 	\label{tab:hairball_static_shadow}%
 \end{table}%
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.9]{images/results/hairball_static_shadow.png}
-	\caption{Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_shadow_render}
+	\caption{Comparación de la Prueba Estática de Hairball Sin Luz entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:hairball_static_shadow_render}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/hairball_sobel_ground_truth.png}
-	\caption{Hairball Static Shadow ground truth.}\label{fig:hairball_static_shadow_truth}
+	\caption{Imagen Base de Hairball Estático Sin Luz.}\label{fig:hairball_static_shadow_truth}
 \end{figure}
 
+\FloatBarrier
 
-\subsubsection{Static Light}
-From Figures \ref{tab:hairball_static_lighted} and \ref{fig:hairball_static_lighted_truth}, we observe that the Uncharted TAA generated wrong bright colors around all the fibers, on its SSIM this appears as the complete model is dark; SMAA fails to correct a high amount of fibers, they appear aliased on the rendered image and its SSIM map contains many dark zones; and, finally, we can observe that the Master TAA has the smoothest edges of all the rendered images, on its SSIM map and on Table \ref{tab:hairball_static_lighted} we notice that there still errors but they are smaller by a large margin compared to any other technique.
+\subsubsection{Prueba Estática Con Luz}
+De las Figuras \ref{tab:hairball_static_lighted} y \ref{fig:hairball_static_lighted_truth}, observamos que el TAA de Uncharted generó colores brillantes incorrectos alrededor de todas las fibras, en su Mapa de SSIM esto aparece como el modelo completo oscuro; SMAA no puede corregir una gran cantidad de fibras, aparecen con \textit{aliasing} en la imagen renderizada y su Mapa de SSIM contiene muchas zonas oscuras; y, finalmente, podemos observar que el TAA de la Tesis tiene los bordes más suaves de todas las imágenes renderizadas, en su Mapa SSIM y en la Tabla \ref{tab:hairball_static_lighted} notamos que todavía hay errores pero son más pequeños, por un gran margen, comparado a cualquier otra técnica.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Lighted'
-\begin{table}[H]
+\begin{table}[!htb]
 	\small
 	\centering
-	\caption{Numerical results of the Hairball Static Light Test.}
+	\caption{Resultados numéricos de la Prueba Estática de Hairball Con Luz.}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Hairball Static Light Test}} \\
+		\multicolumn{8}{|c|}{\textbf{Prueba Estática de Hairball Con Luz}} \\
 		\hline
-		\textbf{\diagbox{Tests}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Master \\ TAA}} & \textbf{Best} & \textbf{\makecell{Master \\ TAA \\ Against \\ Best}} \\
+		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{Mejor} & \textbf{\makecell{Tesis \\ TAA \\ Contra \\ El Mejor}} \\
 		\hline
-		MSE   & 1294.649 & 649.940 & 847.702 & 1444.095 & 226.567 & Master TAA & 0.000 \\
+		MSE   & 1294.649 & 649.940 & 847.702 & 1444.095 & 226.567 & Tesis TAA & 0.000 \\
 		\hline
-		RMSD  & 35.981 & 25.494 & 29.115 & 38.001 & 15.052 & Master TAA & 0.000 \\
+		RMSD  & 35.981 & 25.494 & 29.115 & 38.001 & 15.052 & Tesis TAA & 0.000 \\
 		\hline
-		Peak-SNR  & 17.009 & 20.002 & 18.848 & 16.535 & 24.579 & Master TAA & 0.000 \\
+		Peak-SNR  & 17.009 & 20.002 & 18.848 & 16.535 & 24.579 & Tesis TAA & 0.000 \\
 		\hline
-		SNR   & 8.446 & 11.439 & 10.285 & 7.971 & 16.015 & Master TAA & 0.000 \\
+		SNR   & 8.446 & 11.439 & 10.285 & 7.971 & 16.015 & Tesis TAA & 0.000 \\
 		\hline
-		SSIM  & 0.801 & 0.865 & 0.841 & 0.785 & 0.937 & Master TAA & 0.000 \\
+		SSIM  & 0.801 & 0.865 & 0.841 & 0.785 & 0.937 & Tesis TAA & 0.000 \\
 		\hline
 	\end{tabular}%
 	\label{tab:hairball_static_lighted}%
 \end{table}%
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.2]{images/results/hairball_light_sobel_ground_truth.png}
-	\caption{Hairball Static Lighted ground truth.}\label{fig:hairball_static_lighted_truth}
-\end{figure}
-
-\begin{figure}[H]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.9]{images/results/hairball_static_lighted.png}
-	\caption{Hairball Static Lighted comparison between Master Thesis TAA, Uncharted TAA, and SMAA.}\label{fig:hairball_static_lighted_render}
+	\caption{Comparación de la Prueba Estática de Hairball Con Luz entre TAA de la Tesis, TAA de Uncharted y SMAA.}\label{fig:hairball_static_lighted_render}
 \end{figure}
 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.2]{images/results/hairball_light_sobel_ground_truth.png}
+	\caption{Imagen Base de Hairball Estático Con Luz.}\label{fig:hairball_static_lighted_truth}
+\end{figure}
 
-\subsubsection{Ghosting Shadow}
-From Figure \ref{fig:hairball_ghosting_shadow}, we can observe that both implementations generate blurriness around the fibers edges, this is visible on both SSIM maps as the dark ring around the model. On Table \ref{tab:hairball_ghosting_shadow} we observe that the Master Thesis TAA is numerically better than the Uncharted TAA. As well, the Test Index on Table \ref{tab:hairball_ghosting_shadow} marks which test the associated result belongs to; on the averages we use Not Applicable (N\\A) because those results come from the average of all the tests. 
+\FloatBarrier
+
+\subsubsection{Prueba de Ghosting Sin Luz}
+De la Figura \ref{fig:hairball_ghosting_shadow}, podemos observar que ambas implementaciones generan desenfoque alrededor de los bordes de las fibras, esto es visible en ambos Mapas de SSIM como el anillo oscuro alrededor del modelo. En la Tabla \ref{tab:hairball_ghosting_shadow} observamos que el TAA de la Tesis es numéricamente mejor que el TAA de Uncharted. Además, es importante acotar que el Índice de Prueba en la Tabla \ref{tab:hairball_ghosting_shadow} marca a qué prueba pertenece el resultado asociado; en los promedios que utilizamos No Aplicable (N \\ A) porque esos resultados provienen del promedio de todas las pruebas.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Shadow'
-\begin{table}[H]
+\begin{table}[!htb]
 	\small
 	\centering
-	\caption{Numerical results summary of the 100 tests performed for the Hairball Ghosting Shadow Test.}
+	\caption{Resumen de resultados numéricos de las 100 pruebas realizadas para la Prueba de \textit{Ghosting} de Hairball Sin Luz.}
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
-		\multicolumn{5}{|c|}{\textbf{Hairball Ghosting Shadow Test Summary}} \\
+		\multicolumn{5}{|c|}{\textbf{Resumen de Prueba de Ghosting de Hairball Sin Luz}} \\
 		\hline
-		\multicolumn{1}{|c|}{\textbf{\diagbox{Tests}{AA}}} & \textbf{Uncharted TAA} & \textbf{Test Index} & \textbf{Master TAA} & \textbf{Test Index} \\
+		\multicolumn{1}{|c|}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} \\
 		\hline
-	    Best MSE & 70.261 & 17    & 32.692 & 0 \\
+	    Mejor MSE & 70.261 & 17    & 32.692 & 0 \\
 		\hline
-		Worst MSE & 93.024 & 90    & 42.962 & 90 \\
+		Peor MSE & 93.024 & 90    & 42.962 & 90 \\
 		\hline
-		Average MSE & 81.887 & N/A   & 38.534 & N/A \\
+		Promedio de MSE & 81.887 & N/A   & 38.534 & N/A \\
 		\hline
-		Best Peak-SNR & 29.664 & 17    & 32.986 & 0 \\
+		Mejor Peak-SNR & 29.664 & 17    & 32.986 & 0 \\
 		\hline
-		Worst Peak-SNR & 28.445 & 90    & 31.800 & 90 \\
+		Peor Peak-SNR & 28.445 & 90    & 31.800 & 90 \\
 		\hline
-		Average Peak-SNR  & 29.009 & N/A   & 32.278 & N/A \\
+		Promedio de Peak-SNR  & 29.009 & N/A   & 32.278 & N/A \\
 		\hline
-		Best SNR & 16.940 & 17    & 20.278 & 0 \\
+		Mejor SNR & 16.940 & 17    & 20.278 & 0 \\
 		\hline
-		Worst SNR & 15.846 & 90    & 19.201 & 90 \\
+		Peor SNR & 15.846 & 90    & 19.201 & 90 \\
 		\hline
-		Average SNR  & 16.333 & N/A   & 19.602 & N/A \\
+		Promedio de SNR  & 16.333 & N/A   & 19.602 & N/A \\
 		\hline
-		Best SSIM & 0.925 & 17    & 0.947 & 17 \\
+		Mejor SSIM & 0.925 & 17    & 0.947 & 17 \\
 		\hline
-		Worst SSIM & 0.911 & 99    & 0.934 & 68 \\
+		Peor SSIM & 0.911 & 99    & 0.934 & 68 \\
 		\hline
-		Average SSIM & 0.913 & N/A   & 0.940 & N/A \\
+		Promedio de SSIM & 0.913 & N/A   & 0.940 & N/A \\
 		\hline
 	\end{tabular}%
 	\label{tab:hairball_ghosting_shadow}%
 \end{table}%
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.8]{images/results/hairball_ghosting_shadow.png}
-	\caption{Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 90.}\label{fig:hairball_ghosting_shadow}
+	\caption{Comparación de \textit{Ghosting} entre TAA de la Tesis, TAA de Uncharted y la Imagen Base en la Prueba Número 90.}\label{fig:hairball_ghosting_shadow}
 \end{figure}
 
-\subsubsection{Ghosting Light}
-From Figure \ref{fig:hairball_ghosting_lighted} and Table \ref{tab:hairball_ghosting_lighted}, we observe that both techniques generate a high amount of blurring around the fibers. On both SSIM maps the blurring is visible as Hairball is seen as a big dark area. As well, the Test Index on Table \ref{tab:hairball_ghosting_lighted} marks which test the associated result belongs to; on the averages we use Not Applicable (N\\A) because those results come from the average of all the tests. 
+\FloatBarrier
+
+\subsubsection{Prueba de Ghosting Con Luz}
+De la Figura \ref{fig:hairball_ghosting_lighted} y la Tabla \ref{tab:hairball_ghosting_lighted}, observamos que ambas técnicas generan una gran cantidad de desenfoque alrededor de las fibras. En ambos Mapas de SSIM, el desenfoque es visible ya que Hairball se ve como una gran área oscura. Es importante acotar que el Índice de Prueba en la Tabla \ref{tab:hairball_ghosting_lighted} marca a las que prueba el resultado asociado pertenece; en los promedios que utilizamos No Aplicable (N \\ A) porque esos resultados provienen del promedio de todas las pruebas.
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Lighted'
-\begin{table}[H]
+\begin{table}[!htb]
 	\small
 	\centering
-	\caption{Numerical results summary of the 100 tests performed for the Hairball Ghosting Light Test.}
+	\caption{Resumen de resultados numéricos de las 100 pruebas realizadas para la Prueba de \textit{Ghosting} de Hairball Con Luz.}
 	\begin{tabular}{|l|c|c|c|c|}
 		\hline
-		\multicolumn{5}{|c|}{\textbf{Hairball Light Shadow Test Summary}} \\
+		\multicolumn{5}{|c|}{\textbf{Resumen de Prueba de Ghosting de Hairball Con Luz}} \\
 		\hline
-		\multicolumn{1}{|c|}{\textbf{\diagbox{Tests}{AA}}} & \textbf{Uncharted TAA} & \textbf{Test Index} & \textbf{Master TAA} & \textbf{Test Index} \\
+		\multicolumn{1}{|c|}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{Tesis \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} \\
 		\hline
-		Best MSE & 714.811 & 62    & 603.190 & 1 \\
+		Mejor MSE & 714.811 & 62    & 603.190 & 1 \\
 		\hline
-		Worst MSE & 980.701 & 83    & 749.516 & 99 \\
+		Peor MSE & 980.701 & 83    & 749.516 & 99 \\
 		\hline
-		Average MSE & 875.687 & N/A   & 671.202 & N/A \\
+		Promedio de MSE & 875.687 & N/A   & 671.202 & N/A \\
 		\hline
-		Best Peak-SNR & 19.589 & 62    & 20.326 & 1 \\
+		Mejor Peak-SNR & 19.589 & 62    & 20.326 & 1 \\
 		\hline
-		Worst Peak-SNR & 18.215 & 83    & 19.383 & 99 \\
+		Peor Peak-SNR & 18.215 & 83    & 19.383 & 99 \\
 		\hline
-		Average Peak-SNR  & 18.737 & N/A   & 19.867 & N/A \\
+		Promedio de Peak-SNR  & 18.737 & N/A   & 19.867 & N/A \\
 		\hline
-		Best SNR & 10.037 & 62    & 10.913 & 1 \\
+		Mejor SNR & 10.037 & 62    & 10.913 & 1 \\
 		\hline
-		Worst SNR & 8.666 & 83    & 9.902 & 99 \\
+		Peor SNR & 8.666 & 83    & 9.902 & 99 \\
 		\hline
-		Average SNR  & 9.261 & N/A   & 10.390 & N/A \\
+		Promedio SNR  & 9.261 & N/A   & 10.390 & N/A \\
 		\hline
-		Best SSIM & 0.738 & 62    & 0.766 & 1 \\
+		Mejor SSIM & 0.738 & 62    & 0.766 & 1 \\
 		\hline
-		Worst SSIM & 0.662 & 99    & 0.694 & 83 \\
+		Peor SSIM & 0.662 & 99    & 0.694 & 83 \\
 		\hline
-		Average SSIM & 0.691 & N/A   & 0.722 & N/A \\
+		Promedio de SSIM & 0.691 & N/A   & 0.722 & N/A \\
 		\hline
 	\end{tabular}%
 	\label{tab:hairball_ghosting_lighted}%
 \end{table}%
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.8]{images/results/hairball_ghosting_lighted.png}
-	\caption{Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 83.}\label{fig:hairball_ghosting_lighted}
+	\caption{Comparación de \textit{Ghosting} entre TAA de la Tesis, TAA de Uncharted y la Imagen Base en la Prueba Número 83.}\label{fig:hairball_ghosting_lighted}
 \end{figure}
 
+\FloatBarrier
+\subsection{Comparación de Tiempos} \label{result_timing}
+Es importante tener en cuenta que todas las técnicas probadas son de naturaleza de Post-Procesamiento, lo que significa que reciben la imagen de salida de la Arquitectura de \textit{Shading} Diferido como entrada y no dependen de la complejidad de la escena.
 
-\subsection{Timing} \label{result_timing}
-It is important to note that all the tested techniques are of Post-Processing nature, that means that they receive the output image from the Deferred Shading Architecture as input, making them not dependent on the complexity of the scene.
- 
-The measured time the Master Thesis TAA technique took to run was between $0.5$ and $0.6$ $ms$ on average. The Sobel pass took between $0.2$ $ms$ and $0.3$ $ms$, and the reprojection was around $0.3$ $ms$. The measured time the Uncharted TAA technique took was between $0.2$ $ms$ and $0.3$ $ms$; FXAA took between $0.1$ $ms$ and $0.2$ $ms$; and SMAA took $0.2$ $ms$ and $0.3$ $ms$.
+El tiempo medido que tomó la técnica de TAA de la Tesis fue de entre $0.5$ y $0.6$ $ms$ en promedio. El paso de Sobel tomó entre $0.2$ $ms$ y $0.3$ $ms$, y la reproyección fue de alrededor de $0.3$ $ms$. El tiempo medido que tomó la técnica TAA de Uncharted fue de entre $0.2$ $ms$ y $0.3$ $ms$; FXAA tomó entre $0.1$ $ms$ y $0.2$ $ms$; y SMAA tomó $0.2$ $ms$ y $0.3$ $ms$.
+
 
 \section{Discussion}
 As we appreciate the results of the Sharpen Filter Test, see Table \ref{tab:sharpen_res}, the improvements achieved in this master thesis go beyond modifying the filter from the Uncharted implementation, because changing this filter only avoids generating those wrong bright pixels around edges. We believe that their use of that specific filter is of artistic nature. It tends to pronounce the edges at the cost of creating bright pixels around the edges that flicker, especially, when the camera moves while the foreground is illuminated but the background is on shadows or vice versa. 

@@ -22,27 +22,27 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Comparación de las Imágenes Renderizadas.\relax }}{38}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Comparación de Mapas de SSIM.\relax }}{38}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Imagen Base de la Prueba de Tubería Regular.\relax }}{40}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparación de Tubería Regular entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{40}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparación de Tubería Regular entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{40}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Imagen Base de la Prueba de Tubería Regular.\relax }}{40}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Comparación de Prueba de Tubería con Inclinación de Cámara entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{41}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Imagen Base de Prueba de Tubería con Inclinación de Cámara.\relax }}{41}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Imagen Base de Ventana con Persianas.\relax }}{42}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Comparación de Prueba de Ventana con Persianas entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{43}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Comparación de Prueba de Ventana Arqueada entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{44}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Imagen Base de Ventana Arqueada.\relax }}{44}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Imagen Base del Atrium de Sponza.\relax }}{45}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Comparación de Prueba del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{45}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Comparación de Prueba de las Flores del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{46}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Imagen Base de las Flores del Atrium de Sponza.\relax }}{47}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Comparación de Prueba del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{45}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Imagen Base del Atrium de Sponza.\relax }}{45}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Imagen Base de las Flores del Atrium de Sponza.\relax }}{46}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Comparación de Prueba de las Flores del Atrium de Sponza entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{47}
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Comparación de la Prueba de Bordes Duros entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{48}
 \contentsline {figure}{\numberline {5.16}{\ignorespaces Imagen Base de los Bordes Duros.\relax }}{48}
 \contentsline {figure}{\numberline {5.17}{\ignorespaces Ejemplo de \textit {Ghosting}. Comparación entre TAA de la Tesis y TAA de Uncharted en la Prueba Número 19.\relax }}{49}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Hairball Static Shadow comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{51}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Hairball Static Shadow ground truth.\relax }}{51}
-\contentsline {figure}{\numberline {5.20}{\ignorespaces Hairball Static Lighted ground truth.\relax }}{52}
-\contentsline {figure}{\numberline {5.21}{\ignorespaces Hairball Static Lighted comparison between Master Thesis TAA, Uncharted TAA, and SMAA.\relax }}{53}
-\contentsline {figure}{\numberline {5.22}{\ignorespaces Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 90.\relax }}{54}
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Ghosting comparison between Master Thesis TAA, Uncharted TAA and Ground Truth on Test Number 83.\relax }}{56}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Comparación de la Prueba Estática de Hairball Sin Luz entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{51}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Imagen Base de Hairball Estático Sin Luz.\relax }}{51}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Comparación de la Prueba Estática de Hairball Con Luz entre TAA de la Tesis, TAA de Uncharted y SMAA.\relax }}{52}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Imagen Base de Hairball Estático Con Luz.\relax }}{53}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Comparación de \textit {Ghosting} entre TAA de la Tesis, TAA de Uncharted y la Imagen Base en la Prueba Número 90.\relax }}{54}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Comparación de \textit {Ghosting} entre TAA de la Tesis, TAA de Uncharted y la Imagen Base en la Prueba Número 83.\relax }}{55}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
