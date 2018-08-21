@@ -1460,40 +1460,40 @@ A partir de la Prueba de Bordes Duros, seguimos observando que la técnica de la
 
 En la Prueba de \textit{Ghosting} de Esfera, vemos un claro ejemplo de las mejoras logradas en esta tesis. La Figura \ref{fig:sphere_ghosting} muestra un ejemplo del efecto de \textit{Ghosting} creado por la implementación del TAA de Uncharted, podemos percibir claramente las franjas que deja la esfera mientras se mueve, mientras que en nuestra implementación de TAA son apenas visibles.
 
-Finally, we have the four Hairball Tests, the most complex tests performed. The Hairball model has many gaps and small details that react to lighting and shadows. We anticipated a high amount of errors due to them because all Anti-Aliasing techniques have difficulties reconstructing this high density of fine details. 
+Finalmente, tenemos las cuatro pruebas de Hairball, que fueron las más complejas realizadas en esta tesis. El modelo Hairball tiene muchos huecos y pequeños detalles que reaccionan a la iluminación y las sombras. Anticipamos una gran cantidad de errores debido a ellos porque todas las técnicas \textit{Anti-Aliasing} tienen dificultades para reconstruir esta alta densidad de detalles finos.
 
-On the Shadow and Light Static Test (See Tables \ref{tab:hairball_static_shadow} and \ref{tab:hairball_static_lighted}) we can observe that the Master Thesis Implementation is the best at handling the hair fibers. It is able to reconstruct smoother edges than the Uncharted TAA and reconstructs more details than SMAA technique. Especially on the light version (See Figure \ref{fig:hairball_static_lighted_render}), we can appreciate how smooth the result is; it looks almost like the ground truth. This test far exceeded the expectation of our improvements, the visual and numerical (See Table \ref{tab:hairball_static_lighted}) results shows a big increase in quality compared to the other Anti-Aliasing solutions.
+En la Prueba Estática Sin Luz y la Prueba Estática Con Luz (Ver Tablas \ref{pestaña:hairball_static_shadow} y \ref{tab:hairball_static_lighted}) podemos observar que la implementación de la Tesis es la mejor para renderizar las fibras de cabello. Es capaz de reconstruir bordes más suaves que el TAA de Uncharted y reconstruye más detalles que SMAA. Especialmente, en la versión con luz (Ver Figura \ref{fig:hairball_static_lighted_render}), podemos apreciar qué tan suave es el resultado; se ve casi como la imagen de referencia. Esta prueba superó, con creces, nuestra expectativa de las mejoras. Los resultados visuales y numéricos (Ver tabla \ref{tab:hairball_static_lighted}) muestran un gran aumento en la calidad en comparación con las otras soluciones \textit{Anti-Aliasing}.
 
-On the Shadow and Light Ghosting Test we observe that both techniques results are blurred excessively (See Figures \ref{fig:hairball_ghosting_shadow} and \ref{fig:hairball_ghosting_lighted}), especially the Master Thesis TAA implementation on the light version. We believe this to be caused by the History Buffer and the Sobel Temporal Pass, for the Master Thesis TAA, not being able to stabilize as fast as the colors change when the fibers move thanks to the color rejection being slower than needed. The numerical values from Tables \ref{tab:hairball_ghosting_shadow} and \ref{tab:hairball_ghosting_lighted} confirm the effects of blurring thanks to the MSE being higher than normal.
-
-
-From our timing results (See \ref{result_timing}), we can see that our improvements fit the time requirements to run on real-time applications as it is below the $1$ $ms$ common limit.
+En la Prueba de \textit{Ghosting} Sin Luz y Con Luz, observamos que los resultados de ambas técnicas presentan desenfoque en exceso (Ver Figuras \ref{fig:hairball_ghosting_shadow} y \ref{fig:hairball_ghosting_lighted}), especialmente la implementación de la TAA de la Tesis en la versión con luz. Creemos que esto es causado porque el Buffer de Historia y Pase Temporal de Sobel que no pueden estabilizarse tan rápido como la velocidad de cambio de los colores cuando las fibras se mueven; esto es, el rechazo de color es más lento de lo necesario. Los valores numéricos de las Tablas \ref{tab:hairball_ghosting_shadow} y \ref{tab:hairball_ghosting_lighted} confirman los efectos del desenfoque, dado que el MSE es más alto de lo normal.
 
 
-\chapter{Conclusions and Recommendations}
-As we have shown numerically and visually with the tests performed, the Master Thesis implementation accomplished its objective of reducing the effects of blurring and ghosting of the Temporal Anti-Aliasing technique with the use of edge detection of both color and depth, and triangle indexing. Our results show that this technique can provide the same or better quality than other standard Anti-Aliasing solutions. 
+A partir de nuestros resultados de la comparación de tiempos (Consulte \ref{result_timing}), podemos ver que nuestras mejoras se ajustan a los requisitos de tiempo para ejecutarse en aplicaciones en tiempo real, ya que está por debajo del límite común de $1$ $ms$.
 
-As possible improvements, we are confident that our implementation could be optimized to run faster than our current timing. Our current implementation was made with flexibility in mind to help us test different approaches. This could be simplified to reduce the number of passes required. 
 
-As for recommendations for further research, we suggest improving the technique's behavior under high detail density moving objects, like on the Hairball Tests. Another improvement subject is the stability for pixel size details that cause flickering, like on the Windows Tests. Furthermore, a Specular Lighting Anti-Aliasing solution compatible with Temporal Anti-Aliasing is still required to provide a full range solution to Aliasing in real-time applications. Also, we suggest searching for more specific Image Metrics for Computer Graphics, especially, finding tuning values for SSIM to provide more numerical resolution when comparing different rendered images.
+\chapter{Conclusiones y Recomendaciones}
+Como hemos demostrado numérica y visualmente con las pruebas realizadas, la implementación de la Tesis logró su objetivo de reducir los efectos de desenfoque y los efectos de \textit{Ghosting} de la técnica \textit{Temporal Anti-Aliasing}, con el uso de detección de bordes de color y profundidad e indexación de triángulos. Nuestros resultados muestran que esta técnica puede proporcionar la misma o mejor calidad que otras soluciones estándar de \textit{Anti-Aliasing}.
+
+Como posibles mejoras, creemos en que nuestra implementación podría optimizarse para ejecutarse más rápido que nuestro tiempo actual. Nuestra implementación se realizó con flexibilidad en mente, para ayudarnos a probar diferentes enfoques. Esto podría simplificarse para reducir el número de pases requeridos.
+
+En cuanto a las recomendaciones para futuras investigaciones, sugerimos mejorar el comportamiento de la técnica bajo objetos en movimiento con alta densidad de detalles, como en las pruebas de Hairball. Otro tema de mejora es la estabilidad de los detalles del tamaño de un píxel, que causan parpadeos como en las pruebas de Ventanas. Además, todavía se requiere una solución de \textit{Anti-Aliasing} de Iluminación Especular compatible con \textit{Temporal Anti-Aliasing} para proporcionar una solución de rango completo al \textit{Aliasing} en aplicaciones en tiempo real. Asimismo, sugerimos buscar métricas de imagen más específicas para gráficos por computadora, especialmente, encontrar valores de ajuste para SSIM que proporcionen una resolución numérica mayor al comparar diferentes imágenes procesadas
 
 
 \bibliography{MyMSc}
 
 \appendix
-\chapter{GitHub Repository}
-The main link to the repository is https://github.com/maniatic0/Christian-TRAA . From there, the next links can be accessed for the printed version of this report.
+\chapter{Repositorio de GitHub}
+El enlace principal al repositorio es https://github.com/maniatic0/Christian-TRAA . Desde allí, se puede acceder a los siguientes enlaces para la versión impresa de este informe.
 \begin{itemize}
-	\item Full Repository: https://github.com/maniatic0/Christian-TRAA.
-	\item Complete Computer Specification: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/PC\%20Specification.
-	\item All Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests.
-	\item Accumulation Buffer Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Accumulation\%20Buffer\%20Tests.
-	\item Most of the Master Thesis Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Master\%20Thesis\%20Tests.
-	\item Sharpening Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Sharpening\%20Tests.
-	\item Ghosting Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Ghosting.
-	\item HairBall Tests: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/HairBall.
-	\item Code: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/CG\_Labs.
-	\item \LaTeX Report: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master\_Thesis.
+	\item Repositorio Completo: https://github.com/maniatic0/Christian-TRAA.
+	\item Especificación Completa de la Computadora: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/PC\%20Specification.
+	\item Todas las Pruebas: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests.
+	\item Pruebas del Buffer de Acumulación: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Accumulation\%20Buffer\%20Tests.
+	\item La Mayoría de las Pruebas de la Tesis: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Master\%20Thesis\%20Tests.
+	\item Pruebas del Filtro de Nitidez: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Sharpening\%20Tests.
+	\item Pruebas de \textit{Ghosting}: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Ghosting.
+	\item Pruebas de HairBall: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/HairBall.
+	\item Código: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/CG\_Labs.
+	\item Reporte de \LaTeX: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master\_Thesis\_Spanish.
 \end{itemize}
 \chapter{Camera Jittering Explanation} \label{appendix:jitter}
 The $Halton Sequence (2, 3)$ generates points in the $[0,1]\times [0,1]$ space. First, we need to transform it to the $[-1,1]\times [-1,1]$ space because we consider the pixel to be at the center, i.e. in OpenGL the first pixel is at $(0.5, 0.5)$, so we apply the transformation $T_1(x, y) = 2 * (x, y) – (1, 1)$.

@@ -79,7 +79,7 @@
 \contentsline {subsubsection}{Prueba de Ghosting Con Luz}{54}
 \contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{55}
 \contentsline {section}{\numberline {5.3}Discusión}{56}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusions and Recommendations}}{59}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{59}
 \contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {GitHub Repository}}{62}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{62}
 \contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Camera Jittering Explanation}}{63}
