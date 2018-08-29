@@ -1392,8 +1392,7 @@ Now, we only want to jitter inside the pixel because we should only be sampling 
 
 From now on, we need to change how we interpret the process we are performing; we are calculating the distance we are going to move the pixel center, so we need to see it as a vector rather than a point. We need to transform the vector to a vector normalized by the screen size. Consequently, we apply the transformation $T_3(x, y) = (x, y) / (w, h)$ with $(w, h)$ being the Width and Height of the screen and “$/$” operator as component-wise division.
 
-Now we need to transform our vector normalized by the screen size $[0, 1]$ to the Normalized Device Coordinates which go in the range $[-1, 1]\times [-1, 1]$. This is done by using $T_4(x, y) = 2 * (x, y)$ (to transform points we would use $2*(x, y) – (1, 1)$).
-At the end, our transformation would look like this $T(x, y) = T_4(T_3(T_2(T_1(x, y)))) = (2 * (x, y) – (1, 1)) / (w, h)$ with $(x, y)$ being a Halton Sequence point.
+Now we need to transform our vector normalized by the screen size $[0, 1]$ to the Normalized Device Coordinates which go in the range $[-1, 1]\times [-1, 1]$. This is done by using $T_4(x, y) = 2 * (x, y)$ (to transform points we would use $2*(x, y) – (1, 1)$). At the end, our transformation would look like this $T(x, y) = T_4(T_3(T_2(T_1(x, y)))) = (2 * (x, y) – (1, 1)) / (w, h)$ with $(x, y)$ being a Halton Sequence point.
 
 We now need to modify our Projection Matrix, which takes points from the View Space into the Clip Space. The resulting matrix is taken from the Ke Xu presentation page 14 ~\cite{XU2016}. Let $(h_x,h_y)$ be jitter we have previously calculated.
 

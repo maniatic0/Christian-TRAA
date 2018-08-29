@@ -1495,17 +1495,16 @@ El enlace principal al repositorio es https://github.com/maniatic0/Christian-TRA
 	\item Código: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/CG\_Labs.
 	\item Reporte de \LaTeX: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master\_Thesis\_Spanish.
 \end{itemize}
-\chapter{Camera Jittering Explanation} \label{appendix:jitter}
-The $Halton Sequence (2, 3)$ generates points in the $[0,1]\times [0,1]$ space. First, we need to transform it to the $[-1,1]\times [-1,1]$ space because we consider the pixel to be at the center, i.e. in OpenGL the first pixel is at $(0.5, 0.5)$, so we apply the transformation $T_1(x, y) = 2 * (x, y) – (1, 1)$.
+\chapter{Explicación del Camera Jittering} \label{appendix:jitter}
+La Secuencia de $Halton(2, 3)$ genera puntos en el espacio $[0,1] \times [0,1]$. Primero, tenemos que transformarlo en el espacio $[- 1,1] \times [-1,1]$ porque consideramos que el píxel está en el centro, es decir, en OpenGL, el primer píxel está en $(0.5, 0.5)$. Por esto, aplicamos la transformación $T_1 (x, y) = 2 * (x, y) - (1, 1)$.
 
-Now, we only want to jitter inside the pixel because we should only be sampling inside of it. We want to control this but for explanation purposes, we can assume that we only want it inside the pixel. So, we apply the transformation $T_2(x, y) = \frac{(x, y)}{2}$.
+Ahora, solo queremos causar \textit{jittering} dentro del píxel porque solo deberíamos tomar muestras dentro de él. Queremos controlar este movimiento, pero para fines de explicación, podemos suponer que solo lo estarems dentro del píxel. Entonces, aplicamos la transformación $T_2 (x, y) = \frac{(x, y)}{2}$.
 
-From now on, we need to change how we interpret the process we are performing; we are calculating the distance we are going to move the pixel center, so we need to see it as a vector rather than a point. We need to transform the vector to a vector normalized by the screen size. Consequently, we apply the transformation $T_3(x, y) = (x, y) / (w, h)$ with $(w, h)$ being the Width and Height of the screen and “$/$” operator as component-wise division.
+A partir de ahora, debemos cambiar la forma en que interpretamos el proceso que estamos realizando; estamos calculando la distancia a la que vamos a mover el centro de píxeles, por lo que debemos verlo como un vector en lugar de como un punto. Necesitamos transformar el vector en un vector normalizado por el tamaño de la pantalla. En consecuencia, aplicamos la transformación $T_3 (x, y) = (x, y) / (w, h)$ con $(w, h)$ siendo el ancho y alto de la pantalla y el operador "$/$" como división por componentes.
 
-Now we need to transform our vector normalized by the screen size $[0, 1]$ to the Normalized Device Coordinates which go in the range $[-1, 1]\times [-1, 1]$. This is done by using $T_4(x, y) = 2 * (x, y)$ (to transform points we would use $2*(x, y) – (1, 1)$).
-At the end, our transformation would look like this $T(x, y) = T_4(T_3(T_2(T_1(x, y)))) = (2 * (x, y) – (1, 1)) / (w, h)$ with $(x, y)$ being a Halton Sequence point.
+Ahora necesitamos transformar nuestro vector normalizado por el tamaño de pantalla $ [0, 1] $ a las Coordenadas Normalizadas del Dispositivo (\textit{Normalized Device Coordinates}, NDC) que van en el rango $ [- 1, 1] \times [-1, 1]$. Esto se hace usando la transformación $T_4 (x, y) = 2 * (x, y)$ (para transformar puntos, usaríamos $2 * (x, y) - (1, 1)$). Al final, nuestra transformación se vería así $T (x, y) = T_4 (T_3 (T_2 (T_1 (x, y)))) = (2 * (x, y) - (1, 1)) / (w, h) $ con $ (x, y) $ siendo un punto de la Secuencia de Halton.
 
-We now need to modify our Projection Matrix, which takes points from the View Space into the Clip Space. The resulting matrix is taken from the Ke Xu presentation page 14 ~\cite{XU2016}. Let $(h_x,h_y)$ be jitter we have previously calculated.
+Ahora necesitamos modificar nuestra Matriz de Proyección, que toma puntos del espacio de visualización en el Espacio de Clip (\textit{Clip Space}, donde se eliminan fácilmente los vértices trivialmente no visibles). La matriz resultante se toma de la página 14 de presentación de Ke Xu ~\cite{XU2016}. Sea $ (h_x, h_y) $ el \textit{jittering} que hemos calculado previamente.
 
 \begin{equation}
 \begin{split}
@@ -1526,7 +1525,7 @@ a & 0 & 0 & 0 \\
 \end{split}
 \end{equation}
 
-Let’s see its effect to a point in View Space, let $p_{view}=(x,y,z,1)$.
+Veamos su efecto a un punto en el \textit{View Space} (visión desde perspectiva de la cámara), sea $p_{view}=(x,y,z,1)$.
 
 \begin{equation}
 	JitteredProjection\times p_{view} = \begin{bmatrix*}
@@ -1537,7 +1536,7 @@ Let’s see its effect to a point in View Space, let $p_{view}=(x,y,z,1)$.
 	\end{bmatrix*}
 \end{equation}
 
-We proceed to do the Perspective Divide to transform the point to NDC Coordinates, this is accomplished by dividing the vector by the w component.
+Procedemos a hacer la \textit{División en Perspectiva} (corrige la perspectiva a la deseada en la cámara) para transformar el punto en Coordenadas NDC, esto se logra dividiendo el vector por el componente w. 
 
 \begin{equation}
 \begin{bmatrix*}
@@ -1553,7 +1552,7 @@ We proceed to do the Perspective Divide to transform the point to NDC Coordinate
 \end{bmatrix*}
 \end{equation}
 
-Accordingly, we only need to be sure we can apply the Jitter Matrix alone to use it inside Pixel Shaders with points in NDC space. 
+En consecuencia, solo necesitamos estar seguros de que podemos aplicar la Matriz de \textit{Jittering}, para usarla dentro de \textit{Pixel Shaders}, con puntos en el espacio NDC.
 
 \begin{equation}
 	JitterMatrix\times p_{NDC} = \begin{bmatrix*}
@@ -1568,7 +1567,5 @@ Accordingly, we only need to be sure we can apply the Jitter Matrix alone to use
 	0
 	\end{bmatrix*}
 \end{equation}
-
-
 
 \end{document}
