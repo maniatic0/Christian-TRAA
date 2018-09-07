@@ -9,8 +9,8 @@ T.~Akenine-Möller.
 Y.~A.~Y. Al-Najjar and D.~C. Soong.
 \newblock Comparison of image quality assessment: {PSNR, HVS, SSIM, UIQI}.
 \newblock {\em International Journal of Scientific \& Engineering Research},
-  August 2012.
-\newblock Volume 3, Issue 8.
+  Agosto 2012.
+\newblock Vol\'{u}men 3, Edici\'{o}n 8.
 
 \bibitem{Shreiner2011}
 E.~Angel and D.~Shreiner.
@@ -20,34 +20,34 @@ E.~Angel and D.~Shreiner.
 
 \bibitem{Spencer2010}
 Specter Arts.
-\newblock Pipe model, March 2010.
-\newblock Accessed: 2018-02-15,
+\newblock Pipe model, Marzo 2010.
+\newblock \'{U}ltimo Acceso: 2018-02-15,
   {https://www.turbosquid.com/3d-models/pipe-stone-bowl-3d-model/522479}.
 
 \bibitem{Chapman2012}
 J.~Chapman.
-\newblock {Per-Object Motion Blur}, September 2012.
-\newblock Accessed: 2017-11-30,
+\newblock {Per-Object Motion Blur}, Septiembre 2012.
+\newblock \'{U}ltimo Acceso: 2017-11-30,
   {http://john-chapman-graphics.blogspot.se/2013/01/per-object-motion-blur.html}.
 
 \bibitem{Fuglsand2016}
 L.~J. Fuglsang~Pedersen.
 \newblock {Temporal Reprojection Anti-Aliasing in INSIDE}.
 \newblock {\em GDC Vault}, 2016.
-\newblock Accessed: 2017-11-28,
+\newblock \'{U}ltimo Acceso: 2017-11-28,
   {http://www.gdcvault.com/play/1022970/Temporal-Reprojection-Anti-Aliasing-in}.
 
 \bibitem{Isabela2016}
 Isabela H.
-\newblock Arched window model, January 2016.
-\newblock Accessed: 2018-02-15,
+\newblock Arched window model, Enero 2016.
+\newblock \'{U}ltimo Acceso: 2018-02-15,
   {https://www.cgtrader.com/free-3d-models/architectural/window/window-arch}.
 
 \bibitem{Haeberli1990}
 P.~Haeberli and K.~Akeley.
 \newblock The accumulation buffer: Hardware support for high-quality rendering.
-\newblock {\em ACM Computer Graphics}, August 1990.
-\newblock Volume 24, Number 4, August 1990.
+\newblock {\em ACM Computer Graphics}, Agosto 1990.
+\newblock Vol\'{u}men 24, N\'{u}mero 4, Agosto 1990.
 
 \bibitem{Jimenez2012}
 J.~Jimenez, J.~I. Echevarria, T.~Sousa, and D.~Gutierrez.
@@ -70,22 +70,22 @@ T.~Lottes.
 
 \bibitem{Doggett2017EDAF80}
 {M. Doggett}.
-\newblock {{EDAF80} Computer Graphics}, September 2017.
+\newblock {{EDAF80} Computer Graphics}, Septiembre 2017.
 
 \bibitem{Doggett2017EDAN35}
 {M. Doggett}.
-\newblock {{EDAN35} High Performance Computer Graphics}, November 2017.
+\newblock {{EDAN35} High Performance Computer Graphics}, Noviembre 2017.
 
 \bibitem{Malpica2009}
 W.~S. Malpica and A.~C. Bovik.
 \newblock Range image quality assessment by structural similarity.
 \newblock In {\em 2009 IEEE International Conference on Acoustics, Speech and
-  Signal Processing}, pages 1149--1152, April 2009.
+  Signal Processing}, pages 1149--1152, Abril 2009.
 
 \bibitem{McGuire2017Data}
 M.~McGuire.
-\newblock Computer graphics archive, July 2017.
-\newblock Accessed: 2018-02-15, {https://casual-effects.com/data}.
+\newblock Computer graphics archive, Julio 2017.
+\newblock \'{U}ltimo Acceso: 2018-02-15, {https://casual-effects.com/data}.
 
 \bibitem{Nehab2007}
 D.~Nehab, P.~V. Sander, J.~Lawrence, N.~Tatarchuk, and J.~R. Isidoro.
@@ -103,8 +103,8 @@ B.~Wronski.
 \newblock {Temporal Supersampling and Antialiasing}.
 \newblock
   {https://bartwronski.com/2014/03/15/temporal-supersampling-and-antialiasing/},
-  March 2014.
-\newblock Accessed: 2017-12-01.
+  Marzo 2014.
+\newblock \'{U}ltimo Acceso: 2017-12-01.
 
 \bibitem{XU2016}
 K.~XU.
@@ -118,8 +118,8 @@ L.~Yang, D.~Nehab, P.~V. Sander, P.~Sitthiamorn, J.~Lawrence, and H.~Hoppe.
 
 \bibitem{Channa2015}
 C.~Yim.
-\newblock Window with blinds model, October 2015.
-\newblock Accessed: 2018-02-15,
+\newblock Window with blinds model, Octubre 2015.
+\newblock \'{U}ltimo Acceso: 2018-02-15,
   {https://www.cgtrader.com/free-3d-models/architectural/window/window-brown}.
 
 \end{thebibliography}
