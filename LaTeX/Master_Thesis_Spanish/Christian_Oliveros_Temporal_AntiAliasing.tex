@@ -826,7 +826,7 @@ La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del Fi
 En este capítulo, explicamos cómo evaluamos las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Mostramos los resultados numéricos y visuales obtenidos. Finalmente, explicamos los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
 
 \section{Metodología de Evaluación}
-Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, seleccionamos modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba que desarrollamos, procedemos a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing} para determinar si las técnicas propuestas en esta tesis proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
+Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, seleccionamos modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba que desarrollamos, procedemos a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing}, para determinar si las técnicas propuestas en esta tesis proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
 
 Los modelos utilizados en las pruebas fueron:
 \begin{itemize}
@@ -839,9 +839,9 @@ Los modelos utilizados en las pruebas fueron:
 \item \textit{Hairball}: contiene muchos detalles finos por sus numerosas fibras.
 \end{itemize}
 
-Es importante tener en cuenta que en Computación Gráfica solo hay modelos comunes que se usan para probar técnicas, no existe un estándar per se. En esta Tesis, utilizamos dos modelos comunes: el Atrium de Sponza, que tiene muchas variaciones y se usa comúnmente para probar muchas técnicas de Computación Gráfica; y \textit{Hairball}, que a veces se usa para probar las técnicas \textit{Ray} y \textit{Path Tracing}. Para el resto de los modelos, presentamos una explicación de por qué se seleccionó cada modelo en cada subsección de cada prueba.
+Es importante tener en cuenta que en Computación Gráfica hay modelos comunes que se usan para probar técnicas, pero no existe un estándar per se. En esta Tesis, utilizamos dos modelos comunes: el Atrium de Sponza, que tiene muchas variaciones y se usa comúnmente para probar muchas técnicas de Computación Gráfica; y \textit{Hairball}, que a veces se usa para probar las técnicas \textit{Ray} y \textit{Path Tracing}. Para el resto de los modelos, presentamos una explicación del por qué se seleccionó cada uno en cada subsección de cada prueba.
 
-Es importante mencionar que los modelos del Atrium de Sponza y \textit{Hairball} se descargaron del \textit{Computer Graphics Archive} \cite{McGuire2017Data} de Morgan McGuire, el modelo de la Tubería es de Spencer Arts \cite{Spencer2010}, el modelo de Ventana Arqueada es de Isabela H. \cite{Isabela2016} y la Ventana con Persianas es de Channa Yim \cite{Channa2015}.
+Los modelos del Atrium de Sponza y \textit{Hairball} se descargaron del \textit{Computer Graphics Archive} \cite{McGuire2017Data} de Morgan McGuire. El modelo de la Tubería es de Spencer Arts \cite{Spencer2010}. El modelo de Ventana Arqueada es de Isabela H. \cite{Isabela2016} y la Ventana con Persianas es de Channa Yim \cite{Channa2015}.
 
 Las pruebas se realizaron en la computadora proporcionada por la Universidad de Lund, que tiene la siguiente especificación:
 \begin{itemize}
@@ -853,10 +853,10 @@ Las pruebas se realizaron en la computadora proporcionada por la Universidad de 
 \end{itemize}
 
 \section{Resultados y Comparaciones}
-Primero, para tener una base para analizar los datos, necesitamos saber que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error; tener un alto valor de PSNR y SNR significa que es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero; y, finalmente, que tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel representa su valor SSIM: tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
+Para tener una base para analizar los datos, necesitamos observar que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error. Además, tener un alto valor de PSNR y SNR es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero. Finalmente, tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel se representa su valor SSIM. Tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
 
 \subsection{Filtro de Nitidez}
-Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para ver si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. La escena fue seleccionada para la prueba porque proporcionaba un ejemplo de una escena general que no debería generar ningún efecto de desenfoque. Como se ve en la tabla \ref{tab:sharpen_res}, incluso si el TAA de la Tesis y el TAA de Uncharted utilizaron el nuevo filtro de nitidez, nuestras otras mejoras aún renderizan una imagen de mayor calidad. Si hacemos zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} podemos ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
+Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. La escena fue seleccionada para esta prueba porque proporcionaba un ejemplo de una escena general, que no debería generar ningún efecto de desenfoque. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para observar si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. Como se puede observar en la tabla \ref{tab:sharpen_res}, incluso cuando el TAA de la Tesis y el TAA de Uncharted utilizan el Filtro de Nitidez Normalizado, las otras mejoras que hemos realizado  con el TAA de la Tesis renderiza una imagen de mayor calidad. Si hacemos zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} podemos ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!htb]
@@ -897,10 +897,10 @@ Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfer
 
 \FloatBarrier
 \subsection{Tubería}
-Para esta prueba, utilizamos el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros. Queríamos probar si nuestras mejoras reducían la cantidad de desenfoque alrededor de esos bordes duros mientras se disminuyen los problemas causados por el \textit{aliasing}. Renderizamos el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como vemos en los resultados, TAA con nuestras mejoras se encuentra en el mismo nivel de calidad que SMAA.
+Utilizamos el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros (\textit{hard edges}).  Queríamos probar si nuestras mejoras reducían la cantidad de desenfoque alrededor de esos bordes duros, mientras se disminuyen los problemas causados por el \textit{aliasing}. Renderizamos el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como puede advertirse en los resultados, TAA con nuestras mejoras se encuentra en el mismo nivel de calidad que SMAA.
 
 \subsubsection{Regular}
-Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, observamos que hay una reducción del desenfoque en el TAA de la Tesis en comparación con la TAA de Uncharted. Además, observamos que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar allí; esto es más fácil de observar que los bordes oscuros en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. Además, la Tabla \ref{tab:pipe_regular} nos confirma que el TAA de la Tesis alcanza casi la misma calidad que SMAA.
+Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, observamos que hay una reducción del desenfoque en el TAA de la Tesis en comparación con la TAA de Uncharted. Además, observamos que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar; esto es más fácil de observar que los bordes oscuros en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. La Tabla \ref{tab:pipe_regular} nos confirma que el TAA de la Tesis alcanza casi la misma calidad que SMAA.
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
 \begin{table}[!htb]	
@@ -942,9 +942,9 @@ Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las 
 \FloatBarrier
 
 \subsubsection{Con Ángulo de Cámara Inclinada}
-Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, podemos observar que el TAA de la Tesis es el más parecido a la imagen base. En el mapa de SSIM del TAA de Uncharted, notamos que se está generando desenfoque alrededor de los bordes.
+Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, podemos observar que el TAA de la Tesis es el más semejante  a la imagen base. En el mapa de SSIM del TAA de Uncharted, notamos que se está generando desenfoque alrededor de los bordes.
 
-Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} observamos que SMAA no está detectando correctamente el borde superior de la tubería. Cuando hacemos zoom, observamos una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
+Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} observamos que SMAA no está detectando correctamente el borde superior de la tubería. Cuando hacemos zoom, notamos una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
 
 % Table generated by Excel2LaTeX from sheet 'Pipe with Inclination'
 \begin{table}[!htb]
@@ -986,9 +986,9 @@ Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:p
 \FloatBarrier
 
 \subsection{Ventana con Persianas}
-En esta prueba, usamos el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Probamos cómo se comportaban nuestras mejoras con este tipo de detalles y descubrimos que no reaccionaba de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
+Usamos el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Probamos cómo se comportaban nuestras mejoras con este tipo de detalles y hallamos que visualmente no reaccionaba de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
 
-De las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} podemos observar que es complicado que las técnicas manejen las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, notamos que el TAA de la Tesis y SMAA pueden reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, creemos que es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
+En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} podemos observar lo complicado que es para las técnicas manejar las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, notamos que el TAA de la Tesis y SMAA pueden reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, creemos que es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
 
 % Table generated by Excel2LaTeX from sheet 'Window Blind'
 \begin{table}[!htb]
@@ -1030,7 +1030,7 @@ De las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} pode
 \FloatBarrier
 
 \subsection{Ventana Arqueada}
-Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación mejorada se maneja con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Podemos observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las pequeñas brechas, vemos que las técnicas no pueden renderizarla la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, pero creemos que el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan parpadeos de píxeles cuando hay movimiento.
+Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación mejorada se maneja con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Podemos observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las brechas pequeñas, notamos que las técnicas no pueden renderizarla la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, creemos que el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan menos parpadeos de píxeles cuando hay movimiento.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[!htb]
 	\small
@@ -1071,9 +1071,9 @@ Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación m
 \FloatBarrier
 
 \subsection{Atrium de Sponza}
-Para esta prueba, queríamos analizar cómo se comporta la implementación de TAA de la Tesis con una escena general con luces y sombras. Utilizamos el modelo del Atrium  de Sponza con el modelo de Esfera, estática, en el centro.
+Con esta prueba queríamos analizar cómo se comporta la implementación de TAA de la Tesis con una escena general con luces y sombras. Utilizamos el modelo del Atrium de Sponza con el modelo de Esfera estática en el centro.
 
-Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, podemos observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM; SMAA tuvo problemas con todas las flores, podemos observar la forma de las flores en su Mapa de SSIM; y que el TAA de la Tesis solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. Además, la Tabla \ref{tab:sponza} confirma lo que estamos observando en los resultados visuales, ya que el TAA de la Tesis obtuvo los mejores resultados en la mayor parte de la prueba; mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
+Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, podemos observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM. SMAA tuvo problemas con todas las flores, podemos observar la forma de las flores en su Mapa de SSIM. El TAA de la Tesis solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. La Tabla \ref{tab:sponza} confirma lo que estamos observando en los resultados visuales, ya que el TAA de la Tesis obtuvo los mejores resultados en la mayor parte de la prueba; mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'
 \begin{table}[!htb]
 	\small
@@ -1114,9 +1114,9 @@ Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, pode
 \FloatBarrier
 
 \subsection{Flores del Atrium de Sponza}
-En esta prueba vimos cómo nuestras mejoras manejan los detalles de un modelo con partes transparentes, tal como son las flores del modelo del Atrium de Sponza. El \textit{aliasing} que presentan este tipo de modelos se considera difícil de detectar y corregir correctamente. 
+En esta prueba vimos cómo nuestras mejoras manejan los detalles de un modelo con partes transparentes, como son las flores del modelo del Atrium de Sponza. El \textit{aliasing} que presentan este tipo de modelos se considera difícil de detectar y corregir correctamente. 
 
-De las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth}, observamos que el TAA de Uncharted tiene muchos problemas para manejar este tipo de modelo, especialmente si observamos su Mapa de SSIM. Notamos que SMAA no pudo corregir todos los artefactos de aliasing de los bordes de las flores, vemos que la silueta de las flores aparece en su Mapa de SSIM.  Finalmente, observamos que el TAA de la Tesis corrigió la mayoría de los artefactos de aliasing, aunque algunos todavía aparecen como áreas grises en su Mapa de SSIM. Además, la Tabla \ref{tab:sponza_flowers} confirma lo que observamos visualmente, ya que el TAA de la Tesis obtuvo los mejores puntajes y SMAA obtuvo una puntuación peor que el promedio.
+En las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth}, notamos que el TAA de Uncharted tiene problemas para manejar este tipo de modelo, especialmente si observamos su Mapa de SSIM. Notamos que SMAA no pudo corregir todos los artefactos de aliasing de los bordes de las flores, vemos que la silueta de las flores aparece en su Mapa de SSIM.  Finalmente, observamos que el TAA de la Tesis corrigió la mayoría de los artefactos de aliasing, aunque algunos todavía aparecen como áreas grises en su Mapa de SSIM. Además, la Tabla \ref{tab:sponza_flowers} confirma lo que percibimos visualmente, ya que el TAA de la Tesis obtuvo los mejores puntajes y SMAA obtuvo una puntuación peor que el promedio.
 
 % Table generated by Excel2LaTeX from sheet 'Sponza Flowers'
 \begin{table}[!htb]
@@ -1158,9 +1158,9 @@ De las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth},
 \FloatBarrier
 
 \subsection{Bordes Duros}
-Para esta prueba, exploramos cómo la implementación de la tesis maneja muchos  detalles pequeños a gran distancia y cómo se comporta con bordes duros. Utilizamos los modelos de las Ventanas para los detalles pequeños y los modelos de Tubería y Pared para los bordes duros. 
+En esta prueba exploramos cómo la implementación de la tesis maneja muchos  detalles pequeños a gran distancia y cómo se comporta con bordes duros. Utilizamos los modelos de las Ventanas para los detalles pequeños y los modelos de Tubería y Pared para los bordes duros. 
 
-De las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, observamos que el TAA de la Tesis es la mejor técnica para manejar todos los bordes de todos los modelos, su Mapa de SSIM apenas tiene un área oscura y en la Tabla \ref{tab:hard_test} sobrepasa cualquier otra técnica. El TAA de Uncharted crea artefactos de desenfoque alrededor de todos los bordes, esto aparece en su Mapa de SSIM ya que todos los bordes son visibles. Finalmente, SMAA no puede corregir algunos artefactos de \textit{aliasing} que podemos observar en su Mapa de SSIM.
+En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, observamos que el TAA de la Tesis es la mejor técnica para manejar los bordes de todos los modelos, su Mapa de SSIM apenas tiene un área oscura y en la Tabla \ref{tab:hard_test} sobrepasa cualquier otra técnica. El TAA de Uncharted crea artefactos de desenfoque alrededor de todos los bordes, esto aparece en su Mapa de SSIM ya que todos los bordes son visibles. Finalmente, SMAA no puede corregir algunos artefactos de \textit{aliasing} que podemos observar en su Mapa de SSIM.
 
 % Table generated by Excel2LaTeX from sheet 'Hard Test'
 \begin{table}[!htb]
