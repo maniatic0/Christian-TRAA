@@ -19,7 +19,7 @@
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~III:~\MakeTextUppercase {Marco Teórico}}{6}
 \contentsline {section}{\numberline {3.1}Canal de Renderizado}{6}
 \contentsline {section}{\numberline {3.2}Proceso de Rasterización}{7}
-\contentsline {section}{\numberline {3.3}El Problema del Aliasing}{7}
+\contentsline {section}{\numberline {3.3}El Problema del Aliasing}{8}
 \contentsline {section}{\numberline {3.4}Mapeado de Sombras y la Arquitectura de Shading Diferido}{9}
 \contentsline {section}{\numberline {3.5}Anti-Aliasing}{10}
 \contentsline {subsection}{\numberline {3.5.1}Super Sampling Anti-Aliasing (SSAA)}{10}
@@ -28,18 +28,18 @@
 \contentsline {subsection}{\numberline {3.5.4}Enhanced Subpixel Morphological Antialiasing (SMAA)}{11}
 \contentsline {section}{\numberline {3.6}Temporal Anti-Aliasing}{11}
 \contentsline {subsection}{\numberline {3.6.1}Camera Jittering}{12}
-\contentsline {subsection}{\numberline {3.6.2}Buffer de Velocidad}{12}
+\contentsline {subsection}{\numberline {3.6.2}Buffer de Velocidad}{13}
 \contentsline {subsection}{\numberline {3.6.3}Buffer de Historia}{13}
-\contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{14}
+\contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{15}
 \contentsline {subsection}{\numberline {3.6.5}Filtro de Nitidez}{15}
 \contentsline {subsection}{\numberline {3.6.6}Motion Blur}{15}
 \contentsline {subsection}{\numberline {3.6.7}Problemas}{16}
 \contentsline {subsubsection}{Desenfoque}{16}
 \contentsline {subsubsection}{Ghosting}{16}
-\contentsline {section}{\numberline {3.7}Buffer de Acumulación}{16}
+\contentsline {section}{\numberline {3.7}Buffer de Acumulación}{17}
 \contentsline {section}{\numberline {3.8}Operador de Sobel}{17}
 \contentsline {section}{\numberline {3.9}Métricas de Imagen}{18}
-\contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{18}
+\contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{19}
 \contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{19}
 \contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{19}
 \contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{19}
@@ -51,7 +51,7 @@
 \contentsline {subsubsection}{Número de Muestras Seleccionadas}{23}
 \contentsline {section}{\numberline {4.2}Implementación del Marco de Pruebas}{24}
 \contentsline {subsection}{\numberline {4.2.1}Pruebas Estáticas}{24}
-\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{25}
+\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{24}
 \contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{25}
 \contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{26}
 \contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{27}
@@ -72,12 +72,12 @@
 \contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{45}
 \contentsline {subsection}{\numberline {5.2.7}Bordes Duros}{47}
 \contentsline {subsection}{\numberline {5.2.8}Prueba de Ghosting de Esfera}{48}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{49}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{50}
 \contentsline {subsubsection}{Prueba Estática Sin Luz}{50}
 \contentsline {subsubsection}{Prueba Estática Con Luz}{51}
 \contentsline {subsubsection}{Prueba de Ghosting Sin Luz}{53}
 \contentsline {subsubsection}{Prueba de Ghosting Con Luz}{54}
-\contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{55}
+\contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{56}
 \contentsline {section}{\numberline {5.3}Discusión}{56}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{59}
 \contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
