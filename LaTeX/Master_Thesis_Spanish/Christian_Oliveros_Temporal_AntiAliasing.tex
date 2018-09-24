@@ -882,7 +882,7 @@ Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfer
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.3]{images/results/sharpen_test_render.png}
+	\includegraphics[scale=0.41]{images/results/sharpen_test_render.png}
 	\caption{Comparación de las Imágenes Renderizadas.}\label{fig:sharpen_render}
 \end{figure}
 
@@ -926,14 +926,15 @@ Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
-	\caption{Comparación de Tubería Regular entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
+	\includegraphics[scale=0.2]{images/results/pipe_regular_sobel_ground_truth.png}
+	\caption{Imagen Base de la Prueba de Tubería Regular.}\label{fig:pipe_regular_truth}
 \end{figure}
+
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=0.2]{images/results/pipe_regular_sobel_ground_truth.png}
-	\caption{Imagen Base de la Prueba de Tubería Regular.}\label{fig:pipe_regular_truth}
+	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
+	\caption{Comparación de Tubería Regular entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
 \end{figure}
 
 \FloatBarrier
@@ -1076,20 +1077,20 @@ Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, pode
 	\small
 	\centering
 	\caption{Resultados numéricos de la Prueba del Atrium de Sponza.}
-	\begin{tabular}{|l|c|c|c|c|c|c|c|}
+	\begin{tabular}{l c c c c c c c}
 		\hline
-		\multicolumn{8}{|c|}{\textbf{Prueba del Atrium de Sponza}} \\
+		\multicolumn{8}{c}{\textbf{Prueba del Atrium de Sponza}} \\
 		\hline
 		\textbf{\diagbox[innerwidth=5em]{Pruebas}{AA}} & \textbf{No AA} & \textbf{FXAA}  & \textbf{SMAA}  & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{TAA \\ Mejorado}} & \textbf{Mejor} & \textbf{\makecell{TAA \\ Mejorado \\ Contra \\ El Mejor}} \\
 		\hline
 		MSE   & 13.458 & 8.290 & 8.610 & 42.728 & 3.972 & \makecell{TAA \\ Mejorado} & 0.000 \\
-		\hline
+		
 		RMSD  & 3.669 & 2.879 & 2.934 & 6.537 & 1.993 & \makecell{TAA \\ Mejorado} & 0.000 \\
-		\hline
+		
 		Peak-SNR  & 36.841 & 38.945 & 38.781 & 31.824 & 42.141 & \makecell{TAA \\ Mejorado} & 0.000 \\
-		\hline
+		
 		SNR   & 20.056 & 22.160 & 21.996 & 15.038 & 25.356 & \makecell{TAA \\ Mejorado} & 0.000 \\
-		\hline
+		
 		SSIM  & 0.988 & 0.991 & 0.991 & 0.938 & 0.991 & \makecell{TAA \\ Mejorado}  & 0.000 \\
 		\hline
 	\end{tabular}%
@@ -1350,7 +1351,7 @@ En la Figura \ref{fig:hairball_ghosting_shadow}, podemos observar que ambas impl
 		\hline
 		\multicolumn{5}{c}{\textbf{Resumen de Prueba de Ghosting de Hairball Sin Luz}} \\
 		\hline
-		\multicolumn{1}{|c|}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{TAA \\ Mejorado}} & \textbf{\makecell{Índice \\ de Prueba}} \\
+		\multicolumn{1}{c}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{TAA \\ Mejorado}} & \textbf{\makecell{Índice \\ de Prueba}} \\
 		\hline
 	    Mejor MSE & 70.261 & 17    & 32.692 & 0 \\
 		
@@ -1399,7 +1400,7 @@ En la Figura \ref{fig:hairball_ghosting_lighted} y la Tabla \ref{tab:hairball_gh
 		\hline
 		\multicolumn{5}{c}{\textbf{Resumen de Prueba de Ghosting de Hairball Con Luz}} \\
 		\hline
-		\multicolumn{1}{|c|}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{TAA \\ Mejorado}} & \textbf{\makecell{Índice \\ de Prueba}} \\
+		\multicolumn{1}{c}{\textbf{\diagbox{Pruebas}{AA}}} & \textbf{\makecell{Uncharted \\ TAA}} & \textbf{\makecell{Índice \\ de Prueba}} & \textbf{\makecell{TAA \\ Mejorado}} & \textbf{\makecell{Índice \\ de Prueba}} \\
 		\hline
 		Mejor MSE & 714.811 & 62    & 603.190 & 1 \\
 		
