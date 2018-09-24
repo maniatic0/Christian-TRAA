@@ -18,6 +18,7 @@
 
 
 %\usepackage{hyperref}
+\usepackage[hyphens]{url}
 
 \usepackage{diagbox}
 \usepackage{float}
@@ -1482,16 +1483,16 @@ En cuanto a las recomendaciones para futuras investigaciones, sugerimos mejorar 
 \chapter{Repositorio de GitHub}
 El enlace principal al repositorio es https://github.com/maniatic0/Christian-TRAA . Desde allí, se puede acceder a los siguientes enlaces para la versión impresa de este informe.
 \begin{itemize}
-	\item Repositorio Completo: https://github.com/maniatic0/Christian-TRAA.
-	\item Especificación Completa de la Computadora: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/PC\%20Specification.
-	\item Todas las Pruebas: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests.
-	\item Pruebas del Buffer de Acumulación: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Accumulation\%20Buffer\%20Tests.
-	\item La Mayoría de las Pruebas del Proyecto de Grado: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Master\%20Thesis\%20Tests.
-	\item Pruebas del Filtro de Nitidez: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Sharpening\%20Tests.
-	\item Pruebas de \textit{Ghosting}: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/Ghosting.
-	\item Pruebas de HairBall: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/Important\%20Tests/HairBall.
-	\item Código: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/CG\_Labs.
-	\item Reporte de \LaTeX: \\ https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master\_Thesis\_Spanish.
+	\item Repositorio Completo: \url{https://github.com/maniatic0/Christian-TRAA}.
+	\item Especificación Completa de la Computadora: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/PC%20Specification}.
+	\item Todas las Pruebas: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests}.
+	\item Pruebas del Buffer de Acumulación: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Accumulation%20Buffer%20Tests}.
+	\item La Mayoría de las Pruebas del Proyecto de Grado: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Master%20Thesis%20Tests}.
+	\item Pruebas del Filtro de Nitidez: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Sharpening%20Tests}.
+	\item Pruebas de \textit{Ghosting}: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Ghosting}.
+	\item Pruebas de HairBall: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/HairBall}.
+	\item Código: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/CG_Labs}.
+	\item Reporte de \LaTeX: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master_Thesis_Spanish}.
 \end{itemize}
 \chapter{Explicación del Camera Jittering} \label{appendix:jitter}
 La Secuencia de $Halton(2, 3)$ genera puntos en el espacio $[0,1] \times [0,1]$. Primero, tenemos que transformarlo en el espacio $[- 1,1] \times [-1,1]$ porque consideramos que el píxel está en el centro, es decir, en OpenGL, el primer píxel está en $(0.5, 0.5)$. Por esto, aplicamos la transformación $T_1 (x, y) = 2 * (x, y) - (1, 1)$.

@@ -82,4 +82,4 @@
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{59}
 \contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
 \contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{62}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{63}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{64}
