@@ -104,6 +104,12 @@ I.~Sobel.
 \newblock An isotropic 3x3 image gradient operator.
 \newblock {\em Irwin Sobel Correspondence}, 02 2014.
 
+\bibitem{themathworks2018}
+Inc. The~MathWorks.
+\newblock {MATLAB}, 2018.
+\newblock \'{U}ltimo Acceso: 2018-11-13,
+  {https://se.mathworks.com/products/matlab.html}.
+
 \bibitem{Wronski2014}
 B.~Wronski.
 \newblock {Temporal Supersampling and Antialiasing}.

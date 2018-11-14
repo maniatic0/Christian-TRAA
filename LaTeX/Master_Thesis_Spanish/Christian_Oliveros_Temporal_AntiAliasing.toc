@@ -32,54 +32,54 @@
 \contentsline {subsection}{\numberline {3.6.3}Buffer de Historia}{13}
 \contentsline {subsection}{\numberline {3.6.4}Clipping Color Box}{15}
 \contentsline {subsection}{\numberline {3.6.5}Filtro de Nitidez}{15}
-\contentsline {subsection}{\numberline {3.6.6}Motion Blur}{15}
+\contentsline {subsection}{\numberline {3.6.6}Motion Blur}{16}
 \contentsline {subsection}{\numberline {3.6.7}Problemas}{16}
 \contentsline {subsubsection}{Desenfoque}{16}
-\contentsline {subsubsection}{Ghosting}{16}
+\contentsline {subsubsection}{Ghosting}{17}
 \contentsline {section}{\numberline {3.7}Buffer de Acumulación}{17}
 \contentsline {section}{\numberline {3.8}Operador de Sobel}{17}
-\contentsline {section}{\numberline {3.9}Métricas de Imagen}{18}
+\contentsline {section}{\numberline {3.9}Métricas de Imagen}{19}
 \contentsline {subsection}{\numberline {3.9.1}Error Cuadrado Medio (MSE)}{19}
-\contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{19}
-\contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{19}
-\contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{19}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~IV:~\MakeTextUppercase {Desarrollo}}{21}
-\contentsline {section}{\numberline {4.1}Mejoras al Proyecto de EDAN35}{21}
-\contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{22}
-\contentsline {subsection}{\numberline {4.1.2}Enhanced Subpixel Morphological Antialiasing (SMAA)}{22}
-\contentsline {subsection}{\numberline {4.1.3}Buffer de Acumulación}{23}
-\contentsline {subsubsection}{Número de Muestras Seleccionadas}{23}
-\contentsline {section}{\numberline {4.2}Implementación del Marco de Pruebas}{24}
-\contentsline {subsection}{\numberline {4.2.1}Pruebas Estáticas}{24}
-\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{24}
-\contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{25}
-\contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{26}
-\contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{27}
-\contentsline {subsection}{\numberline {4.3.2}Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}{29}
-\contentsline {subsection}{\numberline {4.3.3}Implementación de las Mejoras de Sobel}{30}
-\contentsline {subsection}{\numberline {4.3.4}Mezcla Final}{31}
-\contentsline {subsection}{\numberline {4.3.5}Modificaciones del Filtro de Nitidez}{34}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Resultados}}{35}
-\contentsline {section}{\numberline {5.1}Metodología de Evaluación}{35}
-\contentsline {section}{\numberline {5.2}Resultados y Comparaciones}{36}
-\contentsline {subsection}{\numberline {5.2.1}Filtro de Nitidez}{36}
-\contentsline {subsection}{\numberline {5.2.2}Tubería}{38}
-\contentsline {subsubsection}{Regular}{39}
-\contentsline {subsubsection}{Con Ángulo de Cámara Inclinada}{40}
-\contentsline {subsection}{\numberline {5.2.3}Ventana con Persianas}{42}
-\contentsline {subsection}{\numberline {5.2.4}Ventana Arqueada}{43}
-\contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{44}
-\contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{45}
-\contentsline {subsection}{\numberline {5.2.7}Bordes Duros}{47}
-\contentsline {subsection}{\numberline {5.2.8}Prueba de Ghosting de Esfera}{48}
-\contentsline {subsection}{\numberline {5.2.9}Hairball}{50}
-\contentsline {subsubsection}{Prueba Estática Sin Luz}{50}
-\contentsline {subsubsection}{Prueba Estática Con Luz}{51}
-\contentsline {subsubsection}{Prueba de Ghosting Sin Luz}{53}
-\contentsline {subsubsection}{Prueba de Ghosting Con Luz}{54}
-\contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{56}
-\contentsline {section}{\numberline {5.3}Discusión}{56}
-\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{59}
-\contentsline {chapter}{\MakeTextUppercase {Referencias}}{60}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{62}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{64}
+\contentsline {subsection}{\numberline {3.9.2}Desviación de la Raíz Cuadrada Media (RMSD)}{20}
+\contentsline {subsection}{\numberline {3.9.3}Relación Señal a Ruido de Pico (PSNR)}{20}
+\contentsline {subsection}{\numberline {3.9.4}Índice de Similitud Estructural (SSIM)}{20}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~IV:~\MakeTextUppercase {Desarrollo}}{22}
+\contentsline {section}{\numberline {4.1}Mejoras al Proyecto de EDAN35}{22}
+\contentsline {subsection}{\numberline {4.1.1}Fast Approximate Anti-Aliasing (FXAA)}{23}
+\contentsline {subsection}{\numberline {4.1.2}Enhanced Subpixel Morphological Antialiasing (SMAA)}{23}
+\contentsline {subsection}{\numberline {4.1.3}Buffer de Acumulación}{24}
+\contentsline {subsubsection}{Número de Muestras Seleccionadas}{24}
+\contentsline {section}{\numberline {4.2}Implementación del Marco de Pruebas}{25}
+\contentsline {subsection}{\numberline {4.2.1}Pruebas Estáticas}{25}
+\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{25}
+\contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{26}
+\contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{27}
+\contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{28}
+\contentsline {subsection}{\numberline {4.3.2}Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}{30}
+\contentsline {subsection}{\numberline {4.3.3}Implementación de las Mejoras de Sobel}{31}
+\contentsline {subsection}{\numberline {4.3.4}Mezcla Final}{32}
+\contentsline {subsection}{\numberline {4.3.5}Modificaciones del Filtro de Nitidez}{35}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Resultados}}{36}
+\contentsline {section}{\numberline {5.1}Metodología de Evaluación}{36}
+\contentsline {section}{\numberline {5.2}Resultados y Comparaciones}{37}
+\contentsline {subsection}{\numberline {5.2.1}Filtro de Nitidez}{37}
+\contentsline {subsection}{\numberline {5.2.2}Tubería}{39}
+\contentsline {subsubsection}{Regular}{40}
+\contentsline {subsubsection}{Con Ángulo de Cámara Inclinada}{41}
+\contentsline {subsection}{\numberline {5.2.3}Ventana con Persianas}{43}
+\contentsline {subsection}{\numberline {5.2.4}Ventana Arqueada}{44}
+\contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{45}
+\contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{46}
+\contentsline {subsection}{\numberline {5.2.7}Bordes Duros}{48}
+\contentsline {subsection}{\numberline {5.2.8}Prueba de Ghosting de Esfera}{49}
+\contentsline {subsection}{\numberline {5.2.9}Hairball}{51}
+\contentsline {subsubsection}{Prueba Estática Sin Luz}{51}
+\contentsline {subsubsection}{Prueba Estática Con Luz}{52}
+\contentsline {subsubsection}{Prueba de Ghosting Sin Luz}{54}
+\contentsline {subsubsection}{Prueba de Ghosting Con Luz}{55}
+\contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{57}
+\contentsline {section}{\numberline {5.3}Discusión}{57}
+\contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{60}
+\contentsline {chapter}{\MakeTextUppercase {Referencias}}{61}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{63}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{65}
