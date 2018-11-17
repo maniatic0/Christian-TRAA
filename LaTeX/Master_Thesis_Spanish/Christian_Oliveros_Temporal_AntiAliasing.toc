@@ -59,6 +59,7 @@
 \contentsline {subsection}{\numberline {4.3.3}Implementación de las Mejoras de Sobel}{31}
 \contentsline {subsection}{\numberline {4.3.4}Mezcla Final}{32}
 \contentsline {subsection}{\numberline {4.3.5}Modificaciones del Filtro de Nitidez}{35}
+\contentsline {section}{\numberline {4.4}Resumen del Desarrollo}{35}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~V:~\MakeTextUppercase {Resultados}}{36}
 \contentsline {section}{\numberline {5.1}Metodología de Evaluación}{36}
 \contentsline {section}{\numberline {5.2}Resultados y Comparaciones}{37}
@@ -69,12 +70,12 @@
 \contentsline {subsection}{\numberline {5.2.3}Ventana con Persianas}{43}
 \contentsline {subsection}{\numberline {5.2.4}Ventana Arqueada}{44}
 \contentsline {subsection}{\numberline {5.2.5}Atrium de Sponza}{45}
-\contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{46}
+\contentsline {subsection}{\numberline {5.2.6}Flores del Atrium de Sponza}{47}
 \contentsline {subsection}{\numberline {5.2.7}Bordes Duros}{48}
 \contentsline {subsection}{\numberline {5.2.8}Prueba de Ghosting de Esfera}{49}
 \contentsline {subsection}{\numberline {5.2.9}Hairball}{51}
 \contentsline {subsubsection}{Prueba Estática Sin Luz}{51}
-\contentsline {subsubsection}{Prueba Estática Con Luz}{52}
+\contentsline {subsubsection}{Prueba Estática Con Luz}{53}
 \contentsline {subsubsection}{Prueba de Ghosting Sin Luz}{54}
 \contentsline {subsubsection}{Prueba de Ghosting Con Luz}{55}
 \contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{57}

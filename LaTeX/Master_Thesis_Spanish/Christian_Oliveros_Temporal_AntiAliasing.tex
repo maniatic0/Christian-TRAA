@@ -615,34 +615,34 @@ Para las pruebas de \textit{Ghosting}, se realizan mediciones de MSE, RMSD, PSNR
 
 
 \section[Modificaciones de Temporal Reprojection Anti-Aliasing ]{Modificaciones de Temporal Reprojection Anti-Aliasing }
-Para este proyecto de grado, la técnica del \textit{Color Clipping Box} se modificó para que se viera afectada por los valores calculados a partir de las nuevas técnicas aplicadas. Estos cambios siguen la lógica que queremos aplicar toda la fuerza de la técnica de \textit{Temporal Anti-Aliasing} únicamente cuando sea necesario y minimizar la aplicación de la técnica en otras partes, para minimizar los efectos de la \textit{ghosting} y desenfoque.
+Para este proyecto de grado, la técnica del \textit{Color Clipping Box} se modificó para que se viera afectada por los valores calculados a partir de las nuevas técnicas aplicadas. Estos cambios siguen la lógica de querer aplicar toda la fuerza de la técnica de \textit{Temporal Anti-Aliasing} únicamente cuando sea necesario y minimizar la aplicación de la técnica en otras partes, para minimizar los efectos de la \textit{ghosting} y desenfoque.
 
-El primer cambio consiste en que los colores que se calcularon a partir del promedio entre las vecindades $3\times 3$ y Cruz, de los patrones de muestreo (ver Figura \ref{fig:samplingpattern_2}), se mezclan en una cantidad variable; a diferencia de antes donde solo se tomaba la el promedio entre ambos. El valor que utilizamos para mezclar se calcula en función de cuanto \textit{aliasing} consideramos que tiene el píxel siendo inspeccionado. La idea es que preferimos la vecindad de Cruz si el píxel que estamos calculando actualmente no se considera con \textit{aliasing}, porque es menos probable que la vecindad de Cruz introduzca ruido en los cálculos de la \textit{Color Clipping Box}. Pero, si se considera el píxel con \textit{aliasing}, preferimos el vecindario $3\times 3$ porque proporciona más información sobre el entorno del píxel para crear la imagen sin \textit{aliasing}. 
+El primer cambio consiste en que los colores que se calcularon a partir del promedio entre las vecindades $3\times 3$ y Cruz, de los patrones de muestreo (ver Figura \ref{fig:samplingpattern_2}), se mezclan en una cantidad variable; a diferencia de antes donde solo se tomaba la el promedio entre ambos. El valor que se utiliza para mezclar se calcula en función de cuanto \textit{aliasing} consideramos que tiene el píxel siendo inspeccionado. La idea es que se prefiere la vecindad de Cruz si el píxel que se está calculando actualmente no se considera con \textit{aliasing}, porque es menos probable que la vecindad de Cruz introduzca ruido en los cálculos de la \textit{Color Clipping Box}. Pero, si se considera el píxel con \textit{aliasing}, se prefiere el vecindario $3\times 3$ porque proporciona más información sobre el entorno del píxel para crear la imagen sin \textit{aliasing}. 
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.3]{images/sampling_pattern.png}
-	\caption{Patrón de muestreo utilizado. Imagen tomada de la presentación de Fuglsand. \protect\cite{Fuglsand2016}}\label{fig:samplingpattern_2}
+	\caption{Patrón de muestreo utilizado. Imagen tomada de la presentación de Fuglsand \protect\cite{Fuglsand2016}.}\label{fig:samplingpattern_2}
 \end{figure}
 
-El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} depende de cuánto \textit{aliasing} se considera que tiene el píxel. Al utilizar \textit{Color Clipping Box} más pequeñas (Ver Figura \ref{fig:colorclippingboxredux}) que la técnica original en píxeles sin \textit{aliasing}, aumentamos la eliminación de colores no deseados del historial, reduciendo los efectos del \textit{Ghosting} ya que rechazamos colores más rápido en píxeles que sabemos que no se consideran con aliasing. Esto se implementa mediante la interpolación lineal del color de píxel actual y los colores mínimo y máximo calculados para construir la \textit{Color Clipping Box}.
+El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} depende de cuánto \textit{aliasing} se considera que tiene el píxel. Al utilizar \textit{Color Clipping Box} más pequeñas (Ver Figura \ref{fig:colorclippingboxredux}) que la técnica original en píxeles sin \textit{aliasing}, aumentamos la eliminación de colores no deseados del historial, reduciendo los efectos del \textit{Ghosting} ya que se rechaza colores más rápido en píxeles que se sabe que no se consideran con aliasing. Esto se implementa mediante la interpolación lineal del color de píxel actual y los colores mínimo y máximo calculados para construir la \textit{Color Clipping Box}.
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.3]{images/clipping_box_reduction.png}
-	\caption{Reducción de tamaño de la Color Clipping Box}\label{fig:colorclippingboxredux}
+	\caption{Reducción de tamaño de la Color Clipping Box.}\label{fig:colorclippingboxredux}
 \end{figure}
 
-En las siguientes secciones, explicaremos cómo se calculan los valores que contribuyen a decidir si un píxel se considera con \textit{aliasing} o no. Estos valores se calculan al mismo tiempo que se aplica TAA, con la excepción del Operador de Sobel, que ocurre antes de la técnica TAA principal. Más adelante mostraremos cómo usamos esos valores para reducir el tamaño del \textit{Color Clipping Box} y la preferencia del patrón de muestreo.
+En las siguientes secciones, se explicará cómo se calculan los valores que contribuyen a decidir si un píxel se considera con \textit{aliasing} o no. Estos valores se calculan al mismo tiempo que se aplica TAA, con la excepción del Operador de Sobel, que ocurre antes de la técnica TAA principal. Más adelante se mostrará cómo usamos esos valores para reducir el tamaño del \textit{Color Clipping Box} y la preferencia del patrón de muestreo.
 
 \subsection{Implementación de Mejoras de Indexación de Triángulos}
-La idea principal detrás de la aplicación de esta técnica es detectar los píxeles que consideramos con \textit{aliasing}, utilizando la cantidad de modelos diferentes que rodean a un píxel. Queremos detectar los bordes entre diferentes modelos porque el \textit{aliasing} normalmente ocurre allí. Una vez que tenemos esta información, procedemos a modificar la \textit{Color Clipping Box} que controla la aplicación de TAA.
+La idea principal detrás de la aplicación de esta técnica es detectar los píxeles que se consideran con \textit{aliasing}, utilizando la cantidad de modelos diferentes que rodean a un píxel. Se quiere detectar los bordes entre diferentes modelos porque el \textit{aliasing} normalmente ocurre allí. Una vez se tiene esta información, se procede a modificar la \textit{Color Clipping Box} que controla la aplicación de TAA.
 
 Para implementar esta técnica, todos los modelos en la escena reciben un índice único. Luego, en el pase de Renderización de Geometría, todos los triángulos que pertenecen a un mismo modelo reciben el índice del modelo como su identificación (ID). Posteriormente, se usa en el \textit{píxel shader} para generar una textura en la que cada píxel contiene el ID del modelo al que pertenece.
 
-En el pase de Reproyección Temporal, se calcula el promedio del número de píxeles pertenecientes a diferentes modelos en la vecindad $3\times 3$ del píxel siendo revisado. Con este promedio, procedemos a sesgar la interpolación lineal de color entre el mínimo, máximo y promedio entre las vecindades Cruz y $3\times 3$ del píxel y procedemos a cambiar el tamaño del \textit{Color Clipping Box}.
+En el pase de Reproyección Temporal, se calcula el promedio del número de píxeles pertenecientes a diferentes modelos en la vecindad $3\times 3$ del píxel siendo revisado. Con este promedio, se procede a sesgar la interpolación lineal de color entre el mínimo, máximo y promedio entre las vecindades Cruz y $3\times 3$ del píxel y procedemos a cambiar el tamaño del \textit{Color Clipping Box}.
 
-Si el promedio es cercano a cero, lo que significa que el píxel está rodeado por píxeles de su mismo modelo, interpolamos hacia los colores de la vecindad Cruz y reducimos el tamaño de la \textit{Color Clipping Box}. Pero si el promedio es cercano a uno, lo que significa que el píxel está rodeado por muchos píxeles de otros modelos, interpolamos hacia los colores de la vecindad $3\times 3$ y dejamos que la \textit{Color Clipping Box} permanezca en su tamaño original.
+Si el promedio es cercano a cero, lo que significa que el píxel está rodeado por píxeles de su mismo modelo, se interpola hacia los colores de la vecindad Cruz y se reduce el tamaño de la \textit{Color Clipping Box}. Pero si el promedio es cercano a uno, lo que significa que el píxel está rodeado por muchos píxeles de otros modelos, se interpola hacia los colores de la vecindad $3\times 3$ y se deja que la \textit{Color Clipping Box} permanezca en su tamaño original.
 
 \begin{equation}\label{eq:model_index_acc}
 modelAverage_i = \frac{\sum\limits_{j=1}^{9} ModelDiff(i,j)}{9} 
@@ -653,7 +653,7 @@ Donde
 ModelDiff(i,j) = \left\lbrace \begin{split}1\quad & if\quad ModelID_i \neq ModelID_j \\ 0\quad & else\end{split} \right.
 \end{equation*}
 
-A continuación, mostraremos algunos ejemplos de cómo funciona esta técnica. Para cada matriz, los números representan los ID de los triángulos, siendo la posición central el píxel que actualmente se está calculando y el resto su vecindad. La Matriz \ref{eq:triang_index_not_aliased} muestra un ejemplo de un píxel no considerado con \textit{aliasing} porque la mayoría de sus vecinos tienen el mismo ID. Por otro lado, la Matriz \ref{eq:triang_index_aliased} muestra un pixel considerado con \textit{aliasing} debido a la gran cantidad de ID diferentes alrededor.
+A continuación, se mostrarán algunos ejemplos de cómo funciona esta técnica. Para cada matriz, los números representan los ID de los triángulos, siendo la posición central el píxel que actualmente se está calculando y el resto su vecindad. La Matriz \ref{eq:triang_index_not_aliased} muestra un ejemplo de un píxel no considerado con \textit{aliasing} porque la mayoría de sus vecinos tienen el mismo ID. Por otro lado, la Matriz \ref{eq:triang_index_aliased} muestra un pixel considerado con \textit{aliasing} debido a la gran cantidad de ID diferentes alrededor.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:triang_index_not_aliased}
@@ -672,9 +672,9 @@ A continuación, mostraremos algunos ejemplos de cómo funciona esta técnica. P
 \end{equation}
 
 \subsection{Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}
-La razón para utilizar esta técnica es que queremos detectar píxeles que están en una vecindad de píxeles separados por profundidades relativamente largas. También, queremos detectar píxeles cuya profundidad en el último cuadro cambió, relativamente, una distancia larga en contraste con su vecindad actual. Todos los píxeles que detectamos los consideramos con \textit{aliasing}.
+La razón para utilizar esta técnica es que se quiere detectar píxeles que están en una vecindad de píxeles separados por profundidades relativamente largas. También, se quiere detectar píxeles cuya profundidad en el último cuadro cambió, relativamente, una distancia larga en contraste con su vecindad actual. Todos los píxeles que se detectan los consideramos con \textit{aliasing}.
 
-Primero, calculamos la profundidad lineal mínima, máxima y su promedio del vecindario $3\times 3$. Luego procedemos a usar la siguiente fórmula para calcular el valor que utilizaremos para normalizar los resultados: 
+Primero, se calcula la profundidad lineal mínima, máxima y su promedio del vecindario $3\times 3$. Luego procedemos a usar la siguiente fórmula para calcular el valor que se utilizará para normalizar los resultados: 
 \begin{equation} \label{eq:maxdepthdistance}
 \begin{split} 
 	maxDepthDistance = min \left( \right. & \left| depthMin-depthAvg \right|  ,   \\ 
@@ -682,23 +682,23 @@ Primero, calculamos la profundidad lineal mínima, máxima y su promedio del vec
 \end{split} 
 \end{equation}
 
-Calculamos el valor de normalización utilizando el mínimo para evitar la interferencia de valores atípicos. Si $maxDepthDistance$ está por debajo de $0.002$, todo lo que sigue se establece en cero porque los píxeles están tan cerca que probablemente no tengan \textit{aliasing}. Este umbral se definió experimentando qué valores no generan ruido dentro de los cálculos, pero dejan entrar los píxeles interesantes.
+Se calcula el valor de normalización utilizando el mínimo para evitar la interferencia de valores atípicos. Si $maxDepthDistance$ está por debajo de $0.002$, todo lo que sigue se establece en cero porque los píxeles están tan cerca que probablemente no tengan \textit{aliasing}. Este umbral se definió experimentando qué valores no generan ruido dentro de los cálculos, pero dejan entrar los píxeles interesantes.
 
-Luego calculamos la Pseudo-Varianza de Profundidad como:
+Luego se calcula la Pseudo-Varianza de Profundidad como:
 
 \begin{equation} \label{eq:depthpseudovariance}
 	depthPseudoVariance = \left( \frac{\left|currentDepth-depthAvg\right|}{maxDepthDistance}\right)^2
 \end{equation}
 
-Esto nos proporciona una Pseudo-Varianza que mide la distancia entre la profundidad promedio de la vecindad y la profundidad actual del píxel. Hay que tener en cuenta que normalmente el valor va a estar entre $0$ y $1$ pero, si la profundidad del píxel es un valor atípico en la vecindad, este valor será superior a $1$.
+Esto proporciona una Pseudo-Varianza que mide la distancia entre la profundidad promedio de la vecindad y la profundidad actual del píxel. Se tiene que tener en cuenta que normalmente el valor va a estar entre $0$ y $1$ pero, si la profundidad del píxel es un valor atípico en la vecindad, este valor será superior a $1$.
 
-Finalmente, calculamos cómo la profundidad del píxel en el último cuadro se relaciona con la vecindad actual, usando la Pseudo-Varianza Temporal de Profundidad. Hay que tener en cuenta que usamos la cuarta potencia para reducir el ruido en los cálculos. Dado que el valor normalizado está entre $0$ y $1$, el cálculo lo hace converger a $0$ si el valor es cercano a $0$ o a $1$ si es cercano a $1$.
+Finalmente, se calcula cómo la profundidad del píxel en el último cuadro se relaciona con la vecindad actual, usando la Pseudo-Varianza Temporal de Profundidad. Se tiene que tener en cuenta que se usa la cuarta potencia para reducir el ruido en los cálculos. Dado que el valor normalizado está entre $0$ y $1$, el cálculo lo hace converger a $0$ si el valor es cercano a $0$ o a $1$ si es cercano a $1$.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
 \end{equation}
 
-A continuación, mostraremos ejemplos de cómo esta técnica decide si un píxel se considera con \textit{aliasing} o no. Para cada matriz, los números representan las profundidades de los triángulos, siendo la posición central el píxel actual que se analiza y el resto es su vecindad. La Matriz \ref{eq:depth_var_not_aliased} nos muestra un ejemplo de un pixel no considerado con \textit{aliasing} porque está relativamente cerca de la mayoría de sus vecinos. Por otro lado, la Matriz \ref{eq:depth_var_aliased} muestra un ejemplo de un píxel que se consideraría con \textit{aliasing} porque tiene una distancia relativamente grande en comparación con su vecindad. Un ejemplo de un píxel considerado con \textit{aliasing} por la Pseudo-Varianza Temporal de Profundidad, sería si la profundidad del píxel de la Matriz \ref{eq:depth_var_not_aliased} en el último cuadro fuera de $4.0$.
+A continuación, se mostrarán ejemplos de cómo esta técnica decide si un píxel se considera con \textit{aliasing} o no. Para cada matriz, los números representan las profundidades de los triángulos, siendo la posición central el píxel actual que se analiza y el resto es su vecindad. La Matriz \ref{eq:depth_var_not_aliased} muestra un ejemplo de un pixel no considerado con \textit{aliasing} porque está relativamente cerca de la mayoría de sus vecinos. Por otro lado, la Matriz \ref{eq:depth_var_aliased} muestra un ejemplo de un píxel que se consideraría con \textit{aliasing} porque tiene una distancia relativamente grande en comparación con su vecindad. Un ejemplo de un píxel considerado con \textit{aliasing} por la Pseudo-Varianza Temporal de Profundidad, sería si la profundidad del píxel de la Matriz \ref{eq:depth_var_not_aliased} en el último cuadro fuera de $4.0$.
 
 \begin{equation}\label{eq:depth_var_not_aliased}
 \begin{bmatrix*}[r]
@@ -719,7 +719,7 @@ A continuación, mostraremos ejemplos de cómo esta técnica decide si un píxel
 \subsection{Implementación de las Mejoras de Sobel}
 La idea principal detrás de la aplicación de la técnica de detección de bordes de Sobel es concentrar los efectos de aplicar TAA en los píxeles situados en los bordes, para corregir el \textit{aliasing}, en caso de ser necesario. Es importante señalar que esta es la única técnica de las mejoras del Proyecto de Grado que se ejecuta antes del algoritmo TAA principal.
 
-Aplicamos el Operador Sobel a la luminancia de los colores de la escena iluminada producida por la Arquitectura de \textit{Shading} Diferido; la luminancia de los colores de la escena no iluminada del Buffer de Geometría; y la profundidad lineal actual. Utilizamos la luminancia porque el ojo humano reconoce mejor los cambios repentinos y usamos la escena, iluminada y no iluminada, para evitar problemas al detectar bordes debido a luces o sombras.
+Se aplica el Operador Sobel a la luminancia de los colores de la escena iluminada producida por la Arquitectura de \textit{Shading} Diferido; la luminancia de los colores de la escena no iluminada del Buffer de Geometría; y la profundidad lineal actual. Se utiliza la luminancia porque el ojo humano reconoce mejor los cambios repentinos y usamos la escena, iluminada y no iluminada, para evitar problemas al detectar bordes debido a luces o sombras.
 
 Cada operador de Sobel se ejecuta por separado y sus magnitudes se mezclan al final de la siguiente manera:
 \begin{equation} \label{eq:sobel_g}
@@ -728,19 +728,19 @@ Cada operador de Sobel se ejecuta por separado y sus magnitudes se mezclan al fi
 
 Donde $u$ es la magnitud del Operador Sobel de la luminancia de la escena no iluminada, $l$ es la magnitud del Operador Sobel de la luminancia de la escena iluminada y $d$ es la magnitud del Operador Sobel de la profundidad lineal actual. \\
 
-Luego, restringimos(\textit{clamp}) $g$ entre $0.0$ y $1.0$ para finalmente aplicar el polinomio de paso suave (\textit{smoothstep}) de la siguiente manera:
+Luego, se restringe (\textit{clamp}) $g$ entre $0.0$ y $1.0$ para finalmente aplicar el polinomio de paso suave (\textit{smoothstep}) de la siguiente manera:
 \begin{equation} \label{eq:sobel_sqrt}
 sobel=\sqrt{g^2*(3.0-2.0*g)} 
 \end{equation}
 
-Después de aplicar todos los Operadores de Sobel, guardamos los resultados en una textura y realizamos una versión simplificada de TRAA, para mantener los resultados estables a lo largo del tiempo. Esta versión simplificada es similar a la que usamos como base de este proyecto de grado, las diferencias provienen del uso de \textit{Clamping} (Restricción) en lugar de una \textit{Color Clipping Box}, porque los valores de textura son unidimensionales. Otra diferencia es que no aplicamos un Filtro de Nitidez.
+Después de aplicar todos los Operadores de Sobel, se guardan los resultados en una textura y realizamos una versión simplificada de TRAA para mantener los resultados estables a lo largo del tiempo. Esta versión simplificada es similar a la que se usó como base de este proyecto de grado, las diferencias provienen del uso de \textit{Clamping} (Restricción) en lugar de una \textit{Color Clipping Box}, porque los valores de textura son unidimensionales. Otra diferencia es que no se aplica un Filtro de Nitidez.
 
 La salida de este TRAA se usa para calcular el valor de Sobel del píxel actual, el valor promedio de Sobel en la Vecindad Cruz y el valor promedio de Sobel en la Vecindad $3\times 3$.
 
 \subsection{Mezcla Final}
-Finalmente, modificamos cómo se calcula la \textit{Color Clipping Box} utilizando los valores que calculamos previamente. Llamamos a este valor mezclado final $aliasedValue$, el cual representa la cantidad en que un píxel que se considera con \textit{aliasing}. Después de calcularlo, lo usamos para cambiar el patrón de muestreo a partir del cual se construye la \textit{Color Clipping Box} y su tamaño.
+Finalmente, se modifica cómo se calcula la \textit{Color Clipping Box} utilizando los valores que fueron calculados previamente. Este valor mezclado final se llama $aliasedValue$, el cual representa la cantidad en que un píxel que se considera con \textit{aliasing}. Después de ser calculado, se usa para cambiar el patrón de muestreo a partir del cual se construye la \textit{Color Clipping Box} y su tamaño.
 
-Primero, definimos la función de mezcla como:
+Primero, se define la función de mezcla como:
 \begin{equation} \label{eq:mixfunction}
 Mix(x,y,t)=x*(1-t)+y*t\quad with\; 0\leq t\leq 1
 \end{equation} 
@@ -758,7 +758,7 @@ sobelAvg=Mix(sobelAvgCross, sobelAvg3x3, sobelAvgMixVal)
 
 Donde $sobelAvgCross$ es el valor promedio de Sobel de la Vecindad Cruz y $sobelAvg3x3$ es el valor promedio de Sobel de la Vecindad $3\times 3$ alrededor del píxel actual. \\ 
 
-Utilizamos las Ecuaciones \ref{eq:sobelavg}, \ref{eq:depthpseudovariance}, \ref{eq:depthtemporalpseudovariance} y \ref{eq:model_index_acc} para calcular cuánto \textit{aliasing} se considera que tiene este píxel:
+Se utilizan las Ecuaciones \ref{eq:sobelavg}, \ref{eq:depthpseudovariance}, \ref{eq:depthtemporalpseudovariance} y \ref{eq:model_index_acc} para calcular cuánto \textit{aliasing} se considera que tiene este píxel:
 \begin{equation}\label{eq:aliasedvalue}
 \begin{split}
 aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
@@ -767,7 +767,7 @@ aliasedValue=Clamp01 (& sobelAvg + depthPseudoVariance \\
 \end{split}
 \end{equation}
 
-Con este $aliasedValue$ (valor de \textit{aliasing}) procedemos a modificar la \textit{Color Clipping Box}. Primero, seleccionamos cuánto de cada patrón de muestreo queremos que sea parte del \textit{Color Clipping Box}:
+Con este $aliasedValue$ (valor de \textit{aliasing}) se procede a modificar la \textit{Color Clipping Box}. Primero, se selecciona cuánto de cada patrón de muestreo se quiere que sea parte del \textit{Color Clipping Box}:
 \begin{equation}\label{eq:newcolors}
 \begin{split}
 colorMin= & Mix(colorMinCross,colorMin3x3,aliasedValue) \\
@@ -776,7 +776,7 @@ colorAvg= & Mix(colorAvgCross,colorAvg3x3,aliasedValue) \\
 \end{split}
 \end{equation}
 
-Luego modificamos el tamaño del \textit{Color Clipping Box} mediante la interpolación hacia el tamaño normal si el $aliasedValue$ está cerca de uno; en caso contrario, usamos el color actual, que es el centro del cuadro, lo cual disminuye el tamaño.
+Luego se modifica el tamaño del \textit{Color Clipping Box} mediante la interpolación hacia el tamaño normal si el $aliasedValue$ está cerca de uno; en caso contrario, se usa el color actual, que es el centro del cuadro, lo cual disminuye el tamaño.
 \begin{equation}\label{eq:clipredux}
 \begin{split}
 	clipColorMin= & Mix(colorCurrent,colorMin,aliasedValue) \\
@@ -786,7 +786,7 @@ Luego modificamos el tamaño del \textit{Color Clipping Box} mediante la interpo
 
 
 
-Las Figuras \ref{fig:aliasedval1}, \ref{fig:aliasedval2} y \ref{fig:aliasedval3} son ejemplos de los valores de \textit{aliasing} calculados, cada píxel representa el $aliasedValue$ actual de esa imagen. El color blanco representa un $aliasedValue$ de $1$ y el color negro de $0$. Como esperamos, la mayoría de los bordes están marcados como probablemente con \textit{aliasing} por las técnicas utilizadas.
+Las Figuras \ref{fig:aliasedval1}, \ref{fig:aliasedval2} y \ref{fig:aliasedval3} son ejemplos de los valores de \textit{aliasing} calculados, cada píxel representa el $aliasedValue$ actual de esa imagen. El color blanco representa un $aliasedValue$ de $1$ y el color negro de $0$. Como se esperaba, la mayoría de los bordes están marcados como probablemente con \textit{aliasing} por las técnicas utilizadas.
 
 \begin{figure}[H]
 	\centering
@@ -807,7 +807,7 @@ Las Figuras \ref{fig:aliasedval1}, \ref{fig:aliasedval2} y \ref{fig:aliasedval3}
 \end{figure}
 
 \subsection{Modificaciones del Filtro de Nitidez}
-Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel central es brillante y los píxeles vecinos están oscuros. Esto ocurre porque los colores oscuros son cercanos a cero y no son capaces de cancelar el aumento al píxel central, el cual se multiplica por $5$. Un ejemplo del peor caso posible es tener el píxel central con un color brillante y los píxeles del vecindario como negro puro, que se representan como cero. Por lo tanto, normalizamos el Filtro de Nitidez para evitar crear ese pico de color y trabajar mejor con píxeles brillantes en vecindarios oscuros. El filtro se cambió de \ref{eq:sharpen} a:
+Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel central es brillante y los píxeles vecinos están oscuros. Esto ocurre porque los colores oscuros son cercanos a cero y no son capaces de cancelar el aumento al píxel central, el cual se multiplica por $5$. Un ejemplo del peor caso posible es tener el píxel central con un color brillante y los píxeles del vecindario como negro puro, que se representan como cero. Por lo tanto, se normaliza el Filtro de Nitidez para evitar crear ese pico de color y trabajar mejor con píxeles brillantes en vecindarios oscuros. El filtro se cambió de \ref{eq:sharpen} a:
 \begin{equation} \label{eq:new_sharpen}
 \centering
 \begin{bmatrix*}[c]
@@ -819,12 +819,21 @@ Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel centr
 
 La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del Filtro de Nitidez utilizada.
 
+\section{Resumen del Desarrollo}
+En este capítulo se presentaron las mejoras al proyecto desarrollado en el curso EDAN35, utilizado como base del presente proyecto de grado. Se explicaron: los modelos utilizados para las pruebas; las correcciones del Jittering; el buffer de acumulación y; las implementaciones de FXAA y SMAA utilizadas para comparar con el TAA del proyecto de grado.  
+
+Además, se expuso el Marco de Pruebas que cuantifica las mejoras alcanzadas en este proyecto con respecto a los objetivos planteados, utilizando métricas de imagen. Siendo las pruebas de estáticas las utilizadas para medir el desenfoque y las pruebas de \textit{Ghosting}, como su nombre lo dice, para evaluar el \textit{Ghosting}.
+
+Se presentaron las mejoras a TAA aplicadas en este proyecto de grado y la razón por la que cada una de estas mejoras fue utilizada. Se explicaron la implementación de técnicas de Indexación de Triángulos; la Pseudo-Varianza de Profundidad y la Pseudo-Varianza Temporal de Profundidad; el Operador de Sobel; y finalmente su mezcla para obtener las mejoras buscadas. También, se explicó el cambio al Filtro de Nitidez para eliminar los picos de color. 
+
+
+
 
 \chapter{Resultados}
-En este capítulo, explicamos cómo evaluamos las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Mostramos los resultados numéricos y visuales obtenidos. Finalmente, explicamos los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
+En este capítulo, se explica cómo se evalúa las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Se muestran los resultados numéricos y visuales obtenidos. Finalmente, se explican los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
 
 \section{Metodología de Evaluación}
-Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, seleccionamos modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba que desarrollamos, procedemos a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing}, para determinar si las técnicas propuestas en este proyecto de grado proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
+Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, se seleccionaron modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba desarrollado, se procede a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing}, para determinar si las técnicas propuestas en este proyecto de grado proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
 
 Los modelos utilizados en las pruebas fueron:
 \begin{itemize}
@@ -837,7 +846,7 @@ Los modelos utilizados en las pruebas fueron:
 \item \textit{Hairball}: contiene muchos detalles finos por sus numerosas fibras.
 \end{itemize}
 
-Es importante tener en cuenta que en Computación Gráfica hay modelos comunes que se usan para probar técnicas, pero no existe un estándar per se. En este proyecto de grado, utilizamos dos modelos comunes: el Atrium de Sponza, que tiene muchas variaciones y se usa comúnmente para probar muchas técnicas de Computación Gráfica; y \textit{Hairball}, que a veces se usa para probar las técnicas \textit{Ray} y \textit{Path Tracing}. Para el resto de los modelos, presentamos una explicación del por qué se seleccionó cada uno en la sección correspondiente a cada una de las pruebas.
+Es importante tener en cuenta que en Computación Gráfica hay modelos comunes que se usan para probar técnicas, pero no existe un estándar per se. En este proyecto de grado, se utilizan dos modelos comunes: el Atrium de Sponza, que tiene muchas variaciones y se usa comúnmente para probar muchas técnicas de Computación Gráfica; y \textit{Hairball}, que a veces se usa para probar las técnicas \textit{Ray} y \textit{Path Tracing}. Para el resto de los modelos, se presenta una explicación del por qué se seleccionó cada uno en la sección correspondiente a cada una de las pruebas.
 
 Los modelos del Atrium de Sponza y \textit{Hairball} se descargaron del \textit{Computer Graphics Archive} \cite{McGuire2017Data} de Morgan McGuire. El modelo de la Tubería es de Spencer Arts \cite{Spencer2010}. El modelo de Ventana Arqueada es de Isabela H. \cite{Isabela2016} y la Ventana con Persianas es de Channa Yim \cite{Channa2015}.
 
@@ -851,10 +860,10 @@ Las pruebas se realizaron en la computadora proporcionada por la Universidad de 
 \end{itemize}
 
 \section{Resultados y Comparaciones}
-Para tener una base para analizar los datos, necesitamos observar que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error. Además, tener un alto valor de PSNR y SNR es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero. Finalmente, tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel representa su valor SSIM. Tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
+Para tener una base para analizar los datos, se necesita observar que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error. Además, tener un alto valor de PSNR y SNR es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero. Finalmente, tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel representa su valor SSIM. Tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
 
 \subsection{Filtro de Nitidez}
-Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. La escena fue seleccionada para esta prueba porque proporciona un ejemplo de una escena general, que no debería generar ningún efecto de desenfoque. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para observar si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. Como se puede observar en la tabla \ref{tab:sharpen_res}, incluso cuando el TAA Mejorado del Proyecto de Grado y el TAA de Uncharted utilizan el Filtro de Nitidez Normalizado, las otras mejoras que hemos realizado  con el TAA renderiza una imagen de mayor calidad. Si hacemos zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} podemos ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
+Para esta prueba, se utilizó el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. La escena fue seleccionada para esta prueba porque proporciona un ejemplo de una escena general, que no debería generar ningún efecto de desenfoque. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para observar si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. Como se puede observar en la tabla \ref{tab:sharpen_res}, incluso cuando el TAA Mejorado del Proyecto de Grado y el TAA de Uncharted utilizan el Filtro de Nitidez Normalizado, las otras mejoras que hemos realizado  con el TAA renderiza una imagen de mayor calidad. Si hacemos zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} se puede ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!htb]
@@ -895,10 +904,13 @@ Para esta prueba, usamos el modelo del Atrium de Sponza y un modelo de una Esfer
 
 \FloatBarrier
 \subsection{Tubería}
-Utilizamos el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros (\textit{hard edges}).  Queríamos probar si nuestras mejoras reducen la cantidad de desenfoque alrededor de esos bordes duros, mientras se disminuyen los problemas causados por el \textit{aliasing}. Renderizamos el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como puede advertirse en los resultados, TAA con nuestras mejoras se encuentra en el mismo nivel de calidad que SMAA.
+Se utiliza el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros (\textit{hard edges}). Se quería probar si nuestras mejoras reducen la cantidad de desenfoque alrededor de esos bordes duros, mientras se disminuyen los problemas causados por el \textit{aliasing}. Se renderizó el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como puede advertirse en los resultados, TAA con las mejoras se encuentran en el mismo nivel de calidad que SMAA.
 
 \subsubsection{Regular}
-Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, observamos que hay una reducción del desenfoque en el TAA del Proyecto de Grado en comparación con la TAA de Uncharted. Además, observamos que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar; esto es más fácil de observar que los bordes oscuros en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. La Tabla \ref{tab:pipe_regular} nos confirma que el TAA del Proyecto de Grado alcanza casi la misma calidad que SMAA.
+Cuando se hace \textit{zoom} y se compara la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, se observa que hay una reducción del desenfoque en el TAA del Proyecto de Grado en comparación con la TAA de Uncharted. Además, se observa que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar; esto es más fácil de observar que los bordes oscuros, los cuales representan disimilitud, en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. 
+
+La Tabla \ref{tab:pipe_regular} nos confirma que el TAA del Proyecto de Grado alcanza casi la misma calidad que SMAA, ya que las métricas de ambas técnicas resultaron ser muy cercanas. SMAA y el TAA del Proyecto de Grado obtuvieron los menores errores (MSE, RMSD), los mayores SNR (Peak-SNR, SNR) y la mayor similitud a la imagen base (SSIM).
+
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
 \begin{table}[!htb]	
@@ -941,9 +953,10 @@ Cuando hacemos zoom y comparamos la Figura \ref{fig:pipe_regular_truth} con las 
 \FloatBarrier
 
 \subsubsection{Con Ángulo de Cámara Inclinada}
-Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, podemos observar que el TAA Mejorado es el más semejante  a la imagen base. En el mapa de SSIM del TAA de Uncharted, notamos que se está generando desenfoque alrededor de los bordes.
+Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, se puede observar que el TAA Mejorado es el más semejante a la imagen base, aunque aún presenta algo de desenfoque en los bordes como se ve en su mapa de SSIM. En el mapa de SSIM del TAA de Uncharted, se puede notar que se está generando desenfoque alrededor de los bordes. Comparando SMAA con la imagen base podemos observar una escalera en el borde de la tubería, en su mapa de SSIM esto es especialmente notable como el borde gris que aparece.
 
-Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} observamos que SMAA no está detectando correctamente el borde superior de la tubería. Cuando hacemos zoom, notamos una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
+Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} se observa que SMAA no está detectando correctamente el borde superior de la tubería. En la Tabla se nota ya que los valores de SMAA son peores que el TAA del proyecto, aunque en la prueba anterior estos resultaron mejores. Cuando se hace \textit{zoom}, se nota una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
+
 
 % Table generated by Excel2LaTeX from sheet 'Pipe with Inclination'
 \begin{table}[!htb]
@@ -985,9 +998,9 @@ Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:p
 \FloatBarrier
 
 \subsection{Ventana con Persianas}
-Usamos el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Probamos cómo se comportan nuestras mejoras con este tipo de detalles y hallamos que visualmente no reacciona de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
+Se utilizó el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Se probó cómo se comportan las mejoras con este tipo de detalles y se halló que visualmente no reacciona de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
 
-En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} podemos observar lo complicado que es para las técnicas manejar las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, notamos que el TAA Mejorado y SMAA pueden reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, creemos que es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
+En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} se puede observar lo complicado que es para las técnicas manejar las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, se puede notar que el TAA Mejorado y se observa que SMAA puede reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
 
 % Table generated by Excel2LaTeX from sheet 'Window Blind'
 \begin{table}[!htb]
@@ -1029,7 +1042,7 @@ En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} pode
 \FloatBarrier
 
 \subsection{Ventana Arqueada}
-Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación mejorada se comporta con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Podemos observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las brechas pequeñas, notamos que las técnicas no pueden renderizar la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, creemos que el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan menos parpadeos de píxeles cuando hay movimiento.
+Se utilizó el modelo de Ventana Arqueada para probar cómo la implementación mejorada se comporta con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Se puede observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las brechas pequeñas, se notó que las técnicas no pueden renderizar la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, se cree el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan menos parpadeos de píxeles cuando hay movimiento.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[!htb]
 	\small
@@ -1070,9 +1083,9 @@ Usamos el modelo de Ventana Arqueada para probar cómo nuestra implementación m
 \FloatBarrier
 
 \subsection{Atrium de Sponza}
-Con esta prueba queremos analizar cómo se comporta la implementación de TAA del Proyecto de Grado con una escena general con luces y sombras. Utilizamos el modelo del Atrium de Sponza con el modelo de Esfera estática en el centro.
+Con esta prueba se quiere analizar cómo se comporta la implementación de TAA del Proyecto de Grado con una escena general con luces y sombras. Se utilizó el modelo del Atrium de Sponza con el modelo de Esfera estática en el centro.
 
-Si comparamos las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, podemos observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM. SMAA tuvo problemas con todas las flores, podemos observar la forma de las flores en su Mapa de SSIM. El TAA Mejorado solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. La Tabla \ref{tab:sponza} confirma lo que estamos observando en los resultados visuales, ya que el TAA Mejorado del Proyecto de Grado obtuvo los mejores resultados en la mayor parte de la prueba; mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
+Si se comparan las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, se puede observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM como los bordes grises visibles . SMAA tuvo problemas con todas las flores, se puede observar la forma de las flores en su Mapa de SSIM como las manchas grises oscuro. El TAA Mejorado solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. La Tabla \ref{tab:sponza} confirma lo que se está observando en los resultados visuales, ya que el TAA Mejorado del Proyecto de Grado obtuvo los mejores resultados en la mayor parte de la prueba, teniendo la menor cantidad de error (MSE, RMSD), la mejor relación señal a ruido (Peak-SNR, SNR) y la mayor similitud (SSIM); mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'
 \begin{table}[!htb]
 	\small
