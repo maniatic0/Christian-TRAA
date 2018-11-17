@@ -51,7 +51,7 @@
 \contentsline {subsubsection}{Número de Muestras Seleccionadas}{24}
 \contentsline {section}{\numberline {4.2}Implementación del Marco de Pruebas}{25}
 \contentsline {subsection}{\numberline {4.2.1}Pruebas Estáticas}{25}
-\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{25}
+\contentsline {subsection}{\numberline {4.2.2}Pruebas de Ghosting}{26}
 \contentsline {subsection}{\numberline {4.2.3}Métricas de Imagen de MATLAB}{26}
 \contentsline {section}{\numberline {4.3}Modificaciones de Temporal Reprojection Anti-Aliasing }{27}
 \contentsline {subsection}{\numberline {4.3.1}Implementación de Mejoras de Indexación de Triángulos}{28}
