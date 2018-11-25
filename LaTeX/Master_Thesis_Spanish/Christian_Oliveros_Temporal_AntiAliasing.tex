@@ -320,7 +320,7 @@ Para que TRAA funcione, se deben implementar otras técnicas comunes de computac
 
 
 \subsection{Camera Jittering}
-\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles \cite{Fuglsand2016,XU2016}, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja estático en relación con los pasados, es decir, es idéntico a los cuadros anteriores, se pierde información subpíxel alrededor de los bordes que podría usarse para refinar la imágen final ~\cite{Fuglsand2016, XU2016}.  
+\textit{Camera Jittering} (Agitamiento de Cámara) consiste en mover la cámara vertical y horizontalmente utilizando una traslación de subpíxeles \cite{Fuglsand2016,XU2016}, la Figura \ref{fig:camerajittering} es un ejemplo de la traslación horizontal. Se aplica en cada cuadro para conservar información de fragmentos de regiones locales de superficies en la escena. Si el cuadro actual se deja estático en relación con los pasados, es decir, es idéntico a los cuadros anteriores, se pierde información subpíxel alrededor de los bordes que podría usarse para refinar la imagen final ~\cite{Fuglsand2016, XU2016}.  
 
 \begin{figure}[!hbt]
 	\centering
@@ -659,7 +659,7 @@ Donde
 ModelDiff(i,j) = \left\lbrace \begin{split}1\quad & if\quad ModelID_i \neq ModelID_j \\ 0\quad & else\end{split} \right.
 \end{equation*}
 
-A continuación, se mostrarán algunos ejemplos de cómo funciona esta técnica. Para cada matriz, los números representan los ID de los triángulos, siendo la posición central el píxel que actualmente se está calculando y el resto su vecindad. La Matriz \ref{eq:triang_index_not_aliased} muestra un ejemplo de un píxel no considerado con \textit{aliasing} porque la mayoría de sus vecinos tienen el mismo ID. Por otro lado, la Matriz \ref{eq:triang_index_aliased} muestra un pixel considerado con \textit{aliasing} debido a la gran cantidad de ID diferentes alrededor.
+A continuación, se mostrarán algunos ejemplos de cómo funciona esta técnica. Para cada matriz, los números representan los ID de los triángulos, siendo la posición central el píxel que actualmente se está calculando y el resto su vecindad. La Matriz \ref{eq:triang_index_not_aliased} muestra un ejemplo de un píxel no considerado con \textit{aliasing} porque la mayoría de sus vecinos tienen el mismo ID. Por otro lado, la Matriz \ref{eq:triang_index_aliased} muestra un pixel considerado con \textit{aliasing} debido a la gran cantidad de ID diferentes a su alrededor.
 
 \begin{equation}
 \begin{bmatrix*}[r]\label{eq:triang_index_not_aliased}
@@ -1220,7 +1220,7 @@ En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, se observ
 \FloatBarrier
 
 \subsection{Prueba de Ghosting de Esfera}
-Con esta prueba se quiere medir cómo las mejoras que se realizaron disminuyen los efectos de \textit{Ghosting} en las imágenes renderizadas por la implementación de Uncharted. Por esta razón, se seleccionó el Modelo Esfera para que se moviera en la sala del Atrium de Sponza y se renderizó bajo un ángulo de cámara que mostrara efectos de \textit{Ghosting}.
+Con esta prueba se quiere medir cómo las mejoras que se realizaron disminuyen los efectos de \textit{Ghosting} en las imágenes renderizadas por la implementación de Uncharted. Por esta razón, se seleccionó el Modelo Esfera para que se moviera en la sala del Atrium de Sponza y se renderizó bajo un ángulo de cámara donde mostrara efectos de \textit{Ghosting}.
 
 Como se observa en los resultados visuales de la Figura \ref{fig:sphere_ghosting}, los efectos de  Ghosting disminuyeron en la implementación del proyecto, ya que las franjas visibles en el TAA de Uncharted son casi invisibles en el TAA del Proyecto de Grado. Además, en la Tabla \ref{tab:sphere_ghosting} los resultados promedio en las métricas de imágenes del TAA del Proyecto de Grado son mejores que el promedio del TAA de Uncharted.
 
@@ -1490,9 +1490,9 @@ A partir de los resultados de la comparación de tiempos (Consulte la sección \
 \chapter{Conclusiones y Recomendaciones}
 Como se ha demostrado numérica y visualmente con las pruebas realizadas, la implementación Mejorada del Proyecto de Grado logró su objetivo de reducir los efectos de desenfoque y los efectos de \textit{Ghosting} de la técnica \textit{Temporal Anti-Aliasing}, con el uso de detección de bordes de color y profundidad e indexación de triángulos. Los resultados muestran que esta técnica puede proporcionar la misma o mejor calidad que otras soluciones estándar de \textit{Anti-Aliasing}. 
 
-Como posibles mejoras, creemos en que nuestra implementación podría optimizarse para ejecutarse más rápido que nuestro tiempo actual. Nuestra implementación se realizó con flexibilidad en mente, para ayudarnos a probar diferentes enfoques. Esto podría simplificarse para reducir el número de etapas requeridas.
+Como posibles mejoras, se cree en que la implementación del proyecto podría optimizarse para ejecutarse más rápido que el tiempo actual. Este proyecto se realizó con flexibilidad en mente, para ayudar a probar diferentes enfoques. Esto podría simplificarse para reducir el número de etapas requeridas.
 
-En cuanto a las recomendaciones para futuras investigaciones, sugerimos mejorar el comportamiento de la técnica bajo objetos en movimiento con alta densidad de detalles, como en las pruebas de Hairball. Otro tema de mejora es la estabilidad de los detalles del tamaño de un píxel, que causan parpadeos como en las pruebas de Ventanas. Además, todavía se requiere una solución de \textit{Anti-Aliasing} de Iluminación Especular compatible con \textit{Temporal Anti-Aliasing} para proporcionar una solución de rango completo al \textit{Aliasing} en aplicaciones en tiempo real. Asimismo, sugerimos buscar métricas de imagen más específicas para gráficos por computadora, especialmente, encontrar valores de ajuste para SSIM que proporcionen una resolución numérica mayor al comparar diferentes imágenes procesadas
+En cuanto a las recomendaciones para futuras investigaciones, se sugiere mejorar el comportamiento de la técnica bajo objetos en movimiento con alta densidad de detalles, como en las pruebas de Hairball. Otro tema de mejora es la estabilidad de los detalles del tamaño de un píxel, que causan parpadeos como en las pruebas de Ventanas. Además, todavía se requiere una solución de \textit{Anti-Aliasing} de Iluminación Especular compatible con \textit{Temporal Anti-Aliasing} para proporcionar una solución de rango completo al \textit{Aliasing} en aplicaciones en tiempo real. Asimismo, se sugiere buscar métricas de imagen más específicas para gráficos por computadora, especialmente, encontrar valores de ajuste para SSIM que proporcionen una resolución numérica mayor al comparar diferentes imágenes procesadas.
 
 
 \bibliography{MyMSc}
