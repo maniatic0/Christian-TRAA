@@ -82,6 +82,6 @@
 \contentsline {subsection}{\numberline {5.2.10}Comparación de Tiempos}{57}
 \contentsline {section}{\numberline {5.3}Discusión}{57}
 \contentsline {chapter}{\MakeTextUppercase {Capítulo}~VI:~\MakeTextUppercase {Conclusiones y Recomendaciones}}{60}
-\contentsline {chapter}{\MakeTextUppercase {Referencias}}{61}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{63}
-\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{65}
+\contentsline {chapter}{\MakeTextUppercase {Referencias}}{62}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~A:~\MakeTextUppercase {Repositorio de GitHub}}{64}
+\contentsline {chapter}{\MakeTextUppercase {Apéndice}~B:~\MakeTextUppercase {Explicación del Camera Jittering}}{66}

@@ -74,8 +74,8 @@
 \grado{Ingeniero en Computación} %coloca el postgrado
 \carrera{Carrera}
 \programa{Ingeniería de Computación}
-%\juradouno{Ren\'e Escalante}
-%\juradodos{Johana Figueroa \mbox{(UC)}}
+\juradouno{Eduardo Blanco}
+\juradodos{Miguel Torrealba}
 %\juradotres{Irene Garc\'ia}
 %\juradocuatro{José Luis Palacios}
 
@@ -1488,6 +1488,12 @@ A partir de los resultados de la comparación de tiempos (Consulte la sección \
 
 
 \chapter{Conclusiones y Recomendaciones}
+Para la computación gráfica, el área de soluciones de \textit{Anti-Aliasing} es importante debido a que ayuda a minimizar  los problemas visuales que causa el \textit{Aliasing},  el cual aparece por las limitaciones de precisión numérica de las computadoras. De estas soluciones, \textit{Temporal Anti-Aliasing} se destaca por ser compatible con otras técnicas actuales de computación gráfica, por consumir poca memoria, requerir poco tiempo para ejecutarse y por resolver dos tipos de \textit{Aliasing}. Pero, esta técnica tiene dos problemas, causa desenfoque innecesario y genera \textit{Ghosting}. 
+
+Este proyecto de grado tiene como objetivo mejorar \textit{Temporal Anti-Aliasing} mediante el uso de detección de bordes, de color y profundidad, y técnicas de indexación de triángulos para reducir el problema de desenfoque y \textit{Ghosting}, con las limitaciones de renderizar al menos treinta cuadros por segundo, sin causar una pérdida mayor a 5 cuadros por segundo durante el transcurso de la ejecución; y trabajar con una cantidad limitada de memoria y ancho de banda, porque se necesita poder ejecutarlo en una computadora personal promedio.
+
+En este proyecto de grado se implementaron las técnicas de detección de bordes, de color y profundidad, utilizando el operador de Sobel; indexación de triángulos; Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad. Los valores producidos por ellas se mezclan y el resultado es usado para disminuir el desenfoque y \textit{Ghosting} de TAA. Además, se implementó un Marco de Prueba para cuantificar las mejoras del proyecto. Este utiliza MSE, RMSD, Peak-SNR, SNR y SSIM como métricas de imagen para medir y comparar el TAA mejorado del proyecto contra el TAA base y otras dos técnicas actuales de \textit{Anti-Aliasing}, FXAA y SMAA.
+
 Como se ha demostrado numérica y visualmente con las pruebas realizadas, la implementación Mejorada del Proyecto de Grado logró su objetivo de reducir los efectos de desenfoque y los efectos de \textit{Ghosting} de la técnica \textit{Temporal Anti-Aliasing}, con el uso de detección de bordes de color y profundidad e indexación de triángulos. Los resultados muestran que esta técnica puede proporcionar la misma o mejor calidad que otras soluciones estándar de \textit{Anti-Aliasing}. 
 
 Como posibles mejoras, se cree en que la implementación del proyecto podría optimizarse para ejecutarse más rápido que el tiempo actual. Este proyecto se realizó con flexibilidad en mente, para ayudar a probar diferentes enfoques. Esto podría simplificarse para reducir el número de etapas requeridas.
