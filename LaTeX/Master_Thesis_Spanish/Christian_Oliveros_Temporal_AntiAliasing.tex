@@ -253,11 +253,13 @@ Debido a que se está mapeando un triángulo continuo a un número finito de pí
 	\caption{Ejemplo del problema de Cobertura Parcial, basado en la segunda clase de EDAN35 ~\cite{Doggett2017EDAN35}. }\label{fig:partialcover}
 \end{figure}
 
-Este proceso muestra que lo que se renderiza en la pantalla, es una aproximación a lo que se representa en la escena, ya que los píxeles solo pueden ser cubiertos con un triángulo a la vez \cite{Moller2007, Doggett2017EDAN35}.
+Este proceso muestra que lo renderizado en la pantalla, es una aproximación de lo representado en la escena, ya que los píxeles solo pueden ser cubiertos con un triángulo a la vez \cite{Moller2007, Doggett2017EDAN35}.
 
 
 \section{El Problema del Aliasing}
-Cuando se mapea una representación continua en una finita, se generan errores. Como explican Edward Angel y Dave Shreiner en su libro (página 413) \cite{Shreiner2011}, se puede interpretar el proceso de renderización como el muestreo de una función continua $f(x, y)$, que representa el color de la escena en ese punto, a una cuadrícula de píxeles $n\times m$ en la que se toma como suposición que el punto $f_{ij}$ es el valor de $f$ sobre un área pequeña; reconstruyendo la función $f$, para mostrar la imagen en la pantalla, usando solo lo que se sabe de las muestras finitas. La herramienta matemática utilizada para evaluar los problemas de este proceso es el Análisis de Fourier \cite{Shreiner2011}, que establece que una función se puede descomponer en un conjunto de sinusoides, posiblemente en un número infinito de frecuencias. Para el análisis de imágenes bidimensionales, se puede pensar en la función $f$ como un conjunto de sinusoides en dos frecuencias espaciales. Con esta base matemática, se puede entender los trabajos de Nyquist que tratan del tema de muestreo en general. En específico para este proyecto de grado, se utiliza la primera parte del Teorema de Muestreo de Nyquist, como una herramienta para ilustrar por qué aparecen problemas de aliasing y se relacionan con problemas de muestreo.  \\
+Cuando se mapea una representación continua en una finita, se generan errores. Como explican Edward Angel y Dave Shreiner en su libro (página 413) \cite{Shreiner2011}, se puede interpretar el proceso de renderización como el muestreo de una función continua $f(x, y)$, que representa el color de la escena en ese punto, a una cuadrícula de píxeles $n\times m$ en la que se toma como suposición que el punto $f_{ij}$ es el valor de $f$ sobre un área pequeña; reconstruyendo la función $f$, para mostrar la imagen en la pantalla, usando solo lo que se sabe de las muestras finitas. La herramienta matemática utilizada para evaluar los problemas de este proceso es el Análisis de Fourier \cite{Shreiner2011}, que establece que una función se puede descomponer en un conjunto de sinusoides, posiblemente en un número infinito de frecuencias. Para el análisis de imágenes bidimensionales, se puede pensar en la función $f$ como un conjunto de sinusoides en dos frecuencias espaciales. Con esta base matemática, se pueden entender los trabajos de Nyquist \cite{Shreiner2011} que tratan del tema de muestreo, como se explicará más adelante. 
+
+Para este proyecto de grado, se utiliza la primera parte del Teorema de Muestreo de Nyquist, como una herramienta para ilustrar por qué aparecen problemas de aliasing y se relacionan con problemas de muestreo.  \\
 
 \emph{'' Teorema de Muestreo de Nyquist (Parte 1): Las muestras ideales de una función continua contienen toda la información de la función original si y sólo si la función continua se muestrea a una frecuencia mayor que el doble de la frecuencia más alta en la función. }
 
@@ -267,7 +269,7 @@ Cuando se mapea una representación continua en una finita, se generan errores. 
 
 Tomado de la página 415 del libro de Edward Angel y Dave Shreiner \cite{Shreiner2011}.  \\
 
-Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que se puede tomar un número infinito de muestras por frecuencia de muestreo, que no se puede  hacer en la práctica. El problema de \textit{Aliasing} que se experimenta en la computación gráfica, proviene de no poder tomar muestras según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial) y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. La Figura \ref{fig:aliasingexample} muestra un ejemplo de Aliasing Espacial. Se han propuesto y utilizado muchas soluciones para resolver el problema de \textit{Aliasing}, como por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA), que trabaja con frecuencias más altas que las requeridas a costa de mayores requerimientos de espacio.
+Como explican Edward Angel y Dave Shreiner, este muestreo idealizado supone que se puede tomar un número infinito de muestras por frecuencia de muestreo, lo que no es posible hacer en la práctica. El problema de \textit{Aliasing} que se experimenta en la computación gráfica, proviene de no poder tomar muestras según lo requerido por el Teorema de Muestreo de Nyquist, creando bordes desiguales que aparecen en el proceso de rasterización (\textit{Aliasing} Espacial) y saltos entre objetos en movimiento (\textit{Aliasing} Temporal), de acuerdo con Doggett y Wronski ~\cite{Doggett2017EDAN35, Wronski2014}. La Figura \ref{fig:aliasingexample} muestra un ejemplo de Aliasing Espacial. Se han propuesto y utilizado muchas soluciones para resolver el problema de \textit{Aliasing}, como por ejemplo la familia de soluciones \textit{Super Sampling Anti-Aliasing} (SSAA), que trabaja con frecuencias más altas que las requeridas a costa de mayores requerimientos de espacio.
 
 \begin{figure}[!hbt]
 	\centering
@@ -281,9 +283,9 @@ Los humanos esperan que los objetos reaccionen de cierta forma a las luces de un
 
 Según lo explicado por Doggett \cite{Doggett2017EDAN35}, bajo el Canal de Renderizado Gráfico basado en el Rasterizer , el proceso de cálculo de la sombra es difícil de realizar. El \textit{Rasterizer} no sabe si los objetos están cubiertos o no por una fuente de luz, por lo que se debe encontrar un método para calcular si un objeto está en la sombra. Este proceso se denomina Mapeado de Sombras y consiste en la representación de la escena a través de la perspectiva de cada fuente de luz y luego realizar pruebas en la perspectiva de la cámara, para establecer si el objeto se ve afectado por la luz o si está en sombras.
 
-Pero, como es de esperar, renderizar la escena varias veces es costoso y se necesita una forma de reducir el costo tanto como se pueda. La arquitectura de \textit{Shading} Diferido proporciona esa solución para realizar el \textit{Shading}, utilizando una operación que podría ser costosa, a solo píxeles visibles y así evitar desperdiciar recursos realizando el \textit{Shading} a píxeles de geometrías que están cubiertas por píxeles de otros objetos. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{Shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro. 
+Pero, como es de esperar, renderizar la escena varias veces es costoso y se necesita una forma de minimizar el costo tanto como sea posible. La arquitectura de \textit{Shading} Diferido proporciona esa solución para realizar el \textit{Shading}, utilizando una operación que podría ser costosa, a solo píxeles visibles y así evitar desperdiciar recursos realizando el \textit{Shading} a píxeles de geometrías que están cubiertas por píxeles de otros objetos. Esta arquitectura funciona renderizando primero la escena, sin cálculos de \textit{Shading}, en un buffer llamado Buffer de Geometría (\textit{Geometry Buffer}). Allí, se guarda información sobre colores, normales, profundidades, información específica del objeto para interactuar con luces, etc. para uso futuro. 
 
-Después de llenar el Buffer de Geometría, se lleva a cabo la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan sólo a los píxeles visibles; se calcula el Mapa de Sombreado de cada fuente de luz realizando cálculos de profundidad únicamente. Posteriormente, se calcula y se guarda el efecto de cada luz usando los Mapas de Sombreado.
+Después de llenar el Buffer de Geometría, se ejecuta la técnica de Mapeado de Sombras, que aprovecha la Arquitectura de \textit{Shading} Diferido para calcular la forma en que las luces afectan sólo a los píxeles visibles; se calcula el Mapa de Sombreado de cada fuente de luz realizando cálculos de profundidad únicamente. Posteriormente, se calcula y guarda el efecto de cada fuente de luz usando los Mapas de Sombreado.
 
 Al final, se toma la información de las luces, sombras y el Buffer de Geometría para renderizar la escena con iluminación.
 
@@ -306,13 +308,13 @@ El mayor problema que tiene esta técnica es que no funciona correctamente con e
 \subsection{Fast Approximate Anti-Aliasing (FXAA)}
 FXAA es una técnica de \textit{Anti-Aliasing} que se utiliza durante el post-procesamiento. Esta funciona al detectar bordes en las imágenes renderizadas, para luego suavizarlos \cite{Lottes2009}.
 
-Es relativamente barata en comparación con MSAA, ya que no requiere aumentar la resolución de la imagen, y proporciona resultados relativamente buenos, sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada y proporciona resultados relativamente buenos para el \textit{Aliasing} Temporal.
+Es relativamente asequible en comparación con MSAA, ya que no requiere aumentar la resolución de la imagen y proporciona resultados comparativamente buenos. Sus capacidades de suavizado están limitadas por la cantidad de información que la detección de bordes puede obtener en una sola pasada y proporciona resultados aceptables para el \textit{Aliasing} Temporal.
 
 \subsection{Enhanced Subpixel Morphological Antialiasing (SMAA)}
 SMAA es una técnica de post-procesamiento basada en \textit{Morphological Anti-Aliasing} (Anti-Aliasing Morfológico). Funciona mediante la reconstrucción de bordes y sus alrededores para regenerar la información de subpíxel perdida por \textit{aliasing} \cite{Jimenez2012}.
 
 \section{Temporal Anti-Aliasing}
-Como explicaron Ke Xu y Lasse Fuglsang en sus respectivas presentaciones ~ \cite{XU2016, Fuglsand2016}, el principio básico del \textit{Temporal Anti-Aliasing} es mezclar el cuadro que actualmente está siendo renderizado con cuadros del pasado, restringiendo la mezcla con una técnica de rechazo de cuadros pasados la cual será explicada más adelante. Esto se hace para aumentar el número de muestras a través del tiempo en lugar de solo usar muestras del mismo cuadro.
+Como explicaron Ke Xu y Lasse Fuglsang en sus respectivas presentaciones ~ \cite{XU2016, Fuglsand2016}, el principio básico del \textit{Temporal Anti-Aliasing} es mezclar el cuadro que actualmente está siendo renderizado con cuadros del pasado, restringiendo la mezcla con una técnica de rechazo de cuadros que será explicada más adelante. Esto se hace para aumentar el número de muestras a través del tiempo, en lugar de sólo usar muestras del mismo cuadro.
 
 Una de esas técnicas es \textit{Temporal Reprojection Anti-Aliasing}  (TRAA, \textit{Anti-Aliasing} de Reproyección Temporal), que funciona guardando los cuadros pasados en un Buffer de Historia para luego reproyectarlos a la escena actual y mezclarlos con el cuadro actual que se está procesando. Para lograrlo, se toma el cuadro actual y se busca el color que debería tener en el Buffer de Historia; este paso se llama \textit{Reprojection} (Reproyección).
 
@@ -328,7 +330,7 @@ Para que TRAA funcione, se deben implementar otras técnicas comunes de computac
 	\caption{Proceso de \textit{Jittering} sobre la proyección de la cámara. Imagen tomada de la presentación de Fuglsand \protect\cite{Fuglsand2016}.} \label{fig:camerajittering}
 \end{figure}
 
-El \textit{Jittering} se aplica como una traslación a la matriz de proyección de la cámara usando la $Halton$ $Sequence$ $(2,3)$ (Secuencia de Halton 2D utilizando 3 como base) como los vectores de traslación. Esta secuencia se usa porque genera un patrón irregular para las traslaciones, que ayuda a conservar más información que un patrón regular y porque la Secuencia de Halton, proporciona un generador económico de patrones pseudoaleatorios ~\cite{Fuglsand2016, XU2016}. 
+El \textit{Jittering} se aplica como una traslación a la matriz de proyección de la cámara, usando la $Halton$ $Sequence$ $(2,3)$ (Secuencia de Halton 2D utilizando 3 como base) como vectores de traslación. Esta secuencia se usa porque genera un patrón irregular para las traslaciones, que ayuda a conservar más información que un patrón regular y porque la Secuencia de Halton, proporciona un generador económico de patrones pseudoaleatorios ~\cite{Fuglsand2016, XU2016}. 
 
 \begin{figure}[!hbt]
 	\centering
@@ -336,10 +338,10 @@ El \textit{Jittering} se aplica como una traslación a la matriz de proyección 
 	\caption{Valores usados de la $Halton$ $Sequence$ $(2,3)$ (Secuencia de Halton).}\label{fig:halton16}
 \end{figure}
 
-La Figura ~\ref{fig:halton16} muestra la representación de los 16 puntos utilizados para trasladar la proyección en la implementación actual del Proyecto de Grado, tal como lo propusieron Fuglsand ~\cite{Fuglsand2016}. Los puntos se generaron usando MATLAB y luego se codificaron para mejorar su aleatoriedad usando reverse-radix scrambling.
+La Figura ~\ref{fig:halton16} muestra la representación de los 16 puntos utilizados para trasladar la proyección en la implementación actual del proyecto de grado, tal como lo propusieron Fuglsand ~\cite{Fuglsand2016}. Los puntos se generaron usando MATLAB y luego se codificaron para mejorar su aleatoriedad usando \textit{reverse-radix scrambling}.
 
 \subsection{Buffer de Velocidad}
-El algoritmo de Buffer de Velocidad (Velocity Buffer) utilizado en esta implementación es el propuesto por Chapman ~\cite{Chapman2012}, el cual es calculado restando la posición actual del píxel de su posición en el cuadro pasado. Esto es posible ya que se guarda la matriz que representa cada objeto en la escena y la se utiliza en el siguiente cuadro para calcular los píxeles del Buffer de Velocidad. Además, se cancela matemáticamente el Cámara Jittering antes de calcular las velocidades, para evitar el ruido que crea, como lo sugiere Xu ~\cite{XU2016}. 
+El algoritmo de Buffer de Velocidad (Velocity Buffer) utilizado en esta implementación es el propuesto por Chapman ~\cite{Chapman2012}, el cual es calculado restando la posición actual del píxel de su posición en el cuadro pasado. Esto es posible ya que se guarda la matriz que representa cada objeto en la escena y se utiliza en el siguiente cuadro para calcular los píxeles del Buffer de Velocidad. Además, se cancela matemáticamente el Cámara Jittering antes de calcular las velocidades, para evitar el ruido que crea, como lo sugiere Xu ~\cite{XU2016}. 
 
 
 \subsection{Buffer de Historia}
@@ -352,7 +354,7 @@ Para cada fragmento en el marco actual, se busca en la vecindad de $3\times 3$ y
 
 En la vecindad $3\times 3$ se busca la velocidad del píxel con la profundidad más cercana a la cámara, esto es para obtener mejores bordes en movimiento para los píxeles que están ocultos detrás de otros ~\cite{Fuglsand2016}. Se usa esta velocidad para reproyectar la posición del píxel del cuadro actual en el Buffer de Historia ~\cite{Fuglsand2016, XU2016}. 
 
-Después de tener los píxeles en el Buffer de Historia, se restringen (explicación en la siguiente subsección) y se interpolan linealmente con el cuadro actual (Ver la Figura \ref{fig:samplingprocess} para obtener una representación visual del proceso completo). Se interpolan linealmente los píxeles del Buffer de Historia y el cuadro actual usando un valor de retroalimentación, que se calcula por la diferencia de luminancia entre los colores del Buffer de Historia restringido y el cuadro actual. Este valor de retroalimentación es sesgado a favor de mantener el color del Buffer de Historia del píxel sobre el color del cuadro actual, esto se hace para agregar información del cuadro actual mientras se mantiene la mayor parte de la historia del píxel. Esta interpolación lineal estabiliza la imagen, eliminando el \textit{Jittering} y suavizando los bordes ~\cite{Fuglsand2016, XU2016}. Dado que el historial de cada píxel se acumula en el Buffer de Historia, se obtienen el efecto que el historial de píxeles de los cuadros anteriores pese menos cuanto más tiempo sea mantenido el historial del píxel dentro Buffer de Historia ~\cite{Fuglsand2016}. 
+Después de tener los píxeles en el Buffer de Historia, se restringen (explicación en la siguiente subsección) y se interpolan linealmente con el cuadro actual (Ver la Figura \ref{fig:samplingprocess} para obtener una representación visual del proceso completo). Se interpolan linealmente los píxeles del Buffer de Historia y el cuadro actual usando un valor de retroalimentación, que se calcula por la diferencia de luminancia entre los colores del Buffer de Historia restringido y el cuadro actual. Este valor de retroalimentación es sesgado a favor de mantener el color del Buffer de Historia del píxel sobre el color del cuadro actual, esto se hace para agregar información del cuadro actual mientras se mantiene la mayor parte de la historia del píxel. Esta interpolación lineal estabiliza la imagen, eliminando el \textit{Jittering} y suavizando los bordes ~\cite{Fuglsand2016, XU2016}. Dado que el historial de cada píxel se acumula en el Buffer de Historia, se obtiene el efecto que el historial de píxeles de los cuadros anteriores pese menos cuanto más tiempo sea mantenido el historial del píxel dentro Buffer de Historia ~\cite{Fuglsand2016}. 
 
 \begin{figure}[H]
 	\centering
@@ -371,7 +373,7 @@ La \textit{Clipping Color Box} (Caja de Recorte de Colores) es una caja 3D const
 
 
 \subsection{Filtro de Nitidez} 
-El Proceso de Reproyección y el \textit{Clipping} de Colores crean imágenes borrosas, por lo que se requiere un Filtro de Nitidez. Se utiliza el filtro propuesto por Xu ~\cite{XU2016}, el cual funciona al aplicarle una matriz de convolución a la imagen resultante del Proceso de Reproyección. Esta matriz es aplicada a cada pixel y su vecindad con el fin de aumentar el contraste de cada pixel contra sus vecinos. 
+El Proceso de Reproyección y el \textit{Clipping} de Colores crean imágenes borrosas, por lo que se requiere un Filtro de Nitidez. Se utiliza el filtro propuesto por Xu ~\cite{XU2016}, el cual funciona al aplicarle una matriz de convolución a la imagen resultante del Proceso de Reproyección. Esta matriz es aplicada a cada pixel y su vecindad, con el fin de aumentar el contraste de cada pixel frente a sus vecinos. 
 \begin{equation} \label{eq:sharpen}
 \begin{bmatrix*}[r]
 0 & -1 &  0 \\
@@ -424,7 +426,7 @@ La dirección de $G$ estará dada por el vector unitario asociado al vecino apro
 \end{split}
 \end{equation}
 
-Luego se multiplica por $4$ para aproximar el valor y se asegura que no se pierde precisión si se realiza con enteros pequeños de punto fijo. La magnitud recién calculada es dieciséis veces más grande que el gradiente promedio original.
+Luego se multiplica por $4$ para aproximar el valor, asegurando que no se pierde precisión si se realiza con enteros pequeños de punto fijo. La magnitud recién calculada es dieciséis veces más grande que el gradiente promedio original.
 
 \begin{equation}\label{eq:sobel_approximation}
 \begin{split}
@@ -458,9 +460,9 @@ El proceso de medir la calidad de una imagen es complicado. Como explican Al-Naj
 Los métodos objetivos se pueden categorizar en tres grupos, como describen Al-Najjar y Soong \cite{Yusra2012}:
 
 \begin{itemize}
-	\item \textbf{Sin-Referencia:} En el cual no se tiene una imagen de referencia para comparar.
-	\item \textbf{Referencia-Reducida:} Donde se tiene parte de una imagen de referencia.
-	\item \textbf{Referencia-Completa:} Se tiene la imagen de referencia completa.
+	\item \textbf{Sin-Referencia:} Se tiene una imagen de referencia para comparar.
+	\item \textbf{Referencia-Reducida:} Se tiene parte de una imagen de referencia.
+	\item \textbf{Referencia-Completa:} Se tiene una imagen de referencia completa.
 \end{itemize}
 
 
@@ -491,7 +493,7 @@ PSNR=10*\log\left(\frac{S^2}{MSE}\right)
 Donde $S$ es el valor máximo que puede alcanzar la señal. En este caso es $255$ porque se usan canales de color de 8 bits.
 
 \subsection{Índice de Similitud Estructural (SSIM)}
-SSIM es una métrica de imagen ampliamente utilizada, que se ha mostrado que coincide mayoritariamente con la subjetividad humana con respecto a la evaluación de la calidad estructural de una imagen y es muy sensible a las degradaciones en la estructura espacial de la luminancia de la imagen, como explican Malpica y Bovik \cite{Malpica2009}. 
+SSIM es una métrica de imagen ampliamente utilizada, que se ha mostrado coincide con la subjetividad humana con respecto a la evaluación de la calidad estructural de una imagen. SSIM es muy sensible a las degradaciones en la estructura espacial de la luminancia de la imagen, como explican Malpica y Bovik \cite{Malpica2009}. 
 
 Requiere dos imágenes para comparar, $X$ y $Y$, y se calcula en base a tres funciones de similitud en una ventana ponderada gaussiana de $N\times N$ (típicamente $11\times 11$).
 
@@ -529,7 +531,7 @@ SSIM(x,y)=l(x,y)*c(x,y)*s(x,y)
 En este capítulo, se presenta el trabajo principal realizado en este proyecto de grado.
 
 \section{Mejoras al Proyecto de EDAN35}
-Durante el curso de \textit{High Performance Computer Graphics} (EDAN35) se implementó una técnica de \textit{Temporal Reprojection Anti-Aliasing} (TRAA, Anti-Aliasing de Reproyección Temporal) basada en las presentaciones de Ke Xu y Lasse Fuglsang ~\cite{XU2016, Fuglsand2016}, de los juegos \textit{Inside} y \textit{Uncharted 4}, como proyecto final. Esta técnica resultó ser confiable y bien documentada; y la cual permitió poner en práctica los fundamentos en un entorno académico, proporcionando la base para las mejoras realizadas para este proyecto de grado. 
+Durante el curso de \textit{High Performance Computer Graphics} (EDAN35) se implementó una técnica de \textit{Temporal Reprojection Anti-Aliasing} (TRAA, Anti-Aliasing de Reproyección Temporal) basada en las presentaciones de Ke Xu y Lasse Fuglsang ~\cite{XU2016, Fuglsand2016}, de los juegos \textit{Inside} y \textit{Uncharted 4}, como proyecto final. Esta técnica resultó ser confiable y bien documentada, lo que permitió poner en práctica los fundamentos de TAA en un entorno académico, proporcionando la base para las mejoras realizadas para este proyecto de grado. 
 
 La implementación del proyecto EDAN35 tenía errores en el Proceso de \textit{Jittering}, que se corrigieron al expandir correctamente lo que las implementaciones de Inside y Uncharted 4  se referían por \textit{Jittering} de Cámara, consulte el Apéndice \ref{appendix:jitter} para obtener la explicación completa de la corrección realizada. El manejo de los puntos de \textit{Halton} se rehízo para lograr la mejora del movimiento de la cámara, se incluyó el soporte de hasta 128 puntos para que funcione como el \textit{Jittering} del Buffer de Acumulación (Ver Figura \ref{fig:halton128}). Sin embargo, hay que tener en cuenta que para el \textit{Temporal Anti-Aliasing}, sólo se usan los primeros 16 puntos según lo sugerido por Xu y Fuglsang ~\cite{XU2016, Fuglsand2016}. 
 
@@ -594,7 +596,7 @@ En algunas métricas, los cambios son lo suficientemente grandes para ser percep
 \section{Implementación del Marco de Pruebas}
 Para medir las mejoras logradas, se desarrolló un Marco de Pruebas que permite guardar la información importante cuando se realizan las pruebas. El marco permite seleccionar qué técnica utilizar como renderizador principal: \textit{Temporal Anti-Aliasing} implementado en el proyecto de grado, \textit{Temporal Anti-Aliasing} de \textit{Uncharted 4},  Enhanced Subpixel Morphological Anti-Aliasing (SMAA) o \textit{Fast Approximate Anti-Aliasing} (FXAA). También permite hacer \textit{zoom} en cualquier parte de la pantalla y luego realizar los cálculos de métricas de imágenes usando MATLAB.
 
-Para cuantificar si se lograron los objetivos propuestos de este proyecto de grado, sobre \textit{ghosting} y desenfoque, se desarrollaron dos tipos diferentes de pruebas: Pruebas Estáticas y Pruebas de \textit{Ghosting}.  Se definieron pruebas estáticas para medir el nivel de desenfoque cuando no hay movimiento en la escena, ya que este sólo es importante si todo está estático. Por otra parte, se establecieron pruebas de \textit{Ghosting} para cuantificar el nivel de \textit{Ghosting} de una escena en movimiento, ya que este sólo aparece cuando objetos de la escena se mueven con respecto a la cámara. 
+Para cuantificar si se lograron los objetivos propuestos de este proyecto de grado, sobre desenfoque y \textit{ghosting}, se desarrollaron dos tipos diferentes de pruebas: pruebas estáticas y pruebas de \textit{ghosting}. Se definieron pruebas estáticas para medir el nivel de desenfoque cuando no hay movimiento en la escena, ya que este sólo es importante cuando todo está estático. Por otra parte, se establecieron pruebas de \textit{ghosting} para cuantificar el nivel de \textit{ghosting} de una escena en movimiento, ya que este sólo aparece cuando objetos de la escena se mueven con respecto a la cámara. 
 
 Cuando se realiza una prueba, las imágenes renderizadas seleccionadas se guardan como archivos PNG con 4 canales de color y sin compresión. Además, se guarda en un archivo de texto plano la información básica sobre la fecha en que se realizó la prueba, la información de la cámara y los datos de a los valores utilizados para el \textit{Temporal Anti-Aliasing}.
 
@@ -603,25 +605,25 @@ Cuando se realiza una prueba, las imágenes renderizadas seleccionadas se guarda
 Este tipo de prueba consiste en dejar que el Buffer de Historia se llene con 16 cuadros de la escena, sin ningún objeto en movimiento, utilizando la técnica \textit{Temporal Anti-Aliasing} seleccionada, para luego guardar el último cuadro renderizado. Inmediatamente después de guardar el último cuadro de TAA, se renderiza el último cuadro nuevamente pero ahora utilizando el Buffer de Acumulación, para generar la imagen base de la escena. También, se renderiza el último cuadro usando SMAA, FXAA y \textit{No Anti-Aliasing} (NOAA, No AA), para propósitos de comparación.
 
 \subsection{Pruebas de Ghosting}
-Este tipo de prueba se ejecutó únicamente con los modelos de la Esfera y \textit{HairBall}, dado que son los únicos que hay interés de ver en movimiento y medir el \textit{Ghosting} que presentan. En el primero, la esfera se mueve a través del pasillo de la escena, simulando un objeto en movimiento en una aplicación. En el segundo, el modelo de \textit{Hairball} gira en una posición estática, simulando muchos bordes en movimiento. La prueba consiste en renderizar la escena para un número seleccionado de cuadros, con la implementación del Proyecto de Grado de \textit{Temporal Anti-Aliasing} y la implementación de Uncharted 4 de \textit{Temporal Anti-Aliasing} al mismo tiempo. Después de renderizar cada cuadro, se guarda cada imagen, la posición de la esfera y la rotación de \textit{Hairball}.
+Este tipo de prueba se ejecutó únicamente con los modelos de la Esfera y \textit{HairBall}, dado que son los únicos con movimiento y medir el \textit{Ghosting} que presentan. En el primero, la esfera se mueve a través del pasillo de la escena, simulando un objeto en movimiento en una aplicación. En el segundo, el modelo de \textit{Hairball} gira en una posición estática, simulando muchos bordes en movimiento. La prueba consiste en renderizar la escena para un número seleccionado de cuadros, con la implementación del proyecto de grado de \textit{Temporal Anti-Aliasing} y la implementación de Uncharted 4 de \textit{Temporal Anti-Aliasing} al mismo tiempo. Después de renderizar cada cuadro, se guarda cada imagen, la posición de la esfera y la rotación de \textit{Hairball}.
 
 Una vez que el número seleccionado de cuadros se ha renderizado, la esfera se regresa a su posición original y el movimiento se repite utilizando las posiciones guardadas anteriormente. \textit{Hairball} también vuelve a su rotación original y el movimiento también se repite. La diferencia es que cada cuadro se procesa utilizando el Buffer de Acumulación y luego se guarda, se hace de esta forma para evitar la gran pérdida de rendimiento, que afecta las técnicas de \textit{Temporal Anti-Aliasing}.
 
-Después de guardar todas las imágenes renderizadas, se comparan las producidas por el \textit{Temporal Anti-Aliasing} del Proyecto de Grado y el \textit{Temporal Anti-Aliasing} de Uncharted 4 contra la imagen base, generada con el Buffer de Acumulación, para calcular las métricas de imagen de ambos TAA. Estas métricas muestran cuánto error se generó por efecto de \textit{ghosting} en ambas implementaciones, lo que permite comparar el comportamiento de ambas técnicas. 
+Después de guardar todas las imágenes renderizadas, se comparan las producidas por el \textit{Temporal Anti-Aliasing} del proyecto de grado y el \textit{Temporal Anti-Aliasing} de Uncharted 4 contra la imagen base, generada con el Buffer de Acumulación, para calcular las métricas de imagen de ambos TAA. Estas métricas muestran cuánto error se generó por efecto de \textit{ghosting} en ambas implementaciones, lo que permite comparar el comportamiento de ambas técnicas. 
 
 
 \subsection{Métricas de Imagen de MATLAB}
-Las métricas de las imágenes para cada prueba representan, numéricamente, la calidad de cada imagen. Se calcularon para comparar cómo se comportó cada técnica en cada prueba, para identificar si el \textit{Temporal Anti-Aliasing} del Proyecto de Grado genera imágenes de mayor calidad que las otras técnicas probadas.
+Las métricas de las imágenes para cada prueba representan, numéricamente, la calidad de cada imagen. Se calcularon para comparar cómo se comportó cada técnica en cada prueba, para identificar si el \textit{Temporal Anti-Aliasing} del proyecto de grado genera imágenes de mayor calidad que las otras técnicas probadas.
 
-Una vez que se guardan los resultados de la prueba, una secuencia de comandos toma las imágenes y las organiza en carpetas por nombre y tipo de prueba. Después, los resultados de la prueba se procesan utilizando MATLAB, para obtener los resultados de las métricas de las imágenes. Con las métricas se compara cómo se comportó el \textit{Temporal Anti-Aliasing} del Proyecto de Grado con el \textit{Temporal Anti-Aliasing} de Uncharted 4 y las otras técnicas \textit{Anti-Aliasing}, para detectar si las mejoras funcionaban y observar cómo se comporta la implementación mejorada frente a las demás.
+Una vez que se guardan los resultados de la prueba, una secuencia de comandos toma las imágenes y las organiza en carpetas por nombre y tipo de prueba. Después, los resultados de la prueba se procesan utilizando MATLAB, para obtener los resultados de las métricas de las imágenes. Con las métricas se compara cómo se comportó el \textit{Temporal Anti-Aliasing} del proyecto de grado con el \textit{Temporal Anti-Aliasing} de Uncharted 4 y las otras técnicas \textit{Anti-Aliasing}, para detectar si las mejoras funcionaban y observar cómo se comporta la implementación mejorada frente a las demás.
 
-Para las pruebas estáticas, se realizan mediciones de MSE, RMSD, PSNR, SNR y SSIM en las imágenes renderizadas con TAA, FXAA, SMAA y No AA, utilizando las imágenes renderizadas del buffer de acumulación como referencia de comparación. Asimismo, se genera un mapa local de SSIM para cada imagen renderizada que es guardada, junto con lo renderizado con el buffer de acumulación (Imagen Base), como archivos PNG y FIG de MATLAB. Todos los resultados de las mediciones se almacenan en la carpeta con los resultados de la prueba como texto plano.
+Para las pruebas estáticas, se realizaron mediciones de MSE, RMSD, PSNR, SNR y SSIM en las imágenes renderizadas con TAA, FXAA, SMAA y No AA, utilizando las imágenes renderizadas del buffer de acumulación como referencia de comparación. Asimismo, se genera un mapa local de SSIM para cada imagen renderizada que es guardada, junto con lo renderizado con el buffer de acumulación (Imagen Base), como archivos PNG y FIG de MATLAB. Todos los resultados de las mediciones se almacenan en la carpeta con los resultados de la prueba como texto plano.
 
-Para las pruebas de \textit{Ghosting}, se realizan mediciones de MSE, RMSD, PSNR, SNR y SSIM en cada cuadro procesado con la técnica de \textit{Temporal Anti-Aliasing} de Uncharted 4 y la del \textit{Temporal Anti-Aliasing} del Proyecto de Grado, utilizando el cuadro renderizado del buffer de acumulación correspondiente. Se generó un mapa local de SSIM para cada imagen renderizada, exceptuando las del buffer de acumulación, y se guardaron como archivos PNG y FIG de MATLAB. Los resultados de todas las imágenes se almacenaron en un archivo de texto plano. En los mapas locales de SSIM, las diferencias son representadas como colores, donde el blanco simboliza la similitud.
+Para las pruebas de \textit{Ghosting}, se realizaron mediciones de MSE, RMSD, PSNR, SNR y SSIM en cada cuadro procesado con la técnica de \textit{Temporal Anti-Aliasing} de Uncharted 4 y la del \textit{Temporal Anti-Aliasing} del proyecto de grado, utilizando el cuadro renderizado del buffer de acumulación correspondiente. Se generó un mapa local de SSIM para cada imagen renderizada, exceptuando las del buffer de acumulación, y se guardaron como archivos PNG y FIG de MATLAB. Los resultados de todas las imágenes se almacenaron en un archivo de texto plano. En los mapas locales de SSIM, las diferencias son representadas como colores, donde el blanco simboliza la similitud.
 
 
 \section[Modificaciones de Temporal Reprojection Anti-Aliasing ]{Modificaciones de Temporal Reprojection Anti-Aliasing }
-Para este proyecto de grado, la técnica del \textit{Color Clipping Box} se modificó para que se viera afectada por los valores calculados a partir de las nuevas técnicas aplicadas. Estos cambios siguen la lógica de querer aplicar toda la fuerza de la técnica de \textit{Temporal Anti-Aliasing} únicamente cuando sea necesario y minimizar la aplicación de la técnica en otras partes, para minimizar los efectos de la \textit{ghosting} y desenfoque.
+Para este proyecto de grado, la técnica del \textit{Color Clipping Box} se modificó para que se viera afectada por los valores calculados a partir de las nuevas técnicas aplicadas. Estos cambios siguen la lógica de aplicar toda la fuerza de la técnica de \textit{Temporal Anti-Aliasing} únicamente cuando sea necesario y minimizar la aplicación de la técnica en otras partes, para minimizar los efectos de la \textit{ghosting} y desenfoque.
 
 El primer cambio consiste en que los colores que se calcularon a partir del promedio entre las vecindades $3\times 3$ y Cruz, de los patrones de muestreo (ver Figura \ref{fig:samplingpattern_2}), se mezclan en una cantidad variable; a diferencia de antes donde solo se tomaba el promedio entre ambos. El valor que se utiliza para mezclar se calcula en función de cuanto \textit{aliasing} se considera que tiene el píxel siendo inspeccionado. La idea es que se prefiere la vecindad de Cruz si el píxel que se está calculando actualmente no se considera con \textit{aliasing}, porque es menos probable que la vecindad de Cruz introduzca ruido en los cálculos de la \textit{Color Clipping Box}. Pero, si se considera el píxel con \textit{aliasing}, se prefiere el vecindario $3\times 3$ porque proporciona más información sobre el entorno del píxel para crear la imagen sin \textit{aliasing}. 
 
@@ -631,7 +633,7 @@ El primer cambio consiste en que los colores que se calcularon a partir del prom
 	\caption{Patrón de muestreo utilizado. Imagen tomada de la presentación de Fuglsand \protect\cite{Fuglsand2016}.}\label{fig:samplingpattern_2}
 \end{figure}
 
-El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} depende de cuánto \textit{aliasing} se considera que tiene el píxel. Al utilizar \textit{Color Clipping Box} más pequeñas (Ver Figura \ref{fig:colorclippingboxredux}) que la técnica original en píxeles sin \textit{aliasing}, se aumenta la eliminación de colores no deseados del historial, reduciendo los efectos del \textit{Ghosting} ya que se rechaza colores más rápido en píxeles que se sabe que no se consideran con aliasing. Esto se implementa mediante la interpolación lineal del color de píxel actual y los colores mínimo y máximo calculados para construir la \textit{Color Clipping Box}.
+El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} depende de cuánto \textit{aliasing} se considera que tiene el píxel. Al utilizar \textit{Color Clipping Box} más pequeñas (Ver Figura \ref{fig:colorclippingboxredux}) que la técnica original en píxeles sin \textit{aliasing}, se aumenta la eliminación de colores no deseados del historial, reduciendo los efectos del \textit{Ghosting} ya que rechaza colores más rápido en píxeles que no se consideran con \textit{aliasing}. Esto se implementa mediante la interpolación lineal del color de píxel actual y los colores mínimo y máximo calculados para construir la \textit{Color Clipping Box}.
 
 \begin{figure}[!hbt]
 	\centering
@@ -642,7 +644,7 @@ El segundo cambio consiste en que el tamaño de la \textit{Color Clipping Box} d
 En las siguientes secciones, se explicará cómo se calculan los valores que contribuyen a decidir si un píxel se considera con \textit{aliasing} o no. Estos valores se calculan al mismo tiempo que se aplica TAA, con la excepción del Operador de Sobel, que ocurre antes de la técnica TAA principal. Más adelante se mostrará cómo se usan esos valores para reducir el tamaño del \textit{Color Clipping Box} y la preferencia del patrón de muestreo.
 
 \subsection{Implementación de Mejoras de Indexación de Triángulos}
-La idea principal detrás de la aplicación de esta técnica es detectar los píxeles que se consideran con \textit{aliasing}, utilizando la cantidad de modelos diferentes que rodean a un píxel. Se quiere detectar los bordes entre diferentes modelos porque el \textit{aliasing} normalmente ocurre allí. Una vez se tiene esta información, se procede a modificar la \textit{Color Clipping Box} que controla la aplicación de TAA.
+La idea principal detrás de la aplicación de esta técnica es detectar los píxeles que se consideran con \textit{aliasing}, utilizando la cantidad de modelos diferentes que rodean a un píxel. Se requiere detectar los bordes entre diferentes modelos porque el \textit{aliasing} normalmente ocurre allí. Una vez se tiene esta información, se procede a modificar la \textit{Color Clipping Box} que controla la aplicación de TAA.
 
 Para implementar esta técnica, todos los modelos en la escena reciben un índice único. Luego, en el pase de Renderización de Geometría, todos los triángulos que pertenecen a un mismo modelo reciben el índice del modelo como su identificación (ID). Posteriormente, se usa en el \textit{píxel shader} para generar una textura en la que cada píxel contiene el ID del modelo al que pertenece.
 
@@ -678,7 +680,7 @@ A continuación, se mostrarán algunos ejemplos de cómo funciona esta técnica.
 \end{equation}
 
 \subsection{Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad}
-La razón para utilizar esta técnica es que se quiere detectar píxeles que están en una vecindad de píxeles separados por profundidades relativamente largas. También, se quiere detectar píxeles cuya profundidad en el último cuadro cambió, relativamente, una distancia larga en contraste con su vecindad actual. Todos los píxeles que se detectan se consideran con \textit{aliasing}.
+La razón para utilizar esta técnica es que se requiere detectar píxeles que están en una vecindad de píxeles separados por profundidades relativamente largas. También, se requiere detectar píxeles cuya profundidad en el último cuadro cambió, relativamente, una distancia larga en contraste con su vecindad actual. Todos los píxeles que se detectan se consideran con \textit{aliasing}.
 
 Primero, se calcula la profundidad lineal mínima, máxima y su promedio del vecindario $3\times 3$. Luego se procede a usar la siguiente fórmula para calcular el valor que se utilizará para normalizar los resultados: 
 \begin{equation} \label{eq:maxdepthdistance}
@@ -696,9 +698,9 @@ Luego se calcula la Pseudo-Varianza de Profundidad como:
 	depthPseudoVariance = \left( \frac{\left|currentDepth-depthAvg\right|}{maxDepthDistance}\right)^2
 \end{equation}
 
-Esto proporciona una Pseudo-Varianza que mide la distancia entre la profundidad promedio de la vecindad y la profundidad actual del píxel. Se tiene que tener en cuenta que normalmente el valor va a estar entre $0$ y $1$ pero, si la profundidad del píxel es un valor atípico en la vecindad, este valor será superior a $1$.
+Esto proporciona una Pseudo-Varianza que mide la distancia entre la profundidad promedio de la vecindad y la profundidad actual del píxel. Se debe tener en cuenta que normalmente el valor estará entre $0$ y $1$ pero, si la profundidad del píxel es un valor atípico en la vecindad, este valor será superior a $1$.
 
-Finalmente, se calcula cómo la profundidad del píxel en el último cuadro se relaciona con la vecindad actual, usando la Pseudo-Varianza Temporal de Profundidad. Se tiene que tener en cuenta que se usa la cuarta potencia para reducir el ruido en los cálculos. Dado que el valor normalizado está entre $0$ y $1$, el cálculo lo hace converger a $0$ si el valor es cercano a $0$ o a $1$ si es cercano a $1$.
+Finalmente, se calcula cómo la profundidad del píxel en el último cuadro se relaciona con la vecindad actual, usando la Pseudo-Varianza Temporal de Profundidad. Se debe considerar que se usa la cuarta potencia para reducir el ruido en los cálculos. Dado que el valor normalizado está entre $0$ y $1$, el cálculo lo hace converger a $0$ si el valor es cercano a $0$ o a $1$ si es cercano a $1$.
 
 \begin{equation} \label{eq:depthtemporalpseudovariance}
 depthTemporalPseudoVariance = \left( \frac{\left|pastDepth-depthAvg\right|}{maxDepthDistance}\right)^4
@@ -723,7 +725,7 @@ A continuación, se mostrarán ejemplos de cómo esta técnica decide si un píx
 \end{equation}
 
 \subsection{Implementación de las Mejoras de Sobel}
-La idea principal detrás de la aplicación de la técnica de detección de bordes de Sobel es concentrar los efectos de aplicar TAA en los píxeles situados en los bordes, para corregir el \textit{aliasing}, en caso de ser necesario. Es importante señalar que esta es la única técnica de las mejoras del Proyecto de Grado que se ejecuta antes del algoritmo TAA principal.
+La idea principal detrás de la aplicación de la técnica de detección de bordes de Sobel es concentrar los efectos de aplicar TAA en los píxeles situados en los bordes, para corregir el \textit{aliasing}, en caso de ser necesario. Es importante señalar que esta es la única técnica de las mejoras del proyecto de grado que se ejecuta antes del algoritmo TAA principal.
 
 Se aplica el Operador Sobel a la luminancia de los colores de la escena iluminada producida por la Arquitectura de \textit{Shading} Diferido; la luminancia de los colores de la escena no iluminada del Buffer de Geometría; y la profundidad lineal actual. Se utiliza la luminancia porque el ojo humano reconoce mejor los cambios repentinos y se usa la escena, iluminada y no iluminada, para evitar problemas al detectar bordes debido a luces o sombras.
 
@@ -813,7 +815,7 @@ Las Figuras \ref{fig:aliasedval1}, \ref{fig:aliasedval2} y \ref{fig:aliasedval3}
 \end{figure}
 
 \subsection{Modificaciones del Filtro de Nitidez}
-Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel central es brillante y los píxeles vecinos están oscuros. Esto ocurre porque los colores oscuros son cercanos a cero y no son capaces de cancelar el aumento al píxel central, el cual se multiplica por $5$. Un ejemplo del peor caso posible es tener el píxel central con un color brillante y los píxeles del vecindario como negro puro, que se representan como cero. Por lo tanto, se normaliza el Filtro de Nitidez para evitar crear ese pico de color y trabajar mejor con píxeles brillantes en vecindarios oscuros. El filtro se cambió de \ref{eq:sharpen} a:
+Con el filtro de nitidez actual, se crea un pico de color cuando el píxel central es brillante y los píxeles vecinos están oscuros. Esto ocurre porque los colores oscuros son cercanos a cero y no son capaces de cancelar el aumento al píxel central, el cual se multiplica por $5$. Un ejemplo del peor caso posible es tener el píxel central con un color brillante y los píxeles del vecindario como negro puro, que se representan como cero. Por lo tanto, se normaliza el filtro de nitidez para evitar crear ese pico de color y trabajar mejor con píxeles brillantes en vecindarios oscuros. El filtro se cambió de \ref{eq:sharpen} a:
 \begin{equation} \label{eq:new_sharpen}
 \centering
 \begin{bmatrix*}[c]
@@ -823,12 +825,12 @@ Con el Filtro de Nitidez actual, se crea un pico de color cuando el píxel centr
 \end{bmatrix*}
 \end{equation}
 
-La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del Filtro de Nitidez utilizada.
+La Ecuación \ref{eq:new_sharpen} muestra la nueva matriz de convolución del filtro de nitidez utilizada.
 
 \section{Resumen del Desarrollo}
-En este capítulo se presentaron las mejoras al proyecto desarrollado en el curso EDAN35, utilizado como base del presente proyecto de grado. Se explicaron: los modelos utilizados para las pruebas; las correcciones del Jittering; el buffer de acumulación y; las implementaciones de FXAA y SMAA utilizadas para comparar con el TAA del proyecto de grado.  
+En este capítulo se presentaron las mejoras al proyecto desarrollado en el curso EDAN35, utilizado como base del presente proyecto de grado. Se explicaron: los modelos utilizados para las pruebas; las correcciones del \textit{Jittering}; el buffer de acumulación y; las implementaciones de FXAA y SMAA utilizadas para comparar con el TAA del proyecto de grado.  
 
-Además, se expuso el Marco de Pruebas que cuantifica las mejoras alcanzadas en este proyecto con respecto a los objetivos planteados, utilizando métricas de imagen. Siendo las pruebas de estáticas las utilizadas para medir el desenfoque y las pruebas de \textit{Ghosting}, como su nombre lo dice, para evaluar el \textit{Ghosting}.
+Además, se expuso el marco de pruebas que permite cuantificar las mejoras alcanzadas en este proyecto con respecto a los objetivos planteados, utilizando métricas de imagen. Siendo las pruebas de estáticas las utilizadas para medir el desenfoque y las pruebas de \textit{Ghosting}, como su nombre lo dice, para evaluar el \textit{Ghosting}.
 
 Se presentaron las mejoras a TAA aplicadas en este proyecto de grado y la razón por la que cada una de estas mejoras fue utilizada. Se explicaron la implementación de técnicas de Indexación de Triángulos; la Pseudo-Varianza de Profundidad y la Pseudo-Varianza Temporal de Profundidad; el Operador de Sobel; y finalmente su mezcla para obtener las mejoras buscadas. También, se explicó el cambio al Filtro de Nitidez para eliminar los picos de color. 
 
@@ -836,7 +838,7 @@ Se presentaron las mejoras a TAA aplicadas en este proyecto de grado y la razón
 
 
 \chapter{Resultados}
-En este capítulo, se explica cómo se evalúa las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Se muestran los resultados numéricos y visuales obtenidos. Finalmente, se explican los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
+En este capítulo, se explica cómo se evalúan las mejoras realizadas al \textit{Temporal Anti-Aliasing}. Se muestran los resultados numéricos y visuales obtenidos. Finalmente, se explican los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}.
 
 \section{Metodología de Evaluación}
 Para evaluar las mejoras logradas en la técnica de \textit{Temporal Anti-Aliasing}, se seleccionaron modelos y ángulos de cámara que colocan a la técnica bajo presión. Luego, utilizando el marco de prueba desarrollado, se procede a renderizar y guardar imágenes de cada uno de esos modelos para comparar cómo se comporta la técnica en comparación con la implementación TAA original y otras técnicas \textit{Anti-Aliasing}, para determinar si las técnicas propuestas en este proyecto de grado proporcionan imágenes con mejor calidad sin incurrir en un uso excesivo de memoria o consumo de tiempo. Además, se realizó una prueba especial para medir si el cambio del Filtro de Nitidez era el único mecanismo que proporcionaba una mejora.
@@ -869,7 +871,7 @@ Las pruebas se realizaron en la computadora proporcionada por la Universidad de 
 Para tener una base para analizar los datos, se necesita observar que el mejor valor posible para MSE y RMSD es cero, lo que significa que no hay ningún error. Además, tener un alto valor de PSNR y SNR es mejor porque el ruido, que es el denominador en la ecuación de esta métrica, es cercano a cero. Finalmente, tener un SSIM de $1$ significa que la imagen es estructuralmente la misma que la imagen base, mientras que tener un valor de $0$ significa que es estructuralmente diferente. Para los mapas SSIM, cada píxel representa su valor SSIM. Tener un color blanco significa que es estructuralmente el mismo, mientras que tener un color más oscuro significa que hay diferencias estructurales.
 
 \subsection{Filtro de Nitidez}
-Para esta prueba, se utilizó el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. La escena fue seleccionada para esta prueba porque proporciona un ejemplo de una escena general, que no debería generar ningún efecto de desenfoque. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para observar si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. Como se puede observar en la tabla \ref{tab:sharpen_res}, incluso cuando el TAA Mejorado del Proyecto de Grado y el TAA de Uncharted utilizan el Filtro de Nitidez Normalizado, las otras mejoras que se han realizado  con el TAA renderiza una imagen de mayor calidad. Si se hace zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} se puede ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
+Para esta prueba, se utilizó el modelo del Atrium de Sponza y un modelo de una Esfera estática para evaluar los efectos del Filtro de Nitidez Normalizado en la calidad general de la imagen renderizada, especialmente con respecto al desenfoque causado normalmente por TAA. La escena fue seleccionada para esta prueba porque proporciona un ejemplo de una escena general, que no debería generar ningún efecto de desenfoque. Todo se procesó utilizando ambas implementaciones de TAA con y sin el Filtro de Nitidez Normalizado para observar si este cambio era la única mejora que aumentaba la calidad de la imagen procesada. Como se puede observar en la tabla \ref{tab:sharpen_res}, incluso cuando el TAA Mejorado del proyecto de grado y el TAA de Uncharted utilizan el Filtro de Nitidez Normalizado, las otras mejoras que se han realizado  con el TAA renderiza una imagen de mayor calidad. Si se hace zoom en la figura \ref{fig:sharpen_render} de la Figura \ref{fig:sharpen_ssim} se puede ver que el Filtro de Nitidez Normalizado contribuye a reducir los artefactos en la imagen renderizada, ya que casi no hay áreas oscuras en los mapas de SSIM de los TAA que lo está usando.
 
 % Table generated by Excel2LaTeX from sheet 'Sharpen Filter'
 \begin{table}[!htb]
@@ -910,12 +912,12 @@ Para esta prueba, se utilizó el modelo del Atrium de Sponza y un modelo de una 
 
 \FloatBarrier
 \subsection{Tubería}
-Se utiliza el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros (\textit{hard edges}). Se quería probar si las mejoras del proyecto reducen la cantidad de desenfoque alrededor de esos bordes duros, mientras se disminuyen los problemas causados por el \textit{aliasing}. Se renderizó el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como puede advertirse en los resultados, TAA con las mejoras se encuentran en el mismo nivel de calidad que SMAA.
+Se utiliza el modelo de Tubería para probar cómo se comportan las mejoras al renderizar un modelo con bordes duros (\textit{hard edges}). Se requería probar si las mejoras del proyecto reducen la cantidad de desenfoque alrededor de esos bordes duros, mientras se disminuyen los problemas causados por el \textit{aliasing}. Se renderizó el tubo dos veces, la primera vez con un ángulo de cámara normal, para \textit{aliasing} normal alrededor de los bordes, y un ángulo de cámara inclinada, para aumentar los efectos de \textit{aliasing}. Como puede advertirse en los resultados, TAA con las mejoras se encuentran en el mismo nivel de calidad que SMAA.
 
 \subsubsection{Regular}
-Cuando se hace \textit{zoom} y se compara la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, se observa que hay una reducción del desenfoque en el TAA del Proyecto de Grado en comparación con la TAA de Uncharted. Además, se observa que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar; esto es más fácil de observar que los bordes oscuros, los cuales representan disimilitud, en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. 
+Cuando se hace \textit{zoom} y se compara la Figura \ref{fig:pipe_regular_truth} con las imágenes renderizadas en la Figura \ref{fig:pipe_regular_render}, especialmente alrededor de los bordes, se observa que hay una reducción del desenfoque en el TAA del proyecto de grado en comparación con la TAA de Uncharted. Además, se observa que el TAA Uncharted genera colores brillantes alrededor de los bordes que no deberían estar; esto es más fácil de observar que los bordes oscuros, los cuales representan disimilitud, en el Mapa de SSIM del TAA de Uncharted en la Figura \ref{fig:pipe_regular_render}. 
 
-La Tabla \ref{tab:pipe_regular} confirma que el TAA del Proyecto de Grado alcanza casi la misma calidad que SMAA, ya que las métricas de ambas técnicas resultaron ser muy cercanas. SMAA y el TAA del Proyecto de Grado obtuvieron los menores errores (MSE, RMSD), los mayores SNR (Peak-SNR, SNR) y la mayor similitud a la imagen base (SSIM).
+La Tabla \ref{tab:pipe_regular} confirma que el TAA del proyecto de grado alcanza casi la misma calidad que SMAA, ya que las métricas de ambas técnicas resultaron ser muy cercanas. SMAA y el TAA del proyecto de grado obtuvieron los menores errores MSE y RMSD; los mayores SNR y Peak-SNR; y la mayor similitud a la imagen base en SSIM.
 
 
 % Table generated by Excel2LaTeX from sheet 'Pipe Regular'
@@ -953,15 +955,15 @@ La Tabla \ref{tab:pipe_regular} confirma que el TAA del Proyecto de Grado alcanz
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.5]{images/results/pipe_regular.png}
-	\caption{Comparación de Tubería Regular entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
+	\caption{Comparación de Tubería Regular entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:pipe_regular_render}
 \end{figure}
 
 \FloatBarrier
 
 \subsubsection{Con Ángulo de Cámara Inclinada}
-Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, se puede observar que el TAA Mejorado es el más semejante a la imagen base, aunque aún presenta algo de desenfoque en los bordes como se ve en su mapa de SSIM. En el mapa de SSIM del TAA de Uncharted, se puede notar que se está generando desenfoque alrededor de los bordes. Comparando SMAA con la imagen base se puede observar una escalera en el borde de la tubería, en su mapa de SSIM esto es especialmente notable como el borde gris que aparece.
+Al acercar y comparar las Figuras \ref{fig:pipe_inclination_render} y \ref{fig:pipe_inclination_truth}, se puede observar que el TAA Mejorado es el más semejante a la imagen base, aunque aún presenta algo de desenfoque en los bordes como se ve en su mapa de SSIM. En el mapa de SSIM del TAA de Uncharted, se puede notar que se está generando desenfoque alrededor de los bordes. Comparando SMAA con la imagen base, se puede observar una escalera en el borde de la tubería, en su mapa de SSIM esto es especialmente notable como el borde gris que aparece.
 
-Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} se observa que SMAA no está detectando correctamente el borde superior de la tubería. En la Tabla se nota ya que los valores de SMAA son peores que el TAA del proyecto, aunque en la prueba anterior estos resultaron mejores. Cuando se hace \textit{zoom}, se nota una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
+Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:pipe_inclination_truth} se observa que SMAA no está detectando correctamente el borde superior de la tubería. En la Tabla se nota que los valores de SMAA son peores que el TAA del proyecto, aunque en la prueba anterior estos resultaron mejores. Cuando se hace \textit{zoom}, se observa una pequeña escalera que se forma alrededor del borde. Esto se debe al hecho de que la cámara se configuró con una inclinación sesgada que llevó al límite las técnicas de detección de bordes utilizadas en SMAA.
 
 
 % Table generated by Excel2LaTeX from sheet 'Pipe with Inclination'
@@ -992,7 +994,7 @@ Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:p
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.5]{images/results/pipe_inclination.png}
-	\caption{Comparación de Prueba de Tubería con Inclinación de Cámara entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:pipe_inclination_render}
+	\caption{Comparación de Prueba de Tubería con Inclinación de Cámara entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:pipe_inclination_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1004,7 +1006,7 @@ Finalmente, en la Figura \ref{fig:pipe_inclination_render} y la Tabla \ref{fig:p
 \FloatBarrier
 
 \subsection{Ventana con Persianas}
-Se utilizó el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Se probó cómo se comportan las mejoras con este tipo de detalles y se halló que visualmente no reacciona de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
+Se utilizó el modelo Ventana con Persianas por sus pequeños detalles en las persianas. Se probó cómo se comportan las mejoras con este tipo de detalles y visualmente se halló que no reacciona de manera adecuada, incluso si los resultados numéricos muestran lo contrario. 
 
 En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} se puede observar lo complicado que es para las técnicas manejar las pequeñas brechas entre las persianas. De la Figura \ref{fig:window_blind_render} y la Tabla \ref{tab:window_blind}, se puede notar que el TAA Mejorado y se observa que SMAA puede reconstruir más detalles que el TAA de Uncharted pero, estética y visualmente, es mejor el TAA de Uncharted porque esos pequeños espacios entre las persianas parpadean menos, en comparación a las otras técnicas, cuando se mueve la cámara.
 
@@ -1042,13 +1044,13 @@ En las Figuras \ref{fig:window_blind_render} y \ref{fig:window_blind_truth} se p
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/window_blind.png}
-	\caption{Comparación de Prueba de Ventana con Persianas entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:window_blind_render}
+	\caption{Comparación de Prueba de Ventana con Persianas entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:window_blind_render}
 \end{figure}
 
 \FloatBarrier
 
 \subsection{Ventana Arqueada}
-Se utilizó el modelo de Ventana Arqueada para probar cómo la implementación mejorada se comporta con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Se puede observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las brechas pequeñas, se notó que las técnicas no pueden renderizar la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, se cree el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan menos parpadeos de píxeles cuando hay movimiento.
+Se utilizó el modelo de Ventana Arqueada para probar cómo la implementación mejorada se comporta con los pequeños detalles de la puerta de la ventana y el \textit{aliasing} del arco. Se puede observar a partir de las Figuras \ref{fig:window_arch_render} y \ref{fig:window_arch_truth} que, para todas las técnicas, las pequeñas brechas alrededor de la ventana son difíciles de renderizar. En algunas partes de las brechas pequeñas, se obervó que las técnicas no pueden renderizar la brecha por completo. Aunque en la Tabla \ref{tab:window_arch} SMAA parece ser el mejor, se cree el TAA de Uncharted tiene la mejor calidad visual porque esos espacios incompletos generan menos parpadeos de píxeles cuando hay movimiento.
 % Table generated by Excel2LaTeX from sheet 'Arched Window'
 \begin{table}[!htb]
 	\small
@@ -1077,7 +1079,7 @@ Se utilizó el modelo de Ventana Arqueada para probar cómo la implementación m
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/window_arch.png}
-	\caption{Comparación de Prueba de Ventana Arqueada entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:window_arch_render}
+	\caption{Comparación de Prueba de Ventana Arqueada entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:window_arch_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1089,9 +1091,9 @@ Se utilizó el modelo de Ventana Arqueada para probar cómo la implementación m
 \FloatBarrier
 
 \subsection{Atrium de Sponza}
-Con esta prueba se quiere analizar cómo se comporta la implementación de TAA del Proyecto de Grado con una escena general con luces y sombras. Se utilizó el modelo del Atrium de Sponza con el modelo de Esfera estática en el centro.
+Con esta prueba se requiere analizar cómo se comporta la implementación de TAA del proyecto de grado con una escena general con luces y sombras. Se utilizó el modelo del Atrium de Sponza con el modelo de esfera estática en el centro.
 
-Si se comparan las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, se puede observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM como los bordes grises visibles . SMAA tuvo problemas con todas las flores, se puede observar la forma de las flores en su Mapa de SSIM como las manchas grises oscuro. El TAA Mejorado solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. La Tabla \ref{tab:sponza} confirma lo que se está observando en los resultados visuales, ya que el TAA Mejorado del Proyecto de Grado obtuvo los mejores resultados en la mayor parte de la prueba, teniendo la menor cantidad de error (MSE, RMSD), la mejor relación señal a ruido (Peak-SNR, SNR) y la mayor similitud (SSIM); mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
+Si se comparan las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, se puede observar que el TAA de Uncharted tiene problemas de desenfoque alrededor de todos los bordes, esto es visible en su Mapa de SSIM como los bordes grises visibles . SMAA tuvo problemas con todas las flores, se puede observar la forma de las flores en su Mapa de SSIM como las manchas grises oscuro. El TAA Mejorado solo tiene problemas menores con las flores, como se ve en las áreas grises en su Mapa de SSIM. La Tabla \ref{tab:sponza} confirma lo que se está observando en los resultados visuales, ya que el TAA Mejorado del proyecto de grado obtuvo los mejores resultados en la mayor parte de la prueba, obteniendo la menor cantidad de errores en MSE y RMSD; la mejor relación señal a ruido en Peak-SNR y SNR; y la mayor similitud a la imagen base en SSIM; mientras que el TAA de Uncharted obtuvo las peores resultados debido a los problemas de bordes; y SMAA empeoró debido al problema de las flores.
 % Table generated by Excel2LaTeX from sheet 'Sponza Table'
 \begin{table}[!htb]
 	\small
@@ -1120,7 +1122,7 @@ Si se comparan las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, se 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/sponza.png}
-	\caption{Comparación de Prueba del Atrium de Sponza entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:sponza_render}
+	\caption{Comparación de Prueba del Atrium de Sponza entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:sponza_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1134,7 +1136,7 @@ Si se comparan las Figuras \ref{fig:sponza_render} y \ref{fig:sponza_truth}, se 
 \subsection{Flores del Atrium de Sponza}
 En esta prueba se vió cómo las mejoras manejan los detalles de un modelo con partes transparentes, como son las flores del modelo del Atrium de Sponza. El \textit{aliasing} que presentan este tipo de modelos se considera difícil de detectar y corregir correctamente. 
 
-En las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth}, se nota que el TAA de Uncharted tiene problemas para manejar este tipo de modelo, especialmente si se observa su Mapa de SSIM por todos los bordes oscuros que aparecen. Se nota que SMAA no pudo corregir todos los artefactos de \textit{aliasing} de los bordes de las flores, se ve que la silueta de las flores aparece como los bordes grises en su Mapa de SSIM.  Finalmente, se observa que el TAA del Proyecto de Grado corrigió la mayoría de los artefactos de \textit{aliasing}, aunque algunos todavía aparecen como áreas grises en su Mapa de SSIM. Además, la Tabla \ref{tab:sponza_flowers} confirma lo que se percibe visualmente, ya que el TAA del Proyecto de Grado obtuvo los mejores puntajes con el menor error (MSE, RMSD), mayor relación de señal a ruido (Peak-SNR, SNR) y mayor similitud (SSIM); mientras que SMAA obtuvo una puntuación peor que FXAA en casi todas las métricas.
+En las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth}, se nota que el TAA de Uncharted tiene problemas para manejar este tipo de modelo, especialmente si se observa su Mapa de SSIM por todos los bordes oscuros que aparecen. Se nota que SMAA no pudo corregir todos los artefactos de \textit{aliasing} de los bordes de las flores, se ve que la silueta de las flores aparece como los bordes grises en su Mapa de SSIM.  Finalmente, se observa que el TAA del proyecto de grado corrigió la mayoría de los artefactos de \textit{aliasing}, aunque algunos todavía aparecen como áreas grises en su Mapa de SSIM. Además, la Tabla \ref{tab:sponza_flowers} confirma lo que se percibe visualmente, ya que el TAA del proyecto de grado obtuvo los mejores puntajes por los menores errores en MSE y RMSD; los mayores Peak-SNR y SNR; y mayor similitud a la imagen base en SSIM; mientras que SMAA obtuvo una puntuación peor que FXAA en casi todas las métricas.
 % Table generated by Excel2LaTeX from sheet 'Sponza Flowers'
 \begin{table}[!htb]
 	\small
@@ -1169,15 +1171,15 @@ En las Figuras \ref{fig:sponza_flowers_render} y \ref{fig:sponza_flowers_truth},
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/sponza_flowers.png}
-	\caption{Comparación de Prueba de las Flores del Atrium de Sponza entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:sponza_flowers_render}
+	\caption{Comparación de Prueba de las Flores del Atrium de Sponza entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:sponza_flowers_render}
 \end{figure}
 
 \FloatBarrier
 
 \subsection{Bordes Duros}
-En esta prueba se explora cómo la implementación del Proyecto de Grado maneja muchos detalles pequeños a gran distancia y cómo se comporta con bordes duros. Se utiliza los modelos de las Ventanas para los detalles pequeños y los modelos de Tubería y Pared para los bordes duros. 
+En esta prueba se explora cómo la implementación del proyecto de grado maneja muchos detalles pequeños a gran distancia y cómo se comporta con bordes duros. Se utilizan los modelos de las Ventanas para los detalles pequeños y los modelos de Tubería y Pared para los bordes duros. 
 
-En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, se observa que el TAA del Proyecto de Grado es la mejor técnica para manejar los bordes de todos los modelos, su Mapa de SSIM apenas tiene un área oscura y en la Tabla \ref{tab:hard_test} sobrepasa cualquier otra técnica en las métricas. El TAA de Uncharted crea artefactos de desenfoque alrededor de todos los bordes, esto aparece en su Mapa de SSIM ya que todos los bordes son visibles. Finalmente, SMAA no puede corregir algunos artefactos de \textit{aliasing} que se pueden observar en su Mapa de SSIM.
+En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, se observa que el TAA del proyecto de grado es la mejor técnica para manejar los bordes de todos los modelos, su Mapa de SSIM apenas tiene un área oscura y en la Tabla \ref{tab:hard_test} sobrepasa cualquier otra técnica en las métricas. El TAA de Uncharted crea artefactos de desenfoque alrededor de todos los bordes, esto aparece en su Mapa de SSIM ya que todos los bordes son visibles. Finalmente, SMAA no puede corregir algunos artefactos de \textit{aliasing} que se pueden observar en su Mapa de SSIM.
 
 % Table generated by Excel2LaTeX from sheet 'Hard Test'
 \begin{table}[!htb]
@@ -1208,7 +1210,7 @@ En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, se observ
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{images/results/hard_test.png}
-	\caption{Comparación de la Prueba de Bordes Duros entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:hard_test_render}
+	\caption{Comparación de la Prueba de Bordes Duros entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:hard_test_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1220,11 +1222,11 @@ En las Figuras \ref{fig:hard_test_render} y \ref{fig:hard_test_truth}, se observ
 \FloatBarrier
 
 \subsection{Prueba de Ghosting de Esfera}
-Con esta prueba se quiere medir cómo las mejoras que se realizaron disminuyen los efectos de \textit{Ghosting} en las imágenes renderizadas por la implementación de Uncharted. Por esta razón, se seleccionó el Modelo Esfera para que se moviera en la sala del Atrium de Sponza y se renderizó bajo un ángulo de cámara donde mostrara efectos de \textit{Ghosting}.
+Con esta prueba se requiere medir cómo las mejoras que se realizaron disminuyen los efectos de \textit{Ghosting} en las imágenes renderizadas por la implementación de Uncharted. Por esta razón, se seleccionó el Modelo Esfera para que se moviera en la sala del Atrium de Sponza y se renderizó bajo un ángulo de cámara donde mostrara efectos de \textit{Ghosting}.
 
-Como se observa en los resultados visuales de la Figura \ref{fig:sphere_ghosting}, los efectos de  Ghosting disminuyeron en la implementación del proyecto, ya que las franjas visibles en el TAA de Uncharted son casi invisibles en el TAA del Proyecto de Grado. Además, en la Tabla \ref{tab:sphere_ghosting} los resultados promedio en las métricas de imágenes del TAA del Proyecto de Grado son mejores que el promedio del TAA de Uncharted.
+Como se observa en los resultados visuales de la Figura \ref{fig:sphere_ghosting}, los efectos de  Ghosting disminuyeron en la implementación del proyecto, ya que las franjas visibles en el TAA de Uncharted son casi invisibles en el TAA del proyecto de grado. Además, en la Tabla \ref{tab:sphere_ghosting} los resultados promedio en las métricas de imágenes del TAA del proyecto de grado son mejores que el promedio del TAA de Uncharted.
 
-Es importante notar que en las métricas de la relación señal a ruido (Peak-SNR, SNR) obtuvieron resultados con valor infinito, ya que eran exactamente iguales a la imagen base lo que causa divisiones entre $0$ porque el ruido (MSE) es cero; esto sucede en algunas imágenes en las que la esfera cubre todo el cuadro con un color azul oscuro. Es importante señalar que el Índice de Prueba marca a que prueba está asociado el resultado. En los promedios se utilizó No Aplicable (N / A) en los resultados para indicar promedio proviene de todas las pruebas, ya que no tiene sentido que se asocie el índice de una prueba específica a ellos. 
+Es importante destacar que en las métricas de la relación señal a ruido (Peak-SNR, SNR) se obtuvieron resultados con valor infinito, ya que eran exactamente iguales a la imagen base, lo que causa divisiones entre $0$ porque el ruido (MSE) es cero; esto sucede en algunas imágenes en las que la esfera cubre todo el cuadro con un color azul oscuro. Es importante señalar que el índice de prueba marca a que prueba está asociado el resultado. En los promedios se utilizó No Aplicable (N / A) en los resultados, para indicar que el promedio proviene de todas las pruebas, ya que no tiene sentido que se asocie el índice de una prueba específica a ellos. 
 % Table generated by Excel2LaTeX from sheet 'Sphere Ghosting'
 \begin{table}[!htb]
 	\small
@@ -1267,16 +1269,16 @@ Es importante notar que en las métricas de la relación señal a ruido (Peak-SN
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.5]{images/results/sphere_ghosting.png}
-	\caption{Ejemplo de \textit{Ghosting}. Comparación  entre TAA del Proyecto de Grado y TAA de Uncharted en la Prueba Número 19.}\label{fig:sphere_ghosting}
+	\caption{Ejemplo de \textit{Ghosting}. Comparación  entre TAA del proyecto de grado y TAA de Uncharted en la Prueba Número 19.}\label{fig:sphere_ghosting}
 \end{figure}
 
 \FloatBarrier
 
 \subsection{Hairball}
-Estas pruebas fueron las más complicadas para todas las técnicas que se probaron. El modelo \textit{Hairball} contiene muchas fibras con muchos detalles, que proporcionan una prueba compleja para cualquier solución de \textit{Anti-Aliasing}. Se realizaron pruebas sin luz para ver la silueta y con la luz para ver cómo su reacción a las fibras afectaba a todas las soluciones \textit{Anti-Aliasing}. Se hicieron dos series de pruebas, en la primera, \textit{Hairball} está estático, para mostrar el comportamiento de la corrección del desenfoque y \textit{aliasing}. En la segunda serie, \textit{Hairball} gira sobre su propio eje, para mostrar cómo se comporta el efecto de \textit{Ghosting} en las fibras. Los resultados de las pruebas estáticas fueron sorprendentes, ya que no se esperába que la implementación de TAA del Proyecto de Grado fuera el mejor manejo de las fibras debido a los resultados previos en ambas pruebas con las Ventanas, donde los detalles pequeños de las ventanas no se manejan bien.
+Estas pruebas fueron las más complicadas para todas las técnicas que se probaron. El modelo \textit{Hairball} contiene muchas fibras con muchos detalles, que proporcionan una prueba compleja para cualquier solución de \textit{Anti-Aliasing}. Se realizaron pruebas sin luz para ver la silueta y con la luz para ver cómo su reacción a las fibras afectaba a todas las soluciones \textit{Anti-Aliasing}. Se hicieron dos series de pruebas, en la primera, \textit{Hairball} está estático, para mostrar el comportamiento de la corrección del desenfoque y \textit{aliasing}. En la segunda serie, \textit{Hairball} gira sobre su propio eje, para mostrar cómo se comporta el efecto de \textit{Ghosting} en las fibras. Los resultados de las pruebas estáticas fueron sorprendentes, ya que no se esperaba que la implementación de TAA del proyecto de grado fuera el mejor manejo de las fibras debido a los resultados previos en ambas pruebas con las Ventanas, donde los detalles pequeños de las ventanas no se manejan bien.
 
 \subsubsection{Prueba Estática Sin Luz}
-En las Figuras \ref{fig:hairball_static_shadow_render} y \ref{fig:hairball_static_shadow_truth}, se puede observar que el TAA de Uncharted tiene problemas en la mayoría de las fibras, en su Mapa de SSIM esto es visible como el gran borde oscuro alrededor de Hairball. SMAA no puede corregir el \textit{aliasing} en las fibras más pequeñas, las cuales se observan como las áreas grises alrededor del modelo Hairball en su Mapa de SSIM. Finalmente, se nota que el TAA del Proyecto de Grado es la mejor técnica manejando las fibras, las cuales se ven lisas como en el modelo original y en su Mapa de SSIM tiene la menor cantidad de áreas oscuras. Además, en la Tabla \ref{tab:hairball_static_shadow} se puede confirmar que el TAA del Proyecto de Grado es el mejor para renderizar Hairball estático sin luz por un margen relativamente grande según las métricas de imagen, en comparación con las otras técnicas, ya que tiene el menor error (MSE, RMSD), la mayor relación de señal a ruido (Peak-SNR, SNR) y la mayor similitud (SSIM). 
+En las Figuras \ref{fig:hairball_static_shadow_render} y \ref{fig:hairball_static_shadow_truth}, se puede observar que el TAA de Uncharted tiene problemas en la mayoría de las fibras, en su Mapa de SSIM esto es visible como el gran borde oscuro alrededor de Hairball. SMAA no puede corregir el \textit{aliasing} en las fibras más pequeñas, las cuales se observan como las áreas grises alrededor del modelo Hairball en su Mapa de SSIM. Finalmente, se nota que el TAA del proyecto de grado es la mejor técnica manejando las fibras, las cuales se ven lisas como en el modelo original y en su Mapa de SSIM tiene la menor cantidad de áreas oscuras. Además, en la Tabla \ref{tab:hairball_static_shadow} se puede confirmar que el TAA del proyecto de grado es el mejor para renderizar Hairball estático sin luz por un margen relativamente grande según las métricas de imagen, en comparación con las otras técnicas, ya que tiene los menores errores en MSE y RMSD; la mayor relación de señal a ruido (Peak-SNR, SNR); y la mayor similitud de la imagen base en SSIM. 
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Shadow'
 \begin{table}[!htb]
@@ -1306,7 +1308,7 @@ En las Figuras \ref{fig:hairball_static_shadow_render} y \ref{fig:hairball_stati
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.3]{images/results/hairball_static_shadow.png}
-	\caption{Comparación de la Prueba Estática de Hairball Sin Luz entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:hairball_static_shadow_render}
+	\caption{Comparación de la Prueba Estática de Hairball Sin Luz entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:hairball_static_shadow_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1318,7 +1320,7 @@ En las Figuras \ref{fig:hairball_static_shadow_render} y \ref{fig:hairball_stati
 \FloatBarrier
 
 \subsubsection{Prueba Estática Con Luz}
-En las Figuras \ref{tab:hairball_static_lighted} y \ref{fig:hairball_static_lighted_truth}, se observa que el TAA de Uncharted generó colores brillantes incorrectos alrededor de todas las fibras, en su Mapa de SSIM esto aparece como el modelo completo oscuro. SMAA no puede corregir una gran cantidad de fibras, aparecen con \textit{aliasing} en la imagen renderizada, su Mapa de SSIM contiene muchas zonas oscuras y sus métricas de imagen son peores que las de FXAA. Finalmente, se puede observar que el TAA del Proyecto de Grado tiene los bordes más suaves de todas las imágenes renderizadas, en su Mapa SSIM y en la Tabla \ref{tab:hairball_static_lighted} se puede notar que todavía hay errores (MSE, RMSD) pero son más pequeños, por un gran margen, comparado a cualquier otra técnica. Otro aspecto importante resaltar, es que el SSIM del TAA del Proyecto de Grado es el único en superar $0.9$.
+En las Figuras \ref{tab:hairball_static_lighted} y \ref{fig:hairball_static_lighted_truth}, se observa que el TAA de Uncharted generó colores brillantes incorrectos alrededor de todas las fibras, en su Mapa de SSIM esto aparece como el modelo completo oscuro. SMAA no puede corregir una gran cantidad de fibras, aparecen con \textit{aliasing} en la imagen renderizada, su Mapa de SSIM contiene muchas zonas oscuras y sus métricas de imagen son peores que las de FXAA. Finalmente, se puede observar que el TAA del proyecto de grado tiene los bordes más suaves de todas las imágenes renderizadas, en su Mapa SSIM y en la Tabla \ref{tab:hairball_static_lighted} se puede notar que todavía hay errores (MSE, RMSD) pero son más pequeños, por un gran margen, comparado a cualquier otra técnica. Otro aspecto importante resaltar, es que el SSIM del TAA del proyecto de grado es el único en superar $0.9$.
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Static Lighted'
 \begin{table}[!htb]
@@ -1348,7 +1350,7 @@ En las Figuras \ref{tab:hairball_static_lighted} y \ref{fig:hairball_static_ligh
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.8]{images/results/hairball_static_lighted.png}
-	\caption{Comparación de la Prueba Estática de Hairball Con Luz entre TAA del Proyecto de Grado, TAA de Uncharted y SMAA.}\label{fig:hairball_static_lighted_render}
+	\caption{Comparación de la Prueba Estática de Hairball Con Luz entre TAA del proyecto de grado, TAA de Uncharted y SMAA.}\label{fig:hairball_static_lighted_render}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -1360,7 +1362,7 @@ En las Figuras \ref{tab:hairball_static_lighted} y \ref{fig:hairball_static_ligh
 \FloatBarrier
 
 \subsubsection{Prueba de Ghosting Sin Luz}
-En la Figura \ref{fig:hairball_ghosting_shadow}, se puede observar que ambas implementaciones de TAA generan desenfoque alrededor de los bordes de las fibras, esto es visible en ambos Mapas de SSIM como el anillo oscuro alrededor del modelo. En la Tabla \ref{tab:hairball_ghosting_shadow} se observa que el TAA del Proyecto de Grado es numéricamente mejor que el TAA de Uncharted, las mejores puntaciones de este son menores que el promedio de las métricas del Proyecto de Grado. Además, es importante acotar que el Índice de Prueba en la Tabla \ref{tab:hairball_ghosting_shadow} marca a qué prueba pertenece el resultado asociado; en los promedios se utiliza No Aplicable (N / A) porque esos resultados provienen del promedio de todas las pruebas y no hace sentido que sea asociado al índice de una prueba específica. 
+En la Figura \ref{fig:hairball_ghosting_shadow}, se puede observar que ambas implementaciones de TAA generan desenfoque alrededor de los bordes de las fibras, esto es visible en ambos Mapas de SSIM como el anillo oscuro alrededor del modelo. En la Tabla \ref{tab:hairball_ghosting_shadow} se observa que el TAA del proyecto de grado es numéricamente mejor que el TAA de Uncharted, las mejores puntaciones de este son menores que el promedio de las métricas del proyecto de grado. Además, es importante acotar que el Índice de Prueba en la Tabla \ref{tab:hairball_ghosting_shadow} marca a qué prueba pertenece el resultado asociado; en los promedios se utiliza No Aplicable (N / A) porque esos resultados provienen del promedio de todas las pruebas y no hace sentido que sea asociado al índice de una prueba específica. 
 
 % Table generated by Excel2LaTeX from sheet 'Hairball Ghosting Shadow'
 \begin{table}[!htb]
@@ -1404,7 +1406,7 @@ En la Figura \ref{fig:hairball_ghosting_shadow}, se puede observar que ambas imp
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.8]{images/results/hairball_ghosting_shadow.png}
-	\caption{Comparación de \textit{Ghosting} entre TAA del Proyecto de Grado, TAA de Uncharted y la Imagen Base en la Prueba Número 90.}\label{fig:hairball_ghosting_shadow}
+	\caption{Comparación de \textit{Ghosting} entre TAA del proyecto de grado, TAA de Uncharted y la Imagen Base en la Prueba Número 90.}\label{fig:hairball_ghosting_shadow}
 \end{figure}
 
 \FloatBarrier
@@ -1453,22 +1455,22 @@ En la Figura \ref{fig:hairball_ghosting_lighted} y la Tabla \ref{tab:hairball_gh
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{images/results/hairball_ghosting_lighted.png}
-	\caption{Comparación de \textit{Ghosting} entre TAA del Proyecto de Grado, TAA de Uncharted y la Imagen Base en la Prueba Número 83.}\label{fig:hairball_ghosting_lighted}
+	\caption{Comparación de \textit{Ghosting} entre TAA del proyecto de grado, TAA de Uncharted y la Imagen Base en la Prueba Número 83.}\label{fig:hairball_ghosting_lighted}
 \end{figure}
 
 \FloatBarrier
 \subsection{Comparación de Tiempos} \label{result_timing}
 Es importante tener en cuenta que todas las técnicas probadas son de naturaleza de Post-Procesamiento, lo que significa que reciben la imagen de salida de la Arquitectura de \textit{Shading} Diferido como entrada y no dependen de la complejidad de la escena.
 
-El tiempo medido que tomó la técnica de TAA del Proyecto de Grado fue entre $0.5$ y $0.6$ $ms$ en promedio. El paso de Sobel tomó entre $0.2$ $ms$ y $0.3$ $ms$, y la reproyección fue de alrededor de $0.3$ $ms$. El tiempo medido que tomó la técnica TAA de Uncharted fue de entre $0.2$ $ms$ y $0.3$ $ms$; FXAA tomó entre $0.1$ $ms$ y $0.2$ $ms$; y SMAA tomó $0.2$ $ms$ y $0.3$ $ms$.
+El tiempo medido que tomó la técnica de TAA del proyecto de grado fue entre $0.5$ y $0.6$ $ms$ en promedio. El paso de Sobel tomó entre $0.2$ $ms$ y $0.3$ $ms$, y la reproyección fue de alrededor de $0.3$ $ms$. El tiempo medido que tomó la técnica TAA de Uncharted fue de entre $0.2$ $ms$ y $0.3$ $ms$; FXAA tomó entre $0.1$ $ms$ y $0.2$ $ms$; y SMAA tomó $0.2$ $ms$ y $0.3$ $ms$.
 
 
 \section{Discusión}
 Como se aprecia los resultados de la prueba del Filtro de Nitidez, ver Tabla \ref{tab:sharpen_res}, las mejoras logradas en este proyecto de grado van más allá de modificar el filtro de la implementación de Uncharted, ya que al cambiar este filtro sólo se evita generar esos píxeles brillantes incorrectos alrededor bordes. Se cree que el uso de ese filtro específico es de naturaleza artística, ya que tiende a pronunciar los bordes a costa de crear píxeles brillantes, que parpadean al moverse, alrededor de los bordes. Esto es especialmente notable cuando la cámara se mueve, mientras el primer plano está iluminado pero el fondo está en sombras o viceversa.
 
-De ambas pruebas de Tubería, se puede observar que los resultados del TAA del Proyecto de Grado están cerca de los resultados de SMAA al dibujar bordes duros. Se puede cuantificar la reducción del problema del desenfoque al comparar con la implementación de TAA de Uncharted en los resultados de las Tablas \ref{tab:pipe_regular} y \ref{tab:pipe_inclination}. Cuando se comparan los resultados de los Mapas de SSIM (Figuras \ref{fig:pipe_regular_render} y \ref{fig:pipe_inclination_render}), se observa una gruesa línea de error alrededor de los bordes en la implementación de Uncharted, la cual no está presente en la implementación de TAA mejorada. Pero la reducción del desenfoque no es perfecta, como se ve en los puntajes de las pruebas, aun aparece alrededor de los bordes de la implementación mejorada y le permite a SMAA obtener el puntaje más alto en algunas pruebas.
+De ambas pruebas de Tubería, se puede observar que los resultados del TAA del proyecto de grado están cerca de los resultados de SMAA al dibujar bordes duros. Se puede cuantificar la reducción del problema del desenfoque al comparar con la implementación de TAA de Uncharted en los resultados de las Tablas \ref{tab:pipe_regular} y \ref{tab:pipe_inclination}. Cuando se comparan los resultados de los Mapas de SSIM (Figuras \ref{fig:pipe_regular_render} y \ref{fig:pipe_inclination_render}), se observa una gruesa línea de error alrededor de los bordes en la implementación de Uncharted, la cual no está presente en la implementación de TAA mejorada. Pero la reducción del desenfoque no es perfecta, como se ve en los puntajes de las pruebas, aun aparece alrededor de los bordes de la implementación mejorada y le permite a SMAA obtener el puntaje más alto en algunas pruebas.
 
-De las pruebas de Ventanas con Persianas y Ventana Arqueada, se puede apreciar cómo reaccionan las técnicas ante características pequeñas, casi de tamaño de píxel, como las persianas y las puertas de las ventanas de las pruebas. Aunque el TAA del Proyecto de Grado y SMAA aparecen numéricamente mejores que el TAA de Uncharted en las Tablas \ref{tab:window_blind} y \ref{tab:window_arch}, no pueden reconstruir todos los pequeños detalles y dejan rayas finas de píxeles que parpadean cuando la cámara se mueve. Se cree que, en este caso, admitir el desenfoque del TAA de Uncharted beneficia su aplicación final porque es mejor perder algunos pequeños detalles que tener muchos píxeles parpadeando cada vez que se mueve la cámara.
+De las pruebas de Ventanas con Persianas y Ventana Arqueada, se puede apreciar cómo reaccionan las técnicas ante características pequeñas, casi de tamaño de píxel, como las persianas y las puertas de las ventanas de las pruebas. Aunque el TAA del proyecto de grado y SMAA aparecen numéricamente mejores que el TAA de Uncharted en las Tablas \ref{tab:window_blind} y \ref{tab:window_arch}, no pueden reconstruir todos los pequeños detalles y dejan rayas finas de píxeles que parpadean cuando la cámara se mueve. Se cree que, en este caso, admitir el desenfoque del TAA de Uncharted beneficia su aplicación final porque es mejor perder algunos pequeños detalles que tener muchos píxeles parpadeando cada vez que se mueve la cámara.
 
 La prueba del Atrium de Sponza muestra que el TAA del proyecto de grado es más que capaz de manejar una escena general con iluminación y sombras. Como se ve en la Tabla \ref{tab:sponza}, la  implementación mejorada demostró ser mejor que las otras técnicas \textit{Anti-Aliasing} por un margen justo en casi todas las pruebas.
 
@@ -1488,17 +1490,19 @@ A partir de los resultados de la comparación de tiempos (Consulte la sección \
 
 
 \chapter{Conclusiones y Recomendaciones}
-Para la computación gráfica, el área de soluciones de \textit{Anti-Aliasing} es importante debido a que ayuda a minimizar  los problemas visuales que causa el \textit{Aliasing},  el cual aparece por las limitaciones de precisión numérica de las computadoras. De estas soluciones, \textit{Temporal Anti-Aliasing} se destaca por ser compatible con otras técnicas actuales de computación gráfica, por consumir poca memoria, requerir poco tiempo para ejecutarse y por resolver dos tipos de \textit{Aliasing}. Pero, esta técnica tiene dos problemas, causa desenfoque innecesario y genera \textit{Ghosting}. 
+En computación gráfica se requieren soluciones de \textit{Anti-Aliasing} para minimizar los problemas visuales de \textit{Aliasing}que aparecen por las limitaciones de precisión numérica de las computadoras. Entre las soluciones actuales se destaca la técnica de \textit{Temporal Anti-Aliasing} (TAA) por su compatibilidad con otras técnicas utilizadas actualmente; menor consumo de memoria y tiempo de ejecución; resolviendo dos tipos de problemas de \textit{Aliasing}. La aplicación de esta técnica genera dos problemas: causa desenfoque innecesario y genera \textit{Ghosting}.
 
-Este proyecto de grado tiene como objetivo mejorar \textit{Temporal Anti-Aliasing} mediante el uso de detección de bordes, de color y profundidad, y técnicas de indexación de triángulos para reducir el problema de desenfoque y \textit{Ghosting}, con las limitaciones de renderizar al menos treinta cuadros por segundo, sin causar una pérdida mayor a 5 cuadros por segundo durante el transcurso de la ejecución; y trabajar con una cantidad limitada de memoria y ancho de banda, porque se necesita poder ejecutarlo en una computadora personal promedio.
+El objetivo de este proyecto de grado es mejorar la solución de \textit{Temporal Anti-Aliasing} mediante el uso de técnicas de detección de bordes, color y profundidad; y técnicas de indexación de triángulos para reducir el problema de desenfoque y \textit{Ghosting}. La aplicación de estas técnicas debe considerar las limitaciones de operar en una computadora personal promedio.
 
-En este proyecto de grado se implementaron las técnicas de detección de bordes, de color y profundidad, utilizando el operador de Sobel; indexación de triángulos; Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad. Los valores producidos por ellas se mezclan y el resultado es usado para disminuir el desenfoque y \textit{Ghosting} de TAA. Además, se implementó un Marco de Prueba para cuantificar las mejoras del proyecto. Este utiliza MSE, RMSD, Peak-SNR, SNR y SSIM como métricas de imagen para medir y comparar el TAA mejorado del proyecto contra el TAA base y otras dos técnicas actuales de \textit{Anti-Aliasing}, FXAA y SMAA.
+En este proyecto de grado se implementó el operador de Sobel para detectar bordes en las imágenes renderizadas y marcarlos como posibles lugares con \textit{Aliasing}. Para la detección de bordes se utilizó indexación de triángulos; Pseudo-Varianza de Profundidad y Pseudo-Varianza Temporal de Profundidad. Los valores producidos por estas técnicas se mezclaron para utilizarse en la disminución del desenfoque y \textit{Ghosting} de TAA. 
 
-Como se ha demostrado numérica y visualmente con las pruebas realizadas, la implementación Mejorada del Proyecto de Grado logró su objetivo de reducir los efectos de desenfoque y los efectos de \textit{Ghosting} de la técnica \textit{Temporal Anti-Aliasing}, con el uso de detección de bordes de color y profundidad e indexación de triángulos. Los resultados muestran que esta técnica puede proporcionar la misma o mejor calidad que otras soluciones estándar de \textit{Anti-Aliasing}. 
+Se implementó un Marco de Prueba que permitió cuantificar las mejoras logradas en el proyecto. Utilizando MSE, RMSD, Peak-SNR, SNR y SSIM como métricas de imagen para medir y comparar el TAA mejorado del proyecto contra el TAA base y otras dos técnicas actuales de \textit{Anti-Aliasing}, FXAA y SMAA.
 
-Como posibles mejoras, se cree en que la implementación del proyecto podría optimizarse para ejecutarse más rápido que el tiempo actual. Este proyecto se realizó con flexibilidad en mente, para ayudar a probar diferentes enfoques. Esto podría simplificarse para reducir el número de etapas requeridas.
+Como se demostró numérica y visualmente con las pruebas realizadas, la implementación Mejorada del proyecto de grado logró su objetivo de reducir los efectos de desenfoque y los efectos de \textit{Ghosting} de la técnica \textit{Temporal Anti-Aliasing}, con el uso de detección de bordes de color y profundidad e indexación de triángulos. Los resultados muestran que esta técnica puede proporcionar la misma o mejor calidad que otras soluciones estándar de \textit{Anti-Aliasing}. 
 
-En cuanto a las recomendaciones para futuras investigaciones, se sugiere mejorar el comportamiento de la técnica bajo objetos en movimiento con alta densidad de detalles, como en las pruebas de Hairball. Otro tema de mejora es la estabilidad de los detalles del tamaño de un píxel, que causan parpadeos como en las pruebas de Ventanas. Además, todavía se requiere una solución de \textit{Anti-Aliasing} de Iluminación Especular compatible con \textit{Temporal Anti-Aliasing} para proporcionar una solución de rango completo al \textit{Aliasing} en aplicaciones en tiempo real. Asimismo, se sugiere buscar métricas de imagen más específicas para gráficos por computadora, especialmente, encontrar valores de ajuste para SSIM que proporcionen una resolución numérica mayor al comparar diferentes imágenes procesadas.
+Como posibles mejoras, la implementación del proyecto podría optimizarse para ejecutarse más rápido que los tiempos actuales. Este proyecto se realizó con flexibilidad en mente, para ayudar a probar diferentes enfoques. La implementación podría simplificarse para reducir el número de etapas requeridas.
+
+En cuanto a las recomendaciones para futuras investigaciones, se propone investigar el comportamiento de la técnica para objetos en movimiento con alta densidad de detalles, como en las pruebas de Hairball. Otro tema de mejora es la estabilidad de los detalles del tamaño de un píxel, que causan parpadeos como en las pruebas de Ventanas. Además, todavía se requiere una solución de \textit{Anti-Aliasing} de Iluminación Especular compatible con \textit{Temporal Anti-Aliasing} para proporcionar una solución de rango completo al \textit{Aliasing} en aplicaciones en tiempo real. Asimismo, se sugiere analizar nuevas métricas de imagen específicas para gráficos por computadora, especialmente, identificar valores de ajuste para SSIM que proporcionen una resolución numérica mayor al comparar diferentes imágenes procesadas.
 
 
 \bibliography{MyMSc}
@@ -1511,7 +1515,7 @@ El enlace principal al repositorio es https://github.com/maniatic0/Christian-TRA
 	\item Especificación Completa de la Computadora: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/PC%20Specification}.
 	\item Todas las Pruebas: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests}.
 	\item Pruebas del Buffer de Acumulación: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Accumulation%20Buffer%20Tests}.
-	\item La Mayoría de las Pruebas del Proyecto de Grado: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Master%20Thesis%20Tests}.
+	\item La Mayoría de las Pruebas del proyecto de grado: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Master%20Thesis%20Tests}.
 	\item Pruebas del Filtro de Nitidez: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Sharpening%20Tests}.
 	\item Pruebas de \textit{Ghosting}: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/Ghosting}.
 	\item Pruebas de HairBall: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/Important%20Tests/HairBall}.
