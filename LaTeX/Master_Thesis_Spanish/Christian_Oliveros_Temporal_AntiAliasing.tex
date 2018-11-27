@@ -164,15 +164,29 @@ Cuando se requiere renderizar los objetos en una escena, se toman los vértices 
 
 Este proceso tiene dos usos principales: Aplicaciones fuera de línea (\textit{offline}), como películas; y aplicaciones en tiempo real (\textit{online}), como los videojuegos. Cada uno de estos usos tiene sus requisitos y limitaciones, pero, para este proyecto, sólo se presta atención a las aplicaciones en tiempo real.
 
-El objetivo de este proyecto es mejorar el algoritmo de \textit{Temporal Anti-Aliasing}, técnica que aumenta la calidad de las imágenes, después del proceso de mapeo de triángulos a píxeles, al mezclar cuadros previamente renderizados con los actuales.
+Para lograr presentaciones de alta resolución, se requiere renderizar las escenas en imágenes de alta calidad. Las técnicas actuales de generación de imágenes producen el efecto de \textit{aliasing}, el cual disminuye la calidad visual de la imagen. \textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real para disminuir los efectos del \textit{aliasing}, relativamente nueva, que proporciona buenos resultados en la calidad de la imagen, sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas \cite{Doggett2017EDAN35}. 
 
-El principal requerimiento será lograr la representación de la escena con la mayor calidad posible, con dos restricciones principales: renderizar al menos treinta cuadros por segundo, sin causar una pérdida mayor a 5 cuadros por segundo durante el transcurso de la ejecución; y trabajar con una cantidad limitada de memoria y ancho de banda, porque se necesita poder ejecutarlo en una computadora personal promedio (se toma la definición provista por la encuesta de hardware de una de las mayores tiendas de videojuegos en PC, Steam) \cite{valvecorporation2018} o un dispositivo móvil \cite{Doggett2017EDAN35, Shreiner2011}. 
+Las técnicas de detección de bordes y de indexación de triángulos parecen ser buenas candidatas para mejorar la calidad de TAA, al ayudar a reducir los efectos de los problemas de las implementaciones actuales. El principal requerimiento del proyecto es lograr la representación de la escena con la mayor calidad posible, con dos restricciones principales: renderizar al menos treinta cuadros por segundo, sin causar una pérdida mayor a 5 cuadros por segundo durante la ejecución; y trabajar con una cantidad limitada de memoria y ancho de banda, porque se necesita ejecutarlo en una computadora personal promedio (se toma la definición provista por la encuesta de hardware de una de las mayores tienda de videojuegos en PC, Steam) \cite{valvecorporation2018} o un dispositivo móvil \cite{Doggett2017EDAN35, Shreiner2011}. 
+
+Este proyecto de investigación se justifica porque contribuye a mejorar la técnica de \textit{Temporal Anti-Aliasing}  para que sea capaz de disminuir los efectos del \textit{aliasing}, manteniendo una velocidad de renderizado de al menos treinta cuadros por segundo, siendo compatible con otras técnicas de computación gráfica y sin efectos secundarios no deseados.
 
 
 \section{Definición del Problema}
-\textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real, relativamente nueva, que proporciona buenos resultados sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas \cite{Doggett2017EDAN35}. Las técnicas de detección de bordes y de indexación de triángulos parecen ser buenas candidatas para mejorar la calidad de TAA, al ayudar a reducir los efectos no deseados de \textit{ghosting} y desenfoque (\textit{blurring}) creados por las implementaciones actuales de TAA.
+Las implementaciones actuales de \textit{Temporal Anti-Aliasing} (TAA) generan efectos no deseados de \textit{ghosting} y desenfoque (\textit{blurring}).
 
+\section{Objetivo General}
 El objetivo de este proyecto de grado es mejorar la técnica de \textit{Temporal Anti-Aliasing} mediante el uso de detección de bordes, de color y profundidad, y técnicas de indexación de triángulos para reducir el efecto de desenfoque y \textit{ghosting}, sin disminuir la calidad de la imagen renderizada o incurrir en un gran consumo de memoria o alto costo de procesamiento.
+
+\section{Objetivos Específicos}
+\begin{itemize}
+	\item Aplicar de técnicas de detección de bordes e indexado de triángulos, que utilicen el color o la profundidad del pixel, al \textit{Temporal Anti-Aliasing} para mejorar el muestreo.
+	\item Implementar el Operador de Sobel como técnica de detección de bordes.
+	\item Mantener una velocidad de renderizado de treinta cuadros por segundo.
+	\item Establecer un mecanismo de prueba que permita cuantificar la calidad de la imagen al aplicar las mejoras a la técnica de TAA. 
+\end{itemize}
+
+\section{Metodología}
+Este proyecto de grado está basado en el método científico y utiliza una metodología empírica cuantitativa para medir las mejoras realizadas a la técnica de \textit{Temporal Anti-Aliasing}. La cuantificación se efectúa mediante el uso de métricas de imagen, las cuales asignan un valor numérico a la calidad de una imagen.
 
 
 \section{Trabajos Relacionados}
@@ -188,14 +202,15 @@ Finalmente, se tienen las implementaciones TRAA de Ke Xu para Uncharted 4 y Lass
 \section{Contribución}
 Este proyecto de grado ofrece mejoras sobre los últimos avances alcanzados por Ke Xu y Lasse Fuglsang \cite{Fuglsand2016, XU2016}. Se propone el uso del Operador de Sobel para realizar detecciones de bordes y técnicas de indexación de triángulos para detectar píxeles que se consideran con \textit{aliasing}. Una vez se tienen los píxeles detectados, se usa su información para cambiar la forma en la que se rechazan los colores de los cuadros anteriores, con el fin de reducir los artefactos de \textit{ghosting} (\textit{ghosting artifacts})  y desenfoque que tiene \textit{Temporal Anti-Aliasing} para mejorar la calidad visual de la imágen producida.
 
-\section{Resumen del Documento}
-En este documento se presenta una introducción al proyecto, con la definición del problema a resolver y sus objetivos, en el Capítulo I. En el Capítulo II se presenta el Marco Tecnológico, donde se explican las herramientas se utilizaron en este proyecto de grado y las razones de su uso. Luego de esto, se presenta en el Capítulo III el Marco Teórico del proyecto, donde se explica los conceptos teóricos que constituyen la base de este trabajo de grado, desde la teoría de base de Computación Gráfica hasta las Métricas de Imágenes utilizadas. 
+\section{Organización del Trabajo}
+En este documento se presenta una introducción al proyecto, con la definición del problema a resolver y sus objetivos. En el Capítulo II se presenta el Marco Tecnológico, donde se exponen las herramientas que se utilizaron en este proyecto de grado y las razones de su uso. Luego de esto, se presenta en el Capítulo III el Marco Teórico del proyecto, donde se explican los conceptos teóricos que constituyen la base de este trabajo de grado, desde la teoría base de Computación Gráfica hasta las métricas de imágenes utilizadas. 
 
-Posteriormente, se presenta el trabajo principal realizado en este proyecto de grado en el Capítulo IV. Seguidamente, en el Capítulo V se explica cómo se evalúa las mejoras realizadas al \textit{Temporal Anti-Aliasing}; se muestran los resultados numéricos y visuales obtenidos; y se explican los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}. Finalmente, se dan las conclusiones y recomendaciones en el Capítulo VI.
+En el Capítulo IV se presenta el desarrollo realizado en este proyecto de grado con la implementación del marco de pruebas y las modificaciones de TAA. Seguidamente, en el Capítulo V, se explica cómo se evalúan las mejoras realizadas a la técnica de \textit{Temporal Anti-Aliasing}; se muestran los resultados numéricos y visuales obtenidos; y se explican los resultados y su significado en comparación con la implementación anterior de TAA y otras soluciones de \textit{Anti-Aliasing}. Finalmente, se exponen las conclusiones y recomendaciones en el Capítulo VI.
+
 
 
 \chapter{Marco Tecnológico}
-En este capítulo, se explican las herramientas se utilizaron en este proyecto de grado y las razones de su uso.
+En este capítulo, se explican las herramientas se utilizaron en este proyecto de grado y las razones de su uso. El criterio para la selección de las herramientas utilizadas en este proyecto fue su amplia utilización en desarrollos de computación gráfica, lo cual permite acceder a su amplia base de conocimiento y permite apoyarse en desarrollos previos. 
 
 \section{C++ y el Bonobo Framework}
 Se utiliza C ++ y el \textit{Bonobo Framework} para implementar todas las mejoras realizadas en este proyecto de grado. C ++ es un lenguaje de programación de propósito general, compilado, con funciones imperativas, programación orientada a objetos y administración de memoria de bajo nivel. Se usa por su rendimiento, especialmente para aplicaciones de computación gráfica en tiempo real, y por su amplia base de conocimiento.
@@ -1523,15 +1538,15 @@ El enlace principal al repositorio es https://github.com/maniatic0/Christian-TRA
 	\item Reporte de \LaTeX: \\ \url{https://github.com/maniatic0/Christian-TRAA/tree/master/LaTeX/Master_Thesis_Spanish}.
 \end{itemize}
 \chapter{Explicación del Camera Jittering} \label{appendix:jitter}
-La Secuencia de $Halton(2, 3)$ genera puntos en el espacio $[0,1] \times [0,1]$. Primero, tenemos que transformarlo en el espacio $[- 1,1] \times [-1,1]$ porque consideramos que el píxel está en el centro, es decir, en OpenGL, el primer píxel está en $(0.5, 0.5)$. Por esto, aplicamos la transformación $T_1 (x, y) = 2 * (x, y) - (1, 1)$.
+La Secuencia de $Halton(2, 3)$ genera puntos en el espacio $[0,1] \times [0,1]$. Primero, se tiene que transformarlo en el espacio $[- 1,1] \times [-1,1]$ porque se considera que el píxel está en el centro, es decir, en OpenGL, el primer píxel está en $(0.5, 0.5)$. Por esto, se aplica la transformación $T_1 (x, y) = 2 * (x, y) - (1, 1)$.
 
-Ahora, solo queremos causar \textit{jittering} dentro del píxel porque solo deberíamos tomar muestras dentro de él. Queremos controlar este movimiento, pero para fines de explicación, podemos suponer que solo lo estarems dentro del píxel. Entonces, aplicamos la transformación $T_2 (x, y) = \frac{(x, y)}{2}$.
+Ahora, solo se requiere causar \textit{jittering} dentro del píxel porque solo se debería tomar muestras dentro de él. Se requiere controlar este movimiento, pero para fines de explicación, se puede suponer que solo lo estarems dentro del píxel. Entonces, se aplica la transformación $T_2 (x, y) = \frac{(x, y)}{2}$.
 
-A partir de ahora, debemos cambiar la forma en que interpretamos el proceso que estamos realizando; estamos calculando la distancia a la que moveremos el centro de píxeles, por lo que debemos verlo como un vector en lugar de como un punto. Necesitamos transformar el vector en un vector normalizado por el tamaño de la pantalla. En consecuencia, aplicamos la transformación $T_3 (x, y) = (x, y) / (w, h)$ con $(w, h)$ siendo el ancho y alto de la pantalla y el operador "$/$" como división por componentes.
+A partir de ahora, se debe cambiar la forma en que se interpreta el proceso que se está realizando; se está calculando la distancia a la que se moverá el centro de píxeles, por lo que se debe verlo como un vector en lugar de como un punto. Se necesita transformar el vector en un vector normalizado por el tamaño de la pantalla. En consecuencia, se aplica la transformación $T_3 (x, y) = (x, y) / (w, h)$ con $(w, h)$ siendo el ancho y alto de la pantalla y el operador "$/$" como división por componentes.
 
-Ahora necesitamos transformar nuestro vector normalizado por el tamaño de pantalla $ [0, 1] $ a las Coordenadas Normalizadas del Dispositivo (\textit{Normalized Device Coordinates}, NDC) que van en el rango $ [- 1, 1] \times [-1, 1]$. Esto se hace usando la transformación $T_4 (x, y) = 2 * (x, y)$ (para transformar puntos, usaríamos $2 * (x, y) - (1, 1)$). Al final, nuestra transformación se vería así $T (x, y) = T_4 (T_3 (T_2 (T_1 (x, y)))) = (2 * (x, y) - (1, 1)) / (w, h) $ con $ (x, y) $ siendo un punto de la Secuencia de Halton.
+Ahora se necesita transformar el vector normalizado por el tamaño de pantalla $ [0, 1] $ a las Coordenadas Normalizadas del Dispositivo (\textit{Normalized Device Coordinates}, NDC) que van en el rango $ [- 1, 1] \times [-1, 1]$. Esto se hace usando la transformación $T_4 (x, y) = 2 * (x, y)$ (para transformar puntos, se usaría $2 * (x, y) - (1, 1)$). Al final, la transformación se ve así $T (x, y) = T_4 (T_3 (T_2 (T_1 (x, y)))) = (2 * (x, y) - (1, 1)) / (w, h) $ con $ (x, y) $ siendo un punto de la Secuencia de Halton.
 
-Ahora necesitamos modificar nuestra Matriz de Proyección, que toma puntos del espacio de visualización en el Espacio de Clip (\textit{Clip Space}, donde se eliminan fácilmente los vértices trivialmente no visibles). La matriz resultante se toma de la página 14 de presentación de Ke Xu ~\cite{XU2016}. Sea $ (h_x, h_y) $ el \textit{jittering} que hemos calculado previamente.
+Ahora se necesita modificar la Matriz de Proyección, que toma puntos del espacio de visualización en el Espacio de Clip (\textit{Clip Space}, donde se eliminan fácilmente los vértices trivialmente no visibles). La matriz resultante se toma de la página 14 de presentación de Ke Xu ~\cite{XU2016}. Sea $ (h_x, h_y) $ el \textit{jittering} que hemos calculado previamente.
 
 \begin{equation}
 \begin{split}
@@ -1552,7 +1567,7 @@ a & 0 & 0 & 0 \\
 \end{split}
 \end{equation}
 
-Veamos su efecto a un punto en el \textit{View Space} (visión desde perspectiva de la cámara), sea $p_{view}=(x,y,z,1)$.
+Lo que causa el siguiente efecto a un punto en el \textit{View Space} (visión desde perspectiva de la cámara), sea $p_{view}=(x,y,z,1)$.
 
 \begin{equation}
 	JitteredProjection\times p_{view} = \begin{bmatrix*}
@@ -1563,7 +1578,7 @@ Veamos su efecto a un punto en el \textit{View Space} (visión desde perspectiva
 	\end{bmatrix*}
 \end{equation}
 
-Procedemos a hacer la \textit{División en Perspectiva} (corrige la perspectiva a la deseada en la cámara) para transformar el punto en Coordenadas NDC, esto se logra dividiendo el vector por el componente w. 
+Se procede a realizar la \textit{División en Perspectiva} (corrige la perspectiva a la deseada en la cámara) para transformar el punto en Coordenadas NDC, esto se logra dividiendo el vector por el componente w. 
 
 \begin{equation}
 \begin{bmatrix*}
@@ -1579,7 +1594,7 @@ Procedemos a hacer la \textit{División en Perspectiva} (corrige la perspectiva 
 \end{bmatrix*}
 \end{equation}
 
-En consecuencia, solo necesitamos estar seguros de que podemos aplicar la Matriz de \textit{Jittering}, para usarla dentro de \textit{Pixel Shaders}, con puntos en el espacio NDC.
+En consecuencia, solo se necesita estar seguros de que se puede aplicar la Matriz de \textit{Jittering}, para usarla dentro de \textit{Pixel Shaders}, con puntos en el espacio NDC.
 
 \begin{equation}
 	JitterMatrix\times p_{NDC} = \begin{bmatrix*}
