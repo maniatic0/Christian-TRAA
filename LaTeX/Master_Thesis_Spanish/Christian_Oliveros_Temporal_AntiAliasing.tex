@@ -164,7 +164,7 @@ Cuando se requiere renderizar los objetos en una escena, se toman los vértices 
 
 Este proceso tiene dos usos principales: Aplicaciones fuera de línea (\textit{offline}), como películas; y aplicaciones en tiempo real (\textit{online}), como los videojuegos. Cada uno de estos usos tiene sus requisitos y limitaciones, pero, para este proyecto, sólo se presta atención a las aplicaciones en tiempo real.
 
-Para lograr presentaciones de alta resolución, se requiere renderizar las escenas en imágenes de alta calidad. Las técnicas actuales de generación de imágenes producen el efecto de \textit{aliasing}, el cual disminuye la calidad visual de la imagen. \textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real para disminuir los efectos del \textit{aliasing}, relativamente nueva, que proporciona buenos resultados en la calidad de la imagen, sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas \cite{Doggett2017EDAN35}. 
+Para lograr presentaciones de alta resolución, se requiere renderizar las escenas en imágenes de alta calidad. Las técnicas actuales de generación de imágenes producen el efecto de \textit{aliasing}, el cual consiste en errores causados por falta de muestreo y disminuye la calidad visual de la imagen. \textit{Temporal Anti-Aliasing} (TAA) es una técnica en tiempo real para disminuir los efectos del \textit{aliasing}, relativamente nueva, que proporciona buenos resultados en la calidad de la imagen, sin incurrir en gran consumo de memoria o costos de procesamiento de otras técnicas \cite{Doggett2017EDAN35}. 
 
 Las técnicas de detección de bordes y de indexación de triángulos parecen ser buenas candidatas para mejorar la calidad de TAA, al ayudar a reducir los efectos de los problemas de las implementaciones actuales. El principal requerimiento del proyecto es lograr la representación de la escena con la mayor calidad posible, con dos restricciones principales: renderizar al menos treinta cuadros por segundo, sin causar una pérdida mayor a 5 cuadros por segundo durante la ejecución; y trabajar con una cantidad limitada de memoria y ancho de banda, porque se necesita ejecutarlo en una computadora personal promedio (se toma la definición provista por la encuesta de hardware de una de las mayores tienda de videojuegos en PC, Steam) \cite{valvecorporation2018} o un dispositivo móvil \cite{Doggett2017EDAN35, Shreiner2011}. 
 
@@ -210,7 +210,7 @@ En el Capítulo IV se presenta el desarrollo realizado en este proyecto de grado
 
 
 \chapter{Marco Tecnológico}
-En este capítulo, se explican las herramientas se utilizaron en este proyecto de grado y las razones de su uso. El criterio para la selección de las herramientas utilizadas en este proyecto fue su amplia utilización en desarrollos de computación gráfica, lo cual permite acceder a su amplia base de conocimiento y permite apoyarse en desarrollos previos. 
+En este capítulo, se explican las herramientas que se utilizaron en este proyecto de grado y las razones de su uso. El criterio para la selección de las herramientas utilizadas en este proyecto fue su amplia utilización en desarrollos de computación gráfica, lo cual permite acceder a su amplia base de conocimiento y permite apoyarse en desarrollos previos. 
 
 \section{C++ y el Bonobo Framework}
 Se utiliza C ++ y el \textit{Bonobo Framework} para implementar todas las mejoras realizadas en este proyecto de grado. C ++ es un lenguaje de programación de propósito general, compilado, con funciones imperativas, programación orientada a objetos y administración de memoria de bajo nivel. Se usa por su rendimiento, especialmente para aplicaciones de computación gráfica en tiempo real, y por su amplia base de conocimiento.
@@ -231,7 +231,7 @@ MATLAB es un entorno de cómputo numérico multi-paradigma propietario. Comúnme
 
 
 \chapter{Marco Teórico}
-En este capítulo, se explican los conceptos teóricos que constituyen la base de este trabajo de grado, desde la teoría de base de Computación Gráfica hasta las Métricas de Imágenes utilizadas.
+En este capítulo, se explican los conceptos teóricos que constituyen la base de este trabajo de grado, desde la teoría de base de computación gráfica hasta las métricas de imágenes utilizadas.
 
 \section{Canal de Renderizado}
 El Canal de Renderizado Gráfico contiene las etapas que se realizan para transformar la información de lo que se requiere graficar a lo que finalmente se ve en la pantalla. El Canal de Renderizado Gráfico actual se puede simplificar en tres etapas: \textit{Vertex Shader}, que procesa la geometría asociada con los vértices y los prepara para el siguiente paso; \textit{Rasterizer}, que mapea los triángulos a píxeles en la pantalla, calcula su visibilidad e interpola los parámetros de los vértices para cada píxel cubierto por el triángulo; y el \textit{Pixel Shader} (o \textit{Fragment Shader}) que toma los píxeles visibles del \textit{Rasterizer} y los colorea. La Figura \ref{fig:graphpipeline} es un ejemplo del Canal de Renderizado simplificado.

@@ -337,7 +337,12 @@
                     {Realizado con la asesor\'ia de:\\%---
                     \vskip 0.3cm%---
                     \@tutor \par \ifcotutor \@cotutor \par \fi}%---
-                    \vskip 3.0cm%---
+                    \vskip 1.0cm%---
+                    {Examinado por:\\%---
+                    \vskip 0.3cm%---
+                   \centering \@juradouno \\ Presidente(a) \\
+                   \centering \@juradodos \\ Miembro principal}%---
+                    \vskip 2.0cm%---
                     {\bfseries \MakeTextUppercase \@trabajo} \\%---
                     {Presentado ante la ilustre Universidad Sim\'on Bol\'ivar \\%---
                     como requisito requisito parcial para optar al t\'itulo de \\%---
